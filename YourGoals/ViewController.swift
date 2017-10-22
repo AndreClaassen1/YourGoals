@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationBar.topItem?.title = "Hello"
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        UINavigationBar.appearance().largeTitleTextAttributes = [
+//            NSAttributedStringKey.foregroundColor: UIColor.black
+//        ]
     }
 
     override func didReceiveMemoryWarning() {
