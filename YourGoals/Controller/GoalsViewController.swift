@@ -8,24 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GoalsViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.topItem?.title = "Hello"
-//        self.navigationItem.largeTitleDisplayMode = .always
-//        UINavigationBar.appearance().largeTitleTextAttributes = [
-//            NSAttributedStringKey.foregroundColor: UIColor.black
-//        ]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
