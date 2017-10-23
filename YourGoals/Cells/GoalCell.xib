@@ -11,30 +11,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GoalCellCollectionViewCell" customModule="YourGoals" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GoalCell" customModule="YourGoals" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monument-valley" translatesAutoresizingMaskIntoConstraints="NO" id="M5w-jq-wH5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monument-valley" translatesAutoresizingMaskIntoConstraints="NO" id="M5w-jq-wH5">
+                        <rect key="frame" x="20" y="20" width="335" height="318"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORLD PREMIERE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swj-BH-9LD">
-                        <rect key="frame" x="20" y="20" width="335" height="17"/>
+                        <rect key="frame" x="40" y="40" width="295" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="The Art of the Impossible" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7e-UD-goW">
-                        <rect key="frame" x="20" y="41" width="258" height="26.5"/>
+                        <rect key="frame" x="40" y="61" width="258" height="26.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inside the extraordinary world of Monument Valley 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v19-xo-yZd">
-                        <rect key="frame" x="20" y="299" width="335" height="38.5"/>
+                        <rect key="frame" x="40" y="279" width="295" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -46,17 +46,20 @@
                 <constraint firstItem="swj-BH-9LD" firstAttribute="leading" secondItem="M5w-jq-wH5" secondAttribute="leading" constant="20" id="DzP-PX-jlY"/>
                 <constraint firstItem="swj-BH-9LD" firstAttribute="trailing" secondItem="M5w-jq-wH5" secondAttribute="trailing" constant="-20" id="LAq-AU-ZsO"/>
                 <constraint firstItem="N7e-UD-goW" firstAttribute="top" secondItem="swj-BH-9LD" secondAttribute="top" constant="21" id="MvC-TS-S0V"/>
-                <constraint firstItem="M5w-jq-wH5" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" id="RF7-MF-OV9"/>
-                <constraint firstItem="M5w-jq-wH5" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="TKe-XN-bnp"/>
+                <constraint firstItem="M5w-jq-wH5" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" constant="-40" id="RF7-MF-OV9"/>
+                <constraint firstItem="M5w-jq-wH5" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="20" id="TKe-XN-bnp"/>
                 <constraint firstItem="v19-xo-yZd" firstAttribute="leading" secondItem="swj-BH-9LD" secondAttribute="leading" id="WVJ-0B-nsj"/>
-                <constraint firstItem="M5w-jq-wH5" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="Z8h-59-atV"/>
+                <constraint firstItem="M5w-jq-wH5" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="Z8h-59-atV"/>
                 <constraint firstItem="swj-BH-9LD" firstAttribute="top" secondItem="M5w-jq-wH5" secondAttribute="top" constant="20" id="dGk-yJ-Mu5"/>
-                <constraint firstItem="M5w-jq-wH5" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" id="gmd-Ur-Pwt"/>
+                <constraint firstItem="M5w-jq-wH5" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" constant="-40" id="gmd-Ur-Pwt"/>
                 <constraint firstItem="N7e-UD-goW" firstAttribute="leading" secondItem="swj-BH-9LD" secondAttribute="leading" id="lPj-TB-12O"/>
                 <constraint firstItem="v19-xo-yZd" firstAttribute="bottom" secondItem="M5w-jq-wH5" secondAttribute="bottom" constant="-20.5" id="oPy-Nc-EJ6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="230" height="223"/>
+            <connections>
+                <outlet property="imageView" destination="M5w-jq-wH5" id="Y6U-ar-9Wx"/>
+            </connections>
             <point key="canvasLocation" x="124" y="140.5"/>
         </collectionViewCell>
     </objects>

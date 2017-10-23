@@ -16,7 +16,7 @@ internal extension UICollectionView {
     /// registering a UINib or Type for the object's reuseIdentifier.
     ///
     /// - Parameter _: UICollectionViewCell to register for reuse.
-    func registerReusableCell<T: UICollectionViewCell>(_: T.Type) where T: Reusable {
+    func registerReusableCell<T: UICollectionViewCell>(_: T.Type)  {
         if let nib = T.nib {
             self.register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
         } else {
@@ -24,7 +24,7 @@ internal extension UICollectionView {
         }
     }
     
-    func registerSupplementaryView<T: UICollectionReusableView>(_ : T.Type, kind: String) where T: Reusable {
+    func registerSupplementaryView<T: UICollectionReusableView>(_ : T.Type, kind: String)  {
         if let nib = T.nib {
             self.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: T.reuseIdentifier)
         } else {
@@ -36,11 +36,11 @@ internal extension UICollectionView {
     ///
     /// - Parameter indexPath: indexPath to dequeue cell for
     /// - Returns: a reused UICollectionViewCell associated with the indexPath
-    func dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T? where T: Reusable {
+    func dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T? {
         return self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath as IndexPath) as? T
     }
     
-    func dequeueSupplementaryView<T: UICollectionReusableView>(kind: String, indexPath: IndexPath) -> T? where T: Reusable {
+    func dequeueSupplementaryView<T: UICollectionReusableView>(kind: String, indexPath: IndexPath) -> T?  {
         return self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T
     }
     

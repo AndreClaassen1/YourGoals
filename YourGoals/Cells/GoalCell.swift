@@ -10,9 +10,24 @@ import UIKit
 
 class GoalCell: BaseRoundedCardCell {
 
+    /// Image View
+    @IBOutlet private weak var imageView: UIImageView!
+    
+    // MARK: - Factory Method
+    
+    internal static func dequeue(fromCollectionView collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> GoalCell {
+        guard let cell: GoalCell = collectionView.dequeueReusableCell(indexPath: indexPath) else {
+            fatalError("*** Failed to dequeue GoalCell ***")
+        }
+        
+        return cell
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        imageView.layer.cornerRadius = 14.0
     }
+
 
 }

@@ -11,6 +11,8 @@
 		7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7A1F9E6F52008E90A2 /* GoalCell.swift */; };
 		7B17DD7D1F9E6F52008E90A2 /* GoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD7B1F9E6F52008E90A2 /* GoalCell.xib */; };
 		7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */; };
+		7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */; };
+		7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD811F9E73A2008E90A2 /* Reusable.swift */; };
 		7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */; };
 		7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */; };
 		7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */; };
@@ -206,9 +208,9 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
-				7B17DD801F9E7385008E90A2 /* Utility */,
-				7B17DD791F9E6F2F008E90A2 /* Cells */,
 				7B17DD781F9E6E3C008E90A2 /* Controller */,
+				7B17DD791F9E6F2F008E90A2 /* Cells */,
+				7B17DD801F9E7385008E90A2 /* Utility */,
 				7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */,
 				7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */,
 				7BAAFEED1F9CA2FA00BB102E /* Assets.xcassets */,
@@ -461,8 +463,10 @@
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
+				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
+				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
