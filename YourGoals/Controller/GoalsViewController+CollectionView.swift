@@ -15,7 +15,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     internal func configure(collectionView: UICollectionView) {
         collectionView.registerReusableCell(GoalCell.self)
- //       collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)
+        collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
@@ -71,4 +71,15 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
             return CGSize(width: width, height: BaseRoundedCardCell.cellHeight)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: TodaySectionHeader.viewHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeader = TodaySectionHeader.dequeue(fromCollectionView: collectionView, ofKind: kind, atIndexPath: indexPath)
+        sectionHeader.shouldShowProfileImageView = (indexPath.section == 0)
+        return sectionHeader
+    }
+    
 }

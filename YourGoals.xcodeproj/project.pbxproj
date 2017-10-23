@@ -13,6 +13,8 @@
 		7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */; };
 		7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */; };
 		7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD811F9E73A2008E90A2 /* Reusable.swift */; };
+		7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD871F9E88E7008E90A2 /* TodaySectionHeader.swift */; };
+		7B17DD891F9E88F3008E90A2 /* TodaySectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */; };
 		7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */; };
 		7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */; };
 		7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */; };
@@ -94,6 +96,8 @@
 		7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		7B17DD811F9E73A2008E90A2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
+		7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaySectionHeader.xib; sourceTree = "<group>"; };
+		7B17DD871F9E88E7008E90A2 /* TodaySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySectionHeader.swift; sourceTree = "<group>"; };
 		7BAAFEE31F9CA2FA00BB102E /* YourGoals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourGoals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		7B17DD851F9E88D2008E90A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B17DD871F9E88E7008E90A2 /* TodaySectionHeader.swift */,
+				7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +221,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B17DD851F9E88D2008E90A2 /* Views */,
 				7B17DD781F9E6E3C008E90A2 /* Controller */,
 				7B17DD791F9E6F2F008E90A2 /* Cells */,
 				7B17DD801F9E7385008E90A2 /* Utility */,
@@ -418,6 +432,7 @@
 				7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */,
 				7B17DD7D1F9E6F52008E90A2 /* GoalCell.xib in Resources */,
 				7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */,
+				7B17DD891F9E88F3008E90A2 /* TodaySectionHeader.xib in Resources */,
 				7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +477,7 @@
 			files = (
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
+				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */,
