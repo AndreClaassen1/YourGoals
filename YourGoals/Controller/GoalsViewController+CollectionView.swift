@@ -14,17 +14,39 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - Configuration
     
     internal func configure(collectionView: UICollectionView) {
+        self.manager = GoalsStorageManager.defaultStorageManager
+        self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
         collectionView.registerReusableCell(GoalCell.self)
         collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
+    
+    // MARK: - Goal Handling
+    
+    func numberOfGoals() -> Int {
+        return self.strategy?.subGoals?.count ?? 0
+    }
 
+    func goalForIndexPath(path:IndexPath) -> Goal {
+        guard let subGoals = self.strategy?.subGoals else {
+            assertionFailure("could not extract goals from strategy: \(String(describing: self.strategy))")
+            return Goal()
+        }
+        
+        guard let goal = subGoals.allObjects[path.row] as? Goal else {
+            assertionFailure("could not extract goal with row \(path.row) from \(subGoals)")
+            return Goal()
+        }
+        
+        return goal
+    }
+    
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return numberOfGoals()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -32,7 +54,10 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return GoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+        let goalCell = GoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+        let goal = self.goalForIndexPath(path: indexPath)
+        goalCell.show(goal: goal)
+        return goalCell
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -82,4 +107,13 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return sectionHeader
     }
     
+    // MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            presentStoryAnimationController.selectedCardFrame = cell.frame
+            dismissStoryAnimationController.selectedCardFrame = cell.frame
+            performSegue(withIdentifier: "presentGoal", sender: self)
+        }
+    }
 }

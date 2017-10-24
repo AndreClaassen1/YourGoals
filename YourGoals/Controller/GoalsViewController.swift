@@ -10,12 +10,21 @@ import UIKit
 
 class GoalsViewController: UIViewController {
 
+    // data properties
+    var manager:GoalsStorageManager!
+    var strategy:Goal?
+    internal let presentStoryAnimationController = PresentStoryViewAnimationController()
+    internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-     
+
+        self.manager = GoalsStorageManager.defaultStorageManager
+        self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
+        
         configure(collectionView: collectionView)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }

@@ -7,7 +7,7 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="targetDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="goal" inverseEntity="Habit" syncable="YES"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="goal" inverseEntity="Image" syncable="YES"/>
+        <relationship name="imageData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageData" inverseName="goal" inverseEntity="ImageData" syncable="YES"/>
         <relationship name="parentGoal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="subGoals" inverseEntity="Goal" syncable="YES"/>
         <relationship name="subGoals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="parentGoal" inverseEntity="Goal" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="goal" inverseEntity="Task" syncable="YES"/>
@@ -22,9 +22,9 @@
         <attribute name="check" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="checks" inverseEntity="Habit" syncable="YES"/>
     </entity>
-    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
+    <entity name="ImageData" representedClassName="ImageData" syncable="YES" codeGenerationType="class">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="image" inverseEntity="Goal" syncable="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="imageData" inverseEntity="Goal" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,10 +39,10 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="progress" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-504" positionY="-282" width="128" height="193"/>
+        <element name="Goal" positionX="-504" positionY="-282" width="128" height="195"/>
         <element name="Habit" positionX="-261" positionY="-375" width="128" height="105"/>
         <element name="HabitCheck" positionX="-81" positionY="-363" width="128" height="75"/>
-        <element name="Image" positionX="-243" positionY="-198" width="128" height="73"/>
+        <element name="ImageData" positionX="-243" positionY="-198" width="128" height="75"/>
         <element name="Task" positionX="-234" positionY="-12" width="128" height="120"/>
         <element name="TaskProgress" positionX="-36" positionY="9" width="128" height="90"/>
     </elements>

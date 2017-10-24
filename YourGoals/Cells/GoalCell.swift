@@ -23,6 +23,18 @@ class GoalCell: BaseRoundedCardCell {
         return cell
     }
     
+    func show(goal: Goal) {
+        guard let data = goal.imageData?.data else {
+            fatalError ("could not extract data: \(String(describing: goal.imageData))")
+        }
+        
+        guard let image = UIImage(data: data) else {
+            fatalError ("could not create Image from data: \(data)")
+        }
+        
+        imageView.image = image
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
