@@ -31,6 +31,7 @@
 		7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */; };
 		7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF251F9CA2FB00BB102E /* ComplicationController.swift */; };
 		7BAAFF281F9CA2FB00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */; };
+		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BAAFF291F9CA2FB00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7BEBBAA81F9F1693003D16AE /* Data Model */,
 				7B17DD851F9E88D2008E90A2 /* Views */,
 				7B17DD781F9E6E3C008E90A2 /* Controller */,
 				7B17DD791F9E6F2F008E90A2 /* Cells */,
@@ -274,6 +277,14 @@
 				7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */,
 			);
 			path = "YourGoals WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		7BEBBAA81F9F1693003D16AE /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +488,7 @@
 			files = (
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
+				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
@@ -901,6 +913,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */,
+			);
+			currentVersion = 7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */;
+			path = GoalsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalModel_Version_0">
+    <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="targetDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="goal" inverseEntity="Habit" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="goal" inverseEntity="Image" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="goal" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="checks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HabitCheck" inverseName="habit" inverseEntity="HabitCheck" syncable="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="habits" inverseEntity="Goal" syncable="YES"/>
+    </entity>
+    <entity name="HabitCheck" representedClassName="HabitCheck" syncable="YES" codeGenerationType="class">
+        <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="checks" inverseEntity="Habit" syncable="YES"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="image" inverseEntity="Goal" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal" syncable="YES"/>
+        <relationship name="progress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskProgress" inverseName="task" inverseEntity="TaskProgress" syncable="YES"/>
+    </entity>
+    <entity name="TaskProgress" representedClassName="TaskProgress" syncable="YES" codeGenerationType="class">
+        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="progress" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Goal" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Habit" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Task" positionX="-36" positionY="9" width="128" height="105"/>
+        <element name="Image" positionX="-18" positionY="27" width="128" height="75"/>
+        <element name="HabitCheck" positionX="0" positionY="45" width="128" height="60"/>
+        <element name="TaskProgress" positionX="9" positionY="81" width="128" height="90"/>
+    </elements>
+</model>
