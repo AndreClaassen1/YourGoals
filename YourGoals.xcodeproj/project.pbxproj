@@ -31,6 +31,8 @@
 		7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */; };
 		7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF251F9CA2FB00BB102E /* ComplicationController.swift */; };
 		7BAAFF281F9CA2FB00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */; };
+		7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B791F9F80220023844E /* GoalDetailViewController.swift */; };
+		7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B7E1F9F85070023844E /* ImageData+Image.swift */; };
 		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
 		7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */; };
 		7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */; };
@@ -110,6 +112,8 @@
 		7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaySectionHeader.xib; sourceTree = "<group>"; };
 		7B17DD871F9E88E7008E90A2 /* TodaySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySectionHeader.swift; sourceTree = "<group>"; };
+		7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStoryViewAnimationController.swift; sourceTree = "<group>"; };
+		7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7BAAFEE31F9CA2FA00BB102E /* YourGoals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourGoals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,10 @@
 		7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BAAFF291F9CA2FB00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7BE11B791F9F80220023844E /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
+		7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BE11B7E1F9F85070023844E /* ImageData+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageData+Image.swift"; sourceTree = "<group>"; };
 		7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsModel.xcdatamodel; sourceTree = "<group>"; };
 		7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBase.swift; sourceTree = "<group>"; };
 		7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsStorageManager.swift; sourceTree = "<group>"; };
@@ -151,8 +159,6 @@
 		7BEBBAE11F9F568E003D16AE /* HabitCheck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HabitCheck+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/HabitCheck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEBBAE21F9F568F003D16AE /* TaskProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskProgress+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/TaskProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEBBAE31F9F568F003D16AE /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-        7BEBBAE41F9F568F003D16AE /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
-        7BEBBAE51F9F568F003D16AE /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Image+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEBBAE61F9F568F003D16AE /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Habit+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEBBAE71F9F568F003D16AE /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Goal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BEBBAE81F9F568F003D16AE /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 			children = (
 				7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */,
 				7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */,
+				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -230,6 +237,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7B1A4B351F9F9D1700703885 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */,
+				7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +274,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B1A4B351F9F9D1700703885 /* Animation */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
 				7BEBBAD81F9F43A8003D16AE /* Extensions */,
 				7BEBBAD51F9F408A003D16AE /* Generator */,
@@ -319,9 +336,18 @@
 			path = "YourGoals WatchKit Extension";
 			sourceTree = "<group>";
 		};
+		7BE11B7D1F9F84F30023844E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7BE11B7E1F9F85070023844E /* ImageData+Image.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7BEBBAA81F9F1693003D16AE /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				7BE11B7D1F9F84F30023844E /* Extensions */,
 				7BEBBADE1F9F567D003D16AE /* Generated */,
 				7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */,
 				7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */,
@@ -367,6 +393,8 @@
 		7BEBBADE1F9F567D003D16AE /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */,
+				7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */,
 				7BEBBAE71F9F568F003D16AE /* Goal+CoreDataClass.swift */,
 				7BEBBAE91F9F568F003D16AE /* Goal+CoreDataProperties.swift */,
 				7BEBBAEA1F9F568F003D16AE /* GoalsModel+CoreDataModel.swift */,
@@ -374,8 +402,6 @@
 				7BEBBADF1F9F568E003D16AE /* Habit+CoreDataProperties.swift */,
 				7BEBBAE11F9F568E003D16AE /* HabitCheck+CoreDataClass.swift */,
 				7BEBBAEB1F9F568F003D16AE /* HabitCheck+CoreDataProperties.swift */,
-                7BEBBAE51F9F568F003D16AE /* Image+CoreDataClass.swift */,
-                7BEBBAE41F9F568F003D16AE /* Image+CoreDataProperties.swift */,
 				7BEBBAE31F9F568F003D16AE /* Task+CoreDataClass.swift */,
 				7BEBBAE81F9F568F003D16AE /* Task+CoreDataProperties.swift */,
 				7BEBBAE21F9F568F003D16AE /* TaskProgress+CoreDataClass.swift */,
@@ -592,7 +618,9 @@
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
 				7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */,
+				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BEBBAD71F9F43A4003D16AE /* Date+dateHelper.swift in Sources */,
+				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
