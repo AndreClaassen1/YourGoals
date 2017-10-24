@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             #endif
         }
-        catch let error as NSError {
-            fatalError("couldn't create or access test data: \(error.description)")
+        catch let error  {
+            fatalError("couldn't create or access test data: \(error.localizedDescription)")
         }
     }
 

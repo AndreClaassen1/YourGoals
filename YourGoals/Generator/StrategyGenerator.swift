@@ -23,11 +23,12 @@ class StrategyGenerator : Generator, GeneratorProtocol {
         let strategy = try createParentGoal()
         
         for tuple in goals {
-            let goal = try self.manager.goalsStore.createPersistentObject()
+            let goal = self.manager.goalsStore.createPersistentObject()
             goal.name = tuple.name
             goal.reason = tuple.reason
             goal.prio = Int16(tuple.prio)
             goal.targetDate = tuple.targetDate
+            goal.parentGoal = strategy
         }
     }
     
