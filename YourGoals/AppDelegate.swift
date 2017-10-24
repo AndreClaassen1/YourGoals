@@ -40,6 +40,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    // MARK: my own logic
+    
+    func ensureTestData() {
+        do {
+            #if (arch(i386) || arch(x86_64)) && os(iOS)
+//                if try FitnessStorageManager.defaultFitnessStorageManager.retrieveActiveFitnessPlan() == nil  {
+//                    let generator = TestDataGenerator(manager: FitnessStorageManager.defaultFitnessStorageManager)
+//                    try generator.createTestFitnessPlan()
+//                    try generator.historyGenerator.generate()
+//                }
+            #else
+//                if try FitnessStorageManager.defaultFitnessStorageManager.retrieveActiveFitnessPlan() == nil  {
+//                    let generator = TestDataGenerator(manager: FitnessStorageManager.defaultFitnessStorageManager)
+//                    try generator.createTestFitnessPlan()
+//                }
+                //                //                try FitnessStorageManager.defaultFitnessStorageManager.fitnessTrainingWeightStore.deleteAllEntries()
+                //                try FitnessStorageManager.defaultFitnessStorageManager.saveContext()
+                
+            #endif
+        }
+        catch let error as NSError {
+            fatalError("couldn't create or access test data: \(error.description)")
+        }
+    }
 
 }
 
