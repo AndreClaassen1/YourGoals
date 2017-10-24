@@ -20,7 +20,7 @@
 		7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */; };
 		7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFEED1F9CA2FA00BB102E /* Assets.xcassets */; };
 		7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFEEF1F9CA2FA00BB102E /* LaunchScreen.storyboard */; };
-		7BAAFEFC1F9CA2FA00BB102E /* GoalsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEFB1F9CA2FA00BB102E /* GoalsStorageTests.swift */; };
+		7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */; };
 		7BAAFF071F9CA2FA00BB102E /* YourGoalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF061F9CA2FA00BB102E /* YourGoalsUITests.swift */; };
 		7BAAFF0C1F9CA2FB00BB102E /* YourGoals WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7BAAFF0B1F9CA2FB00BB102E /* YourGoals WatchKit App.app */; };
 		7BAAFF121F9CA2FB00BB102E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF101F9CA2FB00BB102E /* Interface.storyboard */; };
@@ -118,7 +118,7 @@
 		7BAAFEF01F9CA2FA00BB102E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BAAFEF21F9CA2FA00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFEF71F9CA2FA00BB102E /* YourGoalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourGoalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BAAFEFB1F9CA2FA00BB102E /* GoalsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsStorageTests.swift; sourceTree = "<group>"; };
+		7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGeneratorTests.swift; sourceTree = "<group>"; };
 		7BAAFEFD1F9CA2FA00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF021F9CA2FA00BB102E /* YourGoalsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourGoalsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAAFF061F9CA2FA00BB102E /* YourGoalsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourGoalsUITests.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 			children = (
 				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
 				7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */,
-				7BAAFEFB1F9CA2FA00BB102E /* GoalsStorageTests.swift */,
+				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BAAFEFD1F9CA2FA00BB102E /* Info.plist */,
 			);
 			path = YourGoalsTests;
@@ -608,7 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
-				7BAAFEFC1F9CA2FA00BB102E /* GoalsStorageTests.swift in Sources */,
+				7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
 				7BEBBADA1F9F5306003D16AE /* Date+dateHelper.swift in Sources */,
 			);
