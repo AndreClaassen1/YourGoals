@@ -29,7 +29,12 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
             return
         }
         
-        guard let toViewController = navigationController.viewControllers[0] as? GoalsViewController else {
+        guard let tabbarController = navigationController.viewControllers[0] as? UITabBarController else {
+            assertionFailure("couldn't extract tabbar controller")
+            return
+        }
+        
+        guard let toViewController = tabbarController.viewControllers?[0] as? GoalsViewController else {
             assertionFailure("couldn't extract goals view controller")
             return
         }
