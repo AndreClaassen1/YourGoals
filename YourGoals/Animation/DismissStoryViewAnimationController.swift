@@ -17,16 +17,27 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // 1
+        // 1 - extract from and to view controllers
         let containerView = transitionContext.containerView
-        guard let fromViewController = transitionContext.viewController(forKey: .from) as? GoalDetailViewController,
-            let toViewController = transitionContext.viewController(forKey: .to) as? GoalsViewController else {
-                return
+        guard let fromViewController = transitionContext.viewController(forKey: .from) as? GoalDetailViewController else {
+            assertionFailure("couldn't extract goal detail view controller")
+            return
         }
+        
+        guard let navigationController = transitionContext.viewController(forKey: .to) as? UINavigationController else {
+            assertionFailure("couldn't extract navigation view controller")
+            return
+        }
+        
+        guard let toViewController = navigationController.viewControllers[0] as? GoalsViewController else {
+            assertionFailure("couldn't extract goals view controller")
+            return
+        }
+        
         
         // 2
         toViewController.view.isHidden = true
-        containerView.addSubview(toViewController.view)
+        containerView.addSubview(navigationController.view)
         
         // 3
         let duration = transitionDuration(using: transitionContext)
@@ -40,7 +51,7 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
         }) { (_) in
             toViewController.view.isHidden = false
             fromViewController.view.removeFromSuperview()
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transitionContext.completeTransition(true)
         }
         
     }
@@ -48,5 +59,4 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.2
     }
-    
 }

@@ -20,6 +20,7 @@ class GoalDetailViewController: UIViewController {
     /// Header Image Height
     @IBOutlet private weak var headerImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var headerImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,9 +31,7 @@ class GoalDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
     internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
         containerLeadingConstraint.constant = left
         containerTrailingConstraint.constant = right

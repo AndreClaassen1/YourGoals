@@ -38,5 +38,11 @@ class GoalsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        destinationViewController.transitioningDelegate = self
+    }
 }
+
 
