@@ -19,8 +19,8 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         // 1
         let containerView = transitionContext.containerView
-        guard let fromViewController = transitionContext.viewController(forKey: .from) as? StoryDetailViewController,
-            let toViewController = transitionContext.viewController(forKey: .to) as? TodayViewController else {
+        guard let fromViewController = transitionContext.viewController(forKey: .from) as? GoalDetailViewController,
+            let toViewController = transitionContext.viewController(forKey: .to) as? GoalsViewController else {
                 return
         }
         
