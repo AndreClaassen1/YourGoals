@@ -17,6 +17,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         self.manager = GoalsStorageManager.defaultStorageManager
         self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
         collectionView.registerReusableCell(GoalCell.self)
+        collectionView.registerReusableCell(GoalCell2.self)
         collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -54,7 +55,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let goalCell = GoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+        let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
         let goal = self.goalForIndexPath(path: indexPath)
         goalCell.show(goal: goal)
         return goalCell
