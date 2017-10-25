@@ -1,0 +1,6 @@
+framework module TEAChart {
+  umbrella header "TEAChart-umbrella.h"
+
+  export *
+  module * { export * }
+}
