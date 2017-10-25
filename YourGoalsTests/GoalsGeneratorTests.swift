@@ -11,7 +11,7 @@ import XCTest
 
 class GoalsGeneratorTests: StorageTestCase  {
 
-    func testGenerateTestData() {
+    func testGeneratedGoals(testFunction: ([Goal]) -> Void ) {
         // setup
         let generator = TestDataGenerator(manager: self.manager)
 
@@ -21,6 +21,26 @@ class GoalsGeneratorTests: StorageTestCase  {
         // test
         let retriever = StrategyRetriever(manager: self.manager)
         let strategy = try! retriever.activeStrategy()!
-        XCTAssertEqual(2, strategy.subGoals?.count)
+        testFunction(strategy.allGoals())
     }
+    
+    func testGoals() {
+        testGeneratedGoals {
+            goals in
+        
+            XCTAssertEqual(2, goals.count)
+            
+        }
+    }
+    
+    func testTasks() {
+        testGeneratedGoals { goals in
+            for goal in goals {
+                let tasks = goal.allTasks()
+                XCTAssertEqual(3, tasks.count)
+            }
+        }
+        
+    }
+    
 }

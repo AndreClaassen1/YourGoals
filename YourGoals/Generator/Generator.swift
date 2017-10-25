@@ -13,7 +13,6 @@ protocol GeneratorProtocol {
 }
 
 class Generator  {
-
     let manager:GoalsStorageManager!
     
     init(manager:GoalsStorageManager) {

@@ -28,7 +28,8 @@ class GoalsStorageManager {
         self.dataManager = dataManager
         stores = [
             StorageBase<Goal>(managedObjectContext: dataManager.managedObjectContext, entityName: "Goal"),
-            StorageBase<ImageData>(managedObjectContext: dataManager.managedObjectContext, entityName: "ImageData")
+            StorageBase<ImageData>(managedObjectContext: dataManager.managedObjectContext, entityName: "ImageData"),
+            StorageBase<Task>(managedObjectContext: dataManager.managedObjectContext, entityName: "Task")
         ]
     }
     
@@ -44,6 +45,10 @@ class GoalsStorageManager {
         return try! store(id: "ImageData") as! StorageBase<ImageData>
     }
 
+    var tasksStore:StorageBase<Task>  {
+        return try! store(id: "Task") as! StorageBase<Task>
+    }
+    
     convenience init(databaseName: String) {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self)))
     }

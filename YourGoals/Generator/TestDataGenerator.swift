@@ -19,6 +19,7 @@ class TestDataGenerator {
         
         generators = [
             StrategyGenerator(manager: self.manager),
+            TasksGenerator(manager: self.manager)
          ]
     }
     
