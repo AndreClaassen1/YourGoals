@@ -8,8 +8,9 @@
 
 import UIKit
 
-class GoalDetailViewController: UIViewController {
+class GoalDetailViewController: UITableViewController {
 
+    @IBOutlet weak var tasksTableView: UITableView!
     /// Container
     @IBOutlet private weak var contentContainerView: UIView!
     @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
@@ -21,10 +22,14 @@ class GoalDetailViewController: UIViewController {
     @IBOutlet private weak var headerImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var headerImageView: UIImageView!
     
+    
+    var goal:Goal?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureTableView(tasksTableView)
     }
 
     override func didReceiveMemoryWarning() {

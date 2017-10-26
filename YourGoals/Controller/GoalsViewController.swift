@@ -8,11 +8,13 @@
 
 import UIKit
 
-class GoalsViewController: UIViewController {
+class GoalsViewController: UITableViewController {
 
     // data properties
     var manager:GoalsStorageManager!
     var strategy:Goal?
+    var selectedGoal:Goal?
+    
     internal let presentStoryAnimationController = PresentStoryViewAnimationController()
     internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
 
@@ -42,6 +44,9 @@ class GoalsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         destinationViewController.transitioningDelegate = self
+        if let detailController = destinationViewController as? GoalDetailViewController {
+            detailController.goal = self.selectedGoal
+        }
     }
 }
 

@@ -114,6 +114,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         if let cell = collectionView.cellForItem(at: indexPath) {
             presentStoryAnimationController.selectedCardFrame = cell.frame
             dismissStoryAnimationController.selectedCardFrame = cell.frame
+            self.selectedGoal = goalForIndexPath(path: indexPath)
             performSegue(withIdentifier: "presentGoal", sender: self)
         }
     }

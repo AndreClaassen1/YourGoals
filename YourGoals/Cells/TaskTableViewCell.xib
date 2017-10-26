@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="YourGoals" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaskCircle" translatesAutoresizingMaskIntoConstraints="NO" id="ejT-qu-iDE">
+                        <rect key="frame" x="8" y="7" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="7fh-D7-emB"/>
+                            <constraint firstAttribute="width" constant="28" id="khe-jY-Nf4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNt-78-XXy">
+                        <rect key="frame" x="262" y="7" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="NvR-iq-eCN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-BQ-mXO">
+                        <rect key="frame" x="44" y="7" width="218" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Goal Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-gU-ik5">
+                        <rect key="frame" x="44" y="28" width="218" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.032024998220000003" green="0.50991278890000002" blue="0.98473805189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.80580713299999995" green="0.88512374650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="centerY" secondItem="ejT-qu-iDE" secondAttribute="centerY" constant="-3.5" id="7TR-Zo-lSh"/>
+                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="ejT-qu-iDE" secondAttribute="trailing" constant="8" id="HWi-ej-ChC"/>
+                    <constraint firstItem="nNt-78-XXy" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" id="dry-dx-F71"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="leading" id="oEr-7t-1Wm"/>
+                    <constraint firstItem="ejT-qu-iDE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="oRe-7Z-qR8"/>
+                    <constraint firstItem="ejT-qu-iDE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="od3-22-CKJ"/>
+                    <constraint firstAttribute="trailing" secondItem="nNt-78-XXy" secondAttribute="trailing" constant="8" id="ong-2c-6eR"/>
+                    <constraint firstItem="nNt-78-XXy" firstAttribute="centerY" secondItem="mSh-BQ-mXO" secondAttribute="centerY" id="t1n-XE-klz"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="top" secondItem="mSh-BQ-mXO" secondAttribute="bottom" id="tmv-4J-Xwn"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="width" secondItem="mSh-BQ-mXO" secondAttribute="width" id="u78-n7-LqX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contentView" destination="H2p-sc-9uM" id="8ji-ra-ljU"/>
+                <outlet property="goalDescriptionLabel" destination="2YQ-gU-ik5" id="Rwh-hV-xrJ"/>
+                <outlet property="taskCircleImageView" destination="ejT-qu-iDE" id="K3W-aQ-mEa"/>
+                <outlet property="taskDescriptionLabel" destination="mSh-BQ-mXO" id="2Jd-GZ-vjH"/>
+                <outlet property="workingTimeLabel" destination="nNt-78-XXy" id="hog-Ab-POB"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="TaskCircle" width="44" height="44"/>
+    </resources>
+</document>

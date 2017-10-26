@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// Declares that all UICollectionReusableViews conform to the
+/// Reusable protocol and therefore gain the default
+/// implementation without any additional effort.
+extension UICollectionReusableView: Reusable { }
+
 /// Provides default implementations of generic reuse methods on UICollectionView to
 /// allow for consumers to register reuseable views for reuse such as UICollectionViewCells.
 internal extension UICollectionView {

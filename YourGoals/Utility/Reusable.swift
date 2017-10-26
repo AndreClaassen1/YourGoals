@@ -31,7 +31,3 @@ internal extension Reusable {
     static var nib: UINib? { return UINib(nibName: String(describing: self), bundle: nil) }
 }
 
-/// Declares that all UICollectionReusableViews conform to the
-/// Reusable protocol and therefore gain the default
-/// implementation without any additional effort.
-extension UICollectionReusableView: Reusable { }

@@ -31,6 +31,8 @@ internal class GoalCell2: BaseRoundedCardCell {
         return cell
     }
     
+    // MARK: - Content
+    
     func show(goal: Goal) {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
