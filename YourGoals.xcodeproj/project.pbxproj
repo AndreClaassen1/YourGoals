@@ -21,6 +21,10 @@
 		7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */; };
 		7B994E011FA21CD300B704E1 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */; };
 		7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */; };
+		7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E041FA225B800B704E1 /* Date+dateHelper.swift */; };
+		7B994E071FA2261A00B704E1 /* NewGoalViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E061FA2261900B704E1 /* NewGoalViewController+ImagePicker.swift */; };
+		7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E091FA2288D00B704E1 /* GoalInfo.swift */; };
+		7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0B1FA228E000B704E1 /* TaskInfo.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
 		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
@@ -135,6 +139,10 @@
 		7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalCell.xib; sourceTree = "<group>"; };
 		7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
+		7B994E041FA225B800B704E1 /* Date+dateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+dateHelper.swift"; sourceTree = "<group>"; };
+		7B994E061FA2261900B704E1 /* NewGoalViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewGoalViewController+ImagePicker.swift"; sourceTree = "<group>"; };
+		7B994E091FA2288D00B704E1 /* GoalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfo.swift; sourceTree = "<group>"; };
+		7B994E0B1FA228E000B704E1 /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
 		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
@@ -256,6 +264,7 @@
 				7BAA7A881FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift */,
 				7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */,
 				7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */,
+				7B994E061FA2261900B704E1 /* NewGoalViewController+ImagePicker.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -278,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				7B17DD811F9E73A2008E90A2 /* Reusable.swift */,
+				7B994E041FA225B800B704E1 /* Date+dateHelper.swift */,
 				7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */,
 				7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */,
 			);
@@ -300,6 +310,15 @@
 				7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		7B994E081FA2287900B704E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B994E091FA2288D00B704E1 /* GoalInfo.swift */,
+				7B994E0B1FA228E000B704E1 /* TaskInfo.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7BAAFEDA1F9CA2FA00BB102E = {
@@ -332,6 +351,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B994E081FA2287900B704E1 /* ViewModel */,
 				7B1A4B351F9F9D1700703885 /* Animation */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
 				7BEBBAD81F9F43A8003D16AE /* Extensions */,
@@ -758,9 +778,11 @@
 				7BAA7A891FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
+				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
 				7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Tasks+State.swift in Sources */,
+				7B994E071FA2261A00B704E1 /* NewGoalViewController+ImagePicker.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
@@ -771,10 +793,12 @@
 				7BEBBAD71F9F43A4003D16AE /* Date+dateHelper.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
+				7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
+				7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
 				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,
 				7BEBBAD31F9F4087003D16AE /* Generator.swift in Sources */,
