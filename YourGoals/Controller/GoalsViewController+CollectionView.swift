@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NewGoalCellDelegate {
     
     // MARK: - Configuration
     
     internal func configure(collectionView: UICollectionView) {
         self.manager = GoalsStorageManager.defaultStorageManager
         self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
-        collectionView.registerReusableCell(GoalCell.self)
         collectionView.registerReusableCell(GoalCell2.self)
+        collectionView.registerReusableCell(NewGoalCell.self)
         collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
-    // MARK: - Goal Handling
+    // MARK: - Goal Handling helper methods
     
     func numberOfGoals() -> Int {
         return self.strategy?.subGoals?.count ?? 0
@@ -47,7 +47,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfGoals()
+        return numberOfGoals() + 1 // one for the new goal entry
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -55,10 +55,17 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
-        let goal = self.goalForIndexPath(path: indexPath)
-        goalCell.show(goal: goal)
-        return goalCell
+        
+        if indexPath.row == numberOfGoals() {
+            let newGoalCell = NewGoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+            newGoalCell.configure(owner: self)
+            return newGoalCell
+        } else {
+            let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+            let goal = self.goalForIndexPath(path: indexPath)
+            goalCell.show(goal: goal)
+            return goalCell
+        }
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -117,5 +124,11 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
             self.selectedGoal = goalForIndexPath(path: indexPath)
             performSegue(withIdentifier: "presentGoal", sender: self)
         }
+    }
+    
+    // MARK: - NewGoalCellDelegate
+    
+    func newGoalClicked() {
+        
     }
 }

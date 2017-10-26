@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		262C7DD718E1DCF833988CC4 /* Pods_YourGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */; };
 		7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */; };
-		7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7A1F9E6F52008E90A2 /* GoalCell.swift */; };
-		7B17DD7D1F9E6F52008E90A2 /* GoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD7B1F9E6F52008E90A2 /* GoalCell.xib */; };
 		7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */; };
 		7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */; };
 		7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD811F9E73A2008E90A2 /* Reusable.swift */; };
@@ -19,6 +17,10 @@
 		7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */; };
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
+		7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */; };
+		7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */; };
+		7B994E011FA21CD300B704E1 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */; };
+		7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
 		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
@@ -119,8 +121,6 @@
 /* Begin PBXFileReference section */
 		79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+CollectionView.swift"; sourceTree = "<group>"; };
-		7B17DD7A1F9E6F52008E90A2 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
-		7B17DD7B1F9E6F52008E90A2 /* GoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell.xib; sourceTree = "<group>"; };
 		7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		7B17DD811F9E73A2008E90A2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
@@ -131,6 +131,10 @@
 		7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalCell.swift; sourceTree = "<group>"; };
+		7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalCell.xib; sourceTree = "<group>"; };
+		7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAA7A881FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift */,
+				7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */,
+				7B994E021FA21CEC00B704E1 /* NewGoalViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,12 +264,12 @@
 			isa = PBXGroup;
 			children = (
 				7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */,
-				7B17DD7A1F9E6F52008E90A2 /* GoalCell.swift */,
-				7B17DD7B1F9E6F52008E90A2 /* GoalCell.xib */,
 				7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */,
 				7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */,
 				7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */,
 				7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */,
+				7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */,
+				7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -631,10 +637,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */,
-				7B17DD7D1F9E6F52008E90A2 /* GoalCell.xib in Resources */,
 				7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */,
 				7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */,
 				7B17DD891F9E88F3008E90A2 /* TodaySectionHeader.xib in Resources */,
+				7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */,
 				7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */,
 				7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */,
 			);
@@ -751,12 +757,15 @@
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
 				7BAA7A891FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
+				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
+				7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Tasks+State.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
 				7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */,
+				7B994E011FA21CD300B704E1 /* NewTaskViewController.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BEBBAD71F9F43A4003D16AE /* Date+dateHelper.swift in Sources */,
@@ -765,7 +774,6 @@
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
-				7B17DD7C1F9E6F52008E90A2 /* GoalCell.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
 				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,
