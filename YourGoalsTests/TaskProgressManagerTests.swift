@@ -7,29 +7,29 @@
 //
 
 import XCTest
+@testable import YourGoals
 
-class TaskProgressManagerTests: XCTestCase {
+class TaskProgressManagerTests: StorageTestCase {
+
+    var progressManager:TaskProgressManager!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.progressManager = TaskProgressManager(manager: self.manager)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testStartProgress() {
+        // setup
+        let task = TaskFactory(manager: self.manager).create(name: "Task with started progress", state: .active)
+        
+        // act
+        let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)
+        try! progressManager.startProgress(forTask: task, atDate: progressStartDate)
+        
+        // test
+        let progress = task.progressFor(date: Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 13, minute: 0, second: 0))
+        XCTAssertNotNil(progress)
+        XCTAssertEqual(progressStartDate, progress?.start)
+        XCTAssertNil(progress?.end)
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
