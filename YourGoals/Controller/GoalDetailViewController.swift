@@ -9,7 +9,7 @@
 import UIKit
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UITableViewController {
+class GoalDetailViewController: UIViewController {
 
     @IBOutlet weak var tasksTableView: UITableView!
     /// Container

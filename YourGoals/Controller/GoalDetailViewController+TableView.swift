@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-extension GoalDetailViewController {
+extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func configure( tableView: UITableView) {
-        self.tableView = tableView
-        self.tableView.registerReusableCell(TaskTableViewCell.self)
+        tableView.registerReusableCell(TaskTableViewCell.self)
     }
     
     func numberOfTasks() -> Int {
@@ -27,15 +26,15 @@ extension GoalDetailViewController {
     
     // MARK: - UITableViewDataSource
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfTasks()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
         cell.configure(task: task)
