@@ -13,6 +13,8 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func configure( tableView: UITableView) {
         tableView.registerReusableCell(TaskTableViewCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func numberOfTasks() -> Int {

@@ -33,7 +33,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     // MARK: - Factory Method
     
     internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> TaskTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as? TaskTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as? TaskTableViewCell else {
             fatalError("*** Failed to dequeue TaskTableViewCell ***")
         }
         
