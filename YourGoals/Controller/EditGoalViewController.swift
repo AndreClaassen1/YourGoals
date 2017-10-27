@@ -60,6 +60,10 @@ class EditGoalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func closerAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func selectNewImageAction(_ sender: Any) {
         selectImageFromPicker(imagePicker: self.imagePicker)
     }
@@ -68,7 +72,7 @@ class EditGoalViewController: UIViewController {
         do {
             let goalInfo = try goalInfoFromFields()
             delegate?.createNewGoal(goalInfo: goalInfo)
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
         catch let error {
             NSLog("could not create a goal info from fields. \(error.localizedDescription)")
