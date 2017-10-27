@@ -17,11 +17,10 @@ class TasksGenerator : Generator, GeneratorProtocol{
         }
         
         for goal in strategy.allGoals() {
+            let taskFactory = TaskFactory(manager: self.manager)
+            
             for i in 0 ..< 3 {
-                let task = self.manager.tasksStore.createPersistentObject()
-                
-                task.name = "Task \(i + 1) is to be done"
-                task.setTaskState(state: .active)
+                let task = taskFactory.create(name: "Task \(i + 1) is to be done", state: .active)
                 goal.addToTasks(task)
             }
         }
