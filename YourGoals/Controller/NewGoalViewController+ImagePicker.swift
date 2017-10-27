@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension NewGoalViewController : UIImagePickerControllerDelegate {
+extension NewGoalViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func configureImagePicker(imagePicker:UIImagePickerController) {
         imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate

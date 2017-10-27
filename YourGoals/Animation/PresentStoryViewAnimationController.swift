@@ -19,7 +19,7 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
         let containerView = transitionContext.containerView
         guard let _ = transitionContext.viewController(forKey: .from),
         let toViewController = transitionContext.viewController(forKey: .to) as? GoalDetailViewController else {
-            assertionFailure("couldn't locate apropriate controller")
+            // assertionFailure("couldn't locate apropriate controller")
             return
         }
         

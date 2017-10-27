@@ -37,12 +37,14 @@ class StrategyManager {
     /// add the goal to the current strategy and save it back to the data base
     ///
     /// - Parameter goal: the goal
+    /// - Returns: a new strategy
     /// - Throws: core data exception
-    func saveIntoStrategy(goal: Goal) throws {
+    func saveIntoStrategy(goal: Goal) throws -> Goal  {
         guard let strategy = try self.activeStrategy() else {
             throw StrategyManagerError.activeStrategyMissingError
         }
         strategy.addToSubGoals(goal)
         try manager.dataManager.saveContext()
+        return strategy
     }
 }

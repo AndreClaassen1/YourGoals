@@ -43,8 +43,8 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
-        destinationViewController.transitioningDelegate = self
         if let detailController = destinationViewController as? GoalDetailViewController {
+            destinationViewController.transitioningDelegate = self
             detailController.goal = self.selectedGoal
             return
         }
@@ -68,7 +68,8 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
             let strategyManager = StrategyManager(manager: self.manager)
             let goalFactory = GoalFactory(manager: self.manager)
             let goal = try goalFactory.create(fromGoalInfo: goalInfo)
-            try strategyManager.saveIntoStrategy(goal: goal)
+            try self.strategy = strategyManager.saveIntoStrategy(goal: goal)
+            self.collectionView.reloadData()
         }
         catch let error {
             self.showNotification(forError: error)

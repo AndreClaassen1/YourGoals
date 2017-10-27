@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,6 +21,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-nk-aMc">
                         <rect key="frame" x="20" y="10" width="290" height="30"/>
                         <state key="normal" title="Add a new goal"/>
+                        <connections>
+                            <action selector="newGoalAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="B1h-Yb-rgQ"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

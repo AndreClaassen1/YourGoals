@@ -61,7 +61,7 @@
                     <connections>
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentGoal" id="6eA-8s-RYt"/>
-                        <segue destination="Xvn-3I-lOM" kind="show" identifier="editGoal" id="cjO-Ie-qW9"/>
+                        <segue destination="Xvn-3I-lOM" kind="presentation" identifier="editGoal" id="cjO-Ie-qW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -269,7 +269,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Add new Task"/>
                                                 <connections>
-                                                    <segue destination="cPY-Y6-b5y" kind="show" identifier="presentEditTask" id="Tc6-XW-9mN"/>
+                                                    <segue destination="cPY-Y6-b5y" kind="popoverPresentation" identifier="presentEditTask" popoverAnchorView="vBv-2z-NT8" id="Tc6-XW-9mN">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQj-hu-ph4" customClass="ProgressIndicatorView" customModule="YourGoals" customModuleProvider="target">

@@ -68,9 +68,11 @@ class NewGoalViewController: UIViewController {
         do {
             let goalInfo = try goalInfoFromFields()
             delegate?.createNewGoal(goalInfo: goalInfo)
+            self.dismiss(animated: true, completion: nil)
         }
         catch let error {
             NSLog("could not create a goal info from fields. \(error.localizedDescription)")
+            self.showNotification(forError: error)
         }
     }
     

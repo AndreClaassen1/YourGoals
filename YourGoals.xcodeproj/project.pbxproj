@@ -426,10 +426,10 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
-				7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */,
-				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BAAFEFD1F9CA2FA00BB102E /* Info.plist */,
+				7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */,
+				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
+				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */,
 				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,

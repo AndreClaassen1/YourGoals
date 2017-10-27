@@ -11,14 +11,10 @@ import XCTest
 
 class GoalProgressCalculatorTests: StorageTestCase {
     
-    
     func createTestGoal(startDate: Date, targetDate: Date, numberOfActiveTasks: Int, numberOfDoneTasks: Int) -> Goal {
         // setup
         let taskFactory = TaskFactory(manager: self.manager)
         let goalFactory = GoalFactory(manager: self.manager)
-        let interval = targetDate.timeIntervalSince(startDate)
-        let secondsPerDay = 3600.0 * 24.0
-        let days = interval / secondsPerDay
         let goal = try! goalFactory.create(name: "Test goal for calculation", prio: 999, reason: "no reason", startDate: startDate, targetDate: targetDate, image: nil)
         let activeTasks = taskFactory.createTasks(numberOfTasks: numberOfActiveTasks, state: .active)
         goal.addToTasks(activeTasks)

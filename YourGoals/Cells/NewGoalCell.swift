@@ -30,6 +30,9 @@ class NewGoalCell: UICollectionViewCell {
         return cell
     }
     
+    @IBAction func newGoalAction(_ sender: Any) {
+        delegate?.newGoalClicked()
+    }
     // MARK: - configure
     
     func configure(owner: NewGoalCellDelegate) {
