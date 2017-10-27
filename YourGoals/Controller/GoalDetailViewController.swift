@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// show a goal and all of its tasks in detail
 class GoalDetailViewController: UITableViewController {
 
     @IBOutlet weak var tasksTableView: UITableView!

@@ -72,6 +72,9 @@
 		7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC71F9F1D40003D16AE /* TestDataGenerator.swift */; };
 		7BEBBADD1F9F5545003D16AE /* StrategyRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBADC1F9F5545003D16AE /* StrategyRetriever.swift */; };
 		7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */; };
+		7BFC1E021FA35A13003DE484 /* TaskProgressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */; };
+		7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */; };
+		7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +221,9 @@
 		7BEBBAEA1F9F568F003D16AE /* GoalsModel+CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GoalsModel+CoreDataModel.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/GoalsModel+CoreDataModel.swift"; sourceTree = "<group>"; };
 		7BEBBAEB1F9F568F003D16AE /* HabitCheck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HabitCheck+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/HabitCheck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorInfo.swift"; sourceTree = "<group>"; };
+		7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressManagerTests.swift; sourceTree = "<group>"; };
+		7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManagerTests.swift; sourceTree = "<group>"; };
+		7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressTests.swift; sourceTree = "<group>"; };
 		81A82407DA275D962967A460 /* Pods-YourGoals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoals.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals.release.xcconfig"; sourceTree = "<group>"; };
 		BD19F870FB93366833490C6F /* Pods-YourGoals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -405,6 +411,9 @@
 				7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */,
 				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BAAFEFD1F9CA2FA00BB102E /* Info.plist */,
+				7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */,
+				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
+				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -845,9 +854,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
+				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
 				7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
+				7BFC1E021FA35A13003DE484 /* TaskProgressManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
