@@ -22,5 +22,4 @@ extension TaskProgress {
         return startDate.compare(date) == ComparisonResult.orderedSame || startDate.compare(date) == ComparisonResult.orderedAscending &&
             endDate.compare(date) == ComparisonResult.orderedSame || endDate.compare(date) == ComparisonResult.orderedDescending
     }
-    
 }

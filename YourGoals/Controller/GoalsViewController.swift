@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalsViewController: UITableViewController, NewGoalCellDelegate, NewGoalViewControllerDelegate{
+class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewControllerDelegate{
 
     // data properties
     var manager:GoalsStorageManager!

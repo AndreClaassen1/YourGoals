@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MGSwipeTableCell
 
-
+// MARK: - handle a goal in detail.
 extension GoalDetailViewController : MGSwipeTableCellDelegate {
     
     // MARK: - configuration of the swipeable cell

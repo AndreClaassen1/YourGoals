@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
+/// this class handles core data storage of several objects
 class GoalsStorageManager {
     
     static let modelName = "GoalsModel"
