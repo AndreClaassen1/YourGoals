@@ -52,14 +52,16 @@ class TaskProgressManager {
             try stateManager.setTaskState(task: task, state: .active, atDate: date)
         }
         
-        if task.isProgressing(atDate: date) {
-            return
+        // is there a runnig progression?
+        if let oldProgress = task.progressFor(date: date) {
+            oldProgress.end = date // stop it at date
         }
         
-        let taskProgress = manager.taskProgressStore.createPersistentObject()
-        taskProgress.start = date
-        taskProgress.end = nil
-        task.addToProgress(taskProgress)
+        // create new progress
+        let newProgress = manager.taskProgressStore.createPersistentObject()
+        newProgress.start = date
+        newProgress.end = nil
+        task.addToProgress(newProgress)
         
         try self.manager.dataManager.saveContext()
     }
