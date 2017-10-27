@@ -15,13 +15,16 @@ protocol EditTaskViewControllerDelegate {
 class EditTaskViewController: UIViewController {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var taskTextView: UITextView!
-
+    
+    var goal:Goal!
     var delegate:EditTaskViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.configureNewTask(forGoal: self.goal)
     }
     
     func configureNewTask(forGoal goal:Goal) {

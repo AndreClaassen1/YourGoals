@@ -73,7 +73,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let editTaskController = segue.destination as? EditTaskViewController {
-            editTaskController.configureNewTask(forGoal: goal )
+            editTaskController.goal = self.goal
             editTaskController.delegate = self
         }
     }
