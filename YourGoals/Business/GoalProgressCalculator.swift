@@ -50,6 +50,12 @@ class GoalProgressCalculator {
         return percent
     }
     
+    /// calculate the progress of time in relation to the given date
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - date: the date for calculate the progress of time since start of the goal
+    /// - Returns: percentage of time elapsed from the goal
     func calculateProgressOfTimeInPercent(forGoal goal: Goal, forDate date:Date) -> Double {
         let startDate = goal.startDate ?? Date.minimalDate
         let endDate = goal.targetDate ?? Date.maximalDate
@@ -68,6 +74,12 @@ class GoalProgressCalculator {
         return percent
     }
     
+    /// calculate an indicator of progress relative to the time of the goal
+    ///
+    /// - Parameters:
+    ///   - progressTasks: progress of the tasks in percent
+    ///   - progressDate: progress of the date in percent
+    /// - Returns: an indicator
     func calculateIndicator(progressTasks:Double, progressDate: Double) -> ProgressIndicator {
         if progressTasks == 0.0 {
             return .notStarted
@@ -79,6 +91,10 @@ class GoalProgressCalculator {
         
         if progressTasks - progressDate >= 0.20 {
             return .ahead
+        }
+        
+        if progressTasks - progressDate >= -0.20 {
+            return .onTrack
         }
         
         if progressTasks - progressDate  >= -0.50 {
