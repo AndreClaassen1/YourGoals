@@ -20,9 +20,9 @@ extension GoalDetailViewController {
         reasonLabel.sizeToFit()
         
         if let data = goal.imageData?.data {
-            headerImageView.image = UIImage(data: goal.imageData.data!)
+            headerImageView.image = UIImage(data: data)
         } else {
-            headerImageView.imagew = nil
+            headerImageView.image = nil
         }
         
         progressIndicatorView.setProgress(forGoal: goal)

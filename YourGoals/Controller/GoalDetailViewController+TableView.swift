@@ -11,7 +11,7 @@ import UIKit
 
 extension GoalDetailViewController {
     
-    func configureTableView( _ tableView: UITableView) {
+    func configure( tableView: UITableView) {
         self.tableView = tableView
         self.tableView.registerReusableCell(TaskTableViewCell.self)
     }

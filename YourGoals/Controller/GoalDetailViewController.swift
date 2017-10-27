@@ -25,7 +25,7 @@ class GoalDetailViewController: UITableViewController {
     @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
-    var goal:Goal?
+    var goal:Goal!
     let manager = GoalsStorageManager.defaultStorageManager 
     
     
@@ -33,8 +33,8 @@ class GoalDetailViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        configureGoal(goal)
-        configureTableView(tasksTableView)
+        configure(goal: goal)
+        configure(tableView: tasksTableView)
     }
 
     override func didReceiveMemoryWarning() {
