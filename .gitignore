@@ -1,0 +1,40 @@
+
+# xcode noise
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+**/xcuserdata/
+*.xcuserstate
+*.xccheckout
+.DS_Store
+
+# fastlane
+output/
+./fastlane/report.xml
+*.zip
+*.ipa
+report.xml
+test_output/
+screenshots/**/*.png
+screenshots/**/*.jpg
+screenshots/**/*.html
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
+
+# vim noise
+*~
+*.swp
+
+# AppCode noise
+.idea/
+
+# Cocoa Pods noise
+*.lock

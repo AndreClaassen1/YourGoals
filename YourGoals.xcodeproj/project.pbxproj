@@ -23,6 +23,7 @@
 		7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */; };
 		7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */; };
 		7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */; };
+		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */; };
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
@@ -156,6 +157,7 @@
 		7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskProgress+Date.swift"; sourceTree = "<group>"; };
 		7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManager.swift; sourceTree = "<group>"; };
 		7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCalculator.swift; sourceTree = "<group>"; };
+		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
+				7B83346D1FA3C2CC002FB5BC /* .gitignore */,
 				7BEBBAC91F9F3CCA003D16AE /* Shared */,
 				7BAAFEE51F9CA2FA00BB102E /* YourGoals */,
 				7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */,
@@ -711,6 +714,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */,
 				7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */,
 				7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */,
 				7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */,
