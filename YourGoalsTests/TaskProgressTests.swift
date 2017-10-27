@@ -24,7 +24,7 @@ class TaskProgressTests: StorageTestCase {
         XCTAssert(isIntersecting)
     }
     
-    func testIsNotIntersecting() {
+    func testIsNotIntersectingAfter() {
         let taskProgress = self.manager.taskProgressStore.createPersistentObject()
         
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
@@ -35,5 +35,15 @@ class TaskProgressTests: StorageTestCase {
         XCTAssertFalse(isIntersecting)
     }
 
+    func testIsNotIntersectingBefore() {
+        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        
+        taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
+        taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
+        
+        let isIntersecting = taskProgress.isIntersecting(withDate: Date.dateWithYear(2016, month: 04, day: 01))
+        
+        XCTAssertFalse(isIntersecting)
+    }
     
 }

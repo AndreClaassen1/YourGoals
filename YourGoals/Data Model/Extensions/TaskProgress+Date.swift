@@ -19,7 +19,7 @@ extension TaskProgress {
         let startDate = self.start ?? Date.minimalDate
         let endDate = self.end ?? Date.maximalDate
         
-        return startDate.compare(date) == ComparisonResult.orderedSame || startDate.compare(date) == ComparisonResult.orderedAscending &&
-            endDate.compare(date) == ComparisonResult.orderedSame || endDate.compare(date) == ComparisonResult.orderedDescending
+        return (startDate.compare(date) == ComparisonResult.orderedSame || startDate.compare(date) == ComparisonResult.orderedAscending) &&
+            (endDate.compare(date) == ComparisonResult.orderedSame || endDate.compare(date) == ComparisonResult.orderedDescending)
     }
 }
