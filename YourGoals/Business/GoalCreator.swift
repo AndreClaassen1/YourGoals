@@ -33,14 +33,20 @@ class GoalCreator {
         goal.name = goalInfo.name
         goal.prio = 999
         goal.reason = goalInfo.reason
-        guard let data = UIImageJPEGRepresentation(goalInfo.image, 0.6) else {
-            throw GoalCreatorError.imageNotJPegError
+        
+        if let image = goalInfo.image {
+            guard let data = UIImageJPEGRepresentation(image, 0.6) else {
+                throw GoalCreatorError.imageNotJPegError
+            }
+            
+            let imageData = self.manager.imageDataStore.createPersistentObject()
+            imageData.data = data
+            goal.imageData = imageData
+        } else {
+            goal.imageData = nil
         }
         
-        let imageData = self.manager.imageDataStore.createPersistentObject()
-        imageData.data = data
-        goal.imageData = imageData
-        
+    
         strategy.addToSubGoals(goal)
         try manager.dataManager.saveContext()
     }

@@ -15,7 +15,7 @@ enum FieldCheckError:Error {
 extension FieldCheckError:LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .invalidInput(field, hint):
+        case .invalidInput(let field, let hint):
                 return "Error in Field: \(field). Hint: \(hint)"
         }
     }

@@ -18,9 +18,9 @@ struct GoalInfo {
     let name:String
     let reason:String
     let targetDate:Date
-    let image:UIImage
+    let image:UIImage?
     
-    init(name:String, reason:String?, targetDate:Date, image:UIImage) throws {
+    init(name:String, reason:String?, targetDate:Date, image:UIImage?) throws {
         guard !name.isEmpty else {
             throw GoalInfoError.invalidGoalNameError
         }
