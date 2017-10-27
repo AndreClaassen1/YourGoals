@@ -9,11 +9,28 @@
 import Foundation
 
 extension Goal {
+    
+    /// retrieve all subgoals
     func allGoals() -> [Goal] {
         return subGoals?.allObjects as? [Goal] ?? []
     }
     
+    /// retrieve all associated tasks for this goal
     func allTasks() -> [Task] {
         return tasks?.allObjects as? [Task] ?? []
+    }
+    
+    /// calculate the number of tasks with the given state
+    ///
+    /// - Parameter state: active or done
+    /// - Returns: number of tasks for this state
+    func numberOfTasks(forState state:TaskState) -> Int {
+        return allTasks().reduce(0, { n,t in
+            if t.getTaskState()  == state {
+                return n + 1
+            } else {
+                return n
+            }
+        })
     }
 }

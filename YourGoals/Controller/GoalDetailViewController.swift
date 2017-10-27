@@ -24,6 +24,8 @@ class GoalDetailViewController: UITableViewController {
     
     
     var goal:Goal?
+    let manager = GoalsStorageManager.defaultStorageManager 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

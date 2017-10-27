@@ -38,7 +38,8 @@ extension GoalDetailViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
-        cell.show(task: task)
+        cell.configure(task: task)
+        configure(swipeableCell: cell)
         return cell
     }
 }

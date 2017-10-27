@@ -14,6 +14,9 @@ extension Date {
         return dateTimeWithYear(year, month: month, day: day, hour: 0, minute: 0, second: 0)
     }
     
+    public static let minimalDate = Date.dateWithYear(1900, month: 1, day: 1)
+    public static let maximalDate = Date.dateWithYear(9999, month: 12, day: 31)
+    
     public static func dateTimeWithYear(_ year:Int, month:Int, day:Int, hour:Int, minute:Int, second:Int, timezoneIdentifier:String? = nil) -> Date {
         let calendar = Calendar.current
         var components = DateComponents()
@@ -74,6 +77,6 @@ extension Date {
         
         return calendar.date(from: components)!
     }
-    
-    
+
+
 }

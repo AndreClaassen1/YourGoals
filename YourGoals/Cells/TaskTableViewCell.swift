@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
-class TaskTableViewCell: UITableViewCell {
+
+class TaskTableViewCell: MGSwipeTableCell {
 
     @IBOutlet weak var taskCircleImageView: UIImageView!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
+    
+    var task:Task!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,9 +47,6 @@ class TaskTableViewCell: UITableViewCell {
         case .active:
             taskCircleImageView.image = UIImage(named: "TaskCircle")
             break
-        case .planned:
-            taskCircleImageView.image = UIImage(named: "TaskCircle")
-            break
         case .done:
             taskCircleImageView.image = UIImage(named: "TaskChecked")
             break
@@ -55,7 +56,8 @@ class TaskTableViewCell: UITableViewCell {
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
-    func show(task: Task) {
+    func configure(task: Task) {
+        self.task = task
         showTaskState(state: task.getTaskState())
         taskDescriptionLabel.text = task.name
         if let goalName = task.goal?.name {

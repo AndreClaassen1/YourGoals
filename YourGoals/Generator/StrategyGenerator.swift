@@ -16,11 +16,14 @@ class StrategyGenerator : Generator, GeneratorProtocol {
          name: "YourGoals entwickeln",
          image: "YourGoals",
          reason: "Ich brauche eine App, die meinem Ziel der Zielentwicklung optimal gerecht wird. Und das ist visuell und gewohnheitsorientiert",
+         startDate: Date.dateWithYear(2017, month: 10, day: 15),
          targetDate: Date.dateWithYear(2018, month: 05, day: 19)),
+        
         (prio: 2,
          name: "YourDay fertig stellen",
          image: "YourDay",
          reason: "Ich möchte mein Journal in der Form in den Store stellen, dass es ein gutes Feedback gibt.",
+         startDate: Date.dateWithYear(2017, month: 10, day: 15),
          targetDate: Date.dateWithYear(2018, month: 02, day: 39)),
 
     ]
@@ -35,6 +38,7 @@ class StrategyGenerator : Generator, GeneratorProtocol {
             goal.name = tuple.name
             goal.reason = tuple.reason
             goal.prio = Int16(tuple.prio)
+            goal.startDate = tuple.startDate
             goal.targetDate = tuple.targetDate
             goal.parentGoal = strategy
             

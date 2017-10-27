@@ -29,7 +29,8 @@ class GoalsStorageManager {
         stores = [
             StorageBase<Goal>(managedObjectContext: dataManager.managedObjectContext, entityName: "Goal"),
             StorageBase<ImageData>(managedObjectContext: dataManager.managedObjectContext, entityName: "ImageData"),
-            StorageBase<Task>(managedObjectContext: dataManager.managedObjectContext, entityName: "Task")
+            StorageBase<Task>(managedObjectContext: dataManager.managedObjectContext, entityName: "Task"),
+            StorageBase<TaskProgress>(managedObjectContext: dataManager.managedObjectContext, entityName: "TaskProgress")
         ]
     }
     
@@ -47,6 +48,10 @@ class GoalsStorageManager {
 
     var tasksStore:StorageBase<Task>  {
         return try! store(id: "Task") as! StorageBase<Task>
+    }
+    
+    var taskProgressStore:StorageBase<TaskProgress> {
+        return try! store(id: "TaskProgress") as! StorageBase<TaskProgress>
     }
     
     convenience init(databaseName: String) {

@@ -15,9 +15,20 @@ enum GoalCreatorError : Error{
     case imageNotJPegError
 }
 
+extension GoalCreatorError:LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .activeStrategyMissingError:
+            return "There is no active strategy available. operation aborted"
+            
+        case .imageNotJPegError:
+            return "Couldn't translate this image to an jpeg error"
+        }
+    }
+}
+
 
 class GoalCreator {
-    
     let manager:GoalsStorageManager
     
     init (manager:GoalsStorageManager) {

@@ -21,7 +21,7 @@ class TasksGenerator : Generator, GeneratorProtocol{
                 let task = self.manager.tasksStore.createPersistentObject()
                 
                 task.name = "Task \(i + 1) is to be done"
-                task.setTaskState(state: .planned)
+                task.setTaskState(state: .active)
                 goal.addToTasks(task)
             }
         }
