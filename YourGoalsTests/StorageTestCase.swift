@@ -23,6 +23,6 @@ class StorageTestCase:XCTestCase {
     }
     
     var activeStrategy:Goal {
-        return try! StrategyRetriever(manager: self.manager).activeStrategy()!
+        return try! StrategyManager(manager: self.manager).activeStrategy()!
     }
 }

@@ -33,4 +33,13 @@ extension Goal {
             }
         })
     }
+    
+    /// add a bunch of tasks to the goal
+    ///
+    /// - Parameter tasks: array of tasks
+    func addToTasks(_ tasks:[Task]) {
+        for t in tasks {
+            addToTasks(t)
+        }
+    }
 }

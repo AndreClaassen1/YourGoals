@@ -8,10 +8,11 @@
 
 import Foundation
 
+/// generate test tasks
 class TasksGenerator : Generator, GeneratorProtocol{
     
     func generate() throws {
-        let retriever = StrategyRetriever(manager: self.manager)
+        let retriever = StrategyManager(manager: self.manager)
         guard let strategy = try retriever.activeStrategy() else {
             fatalError("no strategy found")
         }

@@ -19,7 +19,7 @@ class GoalsGeneratorTests: StorageTestCase  {
         try! generator.generate()
         
         // test
-        let retriever = StrategyRetriever(manager: self.manager)
+        let retriever = StrategyManager(manager: self.manager)
         let strategy = try! retriever.activeStrategy()!
         testFunction(strategy.allGoals())
     }

@@ -17,16 +17,18 @@ enum GoalInfoError : Error {
 struct GoalInfo {
     let name:String
     let reason:String
+    let startDate:Date
     let targetDate:Date
     let image:UIImage?
     
-    init(name:String, reason:String?, targetDate:Date, image:UIImage?) throws {
+    init(name:String, reason:String?, startDate:Date, targetDate:Date, image:UIImage?) throws {
         guard !name.isEmpty else {
             throw GoalInfoError.invalidGoalNameError
         }
         
         self.name = name
         self.reason = reason ?? ""
+        self.startDate = startDate
         self.targetDate = targetDate
         self.image = image
     }

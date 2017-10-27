@@ -15,7 +15,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     internal func configure(collectionView: UICollectionView) {
         self.manager = GoalsStorageManager.defaultStorageManager
-        self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
+        self.strategy = try! StrategyManager(manager: self.manager).activeStrategy()
         collectionView.registerReusableCell(GoalCell2.self)
         collectionView.registerReusableCell(NewGoalCell.self)
         collectionView.registerSupplementaryView(TodaySectionHeader.self, kind: UICollectionElementKindSectionHeader)

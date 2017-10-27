@@ -52,7 +52,7 @@ class NewGoalViewController: UIViewController {
         let targetDate = targetDatePicker.date
         let image = goalImageView.image
         
-        return try GoalInfo(name: goalName, reason: reason, targetDate: targetDate, image:image)
+        return try GoalInfo(name: goalName, reason: reason, startDate: Date(), targetDate: targetDate, image:image)
     }
     
     override func didReceiveMemoryWarning() {

@@ -8,9 +8,11 @@
 
 import Foundation
 
+/// factory for creating new persistent task objects
 class TaskFactory {
     let manager:GoalsStorageManager
     
+    /// init with a core data storage manager
     init(manager: GoalsStorageManager) {
         self.manager = manager
     }
@@ -26,5 +28,22 @@ class TaskFactory {
         task.name = name
         task.setTaskState(state: state)
         return task
+    }
+    
+    /// create a bunch of tasks for testing reasons
+    ///
+    /// - Parameters:
+    ///   - numberOfTasks: number of tasks
+    ///   - state: state
+    /// - Returns: array with created tasks
+    func createTasks(numberOfTasks: Int, state: TaskState) -> [Task] {
+        var tasks = [Task]()
+        
+        for i in 0..<numberOfTasks {
+            let task = create(name: "Task #\(i)", state: state)
+            tasks.append(task)
+        }
+        
+        return tasks
     }
 }

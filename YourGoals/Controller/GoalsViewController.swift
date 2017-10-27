@@ -25,7 +25,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
         // Do any additional setup after loading the view, typically from a nib.
 
         self.manager = GoalsStorageManager.defaultStorageManager
-        self.strategy = try! StrategyRetriever(manager: self.manager).activeStrategy()
+        self.strategy = try! StrategyManager(manager: self.manager).activeStrategy()
         
         configure(collectionView: collectionView)
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -64,7 +64,15 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
     // MARK: - NewGoalViewControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
-        
+        do {
+            let strategyManager = StrategyManager(manager: self.manager)
+            let goalFactory = GoalFactory(manager: self.manager)
+            let goal = try goalFactory.create(fromGoalInfo: goalInfo)
+            try strategyManager.saveIntoStrategy(goal: goal)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
 }
 
