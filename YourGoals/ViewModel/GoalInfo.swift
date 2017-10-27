@@ -7,11 +7,27 @@
 //
 
 import Foundation
+import UIKit
+
+enum GoalInfoError : Error {
+    case invalidGoalNameError
+}
 
 /// a view model representation of a goal
 struct GoalInfo {
-    let goalName:String
+    let name:String
     let reason:String
     let targetDate:Date
     let image:UIImage
+    
+    init(name:String, reason:String?, targetDate:Date, image:UIImage) throws {
+        guard !name.isEmpty else {
+            throw GoalInfoError.invalidGoalNameError
+        }
+        
+        self.name = name
+        self.reason = reason ?? ""
+        self.targetDate = targetDate
+        self.image = image
+    }
 }

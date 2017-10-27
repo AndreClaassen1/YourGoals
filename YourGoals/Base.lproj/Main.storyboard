@@ -61,6 +61,7 @@
                     <connections>
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentGoal" id="6eA-8s-RYt"/>
+                        <segue destination="Xvn-3I-lOM" kind="show" identifier="editGoal" id="cjO-Ie-qW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -336,7 +337,6 @@
                         <outlet property="headerImageHeightConstraint" destination="C6J-pw-wcb" id="tYd-JN-sqv"/>
                         <outlet property="headerImageView" destination="MYE-g0-9gJ" id="sZQ-XZ-j3o"/>
                         <outlet property="tasksTableView" destination="0JR-sd-cxx" id="HVT-mK-vMd"/>
-                        <segue destination="Xvn-3I-lOM" kind="show" identifier="presentEditGoal" id="tzf-ns-c8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB5-Y3-a37" userLabel="First Responder" sceneMemberID="firstResponder"/>

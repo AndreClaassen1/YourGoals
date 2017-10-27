@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol NewGoalViewControllerDelegate {
+    func createNewGoal(goalInfo: GoalInfo)
+}
+
 class NewGoalViewController: UIViewController {
     @IBOutlet weak var goalNameField: UITextField!
     @IBOutlet weak var reasonField: UITextView!
     @IBOutlet weak var targetDatePicker: UIDatePicker!
     @IBOutlet weak var goalImageView: UIImageView!
     let imagePicker = UIImagePickerController()
+    
+    var delegate:NewGoalViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +36,23 @@ class NewGoalViewController: UIViewController {
     func configureNewGoal() {
         self.goalNameField.text = ""
         self.reasonField.text = ""
-        self.targetDatePicker = Date().addDaysToDate(30)
+        self.targetDatePicker.date = Date().addDaysToDate(30)
     }
 
-    func createGoalFromFields() throws -> GoalInfo
+    /// create a goal info from the input fields
+    ///
+    /// - Returns: a valid GoalInfo structure
+    /// - Throws: field check errors
+    func goalInfoFromFields() throws -> GoalInfo {
+        guard let goalName = goalNameField.text else {
+            throw FieldCheckError.invalidInput(field: "goal", hint: "You must specify a goal")
+        }
         
+        let reason = reasonField.text ?? ""
+        let targetDate = targetDatePicker.date
+        let image = goalImageView.image
+        
+        return try GoalInfo(nname: goalName, reason: reason, targetDate: targetDate, image:image)
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,18 +60,19 @@ class NewGoalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     @IBAction func selectNewImageAction(_ sender: Any) {
-        selectImageFromPicker()
+        selectImageFromPicker(imagePicker: self.imagePicker)
     }
     
     @IBAction func saveGoalAction(_ sender: Any) {
-        let goal = createGoalFromFields()
+        do {
+            let goalInfo = try goalInfoFromFields()
+            delegate?.createNewGoal(goalInfo: goalInfo)
+        }
+        catch let error {
+            NSLog("could not create a goal info from fields. \(error.localizedDescription)")
+        }
     }
-    
-    
-    
-  
     
     /*
     // MARK: - Navigation

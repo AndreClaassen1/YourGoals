@@ -25,6 +25,8 @@
 		7B994E071FA2261A00B704E1 /* NewGoalViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E061FA2261900B704E1 /* NewGoalViewController+ImagePicker.swift */; };
 		7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E091FA2288D00B704E1 /* GoalInfo.swift */; };
 		7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0B1FA228E000B704E1 /* TaskInfo.swift */; };
+		7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */; };
+		7B994E111FA22E4E00B704E1 /* GoalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalCreator.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
 		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
@@ -60,9 +62,7 @@
 		7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */; };
 		7BEBBAD31F9F4087003D16AE /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD11F9F4087003D16AE /* Generator.swift */; };
 		7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */; };
-		7BEBBAD71F9F43A4003D16AE /* Date+dateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD61F9F43A4003D16AE /* Date+dateHelper.swift */; };
 		7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC71F9F1D40003D16AE /* TestDataGenerator.swift */; };
-		7BEBBADA1F9F5306003D16AE /* Date+dateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD61F9F43A4003D16AE /* Date+dateHelper.swift */; };
 		7BEBBADD1F9F5545003D16AE /* StrategyRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBADC1F9F5545003D16AE /* StrategyRetriever.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +143,8 @@
 		7B994E061FA2261900B704E1 /* NewGoalViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewGoalViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		7B994E091FA2288D00B704E1 /* GoalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfo.swift; sourceTree = "<group>"; };
 		7B994E0B1FA228E000B704E1 /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
+		7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCheckError.swift; sourceTree = "<group>"; };
+		7B994E101FA22E4E00B704E1 /* GoalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreator.swift; sourceTree = "<group>"; };
 		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
@@ -188,7 +190,6 @@
 		7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SotrageManagerExtension.swift; sourceTree = "<group>"; };
 		7BEBBAD11F9F4087003D16AE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGenerator.swift; sourceTree = "<group>"; };
-		7BEBBAD61F9F43A4003D16AE /* Date+dateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+dateHelper.swift"; sourceTree = "<group>"; };
 		7BEBBADC1F9F5545003D16AE /* StrategyRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyRetriever.swift; sourceTree = "<group>"; };
 		7BEBBADF1F9F568E003D16AE /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Habit+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BEBBAE01F9F568E003D16AE /* TaskProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskProgress+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/TaskProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -321,6 +322,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		7B994E0D1FA229C700B704E1 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
@@ -351,10 +360,10 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B994E0D1FA229C700B704E1 /* Error */,
 				7B994E081FA2287900B704E1 /* ViewModel */,
 				7B1A4B351F9F9D1700703885 /* Animation */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
-				7BEBBAD81F9F43A8003D16AE /* Extensions */,
 				7BEBBAD51F9F408A003D16AE /* Generator */,
 				7BEBBAA81F9F1693003D16AE /* Data Model */,
 				7B17DD851F9E88D2008E90A2 /* Views */,
@@ -455,18 +464,11 @@
 			path = Generator;
 			sourceTree = "<group>";
 		};
-		7BEBBAD81F9F43A8003D16AE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7BEBBAD61F9F43A4003D16AE /* Date+dateHelper.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		7BEBBADB1F9F550C003D16AE /* Business */ = {
 			isa = PBXGroup;
 			children = (
 				7BEBBADC1F9F5545003D16AE /* StrategyRetriever.swift */,
+				7B994E101FA22E4E00B704E1 /* GoalCreator.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -779,18 +781,19 @@
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
+				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
 				7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Tasks+State.swift in Sources */,
 				7B994E071FA2261A00B704E1 /* NewGoalViewController+ImagePicker.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
+				7B994E111FA22E4E00B704E1 /* GoalCreator.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,
 				7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */,
 				7B994E011FA21CD300B704E1 /* NewTaskViewController.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
-				7BEBBAD71F9F43A4003D16AE /* Date+dateHelper.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
 				7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */,
@@ -813,7 +816,6 @@
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
 				7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
-				7BEBBADA1F9F5306003D16AE /* Date+dateHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

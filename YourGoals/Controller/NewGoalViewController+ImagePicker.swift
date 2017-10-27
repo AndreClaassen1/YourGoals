@@ -12,13 +12,13 @@ import UIKit
 extension NewGoalViewController : UIImagePickerControllerDelegate {
     
     func configureImagePicker(imagePicker:UIImagePickerController) {
-        imagePicker.delegate = self
+        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     func selectImageFromPicker(imagePicker:UIImagePickerController) {
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
-        presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -27,6 +27,6 @@ extension NewGoalViewController : UIImagePickerControllerDelegate {
             goalImageView.image = pickedImage
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

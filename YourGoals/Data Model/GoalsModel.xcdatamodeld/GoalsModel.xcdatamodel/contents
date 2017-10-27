@@ -4,7 +4,6 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="targetDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="goal" inverseEntity="Habit" syncable="YES"/>
         <relationship name="imageData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageData" inverseName="goal" inverseEntity="ImageData" syncable="YES"/>
@@ -39,7 +38,7 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="progress" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-504" positionY="-282" width="128" height="195"/>
+        <element name="Goal" positionX="-504" positionY="-282" width="128" height="180"/>
         <element name="Habit" positionX="-261" positionY="-375" width="128" height="105"/>
         <element name="HabitCheck" positionX="-81" positionY="-363" width="128" height="75"/>
         <element name="ImageData" positionX="-243" positionY="-198" width="128" height="75"/>

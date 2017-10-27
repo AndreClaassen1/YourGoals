@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NewGoalCellDelegate {
+extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Configuration
     
@@ -126,9 +126,5 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         }
     }
     
-    // MARK: - NewGoalCellDelegate
-    
-    func newGoalClicked() {
-        
-    }
+
 }
