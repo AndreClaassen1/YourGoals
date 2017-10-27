@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,14 +28,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4R-Dh-sRy" customClass="ProgressIndicatorView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="182" y="210" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="LOW-Xx-La8"/>
+                                    <constraint firstAttribute="width" constant="100" id="iR7-aW-s9u"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eHI-gX-nGA" firstAttribute="leading" secondItem="rb2-yj-Tj2" secondAttribute="leading" id="0lf-mR-snY"/>
                             <constraint firstItem="rb2-yj-Tj2" firstAttribute="leading" secondItem="2Oa-U5-2af" secondAttribute="leading" id="40W-do-XLs"/>
+                            <constraint firstAttribute="trailing" secondItem="F4R-Dh-sRy" secondAttribute="trailing" constant="8" id="6g4-lu-JZZ"/>
                             <constraint firstAttribute="bottom" secondItem="rb2-yj-Tj2" secondAttribute="bottom" id="CRp-gQ-5dN"/>
                             <constraint firstItem="eHI-gX-nGA" firstAttribute="trailing" secondItem="rb2-yj-Tj2" secondAttribute="trailing" id="I6r-Ek-xKh"/>
                             <constraint firstAttribute="trailing" secondItem="rb2-yj-Tj2" secondAttribute="trailing" id="K6Q-Ze-kyc"/>
+                            <constraint firstAttribute="bottom" secondItem="F4R-Dh-sRy" secondAttribute="bottom" constant="8" id="VoA-Dz-Phe"/>
                             <constraint firstItem="eHI-gX-nGA" firstAttribute="top" secondItem="rb2-yj-Tj2" secondAttribute="top" id="dmx-YE-FZq"/>
                             <constraint firstItem="rb2-yj-Tj2" firstAttribute="top" secondItem="2Oa-U5-2af" secondAttribute="top" id="zoa-fL-8RE"/>
                         </constraints>
@@ -75,6 +85,7 @@
                 <outlet property="goalLabel" destination="KWA-rh-zBy" id="11R-gv-h6f"/>
                 <outlet property="imageView" destination="rb2-yj-Tj2" id="pKg-zL-Kz4"/>
                 <outlet property="overlayView" destination="eHI-gX-nGA" id="Orf-ER-2Be"/>
+                <outlet property="progressIndicatorView" destination="F4R-Dh-sRy" id="PTn-eC-iWE"/>
                 <outlet property="reasonLabel" destination="Lhj-Li-jOU" id="Tkn-CB-hNa"/>
             </connections>
             <point key="canvasLocation" x="83" y="143"/>

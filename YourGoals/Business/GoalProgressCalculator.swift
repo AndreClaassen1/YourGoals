@@ -67,6 +67,7 @@ class GoalProgressCalculator {
         if percent < 0.0 {
             return 0.0
         }
+        
         if percent > 1.0 {
             return 1.0
         }
@@ -103,5 +104,4 @@ class GoalProgressCalculator {
         
         return .behind
     }
-    
 }

@@ -16,6 +16,7 @@
 		7B17DD891F9E88F3008E90A2 /* TodaySectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */; };
 		7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */; };
 		7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */; };
+		7B50F8751FA39CEB00A6EF61 /* ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */; };
 		7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */; };
 		7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D21FA33BC5004556C1 /* TimeCapsule.swift */; };
 		7B5FA3D51FA33C6B004556C1 /* Task+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D41FA33C6B004556C1 /* Task+Progress.swift */; };
@@ -61,6 +62,7 @@
 		7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */; };
 		7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF251F9CA2FB00BB102E /* ComplicationController.swift */; };
 		7BAAFF281F9CA2FB00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */; };
+		7BAF66411FA3A7BB00B98ADB /* GoalDetailViewController+goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAF66401FA3A7BB00B98ADB /* GoalDetailViewController+goal.swift */; };
 		7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B791F9F80220023844E /* GoalDetailViewController.swift */; };
 		7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B7E1F9F85070023844E /* ImageData+Image.swift */; };
 		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
@@ -147,6 +149,7 @@
 		7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFactory.swift; sourceTree = "<group>"; };
 		7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCalculatorTests.swift; sourceTree = "<group>"; };
+		7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorView.swift; sourceTree = "<group>"; };
 		7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressManager.swift; sourceTree = "<group>"; };
 		7B5FA3D21FA33BC5004556C1 /* TimeCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCapsule.swift; sourceTree = "<group>"; };
 		7B5FA3D41FA33C6B004556C1 /* Task+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Progress.swift"; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 		7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BAAFF291F9CA2FB00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7BAF66401FA3A7BB00B98ADB /* GoalDetailViewController+goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailViewController+goal.swift"; sourceTree = "<group>"; };
 		7BE11B791F9F80220023844E /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
 		7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */,
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
+				7BAF66401FA3A7BB00B98ADB /* GoalDetailViewController+goal.swift */,
 				7BAA7A881FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift */,
 				7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */,
 				7B994E001FA21CD300B704E1 /* NewTaskViewController.swift */,
@@ -328,6 +333,7 @@
 			children = (
 				7B17DD871F9E88E7008E90A2 /* TodaySectionHeader.swift */,
 				7B17DD861F9E88E6008E90A2 /* TodaySectionHeader.xib */,
+				7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -834,6 +840,7 @@
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
+				7B50F8751FA39CEB00A6EF61 /* ProgressIndicatorView.swift in Sources */,
 				7B994E031FA21CEC00B704E1 /* NewGoalViewController.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Task+State.swift in Sources */,
 				7B994E071FA2261A00B704E1 /* NewGoalViewController+ImagePicker.swift in Sources */,
@@ -842,6 +849,7 @@
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
 				7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */,
 				7B17DD881F9E88EA008E90A2 /* TodaySectionHeader.swift in Sources */,
+				7BAF66411FA3A7BB00B98ADB /* GoalDetailViewController+goal.swift in Sources */,
 				7B994E111FA22E4E00B704E1 /* GoalFacotry.swift in Sources */,
 				7B5FA3D51FA33C6B004556C1 /* Task+Progress.swift in Sources */,
 				7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */,

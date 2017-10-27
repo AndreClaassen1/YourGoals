@@ -22,6 +22,8 @@ internal class GoalCell2: BaseRoundedCardCell {
     /// Corner View
     @IBOutlet private weak var cornerView: UIView!
     
+    @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
+    
     // MARK: - Factory Method
     
     internal static func dequeue(fromCollectionView collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> GoalCell2 {
@@ -47,6 +49,7 @@ internal class GoalCell2: BaseRoundedCardCell {
         reasonLabel.sizeToFit()
         goalLabel.text = goal.name
         goalLabel.sizeToFit()
+        progressIndicatorView.setProgress(forGoal: goal)
     }
 
     override func awakeFromNib() {

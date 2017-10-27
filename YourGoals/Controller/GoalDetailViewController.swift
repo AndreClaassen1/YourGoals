@@ -21,9 +21,10 @@ class GoalDetailViewController: UITableViewController {
     
     /// Header Image Height
     @IBOutlet private weak var headerImageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var headerImageView: UIImageView!
-    
-    
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var reasonLabel: UILabel!
     var goal:Goal?
     let manager = GoalsStorageManager.defaultStorageManager 
     
@@ -32,6 +33,7 @@ class GoalDetailViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureGoal(goal)
         configureTableView(tasksTableView)
     }
 
