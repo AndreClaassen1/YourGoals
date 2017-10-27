@@ -1,5 +1,5 @@
 //
-//  NewGoalViewController.swift
+//  EditGoalViewController.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 26.10.17.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol NewGoalViewControllerDelegate {
+protocol EditGoalViewControllerDelegate {
     func createNewGoal(goalInfo: GoalInfo)
 }
 
-class NewGoalViewController: UIViewController {
+class EditGoalViewController: UIViewController {
     @IBOutlet weak var goalNameField: UITextField!
     @IBOutlet weak var reasonField: UITextView!
     @IBOutlet weak var targetDatePicker: UIDatePicker!
     @IBOutlet weak var goalImageView: UIImageView!
     let imagePicker = UIImagePickerController()
     
-    var delegate:NewGoalViewControllerDelegate?
+    var delegate:EditGoalViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

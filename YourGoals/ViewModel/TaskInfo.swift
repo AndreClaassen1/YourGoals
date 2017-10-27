@@ -8,7 +8,20 @@
 
 import Foundation
 
+enum TaskInfoError : Error {
+    case invalidTaskNameError
+}
+
+
 /// a view model representation of a task
 struct TaskInfo {
     let taskName:String
+    
+    init(taskName:String) throws {
+        if taskName.isEmpty {
+            throw TaskInfoError.invalidTaskNameError
+        }
+        
+        self.taskName = taskName
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  NewGoalViewController+ImagePicer.swift
+//  EditGoalViewController+ImagePicer.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 26.10.17.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension NewGoalViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditGoalViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func configureImagePicker(imagePicker:UIImagePickerController) {
         imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate

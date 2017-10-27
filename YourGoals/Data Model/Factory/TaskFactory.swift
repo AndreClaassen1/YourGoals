@@ -46,4 +46,14 @@ class TaskFactory {
         
         return tasks
     }
+    
+    /// create a new task with the given task info
+    ///
+    /// - Parameter taskInfo: task info (view model)
+    func create(taskInfo: TaskInfo) -> Task {
+        let task = manager.tasksStore.createPersistentObject()
+        task.name = taskInfo.taskName
+        task.setTaskState(state: .active)
+        return task
+    }
 }

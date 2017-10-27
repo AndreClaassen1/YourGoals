@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="476" y="-564"/>
         </scene>
-        <!--New Goal View Controller-->
+        <!--Edit Goal View Controller-->
         <scene sceneID="Ei3-Cp-Nxb">
             <objects>
-                <viewController id="Xvn-3I-lOM" customClass="NewGoalViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xvn-3I-lOM" customClass="EditGoalViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jk-b5-yX3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,10 +347,10 @@
             </objects>
             <point key="canvasLocation" x="1248.8" y="-752.47376311844084"/>
         </scene>
-        <!--New Task View Controller-->
+        <!--Edit Task View Controller-->
         <scene sceneID="fTA-4b-w4i">
             <objects>
-                <viewController id="cPY-Y6-b5y" customClass="NewTaskViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cPY-Y6-b5y" customClass="EditTaskViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOf-7K-zde">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,6 +381,9 @@
                                 <rect key="frame" x="80" y="223" width="236" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add this Task to my goal"/>
+                                <connections>
+                                    <action selector="addTaskAction:" destination="cPY-Y6-b5y" eventType="touchUpInside" id="2xw-vg-lhu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal: xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-6e-ptq">
                                 <rect key="frame" x="16" y="58" width="234" height="21"/>
@@ -393,6 +396,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KxI-Cq-JDs"/>
                     </view>
+                    <connections>
+                        <outlet property="goalLabel" destination="gPt-6e-ptq" id="EV0-Ub-aWe"/>
+                        <outlet property="taskTextView" destination="dYf-4k-xAf" id="n6q-hQ-QH0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W62-FI-Sv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

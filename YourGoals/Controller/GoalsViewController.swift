@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewControllerDelegate{
+class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewControllerDelegate{
 
     // data properties
     var manager:GoalsStorageManager!
@@ -49,7 +49,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
             return
         }
         
-        if let newGoalController = destinationViewController as? NewGoalViewController {
+        if let newGoalController = destinationViewController as? EditGoalViewController {
             newGoalController.delegate = self
             return
         }
@@ -61,7 +61,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, NewGoalViewCon
         performSegue(withIdentifier: "editGoal", sender: self)
     }
     
-    // MARK: - NewGoalViewControllerDelegate
+    // MARK: - EditGoalViewControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
         do {

@@ -15,4 +15,8 @@ extension UIViewController {
         let message = error.localizedDescription
         CSNotificationView.show(in: self.navigationController, style: CSNotificationViewStyle.error, message: message)
     }
+    
+    func showNotification(text: String ) {
+        CSNotificationView.show(in: self.navigationController, style: CSNotificationViewStyle.error, message: text)
+    }
 }

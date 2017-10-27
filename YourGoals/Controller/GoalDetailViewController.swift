@@ -9,7 +9,7 @@
 import UIKit
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController {
+class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate {
 
     @IBOutlet weak var tasksTableView: UITableView!
     /// Container
@@ -68,14 +68,21 @@ class GoalDetailViewController: UIViewController {
     }
 
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let editTaskController = segue.destination as? EditTaskViewController {
+            editTaskController.configureNewTask(forGoal: goal )
+            editTaskController.delegate = self
+        }
     }
-    */
-
+    
+    // MARK: - EditTaskViewControllerDelegate
+    
+    func createNewTask(taskInfo: TaskInfo) throws {
+        let goalComposer = GoalComposer(manager: self.manager)
+        self.goal = try goalComposer.add(taskInfo: taskInfo, toGoal: goal)
+        self.tasksTableView.reloadData()
+    }
 }
