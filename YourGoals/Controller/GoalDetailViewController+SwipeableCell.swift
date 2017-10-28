@@ -18,29 +18,7 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
     func configure(swipeableCell cell:MGSwipeTableCell) {
         cell.delegate = self
     }
-    
-    // MARK: - progress handling
-    
-    func switchProgress(forTask task: Task) throws {
-        let date = Date()
-        let progressManager = TaskProgressManager(manager: self.manager)
-        if task.isProgressing(atDate: date) {
-            try progressManager.stopProgress(forTask: task, atDate: date)
-        } else {
-            try progressManager.startProgress(forTask: task, atDate: date)
-        }
-    }
-    
-    func switchState(forTask task: Task) throws {
-        let date = Date()
-        let stateManager = TaskStateManager(manager: self.manager)
-        if task.taskIsActive() {
-            try stateManager.setTaskState(task: task, state: .done, atDate: date)
-        } else {
-            try stateManager.setTaskState(task: task, state: .active, atDate: date)
-        }
-    }
-    
+
     
     // MARK: - Swipe Cell creator funciton
     

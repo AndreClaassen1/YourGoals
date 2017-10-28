@@ -10,18 +10,25 @@ import UIKit
 import MGSwipeTableCell
 
 
-class TaskTableViewCell: MGSwipeTableCell {
+protocol TaskTableCellDelegate {
+    func taskStateChangeDesired(task:Task)
+}
 
-    @IBOutlet weak var taskCircleImageView: UIImageView!
+class TaskTableViewCell: MGSwipeTableCell {
+    @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
     
     var task:Task!
+    var delegateTaskCell: TaskTableCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        checkBoxButton.setImage(UIImage(named: "TaskCircle"), for: .normal)
+        checkBoxButton.setImage(UIImage(named: "TaskChecked"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,26 +47,35 @@ class TaskTableViewCell: MGSwipeTableCell {
         return cell
     }
     
+    @IBAction func checkBoxAction(_ sender: Any) {
+        delegateTaskCell.taskStateChangeDesired(task: self.task)
+    }
+    
     // MARK: - Content
     
     func showTaskState(state: TaskState) {
         switch state {
         case .active:
-            taskCircleImageView.image = UIImage(named: "TaskCircle")
-            break
+            self.checkBoxButton.isSelected = false
         case .done:
-            taskCircleImageView.image = UIImage(named: "TaskChecked")
-            break
+            self.checkBoxButton.isSelected = true
         }
+    }
+    
+    func showTaskProgress(isProgressing: Bool) {
+        self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
     }
     
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
-    func configure(task: Task) {
+    func configure(task: Task, delegate: TaskTableCellDelegate) {
         self.task = task
+        self.delegateTaskCell = delegate
         showTaskState(state: task.getTaskState())
+        showTaskProgress(isProgressing: task.isProgressing(atDate: Date()))
         taskDescriptionLabel.text = task.name
+        
         if let goalName = task.goal?.name {
             goalDescriptionLabel.text = "Goal: \(goalName)"
             goalDescriptionLabel.isHidden = false

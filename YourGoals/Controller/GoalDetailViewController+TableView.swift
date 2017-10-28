@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate {
     
     func configure( tableView: UITableView) {
         tableView.registerReusableCell(TaskTableViewCell.self)
@@ -25,7 +25,6 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate {
         return self.goal?.allTasks()[path.row] ?? Task()
     }
     
-    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,8 +38,24 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
-        cell.configure(task: task)
+        cell.configure(task: task, delegate: self)
         configure(swipeableCell: cell)
         return cell
+    }
+    
+    // MARK: - TaskTableCellDelegate
+    
+    func taskStateChangeDesired(task: Task) {
+        do {
+            try self.switchState(forTask: task)
+        }
+        catch let error {
+            showNotification(forError: error)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.editTask = self.taskForIndexPath(path: indexPath)
+        performSegue(withIdentifier: "presentEditTask", sender: self)
     }
 }

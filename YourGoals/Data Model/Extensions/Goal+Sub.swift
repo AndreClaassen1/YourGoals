@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension Goal {
     
@@ -41,5 +42,13 @@ extension Goal {
         for t in tasks {
             addToTasks(t)
         }
+    }
+    
+    /// find task with the given managed object id from the sub tasks of the goal
+    ///
+    /// - Parameter id: object id
+    /// - Returns: the task
+    func taskForId(_ id:NSManagedObjectID) -> Task? {
+        return allTasks().first(where: { $0.objectID == id })
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate {
@@ -26,6 +27,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     var goal:Goal!
+    var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager 
     
     
@@ -75,7 +77,10 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         if let editTaskController = segue.destination as? EditTaskViewController {
             editTaskController.goal = self.goal
             editTaskController.delegate = self
+            editTaskController.editTask = self.editTask
         }
+        
+        self.editTask = nil
     }
     
     // MARK: - EditTaskViewControllerDelegate
@@ -85,4 +90,11 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.goal = try goalComposer.add(taskInfo: taskInfo, toGoal: goal)
         self.tasksTableView.reloadData()
     }
+    
+    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws {
+        let goalComposer = GoalComposer(manager: self.manager)
+        self.goal = try goalComposer.update(taskInfo: taskInfo, withId: id, toGoal: goal)
+        self.tasksTableView.reloadData()
+    }
+    
 }

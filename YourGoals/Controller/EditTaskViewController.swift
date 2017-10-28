@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 protocol EditTaskViewControllerDelegate {
     func createNewTask(taskInfo: TaskInfo) throws
+    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws
 }
 
 class EditTaskViewController: UIViewController {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var taskTextView: UITextView!
+    @IBOutlet weak var taskSaveButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var goal:Goal!
+    var editTask:Task?
     var delegate:EditTaskViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -24,12 +29,20 @@ class EditTaskViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.configureNewTask(forGoal: self.goal)
+        self.configureTask(forGoal: self.goal, andTask: self.editTask)
     }
     
-    func configureNewTask(forGoal goal:Goal) {
+    func configureTask(forGoal goal:Goal, andTask task:Task?) {
         goalLabel.text = "Goal: \(goal.name!)"
-        taskTextView.text = ""
+        if let task = task {
+            titleLabel.text = "Update Task"
+            taskSaveButton.setTitle("Update task", for: .normal)
+            taskTextView.text = task.name
+        } else {
+            titleLabel.text = "New Task"
+            taskSaveButton.setTitle("Add this task to my goal", for: .normal)
+            taskTextView.text = ""
+        }
     }
     
     func taskInfoFromFields() throws -> TaskInfo? {
@@ -45,14 +58,19 @@ class EditTaskViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addTaskAction(_ sender: Any) {
+    @IBAction func saveTaskAction(_ sender: Any) {
         do {
             guard let taskInfo = try taskInfoFromFields() else {
                 self.showNotification(text: "Please enter neccessary fields and give a task name")
                 return
             }
             
-            try delegate?.createNewTask(taskInfo: taskInfo)
+            if editTask == nil {
+                try delegate?.createNewTask(taskInfo: taskInfo)
+            } else {
+                try delegate?.updateTask(taskInfo: taskInfo, withId: editTask!.objectID)
+            }
+            
             self.dismiss(animated: true, completion: nil)
         }
         catch let error {
