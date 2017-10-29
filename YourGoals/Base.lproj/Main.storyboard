@@ -318,8 +318,10 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-uJ-s0X">
-                                                <rect key="frame" x="0.0" y="294" width="62" height="30"/>
+                                                <rect key="frame" x="0.0" y="294" width="113" height="30"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="13o-LZ-hOd"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="113" id="Fqh-3L-gFQ"/>
                                                     <constraint firstAttribute="height" constant="30" id="W0z-Mg-fIp"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit Goal"/>
@@ -450,6 +452,7 @@
                                 <state key="normal" image="light-close-button"/>
                                 <connections>
                                     <action selector="closeButtonDidPress:" destination="0GV-ni-XMq" eventType="touchUpInside" id="eqd-1Q-LwP"/>
+                                    <action selector="closerAction:" destination="cPY-Y6-b5y" eventType="touchUpInside" id="4EG-nU-sFG"/>
                                 </connections>
                             </button>
                         </subviews>

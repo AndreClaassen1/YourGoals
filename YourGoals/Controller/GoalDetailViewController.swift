@@ -30,7 +30,9 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var editGoalButton: UIButton!
+    
     var goal:Goal!
+    var timer = Timer()
     var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
@@ -42,7 +44,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         configure(goal: goal)
         configure(tableView: tasksTableView)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

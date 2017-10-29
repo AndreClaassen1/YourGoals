@@ -66,6 +66,23 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
     }
     
+    func stringFromTime(interval: TimeInterval) -> String {
+        let ms = Int(interval.truncatingRemainder(dividingBy: 1) * 1000)
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter.string(from: interval)! + ".\(ms)"
+    }
+    
+    func showWorkingTime(task: Task) {
+        let progress = task.calcProgressDuration(atDate: Date())
+        if progress == 0.0 {
+            self.workingTimeLabel.text = nil
+            return
+        }
+        
+        self.workingTimeLabel.text = stringFromTime(interval: progress)
+    }
+    
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
@@ -74,7 +91,9 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.delegateTaskCell = delegate
         showTaskState(state: task.getTaskState())
         showTaskProgress(isProgressing: task.isProgressing(atDate: Date()))
+        showWorkingTime(task: task)
         taskDescriptionLabel.text = task.name
+        
         
         if let goalName = task.goal?.name {
             goalDescriptionLabel.text = "Goal: \(goalName)"

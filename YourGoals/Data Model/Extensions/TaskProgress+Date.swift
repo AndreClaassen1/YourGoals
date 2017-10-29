@@ -22,4 +22,15 @@ extension TaskProgress {
         return (startDate.compare(date) == ComparisonResult.orderedSame || startDate.compare(date) == ComparisonResult.orderedAscending) &&
             (endDate.compare(date) == ComparisonResult.orderedSame || endDate.compare(date) == ComparisonResult.orderedDescending)
     }
+    
+    /// calculate the time interval for a progression til date
+    ///
+    /// - Parameter date: time interval
+    func timeInterval(til date:Date) -> TimeInterval {
+        let startDate = self.start ?? Date.minimalDate
+        let endDate = self.end ?? date
+        
+        let interval = endDate.timeIntervalSince(startDate)
+        return interval >= 0 ? interval : TimeInterval(0)
+    }
 }

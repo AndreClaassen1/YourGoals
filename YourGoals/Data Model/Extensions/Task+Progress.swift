@@ -32,4 +32,18 @@ extension Task {
     func isProgressing(atDate date: Date) -> Bool {
         return self.progressFor(date: date) != nil
     }
+    
+    /// calculate the absolute progression as a timeIntervall
+    ///
+    /// - Parameter date: calculate til date
+    /// - Returns: the progression as a time interval
+    func calcProgressDuration(atDate date:Date) -> TimeInterval {
+        var progression = TimeInterval(0)
+        
+        for progress in self.allProgress() {
+            progression += progress.timeInterval(til: date)
+        }
+        
+        return progression
+    }
 }

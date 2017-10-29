@@ -94,7 +94,6 @@ class TaskProgressManagerTests: StorageTestCase {
         
         // test
         XCTAssertEqual(1, numberOfProgress)
-        
     }
   
     /// there couldn't be more than one task with a progress

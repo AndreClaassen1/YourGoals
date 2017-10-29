@@ -15,7 +15,30 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         tableView.registerReusableCell(TaskTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        scheduleTimerWithTimeInterval(tableView: tableView)
     }
+    
+    // MARK: - Timer Handling
+    
+    func scheduleTimerWithTimeInterval(tableView: UITableView) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTaskInProgess), userInfo: tableView, repeats: true)
+    }
+    
+    @objc func updateTaskInProgess(timer:Timer) {
+        guard let tableView = timer.userInfo as? UITableView else {
+            assertionFailure("couldn't extract tableView from userInfo")
+            return
+        }
+    
+        let paths = indexPathsInProgress()
+        if paths.count > 0 {
+            tableView.beginUpdates()
+            tableView.reloadRows(at: paths, with: UITableViewRowAnimation.none)
+            tableView.endUpdates()
+        }
+    }
+
+    // MARK: - Data Source Methods
     
     func numberOfTasks() -> Int {
         return self.goal?.allTasks().count ?? 0
@@ -23,6 +46,28 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
 
     func taskForIndexPath(path: IndexPath) -> Task {
         return self.goal?.allTasks()[path.row] ?? Task()
+    }
+    
+    /// retrieve the index path of all task cells, which are in progess
+    ///
+    /// - Returns: array of index paths
+    func indexPathsInProgress() -> [IndexPath] {
+        var indexPaths = [IndexPath]()
+        let date = Date()
+        
+        guard let tasks = self.goal?.allTasks() else {
+            NSLog("warning: no goal available")
+            return []
+        }
+        
+        for tuple in tasks.enumerated() {
+            let task = tuple.element
+            if task.isProgressing(atDate: date) {
+                indexPaths.append(IndexPath(row: tuple.offset, section: 0))
+            }
+        }
+        
+        return indexPaths
     }
     
     // MARK: - UITableViewDataSource

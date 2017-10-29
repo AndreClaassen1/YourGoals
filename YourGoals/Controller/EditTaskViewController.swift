@@ -53,6 +53,10 @@ class EditTaskViewController: UIViewController {
         return try TaskInfo(taskName: taskTextView.text)
     }
 
+    @IBAction func closerAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
