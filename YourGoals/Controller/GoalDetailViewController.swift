@@ -9,9 +9,12 @@
 import UIKit
 import CoreData
 
-/// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate {
+protocol GoalDetailViewControllerDelegate {
+    func goalChanged()
+}
 
+/// show a goal and all of its tasks in detail
+class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate {
     @IBOutlet weak var tasksTableView: UITableView!
     /// Container
     @IBOutlet private weak var contentContainerView: UIView!
@@ -26,24 +29,25 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
+    @IBOutlet weak var editGoalButton: UIButton!
     var goal:Goal!
     var editTask:Task? = nil
-    let manager = GoalsStorageManager.defaultStorageManager 
-    
+    let manager = GoalsStorageManager.defaultStorageManager
+    var delegate:GoalDetailViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         configure(goal: goal)
         configure(tableView: tasksTableView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
         containerLeadingConstraint.constant = left
         containerTrailingConstraint.constant = right
@@ -68,19 +72,23 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBAction func closeButtonDidPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let editTaskController = segue.destination as? EditTaskViewController {
             editTaskController.goal = self.goal
             editTaskController.delegate = self
             editTaskController.editTask = self.editTask
+            self.editTask = nil
         }
         
-        self.editTask = nil
+        if let editGoalController = segue.destination as? EditGoalViewController {
+            editGoalController.delegate = self
+            editGoalController.editGoal = goal
+        }
+        
     }
     
     // MARK: - EditTaskViewControllerDelegate
@@ -97,4 +105,23 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.tasksTableView.reloadData()
     }
     
+    // MARK: - EditGoalViewControllerDelegate
+    
+    func createNewGoal(goalInfo: GoalInfo) {
+        assertionFailure("this function")
+    }
+    
+    func update(goal: Goal, withGoalInfo goalInfo: GoalInfo) {
+        do {
+            let goalUpdater = GoalUpdater(manager: self.manager)
+            try goalUpdater.update(goal: goal, withGoalInfo: goalInfo)
+            self.delegate?.goalChanged()
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
+        
+        
+        configure(goal: goal)
+    }
 }

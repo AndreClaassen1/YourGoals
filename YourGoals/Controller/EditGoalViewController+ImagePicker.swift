@@ -12,7 +12,7 @@ import UIKit
 extension EditGoalViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func configureImagePicker(imagePicker:UIImagePickerController) {
-        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     func selectImageFromPicker(imagePicker:UIImagePickerController) {

@@ -10,28 +10,9 @@ import Foundation
 import CoreData
 import UIKit
 
-enum GoalFactoryError : Error{
-    case imageNotJPegError
-}
-
-extension GoalFactoryError:LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .imageNotJPegError:
-            return "Couldn't translate this image to an jpeg error"
-        }
-    }
-}
-
 /// a factory class for creating an new goal
-class GoalFactory {
-    let manager:GoalsStorageManager
-    
-    /// a core data storage manager class
-    init (manager:GoalsStorageManager) {
-        self.manager = manager
-    }
-    
+class GoalFactory:StorageManagerWorker {
+     
     /// create a goal form a goalInfo structure
     ///
     /// - Parameter goalInfo: a goal info structure
@@ -60,18 +41,8 @@ class GoalFactory {
         goal.startDate = startDate
         goal.targetDate = targetDate    
         
-        if let image = image {
-            guard let data = UIImageJPEGRepresentation(image, 0.6) else {
-                throw GoalFactoryError.imageNotJPegError
-            }
-            
-            let imageData = self.manager.imageDataStore.createPersistentObject()
-            imageData.data = data
-            goal.imageData = imageData
-        } else {
-            goal.imageData = nil
-        }
-
+        let imageUpdater = ImageUpdater(manager: self.manager)
+        try imageUpdater.updateImage(forGoal: goal, image: image)
         return goal
     }
     

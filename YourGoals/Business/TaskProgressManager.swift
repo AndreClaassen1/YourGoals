@@ -47,6 +47,8 @@ class TaskProgressManager {
     ///   - date: at this date
     /// - Throws: core data exception
     func startProgress(forTask task: Task, atDate date: Date) throws {
+        try stopProgressForAllTasks(atDate: date)
+        
         if !task.taskIsActive() {
             let stateManager = TaskStateManager(manager: self.manager)
             try stateManager.setTaskState(task: task, state: .active, atDate: date)
@@ -83,5 +85,30 @@ class TaskProgressManager {
         
         activeProgress.end = date
         try self.manager.dataManager.saveContext()
+    }
+    
+    /// stop progress from all tasks at the given date
+    /// - Parameter date: this is the end date for all open progress
+    /// - Throws: core data exception
+    func stopProgressForAllTasks(atDate date: Date) throws {
+        let activeProgress = try self.manager.taskProgressStore.fetchItems { request in
+            request.predicate = NSPredicate(format: "end = nil" )
+        }
+        
+        for progress in activeProgress {
+            progress.end = date
+        }
+    }
+
+    /// fetches the number of tasks with progress from the core data sotre
+    ///
+    /// - Returns: number of tasks with progress
+    /// - Throws: core data exception
+    func numberOfTasksWithProgress() throws -> Int {
+        let n = try self.manager.taskProgressStore.countEntries(qualifyRequest: {
+            $0.predicate = NSPredicate(format: "end = nil")
+        })
+        
+        return n
     }
 }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 protocol EditGoalViewControllerDelegate {
     func createNewGoal(goalInfo: GoalInfo)
+    func update(goal:Goal, withGoalInfo goalInfo:GoalInfo)
 }
 
 class EditGoalViewController: UIViewController {
@@ -17,9 +19,11 @@ class EditGoalViewController: UIViewController {
     @IBOutlet weak var reasonField: UITextView!
     @IBOutlet weak var targetDatePicker: UIDatePicker!
     @IBOutlet weak var goalImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+
     let imagePicker = UIImagePickerController()
-    
     var delegate:EditGoalViewControllerDelegate?
+    var editGoal:Goal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +33,27 @@ class EditGoalViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        configureNewGoal()
+        configureGoal(withGoal: self.editGoal)
         configureImagePicker(imagePicker: self.imagePicker)
     }
     
-    func configureNewGoal() {
-        self.goalNameField.text = ""
-        self.reasonField.text = ""
+    func configureGoal(withGoal goal:Goal?) {
+        if let goal = goal {
+            self.titleLabel.text = "Edit Goal"
+            self.goalNameField.text = goal.name
+            self.reasonField.text = goal.reason
+            if let data = goal.imageData?.data  {
+                self.goalImageView.image = UIImage(data: data)
+            }
+            else {
+                self.goalImageView.image = nil
+            }
+        
+        } else {
+            self.titleLabel.text = "New Goal"
+            self.goalNameField.text = ""
+            self.reasonField.text = ""
+        }
         self.targetDatePicker.date = Date().addDaysToDate(30)
     }
 
@@ -71,7 +89,11 @@ class EditGoalViewController: UIViewController {
     @IBAction func saveGoalAction(_ sender: Any) {
         do {
             let goalInfo = try goalInfoFromFields()
-            delegate?.createNewGoal(goalInfo: goalInfo)
+            if self.editGoal != nil {
+                delegate?.update(goal: self.editGoal!, withGoalInfo: goalInfo)
+            } else {
+                delegate?.createNewGoal(goalInfo: goalInfo)
+            }
             self.dismiss(animated: true)
         }
         catch let error {

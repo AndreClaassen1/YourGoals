@@ -196,6 +196,7 @@
                         <outlet property="goalNameField" destination="Nxq-aU-K1Y" id="Mdx-au-c7X"/>
                         <outlet property="reasonField" destination="bk4-MF-juE" id="9xs-vM-GU8"/>
                         <outlet property="targetDatePicker" destination="SZv-cR-BOL" id="jiQ-71-7Rn"/>
+                        <outlet property="titleLabel" destination="RTV-M3-54x" id="0zo-b2-fZ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNS-aK-PJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,16 +317,29 @@
                                                     <constraint firstAttribute="height" constant="100" id="zgp-xZ-6od"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-uJ-s0X">
+                                                <rect key="frame" x="0.0" y="294" width="62" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="W0z-Mg-fIp"/>
+                                                </constraints>
+                                                <state key="normal" title="Edit Goal"/>
+                                                <connections>
+                                                    <segue destination="Xvn-3I-lOM" kind="presentation" id="ifF-Jb-8P0"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="jCZ-uJ-s0X" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" id="7Cg-e5-441"/>
                                             <constraint firstAttribute="trailing" secondItem="vBv-2z-NT8" secondAttribute="trailing" id="7M4-NR-C3d"/>
                                             <constraint firstItem="MYE-g0-9gJ" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" constant="2" id="7Ur-P8-QOo"/>
                                             <constraint firstItem="t9s-UC-fYV" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" constant="2" id="9wD-Nc-KXf"/>
                                             <constraint firstAttribute="trailing" secondItem="vQj-hu-ph4" secondAttribute="trailing" constant="8" id="OFf-IE-p7J"/>
                                             <constraint firstItem="MYE-g0-9gJ" firstAttribute="top" secondItem="JbV-To-7pk" secondAttribute="top" id="OxR-Gh-03W"/>
                                             <constraint firstAttribute="trailing" secondItem="MxC-zB-OiM" secondAttribute="trailing" constant="8" id="PEY-Zq-Qfg"/>
+                                            <constraint firstAttribute="bottom" secondItem="jCZ-uJ-s0X" secondAttribute="bottom" constant="-4" id="QmG-1r-3pl"/>
                                             <constraint firstAttribute="bottom" secondItem="MYE-g0-9gJ" secondAttribute="bottom" constant="34" id="Svj-yb-bqz"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jCZ-uJ-s0X" secondAttribute="trailing" constant="20" symbolic="YES" id="WC6-pK-ghz"/>
                                             <constraint firstItem="MxC-zB-OiM" firstAttribute="top" secondItem="JbV-To-7pk" secondAttribute="top" constant="8" id="Y7F-Ci-ZGf"/>
                                             <constraint firstAttribute="trailing" secondItem="t9s-UC-fYV" secondAttribute="trailing" constant="-2" id="dcx-yE-wCt"/>
                                             <constraint firstAttribute="bottom" secondItem="vQj-hu-ph4" secondAttribute="bottom" constant="47" id="fuG-mM-Hmt"/>
@@ -369,6 +383,7 @@
                         <outlet property="containerTopConstraint" destination="bhZ-YM-MSD" id="He2-1w-mid"/>
                         <outlet property="containerTrailingConstraint" destination="Zau-Tu-14k" id="pLe-j6-JH5"/>
                         <outlet property="contentContainerView" destination="4Vg-1u-3Q8" id="LMM-ub-z8k"/>
+                        <outlet property="editGoalButton" destination="jCZ-uJ-s0X" id="pHK-zT-Cky"/>
                         <outlet property="headerImageHeightConstraint" destination="C6J-pw-wcb" id="tYd-JN-sqv"/>
                         <outlet property="headerImageView" destination="MYE-g0-9gJ" id="sZQ-XZ-j3o"/>
                         <outlet property="headerLabel" destination="u8C-QR-zai" id="me1-Sh-xGe"/>
@@ -461,4 +476,7 @@
         <image name="YourGoals" width="1115" height="1115"/>
         <image name="light-close-button" width="40" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ifF-Jb-8P0"/>
+    </inferredMetricsTieBreakers>
 </document>

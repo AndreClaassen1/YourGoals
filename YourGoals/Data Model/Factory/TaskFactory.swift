@@ -9,14 +9,8 @@
 import Foundation
 
 /// factory for creating new persistent task objects
-class TaskFactory {
-    let manager:GoalsStorageManager
-    
-    /// init with a core data storage manager
-    init(manager: GoalsStorageManager) {
-        self.manager = manager
-    }
-    
+class TaskFactory:StorageManagerWorker {
+      
     /// create a new task with name and state
     ///
     /// - Parameters:

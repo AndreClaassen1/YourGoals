@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
-class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewControllerDelegate{
-
+class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewControllerDelegate, GoalDetailViewControllerDelegate {
+    
     // data properties
     var manager:GoalsStorageManager!
     var strategy:Goal?
@@ -46,6 +47,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
         if let detailController = destinationViewController as? GoalDetailViewController {
             destinationViewController.transitioningDelegate = self
             detailController.goal = self.selectedGoal
+            detailController.delegate = self
             return
         }
         
@@ -74,6 +76,16 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
         catch let error {
             self.showNotification(forError: error)
         }
+    }
+    
+    func update(goal: Goal, withGoalInfo goalInfo: GoalInfo) {
+        assertionFailure("this method shouldn't be called")
+    }
+    
+    // MARK: - GoalDetailViewControllerDelegate
+    
+    func goalChanged() {
+        self.collectionView.reloadData()
     }
 }
 
