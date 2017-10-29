@@ -34,7 +34,5 @@ class TaskOrderManagerTests: StorageTestCase {
         XCTAssertEqual(1, tasksByOrder[0].prio)
         XCTAssertEqual(2, tasksByOrder[1].prio)
         XCTAssertEqual(3, tasksByOrder[2].prio)
-
     }
-    
 }

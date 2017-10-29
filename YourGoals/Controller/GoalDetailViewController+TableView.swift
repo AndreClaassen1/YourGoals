@@ -19,8 +19,8 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         tableView.dataSource = self
         self.reorderTableView = LongPressReorderTableView(tableView, selectedRowScale: SelectedRowScale.medium)
         self.reorderTableView.delegate = self
-        self.reorderTableView.enableLongPressReorder()
         scheduleTimerWithTimeInterval(tableView: tableView)
+        self.reorderTableView.enableLongPressReorder()
     }
     
     
@@ -28,9 +28,14 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     
     func scheduleTimerWithTimeInterval(tableView: UITableView) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTaskInProgess), userInfo: tableView, repeats: true)
+        timerPaused = false
     }
     
     @objc func updateTaskInProgess(timer:Timer) {
+        guard !self.timerPaused else {
+            return
+        }
+        
         guard let tableView = timer.userInfo as? UITableView else {
             assertionFailure("couldn't extract tableView from userInfo")
             return
@@ -75,12 +80,7 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         var indexPaths = [IndexPath]()
         let date = Date()
         
-        guard let tasks = self.goal?.allTasks() else {
-            NSLog("warning: no goal available")
-            return []
-        }
-        
-        for tuple in tasks.enumerated() {
+        for tuple in self.tasksOrdered.enumerated() {
             let task = tuple.element
             if task.isProgressing(atDate: date) {
                 indexPaths.append(IndexPath(row: tuple.offset, section: 0))
@@ -126,11 +126,17 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     
     // MARK: - Reorder handling
     
+    override func startReorderingRow(atIndex indexPath: IndexPath) -> Bool {
+        self.timerPaused = true
+        return true
+    }
+    
     override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
         do {
             NSLog("reorder finished: init:\(initialIndex) final:\(finalIndex)")
             try updateTaskOrder(initialIndex: initialIndex, finalIndex: finalIndex)
             NSLog("core data store updateted")
+            self.timerPaused = false
         }
         catch let error {
             self.showNotification(forError: error)

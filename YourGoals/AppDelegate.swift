@@ -47,17 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func ensureTestData() {
         do {
             let manager = GoalsStorageManager.defaultStorageManager
-            #if (arch(i386) || arch(x86_64)) && os(iOS)
-                let generator = TestDataGenerator(manager: manager)
-                try generator.generate()
-            #else
+//            #if (arch(i386) || arch(x86_64)) && os(iOS)
+//                let generator = TestDataGenerator(manager: manager)
+//                try generator.generate()
+//            #else
                 let retriever = StrategyManager(manager: manager)
                 let strategy = try retriever.activeStrategy()
                 let generator = TestDataGenerator(manager: manager)
                 if strategy == nil {
                     try generator.generate()
                 }
-            #endif
+//            #endif
         }
         catch let error  {
             fatalError("couldn't create or access test data: \(error.localizedDescription)")

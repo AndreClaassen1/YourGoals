@@ -35,6 +35,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     var goal:Goal!
     var tasksOrdered: [Task]!
     var timer = Timer()
+    var timerPaused = false
     var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
