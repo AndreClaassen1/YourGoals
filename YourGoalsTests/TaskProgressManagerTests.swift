@@ -23,7 +23,7 @@ class TaskProgressManagerTests: StorageTestCase {
     /// test for starting a progress on a given task
     func testStartProgress() {
         // setup
-        let task = TaskFactory(manager: self.manager).create(name: "Task with started progress", state: .active)
+        let task = TaskFactory(manager: self.manager).create(name: "Task with started progress", state: .active, prio: 1)
         
         // act
         let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)
@@ -39,7 +39,7 @@ class TaskProgressManagerTests: StorageTestCase {
     /// test for stopping progress on a given task
     func testStoppedProgress() {
         // setup
-        let task = TaskFactory(manager: self.manager).create(name: "Task with stopped progress", state: .active)
+        let task = TaskFactory(manager: self.manager).create(name: "Task with stopped progress", state: .active, prio: 1)
         
         // act
         let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)
@@ -56,7 +56,7 @@ class TaskProgressManagerTests: StorageTestCase {
     /// restart progress on a given task
     func testRestartProgress() {
         // setup
-        let task = TaskFactory(manager: self.manager).create(name: "Task with restarted progress", state: .active)
+        let task = TaskFactory(manager: self.manager).create(name: "Task with restarted progress", state: .active, prio: 1)
         
         // act
         let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)

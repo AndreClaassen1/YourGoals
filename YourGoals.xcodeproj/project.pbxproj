@@ -40,6 +40,9 @@
 		7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */; };
 		7B994E111FA22E4E00B704E1 /* GoalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalFactory.swift */; };
 		7B994E131FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */; };
+		7B9E28ED1FA6550D00BB6003 /* TaskPrioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */; };
+		7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */; };
+		7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
 		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
@@ -69,7 +72,7 @@
 		7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */; };
 		7BCC3D7B1FA5251300FE2468 /* GoalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7A1FA5251300FE2468 /* GoalError.swift */; };
 		7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */; };
-		7BCC3D7F1FA525C900FE2468 /* ManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7E1FA525C900FE2468 /* ManagerWorker.swift */; };
+		7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */; };
 		7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B791F9F80220023844E /* GoalDetailViewController.swift */; };
 		7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B7E1F9F85070023844E /* ImageData+Image.swift */; };
 		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
@@ -180,6 +183,9 @@
 		7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCheckError.swift; sourceTree = "<group>"; };
 		7B994E101FA22E4E00B704E1 /* GoalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFactory.swift; sourceTree = "<group>"; };
 		7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailViewController+SwipeableCell.swift"; sourceTree = "<group>"; };
+		7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPrioManager.swift; sourceTree = "<group>"; };
+		7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
+		7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManagerTests.swift; sourceTree = "<group>"; };
 		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
@@ -216,7 +222,7 @@
 		7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUpdater.swift; sourceTree = "<group>"; };
 		7BCC3D7A1FA5251300FE2468 /* GoalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalError.swift; sourceTree = "<group>"; };
 		7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdater.swift; sourceTree = "<group>"; };
-		7BCC3D7E1FA525C900FE2468 /* ManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerWorker.swift; sourceTree = "<group>"; };
+		7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerWorker.swift; sourceTree = "<group>"; };
 		7BE11B791F9F80220023844E /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
 		7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -339,6 +345,7 @@
 				7B994E041FA225B800B704E1 /* Date+dateHelper.swift */,
 				7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */,
 				7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */,
+				7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -360,19 +367,6 @@
 				7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */,
 			);
 			path = Animation;
-			sourceTree = "<group>";
-		};
-		7B50F86B1FA388AC00A6EF61 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				7BCC3D7E1FA525C900FE2468 /* ManagerWorker.swift */,
-				7BCC3D7A1FA5251300FE2468 /* GoalError.swift */,
-				7B994E101FA22E4E00B704E1 /* GoalFactory.swift */,
-				7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */,
-				7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */,
-				7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */,
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		7B994E081FA2287900B704E1 /* ViewModel */ = {
@@ -454,6 +448,7 @@
 				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
 				7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */,
+				7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -506,7 +501,6 @@
 		7BEBBAA81F9F1693003D16AE /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				7B50F86B1FA388AC00A6EF61 /* Factory */,
 				7BE11B7D1F9F84F30023844E /* Extensions */,
 				7BEBBADE1F9F567D003D16AE /* Generated */,
 				7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */,
@@ -538,11 +532,18 @@
 		7BEBBADB1F9F550C003D16AE /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */,
 				7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */,
-				7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */,
-				7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */,
+				7BCC3D7A1FA5251300FE2468 /* GoalError.swift */,
+				7B994E101FA22E4E00B704E1 /* GoalFactory.swift */,
+				7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */,
 				7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */,
 				7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */,
+				7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */,
+				7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */,
+				7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */,
+				7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */,
+				7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -858,11 +859,12 @@
 				7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */,
 				7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */,
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
+				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A891FA0D4CC005B16EE /* GoalDetailViewController+TableView.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
-				7BCC3D7F1FA525C900FE2468 /* ManagerWorker.swift in Sources */,
+				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
@@ -887,6 +889,7 @@
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7B6D09CA1FA464D300F99646 /* GoalDetailViewController+task.swift in Sources */,
+				7B9E28ED1FA6550D00BB6003 /* TaskPrioManager.swift in Sources */,
 				7B994E131FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
 				7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */,
@@ -910,6 +913,7 @@
 				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
+				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
 				7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,

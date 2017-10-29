@@ -33,6 +33,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet weak var editGoalButton: UIButton!
     
     var goal:Goal!
+    var tasksOrdered: [Task]!
     var timer = Timer()
     var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager
@@ -41,10 +42,15 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        configure(goal: goal)
-        configure(tableView: tasksTableView)
+        do {
+            
+            // Do any additional setup after loading the view.
+            configure(goal: goal)
+            try configure(tableView: tasksTableView, withGoal: goal)
+        }
+        catch let error {
+            showNotification(forError: error)
+        }
     }
 
     override func didReceiveMemoryWarning() {

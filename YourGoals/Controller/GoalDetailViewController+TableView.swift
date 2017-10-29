@@ -12,7 +12,8 @@ import LongPressReorder
 
 extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate {
     
-    func configure( tableView: UITableView) {
+    func configure( tableView: UITableView, withGoal goal: Goal) throws {
+        try retrieveOrderedTasks()
         tableView.registerReusableCell(TaskTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
@@ -21,6 +22,7 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         self.reorderTableView.enableLongPressReorder()
         scheduleTimerWithTimeInterval(tableView: tableView)
     }
+    
     
     // MARK: - Timer Handling
     
@@ -44,12 +46,26 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
 
     // MARK: - Data Source Methods
     
+    func retrieveOrderedTasks() throws {
+        self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal)
+    }
+    
     func numberOfTasks() -> Int {
-        return self.goal?.allTasks().count ?? 0
+        return self.tasksOrdered.count
     }
 
     func taskForIndexPath(path: IndexPath) -> Task {
-        return self.goal?.allTasks()[path.row] ?? Task()
+        return self.tasksOrdered[path.row]
+    }
+    
+    func updateTaskOrder(initialIndex: IndexPath, finalIndex: IndexPath) throws {
+        guard initialIndex != finalIndex else {
+            NSLog("no update of order neccessary")
+            return
+        }
+        
+        let taskOrderManager = TaskOrderManager(manager: self.manager)
+        self.tasksOrdered = try taskOrderManager.updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
     }
     
     /// retrieve the index path of all task cells, which are in progess
@@ -110,14 +126,14 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     
     // MARK: - Reorder handling
     
-    override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
-        
-    }
-    
     override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
-        
+        do {
+            NSLog("reorder finished: init:\(initialIndex) final:\(finalIndex)")
+            try updateTaskOrder(initialIndex: initialIndex, finalIndex: finalIndex)
+            NSLog("core data store updateted")
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
-    
-    
-    
 }

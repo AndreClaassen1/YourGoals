@@ -21,7 +21,7 @@ class TasksGenerator : Generator, GeneratorProtocol{
             let taskFactory = TaskFactory(manager: self.manager)
             
             for i in 0 ..< 3 {
-                let task = taskFactory.create(name: "Task \(i + 1) is to be done", state: .active)
+                let task = taskFactory.create(name: "Task \(i + 1) is to be done", state: .active, prio: Int16(i))
                 goal.addToTasks(task)
             }
         }

@@ -16,11 +16,13 @@ class TaskFactory:StorageManagerWorker {
     /// - Parameters:
     ///   - name: name of the task
     ///   - state: state of the task
+    ///   - prio: prio of the task
     /// - Returns: the task
-    func create(name: String, state: TaskState) -> Task {
+    func create(name: String, state: TaskState, prio:Int16) -> Task {
         let task = manager.tasksStore.createPersistentObject()
         task.name = name
         task.setTaskState(state: state)
+        task.prio = prio
         return task
     }
     
@@ -33,8 +35,8 @@ class TaskFactory:StorageManagerWorker {
     func createTasks(numberOfTasks: Int, state: TaskState) -> [Task] {
         var tasks = [Task]()
         
-        for i in 0..<numberOfTasks {
-            let task = create(name: "Task #\(i)", state: state)
+        for i in 0 ..< numberOfTasks {
+            let task = create(name: "Task #\(i)", state: state, prio: Int16(i))
             tasks.append(task)
         }
         
@@ -48,6 +50,7 @@ class TaskFactory:StorageManagerWorker {
         let task = manager.tasksStore.createPersistentObject()
         task.name = taskInfo.taskName
         task.setTaskState(state: .active)
+        task.prio = 999
         return task
     }
 }
