@@ -40,6 +40,14 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
     
     // MARK: - MGSwipeTableCellDelegate
     
+    func swipeTableCellWillBeginSwiping(_ cell: MGSwipeTableCell) {
+        self.timerPaused = true
+    }
+    
+    func swipeTableCellWillEndSwiping(_ cell: MGSwipeTableCell) {
+        self.timerPaused = false
+    }
+    
     /// show the swipe buttons for the task
     ///
     /// - Parameters:
