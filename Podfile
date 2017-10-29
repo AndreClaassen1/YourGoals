@@ -9,6 +9,7 @@ target 'YourGoals' do
     pod 'BEMSimpleLineGraph'
     pod 'TEAChart'
     pod 'PNChart'
+    pod 'LongPressReorder'
     #    pod 'ACTabScrollView'
 end
 

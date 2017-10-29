@@ -73,10 +73,6 @@ class TaskTableViewCell: MGSwipeTableCell {
         
         let result = String(format: "%d:%0.2d:%0.2d", hours, minutes, seconds)
         return result
-        
-//        let formatter = DateComponentsFormatter()
-//        formatter.allowedUnits = [.hour, .minute, .second]
-//        return formatter.string(from: interval)!
     }
     
     func showWorkingTime(task: Task) {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import LongPressReorder
 
 extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate {
     
@@ -15,6 +16,9 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         tableView.registerReusableCell(TaskTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        self.reorderTableView = LongPressReorderTableView(tableView, selectedRowScale: SelectedRowScale.medium)
+        self.reorderTableView.delegate = self
+        self.reorderTableView.enableLongPressReorder()
         scheduleTimerWithTimeInterval(tableView: tableView)
     }
     
@@ -103,4 +107,17 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         self.editTask = self.taskForIndexPath(path: indexPath)
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
+    
+    // MARK: - Reorder handling
+    
+    override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
+        
+    }
+    
+    override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
+        
+    }
+    
+    
+    
 }

@@ -819,6 +819,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMSimpleLineGraph/BEMSimpleLineGraph.framework",
 				"${BUILT_PRODUCTS_DIR}/CSNotificationView/CSNotificationView.framework",
+				"${BUILT_PRODUCTS_DIR}/LongPressReorder/LongPressReorder.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/PNChart/PNChart.framework",
 				"${BUILT_PRODUCTS_DIR}/TEAChart/TEAChart.framework",
@@ -828,6 +829,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMSimpleLineGraph.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSNotificationView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LongPressReorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PNChart.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TEAChart.framework",

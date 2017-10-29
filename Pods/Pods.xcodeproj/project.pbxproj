@@ -7,115 +7,119 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01862E3DCB91BDA0B2F9BF024438DF78 /* PNChart.h in Headers */ = {isa = PBXBuildFile; fileRef = C3465CBBC582149D8DE4D8901DBBBE50 /* PNChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		02C3B5C4CB40FFA9F7D5BF21A06E062F /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C5DEDD89DD5062BEBD64859E26C07 /* MGSwipeButton.m */; };
-		03809B3572E2BCE64AFF35A74DC569AB /* CSLayerStealingBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D393094DDAECC043E039FCFB70E76 /* CSLayerStealingBlurView.m */; };
-		06724437C19D93B32D7704B0C849BCB6 /* PNPieChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E2B657EB0559CB3C625A0BF30D18BB /* PNPieChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D3532E1989C28B628F84FF7FEAC680F /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A43020D4B00FEFE9A0F7431F65E02A /* checkmark@2x.png */; };
-		0DE265223139D79B55A13FDE05F648C8 /* CSNativeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78019CAAEB38C6CE4F1ED07A92FAC079 /* CSNativeBlurView.m */; };
-		0E9A8FBCF70E343103AB476F5BDA9ABE /* PNChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 132B67A714813EFEFDE526139FCD5370 /* PNChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F398E26AE00E6F38D5806634A484BFC /* PNRadarChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D00302ABA56188B9CD577DD7131310BE /* PNRadarChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		11377E9914B06935611F9451DDA190B0 /* CSNotificationView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915076BB415C12A2F8E4D55C6899CA6 /* CSNotificationView-dummy.m */; };
-		11A9027CB2A49B39B7DA3F3EB045F862 /* Pods-YourGoals-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC546C1C02B30F77820618CE22C9FC /* Pods-YourGoals-dummy.m */; };
-		12F36D590677B18E9993CC59D2550B28 /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DDB2C40B28B23266CF14B91DC7B68C /* BEMSimpleLineGraphView.m */; };
-		181A9C4C01FE49B42A1F01A506873F56 /* MGSwipeTableCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6D031948F462DD863B8485285581C /* MGSwipeTableCell-dummy.m */; };
-		1A89703EDC986DD2C7D3632EAB5BFFF9 /* TEAContributionGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 221B4719944786B5016CAB4D58696113 /* TEAContributionGraph.m */; };
-		1CDA9CF3831C4BE7AC9F922031EDB667 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5B7558BC1AC40EF8B2398D28B01D4A /* MGSwipeTableCell.m */; };
-		1D9BC534C5EC7D45CB82D66E1DA19C03 /* CSNotificationView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E27970BC395C1A0F85BA49D84FA4A96 /* CSNotificationView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20C9DF8EBDE5E5741EBCB4FC53BBB28A /* BEMCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 9074EE71C3BB540A9675FE0727B09D41 /* BEMCircle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		228396459A5DFEE20A11FCBE2322446B /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4011669D2F26BBFA03CAE0EBD8E50E9F /* UICountingLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		23507D26F66CCB366FE0F6C1A0D185D1 /* PNScatterChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BC3E6FEBE6601736C4AA9749978C78 /* PNScatterChartDataItem.m */; };
-		2365B3E4DB032997A7507456BAF72092 /* BEMSimpleLineGraph-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 177D34C97AC3401597CE943F7186F5B6 /* BEMSimpleLineGraph-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		255758C364A039AD649086B312E39A0F /* TEATimeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = A75CF377D457ED350C20469B13202AC5 /* TEATimeRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275CDB94DE5627044CA1E5689E71006A /* PNScatterChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85BF69F6D0DC2266EE0E9D259544C /* PNScatterChartData.m */; };
-		28C5FA9BBB5E83CD975FDD5422C466C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		29B21D11897891B4D8F225665AD68FA7 /* exclamationMark.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDF3E5023C23D092277F5E32A14C070 /* exclamationMark.png */; };
-		2A670F9A61E0A74AE89985B0AB73EBD8 /* PNPieChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E996B174D854A79846727507B6F6720 /* PNPieChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30D3210324DB17502F91862D181A5DAA /* PNBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4F3B4152B4D2B2A70FBBFB94FC18B /* PNBar.m */; };
-		3496B6EDC602D31F5EE360484F809A4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		3773CB4AA5724292720B7CC6FC96F59C /* exclamationMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521944EA891DDCE50FD272374B6FE3C5 /* exclamationMark@2x.png */; };
-		3951AA0F503376DDF9D6FF81717EC1DB /* PNScatterChart.h in Headers */ = {isa = PBXBuildFile; fileRef = B4C0239A1F0C95B028C8571D1B6AA15D /* PNScatterChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AFD533C942D8681B68B17BCD3C995F6 /* PNGenericChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 66831E3F3AA4572B9725E0B3034A7ACD /* PNGenericChart.m */; };
-		3D6C543C987EA3645BFEFB0521ED793C /* BEMAverageLine.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF509C8CA78949B474799637E41E854 /* BEMAverageLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E6E2ACDD5584F0539DB2590C7B2A182 /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B6F13C5CDAE820CC81EBBFFC44B5B /* TEABarChart.m */; };
-		3F006C5DA2EEA45E157440B08535F16C /* PNScatterChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 83E6C29F9709B072FBBEFCD65F5D0940 /* PNScatterChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		415EFB6537A3F68F71C09A5B099DCC8A /* PNColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D3A323200426FE906D25E51C420EADE /* PNColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		43108E20843C6A047C34B89A63CDE9C6 /* PNChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD61EDBF8C7B2C6BF7DFB7525A76AF3 /* PNChart-dummy.m */; };
+		01862E3DCB91BDA0B2F9BF024438DF78 /* PNChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 92BB4B738589DAC1F936097EE3978E21 /* PNChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02C3B5C4CB40FFA9F7D5BF21A06E062F /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A189C66798B40281C1C7A8EF4B760C /* MGSwipeButton.m */; };
+		03809B3572E2BCE64AFF35A74DC569AB /* CSLayerStealingBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FA0DA69F20F46753FC6E2A1BA4EF54 /* CSLayerStealingBlurView.m */; };
+		0538FEAD5F053526F641E12DDDD4C632 /* TEAContributionGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = BADCF3EA248E7B5D52F7C8DD4E0BA1FA /* TEAContributionGraph.m */; };
+		06724437C19D93B32D7704B0C849BCB6 /* PNPieChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 916FBBD2BE7D64DBB403C6FA407CCB58 /* PNPieChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A7A469ECEADB2A2EB4C27A12482A743 /* TEAContributionGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 68D7210AEF78A344DB60F78C55F170F4 /* TEAContributionGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B802E7BD6ECA4144A5D639707C95A50 /* TEATimeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = C63D1BA06E60612548159BC56BDD41A3 /* TEATimeRange.m */; };
+		0D3532E1989C28B628F84FF7FEAC680F /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D0C811F3C7890EA3160F07E18834F3 /* checkmark@2x.png */; };
+		0DE265223139D79B55A13FDE05F648C8 /* CSNativeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DFA15F05009F232C25CF5FF0C7490 /* CSNativeBlurView.m */; };
+		0E9A8FBCF70E343103AB476F5BDA9ABE /* PNChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDBEFA669C15AC19844CEB5593CE7A7B /* PNChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F398E26AE00E6F38D5806634A484BFC /* PNRadarChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B4C704C15CFE72C380EBB73BC3C269F /* PNRadarChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11377E9914B06935611F9451DDA190B0 /* CSNotificationView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1723E95D0061546F1CA96E1EB6AF79 /* CSNotificationView-dummy.m */; };
+		12F36D590677B18E9993CC59D2550B28 /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FDEA09222DC2E0BB39276F4D40513C /* BEMSimpleLineGraphView.m */; };
+		181A9C4C01FE49B42A1F01A506873F56 /* MGSwipeTableCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BF30760E9E1C79039BE308F828C636 /* MGSwipeTableCell-dummy.m */; };
+		18AECCFBE1323B5FD32C30E93C9A5D16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
+		1CDA9CF3831C4BE7AC9F922031EDB667 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423454C5932B2DA34FEEECE3221876E5 /* MGSwipeTableCell.m */; };
+		1D9BC534C5EC7D45CB82D66E1DA19C03 /* CSNotificationView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 619D29C78C64023B703D90E7D9E709F0 /* CSNotificationView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20C9DF8EBDE5E5741EBCB4FC53BBB28A /* BEMCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DADD546B31483A1111596B79ED1BE2B /* BEMCircle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		228396459A5DFEE20A11FCBE2322446B /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FB31908DB21F2AEB8DC08FA0ECAA28 /* UICountingLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		23507D26F66CCB366FE0F6C1A0D185D1 /* PNScatterChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7827FB56647EE7E67AF45830F50471 /* PNScatterChartDataItem.m */; };
+		2365B3E4DB032997A7507456BAF72092 /* BEMSimpleLineGraph-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCA70FCF425005AB2434798FCA1E85D /* BEMSimpleLineGraph-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275CDB94DE5627044CA1E5689E71006A /* PNScatterChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD43A0DCFE839E4A44B4DA60EBBD9F7C /* PNScatterChartData.m */; };
+		29B21D11897891B4D8F225665AD68FA7 /* exclamationMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F0548BA7C2F2603202D11A7F94EAF179 /* exclamationMark.png */; };
+		2A670F9A61E0A74AE89985B0AB73EBD8 /* PNPieChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F32B3F06456D374070F6420737EA2A8 /* PNPieChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30D3210324DB17502F91862D181A5DAA /* PNBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AA96C52EB7AE75AF2D473020F3217C /* PNBar.m */; };
+		3773CB4AA5724292720B7CC6FC96F59C /* exclamationMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76147CA3E1D31A67F82A33B2BC64DFA8 /* exclamationMark@2x.png */; };
+		384C6887EE1894F725212F1AE984C2D1 /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9E0F0FF26B405C301C383852FDE35 /* TEABarChart.m */; };
+		38FB954868B8A68A6EE74DFA85DD8A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
+		3951AA0F503376DDF9D6FF81717EC1DB /* PNScatterChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 65712CC0C3E871B12FDBCCD4AA4283DF /* PNScatterChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AFD533C942D8681B68B17BCD3C995F6 /* PNGenericChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDA3760AEB317B8BBD0F6242044BDF9 /* PNGenericChart.m */; };
+		3D6C543C987EA3645BFEFB0521ED793C /* BEMAverageLine.h in Headers */ = {isa = PBXBuildFile; fileRef = B1546261D9D260A6EE9D4A43205BE4C0 /* BEMAverageLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F006C5DA2EEA45E157440B08535F16C /* PNScatterChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 746B4DDB5618C99BCC8A54108888E596 /* PNScatterChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		415EFB6537A3F68F71C09A5B099DCC8A /* PNColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 375E5F1713E7D73B421B3EE1DC74FD25 /* PNColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42CC7596732DE8838933C3E3B083D7E2 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE41A8AB4F415467D3909C16309900BA /* LongPressReorder.swift */; };
+		43108E20843C6A047C34B89A63CDE9C6 /* PNChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FCE81BEFC79AE80589D2C91EB077BE /* PNChart-dummy.m */; };
 		4313A0E86A8CB357E79CD8D643510E3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		47391BB102A81E89CE5B8BE78AC8AED9 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCDA994C45A47C2A31AB8A111127941 /* checkmark@3x.png */; };
-		47EB05F507CC96A5A8778049FA04E494 /* PNLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E8965AA50FE889352D5F714F9C7066DA /* PNLineChart.m */; };
-		49DBBCC302C3055F99A1F860042CC4CE /* PNBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDAB64803983CB6A5B73F961115024B /* PNBarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4A4B0E4AF71401A31253A0CA7DA365FE /* CSNativeBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3013ED0D38B794FA322A92563A1A1F4 /* CSNativeBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D871E78B0F660F6B50FC41EF7462E97 /* PNRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1F0CAE7A72C0FA96937D16A4E5DB60 /* PNRadarChart.m */; };
-		4E546FE3E7EC37C7300F189766082A39 /* UICountingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C5CA1E14FA8AD018345D96B3D330BB0 /* UICountingLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5998081CEB075ADED541804D7F9664FC /* TEABarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E39A07CC7F427E6656A935303528D04 /* TEABarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BB3AF94D7CF8C47730B55492108E165 /* TEAChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6962A45FCF40654FED00C9AB0269663 /* TEAChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63B2B60C4E0425695947C754528998EA /* PNScatterChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5517977F65C4F26B7D38F4AF076F76D5 /* PNScatterChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6D791026E20DF9A2B254FD7D11D6DB39 /* PNRadarChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D883576DDF399B793BE369DEC3DBB /* PNRadarChartDataItem.m */; };
+		439FDC23F3B3821EC61167F261B7A7CF /* TEAChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 99F011C65CAFBABD931CECA18C6037DB /* TEAChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47391BB102A81E89CE5B8BE78AC8AED9 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E710C71A9293F0D15AF8D5541F9A4EA2 /* checkmark@3x.png */; };
+		47EB05F507CC96A5A8778049FA04E494 /* PNLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A787FDEEEE8ABF68816BD49481E4DF9 /* PNLineChart.m */; };
+		49DBBCC302C3055F99A1F860042CC4CE /* PNBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 253524282193EF10ED0F5D137D742822 /* PNBarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A4B0E4AF71401A31253A0CA7DA365FE /* CSNativeBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CA4C741CF578D800FA0974088BF45C /* CSNativeBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D871E78B0F660F6B50FC41EF7462E97 /* PNRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C359F872FF43314BAEE121764AD6EA9E /* PNRadarChart.m */; };
+		4E546FE3E7EC37C7300F189766082A39 /* UICountingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B1615AE5E9727ECF444C0854F9AB0854 /* UICountingLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52BD33B98121893E34C5213EE5F1724B /* TEAChart.h in Headers */ = {isa = PBXBuildFile; fileRef = ED29F0ECFD7F715EEC80F049AB8C97A9 /* TEAChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63B2B60C4E0425695947C754528998EA /* PNScatterChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = F594ADDC9991EE8577289646E1851FA6 /* PNScatterChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6788EFD10CA339C8E824D06A0E45529C /* TEATimeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ABC6A9A9803F8CED070420AA9CBB256 /* TEATimeRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D791026E20DF9A2B254FD7D11D6DB39 /* PNRadarChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C7F87685CA719F36DCFCBF8847B759 /* PNRadarChartDataItem.m */; };
 		77FE815D15133B3421D591F3016057BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		79A1A20C26E7759F31EE5A64D90F8E6F /* PNLineChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = 68D31743B27A7DCC5667B70B328CB0CB /* PNLineChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79A1A20C26E7759F31EE5A64D90F8E6F /* PNLineChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9AC5376DB734E0EB56C4D211B47D04 /* PNLineChartData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		837600560A1344B2FC522A2E16BCAE71 /* NSDate+TEAExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B18F09192F017DDEC9C4E6F1FFE04ED /* NSDate+TEAExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83CA2377B55DD2D5EB6DE486AC459A54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		853A57622AD74BC28B636A4BA38E6873 /* MGSwipeTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F662CCB227C4B4A017BF06CF92E132D3 /* MGSwipeTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		861B6A549CB77F0A51939C966DE0206C /* BEMSimpleLineGraph-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9579D923C1BCAD58559194AF251D1AD2 /* BEMSimpleLineGraph-dummy.m */; };
-		884AA25551C1E0897CB5332890C4A400 /* UICountingLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A360922BC6DDECC882F2E97975453E9 /* UICountingLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8856A187017D6F9BCDD9467126FA5F20 /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DA97A25A5DBAB5DB407807CFDEBA75 /* BEMPermanentPopupView.m */; };
+		853A57622AD74BC28B636A4BA38E6873 /* MGSwipeTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC1D3DD7299D99C071DB40B47884019 /* MGSwipeTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8546B4A7CA82B5C5E8D495A69469E4A5 /* Pods-YourGoals-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC546C1C02B30F77820618CE22C9FC /* Pods-YourGoals-dummy.m */; };
+		861B6A549CB77F0A51939C966DE0206C /* BEMSimpleLineGraph-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3001138CE297DCB87BFD807F177CC6 /* BEMSimpleLineGraph-dummy.m */; };
+		884AA25551C1E0897CB5332890C4A400 /* UICountingLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5B66B5E3BBAB9EB1E44EA62EAFE55E /* UICountingLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8856A187017D6F9BCDD9467126FA5F20 /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7DB53198F8FAA4D5B3197EFDB376C /* BEMPermanentPopupView.m */; };
 		89AB2AE681A8B73DCAFB0D9A2E44AB93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		89DD24BBC80CF7D7CA8A4F17FF36B42D /* CSNotificationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 617B56656EC5A5743AB16D165FF3FAC9 /* CSNotificationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8C1AE29635C783CAA3792C8AFF086BE6 /* TEATimeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A287AD608376FBEB10095DB1CC52DBA /* TEATimeRange.m */; };
-		8D0A8407E6C2577C48DEDBF16BF8B469 /* PNLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = CCFEFD2303CF601AFC934398943C9C76 /* PNLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8D0C6232FFF76ED1BD9E988CEC8D7EEC /* Pods-YourGoals-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07323FA0C3320B530DE5676D136FE7ED /* Pods-YourGoals-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8E1DEC97CC5767A4B537AA988BE21B6D /* PNPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F9C3B7211C4D8C601BA6F886D7ADF9 /* PNPieChart.m */; };
-		8ED82E4BB5088B3BC288B53EFD9B9106 /* PNLineChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B6FDF9B04B7AC59FAA64D8099AFB93 /* PNLineChartData.m */; };
-		9177DA20418F49A45EE327BAC0640A9B /* CSNotificationView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660C9AE7362DB2FA5134AA406806F062 /* CSNotificationView.bundle */; };
-		960D304B3BDF4BA47B05D2341663C58D /* BEMPermanentPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 925CD6D7B572576F6566D3CB94B784D9 /* BEMPermanentPopupView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89DD24BBC80CF7D7CA8A4F17FF36B42D /* CSNotificationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D5EF2000229E0ADD75B6AF9FBFA3722 /* CSNotificationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D0A8407E6C2577C48DEDBF16BF8B469 /* PNLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3E327011EBA68BA986EC0914C0A7B3 /* PNLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E0205758F77909967571A501EBE5C40 /* NSDate+TEAExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C54E753E7A195ECE477F7BFB557200 /* NSDate+TEAExtensions.m */; };
+		8E1DEC97CC5767A4B537AA988BE21B6D /* PNPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1266F71C83096D7C1B4AD47794FF7821 /* PNPieChart.m */; };
+		8ED82E4BB5088B3BC288B53EFD9B9106 /* PNLineChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D170D1ED17ADC3EC25B40DDCC262 /* PNLineChartData.m */; };
+		9177DA20418F49A45EE327BAC0640A9B /* CSNotificationView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB9B9AE0A7CC24473522C396AC04CE12 /* CSNotificationView.bundle */; };
+		952BF2CC3D5AF92ECCA174FF0736E9CE /* LongPressReorder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BE9AE52B87527D5E9D1A8181F8DB97 /* LongPressReorder-dummy.m */; };
+		960D304B3BDF4BA47B05D2341663C58D /* BEMPermanentPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FD2FF1E892B75C6FD37F56B1227401 /* BEMPermanentPopupView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		975E65AF5274D9E271902795BBE5AD9B /* UICountingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9103AD49AA73F4AFAC5A6BD63F2B787 /* UICountingLabel.framework */; };
-		9A188B2744B9ADBAE00CA89FF8A04B16 /* PNCircleChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B551F85645DE837746373867A6A3132 /* PNCircleChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A188B2744B9ADBAE00CA89FF8A04B16 /* PNCircleChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 37F49248016A851272EA7317FBCEAF55 /* PNCircleChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BADCA5679C8A8A66E61ADDDB0632098 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10089A14B451E9A962D07579E4163155 /* CoreGraphics.framework */; };
-		9D463C13702FAEA9AA93F1FC99655BD8 /* PNChartLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B629F8F4EE4EFD9B671D904FE52BF47A /* PNChartLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E0BC6BBB317EDF12B9EACBBC1C8C2C0 /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D225CFA350D4A7BF71B0714891F8502 /* BEMAverageLine.m */; };
-		A0135EE1B70530E33BF8734333575A82 /* exclamationMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45FC7DCA5D3DED584CDE9CA7EE84ABA5 /* exclamationMark@3x.png */; };
-		A0D9D954CF085DB2A706AB8A95EF59B8 /* NSDate+TEAExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 91316A65A03A86D33908516AA3416DD7 /* NSDate+TEAExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9581A46EDB543ED19BBD965BC3128C4 /* TEAClockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C375E43AE542DC9CB95AA973D904FD1B /* TEAClockChart.m */; };
-		AB53151FE7DB3A8F2ED5A24BC5A56608 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFDE324926FE616E6059B0E6CA82D27 /* CSNotificationView.m */; };
-		ACDBBAF66F9C904F743D150E5C557DF6 /* TEAClockChart.h in Headers */ = {isa = PBXBuildFile; fileRef = D5E889A90CE54FD2ED97FFFCBDDDB8F7 /* TEAClockChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ADB66EDB01E996BC6F5BFFD4534B6C21 /* PNLineChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E95D1B21A21CBA3DBBD79C551A35280 /* PNLineChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3174CE1F7CEC7E4986A14E9C4EAA5ED /* UICountingLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E9426531A52715526F398587E2F03 /* UICountingLabel-dummy.m */; };
-		B909966D2D69804EA54972DA9B2BD58B /* CSLayerStealingBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 42EE4D49B09B1CC22C3BFF2399DBB39C /* CSLayerStealingBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BAB705A04BC6388D300352B078852045 /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9BB0A0878E8DF95770C6DA2C913EE /* BEMLine.m */; };
-		BCA98672348F4BE5B74F67CCEB68B3AE /* PNBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C1B2B85CCBFB4C67DBC990B9CBD987A /* PNBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D463C13702FAEA9AA93F1FC99655BD8 /* PNChartLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFB85618BE87C7D509DAB11D202095E /* PNChartLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E0BC6BBB317EDF12B9EACBBC1C8C2C0 /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F375D728EEB026ECCF80EEB95D1BE6C6 /* BEMAverageLine.m */; };
+		A0135EE1B70530E33BF8734333575A82 /* exclamationMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F2A50953A83461F7FA0E06F49790800 /* exclamationMark@3x.png */; };
+		AB53151FE7DB3A8F2ED5A24BC5A56608 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2927BB379617935C7AE885CE81E26F3 /* CSNotificationView.m */; };
+		ADB66EDB01E996BC6F5BFFD4534B6C21 /* PNLineChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = CE71717897ADB90C2C0D6C2715423EA5 /* PNLineChartDataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3174CE1F7CEC7E4986A14E9C4EAA5ED /* UICountingLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 289322D6BF26326DD3DDDB2097A986F0 /* UICountingLabel-dummy.m */; };
+		B909966D2D69804EA54972DA9B2BD58B /* CSLayerStealingBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 23206A44370833F9733E6EEC367368C6 /* CSLayerStealingBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B99E73CF215582FA56012AB32EA67028 /* TEAClockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 96995A9E638AEC52B085746EE7F101F9 /* TEAClockChart.m */; };
+		BAB705A04BC6388D300352B078852045 /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 408D704219328A626E45F2B7A58BC633 /* BEMLine.m */; };
+		BCA98672348F4BE5B74F67CCEB68B3AE /* PNBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CE9FDB73C201EEA1248663DC640BF3 /* PNBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C344EA4B1862D8F0074DAE36CE9F08A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67942C696292CC592FBEE3BA3005E34E /* UIKit.framework */; };
-		C7CD2C6C0B5E3A5AFF132FB8441D06FD /* TEAContributionGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 841DA54C15A69BB26182391002898A5C /* TEAContributionGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9BB9572D929D9F65BD27F9AB29562EB /* MGSwipeTableCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3977521923CFAF54B7AF35C7A26CA677 /* MGSwipeTableCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA847ADF445C8C5454B1999A89D1F137 /* PNChartDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 59E65F0DA4C2CA2CB64EE42CADC81B1B /* PNChartDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB0E31315C0ED75C503B01F1A5F70F70 /* NSDate+TEAExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C76250516D01C4BC6B1F378762DC3D9 /* NSDate+TEAExtensions.m */; };
-		D46DF427577E7AB87ED36E29CD8937D9 /* PNLineChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 072FA9CEF7A186874430341D7E4B5967 /* PNLineChartDataItem.m */; };
-		D669E99F982767DFF1E6A1B1050FC379 /* CSNotificationView_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 541D95194A5657E94EC4DBD209598274 /* CSNotificationView_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DAAB15D1FF9B62D061DF3A73E8D11050 /* PNRadarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 99C4357D8BDD8462B0885F5DB950EEFA /* PNRadarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DCB7CC08FC235B33EDC5F8957848B565 /* PNGenericChart.h in Headers */ = {isa = PBXBuildFile; fileRef = E205E7E4D5B73CFFC90EAA521E8293F0 /* PNGenericChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF8F4C447D73F08682A89276EB7924E7 /* PNPieChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D1CDC19E539F895DD275ED9ABE8C /* PNPieChartDataItem.m */; };
-		E1E2C11D1D26663319EA53869837B642 /* BEMSimpleLineGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = B62F9F9A15333D0701C4305254F6C9EE /* BEMSimpleLineGraphView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E479B43F3FCEE39B4A29646EFFF6A37D /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = DE060C812450D1292FE5F9A045C229BA /* BEMCircle.m */; };
-		E4BF47046BA4675E1DA2F34893947702 /* MGSwipeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FB07E97BDF5D16A2532D5836F4163F /* MGSwipeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BB9572D929D9F65BD27F9AB29562EB /* MGSwipeTableCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFAA687470785B79FB6FCB0833FD04 /* MGSwipeTableCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA847ADF445C8C5454B1999A89D1F137 /* PNChartDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA259C5FDF046C3CD7EA28FA8F94105 /* PNChartDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CECCC952D1A22D78F1885A3571A425DB /* TEABarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = FF5A53FE123A1D8190DE93043CF0458E /* TEABarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D46DF427577E7AB87ED36E29CD8937D9 /* PNLineChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD96C63A50092C57503CA3FB1471D3 /* PNLineChartDataItem.m */; };
+		D669E99F982767DFF1E6A1B1050FC379 /* CSNotificationView_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E4111368743BF681182431FFC7A08470 /* CSNotificationView_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAAB15D1FF9B62D061DF3A73E8D11050 /* PNRadarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = AE1E4C07CE13EE34209A3DCAE8511B4B /* PNRadarChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCB7CC08FC235B33EDC5F8957848B565 /* PNGenericChart.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E38882FB0E515601352E4668B3F8B3 /* PNGenericChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF8F4C447D73F08682A89276EB7924E7 /* PNPieChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B291AA0C6BB266C829464B5AFA1F90E /* PNPieChartDataItem.m */; };
+		E1E2C11D1D26663319EA53869837B642 /* BEMSimpleLineGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22798F4C4BFAAEF190688EEA456B0D52 /* BEMSimpleLineGraphView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E479B43F3FCEE39B4A29646EFFF6A37D /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7056CFF86CAB7810CC4918CBBC51C9A1 /* BEMCircle.m */; };
+		E4BF47046BA4675E1DA2F34893947702 /* MGSwipeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9E533E296FE9BC12927CFE59A0D7B1 /* MGSwipeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6543B0E8A962B065B29B9E4EE1A904D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203ED675A3265A07DB1F1BB031CD518C /* QuartzCore.framework */; };
-		E6C6A257FBBB4C26C2A2D13360E45B0B /* BEMLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E5011445B66F9A9DAA6C43852C0BC61 /* BEMLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F174F2C586B1C5425B5E5F4F80181BC2 /* TEAChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B60610C052D5ECB7B1560297AADB1DB /* TEAChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F3B69FAAAA7F3B62E1130C2DD172C986 /* PNScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F05FCE250BB7C75DB5936E2BF4AA0359 /* PNScatterChart.m */; };
-		F518C92F8521475ACF30FA6ABCB4768F /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CE0C0D027F8A03B7ABF9A4CFE4B27F /* PNCircleChart.m */; };
-		F5F15912FCB6882DCC80BC3EB96668C1 /* TEAChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B2BCE52D70AC6C9AECF5B41D899963 /* TEAChart-dummy.m */; };
-		F6437A9168D825D17B7E2BF5C1C2E81D /* PNChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF839BFFC95E10A90ED72094DDA86411 /* PNChartLabel.m */; };
-		FC0638C57BE88E9577E9989B97D1E099 /* PNBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C8A1CB83545BDE4FEDF62ABAD2DC0D /* PNBarChart.m */; };
+		E6C6A257FBBB4C26C2A2D13360E45B0B /* BEMLine.h in Headers */ = {isa = PBXBuildFile; fileRef = BF04FAEDF85969FF806CCA364231F333 /* BEMLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0F29A319912688BDCE8F442038400BE /* Pods-YourGoals-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07323FA0C3320B530DE5676D136FE7ED /* Pods-YourGoals-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3B69FAAAA7F3B62E1130C2DD172C986 /* PNScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB853201854A4D3A1009A5F50019CA5 /* PNScatterChart.m */; };
+		F518C92F8521475ACF30FA6ABCB4768F /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 835A37BD40F981A29B05FAE96FDE753A /* PNCircleChart.m */; };
+		F628A48DF59DB270DABD2E3E897E162C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
+		F6437A9168D825D17B7E2BF5C1C2E81D /* PNChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4568AEE69C782A33570F0D3BB4B17A90 /* PNChartLabel.m */; };
+		F710CD15B8E6DE65CB38E372D0F625C9 /* TEAClockChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F19F844712BC18E4491141F0F3CBDA46 /* TEAClockChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAD89C4B65E601965A7491A42D0F19B4 /* TEAChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6106261AB66D9C2D7B83AD63CC257FD4 /* TEAChart-dummy.m */; };
+		FC0638C57BE88E9577E9989B97D1E099 /* PNBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D005B10B9F5689E0D47AA2F6DCD954D /* PNBarChart.m */; };
 		FCC1436792EA4C37502DE74FC2DCDEF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */; };
-		FE29E6C318D946B5EC67FDA1E20FCA99 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E18C2AA7994D2E7B490272FAF3C8DA9 /* checkmark.png */; };
-		FF884F1ECBE6F4B32FB84E46AD8C28A9 /* PNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 688C38981E7835E8F1727AD106CE82C3 /* PNColor.m */; };
+		FCFB939824FC226493F16CBC4FF8B126 /* LongPressReorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C439B56D42E32B17727172F37D91973B /* LongPressReorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE29E6C318D946B5EC67FDA1E20FCA99 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 585F0C34A5D295DB0BAB5DA60549957E /* checkmark.png */; };
+		FF884F1ECBE6F4B32FB84E46AD8C28A9 /* PNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B69625EE232A80C1218FA923D234251 /* PNColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E50BBAE2556510A8272D33D1EF4DFCE /* PBXContainerItemProxy */ = {
+		1209FEEA1B50D0759AAB6A9FEF0A0603 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0FC1CB21D1B64FAAC47A6478616DA728;
-			remoteInfo = PNChart;
+			remoteGlobalIDString = 8A421C6298CB3DF5D749193BD6FD0B38;
+			remoteInfo = BEMSimpleLineGraph;
 		};
 		2331FC354592179C10840D17D20A7DB0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -124,12 +128,12 @@
 			remoteGlobalIDString = DA392EE8E5B24D16FB9910405A0AFC2E;
 			remoteInfo = UICountingLabel;
 		};
-		3893DE508D56AF4BDD77BCA6A37345C3 /* PBXContainerItemProxy */ = {
+		33849C82C6C8BFF3630C29F7EA2EC831 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5E2723DE681F8F54499D1D609C6EA3CA;
-			remoteInfo = TEAChart;
+			remoteGlobalIDString = DA392EE8E5B24D16FB9910405A0AFC2E;
+			remoteInfo = UICountingLabel;
 		};
 		46BABE579BB5CB0FBEFA665CD18EB2FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -138,28 +142,35 @@
 			remoteGlobalIDString = 8FB7A778D93C9B30AF7470FDBDA9C0B8;
 			remoteInfo = "CSNotificationView-CSNotificationView";
 		};
-		7AE349220C7D0362F980F8A08C3A38EA /* PBXContainerItemProxy */ = {
+		5AC30A84C433B5A327769E8F58D2E02B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E79017C1564520DD534505965CC6ADE3;
+			remoteInfo = LongPressReorder;
+		};
+		7BCA1FB8CE8312713AD25A3C6E2DB311 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF5FBA536264AB13049083685A6E1D17;
+			remoteInfo = TEAChart;
+		};
+		C70BE4A1387836CA0050A18291FD1ABE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FC1CB21D1B64FAAC47A6478616DA728;
+			remoteInfo = PNChart;
+		};
+		DB6A3EDFC6D6037095F51FD315924FB3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B9788685473D98B025E254C9297EB884;
 			remoteInfo = CSNotificationView;
 		};
-		921C220EFA674B381081C330D0D33841 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A421C6298CB3DF5D749193BD6FD0B38;
-			remoteInfo = BEMSimpleLineGraph;
-		};
-		9C62C862B08CDAF17462276D5893B62E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA392EE8E5B24D16FB9910405A0AFC2E;
-			remoteInfo = UICountingLabel;
-		};
-		AE4235B10DC04505B925B21F18837EFD /* PBXContainerItemProxy */ = {
+		F27A6B2C284D7AF6B4C8F6D48BCC1121 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -169,157 +180,157 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03FB07E97BDF5D16A2532D5836F4163F /* MGSwipeButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
-		06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CSNotificationView.xcconfig; sourceTree = "<group>"; };
-		072FA9CEF7A186874430341D7E4B5967 /* PNLineChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartDataItem.m; path = PNChart/PNLineChartDataItem.m; sourceTree = "<group>"; };
+		002C4665F3FBB040FFEE12554177FC9B /* ResourceBundle-CSNotificationView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CSNotificationView-Info.plist"; sourceTree = "<group>"; };
 		07323FA0C3320B530DE5676D136FE7ED /* Pods-YourGoals-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YourGoals-umbrella.h"; sourceTree = "<group>"; };
-		0C5CA1E14FA8AD018345D96B3D330BB0 /* UICountingLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
-		0C8AAA2A3562B6214D0DF1C1B666CD5F /* TEAChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TEAChart.modulemap; sourceTree = "<group>"; };
-		0E39A07CC7F427E6656A935303528D04 /* TEABarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEABarChart.h; path = TEAChart/TEABarChart.h; sourceTree = "<group>"; };
+		0A3E327011EBA68BA986EC0914C0A7B3 /* PNLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChart.h; path = PNChart/PNLineChart.h; sourceTree = "<group>"; };
+		0B69625EE232A80C1218FA923D234251 /* PNColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNColor.m; path = PNChart/PNColor.m; sourceTree = "<group>"; };
+		0B7DFA15F05009F232C25CF5FF0C7490 /* CSNativeBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNativeBlurView.m; path = CSNotificationView/CSNativeBlurView.m; sourceTree = "<group>"; };
+		0BD9E0F0FF26B405C301C383852FDE35 /* TEABarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEABarChart.m; path = TEAChart/TEABarChart.m; sourceTree = "<group>"; };
+		0DB6FBBC77A1AD7DF56CF39BA1CBBC72 /* LongPressReorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = LongPressReorder.modulemap; sourceTree = "<group>"; };
 		10089A14B451E9A962D07579E4163155 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		132B67A714813EFEFDE526139FCD5370 /* PNChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PNChart-umbrella.h"; sourceTree = "<group>"; };
-		15BE86791BFC159B61147E0CCF04BF63 /* CSNotificationView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CSNotificationView.modulemap; sourceTree = "<group>"; };
-		177D34C97AC3401597CE943F7186F5B6 /* BEMSimpleLineGraph-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMSimpleLineGraph-umbrella.h"; sourceTree = "<group>"; };
-		17B9BB0A0878E8DF95770C6DA2C913EE /* BEMLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMLine.m; path = Classes/BEMLine.m; sourceTree = "<group>"; };
-		1B04362902D992FE116FBC00F79DB48F /* TEAChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TEAChart.framework; path = TEAChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1266C0E5174FC1D18FD6CF2EE1108174 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1266F71C83096D7C1B4AD47794FF7821 /* PNPieChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNPieChart.m; path = PNChart/PNPieChart.m; sourceTree = "<group>"; };
+		12AAC8CE5764B2058DFC2D950278860A /* BEMSimpleLineGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BEMSimpleLineGraph.framework; path = BEMSimpleLineGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		153867DE5F14A537322787232848D3F3 /* MGSwipeTableCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MGSwipeTableCell.modulemap; sourceTree = "<group>"; };
+		18DFAA687470785B79FB6FCB0833FD04 /* MGSwipeTableCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-umbrella.h"; sourceTree = "<group>"; };
+		1EA7DB53198F8FAA4D5B3197EFDB376C /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMPermanentPopupView.m; path = Classes/BEMPermanentPopupView.m; sourceTree = "<group>"; };
+		1EFB85618BE87C7D509DAB11D202095E /* PNChartLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartLabel.h; path = PNChart/PNChartLabel.h; sourceTree = "<group>"; };
+		1F5C2CF0B85DFE650D3CED5E8F95125B /* TEAChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TEAChart.framework; path = TEAChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		203ED675A3265A07DB1F1BB031CD518C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		221B4719944786B5016CAB4D58696113 /* TEAContributionGraph.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAContributionGraph.m; path = TEAChart/TEAContributionGraph.m; sourceTree = "<group>"; };
-		22C6D1CDC19E539F895DD275ED9ABE8C /* PNPieChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNPieChartDataItem.m; path = PNChart/PNPieChartDataItem.m; sourceTree = "<group>"; };
-		25F8CE8264C335E3AEC4DFAD84264310 /* PNChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PNChart.xcconfig; sourceTree = "<group>"; };
-		281BA1C36E4F4D0E9CF1BD48545BFD18 /* MGSwipeTableCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MGSwipeTableCell.modulemap; sourceTree = "<group>"; };
-		2B60610C052D5ECB7B1560297AADB1DB /* TEAChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAChart.h; path = TEAChart/TEAChart.h; sourceTree = "<group>"; };
-		2C76250516D01C4BC6B1F378762DC3D9 /* NSDate+TEAExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TEAExtensions.m"; path = "TEAChart/NSDate+TEAExtensions.m"; sourceTree = "<group>"; };
-		2CDAB64803983CB6A5B73F961115024B /* PNBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBarChart.h; path = PNChart/PNBarChart.h; sourceTree = "<group>"; };
-		2E5011445B66F9A9DAA6C43852C0BC61 /* BEMLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMLine.h; path = Classes/BEMLine.h; sourceTree = "<group>"; };
-		2E5B7558BC1AC40EF8B2398D28B01D4A /* MGSwipeTableCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeTableCell.m; path = MGSwipeTableCell/MGSwipeTableCell.m; sourceTree = "<group>"; };
-		2FD4F3B4152B4D2B2A70FBBFB94FC18B /* PNBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBar.m; path = PNChart/PNBar.m; sourceTree = "<group>"; };
-		34722D5B6911C2C540DE3BE7350B8413 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3977521923CFAF54B7AF35C7A26CA677 /* MGSwipeTableCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-umbrella.h"; sourceTree = "<group>"; };
-		3BB37BFD50447BE5C1655D0A0ED7CDB2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D379AAFE9A0D2E3743BB68C69388604 /* MGSwipeTableCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MGSwipeTableCell.xcconfig; sourceTree = "<group>"; };
-		3E996B174D854A79846727507B6F6720 /* PNPieChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNPieChartDataItem.h; path = PNChart/PNPieChartDataItem.h; sourceTree = "<group>"; };
-		3F4E9426531A52715526F398587E2F03 /* UICountingLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICountingLabel-dummy.m"; sourceTree = "<group>"; };
-		4011669D2F26BBFA03CAE0EBD8E50E9F /* UICountingLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
-		42EE4D49B09B1CC22C3BFF2399DBB39C /* CSLayerStealingBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSLayerStealingBlurView.h; path = CSNotificationView/CSLayerStealingBlurView.h; sourceTree = "<group>"; };
-		43C9C45F3A71BF1B75FCD7E107FE093A /* BEMSimpleLineGraph.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BEMSimpleLineGraph.modulemap; sourceTree = "<group>"; };
-		45FC7DCA5D3DED584CDE9CA7EE84ABA5 /* exclamationMark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "exclamationMark@3x.png"; path = "CSNotificationView/Resources/exclamationMark@3x.png"; sourceTree = "<group>"; };
-		4871E6DC9B2BD353A403B8F08D3B8F31 /* ResourceBundle-CSNotificationView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CSNotificationView-Info.plist"; sourceTree = "<group>"; };
+		2266366BD60E1C392C1AC23BF16BDB65 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22798F4C4BFAAEF190688EEA456B0D52 /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMSimpleLineGraphView.h; path = Classes/BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
+		228E1EC0FCD694160EED54EA46EAC589 /* PNChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PNChart-prefix.pch"; sourceTree = "<group>"; };
+		23206A44370833F9733E6EEC367368C6 /* CSLayerStealingBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSLayerStealingBlurView.h; path = CSNotificationView/CSLayerStealingBlurView.h; sourceTree = "<group>"; };
+		233C75D7E92D2948D8CCA36BA8A69B24 /* UICountingLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICountingLabel.xcconfig; sourceTree = "<group>"; };
+		253524282193EF10ED0F5D137D742822 /* PNBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBarChart.h; path = PNChart/PNBarChart.h; sourceTree = "<group>"; };
+		289322D6BF26326DD3DDDB2097A986F0 /* UICountingLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICountingLabel-dummy.m"; sourceTree = "<group>"; };
+		2B7DD976D39AB5B3BA76C3A0A98F21C5 /* LongPressReorder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LongPressReorder-prefix.pch"; sourceTree = "<group>"; };
+		2CDA3760AEB317B8BBD0F6242044BDF9 /* PNGenericChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNGenericChart.m; path = PNChart/PNGenericChart.m; sourceTree = "<group>"; };
+		2EB6B0B7D763E81B7BE4C17422441B31 /* LongPressReorder.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LongPressReorder.xcconfig; sourceTree = "<group>"; };
+		2F32B3F06456D374070F6420737EA2A8 /* PNPieChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNPieChartDataItem.h; path = PNChart/PNPieChartDataItem.h; sourceTree = "<group>"; };
+		32A189C66798B40281C1C7A8EF4B760C /* MGSwipeButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
+		33C51C35E6D1736C5205E1CD6201A85A /* UICountingLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UICountingLabel.framework; path = UICountingLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		375E5F1713E7D73B421B3EE1DC74FD25 /* PNColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNColor.h; path = PNChart/PNColor.h; sourceTree = "<group>"; };
+		37F49248016A851272EA7317FBCEAF55 /* PNCircleChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNCircleChart.h; path = PNChart/PNCircleChart.h; sourceTree = "<group>"; };
+		385380CC95384CE7528D2773A1FB4A7C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C1723E95D0061546F1CA96E1EB6AF79 /* CSNotificationView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CSNotificationView-dummy.m"; sourceTree = "<group>"; };
+		3D005B10B9F5689E0D47AA2F6DCD954D /* PNBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBarChart.m; path = PNChart/PNBarChart.m; sourceTree = "<group>"; };
+		3DADD546B31483A1111596B79ED1BE2B /* BEMCircle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMCircle.h; path = Classes/BEMCircle.h; sourceTree = "<group>"; };
+		408D704219328A626E45F2B7A58BC633 /* BEMLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMLine.m; path = Classes/BEMLine.m; sourceTree = "<group>"; };
+		423454C5932B2DA34FEEECE3221876E5 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeTableCell.m; path = MGSwipeTableCell/MGSwipeTableCell.m; sourceTree = "<group>"; };
+		437F22A3A039D5AF91CBFEFB2DBB744E /* PNChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PNChart.xcconfig; sourceTree = "<group>"; };
+		4568AEE69C782A33570F0D3BB4B17A90 /* PNChartLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNChartLabel.m; path = PNChart/PNChartLabel.m; sourceTree = "<group>"; };
 		48DC546C1C02B30F77820618CE22C9FC /* Pods-YourGoals-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YourGoals-dummy.m"; sourceTree = "<group>"; };
+		4ABC6A9A9803F8CED070420AA9CBB256 /* TEATimeRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEATimeRange.h; path = TEAChart/TEATimeRange.h; sourceTree = "<group>"; };
+		4B291AA0C6BB266C829464B5AFA1F90E /* PNPieChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNPieChartDataItem.m; path = PNChart/PNPieChartDataItem.m; sourceTree = "<group>"; };
+		4BCD96C63A50092C57503CA3FB1471D3 /* PNLineChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartDataItem.m; path = PNChart/PNLineChartDataItem.m; sourceTree = "<group>"; };
 		4D2D80DB3727237F06D5BBF027E615E0 /* Pods-YourGoals-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YourGoals-acknowledgements.plist"; sourceTree = "<group>"; };
-		4D3A323200426FE906D25E51C420EADE /* PNColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNColor.h; path = PNChart/PNColor.h; sourceTree = "<group>"; };
-		4EF6D031948F462DD863B8485285581C /* MGSwipeTableCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGSwipeTableCell-dummy.m"; sourceTree = "<group>"; };
-		51BC3E6FEBE6601736C4AA9749978C78 /* PNScatterChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChartDataItem.m; path = PNChart/PNScatterChartDataItem.m; sourceTree = "<group>"; };
-		521944EA891DDCE50FD272374B6FE3C5 /* exclamationMark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "exclamationMark@2x.png"; path = "CSNotificationView/Resources/exclamationMark@2x.png"; sourceTree = "<group>"; };
-		541D95194A5657E94EC4DBD209598274 /* CSNotificationView_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNotificationView_Private.h; path = CSNotificationView/CSNotificationView_Private.h; sourceTree = "<group>"; };
-		5517977F65C4F26B7D38F4AF076F76D5 /* PNScatterChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChartData.h; path = PNChart/PNScatterChartData.h; sourceTree = "<group>"; };
-		556AE3C4787634F93F5306815B1344C6 /* UICountingLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICountingLabel.xcconfig; sourceTree = "<group>"; };
-		578060F86CF1081B04482FBB416E3D59 /* CSNotificationView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSNotificationView-prefix.pch"; sourceTree = "<group>"; };
-		59E65F0DA4C2CA2CB64EE42CADC81B1B /* PNChartDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartDelegate.h; path = PNChart/PNChartDelegate.h; sourceTree = "<group>"; };
-		5A287AD608376FBEB10095DB1CC52DBA /* TEATimeRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEATimeRange.m; path = TEAChart/TEATimeRange.m; sourceTree = "<group>"; };
-		5C0D393094DDAECC043E039FCFB70E76 /* CSLayerStealingBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSLayerStealingBlurView.m; path = CSNotificationView/CSLayerStealingBlurView.m; sourceTree = "<group>"; };
-		5E18C2AA7994D2E7B490272FAF3C8DA9 /* checkmark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = checkmark.png; path = CSNotificationView/Resources/checkmark.png; sourceTree = "<group>"; };
+		4D5EF2000229E0ADD75B6AF9FBFA3722 /* CSNotificationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNotificationView.h; path = CSNotificationView/CSNotificationView.h; sourceTree = "<group>"; };
+		53C7F87685CA719F36DCFCBF8847B759 /* PNRadarChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNRadarChartDataItem.m; path = PNChart/PNRadarChartDataItem.m; sourceTree = "<group>"; };
+		585F0C34A5D295DB0BAB5DA60549957E /* checkmark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = checkmark.png; path = CSNotificationView/Resources/checkmark.png; sourceTree = "<group>"; };
+		5AC1D3DD7299D99C071DB40B47884019 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
 		5E5885479731203A9AC31F38873292C1 /* Pods-YourGoals-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YourGoals-resources.sh"; sourceTree = "<group>"; };
-		617B56656EC5A5743AB16D165FF3FAC9 /* CSNotificationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNotificationView.h; path = CSNotificationView/CSNotificationView.h; sourceTree = "<group>"; };
-		660C9AE7362DB2FA5134AA406806F062 /* CSNotificationView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CSNotificationView.bundle; path = CSNotificationView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		66831E3F3AA4572B9725E0B3034A7ACD /* PNGenericChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNGenericChart.m; path = PNChart/PNGenericChart.m; sourceTree = "<group>"; };
+		5F396280604A38138A0FE291BDF06648 /* TEAChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TEAChart.modulemap; sourceTree = "<group>"; };
+		5FCA70FCF425005AB2434798FCA1E85D /* BEMSimpleLineGraph-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMSimpleLineGraph-umbrella.h"; sourceTree = "<group>"; };
+		60FDEA09222DC2E0BB39276F4D40513C /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMSimpleLineGraphView.m; path = Classes/BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
+		6106261AB66D9C2D7B83AD63CC257FD4 /* TEAChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TEAChart-dummy.m"; sourceTree = "<group>"; };
+		619D29C78C64023B703D90E7D9E709F0 /* CSNotificationView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSNotificationView-umbrella.h"; sourceTree = "<group>"; };
+		621B2BF7AB081F2427AE3682208B8F90 /* PNChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PNChart.modulemap; sourceTree = "<group>"; };
+		65712CC0C3E871B12FDBCCD4AA4283DF /* PNScatterChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChart.h; path = PNChart/PNScatterChart.h; sourceTree = "<group>"; };
+		66E88DB7268442FDC4414BFCF2CA0441 /* CSNotificationView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSNotificationView-prefix.pch"; sourceTree = "<group>"; };
 		67942C696292CC592FBEE3BA3005E34E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		688C38981E7835E8F1727AD106CE82C3 /* PNColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNColor.m; path = PNChart/PNColor.m; sourceTree = "<group>"; };
-		68D31743B27A7DCC5667B70B328CB0CB /* PNLineChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartData.h; path = PNChart/PNLineChartData.h; sourceTree = "<group>"; };
-		6B551F85645DE837746373867A6A3132 /* PNCircleChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNCircleChart.h; path = PNChart/PNCircleChart.h; sourceTree = "<group>"; };
-		6C95A456F54C7AFA1D869DC31891C6A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6CD399BC60531234896EEA31A557927A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E27970BC395C1A0F85BA49D84FA4A96 /* CSNotificationView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CSNotificationView-umbrella.h"; sourceTree = "<group>"; };
-		6E95D1B21A21CBA3DBBD79C551A35280 /* PNLineChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartDataItem.h; path = PNChart/PNLineChartDataItem.h; sourceTree = "<group>"; };
-		78019CAAEB38C6CE4F1ED07A92FAC079 /* CSNativeBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNativeBlurView.m; path = CSNotificationView/CSNativeBlurView.m; sourceTree = "<group>"; };
+		68D7210AEF78A344DB60F78C55F170F4 /* TEAContributionGraph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAContributionGraph.h; path = TEAChart/TEAContributionGraph.h; sourceTree = "<group>"; };
+		6B18F09192F017DDEC9C4E6F1FFE04ED /* NSDate+TEAExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+TEAExtensions.h"; path = "TEAChart/NSDate+TEAExtensions.h"; sourceTree = "<group>"; };
+		6F57F7F6ABBC4E4745D1ECB3FDF24636 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7056CFF86CAB7810CC4918CBBC51C9A1 /* BEMCircle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMCircle.m; path = Classes/BEMCircle.m; sourceTree = "<group>"; };
+		746B4DDB5618C99BCC8A54108888E596 /* PNScatterChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChartDataItem.h; path = PNChart/PNScatterChartDataItem.h; sourceTree = "<group>"; };
+		76147CA3E1D31A67F82A33B2BC64DFA8 /* exclamationMark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "exclamationMark@2x.png"; path = "CSNotificationView/Resources/exclamationMark@2x.png"; sourceTree = "<group>"; };
+		76FA0DA69F20F46753FC6E2A1BA4EF54 /* CSLayerStealingBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSLayerStealingBlurView.m; path = CSNotificationView/CSLayerStealingBlurView.m; sourceTree = "<group>"; };
+		77D0C811F3C7890EA3160F07E18834F3 /* checkmark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "checkmark@2x.png"; path = "CSNotificationView/Resources/checkmark@2x.png"; sourceTree = "<group>"; };
 		7BCC22FAB912A75341191E18A482105E /* Pods-YourGoals-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YourGoals-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7BF474D26A5D9FD358EB960D49DF855D /* BEMSimpleLineGraph.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BEMSimpleLineGraph.xcconfig; sourceTree = "<group>"; };
-		7D225CFA350D4A7BF71B0714891F8502 /* BEMAverageLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMAverageLine.m; path = Classes/BEMAverageLine.m; sourceTree = "<group>"; };
-		7E7B6F13C5CDAE820CC81EBBFFC44B5B /* TEABarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEABarChart.m; path = TEAChart/TEABarChart.m; sourceTree = "<group>"; };
-		81CE0C0D027F8A03B7ABF9A4CFE4B27F /* PNCircleChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNCircleChart.m; path = PNChart/PNCircleChart.m; sourceTree = "<group>"; };
-		83E6C29F9709B072FBBEFCD65F5D0940 /* PNScatterChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChartDataItem.h; path = PNChart/PNScatterChartDataItem.h; sourceTree = "<group>"; };
-		841DA54C15A69BB26182391002898A5C /* TEAContributionGraph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAContributionGraph.h; path = TEAChart/TEAContributionGraph.h; sourceTree = "<group>"; };
-		84E2B657EB0559CB3C625A0BF30D18BB /* PNPieChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNPieChart.h; path = PNChart/PNPieChart.h; sourceTree = "<group>"; };
-		85AE299BEB38AEDA4E2A24667C6723AC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85D965DC85CF4EC603164CD7CCC52FBA /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MGSwipeTableCell.framework; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88B6FDF9B04B7AC59FAA64D8099AFB93 /* PNLineChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartData.m; path = PNChart/PNLineChartData.m; sourceTree = "<group>"; };
-		8915076BB415C12A2F8E4D55C6899CA6 /* CSNotificationView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CSNotificationView-dummy.m"; sourceTree = "<group>"; };
-		891DE8E8AFB4D9547A1DE153F2A4E92D /* TEAChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TEAChart.xcconfig; sourceTree = "<group>"; };
-		8A360922BC6DDECC882F2E97975453E9 /* UICountingLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICountingLabel-umbrella.h"; sourceTree = "<group>"; };
-		8BD61EDBF8C7B2C6BF7DFB7525A76AF3 /* PNChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PNChart-dummy.m"; sourceTree = "<group>"; };
-		8BDD96CA56A2AC7E1CD7773C3B0EBC38 /* TEAChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TEAChart-prefix.pch"; sourceTree = "<group>"; };
-		8BF85BF69F6D0DC2266EE0E9D259544C /* PNScatterChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChartData.m; path = PNChart/PNScatterChartData.m; sourceTree = "<group>"; };
-		8C1B2B85CCBFB4C67DBC990B9CBD987A /* PNBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBar.h; path = PNChart/PNBar.h; sourceTree = "<group>"; };
-		8D31F1BA04B4DA7907DDDA1CF087BB55 /* PNChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PNChart-prefix.pch"; sourceTree = "<group>"; };
-		9074EE71C3BB540A9675FE0727B09D41 /* BEMCircle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMCircle.h; path = Classes/BEMCircle.h; sourceTree = "<group>"; };
-		91316A65A03A86D33908516AA3416DD7 /* NSDate+TEAExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+TEAExtensions.h"; path = "TEAChart/NSDate+TEAExtensions.h"; sourceTree = "<group>"; };
-		925CD6D7B572576F6566D3CB94B784D9 /* BEMPermanentPopupView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMPermanentPopupView.h; path = Classes/BEMPermanentPopupView.h; sourceTree = "<group>"; };
+		8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CSNotificationView.xcconfig; sourceTree = "<group>"; };
+		835A37BD40F981A29B05FAE96FDE753A /* PNCircleChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNCircleChart.m; path = PNChart/PNCircleChart.m; sourceTree = "<group>"; };
+		83D39F7D1AFC9FD7504F2BC86D3A3AA5 /* LongPressReorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LongPressReorder.framework; path = LongPressReorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84FB31908DB21F2AEB8DC08FA0ECAA28 /* UICountingLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		85E2F0941F0115D5A1A9BEB2E539F304 /* CSNotificationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CSNotificationView.framework; path = CSNotificationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8710F16A791FC4343C066986DCF6C4E2 /* BEMSimpleLineGraph.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BEMSimpleLineGraph.modulemap; sourceTree = "<group>"; };
+		88AA96C52EB7AE75AF2D473020F3217C /* PNBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBar.m; path = PNChart/PNBar.m; sourceTree = "<group>"; };
+		8A787FDEEEE8ABF68816BD49481E4DF9 /* PNLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChart.m; path = PNChart/PNLineChart.m; sourceTree = "<group>"; };
+		8F2A50953A83461F7FA0E06F49790800 /* exclamationMark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "exclamationMark@3x.png"; path = "CSNotificationView/Resources/exclamationMark@3x.png"; sourceTree = "<group>"; };
+		916FBBD2BE7D64DBB403C6FA407CCB58 /* PNPieChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNPieChart.h; path = PNChart/PNPieChart.h; sourceTree = "<group>"; };
+		9205D077AFEA0BAC2A2C2925A70982EC /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YourGoals.framework; path = "Pods-YourGoals.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BB4B738589DAC1F936097EE3978E21 /* PNChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChart.h; path = PNChart/PNChart.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9579D923C1BCAD58559194AF251D1AD2 /* BEMSimpleLineGraph-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BEMSimpleLineGraph-dummy.m"; sourceTree = "<group>"; };
-		99C4357D8BDD8462B0885F5DB950EEFA /* PNRadarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNRadarChart.h; path = PNChart/PNRadarChart.h; sourceTree = "<group>"; };
-		9C1F0CAE7A72C0FA96937D16A4E5DB60 /* PNRadarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNRadarChart.m; path = PNChart/PNRadarChart.m; sourceTree = "<group>"; };
-		9D9702F26F8E988FBD08E7B1EE45FB51 /* UICountingLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICountingLabel-prefix.pch"; sourceTree = "<group>"; };
+		96995A9E638AEC52B085746EE7F101F9 /* TEAClockChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAClockChart.m; path = TEAChart/TEAClockChart.m; sourceTree = "<group>"; };
+		96BE9AE52B87527D5E9D1A8181F8DB97 /* LongPressReorder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LongPressReorder-dummy.m"; sourceTree = "<group>"; };
+		98CA4C741CF578D800FA0974088BF45C /* CSNativeBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNativeBlurView.h; path = CSNotificationView/CSNativeBlurView.h; sourceTree = "<group>"; };
+		99F011C65CAFBABD931CECA18C6037DB /* TEAChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TEAChart-umbrella.h"; sourceTree = "<group>"; };
+		9A5B66B5E3BBAB9EB1E44EA62EAFE55E /* UICountingLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICountingLabel-umbrella.h"; sourceTree = "<group>"; };
+		9B4C704C15CFE72C380EBB73BC3C269F /* PNRadarChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNRadarChartDataItem.h; path = PNChart/PNRadarChartDataItem.h; sourceTree = "<group>"; };
 		9F8D089CAC0BA67A3EBE61715D0AA701 /* Pods-YourGoals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YourGoals.release.xcconfig"; sourceTree = "<group>"; };
-		A3489A695D742B3722EE5A1F474DCA40 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4A43020D4B00FEFE9A0F7431F65E02A /* checkmark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "checkmark@2x.png"; path = "CSNotificationView/Resources/checkmark@2x.png"; sourceTree = "<group>"; };
-		A6962A45FCF40654FED00C9AB0269663 /* TEAChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TEAChart-umbrella.h"; sourceTree = "<group>"; };
-		A75CF377D457ED350C20469B13202AC5 /* TEATimeRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEATimeRange.h; path = TEAChart/TEATimeRange.h; sourceTree = "<group>"; };
-		A889A1762D6F48DBBF4CF1DB094D8294 /* MGSwipeTableCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-prefix.pch"; sourceTree = "<group>"; };
+		A2927BB379617935C7AE885CE81E26F3 /* CSNotificationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNotificationView.m; path = CSNotificationView/CSNotificationView.m; sourceTree = "<group>"; };
+		A5E38882FB0E515601352E4668B3F8B3 /* PNGenericChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNGenericChart.h; path = PNChart/PNGenericChart.h; sourceTree = "<group>"; };
+		AB9B9AE0A7CC24473522C396AC04CE12 /* CSNotificationView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CSNotificationView.bundle; path = CSNotificationView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE1E4C07CE13EE34209A3DCAE8511B4B /* PNRadarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNRadarChart.h; path = PNChart/PNRadarChart.h; sourceTree = "<group>"; };
 		AE4A990FF58368664D6B75F3465171E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		AFFDE324926FE616E6059B0E6CA82D27 /* CSNotificationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNotificationView.m; path = CSNotificationView/CSNotificationView.m; sourceTree = "<group>"; };
-		B4C0239A1F0C95B028C8571D1B6AA15D /* PNScatterChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChart.h; path = PNChart/PNScatterChart.h; sourceTree = "<group>"; };
-		B55D883576DDF399B793BE369DEC3DBB /* PNRadarChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNRadarChartDataItem.m; path = PNChart/PNRadarChartDataItem.m; sourceTree = "<group>"; };
-		B629F8F4EE4EFD9B671D904FE52BF47A /* PNChartLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartLabel.h; path = PNChart/PNChartLabel.h; sourceTree = "<group>"; };
-		B62F9F9A15333D0701C4305254F6C9EE /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMSimpleLineGraphView.h; path = Classes/BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
-		B6F9C3B7211C4D8C601BA6F886D7ADF9 /* PNPieChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNPieChart.m; path = PNChart/PNPieChart.m; sourceTree = "<group>"; };
+		AE7827FB56647EE7E67AF45830F50471 /* PNScatterChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChartDataItem.m; path = PNChart/PNScatterChartDataItem.m; sourceTree = "<group>"; };
+		AFF31DE247EB595A933B5F1B4DBF9A57 /* PNChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PNChart.framework; path = PNChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1546261D9D260A6EE9D4A43205BE4C0 /* BEMAverageLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMAverageLine.h; path = Classes/BEMAverageLine.h; sourceTree = "<group>"; };
+		B1615AE5E9727ECF444C0854F9AB0854 /* UICountingLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		B2423463E1ED9501767BD11B1355FF65 /* MGSwipeTableCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MGSwipeTableCell.xcconfig; sourceTree = "<group>"; };
+		B7213821819D3BB9578E0949BF780762 /* CSNotificationView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CSNotificationView.modulemap; sourceTree = "<group>"; };
+		B8C06CA336822873DA68F24AFA6C6332 /* UICountingLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = UICountingLabel.modulemap; sourceTree = "<group>"; };
+		B8FD2FF1E892B75C6FD37F56B1227401 /* BEMPermanentPopupView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMPermanentPopupView.h; path = Classes/BEMPermanentPopupView.h; sourceTree = "<group>"; };
 		B9103AD49AA73F4AFAC5A6BD63F2B787 /* UICountingLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICountingLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B947450C55655205F81FB180640A0C86 /* UICountingLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = UICountingLabel.modulemap; sourceTree = "<group>"; };
-		BBCDA994C45A47C2A31AB8A111127941 /* checkmark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "checkmark@3x.png"; path = "CSNotificationView/Resources/checkmark@3x.png"; sourceTree = "<group>"; };
+		BA3001138CE297DCB87BFD807F177CC6 /* BEMSimpleLineGraph-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BEMSimpleLineGraph-dummy.m"; sourceTree = "<group>"; };
+		BADCF3EA248E7B5D52F7C8DD4E0BA1FA /* TEAContributionGraph.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAContributionGraph.m; path = TEAChart/TEAContributionGraph.m; sourceTree = "<group>"; };
 		BD5422676A611C9544D6676F65173477 /* Pods-YourGoals-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YourGoals-frameworks.sh"; sourceTree = "<group>"; };
-		BE0A04ADD01DD1A055FD2EB489499745 /* CSNotificationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CSNotificationView.framework; path = CSNotificationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDA2D170D1ED17ADC3EC25B40DDCC262 /* PNLineChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartData.m; path = PNChart/PNLineChartData.m; sourceTree = "<group>"; };
+		BEEA2939509492EA53C19CE95E0B30B8 /* UICountingLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICountingLabel-prefix.pch"; sourceTree = "<group>"; };
+		BEEC618EC645F85A03EF09299446D0B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF04FAEDF85969FF806CCA364231F333 /* BEMLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMLine.h; path = Classes/BEMLine.h; sourceTree = "<group>"; };
 		BF2790A8423ED9BE28AFC3B492524C18 /* Pods-YourGoals.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YourGoals.modulemap"; sourceTree = "<group>"; };
-		BF839BFFC95E10A90ED72094DDA86411 /* PNChartLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNChartLabel.m; path = PNChart/PNChartLabel.m; sourceTree = "<group>"; };
-		BFDF3E5023C23D092277F5E32A14C070 /* exclamationMark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = exclamationMark.png; path = CSNotificationView/Resources/exclamationMark.png; sourceTree = "<group>"; };
-		C3013ED0D38B794FA322A92563A1A1F4 /* CSNativeBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNativeBlurView.h; path = CSNotificationView/CSNativeBlurView.h; sourceTree = "<group>"; };
-		C3465CBBC582149D8DE4D8901DBBBE50 /* PNChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChart.h; path = PNChart/PNChart.h; sourceTree = "<group>"; };
-		C375E43AE542DC9CB95AA973D904FD1B /* TEAClockChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAClockChart.m; path = TEAChart/TEAClockChart.m; sourceTree = "<group>"; };
-		C4DDB2C40B28B23266CF14B91DC7B68C /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMSimpleLineGraphView.m; path = Classes/BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
-		C5C8A1CB83545BDE4FEDF62ABAD2DC0D /* PNBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBarChart.m; path = PNChart/PNBarChart.m; sourceTree = "<group>"; };
-		CCFEFD2303CF601AFC934398943C9C76 /* PNLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChart.h; path = PNChart/PNLineChart.h; sourceTree = "<group>"; };
-		CE9C5DEDD89DD5062BEBD64859E26C07 /* MGSwipeButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
-		D00302ABA56188B9CD577DD7131310BE /* PNRadarChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNRadarChartDataItem.h; path = PNChart/PNRadarChartDataItem.h; sourceTree = "<group>"; };
-		D4D415E2DB04CC3FD2999B145CF36264 /* BEMSimpleLineGraph-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMSimpleLineGraph-prefix.pch"; sourceTree = "<group>"; };
-		D5E889A90CE54FD2ED97FFFCBDDDB8F7 /* TEAClockChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAClockChart.h; path = TEAChart/TEAClockChart.h; sourceTree = "<group>"; };
-		D9DA97A25A5DBAB5DB407807CFDEBA75 /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMPermanentPopupView.m; path = Classes/BEMPermanentPopupView.m; sourceTree = "<group>"; };
-		DE060C812450D1292FE5F9A045C229BA /* BEMCircle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMCircle.m; path = Classes/BEMCircle.m; sourceTree = "<group>"; };
-		E13CD621CF6799BB8A19CFE2E52B0F62 /* BEMSimpleLineGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BEMSimpleLineGraph.framework; path = BEMSimpleLineGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E205E7E4D5B73CFFC90EAA521E8293F0 /* PNGenericChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNGenericChart.h; path = PNChart/PNGenericChart.h; sourceTree = "<group>"; };
-		E52510AB60D3C14415A7519C72EDF124 /* PNChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PNChart.framework; path = PNChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8965AA50FE889352D5F714F9C7066DA /* PNLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChart.m; path = PNChart/PNLineChart.m; sourceTree = "<group>"; };
+		BFA259C5FDF046C3CD7EA28FA8F94105 /* PNChartDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartDelegate.h; path = PNChart/PNChartDelegate.h; sourceTree = "<group>"; };
+		C1FCE81BEFC79AE80589D2C91EB077BE /* PNChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PNChart-dummy.m"; sourceTree = "<group>"; };
+		C359F872FF43314BAEE121764AD6EA9E /* PNRadarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNRadarChart.m; path = PNChart/PNRadarChart.m; sourceTree = "<group>"; };
+		C439B56D42E32B17727172F37D91973B /* LongPressReorder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LongPressReorder-umbrella.h"; sourceTree = "<group>"; };
+		C4CF5985CC129946F39CE2B2444429B2 /* TEAChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TEAChart-prefix.pch"; sourceTree = "<group>"; };
+		C63D1BA06E60612548159BC56BDD41A3 /* TEATimeRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEATimeRange.m; path = TEAChart/TEATimeRange.m; sourceTree = "<group>"; };
+		C96FEA74746120E0A7BEB3C52A06D587 /* BEMSimpleLineGraph-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMSimpleLineGraph-prefix.pch"; sourceTree = "<group>"; };
+		CA71610A95C69065FC5231F27ADC6B2C /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MGSwipeTableCell.framework; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE71717897ADB90C2C0D6C2715423EA5 /* PNLineChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartDataItem.h; path = PNChart/PNLineChartDataItem.h; sourceTree = "<group>"; };
+		CF479FE7AEDF40DCEDF7183CBC2152B4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9AC5376DB734E0EB56C4D211B47D04 /* PNLineChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartData.h; path = PNChart/PNLineChartData.h; sourceTree = "<group>"; };
+		D2CE9FDB73C201EEA1248663DC640BF3 /* PNBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBar.h; path = PNChart/PNBar.h; sourceTree = "<group>"; };
+		D5B09B8D587F7208E43613323724ED31 /* TEAChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TEAChart.xcconfig; sourceTree = "<group>"; };
+		DBF912BF0D4B794FB8E9BD2E628422C9 /* MGSwipeTableCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-prefix.pch"; sourceTree = "<group>"; };
+		E4111368743BF681182431FFC7A08470 /* CSNotificationView_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNotificationView_Private.h; path = CSNotificationView/CSNotificationView_Private.h; sourceTree = "<group>"; };
+		E710C71A9293F0D15AF8D5541F9A4EA2 /* checkmark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "checkmark@3x.png"; path = "CSNotificationView/Resources/checkmark@3x.png"; sourceTree = "<group>"; };
+		E9BF30760E9E1C79039BE308F828C636 /* MGSwipeTableCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGSwipeTableCell-dummy.m"; sourceTree = "<group>"; };
+		ED29F0ECFD7F715EEC80F049AB8C97A9 /* TEAChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAChart.h; path = TEAChart/TEAChart.h; sourceTree = "<group>"; };
+		EDB853201854A4D3A1009A5F50019CA5 /* PNScatterChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChart.m; path = PNChart/PNScatterChart.m; sourceTree = "<group>"; };
 		EDE596528A50555FE44365D25521AF65 /* Pods-YourGoals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YourGoals.debug.xcconfig"; sourceTree = "<group>"; };
-		F05FCE250BB7C75DB5936E2BF4AA0359 /* PNScatterChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChart.m; path = PNChart/PNScatterChart.m; sourceTree = "<group>"; };
-		F0B2BCE52D70AC6C9AECF5B41D899963 /* TEAChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TEAChart-dummy.m"; sourceTree = "<group>"; };
-		F2366EA164B0A131EAB50775B4E2DD07 /* UICountingLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UICountingLabel.framework; path = UICountingLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F662CCB227C4B4A017BF06CF92E132D3 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
+		EE41A8AB4F415467D3909C16309900BA /* LongPressReorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LongPressReorder.swift; path = LongPressReorder/Classes/LongPressReorder.swift; sourceTree = "<group>"; };
+		F042AF1973326C94B755E14C4582D258 /* BEMSimpleLineGraph.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BEMSimpleLineGraph.xcconfig; sourceTree = "<group>"; };
+		F0548BA7C2F2603202D11A7F94EAF179 /* exclamationMark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = exclamationMark.png; path = CSNotificationView/Resources/exclamationMark.png; sourceTree = "<group>"; };
+		F19F844712BC18E4491141F0F3CBDA46 /* TEAClockChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAClockChart.h; path = TEAChart/TEAClockChart.h; sourceTree = "<group>"; };
+		F2867B47E3604E804577CF35E797CA5E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F375D728EEB026ECCF80EEB95D1BE6C6 /* BEMAverageLine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMAverageLine.m; path = Classes/BEMAverageLine.m; sourceTree = "<group>"; };
+		F3C54E753E7A195ECE477F7BFB557200 /* NSDate+TEAExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TEAExtensions.m"; path = "TEAChart/NSDate+TEAExtensions.m"; sourceTree = "<group>"; };
+		F594ADDC9991EE8577289646E1851FA6 /* PNScatterChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNScatterChartData.h; path = PNChart/PNScatterChartData.h; sourceTree = "<group>"; };
 		F9CFB27C40A302EDA23D73F0B28DA359 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB4BD0865413932A86BED33771A4806E /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YourGoals.framework; path = "Pods-YourGoals.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE3A56CF2F3CE50D4E32ACB33D12841E /* PNChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PNChart.modulemap; sourceTree = "<group>"; };
-		FFF509C8CA78949B474799637E41E854 /* BEMAverageLine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMAverageLine.h; path = Classes/BEMAverageLine.h; sourceTree = "<group>"; };
+		FA9E533E296FE9BC12927CFE59A0D7B1 /* MGSwipeButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
+		FD43A0DCFE839E4A44B4DA60EBBD9F7C /* PNScatterChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNScatterChartData.m; path = PNChart/PNScatterChartData.m; sourceTree = "<group>"; };
+		FDBEFA669C15AC19844CEB5593CE7A7B /* PNChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PNChart-umbrella.h"; sourceTree = "<group>"; };
+		FF5A53FE123A1D8190DE93043CF0458E /* TEABarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEABarChart.h; path = TEAChart/TEABarChart.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		413A6FEF7A94CC93C70CCB05DBBB1938 /* Frameworks */ = {
+		00064FA71570BF8484BB2EB4085D2B4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C5FA9BBB5E83CD975FDD5422C466C8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		500A40E173E3D9D69A0CC3307FD7FF57 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3496B6EDC602D31F5EE360484F809A4A /* Foundation.framework in Frameworks */,
+				18AECCFBE1323B5FD32C30E93C9A5D16 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +378,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1CD77F6CCA97D61132467BFAEED9D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38FB954868B8A68A6EE74DFA85DD8A5F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C66D3169F59202D019137C082FB258E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,81 +393,180 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F34E45EED51816F29255A4B5E650E687 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F628A48DF59DB270DABD2E3E897E162C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		203E8E2391D412D1F171DBC8366B32A6 /* Support Files */ = {
+		0B06738974F675FE025231A49C14B412 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				15BE86791BFC159B61147E0CCF04BF63 /* CSNotificationView.modulemap */,
-				06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */,
-				8915076BB415C12A2F8E4D55C6899CA6 /* CSNotificationView-dummy.m */,
-				578060F86CF1081B04482FBB416E3D59 /* CSNotificationView-prefix.pch */,
-				6E27970BC395C1A0F85BA49D84FA4A96 /* CSNotificationView-umbrella.h */,
-				85AE299BEB38AEDA4E2A24667C6723AC /* Info.plist */,
-				4871E6DC9B2BD353A403B8F08D3B8F31 /* ResourceBundle-CSNotificationView-Info.plist */,
+				1266C0E5174FC1D18FD6CF2EE1108174 /* Info.plist */,
+				621B2BF7AB081F2427AE3682208B8F90 /* PNChart.modulemap */,
+				437F22A3A039D5AF91CBFEFB2DBB744E /* PNChart.xcconfig */,
+				C1FCE81BEFC79AE80589D2C91EB077BE /* PNChart-dummy.m */,
+				228E1EC0FCD694160EED54EA46EAC589 /* PNChart-prefix.pch */,
+				FDBEFA669C15AC19844CEB5593CE7A7B /* PNChart-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PNChart";
+			sourceTree = "<group>";
+		};
+		136FD40354249DCE5E366CAB0E06D4BA /* TEAChart */ = {
+			isa = PBXGroup;
+			children = (
+				6B18F09192F017DDEC9C4E6F1FFE04ED /* NSDate+TEAExtensions.h */,
+				F3C54E753E7A195ECE477F7BFB557200 /* NSDate+TEAExtensions.m */,
+				FF5A53FE123A1D8190DE93043CF0458E /* TEABarChart.h */,
+				0BD9E0F0FF26B405C301C383852FDE35 /* TEABarChart.m */,
+				ED29F0ECFD7F715EEC80F049AB8C97A9 /* TEAChart.h */,
+				F19F844712BC18E4491141F0F3CBDA46 /* TEAClockChart.h */,
+				96995A9E638AEC52B085746EE7F101F9 /* TEAClockChart.m */,
+				68D7210AEF78A344DB60F78C55F170F4 /* TEAContributionGraph.h */,
+				BADCF3EA248E7B5D52F7C8DD4E0BA1FA /* TEAContributionGraph.m */,
+				4ABC6A9A9803F8CED070420AA9CBB256 /* TEATimeRange.h */,
+				C63D1BA06E60612548159BC56BDD41A3 /* TEATimeRange.m */,
+				BD0BDC285B45053C110136DD8BD3CB09 /* Support Files */,
+			);
+			name = TEAChart;
+			path = TEAChart;
+			sourceTree = "<group>";
+		};
+		148569D5E064377616810F9EE35B7B2A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B7213821819D3BB9578E0949BF780762 /* CSNotificationView.modulemap */,
+				8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */,
+				3C1723E95D0061546F1CA96E1EB6AF79 /* CSNotificationView-dummy.m */,
+				66E88DB7268442FDC4414BFCF2CA0441 /* CSNotificationView-prefix.pch */,
+				619D29C78C64023B703D90E7D9E709F0 /* CSNotificationView-umbrella.h */,
+				385380CC95384CE7528D2773A1FB4A7C /* Info.plist */,
+				002C4665F3FBB040FFEE12554177FC9B /* ResourceBundle-CSNotificationView-Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/CSNotificationView";
 			sourceTree = "<group>";
 		};
-		39C162FD8FA7CE07D99C1E8582995569 /* Products */ = {
+		1797A3D39A611602D6FC879F7B293138 /* UICountingLabel */ = {
 			isa = PBXGroup;
 			children = (
-				E13CD621CF6799BB8A19CFE2E52B0F62 /* BEMSimpleLineGraph.framework */,
-				660C9AE7362DB2FA5134AA406806F062 /* CSNotificationView.bundle */,
-				BE0A04ADD01DD1A055FD2EB489499745 /* CSNotificationView.framework */,
-				85D965DC85CF4EC603164CD7CCC52FBA /* MGSwipeTableCell.framework */,
-				E52510AB60D3C14415A7519C72EDF124 /* PNChart.framework */,
-				FB4BD0865413932A86BED33771A4806E /* Pods_YourGoals.framework */,
-				1B04362902D992FE116FBC00F79DB48F /* TEAChart.framework */,
-				F2366EA164B0A131EAB50775B4E2DD07 /* UICountingLabel.framework */,
+				B1615AE5E9727ECF444C0854F9AB0854 /* UICountingLabel.h */,
+				84FB31908DB21F2AEB8DC08FA0ECAA28 /* UICountingLabel.m */,
+				DA3A89FD7EE3ACCFD2FEBC72823DB097 /* Support Files */,
 			);
-			name = Products;
+			name = UICountingLabel;
+			path = UICountingLabel;
 			sourceTree = "<group>";
 		};
-		44F7255B95B77D416C4B4FCEFCC6035C /* Support Files */ = {
+		38899BDD690F81E568FB2180ECB50FEC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				34722D5B6911C2C540DE3BE7350B8413 /* Info.plist */,
-				0C8AAA2A3562B6214D0DF1C1B666CD5F /* TEAChart.modulemap */,
-				891DE8E8AFB4D9547A1DE153F2A4E92D /* TEAChart.xcconfig */,
-				F0B2BCE52D70AC6C9AECF5B41D899963 /* TEAChart-dummy.m */,
-				8BDD96CA56A2AC7E1CD7773C3B0EBC38 /* TEAChart-prefix.pch */,
-				A6962A45FCF40654FED00C9AB0269663 /* TEAChart-umbrella.h */,
+				CF479FE7AEDF40DCEDF7183CBC2152B4 /* Info.plist */,
+				153867DE5F14A537322787232848D3F3 /* MGSwipeTableCell.modulemap */,
+				B2423463E1ED9501767BD11B1355FF65 /* MGSwipeTableCell.xcconfig */,
+				E9BF30760E9E1C79039BE308F828C636 /* MGSwipeTableCell-dummy.m */,
+				DBF912BF0D4B794FB8E9BD2E628422C9 /* MGSwipeTableCell-prefix.pch */,
+				18DFAA687470785B79FB6FCB0833FD04 /* MGSwipeTableCell-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/TEAChart";
+			path = "../Target Support Files/MGSwipeTableCell";
 			sourceTree = "<group>";
 		};
-		58C6523F72A77C873C63A7E39557B03E /* BEMSimpleLineGraph */ = {
+		3990C04084E89DFE191D628C52EEA16B /* PNChart */ = {
 			isa = PBXGroup;
 			children = (
-				FFF509C8CA78949B474799637E41E854 /* BEMAverageLine.h */,
-				7D225CFA350D4A7BF71B0714891F8502 /* BEMAverageLine.m */,
-				9074EE71C3BB540A9675FE0727B09D41 /* BEMCircle.h */,
-				DE060C812450D1292FE5F9A045C229BA /* BEMCircle.m */,
-				2E5011445B66F9A9DAA6C43852C0BC61 /* BEMLine.h */,
-				17B9BB0A0878E8DF95770C6DA2C913EE /* BEMLine.m */,
-				925CD6D7B572576F6566D3CB94B784D9 /* BEMPermanentPopupView.h */,
-				D9DA97A25A5DBAB5DB407807CFDEBA75 /* BEMPermanentPopupView.m */,
-				B62F9F9A15333D0701C4305254F6C9EE /* BEMSimpleLineGraphView.h */,
-				C4DDB2C40B28B23266CF14B91DC7B68C /* BEMSimpleLineGraphView.m */,
-				D0962BBFDBFA53DC7EF390FA6F23E22C /* Support Files */,
+				D2CE9FDB73C201EEA1248663DC640BF3 /* PNBar.h */,
+				88AA96C52EB7AE75AF2D473020F3217C /* PNBar.m */,
+				253524282193EF10ED0F5D137D742822 /* PNBarChart.h */,
+				3D005B10B9F5689E0D47AA2F6DCD954D /* PNBarChart.m */,
+				92BB4B738589DAC1F936097EE3978E21 /* PNChart.h */,
+				BFA259C5FDF046C3CD7EA28FA8F94105 /* PNChartDelegate.h */,
+				1EFB85618BE87C7D509DAB11D202095E /* PNChartLabel.h */,
+				4568AEE69C782A33570F0D3BB4B17A90 /* PNChartLabel.m */,
+				37F49248016A851272EA7317FBCEAF55 /* PNCircleChart.h */,
+				835A37BD40F981A29B05FAE96FDE753A /* PNCircleChart.m */,
+				375E5F1713E7D73B421B3EE1DC74FD25 /* PNColor.h */,
+				0B69625EE232A80C1218FA923D234251 /* PNColor.m */,
+				A5E38882FB0E515601352E4668B3F8B3 /* PNGenericChart.h */,
+				2CDA3760AEB317B8BBD0F6242044BDF9 /* PNGenericChart.m */,
+				0A3E327011EBA68BA986EC0914C0A7B3 /* PNLineChart.h */,
+				8A787FDEEEE8ABF68816BD49481E4DF9 /* PNLineChart.m */,
+				CF9AC5376DB734E0EB56C4D211B47D04 /* PNLineChartData.h */,
+				BDA2D170D1ED17ADC3EC25B40DDCC262 /* PNLineChartData.m */,
+				CE71717897ADB90C2C0D6C2715423EA5 /* PNLineChartDataItem.h */,
+				4BCD96C63A50092C57503CA3FB1471D3 /* PNLineChartDataItem.m */,
+				916FBBD2BE7D64DBB403C6FA407CCB58 /* PNPieChart.h */,
+				1266F71C83096D7C1B4AD47794FF7821 /* PNPieChart.m */,
+				2F32B3F06456D374070F6420737EA2A8 /* PNPieChartDataItem.h */,
+				4B291AA0C6BB266C829464B5AFA1F90E /* PNPieChartDataItem.m */,
+				AE1E4C07CE13EE34209A3DCAE8511B4B /* PNRadarChart.h */,
+				C359F872FF43314BAEE121764AD6EA9E /* PNRadarChart.m */,
+				9B4C704C15CFE72C380EBB73BC3C269F /* PNRadarChartDataItem.h */,
+				53C7F87685CA719F36DCFCBF8847B759 /* PNRadarChartDataItem.m */,
+				65712CC0C3E871B12FDBCCD4AA4283DF /* PNScatterChart.h */,
+				EDB853201854A4D3A1009A5F50019CA5 /* PNScatterChart.m */,
+				F594ADDC9991EE8577289646E1851FA6 /* PNScatterChartData.h */,
+				FD43A0DCFE839E4A44B4DA60EBBD9F7C /* PNScatterChartData.m */,
+				746B4DDB5618C99BCC8A54108888E596 /* PNScatterChartDataItem.h */,
+				AE7827FB56647EE7E67AF45830F50471 /* PNScatterChartDataItem.m */,
+				0B06738974F675FE025231A49C14B412 /* Support Files */,
+			);
+			name = PNChart;
+			path = PNChart;
+			sourceTree = "<group>";
+		};
+		3C89EB5D2F8F91FE2D2E927EC885F030 /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA9E533E296FE9BC12927CFE59A0D7B1 /* MGSwipeButton.h */,
+				32A189C66798B40281C1C7A8EF4B760C /* MGSwipeButton.m */,
+				5AC1D3DD7299D99C071DB40B47884019 /* MGSwipeTableCell.h */,
+				423454C5932B2DA34FEEECE3221876E5 /* MGSwipeTableCell.m */,
+				38899BDD690F81E568FB2180ECB50FEC /* Support Files */,
+			);
+			name = MGSwipeTableCell;
+			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
+		626C85E7014D48A0BA5363F9BDE41970 /* BEMSimpleLineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				B1546261D9D260A6EE9D4A43205BE4C0 /* BEMAverageLine.h */,
+				F375D728EEB026ECCF80EEB95D1BE6C6 /* BEMAverageLine.m */,
+				3DADD546B31483A1111596B79ED1BE2B /* BEMCircle.h */,
+				7056CFF86CAB7810CC4918CBBC51C9A1 /* BEMCircle.m */,
+				BF04FAEDF85969FF806CCA364231F333 /* BEMLine.h */,
+				408D704219328A626E45F2B7A58BC633 /* BEMLine.m */,
+				B8FD2FF1E892B75C6FD37F56B1227401 /* BEMPermanentPopupView.h */,
+				1EA7DB53198F8FAA4D5B3197EFDB376C /* BEMPermanentPopupView.m */,
+				22798F4C4BFAAEF190688EEA456B0D52 /* BEMSimpleLineGraphView.h */,
+				60FDEA09222DC2E0BB39276F4D40513C /* BEMSimpleLineGraphView.m */,
+				81D86C9A6AE0960704E528A54AA763F7 /* Support Files */,
 			);
 			name = BEMSimpleLineGraph;
 			path = BEMSimpleLineGraph;
 			sourceTree = "<group>";
 		};
-		6F299F1B0B924E77407CF44A1CBFA62F /* UICountingLabel */ = {
+		64FA25568A7806976EA8DAD250609B0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0C5CA1E14FA8AD018345D96B3D330BB0 /* UICountingLabel.h */,
-				4011669D2F26BBFA03CAE0EBD8E50E9F /* UICountingLabel.m */,
-				ECE0D7C8C369998F01BD9D3DF4486A20 /* Support Files */,
+				12AAC8CE5764B2058DFC2D950278860A /* BEMSimpleLineGraph.framework */,
+				AB9B9AE0A7CC24473522C396AC04CE12 /* CSNotificationView.bundle */,
+				85E2F0941F0115D5A1A9BEB2E539F304 /* CSNotificationView.framework */,
+				83D39F7D1AFC9FD7504F2BC86D3A3AA5 /* LongPressReorder.framework */,
+				CA71610A95C69065FC5231F27ADC6B2C /* MGSwipeTableCell.framework */,
+				AFF31DE247EB595A933B5F1B4DBF9A57 /* PNChart.framework */,
+				9205D077AFEA0BAC2A2C2925A70982EC /* Pods_YourGoals.framework */,
+				1F5C2CF0B85DFE650D3CED5E8F95125B /* TEAChart.framework */,
+				33C51C35E6D1736C5205E1CD6201A85A /* UICountingLabel.framework */,
 			);
-			name = UICountingLabel;
-			path = UICountingLabel;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7584D91B44EFA9272F6AAFDCCE7D653D /* Targets Support Files */ = {
@@ -459,28 +577,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7AE4BC78A846E3E6F21B75A0E64F1DF4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5E18C2AA7994D2E7B490272FAF3C8DA9 /* checkmark.png */,
-				A4A43020D4B00FEFE9A0F7431F65E02A /* checkmark@2x.png */,
-				BBCDA994C45A47C2A31AB8A111127941 /* checkmark@3x.png */,
-				BFDF3E5023C23D092277F5E32A14C070 /* exclamationMark.png */,
-				521944EA891DDCE50FD272374B6FE3C5 /* exclamationMark@2x.png */,
-				45FC7DCA5D3DED584CDE9CA7EE84ABA5 /* exclamationMark@3x.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				E7558378B05AD4CBD1053EABE1357F06 /* Frameworks */,
-				D80D31156D5BBB70DB0B810614C0C265 /* Pods */,
-				39C162FD8FA7CE07D99C1E8582995569 /* Products */,
+				7DD9204B535353E502BC6DFD7975A7AC /* Pods */,
+				64FA25568A7806976EA8DAD250609B0D /* Products */,
 				7584D91B44EFA9272F6AAFDCCE7D653D /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		7DD9204B535353E502BC6DFD7975A7AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				626C85E7014D48A0BA5363F9BDE41970 /* BEMSimpleLineGraph */,
+				AC6C4011D744680B08845B2F41A4EF68 /* CSNotificationView */,
+				BF472E29BEE7D494C5040B7385CDC7D6 /* LongPressReorder */,
+				3C89EB5D2F8F91FE2D2E927EC885F030 /* MGSwipeTableCell */,
+				3990C04084E89DFE191D628C52EEA16B /* PNChart */,
+				136FD40354249DCE5E366CAB0E06D4BA /* TEAChart */,
+				1797A3D39A611602D6FC879F7B293138 /* UICountingLabel */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7E8DD510386F2532AE6A6B8A7FCDE421 /* iOS */ = {
@@ -494,95 +613,72 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		87CA1496B631CBAAABD4F0E345F30E63 /* TEAChart */ = {
+		81D86C9A6AE0960704E528A54AA763F7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				91316A65A03A86D33908516AA3416DD7 /* NSDate+TEAExtensions.h */,
-				2C76250516D01C4BC6B1F378762DC3D9 /* NSDate+TEAExtensions.m */,
-				0E39A07CC7F427E6656A935303528D04 /* TEABarChart.h */,
-				7E7B6F13C5CDAE820CC81EBBFFC44B5B /* TEABarChart.m */,
-				2B60610C052D5ECB7B1560297AADB1DB /* TEAChart.h */,
-				D5E889A90CE54FD2ED97FFFCBDDDB8F7 /* TEAClockChart.h */,
-				C375E43AE542DC9CB95AA973D904FD1B /* TEAClockChart.m */,
-				841DA54C15A69BB26182391002898A5C /* TEAContributionGraph.h */,
-				221B4719944786B5016CAB4D58696113 /* TEAContributionGraph.m */,
-				A75CF377D457ED350C20469B13202AC5 /* TEATimeRange.h */,
-				5A287AD608376FBEB10095DB1CC52DBA /* TEATimeRange.m */,
-				44F7255B95B77D416C4B4FCEFCC6035C /* Support Files */,
-			);
-			name = TEAChart;
-			path = TEAChart;
-			sourceTree = "<group>";
-		};
-		91F07B97D0C80F7581EDCBEBBEC12667 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6C95A456F54C7AFA1D869DC31891C6A9 /* Info.plist */,
-				FE3A56CF2F3CE50D4E32ACB33D12841E /* PNChart.modulemap */,
-				25F8CE8264C335E3AEC4DFAD84264310 /* PNChart.xcconfig */,
-				8BD61EDBF8C7B2C6BF7DFB7525A76AF3 /* PNChart-dummy.m */,
-				8D31F1BA04B4DA7907DDDA1CF087BB55 /* PNChart-prefix.pch */,
-				132B67A714813EFEFDE526139FCD5370 /* PNChart-umbrella.h */,
+				8710F16A791FC4343C066986DCF6C4E2 /* BEMSimpleLineGraph.modulemap */,
+				F042AF1973326C94B755E14C4582D258 /* BEMSimpleLineGraph.xcconfig */,
+				BA3001138CE297DCB87BFD807F177CC6 /* BEMSimpleLineGraph-dummy.m */,
+				C96FEA74746120E0A7BEB3C52A06D587 /* BEMSimpleLineGraph-prefix.pch */,
+				5FCA70FCF425005AB2434798FCA1E85D /* BEMSimpleLineGraph-umbrella.h */,
+				2266366BD60E1C392C1AC23BF16BDB65 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/PNChart";
+			path = "../Target Support Files/BEMSimpleLineGraph";
 			sourceTree = "<group>";
 		};
-		A52B38B0C9EA7C5F834288D98F84FD5F /* PNChart */ = {
+		AC6C4011D744680B08845B2F41A4EF68 /* CSNotificationView */ = {
 			isa = PBXGroup;
 			children = (
-				8C1B2B85CCBFB4C67DBC990B9CBD987A /* PNBar.h */,
-				2FD4F3B4152B4D2B2A70FBBFB94FC18B /* PNBar.m */,
-				2CDAB64803983CB6A5B73F961115024B /* PNBarChart.h */,
-				C5C8A1CB83545BDE4FEDF62ABAD2DC0D /* PNBarChart.m */,
-				C3465CBBC582149D8DE4D8901DBBBE50 /* PNChart.h */,
-				59E65F0DA4C2CA2CB64EE42CADC81B1B /* PNChartDelegate.h */,
-				B629F8F4EE4EFD9B671D904FE52BF47A /* PNChartLabel.h */,
-				BF839BFFC95E10A90ED72094DDA86411 /* PNChartLabel.m */,
-				6B551F85645DE837746373867A6A3132 /* PNCircleChart.h */,
-				81CE0C0D027F8A03B7ABF9A4CFE4B27F /* PNCircleChart.m */,
-				4D3A323200426FE906D25E51C420EADE /* PNColor.h */,
-				688C38981E7835E8F1727AD106CE82C3 /* PNColor.m */,
-				E205E7E4D5B73CFFC90EAA521E8293F0 /* PNGenericChart.h */,
-				66831E3F3AA4572B9725E0B3034A7ACD /* PNGenericChart.m */,
-				CCFEFD2303CF601AFC934398943C9C76 /* PNLineChart.h */,
-				E8965AA50FE889352D5F714F9C7066DA /* PNLineChart.m */,
-				68D31743B27A7DCC5667B70B328CB0CB /* PNLineChartData.h */,
-				88B6FDF9B04B7AC59FAA64D8099AFB93 /* PNLineChartData.m */,
-				6E95D1B21A21CBA3DBBD79C551A35280 /* PNLineChartDataItem.h */,
-				072FA9CEF7A186874430341D7E4B5967 /* PNLineChartDataItem.m */,
-				84E2B657EB0559CB3C625A0BF30D18BB /* PNPieChart.h */,
-				B6F9C3B7211C4D8C601BA6F886D7ADF9 /* PNPieChart.m */,
-				3E996B174D854A79846727507B6F6720 /* PNPieChartDataItem.h */,
-				22C6D1CDC19E539F895DD275ED9ABE8C /* PNPieChartDataItem.m */,
-				99C4357D8BDD8462B0885F5DB950EEFA /* PNRadarChart.h */,
-				9C1F0CAE7A72C0FA96937D16A4E5DB60 /* PNRadarChart.m */,
-				D00302ABA56188B9CD577DD7131310BE /* PNRadarChartDataItem.h */,
-				B55D883576DDF399B793BE369DEC3DBB /* PNRadarChartDataItem.m */,
-				B4C0239A1F0C95B028C8571D1B6AA15D /* PNScatterChart.h */,
-				F05FCE250BB7C75DB5936E2BF4AA0359 /* PNScatterChart.m */,
-				5517977F65C4F26B7D38F4AF076F76D5 /* PNScatterChartData.h */,
-				8BF85BF69F6D0DC2266EE0E9D259544C /* PNScatterChartData.m */,
-				83E6C29F9709B072FBBEFCD65F5D0940 /* PNScatterChartDataItem.h */,
-				51BC3E6FEBE6601736C4AA9749978C78 /* PNScatterChartDataItem.m */,
-				91F07B97D0C80F7581EDCBEBBEC12667 /* Support Files */,
+				23206A44370833F9733E6EEC367368C6 /* CSLayerStealingBlurView.h */,
+				76FA0DA69F20F46753FC6E2A1BA4EF54 /* CSLayerStealingBlurView.m */,
+				98CA4C741CF578D800FA0974088BF45C /* CSNativeBlurView.h */,
+				0B7DFA15F05009F232C25CF5FF0C7490 /* CSNativeBlurView.m */,
+				4D5EF2000229E0ADD75B6AF9FBFA3722 /* CSNotificationView.h */,
+				A2927BB379617935C7AE885CE81E26F3 /* CSNotificationView.m */,
+				E4111368743BF681182431FFC7A08470 /* CSNotificationView_Private.h */,
+				BE529F014EE65CE944EEFA573DA15B4F /* Resources */,
+				148569D5E064377616810F9EE35B7B2A /* Support Files */,
 			);
-			name = PNChart;
-			path = PNChart;
+			name = CSNotificationView;
+			path = CSNotificationView;
 			sourceTree = "<group>";
 		};
-		C838E7175EF0FE7520B5191AA06D2C6F /* Support Files */ = {
+		BD0BDC285B45053C110136DD8BD3CB09 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A3489A695D742B3722EE5A1F474DCA40 /* Info.plist */,
-				281BA1C36E4F4D0E9CF1BD48545BFD18 /* MGSwipeTableCell.modulemap */,
-				3D379AAFE9A0D2E3743BB68C69388604 /* MGSwipeTableCell.xcconfig */,
-				4EF6D031948F462DD863B8485285581C /* MGSwipeTableCell-dummy.m */,
-				A889A1762D6F48DBBF4CF1DB094D8294 /* MGSwipeTableCell-prefix.pch */,
-				3977521923CFAF54B7AF35C7A26CA677 /* MGSwipeTableCell-umbrella.h */,
+				6F57F7F6ABBC4E4745D1ECB3FDF24636 /* Info.plist */,
+				5F396280604A38138A0FE291BDF06648 /* TEAChart.modulemap */,
+				D5B09B8D587F7208E43613323724ED31 /* TEAChart.xcconfig */,
+				6106261AB66D9C2D7B83AD63CC257FD4 /* TEAChart-dummy.m */,
+				C4CF5985CC129946F39CE2B2444429B2 /* TEAChart-prefix.pch */,
+				99F011C65CAFBABD931CECA18C6037DB /* TEAChart-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MGSwipeTableCell";
+			path = "../Target Support Files/TEAChart";
+			sourceTree = "<group>";
+		};
+		BE529F014EE65CE944EEFA573DA15B4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				585F0C34A5D295DB0BAB5DA60549957E /* checkmark.png */,
+				77D0C811F3C7890EA3160F07E18834F3 /* checkmark@2x.png */,
+				E710C71A9293F0D15AF8D5541F9A4EA2 /* checkmark@3x.png */,
+				F0548BA7C2F2603202D11A7F94EAF179 /* exclamationMark.png */,
+				76147CA3E1D31A67F82A33B2BC64DFA8 /* exclamationMark@2x.png */,
+				8F2A50953A83461F7FA0E06F49790800 /* exclamationMark@3x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BF472E29BEE7D494C5040B7385CDC7D6 /* LongPressReorder */ = {
+			isa = PBXGroup;
+			children = (
+				EE41A8AB4F415467D3909C16309900BA /* LongPressReorder.swift */,
+				F036E948339FCE206FCEDA8FECFC5A7B /* Support Files */,
+			);
+			name = LongPressReorder;
+			path = LongPressReorder;
 			sourceTree = "<group>";
 		};
 		CA4C5A0C0912897A4EE73258A3EF9215 /* Pods-YourGoals */ = {
@@ -603,48 +699,18 @@
 			path = "Target Support Files/Pods-YourGoals";
 			sourceTree = "<group>";
 		};
-		D0962BBFDBFA53DC7EF390FA6F23E22C /* Support Files */ = {
+		DA3A89FD7EE3ACCFD2FEBC72823DB097 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				43C9C45F3A71BF1B75FCD7E107FE093A /* BEMSimpleLineGraph.modulemap */,
-				7BF474D26A5D9FD358EB960D49DF855D /* BEMSimpleLineGraph.xcconfig */,
-				9579D923C1BCAD58559194AF251D1AD2 /* BEMSimpleLineGraph-dummy.m */,
-				D4D415E2DB04CC3FD2999B145CF36264 /* BEMSimpleLineGraph-prefix.pch */,
-				177D34C97AC3401597CE943F7186F5B6 /* BEMSimpleLineGraph-umbrella.h */,
-				3BB37BFD50447BE5C1655D0A0ED7CDB2 /* Info.plist */,
+				BEEC618EC645F85A03EF09299446D0B1 /* Info.plist */,
+				B8C06CA336822873DA68F24AFA6C6332 /* UICountingLabel.modulemap */,
+				233C75D7E92D2948D8CCA36BA8A69B24 /* UICountingLabel.xcconfig */,
+				289322D6BF26326DD3DDDB2097A986F0 /* UICountingLabel-dummy.m */,
+				BEEA2939509492EA53C19CE95E0B30B8 /* UICountingLabel-prefix.pch */,
+				9A5B66B5E3BBAB9EB1E44EA62EAFE55E /* UICountingLabel-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/BEMSimpleLineGraph";
-			sourceTree = "<group>";
-		};
-		D40143BF27A3BCB50E4A48D02A3D9F1E /* CSNotificationView */ = {
-			isa = PBXGroup;
-			children = (
-				42EE4D49B09B1CC22C3BFF2399DBB39C /* CSLayerStealingBlurView.h */,
-				5C0D393094DDAECC043E039FCFB70E76 /* CSLayerStealingBlurView.m */,
-				C3013ED0D38B794FA322A92563A1A1F4 /* CSNativeBlurView.h */,
-				78019CAAEB38C6CE4F1ED07A92FAC079 /* CSNativeBlurView.m */,
-				617B56656EC5A5743AB16D165FF3FAC9 /* CSNotificationView.h */,
-				AFFDE324926FE616E6059B0E6CA82D27 /* CSNotificationView.m */,
-				541D95194A5657E94EC4DBD209598274 /* CSNotificationView_Private.h */,
-				7AE4BC78A846E3E6F21B75A0E64F1DF4 /* Resources */,
-				203E8E2391D412D1F171DBC8366B32A6 /* Support Files */,
-			);
-			name = CSNotificationView;
-			path = CSNotificationView;
-			sourceTree = "<group>";
-		};
-		D80D31156D5BBB70DB0B810614C0C265 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				58C6523F72A77C873C63A7E39557B03E /* BEMSimpleLineGraph */,
-				D40143BF27A3BCB50E4A48D02A3D9F1E /* CSNotificationView */,
-				EBBC8691FCF92D3B47219A66233EB628 /* MGSwipeTableCell */,
-				A52B38B0C9EA7C5F834288D98F84FD5F /* PNChart */,
-				87CA1496B631CBAAABD4F0E345F30E63 /* TEAChart */,
-				6F299F1B0B924E77407CF44A1CBFA62F /* UICountingLabel */,
-			);
-			name = Pods;
+			path = "../Target Support Files/UICountingLabel";
 			sourceTree = "<group>";
 		};
 		E7558378B05AD4CBD1053EABE1357F06 /* Frameworks */ = {
@@ -656,31 +722,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EBBC8691FCF92D3B47219A66233EB628 /* MGSwipeTableCell */ = {
+		F036E948339FCE206FCEDA8FECFC5A7B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				03FB07E97BDF5D16A2532D5836F4163F /* MGSwipeButton.h */,
-				CE9C5DEDD89DD5062BEBD64859E26C07 /* MGSwipeButton.m */,
-				F662CCB227C4B4A017BF06CF92E132D3 /* MGSwipeTableCell.h */,
-				2E5B7558BC1AC40EF8B2398D28B01D4A /* MGSwipeTableCell.m */,
-				C838E7175EF0FE7520B5191AA06D2C6F /* Support Files */,
-			);
-			name = MGSwipeTableCell;
-			path = MGSwipeTableCell;
-			sourceTree = "<group>";
-		};
-		ECE0D7C8C369998F01BD9D3DF4486A20 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6CD399BC60531234896EEA31A557927A /* Info.plist */,
-				B947450C55655205F81FB180640A0C86 /* UICountingLabel.modulemap */,
-				556AE3C4787634F93F5306815B1344C6 /* UICountingLabel.xcconfig */,
-				3F4E9426531A52715526F398587E2F03 /* UICountingLabel-dummy.m */,
-				9D9702F26F8E988FBD08E7B1EE45FB51 /* UICountingLabel-prefix.pch */,
-				8A360922BC6DDECC882F2E97975453E9 /* UICountingLabel-umbrella.h */,
+				F2867B47E3604E804577CF35E797CA5E /* Info.plist */,
+				0DB6FBBC77A1AD7DF56CF39BA1CBBC72 /* LongPressReorder.modulemap */,
+				2EB6B0B7D763E81B7BE4C17422441B31 /* LongPressReorder.xcconfig */,
+				96BE9AE52B87527D5E9D1A8181F8DB97 /* LongPressReorder-dummy.m */,
+				2B7DD976D39AB5B3BA76C3A0A98F21C5 /* LongPressReorder-prefix.pch */,
+				C439B56D42E32B17727172F37D91973B /* LongPressReorder-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/UICountingLabel";
+			path = "../Target Support Files/LongPressReorder";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -747,25 +800,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6C4A6475C243A8C98E11092C26E39DCF /* Headers */ = {
+		8591CCD381EDF2EC34D978667C8D27A8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0C6232FFF76ED1BD9E988CEC8D7EEC /* Pods-YourGoals-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70A1D8948746504D6AA5BE2058F9D2B0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0D9D954CF085DB2A706AB8A95EF59B8 /* NSDate+TEAExtensions.h in Headers */,
-				5998081CEB075ADED541804D7F9664FC /* TEABarChart.h in Headers */,
-				5BB3AF94D7CF8C47730B55492108E165 /* TEAChart-umbrella.h in Headers */,
-				F174F2C586B1C5425B5E5F4F80181BC2 /* TEAChart.h in Headers */,
-				ACDBBAF66F9C904F743D150E5C557DF6 /* TEAClockChart.h in Headers */,
-				C7CD2C6C0B5E3A5AFF132FB8441D06FD /* TEAContributionGraph.h in Headers */,
-				255758C364A039AD649086B312E39A0F /* TEATimeRange.h in Headers */,
+				FCFB939824FC226493F16CBC4FF8B126 /* LongPressReorder-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,9 +817,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B27CDB49EDDE88390D2AAE91427AA565 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837600560A1344B2FC522A2E16BCAE71 /* NSDate+TEAExtensions.h in Headers */,
+				CECCC952D1A22D78F1885A3571A425DB /* TEABarChart.h in Headers */,
+				439FDC23F3B3821EC61167F261B7A7CF /* TEAChart-umbrella.h in Headers */,
+				52BD33B98121893E34C5213EE5F1724B /* TEAChart.h in Headers */,
+				F710CD15B8E6DE65CB38E372D0F625C9 /* TEAClockChart.h in Headers */,
+				0A7A469ECEADB2A2EB4C27A12482A743 /* TEAContributionGraph.h in Headers */,
+				6788EFD10CA339C8E824D06A0E45529C /* TEATimeRange.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9B36A5D60C3FC9FDCD83BB1F0EB3638 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0F29A319912688BDCE8F442038400BE /* Pods-YourGoals-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		012811B0952DADDCB3C1E995B5D0AA9A /* Pods-YourGoals */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E209A6B5B8BC15E48CBFD0195FE7E88 /* Build configuration list for PBXNativeTarget "Pods-YourGoals" */;
+			buildPhases = (
+				404D5CAB393F0D06326DD7BB1F00A19B /* Sources */,
+				B1CD77F6CCA97D61132467BFAEED9D83 /* Frameworks */,
+				F9B36A5D60C3FC9FDCD83BB1F0EB3638 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC47EDEE3620E746CCCD595432729C0F /* PBXTargetDependency */,
+				5580E6BC68EB62D05038FCC602AFDFB5 /* PBXTargetDependency */,
+				E51FD523224D8533760F20D37E5A3C82 /* PBXTargetDependency */,
+				C8D1A394765A1C8D7EC314EC6EB0F291 /* PBXTargetDependency */,
+				66636A9DD55C504E5737D27243C7342A /* PBXTargetDependency */,
+				7BF7545080ADC369702B0E9AD12D7FF7 /* PBXTargetDependency */,
+				5554AFE7EDE91EC9D2C484E968380AAB /* PBXTargetDependency */,
+			);
+			name = "Pods-YourGoals";
+			productName = "Pods-YourGoals";
+			productReference = 9205D077AFEA0BAC2A2C2925A70982EC /* Pods_YourGoals.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		0FC1CB21D1B64FAAC47A6478616DA728 /* PNChart */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A92B5FD027CE987470A48E671364959 /* Build configuration list for PBXNativeTarget "PNChart" */;
@@ -796,7 +881,7 @@
 			);
 			name = PNChart;
 			productName = PNChart;
-			productReference = E52510AB60D3C14415A7519C72EDF124 /* PNChart.framework */;
+			productReference = AFF31DE247EB595A933B5F1B4DBF9A57 /* PNChart.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		1CD80321715FDB12A3A31B7BCB09EA28 /* MGSwipeTableCell */ = {
@@ -813,24 +898,7 @@
 			);
 			name = MGSwipeTableCell;
 			productName = MGSwipeTableCell;
-			productReference = 85D965DC85CF4EC603164CD7CCC52FBA /* MGSwipeTableCell.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5E2723DE681F8F54499D1D609C6EA3CA /* TEAChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C9363288B058EFEF8ABAC9E9BE6366C0 /* Build configuration list for PBXNativeTarget "TEAChart" */;
-			buildPhases = (
-				3070015AE5820B454FACDB67E572B38C /* Sources */,
-				500A40E173E3D9D69A0CC3307FD7FF57 /* Frameworks */,
-				70A1D8948746504D6AA5BE2058F9D2B0 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TEAChart;
-			productName = TEAChart;
-			productReference = 1B04362902D992FE116FBC00F79DB48F /* TEAChart.framework */;
+			productReference = CA71610A95C69065FC5231F27ADC6B2C /* MGSwipeTableCell.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8A421C6298CB3DF5D749193BD6FD0B38 /* BEMSimpleLineGraph */ = {
@@ -847,7 +915,7 @@
 			);
 			name = BEMSimpleLineGraph;
 			productName = BEMSimpleLineGraph;
-			productReference = E13CD621CF6799BB8A19CFE2E52B0F62 /* BEMSimpleLineGraph.framework */;
+			productReference = 12AAC8CE5764B2058DFC2D950278860A /* BEMSimpleLineGraph.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8FB7A778D93C9B30AF7470FDBDA9C0B8 /* CSNotificationView-CSNotificationView */ = {
@@ -864,7 +932,7 @@
 			);
 			name = "CSNotificationView-CSNotificationView";
 			productName = "CSNotificationView-CSNotificationView";
-			productReference = 660C9AE7362DB2FA5134AA406806F062 /* CSNotificationView.bundle */;
+			productReference = AB9B9AE0A7CC24473522C396AC04CE12 /* CSNotificationView.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		B9788685473D98B025E254C9297EB884 /* CSNotificationView */ = {
@@ -883,30 +951,7 @@
 			);
 			name = CSNotificationView;
 			productName = CSNotificationView;
-			productReference = BE0A04ADD01DD1A055FD2EB489499745 /* CSNotificationView.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C9BEEB222D7BB3B1F3DC2056A840A564 /* Pods-YourGoals */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8010D3560EBBD9C515A6586B2342DDC4 /* Build configuration list for PBXNativeTarget "Pods-YourGoals" */;
-			buildPhases = (
-				12A6C605014B1E28B39B3FCDF937E428 /* Sources */,
-				413A6FEF7A94CC93C70CCB05DBBB1938 /* Frameworks */,
-				6C4A6475C243A8C98E11092C26E39DCF /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E33231F05EDF9A42A5FA53AC8AB5CC94 /* PBXTargetDependency */,
-				0723CC2FA22138C90A0516A454BC3732 /* PBXTargetDependency */,
-				5212DA6925E8482D9344715F2B72E107 /* PBXTargetDependency */,
-				988826A0777579F38834B600F4D3217C /* PBXTargetDependency */,
-				6F57634E93F86A453AE4B2BFE06A8EF2 /* PBXTargetDependency */,
-				2A70E8A4185F4418BF4FED8FBB478FD6 /* PBXTargetDependency */,
-			);
-			name = "Pods-YourGoals";
-			productName = "Pods-YourGoals";
-			productReference = FB4BD0865413932A86BED33771A4806E /* Pods_YourGoals.framework */;
+			productReference = 85E2F0941F0115D5A1A9BEB2E539F304 /* CSNotificationView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DA392EE8E5B24D16FB9910405A0AFC2E /* UICountingLabel */ = {
@@ -923,7 +968,41 @@
 			);
 			name = UICountingLabel;
 			productName = UICountingLabel;
-			productReference = F2366EA164B0A131EAB50775B4E2DD07 /* UICountingLabel.framework */;
+			productReference = 33C51C35E6D1736C5205E1CD6201A85A /* UICountingLabel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E79017C1564520DD534505965CC6ADE3 /* LongPressReorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF865B2B35ACBC6565BC51673709266 /* Build configuration list for PBXNativeTarget "LongPressReorder" */;
+			buildPhases = (
+				B6A3273BD51A7CC6D4CD67BB305ACEDF /* Sources */,
+				00064FA71570BF8484BB2EB4085D2B4B /* Frameworks */,
+				8591CCD381EDF2EC34D978667C8D27A8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LongPressReorder;
+			productName = LongPressReorder;
+			productReference = 83D39F7D1AFC9FD7504F2BC86D3A3AA5 /* LongPressReorder.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FF5FBA536264AB13049083685A6E1D17 /* TEAChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AD9799CE0F2706F865E668BEBEAEB91 /* Build configuration list for PBXNativeTarget "TEAChart" */;
+			buildPhases = (
+				E3B71ED2A84CEBE3D49D3E13C1AC5724 /* Sources */,
+				F34E45EED51816F29255A4B5E650E687 /* Frameworks */,
+				B27CDB49EDDE88390D2AAE91427AA565 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TEAChart;
+			productName = TEAChart;
+			productReference = 1F5C2CF0B85DFE650D3CED5E8F95125B /* TEAChart.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -943,17 +1022,18 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 39C162FD8FA7CE07D99C1E8582995569 /* Products */;
+			productRefGroup = 64FA25568A7806976EA8DAD250609B0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8A421C6298CB3DF5D749193BD6FD0B38 /* BEMSimpleLineGraph */,
 				B9788685473D98B025E254C9297EB884 /* CSNotificationView */,
 				8FB7A778D93C9B30AF7470FDBDA9C0B8 /* CSNotificationView-CSNotificationView */,
+				E79017C1564520DD534505965CC6ADE3 /* LongPressReorder */,
 				1CD80321715FDB12A3A31B7BCB09EA28 /* MGSwipeTableCell */,
 				0FC1CB21D1B64FAAC47A6478616DA728 /* PNChart */,
-				C9BEEB222D7BB3B1F3DC2056A840A564 /* Pods-YourGoals */,
-				5E2723DE681F8F54499D1D609C6EA3CA /* TEAChart */,
+				012811B0952DADDCB3C1E995B5D0AA9A /* Pods-YourGoals */,
+				FF5FBA536264AB13049083685A6E1D17 /* TEAChart */,
 				DA392EE8E5B24D16FB9910405A0AFC2E /* UICountingLabel */,
 			);
 		};
@@ -984,24 +1064,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		12A6C605014B1E28B39B3FCDF937E428 /* Sources */ = {
+		404D5CAB393F0D06326DD7BB1F00A19B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11A9027CB2A49B39B7DA3F3EB045F862 /* Pods-YourGoals-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3070015AE5820B454FACDB67E572B38C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB0E31315C0ED75C503B01F1A5F70F70 /* NSDate+TEAExtensions.m in Sources */,
-				3E6E2ACDD5584F0539DB2590C7B2A182 /* TEABarChart.m in Sources */,
-				F5F15912FCB6882DCC80BC3EB96668C1 /* TEAChart-dummy.m in Sources */,
-				A9581A46EDB543ED19BBD965BC3128C4 /* TEAClockChart.m in Sources */,
-				1A89703EDC986DD2C7D3632EAB5BFFF9 /* TEAContributionGraph.m in Sources */,
-				8C1AE29635C783CAA3792C8AFF086BE6 /* TEATimeRange.m in Sources */,
+				8546B4A7CA82B5C5E8D495A69469E4A5 /* Pods-YourGoals-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1123,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6A3273BD51A7CC6D4CD67BB305ACEDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				952BF2CC3D5AF92ECCA174FF0736E9CE /* LongPressReorder-dummy.m in Sources */,
+				42CC7596732DE8838933C3E3B083D7E2 /* LongPressReorder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E367433613DC261761564DE23A174D6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1066,6 +1142,19 @@
 				8856A187017D6F9BCDD9467126FA5F20 /* BEMPermanentPopupView.m in Sources */,
 				861B6A549CB77F0A51939C966DE0206C /* BEMSimpleLineGraph-dummy.m in Sources */,
 				12F36D590677B18E9993CC59D2550B28 /* BEMSimpleLineGraphView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3B71ED2A84CEBE3D49D3E13C1AC5724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E0205758F77909967571A501EBE5C40 /* NSDate+TEAExtensions.m in Sources */,
+				384C6887EE1894F725212F1AE984C2D1 /* TEABarChart.m in Sources */,
+				FAD89C4B65E601965A7491A42D0F19B4 /* TEAChart-dummy.m in Sources */,
+				B99E73CF215582FA56012AB32EA67028 /* TEAClockChart.m in Sources */,
+				0538FEAD5F053526F641E12DDDD4C632 /* TEAContributionGraph.m in Sources */,
+				0B802E7BD6ECA4144A5D639707C95A50 /* TEATimeRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,41 +1171,35 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0723CC2FA22138C90A0516A454BC3732 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CSNotificationView;
-			target = B9788685473D98B025E254C9297EB884 /* CSNotificationView */;
-			targetProxy = 7AE349220C7D0362F980F8A08C3A38EA /* PBXContainerItemProxy */;
-		};
-		2A70E8A4185F4418BF4FED8FBB478FD6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UICountingLabel;
-			target = DA392EE8E5B24D16FB9910405A0AFC2E /* UICountingLabel */;
-			targetProxy = 9C62C862B08CDAF17462276D5893B62E /* PBXContainerItemProxy */;
-		};
 		4037BFEE711BCDF9A790FC3C56C2618F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "CSNotificationView-CSNotificationView";
 			target = 8FB7A778D93C9B30AF7470FDBDA9C0B8 /* CSNotificationView-CSNotificationView */;
 			targetProxy = 46BABE579BB5CB0FBEFA665CD18EB2FF /* PBXContainerItemProxy */;
 		};
-		5212DA6925E8482D9344715F2B72E107 /* PBXTargetDependency */ = {
+		5554AFE7EDE91EC9D2C484E968380AAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = MGSwipeTableCell;
-			target = 1CD80321715FDB12A3A31B7BCB09EA28 /* MGSwipeTableCell */;
-			targetProxy = AE4235B10DC04505B925B21F18837EFD /* PBXContainerItemProxy */;
+			name = UICountingLabel;
+			target = DA392EE8E5B24D16FB9910405A0AFC2E /* UICountingLabel */;
+			targetProxy = 33849C82C6C8BFF3630C29F7EA2EC831 /* PBXContainerItemProxy */;
 		};
-		6F57634E93F86A453AE4B2BFE06A8EF2 /* PBXTargetDependency */ = {
+		5580E6BC68EB62D05038FCC602AFDFB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TEAChart;
-			target = 5E2723DE681F8F54499D1D609C6EA3CA /* TEAChart */;
-			targetProxy = 3893DE508D56AF4BDD77BCA6A37345C3 /* PBXContainerItemProxy */;
+			name = CSNotificationView;
+			target = B9788685473D98B025E254C9297EB884 /* CSNotificationView */;
+			targetProxy = DB6A3EDFC6D6037095F51FD315924FB3 /* PBXContainerItemProxy */;
 		};
-		988826A0777579F38834B600F4D3217C /* PBXTargetDependency */ = {
+		66636A9DD55C504E5737D27243C7342A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PNChart;
 			target = 0FC1CB21D1B64FAAC47A6478616DA728 /* PNChart */;
-			targetProxy = 0E50BBAE2556510A8272D33D1EF4DFCE /* PBXContainerItemProxy */;
+			targetProxy = C70BE4A1387836CA0050A18291FD1ABE /* PBXContainerItemProxy */;
+		};
+		7BF7545080ADC369702B0E9AD12D7FF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TEAChart;
+			target = FF5FBA536264AB13049083685A6E1D17 /* TEAChart */;
+			targetProxy = 7BCA1FB8CE8312713AD25A3C6E2DB311 /* PBXContainerItemProxy */;
 		};
 		B6E55E784799B63E23A928EA091109E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1124,18 +1207,30 @@
 			target = DA392EE8E5B24D16FB9910405A0AFC2E /* UICountingLabel */;
 			targetProxy = 2331FC354592179C10840D17D20A7DB0 /* PBXContainerItemProxy */;
 		};
-		E33231F05EDF9A42A5FA53AC8AB5CC94 /* PBXTargetDependency */ = {
+		C8D1A394765A1C8D7EC314EC6EB0F291 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MGSwipeTableCell;
+			target = 1CD80321715FDB12A3A31B7BCB09EA28 /* MGSwipeTableCell */;
+			targetProxy = F27A6B2C284D7AF6B4C8F6D48BCC1121 /* PBXContainerItemProxy */;
+		};
+		DC47EDEE3620E746CCCD595432729C0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BEMSimpleLineGraph;
 			target = 8A421C6298CB3DF5D749193BD6FD0B38 /* BEMSimpleLineGraph */;
-			targetProxy = 921C220EFA674B381081C330D0D33841 /* PBXContainerItemProxy */;
+			targetProxy = 1209FEEA1B50D0759AAB6A9FEF0A0603 /* PBXContainerItemProxy */;
+		};
+		E51FD523224D8533760F20D37E5A3C82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LongPressReorder;
+			target = E79017C1564520DD534505965CC6ADE3 /* LongPressReorder */;
+			targetProxy = 5AC30A84C433B5A327769E8F58D2E02B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0388825BF93DB46167BE2253563FACAC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */;
+			baseConfigurationReference = 8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CSNotificationView";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1152,7 +1247,7 @@
 		};
 		06E47ED78A4BE8EC87055E8EBC39AC56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 556AE3C4787634F93F5306815B1344C6 /* UICountingLabel.xcconfig */;
+			baseConfigurationReference = 233C75D7E92D2948D8CCA36BA8A69B24 /* UICountingLabel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1184,43 +1279,83 @@
 			};
 			name = Release;
 		};
-		25CB34592E7A9A1A4C84BED3A17AE2BB /* Release */ = {
+		1643FBC16671E54C2DB021864BA980AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 891DE8E8AFB4D9547A1DE153F2A4E92D /* TEAChart.xcconfig */;
+			baseConfigurationReference = EDE596528A50555FE44365D25521AF65 /* Pods-YourGoals.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TEAChart/TEAChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TEAChart/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-YourGoals/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TEAChart/TEAChart.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = TEAChart;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YourGoals/Pods-YourGoals.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YourGoals;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6BA0FB0A2CEF8B5F033B38C77785C7E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EB6B0B7D763E81B7BE4C17422441B31 /* LongPressReorder.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/LongPressReorder/LongPressReorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LongPressReorder/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/LongPressReorder/LongPressReorder.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = LongPressReorder;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		84384C16242E037FEF49786D74D3FBAD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D379AAFE9A0D2E3743BB68C69388604 /* MGSwipeTableCell.xcconfig */;
+			baseConfigurationReference = B2423463E1ED9501767BD11B1355FF65 /* MGSwipeTableCell.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1252,9 +1387,9 @@
 			};
 			name = Release;
 		};
-		86C7FFDA477D74087761677616D17961 /* Release */ = {
+		855986C12F52B48CC03F9AE2AA8AF144 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F8D089CAC0BA67A3EBE61715D0AA701 /* Pods-YourGoals.release.xcconfig */;
+			baseConfigurationReference = D5B09B8D587F7208E43613323724ED31 /* TEAChart.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1268,20 +1403,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-YourGoals/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/TEAChart/TEAChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TEAChart/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YourGoals/Pods-YourGoals.modulemap";
+				MODULEMAP_FILE = "Target Support Files/TEAChart/TEAChart.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_YourGoals;
+				PRODUCT_NAME = TEAChart;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1337,79 +1470,9 @@
 			};
 			name = Debug;
 		};
-		9CEA238E3D1379FA0296CF195F242811 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDE596528A50555FE44365D25521AF65 /* Pods-YourGoals.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-YourGoals/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YourGoals/Pods-YourGoals.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_YourGoals;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9FB427E3FA079C1A0F69895DACD7DF40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 891DE8E8AFB4D9547A1DE153F2A4E92D /* TEAChart.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TEAChart/TEAChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TEAChart/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TEAChart/TEAChart.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = TEAChart;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		A0AA55484FBE49F5AA8620AF7CFC1E75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */;
+			baseConfigurationReference = 8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CSNotificationView";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1426,7 +1489,7 @@
 		};
 		A12C86D8C63CAED56562F4225A32062F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */;
+			baseConfigurationReference = 8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1460,7 +1523,7 @@
 		};
 		A25E221E9238DD9F62C08BA5026AE741 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D379AAFE9A0D2E3743BB68C69388604 /* MGSwipeTableCell.xcconfig */;
+			baseConfigurationReference = B2423463E1ED9501767BD11B1355FF65 /* MGSwipeTableCell.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1494,7 +1557,7 @@
 		};
 		AA91EF7DDB91162B1EAD74204C93AE48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BF474D26A5D9FD358EB960D49DF855D /* BEMSimpleLineGraph.xcconfig */;
+			baseConfigurationReference = F042AF1973326C94B755E14C4582D258 /* BEMSimpleLineGraph.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1528,7 +1591,7 @@
 		};
 		B202327776AD2F5E97E5BEDE3DF90A4C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06C6A453390C3DAFD8A63AF3466FD2B3 /* CSNotificationView.xcconfig */;
+			baseConfigurationReference = 8184FD0A78DA3728C3647B408EE79FE9 /* CSNotificationView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1562,7 +1625,7 @@
 		};
 		B562D3E927F142041C25E33BDCA3D342 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BF474D26A5D9FD358EB960D49DF855D /* BEMSimpleLineGraph.xcconfig */;
+			baseConfigurationReference = F042AF1973326C94B755E14C4582D258 /* BEMSimpleLineGraph.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1596,7 +1659,7 @@
 		};
 		B57A481F890E2E955C73399381280A70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 556AE3C4787634F93F5306815B1344C6 /* UICountingLabel.xcconfig */;
+			baseConfigurationReference = 233C75D7E92D2948D8CCA36BA8A69B24 /* UICountingLabel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1674,7 +1737,7 @@
 		};
 		C014848002EB5F6248E682273C65FBB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25F8CE8264C335E3AEC4DFAD84264310 /* PNChart.xcconfig */;
+			baseConfigurationReference = 437F22A3A039D5AF91CBFEFB2DBB744E /* PNChart.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1706,9 +1769,116 @@
 			};
 			name = Release;
 		};
+		E11D74A5022646F5DA0B75B6BFAAA257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EB6B0B7D763E81B7BE4C17422441B31 /* LongPressReorder.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/LongPressReorder/LongPressReorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LongPressReorder/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/LongPressReorder/LongPressReorder.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = LongPressReorder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E951367ADDE19A91555BF55C66CB2D7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F8D089CAC0BA67A3EBE61715D0AA701 /* Pods-YourGoals.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-YourGoals/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YourGoals/Pods-YourGoals.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YourGoals;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED2AEE614D8BB25F055598A835DA87FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5B09B8D587F7208E43613323724ED31 /* TEAChart.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TEAChart/TEAChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TEAChart/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TEAChart/TEAChart.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TEAChart;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F5A31D77BF8328968E54C3A45504D38D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25F8CE8264C335E3AEC4DFAD84264310 /* PNChart.xcconfig */;
+			baseConfigurationReference = 437F22A3A039D5AF91CBFEFB2DBB744E /* PNChart.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1743,11 +1913,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E209A6B5B8BC15E48CBFD0195FE7E88 /* Build configuration list for PBXNativeTarget "Pods-YourGoals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1643FBC16671E54C2DB021864BA980AF /* Debug */,
+				E951367ADDE19A91555BF55C66CB2D7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97803B46811A9BDB5E70FA1303AFBFFE /* Debug */,
 				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AD9799CE0F2706F865E668BEBEAEB91 /* Build configuration list for PBXNativeTarget "TEAChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED2AEE614D8BB25F055598A835DA87FB /* Debug */,
+				855986C12F52B48CC03F9AE2AA8AF144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1766,15 +1954,6 @@
 			buildConfigurations = (
 				A25E221E9238DD9F62C08BA5026AE741 /* Debug */,
 				84384C16242E037FEF49786D74D3FBAD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8010D3560EBBD9C515A6586B2342DDC4 /* Build configuration list for PBXNativeTarget "Pods-YourGoals" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9CEA238E3D1379FA0296CF195F242811 /* Debug */,
-				86C7FFDA477D74087761677616D17961 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1815,11 +1994,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9363288B058EFEF8ABAC9E9BE6366C0 /* Build configuration list for PBXNativeTarget "TEAChart" */ = {
+		CCF865B2B35ACBC6565BC51673709266 /* Build configuration list for PBXNativeTarget "LongPressReorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9FB427E3FA079C1A0F69895DACD7DF40 /* Debug */,
-				25CB34592E7A9A1A4C84BED3A17AE2BB /* Release */,
+				6BA0FB0A2CEF8B5F033B38C77785C7E5 /* Debug */,
+				E11D74A5022646F5DA0B75B6BFAAA257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import LongPressReorder
 
 protocol GoalDetailViewControllerDelegate {
     func goalChanged()
@@ -36,6 +37,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
+    var reorderTableView: LongPressReorderTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
