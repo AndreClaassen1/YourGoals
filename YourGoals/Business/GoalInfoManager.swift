@@ -15,11 +15,19 @@ class GoalInfoManager:StorageManagerWorker {
     ///
     /// - Returns: an array of goals, which should usally only have maximal one item.
     func retrieveGoalsWithProgress() throws -> [Goal] {
-        let tasks = try self.manager.tasksStore.fetchItems { request in
-            request.predicate = NSPredicate(format: "ANY progress.end = nil")
+        var goalsWithProgress = [Goal]()
+        let strategyManager = StrategyManager(manager: self.manager)
+        guard let goals = try strategyManager.activeStrategy()?.allGoals() else {
+            return []
         }
-    
-        let goals = tasks.map { $0.goal }.filter {$0 != nil}.map{$0!}
-        return goals
+
+        return []
+       
+//        let tasks = try self.manager.tasksStore.fetchItems { request in
+//            request.predicate = NSPredicate(format: "ANY (progress.start != nil AND progress.end == nil)")
+//        }
+//
+//        let goals = tasks.map { $0.goal }.filter {$0 != nil}.map{$0!}
+//        return goals
     }
 }

@@ -21,6 +21,7 @@ extension GoalDetailViewController {
             try progressManager.startProgress(forTask: task, atDate: date)
         }
         self.tasksTableView.reloadData()
+        self.delegate?.goalChanged()
     }
     
     func switchState(forTask task: Task) throws {
@@ -32,6 +33,7 @@ extension GoalDetailViewController {
             try stateManager.setTaskState(task: task, state: .active, atDate: date)
         }
         self.tasksTableView.reloadData()
+        self.delegate?.goalChanged()
     }
     
 }

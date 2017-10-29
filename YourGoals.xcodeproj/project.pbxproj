@@ -24,6 +24,7 @@
 		7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */; };
 		7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */; };
 		7B6D09CA1FA464D300F99646 /* GoalDetailViewController+task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6D09C91FA464D300F99646 /* GoalDetailViewController+task.swift */; };
+		7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */; };
@@ -169,6 +170,7 @@
 		7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManager.swift; sourceTree = "<group>"; };
 		7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCalculator.swift; sourceTree = "<group>"; };
 		7B6D09C91FA464D300F99646 /* GoalDetailViewController+task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailViewController+task.swift"; sourceTree = "<group>"; };
+		7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Progress.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				7BE11B7E1F9F85070023844E /* ImageData+Image.swift */,
 				7BAA7A841FA0C788005B16EE /* Goal+Sub.swift */,
+				7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */,
 				7BAA7A821FA0C60A005B16EE /* Task+State.swift */,
 				7B5FA3D41FA33C6B004556C1 /* Task+Progress.swift */,
 				7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */,
@@ -903,6 +906,7 @@
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
+				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
 				7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,

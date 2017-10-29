@@ -15,28 +15,35 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     var manager:GoalsStorageManager!
     var strategy:Goal?
     var selectedGoal:Goal?
+    var activeGoals = [Goal]()
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController()
     internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        self.manager = GoalsStorageManager.defaultStorageManager
-        self.strategy = try! StrategyManager(manager: self.manager).activeStrategy()
-        
-        configure(collectionView: collectionView)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        do {
+            super.viewDidLoad()
+            // Do any additional setup after loading the view, typically from a nib.
+            
+            self.manager = GoalsStorageManager.defaultStorageManager
+            self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
+            self.activeGoals = try GoalInfoManager(manager: self.manager).retrieveGoalsWithProgress()
+            
+            configure(collectionView: collectionView)
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

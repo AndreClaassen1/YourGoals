@@ -84,7 +84,7 @@
                 <outlet property="cornerView" destination="2Oa-U5-2af" id="aXw-bb-nbo"/>
                 <outlet property="goalLabel" destination="KWA-rh-zBy" id="11R-gv-h6f"/>
                 <outlet property="imageView" destination="rb2-yj-Tj2" id="pKg-zL-Kz4"/>
-                <outlet property="overlayView" destination="eHI-gX-nGA" id="Orf-ER-2Be"/>
+                <outlet property="overlayView" destination="eHI-gX-nGA" id="iAW-fi-z3X"/>
                 <outlet property="progressIndicatorView" destination="F4R-Dh-sRy" id="PTn-eC-iWE"/>
                 <outlet property="reasonLabel" destination="Lhj-Li-jOU" id="Tkn-CB-hNa"/>
             </connections>

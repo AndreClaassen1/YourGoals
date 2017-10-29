@@ -63,7 +63,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         } else {
             let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
             let goal = self.goalForIndexPath(path: indexPath)
-            goalCell.show(goal: goal)
+            goalCell.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
             return goalCell
         }
     }

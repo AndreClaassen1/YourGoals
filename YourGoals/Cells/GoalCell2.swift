@@ -24,6 +24,8 @@ internal class GoalCell2: BaseRoundedCardCell {
     
     @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
     
+    var goalIsActive = false
+    
     // MARK: - Factory Method
     
     internal static func dequeue(fromCollectionView collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> GoalCell2 {
@@ -35,7 +37,15 @@ internal class GoalCell2: BaseRoundedCardCell {
     
     // MARK: - Content
     
-    func show(goal: Goal) {
+    func showActiveGoalState(_ goalIsActive:Bool) {
+        if goalIsActive {
+            self.overlayView.backgroundColor = UIColor.green.withAlphaComponent(0.9)
+        } else {
+            self.overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        }
+    }
+    
+    func show(goal: Goal, goalIsActive:Bool) {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -44,6 +54,8 @@ internal class GoalCell2: BaseRoundedCardCell {
             fatalError ("could not create Image from data: \(data)")
         }
         
+        showActiveGoalState(goalIsActive)
+        self.goalIsActive = goalIsActive
         imageView.image = image
         reasonLabel.text = goal.reason
         reasonLabel.sizeToFit()
