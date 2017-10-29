@@ -9,8 +9,10 @@
 import XCTest
 @testable import YourGoals
 
+/// test case for the task progress manager.
 class TaskProgressManagerTests: StorageTestCase {
 
+    /// the test object.
     var progressManager:TaskProgressManager!
     
     override func setUp() {
@@ -18,6 +20,7 @@ class TaskProgressManagerTests: StorageTestCase {
         self.progressManager = TaskProgressManager(manager: self.manager)
     }
     
+    /// test for starting a progress on a given task
     func testStartProgress() {
         // setup
         let task = TaskFactory(manager: self.manager).create(name: "Task with started progress", state: .active)
@@ -33,6 +36,7 @@ class TaskProgressManagerTests: StorageTestCase {
         XCTAssertNil(progress?.end)
     }
     
+    /// test for stopping progress on a given task
     func testStoppedProgress() {
         // setup
         let task = TaskFactory(manager: self.manager).create(name: "Task with stopped progress", state: .active)
@@ -49,6 +53,7 @@ class TaskProgressManagerTests: StorageTestCase {
         XCTAssertNotNil(progress)
     }
     
+    /// restart progress on a given task
     func testRestartProgress() {
         // setup
         let task = TaskFactory(manager: self.manager).create(name: "Task with restarted progress", state: .active)
@@ -76,8 +81,46 @@ class TaskProgressManagerTests: StorageTestCase {
         XCTAssertEqual(nil, progress2?.end)
     }
     
+    /// tests the number of progress function. in reality this number should be 0 or 1 because
+    /// there couldn't be more than one task with a progress
+    func testNumberOfProgressEqual1() {
+        // setup
+        let tasks = TaskFactory(manager: self.manager).createTasks(numberOfTasks: 3, state: .active)
+        let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)
+        try! progressManager.startProgress(forTask: tasks[0], atDate: progressStartDate)
+
+        // act
+        let numberOfProgress = try! progressManager.numberOfTasksWithProgress()
+        
+        // test
+        XCTAssertEqual(1, numberOfProgress)
+        
+    }
+  
+    /// there couldn't be more than one task with a progress
+    func testNumberOfProgressEqual0() {
+        // act
+        let numberOfProgress = try! progressManager.numberOfTasksWithProgress()
+        
+        // test
+        XCTAssertEqual(0, numberOfProgress)
+    }
     
-    
-    
-    
+    /// tests the number of progress function. in reality this number should be 0 or 1 because
+    /// there couldn't be more than one task with a progress
+    func testNumberOfProgressWithMany() {
+        // setup
+        let tasks = TaskFactory(manager: self.manager).createTasks(numberOfTasks: 3, state: .active)
+        let progressStartDate = Date.dateTimeWithYear(2017, month: 10, day: 25, hour: 12, minute: 0, second: 0)
+        
+        // start each task
+        tasks.forEach{ try! progressManager.startProgress(forTask: $0, atDate: progressStartDate) }
+        
+        // act
+        let numberOfProgress = try! progressManager.numberOfTasksWithProgress()
+        
+        // test
+        XCTAssertEqual(1, numberOfProgress)
+    }
 }
+

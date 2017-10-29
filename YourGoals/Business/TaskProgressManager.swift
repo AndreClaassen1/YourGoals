@@ -102,6 +102,9 @@ class TaskProgressManager {
 
     /// fetches the number of tasks with progress from the core data sotre
     ///
+    /// Important Note: In reality this number should be 0 or 1 because
+    /// there couldn't be more than one task with a progress
+    ///
     /// - Returns: number of tasks with progress
     /// - Throws: core data exception
     func numberOfTasksWithProgress() throws -> Int {
