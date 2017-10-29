@@ -64,14 +64,19 @@ internal class BaseRoundedCardCell: UICollectionViewCell {
         }
     }
     
+    internal func shadowColorAndOpacity() -> (color:UIColor, opacicty:Float) {
+        return (UIColor.black, 0.35)
+    }
+    
     private func applyShadow(width: CGFloat, height: CGFloat) {
         if let shadowView = shadowView {
+            let colorAndOpacity = shadowColorAndOpacity()
             let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
             shadowView.layer.masksToBounds = false
             shadowView.layer.shadowRadius = 8.0
-            shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = colorAndOpacity.color.cgColor
             shadowView.layer.shadowOffset = CGSize(width: width, height: height)
-            shadowView.layer.shadowOpacity = 0.35
+            shadowView.layer.shadowOpacity = colorAndOpacity.opacicty
             shadowView.layer.shadowPath = shadowPath.cgPath
         }
     }

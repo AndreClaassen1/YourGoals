@@ -43,6 +43,8 @@
 		7B9E28ED1FA6550D00BB6003 /* TaskPrioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */; };
 		7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */; };
 		7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */; };
+		7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */; };
+		7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
 		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
@@ -186,6 +188,8 @@
 		7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPrioManager.swift; sourceTree = "<group>"; };
 		7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManagerTests.swift; sourceTree = "<group>"; };
+		7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoManager.swift; sourceTree = "<group>"; };
+		7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoManagerTests.swift; sourceTree = "<group>"; };
 		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
 				7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */,
 				7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */,
+				7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */,
 				7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */,
 				7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */,
+				7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -866,6 +872,7 @@
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
+				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
 				7B50F8751FA39CEB00A6EF61 /* ProgressIndicatorView.swift in Sources */,
@@ -912,6 +919,7 @@
 			files = (
 				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
+				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,

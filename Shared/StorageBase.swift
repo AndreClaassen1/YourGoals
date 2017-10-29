@@ -15,11 +15,13 @@ protocol Storage {
     func deleteAllEntries() throws
 }
 
+public typealias QualifyRequestDictionary = (NSFetchRequest<NSDictionary>)->Void
+
 /// Base class for core data storage operations for one or more entities
 public class StorageBase<T:NSManagedObject> : Storage {
     public let entityName:String
     public let managedObjectContext:NSManagedObjectContext
-    
+
     private class func getEntityName() -> String {
         let managedObject = T()
         return managedObject.entity.name!
@@ -138,4 +140,21 @@ public class StorageBase<T:NSManagedObject> : Storage {
             self.managedObjectContext.delete(managedObject)
         }
     }
+    
+    // MARK: - Fetch properties
+    
+    public func createFetchRequestDictionary() -> NSFetchRequest<NSDictionary> {
+        let request = NSFetchRequest<NSDictionary>()
+        request.entity = getEntityDescription()
+        request.resultType = .dictionaryResultType
+        return request
+    }
+
+    public func fetchProperties(qualifyRequest:QualifyRequestDictionary) throws -> [NSDictionary] {
+        let request = createFetchRequestDictionary()
+        qualifyRequest(request)
+        let items = try self.managedObjectContext.fetch(request)
+        return items
+    }
+    
 }
