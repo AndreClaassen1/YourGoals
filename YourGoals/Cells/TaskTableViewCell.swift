@@ -66,11 +66,17 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
     }
     
-    func stringFromTime(interval: TimeInterval) -> String {
-        let ms = Int(interval.truncatingRemainder(dividingBy: 1) * 1000)
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        return formatter.string(from: interval)! + ".\(ms)"
+    func stringFromTime(interval ti: TimeInterval) -> String {
+        let seconds = Int(ti.truncatingRemainder(dividingBy: 60))
+        let minutes = Int((ti / 60).truncatingRemainder(dividingBy: 60))
+        let hours = Int(ti / 3600)
+        
+        let result = String(format: "%d:%0.2d:%0.2d", hours, minutes, seconds)
+        return result
+        
+//        let formatter = DateComponentsFormatter()
+//        formatter.allowedUnits = [.hour, .minute, .second]
+//        return formatter.string(from: interval)!
     }
     
     func showWorkingTime(task: Task) {

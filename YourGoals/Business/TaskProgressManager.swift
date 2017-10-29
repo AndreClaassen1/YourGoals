@@ -75,10 +75,6 @@ class TaskProgressManager {
     ///   - date: at this date
     /// - Throws: core data exception
     func stopProgress(forTask task: Task, atDate date: Date) throws {
-        guard task.taskIsActive() else {
-            throw TaskProgressError.noProgressNeedActiveTask
-        }
-        
         guard let activeProgress = task.progressFor(date: date) else {
             return
         }

@@ -20,9 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNt-78-XXy">
-                        <rect key="frame" x="262" y="7" width="50" height="21"/>
+                        <rect key="frame" x="246" y="7" width="66" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="NvR-iq-eCN"/>
+                            <constraint firstAttribute="width" constant="66" id="NvR-iq-eCN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -63,7 +63,7 @@
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ENW-EN-l3L"/>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Xxj-o8-G2P"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="10" id="dEt-Ui-Q1S"/>
-                    <constraint firstItem="nNt-78-XXy" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" id="dry-dx-F71"/>
+                    <constraint firstItem="nNt-78-XXy" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" constant="-16" id="dry-dx-F71"/>
                     <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="leading" id="oEr-7t-1Wm"/>
                     <constraint firstAttribute="trailing" secondItem="nNt-78-XXy" secondAttribute="trailing" constant="8" id="ong-2c-6eR"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="quw-3t-7Im"/>
