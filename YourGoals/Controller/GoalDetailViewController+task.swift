@@ -21,6 +21,7 @@ extension GoalDetailViewController {
             try progressManager.startProgress(forTask: task, atDate: date)
         }
         self.tasksTableView.reloadData()
+        self.showGoalState(self.goal)
         self.delegate?.goalChanged()
     }
     
@@ -33,6 +34,7 @@ extension GoalDetailViewController {
             try stateManager.setTaskState(task: task, state: .active, atDate: date)
         }
         self.tasksTableView.reloadData()
+        self.showGoalState(self.goal)
         self.delegate?.goalChanged()
     }
     

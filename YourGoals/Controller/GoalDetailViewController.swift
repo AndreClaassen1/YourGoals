@@ -31,6 +31,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var editGoalButton: UIButton!
+    @IBOutlet weak var overlayView: UIView!
     
     var goal:Goal!
     var tasksOrdered: [Task]!

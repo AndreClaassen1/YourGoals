@@ -25,7 +25,20 @@ extension GoalDetailViewController {
             headerImageView.image = nil
         }
         
-        progressIndicatorView.setProgress(forGoal: goal)
+        showGoalState(goal)
     }
     
+    func showGoalState(_ goal:Goal) {
+        progressIndicatorView.setProgress(forGoal: goal)
+        showActiveGoalState(goal.isActive(forDate: Date()))
+    }
+ 
+    func showActiveGoalState(_ goalIsActive:Bool) {
+        if goalIsActive {
+            self.overlayView.backgroundColor = UIColor.green.withAlphaComponent(0.9)
+        } else {
+            self.overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        }
+    }
+
 }

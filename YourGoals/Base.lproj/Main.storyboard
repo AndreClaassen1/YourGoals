@@ -389,6 +389,7 @@
                         <outlet property="headerImageHeightConstraint" destination="C6J-pw-wcb" id="tYd-JN-sqv"/>
                         <outlet property="headerImageView" destination="MYE-g0-9gJ" id="sZQ-XZ-j3o"/>
                         <outlet property="headerLabel" destination="u8C-QR-zai" id="me1-Sh-xGe"/>
+                        <outlet property="overlayView" destination="t9s-UC-fYV" id="Cuw-9D-zUe"/>
                         <outlet property="progressIndicatorView" destination="vQj-hu-ph4" id="ZvA-dl-To6"/>
                         <outlet property="reasonLabel" destination="vYP-QS-kv2" id="eFd-WS-Y0z"/>
                         <outlet property="tasksTableView" destination="0JR-sd-cxx" id="HVT-mK-vMd"/>
