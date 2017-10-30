@@ -94,7 +94,8 @@ displayCountingLabel:(BOOL)displayCountingLabel
         _circleBackground             = [CAShapeLayer layer];
         _circleBackground.path        = circlePath.CGPath;
         _circleBackground.lineCap     = kCALineCapRound;
-        _circleBackground.fillColor   = [UIColor clearColor].CGColor;
+        _circleBackground.fillColor   = [[UIColor whiteColor] colorWithAlphaComponent:0.7 ].CGColor;
+        
         _circleBackground.lineWidth   = [_lineWidth floatValue];
         _circleBackground.strokeColor = (hasBackgroundShadow ? backgroundShadowColor.CGColor : [UIColor clearColor].CGColor);
         _circleBackground.strokeEnd   = 1.0;
@@ -106,7 +107,7 @@ displayCountingLabel:(BOOL)displayCountingLabel
         _countingLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(0, 0, 100.0, 50.0)];
         [_countingLabel setTextAlignment:NSTextAlignmentCenter];
         [_countingLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-        [_countingLabel setTextColor:[UIColor grayColor]];
+        [_countingLabel setTextColor:[UIColor blackColor]];
         [_countingLabel setBackgroundColor:[UIColor clearColor]];
         [_countingLabel setCenter:CGPointMake(self.frame.size.width/2.0f, self.frame.size.height/2.0f)];
         _countingLabel.method = UILabelCountingMethodEaseInOut;

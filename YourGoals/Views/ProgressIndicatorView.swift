@@ -34,7 +34,7 @@ class ProgressIndicatorView: UIView {
         let circleFrame = CGRect(x: 5.0, y: 5.0, width: self.frame.width - 10.0, height: self.frame.height - 10.0)
         self.circleChart = PNCircleChart(frame: circleFrame, total: 1.0, current: NSNumber(value: self.progressInPercent), clockwise: true)
         circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
-        circleChart.lineWidth = 55.0
+        circleChart.lineWidth = 5.0
         circleChart.backgroundColor = UIColor.clear
         circleChart.displayAnimated = true
         self.addSubview(self.circleChart)
