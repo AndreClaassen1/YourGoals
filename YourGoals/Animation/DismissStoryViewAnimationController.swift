@@ -51,8 +51,8 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
                                                  right: 20.0,
                                                  top: self.selectedCardFrame.origin.y + 20.0,
                                                  bottom: 0.0)
-            fromViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
-            fromViewController.configureRoundedCorners(shouldRound: true)
+//            fromViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
+//            fromViewController.configureRoundedCorners(shouldRound: true)
         }) { (_) in
             toViewController.view.isHidden = false
             fromViewController.view.removeFromSuperview()

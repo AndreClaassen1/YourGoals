@@ -27,14 +27,16 @@ class ProgressIndicatorView: UIView {
     }
     
     func commonInit() {
-        let inset =  frame.insetBy(dx: 10, dy: 10);
-        self.circleChart = PNCircleChart(frame: inset)
-        circleChart.total = 1.0
-        circleChart.current = 0.0
-        circleChart.strokeColor = UIColor(red: 77.0/255.0, green: 186.0/255.0, blue: 122.0/255.0, alpha: 1.0)
-        circleChart.lineWidth = 15.0
-        circleChart.backgroundColor = calculateColor(fromIndicator: progressIndicator)
-        circleChart.displayAnimated = false
+        self.backgroundColor = UIColor.clear
+    }
+    
+    func createCirle() {
+        let circleFrame = CGRect(x: 5.0, y: 5.0, width: self.frame.width - 10.0, height: self.frame.height - 10.0)
+        self.circleChart = PNCircleChart(frame: circleFrame, total: 1.0, current: NSNumber(value: self.progressInPercent), clockwise: true)
+        circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
+        circleChart.lineWidth = 55.0
+        circleChart.backgroundColor = UIColor.clear
+        circleChart.displayAnimated = true
         self.addSubview(self.circleChart)
         
         let labelSize = CGSize(width: 100, height: 21)
@@ -47,10 +49,12 @@ class ProgressIndicatorView: UIView {
     func setProgress(progressInPercent:Double, progressIndicator:ProgressIndicator) {
         self.progressInPercent = progressInPercent
         self.progressIndicator = progressIndicator
-        
-        circleChart.current = NSNumber(value: self.progressInPercent)
-        circleChart.backgroundColor = calculateColor(fromIndicator: progressIndicator)
-        circleChart.stroke()
+        if self.circleChart == nil {
+            self.createCirle()
+        } else {
+            self.circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
+            self.circleChart.update(byCurrent: NSNumber(value: self.progressInPercent))
+        }
     }
     
     func setProgress(forGoal goal:Goal) {

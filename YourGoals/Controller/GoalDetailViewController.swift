@@ -23,15 +23,11 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
+ 
+    @IBOutlet weak var goalContentView: GoalContentView!
+    
     
     /// Header Image Height
-    @IBOutlet private weak var headerImageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var headerImageView: UIImageView!
-    @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var reasonLabel: UILabel!
-    @IBOutlet weak var editGoalButton: UIButton!
-    @IBOutlet weak var overlayView: UIView!
     
     var goal:Goal!
     var tasksOrdered: [Task]!
@@ -68,15 +64,15 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         view.layoutIfNeeded()
     }
     
-    internal func setHeaderHeight(_ height: CGFloat) {
-        headerImageHeightConstraint.constant = height
-        view.layoutIfNeeded()
-    }
-    
-    internal func configureRoundedCorners(shouldRound: Bool) {
-        headerImageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
-    }
-    
+//    internal func setHeaderHeight(_ height: CGFloat) {
+//        headerImageHeightConstraint.constant = height
+//        view.layoutIfNeeded()
+//    }
+//
+//    internal func configureRoundedCorners(shouldRound: Bool) {
+//        headerImageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
+//    }
+//
     override var prefersStatusBarHidden: Bool {
         return true
     }

@@ -14,31 +14,7 @@ extension GoalDetailViewController {
     
     /// configure the goal view in this controller
     func configure(goal: Goal) {
-        headerLabel.text = goal.name
-        headerLabel.sizeToFit()
-        reasonLabel.text = goal.reason
-        reasonLabel.sizeToFit()
-        
-        if let data = goal.imageData?.data {
-            headerImageView.image = UIImage(data: data)
-        } else {
-            headerImageView.image = nil
-        }
-        
-        showGoalState(goal)
-    }
-    
-    func showGoalState(_ goal:Goal) {
-        progressIndicatorView.setProgress(forGoal: goal)
-        showActiveGoalState(goal.isActive(forDate: Date()))
-    }
- 
-    func showActiveGoalState(_ goalIsActive:Bool) {
-        if goalIsActive {
-            self.overlayView.backgroundColor = UIColor.green.withAlphaComponent(0.9)
-        } else {
-            self.overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
-        }
+        self.goalContentView.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
     }
 
 }

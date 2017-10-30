@@ -29,9 +29,9 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
                                            right: 20.0,
                                            top: selectedCardFrame.origin.y + 20.0,
                                            bottom: 0.0)
-        toViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
-        toViewController.configureRoundedCorners(shouldRound: true)
-        
+//        toViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
+//        toViewController.configureRoundedCorners(shouldRound: true)
+//
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: { 
@@ -39,9 +39,9 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
                                                right: 0.0,
                                                top: 0.0,
                                                bottom: 0.0)
-            toViewController.setHeaderHeight(500)
+//            toViewController.setHeaderHeight(500)
             toViewController.view.backgroundColor = .white
-            toViewController.configureRoundedCorners(shouldRound: false)
+//            toViewController.configureRoundedCorners(shouldRound: false)
         }) { (_) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
