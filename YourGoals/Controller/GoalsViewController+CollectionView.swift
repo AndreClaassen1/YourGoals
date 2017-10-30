@@ -27,21 +27,11 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - Goal Handling helper methods
     
     func numberOfGoals() -> Int {
-        return self.strategy?.subGoals?.count ?? 0
+        return self.strategy.allGoals().count
     }
 
     func goalForIndexPath(path:IndexPath) -> Goal {
-        guard let subGoals = self.strategy?.subGoals else {
-            assertionFailure("could not extract goals from strategy: \(String(describing: self.strategy))")
-            return Goal()
-        }
-        
-        guard let goal = subGoals.allObjects[path.row] as? Goal else {
-            assertionFailure("could not extract goal with row \(path.row) from \(subGoals)")
-            return Goal()
-        }
-        
-        return goal
+        return self.strategy.allGoals()[path.row]
     }
     
     // MARK: - UICollectionViewDataSource

@@ -13,6 +13,7 @@ protocol EditGoalViewControllerDelegate {
     func createNewGoal(goalInfo: GoalInfo)
     func update(goal: Goal, withGoalInfo goalInfo:GoalInfo)
     func delete(goal: Goal)
+    func dismissController()
 }
 
 class EditGoalViewController: UIViewController {
@@ -108,7 +109,9 @@ class EditGoalViewController: UIViewController {
     
     @IBAction func deleteGoalAction(_ sender: Any) {
         self.delegate?.delete(goal: self.editGoal!)
-        self.dismiss(animated: true)
+        self.dismiss(animated: true,completion: {
+            self.delegate?.dismissController()
+        })
     }
     
     

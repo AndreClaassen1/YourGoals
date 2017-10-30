@@ -13,7 +13,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     
     // data properties
     var manager:GoalsStorageManager!
-    var strategy:Goal?
+    var strategy:Goal!
     var selectedGoal:Goal?
     var activeGoals = [Goal]()
     
@@ -90,6 +90,10 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     }
     
     func delete(goal: Goal) {
+        assertionFailure("this method shouldn't be called")
+    }
+    
+    func dismissController() {
         assertionFailure("this method shouldn't be called")
     }
     

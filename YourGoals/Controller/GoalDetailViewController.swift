@@ -149,10 +149,14 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
             let goalDeleter = GoalDeleter(manager: self.manager)
             try goalDeleter.delete(goal: goal)
             self.delegate?.goalChanged()
-            dismiss(animated: true, completion: nil)
         }
         catch let error {
             self.showNotification(forError: error)
         }
     }
+    
+    func dismissController() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
