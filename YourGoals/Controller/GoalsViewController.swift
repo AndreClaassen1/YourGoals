@@ -89,6 +89,10 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
         assertionFailure("this method shouldn't be called")
     }
     
+    func delete(goal: Goal) {
+        assertionFailure("this method shouldn't be called")
+    }
+    
     // MARK: - GoalDetailViewControllerDelegate
     
     func goalChanged() {

@@ -11,16 +11,18 @@ import CoreData
 
 protocol EditGoalViewControllerDelegate {
     func createNewGoal(goalInfo: GoalInfo)
-    func update(goal:Goal, withGoalInfo goalInfo:GoalInfo)
+    func update(goal: Goal, withGoalInfo goalInfo:GoalInfo)
+    func delete(goal: Goal)
 }
 
 class EditGoalViewController: UIViewController {
     @IBOutlet weak var goalNameField: UITextField!
     @IBOutlet weak var reasonField: UITextView!
     @IBOutlet weak var targetDatePicker: UIDatePicker!
-    @IBOutlet weak var goalImageView: UIImageView!
+    @IBOutlet weak var goalImageButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-
+    @IBOutlet weak var deleteGoalButton: UIButton!
+    
     let imagePicker = UIImagePickerController()
     var delegate:EditGoalViewControllerDelegate?
     var editGoal:Goal?
@@ -33,7 +35,6 @@ class EditGoalViewController: UIViewController {
         
         configureGoal(withGoal: self.editGoal)
         configureImagePicker(imagePicker: self.imagePicker)
-        self.goalNameField.becomeFirstResponder()   
     }
     
     func configureGoal(withGoal goal:Goal?) {
@@ -41,17 +42,21 @@ class EditGoalViewController: UIViewController {
             self.titleLabel.text = "Edit Goal"
             self.goalNameField.text = goal.name
             self.reasonField.text = goal.reason
+            self.deleteGoalButton.isHidden = false
             if let data = goal.imageData?.data  {
-                self.goalImageView.image = UIImage(data: data)
+                self.goalImageButton.setImage(UIImage(data: data), for: .normal)
             }
             else {
-                self.goalImageView.image = nil
+                self.goalImageButton.setImage(UIImage(named: "Success"), for: .normal)
             }
         
         } else {
+            self.goalImageButton.setImage(UIImage(named: "Success"), for: .normal)
             self.titleLabel.text = "New Goal"
             self.goalNameField.text = ""
             self.reasonField.text = ""
+            self.deleteGoalButton.isHidden = true
+            self.goalNameField.becomeFirstResponder()
         }
         self.targetDatePicker.date = Date().addDaysToDate(30)
     }
@@ -67,7 +72,7 @@ class EditGoalViewController: UIViewController {
         
         let reason = reasonField.text ?? ""
         let targetDate = targetDatePicker.date
-        let image = goalImageView.image
+        let image = self.goalImageButton.image(for: .normal)
         
         return try GoalInfo(name: goalName, reason: reason, startDate: Date(), targetDate: targetDate, image:image)
     }
@@ -100,6 +105,12 @@ class EditGoalViewController: UIViewController {
             self.showNotification(forError: error)
         }
     }
+    
+    @IBAction func deleteGoalAction(_ sender: Any) {
+        self.delegate?.delete(goal: self.editGoal!)
+        self.dismiss(animated: true)
+    }
+    
     
     /*
     // MARK: - Navigation

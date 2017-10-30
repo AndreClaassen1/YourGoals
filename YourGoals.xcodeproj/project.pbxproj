@@ -45,6 +45,7 @@
 		7B994E111FA22E4E00B704E1 /* GoalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalFactory.swift */; };
 		7B994E131FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */; };
 		7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19631FA7199B002CA72B /* UITextView+Border.swift */; };
+		7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19651FA71C75002CA72B /* GoalDeleter.swift */; };
 		7B9E28ED1FA6550D00BB6003 /* TaskPrioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */; };
 		7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */; };
 		7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */; };
@@ -195,6 +196,7 @@
 		7B994E101FA22E4E00B704E1 /* GoalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFactory.swift; sourceTree = "<group>"; };
 		7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailViewController+SwipeableCell.swift"; sourceTree = "<group>"; };
 		7B9A19631FA7199B002CA72B /* UITextView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Border.swift"; sourceTree = "<group>"; };
+		7B9A19651FA71C75002CA72B /* GoalDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleter.swift; sourceTree = "<group>"; };
 		7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPrioManager.swift; sourceTree = "<group>"; };
 		7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManagerTests.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */,
 				7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */,
 				7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */,
+				7B9A19651FA71C75002CA72B /* GoalDeleter.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
+				7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,

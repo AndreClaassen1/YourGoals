@@ -123,7 +123,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bk4-MF-juE">
-                                                <rect key="frame" x="96" y="122" width="131" height="113"/>
+                                                <rect key="frame" x="96" y="122" width="131" height="99"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -137,24 +137,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="YourGoals" translatesAutoresizingMaskIntoConstraints="NO" id="IKQ-Gc-abU" userLabel="GoalImage">
-                                                <rect key="frame" x="235" y="133" width="128" height="102"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfQ-PG-Rky">
                                                 <rect key="frame" x="173" y="40" width="190" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Add this goal"/>
                                                 <connections>
                                                     <action selector="saveGoalAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="Dvg-fl-wZv"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcY-3k-Dsr">
-                                                <rect key="frame" x="173" y="236" width="190" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Select a new Image"/>
-                                                <connections>
-                                                    <action selector="selectNewImageAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="Fzi-6Q-zsI"/>
                                                 </connections>
                                             </button>
                                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-cR-BOL">
@@ -164,6 +152,24 @@
                                                     <!--2017-10-26 13:53:09 +0000-->
                                                 </date>
                                             </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsP-2b-fHy">
+                                                <rect key="frame" x="122" y="437" width="138" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Delete this goal"/>
+                                                <connections>
+                                                    <action selector="deleteGoalAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="TAP-Fh-WaJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcY-3k-Dsr">
+                                                <rect key="frame" x="235" y="131" width="128" height="90"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Select a new Image" image="YourGoals"/>
+                                                <connections>
+                                                    <action selector="selectNewImageAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="Fzi-6Q-zsI"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -192,7 +198,8 @@
                         <viewLayoutGuide key="safeArea" id="e27-2z-bZj"/>
                     </view>
                     <connections>
-                        <outlet property="goalImageView" destination="IKQ-Gc-abU" id="FFR-Lu-gK9"/>
+                        <outlet property="deleteGoalButton" destination="vsP-2b-fHy" id="Kaj-vJ-VIK"/>
+                        <outlet property="goalImageButton" destination="JcY-3k-Dsr" id="85f-qr-VOZ"/>
                         <outlet property="goalNameField" destination="Nxq-aU-K1Y" id="Mdx-au-c7X"/>
                         <outlet property="reasonField" destination="bk4-MF-juE" id="9xs-vM-GU8"/>
                         <outlet property="targetDatePicker" destination="SZv-cR-BOL" id="jiQ-71-7Rn"/>
@@ -247,17 +254,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="0.0" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="320"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-7" width="0.0" height="292"/>
+                                                <rect key="frame" x="-7" y="-7" width="348" height="292"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="468.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -296,7 +303,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0JR-sd-cxx">
-                                        <rect key="frame" x="0.0" y="320" width="0.0" height="307"/>
+                                        <rect key="frame" x="0.0" y="320" width="335" height="307"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <sections/>
                                     </tableView>

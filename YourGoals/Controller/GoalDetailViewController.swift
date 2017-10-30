@@ -143,4 +143,16 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         
         configure(goal: goal)
     }
+    
+    func delete(goal: Goal) {
+        do {
+            let goalDeleter = GoalDeleter(manager: self.manager)
+            try goalDeleter.delete(goal: goal)
+            self.delegate?.goalChanged()
+            dismiss(animated: true, completion: nil)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
+    }
 }

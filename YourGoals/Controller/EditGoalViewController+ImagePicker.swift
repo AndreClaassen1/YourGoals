@@ -24,7 +24,7 @@ extension EditGoalViewController : UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            goalImageView.image = pickedImage
+            self.goalImageButton.setImage(pickedImage, for: .normal)
         }
         
         dismiss(animated: true, completion: nil)

@@ -46,6 +46,10 @@ class GoalProgressCalculator {
     /// - Parameter goal: the goal
     /// - Returns: ratio of done tasks and all tasks
     func calculateProgressOfTasksInPercent(forGoal goal: Goal) -> Double {
+        if goal.allTasks().count == 0 {
+            return 0.0
+        }
+        
         let percent = Double(goal.numberOfTasks(forState: .done)) / Double(goal.allTasks().count)
         return percent
     }
