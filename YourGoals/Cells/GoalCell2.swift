@@ -10,19 +10,10 @@ import UIKit
 import CoreMotion
 
 internal class GoalCell2: BaseRoundedCardCell {
-    @IBOutlet weak var reasonLabel: UILabel!
-    
-    @IBOutlet weak var goalLabel: UILabel!
-    /// Image View
-    @IBOutlet private weak var imageView: UIImageView!
-    
-    /// Overlay View
-    @IBOutlet private weak var overlayView: UIView!
     
     /// Corner View
     @IBOutlet private weak var cornerView: UIView!
-    
-    @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
+    @IBOutlet weak var goalContentView: GoalContentView!
     
     var goalIsActive = false
     
@@ -37,31 +28,8 @@ internal class GoalCell2: BaseRoundedCardCell {
     
     // MARK: - Content
     
-    func showActiveGoalState(_ goalIsActive:Bool) {
-        if goalIsActive {
-            self.overlayView.backgroundColor = UIColor.green.withAlphaComponent(0.9)
-        } else {
-            self.overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
-        }
-    }
-    
     func show(goal: Goal, goalIsActive:Bool) {
-        guard let data = goal.imageData?.data else {
-            fatalError ("could not extract data: \(String(describing: goal.imageData))")
-        }
-        
-        guard let image = UIImage(data: data) else {
-            fatalError ("could not create Image from data: \(data)")
-        }
-        
-        showActiveGoalState(goalIsActive)
-        self.goalIsActive = goalIsActive
-        imageView.image = image
-        reasonLabel.text = goal.reason
-        reasonLabel.sizeToFit()
-        goalLabel.text = goal.name
-        goalLabel.sizeToFit()
-        progressIndicatorView.setProgress(forGoal: goal)
+        goalContentView.show(goal: goal, goalIsActive: goalIsActive)
     }
 
     override func awakeFromNib() {
@@ -69,9 +37,6 @@ internal class GoalCell2: BaseRoundedCardCell {
         
         cornerView.layer.cornerRadius = 14.0
         cornerView.clipsToBounds = true
-        
-        reasonLabel.numberOfLines = 0
-        goalLabel.numberOfLines = 0
     }
 
 }
