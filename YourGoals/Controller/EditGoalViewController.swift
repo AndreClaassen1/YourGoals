@@ -27,14 +27,13 @@ class EditGoalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reasonField.layer.cornerRadius = 5
-        reasonField.layer.borderColor = UIColor.gray.cgColor
-        reasonField.layer.borderWidth = 2.3
+        reasonField.showBorder()
         
         // Do any additional setup after loading the view.
         
         configureGoal(withGoal: self.editGoal)
         configureImagePicker(imagePicker: self.imagePicker)
+        self.goalNameField.becomeFirstResponder()   
     }
     
     func configureGoal(withGoal goal:Goal?) {

@@ -48,6 +48,11 @@ extension GoalDetailViewController: UITableViewDataSource, UITableViewDelegate, 
             tableView.endUpdates()
         }
     }
+    
+    func reloadTableView() throws {
+        try retrieveOrderedTasks()
+        self.tasksTableView.reloadData()
+    }
 
     // MARK: - Data Source Methods
     

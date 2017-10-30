@@ -44,6 +44,7 @@
 		7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */; };
 		7B994E111FA22E4E00B704E1 /* GoalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalFactory.swift */; };
 		7B994E131FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */; };
+		7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19631FA7199B002CA72B /* UITextView+Border.swift */; };
 		7B9E28ED1FA6550D00BB6003 /* TaskPrioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */; };
 		7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */; };
 		7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */; };
@@ -193,6 +194,7 @@
 		7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCheckError.swift; sourceTree = "<group>"; };
 		7B994E101FA22E4E00B704E1 /* GoalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFactory.swift; sourceTree = "<group>"; };
 		7B994E121FA3139200B704E1 /* GoalDetailViewController+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailViewController+SwipeableCell.swift"; sourceTree = "<group>"; };
+		7B9A19631FA7199B002CA72B /* UITextView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Border.swift"; sourceTree = "<group>"; };
 		7B9E28EC1FA6550D00BB6003 /* TaskPrioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPrioManager.swift; sourceTree = "<group>"; };
 		7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManagerTests.swift; sourceTree = "<group>"; };
@@ -236,8 +238,6 @@
 		7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdater.swift; sourceTree = "<group>"; };
 		7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerWorker.swift; sourceTree = "<group>"; };
 		7BE11B791F9F80220023844E /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
-		7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageData+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/ImageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BE11B7E1F9F85070023844E /* ImageData+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageData+Image.swift"; sourceTree = "<group>"; };
 		7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsModel.xcdatamodel; sourceTree = "<group>"; };
 		7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBase.swift; sourceTree = "<group>"; };
@@ -249,17 +249,6 @@
 		7BEBBAD11F9F4087003D16AE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGenerator.swift; sourceTree = "<group>"; };
 		7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyManager.swift; sourceTree = "<group>"; };
-		7BEBBADF1F9F568E003D16AE /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Habit+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7BEBBAE01F9F568E003D16AE /* TaskProgress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskProgress+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/TaskProgress+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7BEBBAE11F9F568E003D16AE /* HabitCheck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HabitCheck+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/HabitCheck+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BEBBAE21F9F568F003D16AE /* TaskProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskProgress+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/TaskProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BEBBAE31F9F568F003D16AE /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BEBBAE61F9F568F003D16AE /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Habit+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BEBBAE71F9F568F003D16AE /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataClass.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Goal+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7BEBBAE81F9F568F003D16AE /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7BEBBAE91F9F568F003D16AE /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7BEBBAEA1F9F568F003D16AE /* GoalsModel+CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GoalsModel+CoreDataModel.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/GoalsModel+CoreDataModel.swift"; sourceTree = "<group>"; };
-		7BEBBAEB1F9F568F003D16AE /* HabitCheck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "HabitCheck+CoreDataProperties.swift"; path = "../../../../../Library/Developer/Xcode/DerivedData/YourGoals-ghfoyrwismtrjqaedrdbrbwqooma/Build/Intermediates.noindex/YourGoals.build/Debug-iphonesimulator/YourGoals.build/DerivedSources/CoreDataGenerated/GoalsModel/HabitCheck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorInfo.swift"; sourceTree = "<group>"; };
 		7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressManagerTests.swift; sourceTree = "<group>"; };
 		7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManagerTests.swift; sourceTree = "<group>"; };
@@ -358,6 +347,7 @@
 				7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */,
 				7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */,
 				7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */,
+				7B9A19631FA7199B002CA72B /* UITextView+Border.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -519,7 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				7BE11B7D1F9F84F30023844E /* Extensions */,
-				7BEBBADE1F9F567D003D16AE /* Generated */,
 				7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */,
 				7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */,
 			);
@@ -564,26 +553,6 @@
 				7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */,
 			);
 			path = Business;
-			sourceTree = "<group>";
-		};
-		7BEBBADE1F9F567D003D16AE /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				7BE11B7B1F9F84EA0023844E /* ImageData+CoreDataClass.swift */,
-				7BE11B7C1F9F84EA0023844E /* ImageData+CoreDataProperties.swift */,
-				7BEBBAE71F9F568F003D16AE /* Goal+CoreDataClass.swift */,
-				7BEBBAE91F9F568F003D16AE /* Goal+CoreDataProperties.swift */,
-				7BEBBAEA1F9F568F003D16AE /* GoalsModel+CoreDataModel.swift */,
-				7BEBBAE61F9F568F003D16AE /* Habit+CoreDataClass.swift */,
-				7BEBBADF1F9F568E003D16AE /* Habit+CoreDataProperties.swift */,
-				7BEBBAE11F9F568E003D16AE /* HabitCheck+CoreDataClass.swift */,
-				7BEBBAEB1F9F568F003D16AE /* HabitCheck+CoreDataProperties.swift */,
-				7BEBBAE31F9F568F003D16AE /* Task+CoreDataClass.swift */,
-				7BEBBAE81F9F568F003D16AE /* Task+CoreDataProperties.swift */,
-				7BEBBAE21F9F568F003D16AE /* TaskProgress+CoreDataClass.swift */,
-				7BEBBAE01F9F568E003D16AE /* TaskProgress+CoreDataProperties.swift */,
-			);
-			path = Generated;
 			sourceTree = "<group>";
 		};
 		C6D9E49C1DF9C5AF8B193B54 /* Frameworks */ = {
@@ -884,6 +853,7 @@
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
+				7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,

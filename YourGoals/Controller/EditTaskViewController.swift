@@ -12,6 +12,7 @@ import CoreData
 protocol EditTaskViewControllerDelegate {
     func createNewTask(taskInfo: TaskInfo) throws
     func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws
+    func deleteTask(taskWithId: NSManagedObjectID) throws
 }
 
 class EditTaskViewController: UIViewController {
@@ -19,6 +20,7 @@ class EditTaskViewController: UIViewController {
     @IBOutlet weak var taskTextView: UITextView!
     @IBOutlet weak var taskSaveButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var deleteTaskButton: UIButton!
     
     var goal:Goal!
     var editTask:Task?
@@ -28,8 +30,9 @@ class EditTaskViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.taskTextView.showBorder()
         self.configureTask(forGoal: self.goal, andTask: self.editTask)
+        self.taskTextView.becomeFirstResponder()
     }
     
     func configureTask(forGoal goal:Goal, andTask task:Task?) {
@@ -38,10 +41,12 @@ class EditTaskViewController: UIViewController {
             titleLabel.text = "Update Task"
             taskSaveButton.setTitle("Update task", for: .normal)
             taskTextView.text = task.name
+            deleteTaskButton.isHidden = false
         } else {
             titleLabel.text = "New Task"
             taskSaveButton.setTitle("Add this task to my goal", for: .normal)
             taskTextView.text = ""
+            deleteTaskButton.isHidden = true
         }
     }
     
@@ -60,6 +65,16 @@ class EditTaskViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func deleteTaskAction(_ sender: Any) {
+        do {
+            try delegate?.deleteTask(taskWithId: editTask!.objectID)
+            self.dismiss(animated: true, completion: nil)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
     
     @IBAction func saveTaskAction(_ sender: Any) {

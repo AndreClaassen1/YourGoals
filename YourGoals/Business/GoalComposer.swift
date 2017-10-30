@@ -54,6 +54,23 @@ class GoalComposer {
         try self.manager.dataManager.saveContext()
         return goal
     }
+    
+    /// delete a task with id from the given goal
+    ///
+    /// - Parameters:
+    ///   - id: object id from the task
+    ///   - goal: the parent goal for the task
+    /// - Returns: the goal without the task
+    /// - Throws: core data exception
+    func delete(taskWithId id:NSManagedObjectID, fromGoal goal: Goal) throws -> Goal {
+        guard let task = goal.taskForId(id) else {
+            throw GoalComposerError.noTaskForIdFound
+        }
 
+        goal.removeFromTasks(task)
+        self.manager.tasksStore.managedObjectContext.delete(task)
+        try self.manager.dataManager.saveContext()
+        return goal
+    }
 
 }

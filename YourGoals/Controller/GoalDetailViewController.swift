@@ -99,18 +99,29 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         
     }
     
+    func refreshView() throws {
+        try self.reloadTableView()
+        self.configure(goal: self.goal)
+    }
+    
     // MARK: - EditTaskViewControllerDelegate
     
     func createNewTask(taskInfo: TaskInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
         self.goal = try goalComposer.add(taskInfo: taskInfo, toGoal: goal)
-        self.tasksTableView.reloadData()
+        try self.refreshView()
     }
     
     func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws {
         let goalComposer = GoalComposer(manager: self.manager)
         self.goal = try goalComposer.update(taskInfo: taskInfo, withId: id, toGoal: goal)
-        self.tasksTableView.reloadData()
+        try self.refreshView()
+    }
+    
+    func deleteTask(taskWithId id: NSManagedObjectID) throws {
+        let goalComposer = GoalComposer(manager: self.manager)
+        self.goal = try goalComposer.delete(taskWithId: id, fromGoal: self.goal)
+        try self.refreshView()
     }
     
     // MARK: - EditGoalViewControllerDelegate
