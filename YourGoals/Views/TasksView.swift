@@ -18,22 +18,19 @@ protocol TasksViewDelegate {
 }
 
 enum TasksViewMode {
-    case notInitialized
     case tasksForGoal
     case committedTasks
 }
 
 /// a specialized UITableView for displaying tasks
 class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate, LongPressReorder {
-    
-
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var tasksOrdered: [Task]!
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
-    var mode = TasksViewMode.notInitialized
+    var tasksViewMode:TasksViewMode!
     var manager:GoalsStorageManager!
     var delegate:TasksViewDelegate!
     var goal:Goal?
@@ -61,7 +58,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     }
 
     func configure(manager:GoalsStorageManager, mode:TasksViewMode, forGoal goal:Goal?, delegate: TasksViewDelegate) {
-        self.mode = mode
+        self.tasksViewMode = mode
         self.goal = goal
         self.manager = manager
         self.delegate = delegate
@@ -127,10 +124,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     // MARK: - Data Source Methods
     
     func retrieveOrderedTasks() throws {
-        switch self.mode {
-        case .notInitialized:
-                assertionFailure("this view isn't initialized")
-                break
+        switch self.tasksViewMode! {
         case .tasksForGoal:
             self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal!)
             break
@@ -149,14 +143,23 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         return self.tasksOrdered[path.row]
     }
     
+    func taskPositioning(forMode mode:TasksViewMode) -> TaskPositioningProtocol {
+        switch self.tasksViewMode! {
+        case .tasksForGoal:
+            return TaskOrderManager(manager: self.manager)
+            
+        case .committedTasks:
+            return TaskCommitmentManager(manager: self.manager)
+        }
+    }
+    
     func updateTaskOrder(initialIndex: IndexPath, finalIndex: IndexPath) throws {
         guard initialIndex != finalIndex else {
             NSLog("no update of order neccessary")
             return
         }
-        
-        let taskOrderManager = TaskOrderManager(manager: self.manager)
-        self.tasksOrdered = try taskOrderManager.updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
+
+        self.tasksOrdered = try taskPositioning(forMode: self.tasksViewMode).updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
     }
     
     /// retrieve the index path of all task cells, which are in progess
