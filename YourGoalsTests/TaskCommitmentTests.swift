@@ -39,9 +39,4 @@ class TaskCommitmentTests: StorageTestCase {
         XCTAssertEqual(1, committedTasks.count)
         XCTAssertEqual(CommittingState.committedForDate, committedTasks[0].commitingState(forDate: testDate))
     }
-    
-    
-    
-    
-    
 }

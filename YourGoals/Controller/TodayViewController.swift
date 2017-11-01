@@ -8,16 +8,21 @@
 
 import UIKit
 
-class TodayViewController: UIViewController {
-    
-    @IBOutlet weak var actionsTableView: UITableView!
+class TodayViewController: UIViewController, TasksViewDelegate {
+
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     @IBOutlet weak var habitsTableView: UITableView!
+    @IBOutlet weak var committedTasksView: TasksView!
+    
+    var manager = GoalsStorageManager.defaultStorageManager
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Today"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        committedTasksView.configure(manager: self.manager, mode: .committedTasks,  forGoal: nil, delegate: self)
         
         // Do any additional setup after loading the view.
     }
@@ -27,6 +32,10 @@ class TodayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.committedTasksView.reload()
+    }
 
     /*
     // MARK: - Navigation
@@ -37,5 +46,19 @@ class TodayViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: TasksViewDelegate
+    
+    func editTask(task: Task) {
+        
+    }
+    
+    func goalChanged() {
+        
+    }
+    
+    func commitmentChanged() {
+        
+    }
 
 }

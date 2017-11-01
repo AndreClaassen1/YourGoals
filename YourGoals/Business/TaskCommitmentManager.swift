@@ -18,7 +18,7 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
     ///   - date: date
     /// - Throws: core data excepciotn
     func commit(task: Task, forDate date: Date) throws {
-        task.commitmentDate = date
+        task.commitmentDate = date.day()
         task.commitmentPrio = 1
         task.setTaskState(state: .active)
         try manager.dataManager.saveContext()

@@ -17,5 +17,4 @@ extension Goal {
     func isActive(forDate date:Date) -> Bool {
         return allTasks().filter{ $0.isProgressing(atDate: date) }.count > 0
     }
-    
 }

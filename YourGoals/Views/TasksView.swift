@@ -24,7 +24,7 @@ enum TasksViewMode {
 }
 
 /// a specialized UITableView for displaying tasks
-class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate, LongPressReorder, MGSwipeTableCellDelegate {
+class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate, LongPressReorder {
     
 
     var tasksTableView:UITableView!
@@ -36,7 +36,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     var mode = TasksViewMode.notInitialized
     var manager:GoalsStorageManager!
     var delegate:TasksViewDelegate!
-    var goal:Goal!
+    var goal:Goal?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,11 +60,23 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         self.reorderTableView.enableLongPressReorder()
     }
 
-    func configure(manager:GoalsStorageManager, forGoal goal:Goal, delegate: TasksViewDelegate) {
-        self.mode = .tasksForGoal
+    func configure(manager:GoalsStorageManager, mode:TasksViewMode, forGoal goal:Goal?, delegate: TasksViewDelegate) {
+        self.mode = mode
         self.goal = goal
+        self.manager = manager
         self.delegate = delegate
         configureTableView()
+    }
+    
+    func reload() {
+        do {
+            try retrieveOrderedTasks()
+            self.tasksTableView.reloadData()
+        }
+        catch let error {
+            self.delegate.showNotification(forError: error)
+        }
+        
     }
     
     func configureTableView() {
@@ -120,7 +132,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
                 assertionFailure("this view isn't initialized")
                 break
         case .tasksForGoal:
-            self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal)
+            self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal!)
             break
             
         case .committedTasks:
@@ -164,7 +176,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         return indexPaths
     }
     
-    // MGSwipeTableCellDelegate
+    // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -178,7 +190,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
         cell.configure(task: task, delegate: self)
-        cell.delegate = self
+        configure(swipeableCell: cell)
         return cell
     }
     

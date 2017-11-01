@@ -47,6 +47,7 @@ extension GoalDetailViewController {
             try commitManager.commit(task: task, forDate: date)
         }
         self.tasksTableView.reloadData()
-        self.delegate?.commitmentChanged()
+        self.configure(goal: goal)
+        self.delegate?.goalChanged()
     }
 }
