@@ -9,7 +9,7 @@
 import Foundation
 
 /// priority management for tasks
-class TaskOrderManager:StorageManagerWorker {
+class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
 
     /// retrieve the tasks ordered from the core data store for the given goal
     ///
@@ -37,6 +37,8 @@ class TaskOrderManager:StorageManagerWorker {
         
         try self.manager.dataManager.saveContext()
     }
+    
+    // MARK: - TaskPositioningProtocol
     
     /// after a reorder is done, a task has changed its position from the old offset to the new offset
     ///

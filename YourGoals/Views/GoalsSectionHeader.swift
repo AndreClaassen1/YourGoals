@@ -1,5 +1,5 @@
 //
-//  TodaySectionHeader.swift
+//  GoalsSectionHeader.swift
 //  AppStoreClone
 //
 //  Created by Phillip Farrugia on 6/17/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodaySectionHeader: UICollectionReusableView {
+class GoalsSectionHeader: UICollectionReusableView {
     
     internal static let viewHeight: CGFloat = 81
 
@@ -22,9 +22,9 @@ class TodaySectionHeader: UICollectionReusableView {
     
     // MARK: - Factory Method
     
-    internal static func dequeue(fromCollectionView collectionView: UICollectionView, ofKind kind: String, atIndexPath indexPath: IndexPath) -> TodaySectionHeader {
-        guard let view: TodaySectionHeader = collectionView.dequeueSupplementaryView(kind: kind, indexPath: indexPath) else {
-            fatalError("*** Failed to dequeue TodaySectionHeader ***")
+    internal static func dequeue(fromCollectionView collectionView: UICollectionView, ofKind kind: String, atIndexPath indexPath: IndexPath) -> GoalsSectionHeader {
+        guard let view: GoalsSectionHeader = collectionView.dequeueSupplementaryView(kind: kind, indexPath: indexPath) else {
+            fatalError("*** Failed to dequeue GoalsSectionHeader ***")
         }
         return view
     }

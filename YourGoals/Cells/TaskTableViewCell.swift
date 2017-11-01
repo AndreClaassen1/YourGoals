@@ -62,8 +62,14 @@ class TaskTableViewCell: MGSwipeTableCell {
         }
     }
     
-    func showTaskProgress(isProgressing: Bool) {
-        self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
+    /// show the task progress state
+    ///
+    /// - Parameters:
+    ///   - isProgressing: task is currently progressing
+    ///   - isCommitted: task is committed for today
+    func showTaskProgressAndCommitment(isProgressing: Bool, isCommitted: Bool) {
+        let backGroundCommitingState = isCommitted ? UIColor.yellow : UIColor.white
+        self.contentView.backgroundColor = isProgressing ? UIColor.green : backGroundCommitingState
     }
     
     func stringFromTime(interval ti: TimeInterval) -> String {
@@ -92,10 +98,9 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.task = task
         self.delegateTaskCell = delegate
         showTaskState(state: task.getTaskState())
-        showTaskProgress(isProgressing: task.isProgressing(atDate: Date()))
+        showTaskProgressAndCommitment(isProgressing: task.isProgressing(atDate: Date()), isCommitted: task.commitingState(forDate: Date()) == .committedForDate)
         showWorkingTime(task: task)
         taskDescriptionLabel.text = task.name
-        
         
         if let goalName = task.goal?.name {
             goalDescriptionLabel.text = "Goal: \(goalName)"

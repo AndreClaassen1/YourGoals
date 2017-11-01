@@ -28,16 +28,7 @@ extension TaskProgressError: LocalizedError {
 }
 
 /// business class to start and stop progress on a task and modifieing state in the database
-class TaskProgressManager {
-    let manager:GoalsStorageManager
-    
-    /// initialize the TaskProgressManager with a core data manager
-    ///
-    /// - Parameter manager: a GoalsStoreManager
-    init(manager: GoalsStorageManager) {
-        self.manager = manager
-    }
-    
+class TaskProgressManager:StorageManagerWorker {
     /// start working and making progress on a task
     ///
     /// **Important**: If the task is not active, it will be made active again

@@ -38,4 +38,15 @@ extension GoalDetailViewController {
         self.delegate?.goalChanged()
     }
     
+    func switchCommitment(forTask task: Task) throws {
+        let date = Date()
+        let commitManager = TaskCommitmentManager(manager: self.manager)
+        if task.commitingState(forDate: date) == .committedForDate {
+            try commitManager.normalize(task: task)
+        } else {
+            try commitManager.commit(task: task, forDate: date)
+        }
+        self.tasksTableView.reloadData()
+        self.delegate?.commitmentChanged()
+    }
 }

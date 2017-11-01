@@ -33,10 +33,22 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
         return MGSwipeButton(title: title, backgroundColor: backgroundColor)
     }
     
+    /// crate a swipe button for the active/done state
+    ///
+    /// - Parameter task: a task
+    /// - Returns: a properly configured swipe button for the active / done state
     func createSwipeButtonForState(task: Task) -> MGSwipeButton {
         let title = task.taskIsActive() ? "Task Done" : "Task Open"
         return MGSwipeButton(title: title, backgroundColor: UIColor.blue)
     }
+    
+    func createSwipeButtonForCommitment(task: Task) -> MGSwipeButton {
+        let commitingState = task.commitingState(forDate: Date()) == .committedForDate
+        let title = commitingState ? "Normal Task": "Committed for today!"
+        let backgroundColor = commitingState ? UIColor.gray: UIColor.yellow
+        return MGSwipeButton(title: title, backgroundColor: backgroundColor)
+    }
+    
     
     // MARK: - MGSwipeTableCellDelegate
     
@@ -78,7 +90,7 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
             return [createSwipeButtonForProgress(task: task)]
         }
         else {
-            return [createSwipeButtonForState(task: task)]
+            return [createSwipeButtonForCommitment(task: task), createSwipeButtonForState(task: task)]
         }
     }
     
@@ -108,7 +120,15 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
                 break
                 
             case .rightToLeft:
-                try switchState(forTask: task)
+                switch index {
+                case 0:
+                    try switchCommitment(forTask: task)
+                case 1:
+                    try switchState(forTask: task)
+                default:
+                    assertionFailure("not processable index for swipe cell: \(index)")
+                    
+                }
                 break
             }
         }

@@ -102,6 +102,12 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     func goalChanged() {
         self.collectionView.reloadData()
     }
+    
+    func commitmentChanged() {
+        
+    }
+    
+    
 }
 
 

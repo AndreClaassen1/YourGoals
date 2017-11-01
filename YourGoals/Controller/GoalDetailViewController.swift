@@ -12,6 +12,7 @@ import LongPressReorder
 
 protocol GoalDetailViewControllerDelegate {
     func goalChanged()
+    func commitmentChanged()
 }
 
 /// show a goal and all of its tasks in detail
