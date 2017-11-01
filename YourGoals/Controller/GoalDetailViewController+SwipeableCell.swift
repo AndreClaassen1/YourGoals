@@ -44,7 +44,7 @@ extension GoalDetailViewController : MGSwipeTableCellDelegate {
     
     func createSwipeButtonForCommitment(task: Task) -> MGSwipeButton {
         let commitingState = task.commitingState(forDate: Date()) == .committedForDate
-        let title = commitingState ? "Normal Task": "Committed for today!"
+        let title = commitingState ? "Normalize": "Committed!"
         let backgroundColor = commitingState ? UIColor.gray: UIColor.yellow
         return MGSwipeButton(title: title, backgroundColor: backgroundColor)
     }
