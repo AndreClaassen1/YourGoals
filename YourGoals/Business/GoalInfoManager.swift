@@ -14,14 +14,22 @@ class GoalInfoManager:StorageManagerWorker {
     /// retrieve all goals with active tasks.
     ///
     /// - Returns: an array of goals, which should usally only have maximal one item.
-    func retrieveGoalsWithProgress() throws -> [Goal] {
-        var goalsWithProgress = [Goal]()
-        let strategyManager = StrategyManager(manager: self.manager)
-        guard let goals = try strategyManager.activeStrategy()?.allGoals() else {
-            return []
-        }
+    func retrieveGoalsWithProgress(forDate date: Date) throws -> [Goal] {
 
-        return []
+        // brute force
+        
+        let activeStrategy = try StrategyManager(manager: self.manager).activeStrategy()!
+        let goalsWithProgress = activeStrategy.allGoals().filter{ $0.isActive(forDate: date) }
+        return goalsWithProgress
+        
+        
+        //        var goalsWithProgress = [Goal]()
+//        let strategyManager = StrategyManager(manager: self.manager)
+//        guard let goals = try strategyManager.activeStrategy()?.allGoals() else {
+//            return []
+//        }
+//
+//        return []
        
 //        let tasks = try self.manager.tasksStore.fetchItems { request in
 //            request.predicate = NSPredicate(format: "ANY (progress.start != nil AND progress.end == nil)")

@@ -28,6 +28,18 @@ class StrategyManager {
         self.manager = manager
     }
     
+    func assertActiveStrategy() throws -> Goal {
+        let strategy = try activeStrategy()
+    
+        if strategy == nil {
+            let newStrategy = try GoalFactory(manager: self.manager).create(name: "Strategy", prio: 0, reason: "Master Plan", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: nil)
+            try self.manager.dataManager.saveContext()
+            return newStrategy
+        }
+        
+        return strategy!
+    }
+    
     func activeStrategy() throws -> Goal? {
         return try self.manager.goalsStore.fetchFirstEntry {
             $0.predicate = NSPredicate(format: "(parentGoal = nil)")

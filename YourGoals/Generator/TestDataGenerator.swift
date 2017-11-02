@@ -22,7 +22,7 @@ class TestDataGenerator {
             TasksGenerator(manager: self.manager)
          ]
     }
-    
+
     func generate() throws {
         try manager.deleteRepository()
         try generators.forEach{ try $0.generate() }

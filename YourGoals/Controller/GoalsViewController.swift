@@ -15,7 +15,6 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     var manager:GoalsStorageManager!
     var strategy:Goal!
     var selectedGoal:Goal?
-    var activeGoals = [Goal]()
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController()
     internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
@@ -29,7 +28,6 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
             
             self.manager = GoalsStorageManager.defaultStorageManager
             self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
-            self.activeGoals = try GoalInfoManager(manager: self.manager).retrieveGoalsWithProgress()
             
             configure(collectionView: collectionView)
             self.navigationController?.navigationBar.prefersLargeTitles = true

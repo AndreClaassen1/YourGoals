@@ -32,7 +32,10 @@ class GoalComposer {
     func add(taskInfo: TaskInfo, toGoal goal: Goal) throws -> Goal {
         let taskFactory = TaskFactory(manager: self.manager)
         let task = taskFactory.create(taskInfo: taskInfo)
+        task.prio = -1
         goal.addToTasks(task)
+        let taskOrderManager = TaskOrderManager(manager: self.manager)
+        try taskOrderManager.updateTasksOrder(tasks: goal.allTasks())
         try self.manager.dataManager.saveContext()
         return goal
     }

@@ -27,15 +27,12 @@ class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
     /// update the order of the tasks
     ///
     /// - Parameter tasks: ordered array of tasks
-    /// - Throws: core data exception
-    func updateTasksOrder(tasks: [Task]) throws {
+    func updateTasksOrder(tasks: [Task]) {
         for tuple in tasks.enumerated() {
             let prio = Int16(tuple.offset)
             let task = tuple.element
             task.prio = prio
         }
-        
-        try self.manager.dataManager.saveContext()
     }
     
     // MARK: - TaskPositioningProtocol
@@ -50,7 +47,8 @@ class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
     func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws -> [Task] {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
-        try updateTasksOrder(tasks: tasksReorderd)
+        updateTasksOrder(tasks: tasksReorderd)
+        try self.manager.dataManager.saveContext()
         return tasksReorderd
     }
 }

@@ -31,7 +31,7 @@ class StrategyGenerator : Generator, GeneratorProtocol {
     
     func generate() throws {
         
-        let strategy = try createParentGoal()
+        let strategy = try StrategyManager(manager: self.manager).assertActiveStrategy()
         
         for tuple in goals {
             let goal = self.manager.goalsStore.createPersistentObject()
@@ -51,11 +51,5 @@ class StrategyGenerator : Generator, GeneratorProtocol {
             imageData.setImage(image: image)
             goal.imageData = imageData
         }
-    }
-    
-    func createParentGoal() throws ->  Goal  {
-        let strategy = manager.goalsStore.createPersistentObject()
-        strategy.name = "Meine Strategie"
-        return strategy
     }
 }
