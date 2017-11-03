@@ -21,12 +21,7 @@ extension StrategyManagerError:LocalizedError {
     }
 }
 
-class StrategyManager {
-    let manager:GoalsStorageManager
-    
-    init(manager:GoalsStorageManager) {
-        self.manager = manager
-    }
+class StrategyManager:StorageManagerWorker {
     
     func assertActiveStrategy() throws -> Goal {
         let strategy = try activeStrategy()

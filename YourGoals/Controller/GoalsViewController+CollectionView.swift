@@ -115,6 +115,4 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
             performSegue(withIdentifier: "presentGoal", sender: self)
         }
     }
-    
-
 }

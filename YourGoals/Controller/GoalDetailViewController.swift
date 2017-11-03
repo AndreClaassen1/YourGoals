@@ -17,7 +17,7 @@ protocol GoalDetailViewControllerDelegate {
 
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, TasksViewDelegate {
-
+    
     
     @IBOutlet weak var tasksView: TasksView!
     /// Container
@@ -26,7 +26,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
- 
+    
     @IBOutlet weak var goalContentView: GoalContentView!
     
     
@@ -51,16 +51,25 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         super.viewDidLoad()
         configure(goal: self.goal)
         self.tasksView.configure(manager: self.manager, mode: .tasksForGoal, forGoal: self.goal, delegate: self)
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tasksView.reload()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
@@ -71,15 +80,15 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         view.layoutIfNeeded()
     }
     
-//    internal func setHeaderHeight(_ height: CGFloat) {
-//        headerImageHeightConstraint.constant = height
-//        view.layoutIfNeeded()
-//    }
-//
-//    internal func configureRoundedCorners(shouldRound: Bool) {
-//        headerImageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
-//    }
-//
+    //    internal func setHeaderHeight(_ height: CGFloat) {
+    //        headerImageHeightConstraint.constant = height
+    //        view.layoutIfNeeded()
+    //    }
+    //
+    //    internal func configureRoundedCorners(shouldRound: Bool) {
+    //        headerImageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
+    //    }
+    //
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -184,5 +193,5 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     func commitmentChanged() {
         
     }
-
+    
 }

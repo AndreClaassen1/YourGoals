@@ -27,13 +27,27 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
             // Do any additional setup after loading the view, typically from a nib.
             
             self.manager = GoalsStorageManager.defaultStorageManager
-            self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
+            try reloadStrategy()
             
             configure(collectionView: collectionView)
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         catch let error {
             self.showNotification(forError: error)
+        }
+    }
+    
+    func reloadStrategy() throws {
+        self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
+    }
+    
+    func reloadGoalsCollection() {
+        do {
+            try reloadStrategy()
+            self.collectionView.reloadData()
+        }
+        catch let error {
+            showNotification(forError: error)
         }
     }
     
@@ -65,7 +79,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     // MARK: - NewGoalCellDelegate
     
     func newGoalClicked() {
-        performSegue(withIdentifier: "editGoal", sender: self)
+        performSegue(withIdentifier: "presentEditGoal", sender: self)
     }
     
     // MARK: - EditGoalViewControllerDelegate
@@ -98,14 +112,12 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     // MARK: - GoalDetailViewControllerDelegate
     
     func goalChanged() {
-        self.collectionView.reloadData()
+        self.reloadGoalsCollection()
     }
     
     func commitmentChanged() {
         
     }
-    
-    
 }
 
 
