@@ -57,9 +57,8 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
             let task = tuple.element
             task.commitmentPrio = prio
         }
-        
     }
-    
+       
     func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws -> [Task] {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)

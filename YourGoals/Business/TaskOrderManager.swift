@@ -24,6 +24,14 @@ class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
         return tasks
     }
     
+    /// update the task order by prio and "renumber" the prio in the tasks
+    ///
+    /// - Parameter goal: update the task order for this goal
+    func updateTasksOrderByPrio(forGoal goal: Goal) {
+        let taskSortedByPrio = goal.allTasks().sorted(by: { $0.prio < $1.prio })
+        updateTasksOrder(tasks: taskSortedByPrio)
+    }
+
     /// update the order of the tasks
     ///
     /// - Parameter tasks: ordered array of tasks

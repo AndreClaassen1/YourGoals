@@ -14,12 +14,7 @@ enum GoalComposerError:Error {
 }
 
 /// modify and compose goals in core data and save the result in the database
-class GoalComposer {
-    let manager:GoalsStorageManager
-    
-    init(manager: GoalsStorageManager) {
-        self.manager = manager
-    }
+class GoalComposer:StorageManagerWorker {
     
     /// add a new task with the information from the task info to the goal and save
     /// it back to the core data store
@@ -35,7 +30,7 @@ class GoalComposer {
         task.prio = -1
         goal.addToTasks(task)
         let taskOrderManager = TaskOrderManager(manager: self.manager)
-        taskOrderManager.updateTasksOrder(tasks: goal.allTasks())
+        taskOrderManager.updateTasksOrderByPrio(forGoal: goal)
         try self.manager.dataManager.saveContext()
         return goal
     }
