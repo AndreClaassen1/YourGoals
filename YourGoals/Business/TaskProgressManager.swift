@@ -86,6 +86,19 @@ class TaskProgressManager:StorageManagerWorker {
             progress.end = date
         }
     }
+    
+    /// retrieve all active tasks started before the given dateactive
+    ///
+    /// - Parameter date: the dateactive
+    /// - Returns: array of tasks with active progress (usually only max. one task)
+    /// - Throws: a core data exception
+    func activeTasks(forDate date: Date) throws -> [Task] {
+        let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: {
+            $0.predicate = NSPredicate(format: "end = nil AND start <= %@", date as NSDate)
+        })
+        
+        return progress.map { $0.task }.filter{ $0 != nil }.map{ $0! }
+    }
 
     /// fetches the number of tasks with progress from the core data sotre
     ///

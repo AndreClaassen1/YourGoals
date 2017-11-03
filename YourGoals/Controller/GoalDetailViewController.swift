@@ -18,7 +18,6 @@ protocol GoalDetailViewControllerDelegate {
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, TasksViewDelegate {
     
-    
     @IBOutlet weak var tasksView: TasksView!
     /// Container
     @IBOutlet private weak var contentContainerView: UIView!
@@ -190,8 +189,13 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.delegate?.goalChanged()
     }
     
+    func progressChanged(task: Task) {
+        self.delegate?.goalChanged()
+    }
+    
+    
     func commitmentChanged() {
-        
+        self.delegate?.goalChanged()
     }
     
 }

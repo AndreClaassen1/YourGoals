@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewControllerDelegate {
+class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewControllerDelegate, EditTaskViewControllerDelegate {
+
     
-
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     @IBOutlet weak var habitsTableView: UITableView!
     @IBOutlet weak var committedTasksView: TasksView!
+    @IBOutlet weak var activeWorkTasksView: TasksView!
     
     var manager = GoalsStorageManager.defaultStorageManager
     var selectedGoal:Goal? = nil
     var strategy:Goal! = nil
+    var editTask:Task? = nil
     
     override func viewDidLoad() {
         
@@ -27,6 +30,7 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         
         self.configure(collectionView: self.goalsCollectionView)
         self.committedTasksView.configure(manager: self.manager, mode: .committedTasks,  forGoal: nil, delegate: self)
+        self.activeWorkTasksView.configure(manager: self.manager, mode: .activeTasks, forGoal: nil, delegate: self)
         
         // Do any additional setup after loading the view.
     }
@@ -51,26 +55,58 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
             detailController.delegate = self
             return
         }
+        
+        if let editTaskController = segue.destination as? EditTaskViewController {
+            editTaskController.goal = self.editTask?.goal
+            editTaskController.delegate = self
+            editTaskController.editTask = self.editTask
+            self.editTask = nil
+        }
+        
     }
     
     // MARK: - TasksViewDelegate
     
+    func reloadAll() {
+        self.reloadCollectionView(collectionView: self.goalsCollectionView)
+        self.committedTasksView.reload()
+        self.activeWorkTasksView.reload()
+    }
+    
+    
     func requestForEdit(task: Task) {
+        self.editTask = task
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
     
     func goalChanged(goal: Goal) {
-        self.reloadCollectionView(collectionView: self.goalsCollectionView)
+        self.reloadAll()
     }
     
     func goalChanged() {
-        self.reloadCollectionView(collectionView: self.goalsCollectionView)
+        self.reloadAll()
     }
     
     func commitmentChanged() {
-        
+        self.reloadAll()
+    }
+    
+    func progressChanged(task: Task) {
+        self.reloadAll()
     }
 
     // MARK: - GoalDetailViewControllerDelegate
 
+    func createNewTask(taskInfo: TaskInfo) throws {
+        
+    }
+    
+    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws {
+        self.reloadAll()
+    }
+    
+    func deleteTask(taskWithId: NSManagedObjectID) throws {
+        self.reloadAll()
+    }
+    
 }

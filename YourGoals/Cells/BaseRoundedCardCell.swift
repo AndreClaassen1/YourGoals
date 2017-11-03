@@ -86,7 +86,7 @@ internal class BaseRoundedCardCell: UICollectionViewCell {
     private func configureGestureRecognizer() {
         // Long Press Gesture Recognizer
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer?.minimumPressDuration = 0.1
+        longPressGestureRecognizer?.minimumPressDuration = 0.3
         addGestureRecognizer(longPressGestureRecognizer!)
     }
     

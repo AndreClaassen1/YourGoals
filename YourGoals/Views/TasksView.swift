@@ -14,11 +14,13 @@ protocol TasksViewDelegate {
     func requestForEdit(task: Task)
     func showNotification(forError error: Error)
     func goalChanged(goal: Goal)
+    func progressChanged(task: Task)
     func commitmentChanged()
 }
 
 enum TasksViewMode {
     case tasksForGoal
+    case activeTasks
     case committedTasks
 }
 
@@ -55,7 +57,6 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         self.addSubview(self.tasksTableView)
         self.reorderTableView.delegate = self
         scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
-        self.reorderTableView.enableLongPressReorder()
     }
 
     func configure(manager:GoalsStorageManager, mode:TasksViewMode, forGoal goal:Goal?, delegate: TasksViewDelegate) {
@@ -64,6 +65,9 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         self.manager = manager
         self.delegate = delegate
         configureTableView()
+        if mode != .activeTasks {
+            self.reorderTableView.enableLongPressReorder()
+        }
     }
     
     /// reload the tasks table view
@@ -134,6 +138,9 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
             self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal!)
             break
             
+        case .activeTasks:
+            self.tasksOrdered = try TaskProgressManager(manager: self.manager).activeTasks(forDate: Date())
+            
         case .committedTasks:
             self.tasksOrdered = try TaskCommitmentManager(manager: self.manager).committedTasks(forDate: Date())
             break
@@ -148,10 +155,13 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         return self.tasksOrdered[path.row]
     }
     
-    func taskPositioning(forMode mode:TasksViewMode) -> TaskPositioningProtocol {
+    func taskPositioning(forMode mode:TasksViewMode) -> TaskPositioningProtocol? {
         switch self.tasksViewMode! {
         case .tasksForGoal:
             return TaskOrderManager(manager: self.manager)
+            
+        case .activeTasks:
+            return nil
             
         case .committedTasks:
             return TaskCommitmentManager(manager: self.manager)
@@ -163,8 +173,13 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
             NSLog("no update of order neccessary")
             return
         }
+        
+        guard let positioning = taskPositioning(forMode: self.tasksViewMode) else {
+            NSLog("positioning not supported for tasks view mode \(self.tasksViewMode)")
+            return
+        }
 
-        self.tasksOrdered = try taskPositioning(forMode: self.tasksViewMode).updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
+        self.tasksOrdered = try positioning.updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
     }
     
     /// retrieve the index path of all task cells, which are in progess

@@ -30,6 +30,7 @@ extension TasksView: MGSwipeTableCellDelegate {
         }
         self.tasksTableView.reloadData()
         self.delegate.goalChanged(goal: task.goal!)
+        self.delegate.progressChanged(task: task)
     }
     
     func switchState(forTask task: Task) throws {
