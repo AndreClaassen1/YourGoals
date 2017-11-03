@@ -16,8 +16,10 @@ protocol GoalDetailViewControllerDelegate {
 }
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate {
-    @IBOutlet weak var tasksTableView: UITableView!
+class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, TasksViewDelegate {
+
+    
+    @IBOutlet weak var tasksView: TasksView!
     /// Container
     @IBOutlet private weak var contentContainerView: UIView!
     @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
@@ -39,17 +41,21 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     var delegate:GoalDetailViewControllerDelegate?
     var reorderTableView: LongPressReorderTableView!
     
+    fileprivate func configure(goal:Goal) {
+        // Do any additional setup after loading the view.
+        self.goal = goal
+        self.goalContentView.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            
-            // Do any additional setup after loading the view.
-            configure(goal: goal)
-            try configure(tableView: tasksTableView, withGoal: goal)
-        }
-        catch let error {
-            showNotification(forError: error)
-        }
+        configure(goal: self.goal)
+        self.tasksView.configure(manager: self.manager, mode: .tasksForGoal, forGoal: self.goal, delegate: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tasksView.reload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,7 +107,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     }
     
     func refreshView() throws {
-        try self.reloadTableView()
+        self.tasksView.reload()
         self.configure(goal: self.goal)
     }
     
@@ -141,7 +147,6 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
             self.showNotification(forError: error)
         }
         
-        
         configure(goal: goal)
     }
     
@@ -160,4 +165,24 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - tasks view delegate
+    
+    /// request for editing a task
+    ///
+    /// - Parameter task: the task
+    func requestForEdit(task: Task) {
+        self.editTask = task
+        performSegue(withIdentifier: "presentEditTask", sender: self)
+    }
+    
+    func goalChanged(goal: Goal) {
+        self.goal = goal
+        self.configure(goal: goal)
+        self.delegate?.goalChanged()
+    }
+    
+    func commitmentChanged() {
+        
+    }
+
 }

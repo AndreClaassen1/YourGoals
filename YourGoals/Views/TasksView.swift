@@ -11,9 +11,9 @@ import LongPressReorder
 import MGSwipeTableCell
 
 protocol TasksViewDelegate {
-    func editTask(task: Task)
+    func requestForEdit(task: Task)
     func showNotification(forError error: Error)
-    func goalChanged()
+    func goalChanged(goal: Goal)
     func commitmentChanged()
 }
 
@@ -46,6 +46,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     }
     
     func commonSetup() {
+        self.backgroundColor = UIColor.clear
         self.tasksTableView = UITableView(frame: self.bounds)
         self.tasksTableView.registerReusableCell(TaskTableViewCell.self)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
@@ -65,6 +66,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         configureTableView()
     }
     
+    /// reload the tasks table view
     func reload() {
         do {
             try retrieveOrderedTasks()
@@ -76,7 +78,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         do {
             try retrieveOrderedTasks()
             self.tasksTableView.registerReusableCell(TaskTableViewCell.self)
@@ -98,6 +100,9 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         timerPaused = false
     }
     
+    /// show actual timer in active tasks
+    ///
+    /// - Parameter timer: timer
     @objc func updateTaskInProgess(timer:Timer) {
         guard !self.timerPaused else {
             return
@@ -121,7 +126,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
         self.tasksTableView.reloadData()
     }
     
-    // MARK: - Data Source Methods
+    // MARK: - Data Source Helper Methods
     
     func retrieveOrderedTasks() throws {
         switch self.tasksViewMode! {
@@ -209,7 +214,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.editTask(task: self.taskForIndexPath(path: indexPath))
+        delegate.requestForEdit(task: self.taskForIndexPath(path: indexPath))
     }
     
     // MARK: - Reorder handling
@@ -238,8 +243,4 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     func allowChangingRow(atIndex indexPath: IndexPath) -> Bool {
         return true
     }
-
-    
-  
-    
 }

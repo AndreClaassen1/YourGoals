@@ -29,7 +29,7 @@ extension TasksView: MGSwipeTableCellDelegate {
             try progressManager.startProgress(forTask: task, atDate: date)
         }
         self.tasksTableView.reloadData()
-        self.delegate.goalChanged()
+        self.delegate.goalChanged(goal: task.goal!)
     }
     
     func switchState(forTask task: Task) throws {
@@ -41,7 +41,7 @@ extension TasksView: MGSwipeTableCellDelegate {
             try stateManager.setTaskState(task: task, state: .active, atDate: date)
         }
         self.tasksTableView.reloadData()
-        self.delegate.goalChanged()
+        self.delegate.goalChanged(goal: task.goal!)
     }
     
     func switchCommitment(forTask task: Task) throws {
@@ -67,7 +67,8 @@ extension TasksView: MGSwipeTableCellDelegate {
         let isProgressing = task.isProgressing(atDate: Date())
         let title = isProgressing ? "Stop task" : "Start task"
         let backgroundColor = isProgressing ? UIColor.red : UIColor.green
-        return MGSwipeButton(title: title, backgroundColor: backgroundColor)
+        let button = MGSwipeButton(title: title, backgroundColor: backgroundColor)
+        return button
     }
     
     /// crate a swipe button for the active/done state
@@ -79,13 +80,18 @@ extension TasksView: MGSwipeTableCellDelegate {
         return MGSwipeButton(title: title, backgroundColor: UIColor.blue)
     }
     
+    /// create a swipe button for normalize or / comitting a task
+    ///
+    /// - Parameter task: the task
+    /// - Returns: a properly configured swipe button for the normalize / committing state
     func createSwipeButtonForCommitment(task: Task) -> MGSwipeButton {
         let commitingState = task.commitingState(forDate: Date()) == .committedForDate
         let title = commitingState ? "Normalize": "Committed!"
         let backgroundColor = commitingState ? UIColor.gray: UIColor.yellow
-        return MGSwipeButton(title: title, backgroundColor: backgroundColor)
+        let button =  MGSwipeButton(title: title, backgroundColor: backgroundColor)
+        button.setTitleColor(UIColor.black, for: .normal)
+        return button
     }
-    
     
     // MARK: - MGSwipeTableCellDelegate
     

@@ -25,6 +25,9 @@ class GoalsStorageManager {
         return dataManager.managedObjectContext
     }
     
+    /// inititlaize the class for supporting basic core data operations
+    ///
+    /// - Parameter dataManager: datamanager class with access to core data storage
     init(dataManager: CoreDataManager) {
         self.dataManager = dataManager
         stores = [

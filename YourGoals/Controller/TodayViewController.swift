@@ -9,6 +9,7 @@
 import UIKit
 
 class TodayViewController: UIViewController, TasksViewDelegate {
+    
 
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     @IBOutlet weak var habitsTableView: UITableView!
@@ -49,11 +50,11 @@ class TodayViewController: UIViewController, TasksViewDelegate {
     
     // MARK: TasksViewDelegate
     
-    func editTask(task: Task) {
+    func requestForEdit(task: Task) {
         
     }
     
-    func goalChanged() {
+    func goalChanged(goal: Goal) {
         
     }
     
