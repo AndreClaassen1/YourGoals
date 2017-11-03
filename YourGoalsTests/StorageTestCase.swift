@@ -14,6 +14,7 @@ class StorageTestCase:XCTestCase {
 
     var manager:GoalsStorageManager!
     var generator:TestDataGenerator!
+    var testDataCreator:TestDataCreator!
     
     override func setUp() {
         super.setUp()
@@ -21,6 +22,7 @@ class StorageTestCase:XCTestCase {
         try! self.manager.deleteRepository()
         self.generator = TestDataGenerator.defaultUnitTestGenerator
         try! StrategyManager(manager: self.manager).assertActiveStrategy()
+        self.testDataCreator = TestDataCreator(manager: self.manager)
     }
     
     var activeStrategy:Goal {

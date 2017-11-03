@@ -35,7 +35,7 @@ class GoalComposer {
         task.prio = -1
         goal.addToTasks(task)
         let taskOrderManager = TaskOrderManager(manager: self.manager)
-        try taskOrderManager.updateTasksOrder(tasks: goal.allTasks())
+        taskOrderManager.updateTasksOrder(tasks: goal.allTasks())
         try self.manager.dataManager.saveContext()
         return goal
     }

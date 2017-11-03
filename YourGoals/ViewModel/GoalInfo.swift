@@ -21,7 +21,16 @@ struct GoalInfo {
     let targetDate:Date
     let image:UIImage?
     
-    init(name:String, reason:String?, startDate:Date, targetDate:Date, image:UIImage?) throws {
+    /// initialize a goal info struct with defaults for easier unit testing
+    ///
+    /// - Parameters:
+    ///   - name: name of the goal
+    ///   - reason: the reason, why this goal must be existing
+    ///   - startDate: start date of the goal
+    ///   - targetDate: target date of the goal
+    ///   - image: motivating image of the goal
+    /// - Throws: an exception, if the data values are invalid
+    init(name:String, reason:String? = nil, startDate:Date = Date.minimalDate, targetDate:Date = Date.maximalDate, image:UIImage? = nil) throws {
         guard !name.isEmpty else {
             throw GoalInfoError.invalidGoalNameError
         }
