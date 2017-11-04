@@ -9,14 +9,25 @@
 import UIKit
 import CoreData
 
+/// show the today view screen of the YourGoals App
 class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewControllerDelegate, EditTaskViewControllerDelegate {
-
-    
+    /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var activeTasksHeight: NSLayoutConstraint!
+    var originalTasksHeight:CGFloat = 0.0
+    
+    
+    /// a table view with habits
     @IBOutlet weak var habitsTableView: UITableView!
+    
+    /// a table view with comitted tasks to do
     @IBOutlet weak var committedTasksView: TasksView!
+    
+    /// a taask view with the active task
     @IBOutlet weak var activeWorkTasksView: TasksView!
     
+    /// the storage manager needed for various core data operaitons
     var manager = GoalsStorageManager.defaultStorageManager
     var selectedGoal:Goal? = nil
     var strategy:Goal! = nil
@@ -25,6 +36,7 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.originalTasksHeight = activeTasksHeight.constant
         self.navigationController?.navigationBar.topItem?.title = "Today"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -33,11 +45,17 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         self.activeWorkTasksView.configure(manager: self.manager, mode: .activeTasks, forGoal: nil, delegate: self)
         
         // Do any additional setup after loading the view.
+        self.reloadAll()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,10 +85,24 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
     
     // MARK: - TasksViewDelegate
     
+    /// reload all data for the today view
+    /// hide the active task pane, if there are no active tasks which aren't committed
     func reloadAll() {
-        self.reloadCollectionView(collectionView: self.goalsCollectionView)
-        self.committedTasksView.reload()
-        self.activeWorkTasksView.reload()
+        do {
+            self.reloadCollectionView(collectionView: self.goalsCollectionView)
+            self.committedTasksView.reload()
+            let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: Date())
+            
+            if showActivWorkTasksView {
+                self.activeTasksHeight.constant = originalTasksHeight
+                self.activeWorkTasksView.reload()
+            } else {
+                self.activeTasksHeight.constant = 0.0
+            }
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
     
     

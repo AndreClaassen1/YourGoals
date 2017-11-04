@@ -251,7 +251,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-uc-2ee" userLabel="Active Task">
-                                        <rect key="frame" x="20" y="210" width="375" height="90"/>
+                                        <rect key="frame" x="20" y="210" width="375" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your active Work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-tr-sKF" userLabel="Your active Task">
                                                 <rect key="frame" x="8" y="16" width="158" height="24"/>
@@ -260,7 +260,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hd0-5Q-p8B" customClass="TasksView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="45" width="375" height="37"/>
+                                                <rect key="frame" x="0.0" y="45" width="375" height="42"/>
                                                 <color key="backgroundColor" red="0.1618596118" green="0.9992641807" blue="0.018462520780000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                         </subviews>
@@ -269,7 +269,7 @@
                                             <constraint firstItem="Hd0-5Q-p8B" firstAttribute="top" secondItem="cRF-tr-sKF" secondAttribute="bottom" constant="5" id="0YL-hr-ErI"/>
                                             <constraint firstItem="Hd0-5Q-p8B" firstAttribute="top" secondItem="7tZ-uc-2ee" secondAttribute="top" constant="45" id="18p-OE-HuJ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cRF-tr-sKF" secondAttribute="trailing" constant="20" symbolic="YES" id="Im0-kb-iFg"/>
-                                            <constraint firstAttribute="height" constant="90" id="KYU-Py-fhb"/>
+                                            <constraint firstAttribute="height" constant="95" id="KYU-Py-fhb"/>
                                             <constraint firstItem="Hd0-5Q-p8B" firstAttribute="leading" secondItem="7tZ-uc-2ee" secondAttribute="leading" id="VXV-i0-BRX"/>
                                             <constraint firstItem="cRF-tr-sKF" firstAttribute="leading" secondItem="7tZ-uc-2ee" secondAttribute="leading" constant="8" id="ZGD-gc-WbZ"/>
                                             <constraint firstAttribute="bottom" secondItem="Hd0-5Q-p8B" secondAttribute="bottom" constant="8" id="j8I-rc-dHv"/>
@@ -277,7 +277,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-lf-8kj" userLabel="Commitment View">
-                                        <rect key="frame" x="20" y="300" width="375" height="181"/>
+                                        <rect key="frame" x="20" y="305" width="375" height="181"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Commitments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEi-dq-uEg">
                                                 <rect key="frame" x="8" y="16" width="181" height="24"/>
@@ -305,7 +305,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZ9-MV-BG1" userLabel="Habits View">
-                                        <rect key="frame" x="20" y="481" width="375" height="181"/>
+                                        <rect key="frame" x="20" y="486" width="375" height="181"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v6h-ts-D8y">
                                                 <rect key="frame" x="0.0" y="48" width="375" height="144"/>
@@ -360,6 +360,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" id="yZY-dX-zMq" userLabel="Today"/>
                     <connections>
+                        <outlet property="activeTasksHeight" destination="KYU-Py-fhb" id="P8V-j8-ovB"/>
                         <outlet property="activeWorkTasksView" destination="Hd0-5Q-p8B" id="TsK-BI-1In"/>
                         <outlet property="committedTasksView" destination="C7z-pV-BBO" id="5Af-8z-D1y"/>
                         <outlet property="goalsCollectionView" destination="lRG-Wn-cjM" id="MCB-5U-TAc"/>
@@ -400,17 +401,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="0.0" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="320"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-7" width="0.0" height="292"/>
+                                                <rect key="frame" x="-7" y="-7" width="348" height="292"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="468.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -448,7 +449,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="TasksView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="319" width="0.0" height="308"/>
+                                        <rect key="frame" x="0.0" y="319" width="335" height="308"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
