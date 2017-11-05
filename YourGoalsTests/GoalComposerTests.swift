@@ -34,13 +34,12 @@ class GoalComposerTests: StorageTestCase {
         let goal = super.testDataCreator.createGoal(name: "Test Goal")
         let _ = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 1"), toGoal: goal)
         let _ = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 2"), toGoal: goal)
+        let _ = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 3"), toGoal: goal)
         
-        // act
-        let updatedGoal = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 3"), toGoal: goal)
-        
-        // test
-        XCTAssertEqual(3, updatedGoal.allTasks().count)
-        let task3 = updatedGoal.allTasks()[0]
+        // test - the latest task should be at the top position
+        let tasksByOrder = try! TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal)
+        XCTAssertEqual(3, tasksByOrder.count)
+        let task3 = tasksByOrder[0]
         XCTAssertEqual(0, task3.prio)
         XCTAssertEqual("Task 3", task3.name)
     }
