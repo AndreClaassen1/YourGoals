@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNt-78-XXy">
-                        <rect key="frame" x="246" y="7" width="66" height="21"/>
+                        <rect key="frame" x="246" y="10" width="66" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="66" id="NvR-iq-eCN"/>
                         </constraints>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-BQ-mXO">
-                        <rect key="frame" x="42" y="7" width="220" height="21"/>
+                        <rect key="frame" x="42" y="10" width="220" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="bcN-YO-Ubl"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Goal Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-gU-ik5">
-                        <rect key="frame" x="42" y="28" width="220" height="12"/>
+                        <rect key="frame" x="42" y="31" width="220" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="3hO-iN-9Mc"/>
                         </constraints>
@@ -47,10 +47,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-fX-ZWa" userLabel="Task Check Box">
-                        <rect key="frame" x="10" y="10" width="22" height="22"/>
+                        <rect key="frame" x="6" y="6" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="57k-wb-Ofr"/>
-                            <constraint firstAttribute="height" constant="22" id="cNg-mO-xzm"/>
+                            <constraint firstAttribute="width" constant="30" id="57k-wb-Ofr"/>
+                            <constraint firstAttribute="height" constant="30" id="cNg-mO-xzm"/>
                         </constraints>
                         <state key="normal" image="TaskCircle"/>
                         <connections>
@@ -61,8 +61,8 @@
                 <color key="backgroundColor" red="0.80580713299999995" green="0.88512374650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ENW-EN-l3L"/>
-                    <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Xxj-o8-G2P"/>
-                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="10" id="dEt-Ui-Q1S"/>
+                    <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="Xxj-o8-G2P"/>
+                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="6" id="dEt-Ui-Q1S"/>
                     <constraint firstItem="nNt-78-XXy" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" constant="-16" id="dry-dx-F71"/>
                     <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="leading" id="oEr-7t-1Wm"/>
                     <constraint firstAttribute="trailing" secondItem="nNt-78-XXy" secondAttribute="trailing" constant="8" id="ong-2c-6eR"/>

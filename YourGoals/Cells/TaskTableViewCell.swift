@@ -9,7 +9,6 @@
 import UIKit
 import MGSwipeTableCell
 
-
 protocol TaskTableCellDelegate {
     func taskStateChangeDesired(task:Task)
 }
@@ -72,6 +71,10 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.contentView.backgroundColor = isProgressing ? UIColor.green : backGroundCommitingState
     }
     
+    /// get a human readable string for a time interval (:ugly:)
+    ///
+    /// - Parameter ti: time interval
+    /// - Returns: string representation in format 0:00:00
     func stringFromTime(interval ti: TimeInterval) -> String {
         let seconds = Int(ti.truncatingRemainder(dividingBy: 60))
         let minutes = Int((ti / 60).truncatingRemainder(dividingBy: 60))
@@ -81,6 +84,9 @@ class TaskTableViewCell: MGSwipeTableCell {
         return result
     }
     
+    /// show the working time on this task.
+    ///
+    /// - Parameter task: task
     func showWorkingTime(task: Task) {
         let progress = task.calcProgressDuration(atDate: Date())
         if progress == 0.0 {

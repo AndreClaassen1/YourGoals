@@ -62,6 +62,9 @@ class GoalsStorageManager {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self)))
     }
     
+    /// delete all entity objects from the database
+    ///
+    /// - Throws: core data exception
     func deleteRepository() throws {
         try self.stores.forEach{ try $0.deleteAllEntries() }
         try self.dataManager.saveContext()

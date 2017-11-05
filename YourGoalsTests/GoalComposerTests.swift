@@ -9,8 +9,10 @@
 import XCTest
 @testable import YourGoals
 
+/// tests the goal composer
 class GoalComposerTests: StorageTestCase {
     
+    /// test adding a new task for a goal
     func testAddTask() {
         // setup
         let composer = GoalComposer(manager: self.manager)
@@ -25,16 +27,16 @@ class GoalComposerTests: StorageTestCase {
         XCTAssertEqual(0, newTask.prio)
     }
     
+    /// test adding a new task to an existing goal
     func testAddTaskToExistingOnes() {
         //  seutp
         let composer = GoalComposer(manager: self.manager)
         let goal = super.testDataCreator.createGoal(name: "Test Goal")
         let _ = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 1"), toGoal: goal)
         let _ = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 2"), toGoal: goal)
-        let updatedGoal = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 3"), toGoal: goal)
         
         // act
-        
+        let updatedGoal = try! composer.add(taskInfo: try! TaskInfo(taskName: "Task 3"), toGoal: goal)
         
         // test
         XCTAssertEqual(3, updatedGoal.allTasks().count)

@@ -13,14 +13,13 @@ class GoalInfoManagerTests: StorageTestCase {
     
     func testGoalsWithProgress() {
         // setup
+        let startDate = Date.dateWithYear(2017, month: 10, day: 30)
+        let targetDate = Date.dateWithYear(2017, month: 11, day: 01)
         let strategyManager = StrategyManager(manager: self.manager)
-        let factory = GoalFactory(manager: self.manager)
-        let goalWithoutProgress = try! factory.create(name: "Goal without progress", prio: 1, reason: "test", startDate: Date.dateWithYear(2017, month: 10, day: 30), targetDate: Date.dateWithYear(2017, month: 11, day: 01), image: nil)
-        let _ = try! strategyManager.saveIntoStrategy(goal: goalWithoutProgress)
-
-        let goalWithProgress = try! factory.create(name: "Goal with progress", prio: 2, reason: "test", startDate: Date.dateWithYear(2017, month: 10, day: 30), targetDate: Date.dateWithYear(2017, month: 11, day: 01), image: nil)
-        let _ = try! strategyManager.saveIntoStrategy(goal: goalWithProgress)
         
+        let _ = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: "Goal without Progress", reason: "test", startDate: startDate, targetDate: targetDate, image: nil))
+       
+        let goalWithProgress = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: "Goal with progress", reason: "test", startDate: startDate, targetDate: targetDate, image: nil))
         
         let taskFactory = TaskFactory(manager: self.manager)
         let task = taskFactory.create(name: "task with progress", state: .active, prio: 1)

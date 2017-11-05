@@ -87,9 +87,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     func createNewGoal(goalInfo: GoalInfo) {
         do {
             let strategyManager = StrategyManager(manager: self.manager)
-            let goalFactory = GoalFactory(manager: self.manager)
-            let goal = try goalFactory.create(fromGoalInfo: goalInfo)
-            try self.strategy = strategyManager.saveIntoStrategy(goal: goal)
+            let _ = try strategyManager.createNewGoalForStrategy(goalInfo: goalInfo)
             self.collectionView.reloadData()
         }
         catch let error {

@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 import LongPressReorder
 
+enum GoalDetailViewControllerMode {
+    case tasksMode
+    case habitsMode
+}
+
 protocol GoalDetailViewControllerDelegate {
     func goalChanged()
     func commitmentChanged()
@@ -28,6 +33,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     
     @IBOutlet weak var goalContentView: GoalContentView!
     
+    @IBOutlet weak var toggleHabitsButton: UIButton!
     
     /// Header Image Height
     
@@ -193,6 +199,8 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.delegate?.goalChanged()
     }
     
+    @IBAction func toggleHabitsAction(_ sender: Any) {
+    }
     
     func commitmentChanged() {
         self.delegate?.goalChanged()

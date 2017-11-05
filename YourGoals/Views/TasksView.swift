@@ -10,6 +10,11 @@ import UIKit
 import LongPressReorder
 import MGSwipeTableCell
 
+protocol TasksViewDataSource {
+    var numberOfActionables:Int { get }
+    func actionableForRow(row:Int) -> Actionable
+}
+
 protocol TasksViewDelegate {
     func requestForEdit(task: Task)
     func showNotification(forError error: Error)
@@ -35,6 +40,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     var tasksViewMode:TasksViewMode!
     var manager:GoalsStorageManager!
     var delegate:TasksViewDelegate!
+    var dataSource:TasksViewDataSource!
     var goal:Goal?
     
     override init(frame: CGRect) {
