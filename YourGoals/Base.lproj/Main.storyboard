@@ -401,17 +401,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="0.0" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="320"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-7" width="0.0" height="292"/>
+                                                <rect key="frame" x="-7" y="-7" width="348" height="292"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="468.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -457,7 +457,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="TasksView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="319" width="0.0" height="308"/>
+                                        <rect key="frame" x="0.0" y="319" width="335" height="308"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -555,7 +555,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-ek-1Pk">
-                                <rect key="frame" x="112" y="251" width="168" height="30"/>
+                                <rect key="frame" x="114" y="271" width="168" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

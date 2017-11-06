@@ -23,24 +23,21 @@ protocol GoalDetailViewControllerDelegate {
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, TasksViewDelegate {
     
-    @IBOutlet weak var tasksView: TasksView!
-    /// Container
+    // container and constraints for animating this view
     @IBOutlet private weak var contentContainerView: UIView!
     @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var goalContentView: GoalContentView!
-    
-    @IBOutlet weak var toggleHabitsButton: UIButton!
+
+    // view for presenting tasks and habits
+    @IBOutlet private weak var goalContentView: GoalContentView!
+    @IBOutlet private weak var tasksView: TasksView!
+    @IBOutlet private weak var toggleHabitsButton: UIButton!
     
     /// Header Image Height
-    
     var goal:Goal!
     var tasksOrdered: [Task]!
-    var timer = Timer()
-    var timerPaused = false
     var editTask:Task? = nil
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
@@ -117,7 +114,6 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
             editGoalController.delegate = self
             editGoalController.editGoal = goal
         }
-        
     }
     
     func refreshView() throws {
@@ -205,5 +201,4 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     func commitmentChanged() {
         self.delegate?.goalChanged()
     }
-    
 }

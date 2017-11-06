@@ -1,0 +1,29 @@
+//
+//  Habit+Actionable.swift
+//  YourGoals
+//
+//  Created by André Claaßen on 06.11.17.
+//  Copyright © 2017 André Claaßen. All rights reserved.
+//
+
+import Foundation
+
+// MARK: - Actionable Extension for feeding the TasksView and its cells
+extension Habit:Actionable {
+
+    /// .checked, if the habit is checked on the given date
+    ///
+    /// - Parameter date: the date
+    /// - Returns: .checked if the habit has an entry on the given date
+    func checkedState(forDate date: Date) -> CheckedState {
+        return self.isChecked(forDate: date) ? .checked : .notChecked
+    }
+    
+    /// habits havn't any progress for any given date
+    ///
+    /// - Parameter date: date
+    /// - Returns: nil
+    func calcProgressDuration(atDate date: Date) -> TimeInterval? {
+        return nil
+    }
+}

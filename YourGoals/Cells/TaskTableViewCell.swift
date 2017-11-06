@@ -88,8 +88,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     ///
     /// - Parameter task: task
     func showWorkingTime(task: Task) {
-        let progress = task.calcProgressDuration(atDate: Date())
-        if progress == 0.0 {
+        guard let progress = task.calcProgressDuration(atDate: Date()) else {
             self.workingTimeLabel.text = nil
             return
         }

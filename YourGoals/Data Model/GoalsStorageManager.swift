@@ -34,7 +34,9 @@ class GoalsStorageManager {
             StorageBase<Goal>(managedObjectContext: dataManager.managedObjectContext, entityName: "Goal"),
             StorageBase<ImageData>(managedObjectContext: dataManager.managedObjectContext, entityName: "ImageData"),
             StorageBase<Task>(managedObjectContext: dataManager.managedObjectContext, entityName: "Task"),
-            StorageBase<TaskProgress>(managedObjectContext: dataManager.managedObjectContext, entityName: "TaskProgress")
+            StorageBase<TaskProgress>(managedObjectContext: dataManager.managedObjectContext, entityName: "TaskProgress"),
+            StorageBase<Habit>(managedObjectContext: dataManager.managedObjectContext, entityName: "Habit"),
+            StorageBase<HabitCheck>(managedObjectContext: dataManager.managedObjectContext, entityName: "HabitCheck")
         ]
     }
     
@@ -57,7 +59,15 @@ class GoalsStorageManager {
     var taskProgressStore:StorageBase<TaskProgress> {
         return try! store(id: "TaskProgress") as! StorageBase<TaskProgress>
     }
-    
+
+    var habitStore:StorageBase<Habit> {
+        return try! store(id: "Habit") as! StorageBase<Habit>
+    }
+
+    var habitCheckStore:StorageBase<HabitCheck> {
+        return try! store(id: "HabitCheck") as! StorageBase<HabitCheck>
+    }
+
     convenience init(databaseName: String) {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self)))
     }

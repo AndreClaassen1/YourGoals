@@ -29,10 +29,10 @@ enum ActionableType {
 protocol Actionable {
     
     /// name of the actionable
-    var name:String { get }
+    var name:String? { get }
     
     /// the associated goal for this 
-    var goal:Goal { get }
+    var goal:Goal? { get }
     
     /// obtain the checked state for agiven state
     ///

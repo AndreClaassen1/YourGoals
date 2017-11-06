@@ -37,8 +37,12 @@ extension Task {
     ///
     /// - Parameter date: calculate til date
     /// - Returns: the progression as a time interval
-    func calcProgressDuration(atDate date:Date) -> TimeInterval {
+    func calcProgressDuration(atDate date:Date) -> TimeInterval? {
         var progression = TimeInterval(0)
+        
+        if self.allProgress().count == 0 {
+            return nil
+        }
         
         for progress in self.allProgress() {
             progression += progress.timeInterval(til: date)
