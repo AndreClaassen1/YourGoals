@@ -72,18 +72,26 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     /// show the date for committing and its state in the date label
     ///
-    /// - Parameter state:
-    func showTaskCommittingState(state: CommittingState, forDate date: Date) {
+    /// - Parameters:
+    ///   - state: the state of the task
+    ///   - date: date of the commitment
+    func showTaskCommittingState(state: CommittingState, forDate date: Date?) {
+        
+        guard let date = date else {
+            self.commmittingDateLabel.isHidden = true
+            return
+        }
+
         switch state {
         case .committedForDate:
             self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
             self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.tintColor = UIColor.black
+            self.commmittingDateLabel.textColor  = UIColor.darkGreen
             
         case .committedForPast:
             self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
             self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.tintColor = UIColor.red
+            self.commmittingDateLabel.textColor = UIColor.darkRed
             
         case .notCommitted:
             self.commmittingDateLabel.isHidden = true
@@ -123,7 +131,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.delegateTaskCell = delegate
         showTaskState(state: task.getTaskState())
         showTaskProgress(isProgressing: task.isProgressing(atDate: date))
-        showTaskCommittingState(state: task.committingState(forDate: date), forDate: date)
+        showTaskCommittingState(state: task.committingState(forDate: date), forDate: task.commitmentDate)
         showWorkingTime(task: task)
         taskDescriptionLabel.text = task.name
         

@@ -147,7 +147,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
             self.tasksOrdered = try TaskProgressManager(manager: self.manager).activeTasks(forDate: Date())
             
         case .committedTasks:
-            self.tasksOrdered = try TaskCommitmentManager(manager: self.manager).committedTasks(forDate: Date())
+            self.tasksOrdered = try TaskCommitmentManager(manager: self.manager).committedTasksTodayAndFromTHePath(forDate: Date())
             break
         }
     }

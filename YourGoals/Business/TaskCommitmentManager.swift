@@ -69,7 +69,19 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
         return tasks
     }
     
+    /// combine the committed tasks for today and tasks of the path
+    ///
+    /// - Parameter date: date
+    /// - Returns: a collection of actual and past committed tasks
+    /// - Throws: core data exception
+    func committedTasksTodayAndFromTHePath(forDate date:Date) throws -> [Task] {
+        var tasks = [Task]()
     
+        tasks.append(contentsOf: try committedTasks(forDate: date))
+        tasks.append(contentsOf: try committedTasksPast(forDate: date))
+        
+        return tasks
+    }
     
     // MARK: - TaskPositioningProtocol
     

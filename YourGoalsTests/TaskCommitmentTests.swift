@@ -58,5 +58,4 @@ class TaskCommitmentTests: StorageTestCase {
         // test
         XCTAssertEqual(2, committedTasksFromThePast.count)
     }
-    
 }

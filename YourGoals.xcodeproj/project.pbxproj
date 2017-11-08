@@ -54,6 +54,7 @@
 		7B7F0A791FAA19C7001BBB17 /* TasksView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* TasksView+SwipeableCell.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
+		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
 		7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */; };
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
@@ -229,6 +230,7 @@
 		7B7F0A781FAA19C7001BBB17 /* TasksView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksView+SwipeableCell.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
+		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
@@ -430,6 +432,14 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		7B9759C51FB37B74009DED89 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		7B994E081FA2287900B704E1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +492,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B9759C51FB37B74009DED89 /* Theme */,
 				7B994E0D1FA229C700B704E1 /* Error */,
 				7B994E081FA2287900B704E1 /* ViewModel */,
 				7B1A4B351F9F9D1700703885 /* Animation */,
@@ -952,6 +963,7 @@
 				7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
+				7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */,
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
 				7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */,
 				7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */,
