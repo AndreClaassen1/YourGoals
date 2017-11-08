@@ -48,7 +48,7 @@ extension TasksView: MGSwipeTableCellDelegate {
     func switchCommitment(forTask task: Task) throws {
         let date = Date()
         let commitManager = TaskCommitmentManager(manager: self.manager)
-        if task.commitingState(forDate: date) == .committedForDate {
+        if task.committingState(forDate: date) == .committedForDate {
             try commitManager.normalize(task: task)
         } else {
             try commitManager.commit(task: task, forDate: date)
@@ -86,9 +86,9 @@ extension TasksView: MGSwipeTableCellDelegate {
     /// - Parameter task: the task
     /// - Returns: a properly configured swipe button for the normalize / committing state
     func createSwipeButtonForCommitment(task: Task) -> MGSwipeButton {
-        let commitingState = task.commitingState(forDate: Date()) == .committedForDate
-        let title = commitingState ? "Normalize": "Committed!"
-        let backgroundColor = commitingState ? UIColor.gray: UIColor.yellow
+        let committingState = task.committingState(forDate: Date()) == .committedForDate
+        let title = committingState ? "Normalize": "Committed!"
+        let backgroundColor = committingState ? UIColor.gray: UIColor.yellow
         let button =  MGSwipeButton(title: title, backgroundColor: backgroundColor)
         button.setTitleColor(UIColor.black, for: .normal)
         return button

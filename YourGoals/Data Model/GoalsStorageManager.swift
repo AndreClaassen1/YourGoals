@@ -67,6 +67,10 @@ class GoalsStorageManager {
     var habitCheckStore:StorageBase<HabitCheck> {
         return try! store(id: "HabitCheck") as! StorageBase<HabitCheck>
     }
+    
+    func saveContext() throws {
+        try self.dataManager.saveContext()
+    }
 
     convenience init(databaseName: String) {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self)))

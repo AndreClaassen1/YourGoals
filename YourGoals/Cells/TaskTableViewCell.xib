@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="YourGoals" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="56" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="YourGoals" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNt-78-XXy">
@@ -37,8 +37,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Goal Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-gU-ik5">
-                        <rect key="frame" x="42" y="31" width="220" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Goal: Goal Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-gU-ik5">
+                        <rect key="frame" x="42" y="33" width="108.5" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="3hO-iN-9Mc"/>
                         </constraints>
@@ -47,7 +47,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-fX-ZWa" userLabel="Task Check Box">
-                        <rect key="frame" x="6" y="6" width="30" height="30"/>
+                        <rect key="frame" x="6" y="13" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="57k-wb-Ofr"/>
                             <constraint firstAttribute="height" constant="30" id="cNg-mO-xzm"/>
@@ -57,9 +57,18 @@
                             <action selector="checkBoxAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6td-Di-S2a"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-a5-H7u">
+                        <rect key="frame" x="160.5" y="33" width="151.5" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="H42-F5-d1Y"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.80580713299999995" green="0.88512374650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="uqW-a5-H7u" firstAttribute="baseline" secondItem="2YQ-gU-ik5" secondAttribute="baseline" id="BzK-VQ-6qn"/>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ENW-EN-l3L"/>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="Xxj-o8-G2P"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="6" id="dEt-Ui-Q1S"/>
@@ -68,18 +77,21 @@
                     <constraint firstAttribute="trailing" secondItem="nNt-78-XXy" secondAttribute="trailing" constant="8" id="ong-2c-6eR"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="quw-3t-7Im"/>
                     <constraint firstItem="nNt-78-XXy" firstAttribute="centerY" secondItem="mSh-BQ-mXO" secondAttribute="centerY" id="t1n-XE-klz"/>
-                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="top" secondItem="mSh-BQ-mXO" secondAttribute="bottom" id="tmv-4J-Xwn"/>
-                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="width" secondItem="mSh-BQ-mXO" secondAttribute="width" id="u78-n7-LqX"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="top" secondItem="mSh-BQ-mXO" secondAttribute="bottom" constant="2" id="tmv-4J-Xwn"/>
+                    <constraint firstItem="uqW-a5-H7u" firstAttribute="trailing" secondItem="nNt-78-XXy" secondAttribute="trailing" id="tnw-2n-U6c"/>
+                    <constraint firstItem="uqW-a5-H7u" firstAttribute="leading" secondItem="2YQ-gU-ik5" secondAttribute="trailing" constant="10" id="woI-dD-u4i"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkBoxButton" destination="Bbs-fX-ZWa" id="JnZ-Yf-02x"/>
+                <outlet property="commmittingDateLabel" destination="uqW-a5-H7u" id="DXz-xT-5hZ"/>
                 <outlet property="contentView" destination="H2p-sc-9uM" id="8ji-ra-ljU"/>
                 <outlet property="goalDescriptionLabel" destination="2YQ-gU-ik5" id="Rwh-hV-xrJ"/>
                 <outlet property="taskDescriptionLabel" destination="mSh-BQ-mXO" id="2Jd-GZ-vjH"/>
                 <outlet property="workingTimeLabel" destination="nNt-78-XXy" id="hog-Ab-POB"/>
             </connections>
+            <point key="canvasLocation" x="35" y="79"/>
         </tableViewCell>
     </objects>
     <resources>

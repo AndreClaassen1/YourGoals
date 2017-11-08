@@ -103,7 +103,6 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
             self.delegate.showNotification(forError: error)
         }
     }
-
     
     func scheduleTimerWithTimeInterval(tableView: UITableView) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTaskInProgess), userInfo: tableView, repeats: true)
@@ -218,7 +217,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
-        cell.configure(task: task, delegate: self)
+        cell.configure(task: task, forDate: Date(), delegate: self)
         configure(swipeableCell: cell)
         return cell
     }

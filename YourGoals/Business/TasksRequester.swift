@@ -23,7 +23,7 @@ class TasksRequester : StorageManagerWorker {
             return false
         }
         
-        let tasksNotCommitted = activeTasks.filter{ $0.commitingState(forDate: date) != .committedForDate }
+        let tasksNotCommitted = activeTasks.filter{ $0.committingState(forDate: date) != .committedForDate }
         return tasksNotCommitted.count > 0
     }
 }

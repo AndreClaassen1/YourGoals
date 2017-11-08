@@ -98,6 +98,8 @@
 		7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */; };
 		7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF251F9CA2FB00BB102E /* ComplicationController.swift */; };
 		7BAAFF281F9CA2FB00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */; };
+		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
+		7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */; };
 		7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */; };
 		7BCC3D7B1FA5251300FE2468 /* GoalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7A1FA5251300FE2468 /* GoalError.swift */; };
 		7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */; };
@@ -278,6 +280,8 @@
 		7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BAAFF291F9CA2FB00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+convinience.swift"; sourceTree = "<group>"; };
 		7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUpdater.swift; sourceTree = "<group>"; };
 		7BCC3D7A1FA5251300FE2468 /* GoalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalError.swift; sourceTree = "<group>"; };
 		7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdater.swift; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 				7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */,
 				7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */,
 				7B9A19631FA7199B002CA72B /* UITextView+Border.swift */,
+				7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */,
+				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -927,6 +933,7 @@
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */,
+				7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */,
 				7B0A72651FB045AA0000586D /* Habit+Check.swift in Sources */,
 				7B303B8E1FAA00E300BA2FB6 /* TasksView.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
@@ -944,6 +951,7 @@
 				7B4E0BE61FAF0CE500602FD1 /* HabitTableViewCell.swift in Sources */,
 				7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
+				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
 				7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */,
 				7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */,

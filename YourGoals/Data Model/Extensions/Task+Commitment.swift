@@ -11,9 +11,8 @@ import Foundation
 enum CommittingState {
     case notCommitted
     case committedForDate
-    case committmentPast
+    case committedForPast
 }
-
 
 extension Task {
     
@@ -24,7 +23,7 @@ extension Task {
     ///
     /// - Parameter date: check for this date
     /// - Returns: commitment state
-    func commitingState(forDate date:Date) -> CommittingState {
+    func committingState(forDate date:Date) -> CommittingState {
         let dayOfDate = date.day()
         
         guard let commitmentDate = self.commitmentDate?.day() else {
@@ -37,10 +36,9 @@ extension Task {
         
         if commitmentDate.compare(dayOfDate) == .orderedAscending &&
             self.getTaskState() == .active {
-            return .committmentPast
+            return .committedForPast
         }
         
         return .notCommitted
     }
-    
 }

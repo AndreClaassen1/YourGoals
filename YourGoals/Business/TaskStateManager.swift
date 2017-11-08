@@ -43,6 +43,7 @@ class TaskStateManager {
 
         // set done date only in state done
         task.doneDate = state == .done ? date : nil
+        
         try manager.dataManager.saveContext()
     }
 }

@@ -18,6 +18,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
+    @IBOutlet weak var commmittingDateLabel: UILabel!
     
     var task:Task!
     var delegateTaskCell: TaskTableCellDelegate!
@@ -65,10 +66,28 @@ class TaskTableViewCell: MGSwipeTableCell {
     ///
     /// - Parameters:
     ///   - isProgressing: task is currently progressing
-    ///   - isCommitted: task is committed for today
-    func showTaskProgressAndCommitment(isProgressing: Bool, isCommitted: Bool) {
-        let backGroundCommitingState = isCommitted ? UIColor.yellow : UIColor.white
-        self.contentView.backgroundColor = isProgressing ? UIColor.green : backGroundCommitingState
+    func showTaskProgress(isProgressing: Bool) {
+        self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
+    }
+    
+    /// show the date for committing and its state in the date label
+    ///
+    /// - Parameter state:
+    func showTaskCommittingState(state: CommittingState, forDate date: Date) {
+        switch state {
+        case .committedForDate:
+            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+            self.commmittingDateLabel.isHidden = false
+            self.commmittingDateLabel.tintColor = UIColor.black
+            
+        case .committedForPast:
+            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+            self.commmittingDateLabel.isHidden = false
+            self.commmittingDateLabel.tintColor = UIColor.red
+            
+        case .notCommitted:
+            self.commmittingDateLabel.isHidden = true
+        }
     }
     
     /// get a human readable string for a time interval (:ugly:)
@@ -99,11 +118,12 @@ class TaskTableViewCell: MGSwipeTableCell {
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
-    func configure(task: Task, delegate: TaskTableCellDelegate) {
+    func configure(task: Task, forDate date: Date, delegate: TaskTableCellDelegate) {
         self.task = task
         self.delegateTaskCell = delegate
         showTaskState(state: task.getTaskState())
-        showTaskProgressAndCommitment(isProgressing: task.isProgressing(atDate: Date()), isCommitted: task.commitingState(forDate: Date()) == .committedForDate)
+        showTaskProgress(isProgressing: task.isProgressing(atDate: date))
+        showTaskCommittingState(state: task.committingState(forDate: date), forDate: date)
         showWorkingTime(task: task)
         taskDescriptionLabel.text = task.name
         

@@ -40,11 +40,36 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
     func committedTasks(forDate date:Date) throws -> [Task] {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = NSPredicate(format: "commitmentDate == %@", date.day() as NSDate)
-            request.sortDescriptors = [ NSSortDescriptor(key: "commitmentPrio", ascending: true) ]
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "commitmentDate", ascending: false),
+                NSSortDescriptor(key: "commitmentPrio", ascending: true)
+            ]
         })
         
         return tasks
     }
+    
+    /// fetch all tasks, which are active and committed and have a commit date younger than
+    /// the given date
+    ///
+    /// - Parameter date: date
+    /// - Returns: a list of tasks committed past the given date
+    /// - Throws: core data exception
+    func committedTasksPast(forDate date:Date) throws -> [Task] {
+        let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format:
+                "commitmentDate < %@ AND state == 0",
+                                            date.day() as NSDate)
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "commitmentDate", ascending: false),
+                NSSortDescriptor(key: "commitmentPrio", ascending: true)
+            ]
+        })
+        
+        return tasks
+    }
+    
+    
     
     // MARK: - TaskPositioningProtocol
     
@@ -58,7 +83,7 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
             task.commitmentPrio = prio
         }
     }
-       
+    
     func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws -> [Task] {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
