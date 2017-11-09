@@ -53,11 +53,11 @@ class ActionableTableCell: MGSwipeTableCell {
     
     // MARK: - Content
     
-    func showTaskState(state: CheckedState) {
+    func showTaskState(state: ActionableState) {
         switch state {
-        case .notChecked:
+        case .active:
             self.checkBoxButton.isSelected = false
-        case .checked:
+        case .done:
             self.checkBoxButton.isSelected = true
         }
     }

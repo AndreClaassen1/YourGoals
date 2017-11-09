@@ -8,14 +8,7 @@
 
 import Foundation
 
-/// task states
-///
-/// - active: the task is active
-/// - done: task is done
-enum TaskState:Int16 {
-    case active = 0
-    case done = 1
-}
+
 
 // MARK: - task state handling
 extension Task {
@@ -23,15 +16,15 @@ extension Task {
     /// change the task state to active or done
     ///
     /// - Parameter state: active or done
-    func setTaskState(state:TaskState) {
-        self.state = state.rawValue
+    func setTaskState(state:ActionableState) {
+        self.state = Int16(state.rawValue)
     }
     
     /// retrieve the state of the task
     ///
     /// - Returns: a task state
-    func getTaskState() -> TaskState {
-        return TaskState(rawValue: self.state)!
+    func getTaskState() -> ActionableState {
+        return ActionableState(rawValue: Int(self.state))!
     }
     
     /// true, if task is active

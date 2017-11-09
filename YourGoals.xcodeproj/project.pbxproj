@@ -446,8 +446,6 @@
 				7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */,
 				7B994E091FA2288D00B704E1 /* GoalInfo.swift */,
 				7B994E0B1FA228E000B704E1 /* TaskInfo.swift */,
-				7B0A72601FB043410000586D /* Task+Actionable.swift */,
-				7B0A72621FB044BD0000586D /* Habit+Actionable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -574,11 +572,13 @@
 				7BE11B7E1F9F85070023844E /* ImageData+Image.swift */,
 				7BAA7A841FA0C788005B16EE /* Goal+Sub.swift */,
 				7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */,
+				7B0A72601FB043410000586D /* Task+Actionable.swift */,
 				7BAA7A821FA0C60A005B16EE /* Task+State.swift */,
 				7B5FA3D41FA33C6B004556C1 /* Task+Progress.swift */,
-				7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */,
 				7B303B851FA9F45900BA2FB6 /* Task+Commitment.swift */,
+				7B0A72621FB044BD0000586D /* Habit+Actionable.swift */,
 				7B0A72641FB045AA0000586D /* Habit+Check.swift */,
+				7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

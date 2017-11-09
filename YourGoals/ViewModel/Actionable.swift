@@ -7,13 +7,13 @@
 //
 import Foundation
 
-/// the actionable is checked or not for a given date/time
+/// states
 ///
-/// - notChecked: the actionable isn't checked
-/// - checked: it is checke
-enum CheckedState {
-    case notChecked
-    case checked
+/// - active: the Actionable is active
+/// - done: actionable is done
+enum ActionableState:Int {
+    case active = 0
+    case done = 1
 }
 
 /// this is important for drawing the checkbox
@@ -38,7 +38,7 @@ protocol Actionable {
     ///
     /// - Parameter date: checked at a given date
     /// - Returns: the checked state for this date
-    func checkedState(forDate date: Date) -> CheckedState
+    func checkedState(forDate date: Date) -> ActionableState
     
     /// get the progress in time for the given date
     func calcProgressDuration(atDate date:Date) -> TimeInterval?

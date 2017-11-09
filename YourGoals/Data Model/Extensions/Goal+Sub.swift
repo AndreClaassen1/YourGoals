@@ -25,7 +25,7 @@ extension Goal {
     ///
     /// - Parameter state: active or done
     /// - Returns: number of tasks for this state
-    func numberOfTasks(forState state:TaskState) -> Int {
+    func numberOfTasks(forState state:ActionableState) -> Int {
         return allTasks().reduce(0, { n,t in
             if t.getTaskState()  == state {
                 return n + 1

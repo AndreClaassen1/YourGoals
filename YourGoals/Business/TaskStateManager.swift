@@ -27,7 +27,7 @@ class TaskStateManager {
     ///   - task: the task
     ///   - state: state
     /// - Throws: core data exception
-    func setTaskState(task: Task, state: TaskState, atDate date: Date) throws {
+    func setTaskState(task: Task, state: ActionableState, atDate date: Date) throws {
         guard task.getTaskState() != state else {
             NSLog("didn't changed the state of task \(task)")
             return

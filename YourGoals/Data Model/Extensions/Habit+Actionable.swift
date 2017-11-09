@@ -15,8 +15,8 @@ extension Habit:Actionable {
     ///
     /// - Parameter date: the date
     /// - Returns: .checked if the habit has an entry on the given date
-    func checkedState(forDate date: Date) -> CheckedState {
-        return self.isChecked(forDate: date) ? .checked : .notChecked
+    func checkedState(forDate date: Date) -> ActionableState {
+        return self.isChecked(forDate: date) ? .done : .active
     }
     
     /// habits havn't any progress for any given date
