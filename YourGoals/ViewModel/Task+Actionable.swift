@@ -9,6 +9,7 @@
 import Foundation
 
 extension Task: Actionable {
+
     func checkedState(forDate date: Date) -> CheckedState {
         return .checked
     }

@@ -30,7 +30,9 @@ enum TasksViewMode {
 }
 
 /// a specialized UITableView for displaying tasks
-class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCellDelegate, LongPressReorder {
+class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, ActionableTableCellDelegate, LongPressReorder {
+
+    
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var tasksOrdered: [Task]!
@@ -56,7 +58,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     func commonSetup() {
         self.backgroundColor = UIColor.clear
         self.tasksTableView = UITableView(frame: self.bounds)
-        self.tasksTableView.registerReusableCell(TaskTableViewCell.self)
+        self.tasksTableView.registerReusableCell(ActionableTableCell.self)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
         self.tasksTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.tasksTableView.translatesAutoresizingMaskIntoConstraints = true
@@ -91,7 +93,7 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     private func configureTableView() {
         do {
             try retrieveOrderedTasks()
-            self.tasksTableView.registerReusableCell(TaskTableViewCell.self)
+            self.tasksTableView.registerReusableCell(ActionableTableCell.self)
             self.tasksTableView.delegate = self
             self.tasksTableView.dataSource = self
             self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: SelectedRowScale.medium)
@@ -215,18 +217,18 @@ class TasksView: UIView, UITableViewDataSource, UITableViewDelegate, TaskTableCe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TaskTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        let cell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let task = self.taskForIndexPath(path: indexPath)
-        cell.configure(task: task, forDate: Date(), delegate: self)
+        cell.configure(actionable: task, forDate: Date(), delegate: self)
         configure(swipeableCell: cell)
         return cell
     }
     
-    // MARK: - TaskTableCellDelegate
+    // MARK: - ActionableTableCellDelegate
     
-    func taskStateChangeDesired(task: Task) {
+    func actionableStateChangeDesired(actionable: Actionable) {
         do {
-            try self.switchState(forTask: task)
+            try self.switchState(forActionable: actionable)
         }
         catch let error {
             delegate.showNotification(forError: error)

@@ -22,10 +22,10 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
     @IBOutlet weak var habitsTableView: UITableView!
     
     /// a table view with comitted tasks to do
-    @IBOutlet weak var committedTasksView: TasksView!
+    @IBOutlet weak var committedTasksView: ActionableTableView!
     
     /// a taask view with the active task
-    @IBOutlet weak var activeWorkTasksView: TasksView!
+    @IBOutlet weak var activeWorkTasksView: ActionableTableView!
     
     /// the storage manager needed for various core data operaitons
     var manager = GoalsStorageManager.defaultStorageManager

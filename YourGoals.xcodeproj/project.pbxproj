@@ -25,7 +25,7 @@
 		7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B851FA9F45900BA2FB6 /* Task+Commitment.swift */; };
 		7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */; };
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
-		7B303B8E1FAA00E300BA2FB6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* TasksView.swift */; };
+		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
 		7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */; };
 		7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */; };
 		7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */; };
@@ -51,12 +51,12 @@
 		7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */; };
 		7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */; };
 		7B7F0A771FAA06FE001BBB17 /* TaskPositioningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* TaskPositioningProtocol.swift */; };
-		7B7F0A791FAA19C7001BBB17 /* TasksView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* TasksView+SwipeableCell.swift */; };
+		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
-		7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */; };
-		7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */; };
+		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
+		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
 		7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */; };
 		7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */; };
@@ -201,7 +201,7 @@
 		7B303B851FA9F45900BA2FB6 /* Task+Commitment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Commitment.swift"; sourceTree = "<group>"; };
 		7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentTests.swift; sourceTree = "<group>"; };
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
-		7B303B8D1FAA00E300BA2FB6 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
 		7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalContentView.swift; sourceTree = "<group>"; };
 		7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalContentView.xib; sourceTree = "<group>"; };
 		7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
@@ -227,12 +227,12 @@
 		7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
 		7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Progress.swift"; sourceTree = "<group>"; };
 		7B7F0A761FAA06FE001BBB17 /* TaskPositioningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPositioningProtocol.swift; sourceTree = "<group>"; };
-		7B7F0A781FAA19C7001BBB17 /* TasksView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksView+SwipeableCell.swift"; sourceTree = "<group>"; };
+		7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+SwipeableCell.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
-		7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
+		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalCell.swift; sourceTree = "<group>"; };
 		7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalCell.xib; sourceTree = "<group>"; };
@@ -382,8 +382,8 @@
 				7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */,
 				7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */,
 				7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */,
-				7B994DF61FA1C21D00B704E1 /* TaskTableViewCell.swift */,
-				7B994DF71FA1C21D00B704E1 /* TaskTableViewCell.xib */,
+				7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */,
+				7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */,
 				7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */,
 				7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */,
 				7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */,
@@ -417,8 +417,8 @@
 				7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */,
 				7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */,
 				7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */,
-				7B303B8D1FAA00E300BA2FB6 /* TasksView.swift */,
-				7B7F0A781FAA19C7001BBB17 /* TasksView+SwipeableCell.swift */,
+				7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */,
+				7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -816,7 +816,7 @@
 				7B17DD891F9E88F3008E90A2 /* GoalsSectionHeader.xib in Resources */,
 				7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */,
 				7BAAFEEC1F9CA2FA00BB102E /* Main.storyboard in Resources */,
-				7B994DF91FA1C21D00B704E1 /* TaskTableViewCell.xib in Resources */,
+				7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,7 +924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B994DF81FA1C21D00B704E1 /* TaskTableViewCell.swift in Sources */,
+				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
 				7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */,
@@ -946,7 +946,7 @@
 				7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */,
 				7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */,
 				7B0A72651FB045AA0000586D /* Habit+Check.swift in Sources */,
-				7B303B8E1FAA00E300BA2FB6 /* TasksView.swift in Sources */,
+				7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */,
 				7B0A726D1FB04D000000586D /* HabitManager.swift in Sources */,
@@ -997,7 +997,7 @@
 				7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */,
 				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,
 				7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */,
-				7B7F0A791FAA19C7001BBB17 /* TasksView+SwipeableCell.swift in Sources */,
+				7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */,
 				7BEBBAD31F9F4087003D16AE /* Generator.swift in Sources */,
 				7BEBBADD1F9F5545003D16AE /* StrategyManager.swift in Sources */,
 				7B0A72631FB044BD0000586D /* Habit+Actionable.swift in Sources */,

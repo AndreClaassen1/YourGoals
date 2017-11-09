@@ -1,5 +1,5 @@
 //
-//  TaskTableViewCell.swift
+//  ActionableTableCell.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 26.10.17.
@@ -9,19 +9,19 @@
 import UIKit
 import MGSwipeTableCell
 
-protocol TaskTableCellDelegate {
-    func taskStateChangeDesired(task:Task)
+protocol ActionableTableCellDelegate {
+    func actionableStateChangeDesired(actionable:Actionable)
 }
 
-class TaskTableViewCell: MGSwipeTableCell {
+class ActionableTableCell: MGSwipeTableCell {
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
     @IBOutlet weak var commmittingDateLabel: UILabel!
     
-    var task:Task!
-    var delegateTaskCell: TaskTableCellDelegate!
+    var actionable:Actionable!
+    var delegateTaskCell: ActionableTableCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,25 +39,25 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     // MARK: - Factory Method
     
-    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> TaskTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as? TaskTableViewCell else {
-            fatalError("*** Failed to dequeue TaskTableViewCell ***")
+    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableTableCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActionableTableCell", for: indexPath) as? ActionableTableCell else {
+            fatalError("*** Failed to dequeue ActionableTableCell ***")
         }
         
         return cell
     }
     
     @IBAction func checkBoxAction(_ sender: Any) {
-        delegateTaskCell.taskStateChangeDesired(task: self.task)
+        delegateTaskCell.actionableStateChangeDesired(actionable: self.actionable)
     }
     
     // MARK: - Content
     
-    func showTaskState(state: TaskState) {
+    func showTaskState(state: CheckedState) {
         switch state {
-        case .active:
+        case .notChecked:
             self.checkBoxButton.isSelected = false
-        case .done:
+        case .checked:
             self.checkBoxButton.isSelected = true
         }
     }
@@ -114,8 +114,8 @@ class TaskTableViewCell: MGSwipeTableCell {
     /// show the working time on this task.
     ///
     /// - Parameter task: task
-    func showWorkingTime(task: Task) {
-        guard let progress = task.calcProgressDuration(atDate: Date()) else {
+    func showWorkingTime(actionable: Actionable) {
+        guard let progress = actionable.calcProgressDuration(atDate: Date()) else {
             self.workingTimeLabel.text = nil
             return
         }
@@ -126,16 +126,16 @@ class TaskTableViewCell: MGSwipeTableCell {
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
-    func configure(task: Task, forDate date: Date, delegate: TaskTableCellDelegate) {
-        self.task = task
+    func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
+        self.actionable = actionable
         self.delegateTaskCell = delegate
-        showTaskState(state: task.getTaskState())
-        showTaskProgress(isProgressing: task.isProgressing(atDate: date))
-        showTaskCommittingState(state: task.committingState(forDate: date), forDate: task.commitmentDate)
-        showWorkingTime(task: task)
-        taskDescriptionLabel.text = task.name
+        showTaskState(state: actionable.checkedState(forDate: date))
+        showTaskProgress(isProgressing: actionable.isProgressing(atDate: date))
+        showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
+        showWorkingTime(actionable: actionable)
+        taskDescriptionLabel.text = actionable.name
         
-        if let goalName = task.goal?.name {
+        if let goalName = actionable.goal?.name {
             goalDescriptionLabel.text = "Goal: \(goalName)"
             goalDescriptionLabel.isHidden = false
         } else {

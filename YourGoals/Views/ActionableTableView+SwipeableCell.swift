@@ -1,5 +1,5 @@
 //
-//  TasksView+SwipeableCell.swift
+//  ActionableTableView+SwipeableCell.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 01.11.17.
@@ -9,9 +9,8 @@
 import Foundation
 import MGSwipeTableCell
 
-extension TasksView: MGSwipeTableCellDelegate {
+extension ActionableTableView: MGSwipeTableCellDelegate {
 
-    
     // MARK: - configuration of the swipeable cell
     
     func configure(swipeableCell cell:MGSwipeTableCell) {
@@ -33,7 +32,12 @@ extension TasksView: MGSwipeTableCellDelegate {
         self.delegate.progressChanged(task: task)
     }
     
-    func switchState(forTask task: Task) throws {
+    func switchState(forActionable actionable: Actionable) throws {
+        guard let task = actionable as? Task else {
+            NSLog("switchState failed. Actionable isn't a task")
+            return
+        }
+        
         let date = Date()
         let stateManager = TaskStateManager(manager: self.manager)
         if task.taskIsActive() {
@@ -114,12 +118,12 @@ extension TasksView: MGSwipeTableCellDelegate {
     /// - Returns: an array of MGSwipeButtons
     func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
         
-        guard let taskCell = cell as? TaskTableViewCell else {
+        guard let taskCell = cell as? ActionableTableCell else {
             NSLog("illegal cell type: \(cell)")
             return nil
         }
         
-        guard let task = taskCell.task else {
+        guard let task = taskCell.actionable as? Task else {
             NSLog("could not extract task out of cell: \(taskCell)")
             return nil
         }
@@ -148,12 +152,12 @@ extension TasksView: MGSwipeTableCellDelegate {
     /// - Returns: true for old good handlign
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         do {
-            guard let taskCell = cell as? TaskTableViewCell else {
+            guard let taskCell = cell as? ActionableTableCell else {
                 NSLog("illegal cell type: \(cell)")
                 return true
             }
             
-            guard let task = taskCell.task else {
+            guard let task = taskCell.actionable as? Task else {
                 NSLog("could not extract task out of cell: \(taskCell)")
                 return true
             }
@@ -168,7 +172,7 @@ extension TasksView: MGSwipeTableCellDelegate {
                 case 0:
                     try switchCommitment(forTask: task)
                 case 1:
-                    try switchState(forTask: task)
+                    try switchState(forActionable: task)
                 default:
                     assertionFailure("not processable index for swipe cell: \(index)")
                     

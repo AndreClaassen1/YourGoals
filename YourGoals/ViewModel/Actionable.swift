@@ -31,7 +31,7 @@ protocol Actionable {
     /// name of the actionable
     var name:String? { get }
     
-    /// the associated goal for this 
+    /// the associated goal for this
     var goal:Goal? { get }
     
     /// obtain the checked state for agiven state
@@ -42,4 +42,16 @@ protocol Actionable {
     
     /// get the progress in time for the given date
     func calcProgressDuration(atDate date:Date) -> TimeInterval?
+    
+    /// true, if task is in progressing state at date
+    ///
+    /// - Parameter date: date
+    /// - Returns: true
+    func isProgressing(atDate date: Date) -> Bool
+    
+    var commitmentDate:Date? { get }
+    
+    func committingState(forDate date:Date) -> CommittingState
+
+
 }

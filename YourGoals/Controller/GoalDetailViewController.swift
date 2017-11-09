@@ -32,7 +32,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
 
     // view for presenting tasks and habits
     @IBOutlet private weak var goalContentView: GoalContentView!
-    @IBOutlet private weak var tasksView: TasksView!
+    @IBOutlet private weak var tasksView: ActionableTableView!
     @IBOutlet private weak var toggleHabitsButton: UIButton!
     
     /// Header Image Height

@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - Actionable Extension for feeding the TasksView and its cells
+// MARK: - Actionable Extension for feeding the ActionableTableView and its cells
 extension Habit:Actionable {
-
+    
     /// .checked, if the habit is checked on the given date
     ///
     /// - Parameter date: the date
@@ -25,5 +25,19 @@ extension Habit:Actionable {
     /// - Returns: nil
     func calcProgressDuration(atDate date: Date) -> TimeInterval? {
         return nil
+    }
+    
+    /// a habit is never progressing at any date
+    ///
+    /// - Parameter date: date
+    /// - Returns: always false
+    func isProgressing(atDate date: Date) -> Bool {
+        return false
+    }
+    
+    var commitmentDate:Date? { return nil }
+    
+    func committingState(forDate date:Date) -> CommittingState {
+        return .notCommitted
     }
 }
