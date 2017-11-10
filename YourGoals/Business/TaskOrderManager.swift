@@ -9,7 +9,7 @@
 import Foundation
 
 /// priority management for tasks
-class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
+class TaskOrderManager:StorageManagerWorker {
 
     /// retrieve the tasks ordered from the core data store for the given goal
     ///
@@ -52,11 +52,10 @@ class TaskOrderManager:StorageManagerWorker, TaskPositioningProtocol {
     ///   - fromPosition: old position of the task in the array
     ///   - toPosition: new position for the task in the array
     /// - Returns: updated task order
-    func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws -> [Task] {
+    func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws  {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
         updateTasksOrder(tasks: tasksReorderd)
         try self.manager.dataManager.saveContext()
-        return tasksReorderd
     }
 }

@@ -10,40 +10,24 @@ import UIKit
 import LongPressReorder
 import MGSwipeTableCell
 
-protocol TasksViewDataSource {
-    var numberOfActionables:Int { get }
-    func actionableForRow(row:Int) -> Actionable
-}
-
-protocol TasksViewDelegate {
-    func requestForEdit(task: Task)
+protocol ActionableTableViewDelegate {
+    func requestForEdit(actionable: Actionable)
     func showNotification(forError error: Error)
     func goalChanged(goal: Goal)
-    func progressChanged(task: Task)
+    func progressChanged(actionable: Actionable)
     func commitmentChanged()
-}
-
-enum TasksViewMode {
-    case tasksForGoal
-    case activeTasks
-    case committedTasks
 }
 
 /// a specialized UITableView for displaying tasks
 class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, ActionableTableCellDelegate, LongPressReorder {
-
-    
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
-    var tasksOrdered: [Task]!
+    var actionables = [Actionable]()
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
-    var tasksViewMode:TasksViewMode!
-    var manager:GoalsStorageManager!
-    var delegate:TasksViewDelegate!
-    var dataSource:TasksViewDataSource!
-    var goal:Goal?
+    var delegate:ActionableTableViewDelegate!
+    var dataSource:ActionableDataSource!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,14 +50,17 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         self.reorderTableView.delegate = self
         scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
     }
-
-    func configure(manager:GoalsStorageManager, mode:TasksViewMode, forGoal goal:Goal?, delegate: TasksViewDelegate) {
-        self.tasksViewMode = mode
-        self.goal = goal
-        self.manager = manager
+    
+    /// configure the actionable task view with a data source for actionabels and a delegate for actions
+    ///
+    /// - Parameters:
+    ///   - dataSource: a actionable data source
+    ///   - delegate: a delegate for actions like editing or so.
+    func configure(dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate) {
+        self.dataSource = dataSource
         self.delegate = delegate
         configureTableView()
-        if mode != .activeTasks {
+        if dataSource.positioningProtocol() != nil {
             self.reorderTableView.enableLongPressReorder()
         }
     }
@@ -81,18 +68,17 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     /// reload the tasks table view
     func reload() {
         do {
-            try retrieveOrderedTasks()
+            self.actionables = try self.dataSource.fetchActionables(forDate: Date())
             self.tasksTableView.reloadData()
         }
         catch let error {
             self.delegate.showNotification(forError: error)
         }
-        
     }
     
     private func configureTableView() {
         do {
-            try retrieveOrderedTasks()
+            self.actionables = try self.dataSource.fetchActionables(forDate: Date())
             self.tasksTableView.registerReusableCell(ActionableTableCell.self)
             self.tasksTableView.delegate = self
             self.tasksTableView.dataSource = self
@@ -133,46 +119,17 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     }
     
     func reloadTableView() throws {
-        try retrieveOrderedTasks()
         self.tasksTableView.reloadData()
     }
     
     // MARK: - Data Source Helper Methods
     
-    func retrieveOrderedTasks() throws {
-        switch self.tasksViewMode! {
-        case .tasksForGoal:
-            self.tasksOrdered = try TaskOrderManager(manager: self.manager).tasksByOrder(forGoal: goal!)
-            break
-            
-        case .activeTasks:
-            self.tasksOrdered = try TaskProgressManager(manager: self.manager).activeTasks(forDate: Date())
-            
-        case .committedTasks:
-            self.tasksOrdered = try TaskCommitmentManager(manager: self.manager).committedTasksTodayAndFromTHePath(forDate: Date())
-            break
-        }
+    func numberOfActionables() -> Int {
+        return self.actionables.count
     }
     
-    func numberOfTasks() -> Int {
-        return self.tasksOrdered.count
-    }
-    
-    func taskForIndexPath(path: IndexPath) -> Task {
-        return self.tasksOrdered[path.row]
-    }
-    
-    func taskPositioning(forMode mode:TasksViewMode) -> TaskPositioningProtocol? {
-        switch self.tasksViewMode! {
-        case .tasksForGoal:
-            return TaskOrderManager(manager: self.manager)
-            
-        case .activeTasks:
-            return nil
-            
-        case .committedTasks:
-            return TaskCommitmentManager(manager: self.manager)
-        }
+    func actionableForIndexPath(path: IndexPath) -> Actionable {
+        return self.actionables[path.row]
     }
     
     func updateTaskOrder(initialIndex: IndexPath, finalIndex: IndexPath) throws {
@@ -181,12 +138,14 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             return
         }
         
-        guard let positioning = taskPositioning(forMode: self.tasksViewMode) else {
-            NSLog("positioning not supported for tasks view mode \(self.tasksViewMode)")
+        guard let positioning = self.dataSource.positioningProtocol() else {
+            NSLog("no repositioning protocol found")
             return
         }
-
-        self.tasksOrdered = try positioning.updateTaskPosition(tasks: self.tasksOrdered, fromPosition: initialIndex.row, toPosition: finalIndex.row)
+        
+        try positioning.updatePosition(actionables: self.actionables, fromPosition: initialIndex.row, toPosition: finalIndex.row)
+        
+        reload()
     }
     
     /// retrieve the index path of all task cells, which are in progess
@@ -196,9 +155,9 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         var indexPaths = [IndexPath]()
         let date = Date()
         
-        for tuple in self.tasksOrdered.enumerated() {
-            let task = tuple.element
-            if task.isProgressing(atDate: date) {
+        for tuple in self.actionables.enumerated() {
+            let actionable = tuple.element
+            if actionable.isProgressing(atDate: date) {
                 indexPaths.append(IndexPath(row: tuple.offset, section: 0))
             }
         }
@@ -213,13 +172,13 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfTasks()
+        return numberOfActionables()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        let task = self.taskForIndexPath(path: indexPath)
-        cell.configure(actionable: task, forDate: Date(), delegate: self)
+        let actionable = self.actionableForIndexPath(path: indexPath)
+        cell.configure(actionable: actionable, forDate: Date(), delegate: self)
         configure(swipeableCell: cell)
         return cell
     }
@@ -228,7 +187,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     
     func actionableStateChangeDesired(actionable: Actionable) {
         do {
-            try self.switchState(forActionable: actionable)
+            try switchBehavior(actionable: actionable, date: Date(), behavior: .state)
         }
         catch let error {
             delegate.showNotification(forError: error)
@@ -236,7 +195,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.requestForEdit(task: self.taskForIndexPath(path: indexPath))
+        delegate.requestForEdit(actionable: self.actionableForIndexPath(path: indexPath))
     }
     
     // MARK: - Reorder handling

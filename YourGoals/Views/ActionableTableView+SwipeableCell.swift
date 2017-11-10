@@ -10,7 +10,7 @@ import Foundation
 import MGSwipeTableCell
 
 extension ActionableTableView: MGSwipeTableCellDelegate {
-
+    
     // MARK: - configuration of the swipeable cell
     
     func configure(swipeableCell cell:MGSwipeTableCell) {
@@ -19,84 +19,21 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     
     // MARK: - swipe button handling
     
-    func switchProgress(forTask task: Task) throws {
-        let date = Date()
-        let progressManager = TaskProgressManager(manager: self.manager)
-        if task.isProgressing(atDate: date) {
-            try progressManager.stopProgress(forTask: task, atDate: date)
-        } else {
-            try progressManager.startProgress(forTask: task, atDate: date)
-        }
-        self.tasksTableView.reloadData()
-        self.delegate.goalChanged(goal: task.goal!)
-        self.delegate.progressChanged(task: task)
-    }
-    
-    func switchState(forActionable actionable: Actionable) throws {
-        guard let task = actionable as? Task else {
-            NSLog("switchState failed. Actionable isn't a task")
+    func switchBehavior(actionable: Actionable, date: Date, behavior: ActionableBehavior) throws {
+        guard let switchProtocol = self.dataSource.switchProtocol(forBehavior: behavior) else {
+            assertionFailure("no progress protocol for behavior \(behavior) available")
             return
         }
         
-        let date = Date()
-        let stateManager = TaskStateManager(manager: self.manager)
-        if task.taskIsActive() {
-            try stateManager.setTaskState(task: task, state: .done, atDate: date)
-        } else {
-            try stateManager.setTaskState(task: task, state: .active, atDate: date)
-        }
+        try switchProtocol.switchBehavior(forActionable: actionable, atDate: date)
         self.tasksTableView.reloadData()
-        self.delegate.goalChanged(goal: task.goal!)
-    }
-    
-    func switchCommitment(forTask task: Task) throws {
-        let date = Date()
-        let commitManager = TaskCommitmentManager(manager: self.manager)
-        if task.committingState(forDate: date) == .committedForDate {
-            try commitManager.normalize(task: task)
-        } else {
-            try commitManager.commit(task: task, forDate: date)
+        guard let goal = actionable.goal else {
+            NSLog("the actionable has no goal: \(actionable)")
+            return
         }
-        self.tasksTableView.reloadData()
-        self.delegate.commitmentChanged()
+        self.delegate.goalChanged(goal: goal)
     }
-    
-    
-    // MARK: - Swipe Cell creator funciton
-    
-    /// create a swipe button for starting/stoping making progress
-    ///
-    /// - Parameter task: a task
-    /// - Returns: a configured MGSwipeButton
-    func createSwipeButtonForProgress(task: Task) -> MGSwipeButton {
-        let isProgressing = task.isProgressing(atDate: Date())
-        let title = isProgressing ? "Stop task" : "Start task"
-        let backgroundColor = isProgressing ? UIColor.red : UIColor.green
-        let button = MGSwipeButton(title: title, backgroundColor: backgroundColor)
-        return button
-    }
-    
-    /// crate a swipe button for the active/done state
-    ///
-    /// - Parameter task: a task
-    /// - Returns: a properly configured swipe button for the active / done state
-    func createSwipeButtonForState(task: Task) -> MGSwipeButton {
-        let title = task.taskIsActive() ? "Task Done" : "Task Open"
-        return MGSwipeButton(title: title, backgroundColor: UIColor.blue)
-    }
-    
-    /// create a swipe button for normalize or / comitting a task
-    ///
-    /// - Parameter task: the task
-    /// - Returns: a properly configured swipe button for the normalize / committing state
-    func createSwipeButtonForCommitment(task: Task) -> MGSwipeButton {
-        let committingState = task.committingState(forDate: Date()) == .committedForDate
-        let title = committingState ? "Normalize": "Committed!"
-        let backgroundColor = committingState ? UIColor.gray: UIColor.yellow
-        let button =  MGSwipeButton(title: title, backgroundColor: backgroundColor)
-        button.setTitleColor(UIColor.black, for: .normal)
-        return button
-    }
+   
     
     // MARK: - MGSwipeTableCellDelegate
     
@@ -107,6 +44,7 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     func swipeTableCellWillEndSwiping(_ cell: MGSwipeTableCell) {
         self.timerPaused = false
     }
+    
     
     /// show the swipe buttons for the task
     ///
@@ -123,24 +61,43 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
             return nil
         }
         
-        guard let task = taskCell.actionable as? Task else {
-            NSLog("could not extract task out of cell: \(taskCell)")
+        guard let actionable = taskCell.actionable else {
+            NSLog("could not extract an actionable out of cell: \(taskCell)")
             return nil
         }
         
-        
         swipeSettings.transition = MGSwipeTransition.border
         expansionSettings.buttonIndex = 0
+        let swipeButtonCreator = ActionableSwipeButtonCreator()
         
         if direction == MGSwipeDirection.leftToRight {
-            expansionSettings.fillOnTrigger = false
-            expansionSettings.threshold = 2
-            return [createSwipeButtonForProgress(task: task)]
+//            expansionSettings.fillOnTrigger = false
+//            expansionSettings.threshold = 2
+            return  swipeButtonCreator.createSwipeButtons(forDate: Date(), forActionable: actionable, forBehaviors: [.progress], dataSource: self.dataSource)
         }
         else {
-            return [createSwipeButtonForCommitment(task: task), createSwipeButtonForState(task: task)]
+            return swipeButtonCreator.createSwipeButtons(forDate: Date(), forActionable: actionable, forBehaviors: [.commitment, .state], dataSource: self.dataSource)
         }
     }
+    
+    func swipeBehavior(index: Int, direction: MGSwipeDirection) -> ActionableBehavior {
+        switch direction {
+        case .leftToRight:
+            return .progress
+            
+        case .rightToLeft:
+            switch index {
+            case 0:
+                return .commitment
+            case 1:
+                return .state
+            default:
+                assertionFailure("not processable index for swipe cell: \(index)")
+                return .state
+            }
+        }
+    }
+    
     
     /// handle a tapped swipe button
     ///
@@ -157,28 +114,13 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
                 return true
             }
             
-            guard let task = taskCell.actionable as? Task else {
-                NSLog("could not extract task out of cell: \(taskCell)")
+            guard let actionable = taskCell.actionable else {
+                NSLog("the task cell has no actionable")
                 return true
             }
             
-            switch direction {
-            case .leftToRight:
-                try switchProgress(forTask: task)
-                break
-                
-            case .rightToLeft:
-                switch index {
-                case 0:
-                    try switchCommitment(forTask: task)
-                case 1:
-                    try switchState(forActionable: task)
-                default:
-                    assertionFailure("not processable index for swipe cell: \(index)")
-                    
-                }
-                break
-            }
+            let behavior = swipeBehavior(index: index, direction: direction)
+            try switchBehavior(actionable: actionable, date: Date(), behavior: behavior)
         }
         catch let error {
             self.delegate?.showNotification(forError: error)

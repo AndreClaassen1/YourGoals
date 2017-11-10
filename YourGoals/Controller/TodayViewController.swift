@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 /// show the today view screen of the YourGoals App
-class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewControllerDelegate, EditTaskViewControllerDelegate {
+class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditTaskViewControllerDelegate {
+
+    
     /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     
@@ -41,8 +43,8 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         self.configure(collectionView: self.goalsCollectionView)
-        self.committedTasksView.configure(manager: self.manager, mode: .committedTasks,  forGoal: nil, delegate: self)
-        self.activeWorkTasksView.configure(manager: self.manager, mode: .activeTasks, forGoal: nil, delegate: self)
+        self.committedTasksView.configure(dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self)
+        self.activeWorkTasksView.configure(dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
         
         // Do any additional setup after loading the view.
         self.reloadAll()
@@ -83,7 +85,7 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         
     }
     
-    // MARK: - TasksViewDelegate
+    // MARK: - ActionableTableViewDelegate
     
     /// reload all data for the today view
     /// hide the active task pane, if there are no active tasks which aren't committed
@@ -105,8 +107,13 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         }
     }
     
-    
-    func requestForEdit(task: Task) {
+
+    func requestForEdit(actionable: Actionable) {
+        guard let task = actionable as? Task else {
+            assertionFailure("request for edit failed. no task: \(actionable)")
+            return
+        }
+        
         self.editTask = task
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
@@ -123,7 +130,7 @@ class TodayViewController: UIViewController, TasksViewDelegate, GoalDetailViewCo
         self.reloadAll()
     }
     
-    func progressChanged(task: Task) {
+    func progressChanged(actionable: Actionable) {
         self.reloadAll()
     }
 

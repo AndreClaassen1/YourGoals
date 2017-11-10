@@ -14,6 +14,11 @@
 		7B0A72671FB0485D0000586D /* HabitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72661FB0485D0000586D /* HabitTests.swift */; };
 		7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A726A1FB049900000586D /* HabitFactory.swift */; };
 		7B0A726D1FB04D000000586D /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A726C1FB04D000000586D /* HabitManager.swift */; };
+		7B130B571FB4F00D0072F6C8 /* CommittedTasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B130B561FB4F00D0072F6C8 /* CommittedTasksDataSource.swift */; };
+		7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B130B5A1FB59CE20072F6C8 /* ActiveTasksDataSource.swift */; };
+		7B130B5D1FB59D620072F6C8 /* GoalTasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B130B5C1FB59D620072F6C8 /* GoalTasksDataSource.swift */; };
+		7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B130B5F1FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift */; };
+		7B130B621FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */; };
 		7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */; };
 		7B17DD7F1F9E72C8008E90A2 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */; };
 		7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */; };
@@ -50,7 +55,7 @@
 		7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */; };
 		7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */; };
 		7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */; };
-		7B7F0A771FAA06FE001BBB17 /* TaskPositioningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* TaskPositioningProtocol.swift */; };
+		7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */; };
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
@@ -188,6 +193,11 @@
 		7B0A72661FB0485D0000586D /* HabitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTests.swift; sourceTree = "<group>"; };
 		7B0A726A1FB049900000586D /* HabitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFactory.swift; sourceTree = "<group>"; };
 		7B0A726C1FB04D000000586D /* HabitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
+		7B130B561FB4F00D0072F6C8 /* CommittedTasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommittedTasksDataSource.swift; sourceTree = "<group>"; };
+		7B130B5A1FB59CE20072F6C8 /* ActiveTasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTasksDataSource.swift; sourceTree = "<group>"; };
+		7B130B5C1FB59D620072F6C8 /* GoalTasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksDataSource.swift; sourceTree = "<group>"; };
+		7B130B5F1FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSwitchProtocolProvider.swift; sourceTree = "<group>"; };
+		7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableSwipeButtonCreator.swift; sourceTree = "<group>"; };
 		7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		7B17DD811F9E73A2008E90A2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -226,7 +236,7 @@
 		7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposerTests.swift; sourceTree = "<group>"; };
 		7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
 		7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Progress.swift"; sourceTree = "<group>"; };
-		7B7F0A761FAA06FE001BBB17 /* TaskPositioningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPositioningProtocol.swift; sourceTree = "<group>"; };
+		7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+SwipeableCell.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
@@ -358,6 +368,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7B130B5E1FB59E1C0072F6C8 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7B130B5F1FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift */,
+				7B130B561FB4F00D0072F6C8 /* CommittedTasksDataSource.swift */,
+				7B130B5A1FB59CE20072F6C8 /* ActiveTasksDataSource.swift */,
+				7B130B5C1FB59D620072F6C8 /* GoalTasksDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		7B17DD781F9E6E3C008E90A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +440,7 @@
 				7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */,
 				7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */,
 				7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */,
+				7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +512,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B130B5E1FB59E1C0072F6C8 /* DataSource */,
 				7B9759C51FB37B74009DED89 /* Theme */,
 				7B994E0D1FA229C700B704E1 /* Error */,
 				7B994E081FA2287900B704E1 /* ViewModel */,
@@ -628,7 +651,7 @@
 				7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */,
 				7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */,
 				7B5FA3D01FA33AE5004556C1 /* TaskProgressManager.swift */,
-				7B7F0A761FAA06FE001BBB17 /* TaskPositioningProtocol.swift */,
+				7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */,
 				7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */,
 				7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */,
 				7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */,
@@ -929,6 +952,7 @@
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
 				7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
+				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
 				7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */,
 				7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */,
 				7BAA7A851FA0C788005B16EE /* Goal+Sub.swift in Sources */,
@@ -950,6 +974,7 @@
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */,
 				7B0A726D1FB04D000000586D /* HabitManager.swift in Sources */,
+				7B130B621FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
@@ -963,6 +988,7 @@
 				7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */,
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
+				7B130B571FB4F00D0072F6C8 /* CommittedTasksDataSource.swift in Sources */,
 				7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */,
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
 				7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */,
@@ -987,9 +1013,10 @@
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
-				7B7F0A771FAA06FE001BBB17 /* TaskPositioningProtocol.swift in Sources */,
+				7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */,
 				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
 				7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */,
+				7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
 				7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
@@ -998,6 +1025,7 @@
 				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,
 				7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */,
 				7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */,
+				7B130B5D1FB59D620072F6C8 /* GoalTasksDataSource.swift in Sources */,
 				7BEBBAD31F9F4087003D16AE /* Generator.swift in Sources */,
 				7BEBBADD1F9F5545003D16AE /* StrategyManager.swift in Sources */,
 				7B0A72631FB044BD0000586D /* Habit+Actionable.swift in Sources */,

@@ -21,8 +21,7 @@ protocol GoalDetailViewControllerDelegate {
 }
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, TasksViewDelegate {
-    
+class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
     // container and constraints for animating this view
     @IBOutlet private weak var contentContainerView: UIView!
     @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
@@ -52,7 +51,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         configure(goal: self.goal)
-        self.tasksView.configure(manager: self.manager, mode: .tasksForGoal, forGoal: self.goal, delegate: self)
+        self.tasksView.configure(dataSource: GoalTasksDataSource(manager: self.manager, forGoal: self.goal),delegate: self)
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
@@ -180,7 +179,12 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     /// request for editing a task
     ///
     /// - Parameter task: the task
-    func requestForEdit(task: Task) {
+    func requestForEdit(actionable: Actionable) {
+        guard let task = actionable as? Task else {
+            assertionFailure("request for edit failed. no task: \(actionable)")
+            return
+        }
+        
         self.editTask = task
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
@@ -191,7 +195,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.delegate?.goalChanged()
     }
     
-    func progressChanged(task: Task) {
+    func progressChanged(actionable: Actionable) {
         self.delegate?.goalChanged()
     }
     

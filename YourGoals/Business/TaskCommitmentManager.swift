@@ -9,7 +9,8 @@
 import Foundation
 import CoreData
 
-class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
+class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
+    
     
     /// make a commitment to do the task for the given date.
     ///
@@ -96,11 +97,31 @@ class TaskCommitmentManager : StorageManagerWorker, TaskPositioningProtocol {
         }
     }
     
-    func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws -> [Task] {
+    func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws   {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
         updateTasksOrder(tasks: tasksReorderd)
         try self.manager.dataManager.saveContext()
-        return tasksReorderd
     }
+    
+    // MARK: - ActionableSwitchProtocol
+    
+    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
+        guard let task = actionable as? Task else {
+            assertionFailure("switchState failed. Actionable isn't a task")
+            return
+        }
+        
+        if task.committingState(forDate: date) == .committedForDate {
+            try self.normalize(task: task)
+        } else {
+            try self.commit(task: task, forDate: date)
+        }
+    }
+    
+    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
+        return actionable.committingState(forDate: date) == .committedForDate
+    }
+    
+    
 }

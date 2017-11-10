@@ -28,7 +28,7 @@ extension TaskProgressError: LocalizedError {
 }
 
 /// business class to start and stop progress on a task and modifieing state in the database
-class TaskProgressManager:StorageManagerWorker {
+class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     /// start working and making progress on a task
     ///
     /// **Important**: If the task is not active, it will be made active again
@@ -113,5 +113,24 @@ class TaskProgressManager:StorageManagerWorker {
         })
         
         return n
+    }
+    
+    // MARK: - ActionableSwitchProtocol
+    
+    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
+        guard let task = actionable as? Task else {
+            assertionFailure("switchState failed. Actionable isn't a task")
+            return
+        }
+    
+        if task.isProgressing(atDate: date) {
+            try self.stopProgress(forTask: task, atDate: date)
+        } else {
+            try self.startProgress(forTask: task, atDate: date)
+        }
+    }
+    
+    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
+        return actionable.isProgressing(atDate: date)
     }
 }

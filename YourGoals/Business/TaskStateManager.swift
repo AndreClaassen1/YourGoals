@@ -9,7 +9,8 @@
 import Foundation
 
 /// changes the state of a task
-class TaskStateManager {
+class TaskStateManager:ActionableSwitchProtocol {
+    
     let manager:GoalsStorageManager
     
     /// init with the core data manager
@@ -45,5 +46,24 @@ class TaskStateManager {
         task.doneDate = state == .done ? date : nil
         
         try manager.dataManager.saveContext()
+    }
+    
+    // MARK: - ActionableSwitchProtocol
+    
+    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
+        guard let task = actionable as? Task else {
+            assertionFailure("switchState failed. Actionable isn't a task")
+            return
+        }
+        
+        if task.taskIsActive() {
+            try self.setTaskState(task: task, state: .done, atDate: date)
+        } else {
+            try self.setTaskState(task: task, state: .active, atDate: date)
+        }
+    }
+    
+    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
+        return actionable.checkedState(forDate: date) == .active
     }
 }

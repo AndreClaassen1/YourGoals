@@ -13,6 +13,7 @@ protocol ActionableTableCellDelegate {
     func actionableStateChangeDesired(actionable:Actionable)
 }
 
+/// a table cell for displaying habits or tasks. experimental
 class ActionableTableCell: MGSwipeTableCell {
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
@@ -53,7 +54,7 @@ class ActionableTableCell: MGSwipeTableCell {
     
     // MARK: - Content
     
-    func showTaskState(state: ActionableState) {
+    func show(state: ActionableState) {
         switch state {
         case .active:
             self.checkBoxButton.isSelected = false
@@ -129,7 +130,7 @@ class ActionableTableCell: MGSwipeTableCell {
     func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
         self.actionable = actionable
         self.delegateTaskCell = delegate
-        showTaskState(state: actionable.checkedState(forDate: date))
+        show(state: actionable.checkedState(forDate: date))
         showTaskProgress(isProgressing: actionable.isProgressing(atDate: date))
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
         showWorkingTime(actionable: actionable)
