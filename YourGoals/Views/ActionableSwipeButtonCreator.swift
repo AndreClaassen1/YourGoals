@@ -85,9 +85,9 @@ class ActionableSwipeButtonCreator {
             
         case .state:
             if behaviorIsActive {
-                return ("Open", nil, UIColor.blue)
-            } else {
                 return ("Done", nil, UIColor.blue)
+            } else {
+                return ("Open", nil, UIColor.blue)
             }
         }
     }
