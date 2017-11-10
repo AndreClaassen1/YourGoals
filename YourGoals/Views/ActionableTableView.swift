@@ -44,11 +44,15 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         self.tasksTableView = UITableView(frame: self.bounds)
         self.tasksTableView.registerReusableCell(ActionableTableCell.self)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
+        self.reorderTableView.delegate = self
+        self.reorderTableView.enableLongPressReorder()
         self.tasksTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.tasksTableView.translatesAutoresizingMaskIntoConstraints = true
         self.addSubview(self.tasksTableView)
         self.reorderTableView.delegate = self
-        scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
+        self.scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
+        self.tasksTableView.delegate = self
+        self.tasksTableView.dataSource = self
     }
     
     /// configure the actionable task view with a data source for actionabels and a delegate for actions
@@ -59,10 +63,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     func configure(dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate) {
         self.dataSource = dataSource
         self.delegate = delegate
-        configureTableView()
-        if dataSource.positioningProtocol() != nil {
-            self.reorderTableView.enableLongPressReorder()
-        }
+        reload()
     }
     
     /// reload the tasks table view
@@ -75,23 +76,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             self.delegate.showNotification(forError: error)
         }
     }
-    
-    private func configureTableView() {
-        do {
-            self.actionables = try self.dataSource.fetchActionables(forDate: Date())
-            self.tasksTableView.registerReusableCell(ActionableTableCell.self)
-            self.tasksTableView.delegate = self
-            self.tasksTableView.dataSource = self
-            self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: SelectedRowScale.medium)
-            self.reorderTableView.delegate = self
-            self.scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
-            self.reorderTableView.enableLongPressReorder()
-        }
-        catch let error {
-            self.delegate.showNotification(forError: error)
-        }
-    }
-    
+   
     func scheduleTimerWithTimeInterval(tableView: UITableView) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTaskInProgess), userInfo: tableView, repeats: true)
         timerPaused = false

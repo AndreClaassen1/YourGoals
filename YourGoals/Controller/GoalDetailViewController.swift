@@ -41,6 +41,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
     var reorderTableView: LongPressReorderTableView!
+    var mode = GoalDetailViewControllerMode.tasksMode
     
     fileprivate func configure(goal:Goal) {
         // Do any additional setup after loading the view.
@@ -51,10 +52,25 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         configure(goal: self.goal)
-        self.tasksView.configure(dataSource: GoalTasksDataSource(manager: self.manager, forGoal: self.goal),delegate: self)
+        self.configureTableView(forMode: mode)
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    func dataSourceForMode(_ mode: GoalDetailViewControllerMode) -> ActionableDataSource {
+        switch mode {
+        case .tasksMode:
+            return GoalTasksDataSource(manager: self.manager, forGoal: self.goal)
+            
+        case .habitsMode:
+            return HabitsDataSource(manager: self.manager, forGoal: self.goal)
+        }
+    }
+    
+    func configureTableView(forMode mode: GoalDetailViewControllerMode) {
+        let dataSource = dataSourceForMode(mode)
+        self.tasksView.configure(dataSource: dataSource,delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -199,7 +215,15 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.delegate?.goalChanged()
     }
     
+    /// toggle between habits and tasks and reload the table view
     @IBAction func toggleHabitsAction(_ sender: Any) {
+        if self.mode == .tasksMode {
+            self.mode = .habitsMode
+        } else {
+            self.mode = .tasksMode
+        }
+        
+        configureTableView(forMode: self.mode)
     }
     
     func commitmentChanged() {
