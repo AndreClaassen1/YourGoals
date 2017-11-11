@@ -1,5 +1,5 @@
 //
-//  EditTaskViewController.swift
+//  EditActionableViewController.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 26.10.17.
@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-protocol EditTaskViewControllerDelegate {
-    func createNewTask(taskInfo: TaskInfo) throws
-    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws
-    func deleteTask(taskWithId: NSManagedObjectID) throws
+protocol EditActionableViewControllerDelegate {
+    func createNewActionable(actionableInfo: ActionableInfo) throws
+    func updateActionable(actionable: Actionable,  updateInfo: ActionableInfo) throws
+    func deleteActionable(actionable: Actionable) throws
 }
 
-class EditTaskViewController: UIViewController {
+class EditActionableViewController: UIViewController {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var taskTextView: UITextView!
     @IBOutlet weak var taskSaveButton: UIButton!
@@ -23,39 +23,46 @@ class EditTaskViewController: UIViewController {
     @IBOutlet weak var deleteTaskButton: UIButton!
     
     var goal:Goal!
-    var editTask:Task?
-    var delegate:EditTaskViewControllerDelegate?
+    var editActionable:Actionable?
+    var editActionableType:ActionableType?
+    var delegate:EditActionableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.taskTextView.showBorder()
-        self.configureTask(forGoal: self.goal, andTask: self.editTask)
+        
+        guard let type = self.editActionableType else {
+            assertionFailure("editActionableType wasn't set")
+            return
+        }
+        
+        self.configureTask(forGoal: self.goal, andActionable: self.editActionable, andType: type)
         self.taskTextView.becomeFirstResponder()
     }
     
-    func configureTask(forGoal goal:Goal, andTask task:Task?) {
+    func configureTask(forGoal goal:Goal, andActionable actionable: Actionable?, andType type: ActionableType) {
         goalLabel.text = "Goal: \(goal.name!)"
-        if let task = task {
-            titleLabel.text = "Update Task"
-            taskSaveButton.setTitle("Update task", for: .normal)
-            taskTextView.text = task.name
+        if let actionable = actionable {
+            titleLabel.text = "Update " + actionable.type.asString()
+            taskSaveButton.setTitle("Update", for: .normal)
+            taskTextView.text = actionable.name
             deleteTaskButton.isHidden = false
         } else {
-            titleLabel.text = "New Task"
+            titleLabel.text = "New " + type.asString()
             taskSaveButton.setTitle("Add this task to my goal", for: .normal)
             taskTextView.text = ""
             deleteTaskButton.isHidden = true
         }
     }
     
-    func taskInfoFromFields() throws -> TaskInfo? {
+    func taskInfoFromFields() -> ActionableInfo? {
         if taskTextView.text.isEmpty {
             return nil
         }
         
-        return try TaskInfo(taskName: taskTextView.text)
+        return ActionableInfo(name: taskTextView.text)
     }
 
     @IBAction func closerAction(_ sender: Any) {
@@ -69,7 +76,12 @@ class EditTaskViewController: UIViewController {
     
     @IBAction func deleteTaskAction(_ sender: Any) {
         do {
-            try delegate?.deleteTask(taskWithId: editTask!.objectID)
+            guard let actionable = self.editActionable else {
+                NSLog("could not get the instance of the actionable")
+                return
+            }
+            
+            try delegate?.deleteActionable(actionable: actionable)
             self.dismiss(animated: true, completion: nil)
         }
         catch let error {
@@ -79,15 +91,15 @@ class EditTaskViewController: UIViewController {
     
     @IBAction func saveTaskAction(_ sender: Any) {
         do {
-            guard let taskInfo = try taskInfoFromFields() else {
+            guard let actionableInfo = taskInfoFromFields() else {
                 self.showNotification(text: "Please enter neccessary fields and give a task name")
                 return
             }
             
-            if editTask == nil {
-                try delegate?.createNewTask(taskInfo: taskInfo)
+            if let actionable = self.editActionable  {
+                try delegate?.updateActionable(actionable: actionable, updateInfo: actionableInfo)
             } else {
-                try delegate?.updateTask(taskInfo: taskInfo, withId: editTask!.objectID)
+                try delegate?.createNewActionable(actionableInfo: actionableInfo)
             }
             
             self.dismiss(animated: true, completion: nil)

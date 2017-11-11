@@ -20,13 +20,13 @@ class GoalComposer:StorageManagerWorker {
     /// it back to the core data store
     ///
     /// - Parameters:
-    ///   - taskInfo: task info
+    ///   - actionableInfo: task info
     ///   - goal: the goal
     /// - Returns: the modified goal with the new task
     /// - Throws: core data exception
-    func add(taskInfo: TaskInfo, toGoal goal: Goal) throws -> Goal {
+    func add(actionableInfo: ActionableInfo, toGoal goal: Goal) throws -> Goal {
         let taskFactory = TaskFactory(manager: self.manager)
-        let task = taskFactory.create(taskInfo: taskInfo)
+        let task = taskFactory.create(actionableInfo: actionableInfo)
         task.prio = -1
         goal.addToTasks(task)
         let taskOrderManager = TaskOrderManager(manager: self.manager)
@@ -38,17 +38,18 @@ class GoalComposer:StorageManagerWorker {
     /// update a task for a goal withnew valuees
     ///
     /// - Parameters:
-    ///   - taskInfo: task info
+    ///   - actionableInfo: task info
     ///   - id: object id of the task
     ///   - goal: the goal
     /// - Returns: the modified goal with the updated task
     /// - Throws: core data exception
-    func update(taskInfo: TaskInfo, withId id: NSManagedObjectID, toGoal goal: Goal) throws -> Goal {
+    
+    func update(actionableInfo: ActionableInfo, withId id: NSManagedObjectID, toGoal goal: Goal) throws -> Goal {
         guard let task = goal.taskForId(id) else {
             throw GoalComposerError.noTaskForIdFound
         }
         
-        task.name = taskInfo.taskName
+        task.name = actionableInfo.name
         try self.manager.dataManager.saveContext()
         return goal
     }

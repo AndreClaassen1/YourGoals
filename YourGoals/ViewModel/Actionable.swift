@@ -16,17 +16,29 @@ enum ActionableState:Int {
     case done = 1
 }
 
-/// this is important for drawing the checkbox
+/// this is the type of the actionable
 ///
 /// - task: its a task
 /// - habit: its a habit
 enum ActionableType {
     case task
     case habit
+    
+    func asString() -> String {
+        switch self {
+        case .task:
+            return "Task"
+        case .habit:
+            return "Habit"
+        }
+    }
 }
 
 /// protocol to unify the behavior of a task or an habit for the task view
 protocol Actionable {
+    
+    /// the type of the actionable: A habit or a task
+    var type:ActionableType { get }
     
     /// name of the actionable
     var name:String? { get }
@@ -49,9 +61,12 @@ protocol Actionable {
     /// - Returns: true
     func isProgressing(atDate date: Date) -> Bool
     
+    /// commitet day of the work
     var commitmentDate:Date? { get }
     
+    /// get the commiting state of the work for a specific day
+    ///
+    /// - Parameter date: the day
+    /// - Returns: the state of the work: Not committed, committed, comitted for the past
     func committingState(forDate date:Date) -> CommittingState
-
-
 }

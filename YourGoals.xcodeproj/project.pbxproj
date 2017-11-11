@@ -66,12 +66,12 @@
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
 		7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */; };
 		7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */; };
-		7B994E011FA21CD300B704E1 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E001FA21CD300B704E1 /* EditTaskViewController.swift */; };
+		7B994E011FA21CD300B704E1 /* EditActionableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */; };
 		7B994E031FA21CEC00B704E1 /* EditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */; };
 		7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E041FA225B800B704E1 /* Date+dateHelper.swift */; };
 		7B994E071FA2261A00B704E1 /* EditGoalViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */; };
 		7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E091FA2288D00B704E1 /* GoalInfo.swift */; };
-		7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0B1FA228E000B704E1 /* TaskInfo.swift */; };
+		7B994E0C1FA228E000B704E1 /* ActionableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0B1FA228E000B704E1 /* ActionableInfo.swift */; };
 		7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */; };
 		7B994E111FA22E4E00B704E1 /* GoalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalFactory.swift */; };
 		7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19631FA7199B002CA72B /* UITextView+Border.swift */; };
@@ -248,12 +248,12 @@
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalCell.swift; sourceTree = "<group>"; };
 		7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalCell.xib; sourceTree = "<group>"; };
-		7B994E001FA21CD300B704E1 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionableViewController.swift; sourceTree = "<group>"; };
 		7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewController.swift; sourceTree = "<group>"; };
 		7B994E041FA225B800B704E1 /* Date+dateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+dateHelper.swift"; sourceTree = "<group>"; };
 		7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditGoalViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		7B994E091FA2288D00B704E1 /* GoalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfo.swift; sourceTree = "<group>"; };
-		7B994E0B1FA228E000B704E1 /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
+		7B994E0B1FA228E000B704E1 /* ActionableInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableInfo.swift; sourceTree = "<group>"; };
 		7B994E0E1FA22A1B00B704E1 /* FieldCheckError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCheckError.swift; sourceTree = "<group>"; };
 		7B994E101FA22E4E00B704E1 /* GoalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFactory.swift; sourceTree = "<group>"; };
 		7B9A19631FA7199B002CA72B /* UITextView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Border.swift"; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 				7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */,
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
-				7B994E001FA21CD300B704E1 /* EditTaskViewController.swift */,
+				7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
 				7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */,
 				7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */,
@@ -470,7 +470,7 @@
 			children = (
 				7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */,
 				7B994E091FA2288D00B704E1 /* GoalInfo.swift */,
-				7B994E0B1FA228E000B704E1 /* TaskInfo.swift */,
+				7B994E0B1FA228E000B704E1 /* ActionableInfo.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1007,7 +1007,7 @@
 				7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */,
 				7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */,
 				7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */,
-				7B994E011FA21CD300B704E1 /* EditTaskViewController.swift in Sources */,
+				7B994E011FA21CD300B704E1 /* EditActionableViewController.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
@@ -1022,7 +1022,7 @@
 				7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */,
 				7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
-				7B994E0C1FA228E000B704E1 /* TaskInfo.swift in Sources */,
+				7B994E0C1FA228E000B704E1 /* ActionableInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
 				7B6AE97A1FAC905F00E15A9D /* GoalsModelManager.swift in Sources */,
 				7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */,

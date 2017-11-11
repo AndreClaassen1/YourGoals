@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-enum GoalInfoError : Error {
-    case invalidGoalNameError
-}
-
 /// a view model representation of a goal
 struct GoalInfo {
     let name:String
@@ -30,10 +26,7 @@ struct GoalInfo {
     ///   - targetDate: target date of the goal
     ///   - image: motivating image of the goal
     /// - Throws: an exception, if the data values are invalid
-    init(name:String, reason:String? = nil, startDate:Date = Date.minimalDate, targetDate:Date = Date.maximalDate, image:UIImage? = nil) throws {
-        guard !name.isEmpty else {
-            throw GoalInfoError.invalidGoalNameError
-        }
+    init(name:String, reason:String? = nil, startDate:Date = Date.minimalDate, targetDate:Date = Date.maximalDate, image:UIImage? = nil) {
         
         self.name = name
         self.reason = reason ?? ""

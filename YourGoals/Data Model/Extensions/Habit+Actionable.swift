@@ -11,6 +11,12 @@ import Foundation
 // MARK: - Actionable Extension for feeding the ActionableTableView and its cells
 extension Habit:Actionable {
     
+    /// this is a habit
+    var type:ActionableType {
+        return .habit
+    }
+    
+    
     /// .checked, if the habit is checked on the given date
     ///
     /// - Parameter date: the date

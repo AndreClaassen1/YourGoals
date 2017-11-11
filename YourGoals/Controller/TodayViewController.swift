@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 /// show the today view screen of the YourGoals App
-class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditTaskViewControllerDelegate {
+class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditActionableViewControllerDelegate {
+    
 
     
     /// a collaction view for small goals pictures
@@ -33,7 +34,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     var manager = GoalsStorageManager.defaultStorageManager
     var selectedGoal:Goal? = nil
     var strategy:Goal! = nil
-    var editTask:Task? = nil
+    var editActionable:Actionable? = nil
     
     override func viewDidLoad() {
         
@@ -76,11 +77,11 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             return
         }
         
-        if let editTaskController = segue.destination as? EditTaskViewController {
-            editTaskController.goal = self.editTask?.goal
+        if let editTaskController = segue.destination as? EditActionableViewController {
+            editTaskController.goal = self.editActionable?.goal
             editTaskController.delegate = self
-            editTaskController.editTask = self.editTask
-            self.editTask = nil
+            editTaskController.editActionable = self.editActionable
+            self.editActionable = nil
         }
         
     }
@@ -109,12 +110,8 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     
 
     func requestForEdit(actionable: Actionable) {
-        guard let task = actionable as? Task else {
-            assertionFailure("request for edit failed. no task: \(actionable)")
-            return
-        }
-        
-        self.editTask = task
+
+        self.editActionable = actionable
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
     
@@ -136,16 +133,17 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
 
     // MARK: - GoalDetailViewControllerDelegate
 
-    func createNewTask(taskInfo: TaskInfo) throws {
+    func createNewActionable(actionableInfo: ActionableInfo) throws {
         
     }
     
-    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws {
+    func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
+        // :todo: update code
         self.reloadAll()
     }
     
-    func deleteTask(taskWithId: NSManagedObjectID) throws {
+    func deleteActionable(actionable: Actionable) throws {
+        // :todo: delete code
         self.reloadAll()
     }
-    
 }

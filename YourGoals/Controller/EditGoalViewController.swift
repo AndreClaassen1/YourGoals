@@ -75,7 +75,7 @@ class EditGoalViewController: UIViewController {
         let targetDate = targetDatePicker.date
         let image = self.goalImageButton.image(for: .normal)
         
-        return try GoalInfo(name: goalName, reason: reason, startDate: Date(), targetDate: targetDate, image:image)
+        return GoalInfo(name: goalName, reason: reason, startDate: Date(), targetDate: targetDate, image:image)
     }
     
     override func didReceiveMemoryWarning() {

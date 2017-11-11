@@ -21,7 +21,8 @@ protocol GoalDetailViewControllerDelegate {
 }
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
+class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
+    
     // container and constraints for animating this view
     @IBOutlet private weak var contentContainerView: UIView!
     @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
@@ -37,7 +38,7 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     /// Header Image Height
     var goal:Goal!
     var tasksOrdered: [Task]!
-    var editTask:Task? = nil
+    var editActionable:Actionable? = nil
     let manager = GoalsStorageManager.defaultStorageManager
     var delegate:GoalDetailViewControllerDelegate?
     var reorderTableView: LongPressReorderTableView!
@@ -118,16 +119,24 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let editTaskController = segue.destination as? EditTaskViewController {
-            editTaskController.goal = self.goal
-            editTaskController.delegate = self
-            editTaskController.editTask = self.editTask
-            self.editTask = nil
+        if let editActionableController = segue.destination as? EditActionableViewController {
+            editActionableController.goal = self.goal
+            editActionableController.delegate = self
+            editActionableController.editActionable = self.editActionable
+            
+            switch mode {
+            case .tasksMode:
+                editActionableController.editActionableType = .task
+            case .habitsMode:
+                editActionableController.editActionableType = .habit
+            }
+
+            self.editActionable = nil
         }
         
         if let editGoalController = segue.destination as? EditGoalViewController {
             editGoalController.delegate = self
-            editGoalController.editGoal = goal
+            editGoalController.editGoal = self.goal
         }
     }
     
@@ -136,26 +145,36 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
         self.configure(goal: self.goal)
     }
     
-    // MARK: - EditTaskViewControllerDelegate
+    // MARK: - EditActionableViewControllerDelegate
     
-    func createNewTask(taskInfo: TaskInfo) throws {
+    func createNewActionable(actionableInfo: ActionableInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.add(taskInfo: taskInfo, toGoal: goal)
+        self.goal = try goalComposer.add(actionableInfo: actionableInfo, toGoal: goal)
         try self.refreshView()
     }
     
-    func updateTask(taskInfo: TaskInfo, withId id: NSManagedObjectID) throws {
+    func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
+        guard let id = (actionable as? NSManagedObject)?.objectID else {
+            NSLog("could not obtain object id from actionable: \(actionable)")
+            return
+        }
+        
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.update(taskInfo: taskInfo, withId: id, toGoal: goal)
+        self.goal = try goalComposer.update(actionableInfo: updateInfo, withId: id, toGoal: goal)
         try self.refreshView()
     }
     
-    func deleteTask(taskWithId id: NSManagedObjectID) throws {
+    func deleteActionable(actionable: Actionable) throws {
+        guard let id = (actionable as? NSManagedObject)?.objectID else {
+            NSLog("could not obtain object id from actionable: \(actionable)")
+            return
+        }
+        
         let goalComposer = GoalComposer(manager: self.manager)
         self.goal = try goalComposer.delete(taskWithId: id, fromGoal: self.goal)
         try self.refreshView()
     }
-    
+
     // MARK: - EditGoalViewControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
@@ -196,12 +215,8 @@ class GoalDetailViewController: UIViewController, EditTaskViewControllerDelegate
     ///
     /// - Parameter task: the task
     func requestForEdit(actionable: Actionable) {
-        guard let task = actionable as? Task else {
-            assertionFailure("request for edit failed. no task: \(actionable)")
-            return
-        }
+        self.editActionable = actionable
         
-        self.editTask = task
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
     

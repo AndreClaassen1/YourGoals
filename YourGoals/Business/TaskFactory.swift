@@ -45,10 +45,10 @@ class TaskFactory:StorageManagerWorker {
     
     /// create a new task with the given task info
     ///
-    /// - Parameter taskInfo: task info (view model)
-    func create(taskInfo: TaskInfo) -> Task {
+    /// - Parameter actionableInfo: task info (view model)
+    func create(actionableInfo: ActionableInfo) -> Task {
         let task = manager.tasksStore.createPersistentObject()
-        task.name = taskInfo.taskName
+        task.name = actionableInfo.name
         task.setTaskState(state: .active)
         task.prio = 999
         return task
