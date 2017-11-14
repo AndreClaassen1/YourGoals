@@ -62,6 +62,7 @@
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
+		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
 		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
@@ -246,6 +247,7 @@
 		7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+SwipeableCell.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
+		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */,
 				7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */,
 				7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */,
+				7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */,
 				7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */,
 			);
 			path = Views;
@@ -989,6 +992,7 @@
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
+				7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
 				7B50F8751FA39CEB00A6EF61 /* ProgressIndicatorView.swift in Sources */,
 				7B1D60BF1FB719BB00E617ED /* ActionableFactory.swift in Sources */,

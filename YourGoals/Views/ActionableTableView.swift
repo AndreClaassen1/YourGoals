@@ -28,6 +28,8 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var editTask:Task? = nil
     var delegate:ActionableTableViewDelegate!
     var dataSource:ActionableDataSource!
+    var constraint:NSLayoutConstraint? = nil
+    var constraintOffset:CGFloat = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,9 +62,14 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     /// - Parameters:
     ///   - dataSource: a actionable data source
     ///   - delegate: a delegate for actions like editing or so.
-    func configure(dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate) {
+    ///   - varyingHeightConstraint: an optional constraint, if the actionable table view should modify the constriaitn
+    func configure(dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
         self.dataSource = dataSource
         self.delegate = delegate
+        if let constraint = varyingHeightConstraint {
+            self.configure(constraint: constraint)
+        }
+        
         reload()
     }
     
@@ -76,7 +83,10 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             self.delegate.showNotification(forError: error)
         }
     }
-   
+
+    /// timer for updating the remaining time for a task
+    ///
+    /// - Parameter tableView: the table vie
     func scheduleTimerWithTimeInterval(tableView: UITableView) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTaskInProgess), userInfo: tableView, repeats: true)
         timerPaused = false
