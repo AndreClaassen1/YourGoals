@@ -13,9 +13,9 @@ import Foundation
 /// a data source for retrieving ordered tasks from a goal
 class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol {
     let habitManager:HabitManager
-    let goal:Goal
+    let goal:Goal?
     
-    init(manager: GoalsStorageManager, forGoal goal: Goal) {
+    init(manager: GoalsStorageManager, forGoal goal: Goal? = nil) {
         self.habitManager  = HabitManager(manager: manager)
         self.goal = goal
     }

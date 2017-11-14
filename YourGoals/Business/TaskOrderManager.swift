@@ -41,23 +41,25 @@ class TaskOrderManager:StorageManagerWorker {
         return tasks
     }
     
-    func habitsByOrder(forGoal goal: Goal) throws -> [Habit] {
-        let habits = try self.manager.habitStore.fetchItems { request in
-            request.predicate = NSPredicate(format: "goal == %@", goal)
-            request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
-        }
-        return habits
-    }
-    
-    
-    func actionablesByOrder(forGoal goal: Goal, andType type:ActionableType) throws -> [Actionable] {
-        switch type {
-        case .task:
-            return try tasksByOrder(forGoal: goal)
-        case .habit:
-            return try habitsByOrder(forGoal: goal)
-        }
-    }
+//    func habitsByOrder(forGoal goal: Goal?) throws -> [Habit] {
+//        let habits = try self.manager.habitStore.fetchItems { request in
+//            if let goal = goal {
+//                request.predicate = NSPredicate(format: "goal == %@", goal)
+//            }
+//            request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
+//        }
+//        return habits
+//    }
+//
+//
+//    func actionablesByOrder(forGoal goal: Goal, andType type:ActionableType) throws -> [Actionable] {
+//        switch type {
+//        case .task:
+//            return try tasksByOrder(forGoal: goal)
+//        case .habit:
+//            return try habitsByOrder(forGoal: goal)
+//        }
+//    }
     
     /// update the order of actionables by prio and "renumber" the prio in the tasks
     ///

@@ -43,9 +43,12 @@ class HabitManager:StorageManagerWorker {
         try self.manager.context.save()
     }
     
-    func habitsByOrder(forGoal goal:Goal) throws -> [Habit] {
+    func habitsByOrder(forGoal goal:Goal?) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
-            request.predicate = NSPredicate(format: "goal == %@", goal)
+            if let goal = goal {
+                request.predicate = NSPredicate(format: "goal == %@", goal)
+            }
+            
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
         }
         return habits

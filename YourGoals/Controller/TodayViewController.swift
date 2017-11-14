@@ -12,17 +12,16 @@ import CoreData
 /// show the today view screen of the YourGoals App
 class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditActionableViewControllerDelegate {
     
-
-    
     /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     
+    // constraints for manipulating the table veiws
     @IBOutlet weak var activeTasksHeight: NSLayoutConstraint!
     var originalTasksHeight:CGFloat = 0.0
-    
-    
+    @IBOutlet weak var committedTasksHeight: NSLayoutConstraint!
+    @IBOutlet weak var habitsTableHeight: NSLayoutConstraint!
     /// a table view with habits
-    @IBOutlet weak var habitsTableView: UITableView!
+    @IBOutlet weak var habitsTableView: ActionableTableView!
     
     /// a table view with comitted tasks to do
     @IBOutlet weak var committedTasksView: ActionableTableView!
@@ -37,7 +36,6 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     var editActionable:Actionable? = nil
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.originalTasksHeight = activeTasksHeight.constant
         self.navigationController?.navigationBar.topItem?.title = "Today"
@@ -46,6 +44,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         self.configure(collectionView: self.goalsCollectionView)
         self.committedTasksView.configure(dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self)
         self.activeWorkTasksView.configure(dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
+        self.habitsTableView.configure(dataSource: HabitsDataSource(manager: self.manager), delegate: self)
         
         // Do any additional setup after loading the view.
         self.reloadAll()
@@ -108,9 +107,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         }
     }
     
-
     func requestForEdit(actionable: Actionable) {
-
         self.editActionable = actionable
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
