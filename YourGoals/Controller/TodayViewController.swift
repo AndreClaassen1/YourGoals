@@ -34,6 +34,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     var selectedGoal:Goal? = nil
     var strategy:Goal! = nil
     var editActionable:Actionable? = nil
+    var editActionableType:ActionableType? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,9 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             editTaskController.goal = self.editActionable?.goal
             editTaskController.delegate = self
             editTaskController.editActionable = self.editActionable
+            editTaskController.editActionableType = self.editActionableType
             self.editActionable = nil
+            self.editActionableType = nil
         }
         
     }
@@ -109,6 +112,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     
     func requestForEdit(actionable: Actionable) {
         self.editActionable = actionable
+        self.editActionableType = actionable.type
         performSegue(withIdentifier: "presentEditTask", sender: self)
     }
     

@@ -124,12 +124,24 @@ class ActionableTableCell: MGSwipeTableCell {
         self.workingTimeLabel.text = stringFromTime(interval: progress)
     }
     
+    func adaptUI(forActionableType type: ActionableType) {
+        switch type {
+        case .habit:
+            checkBoxButton.setImage(UIImage(named: "HabitBox"), for: .normal)
+            checkBoxButton.setImage(UIImage(named: "HabitBoxChecked"), for: .selected)
+        case .task:
+            checkBoxButton.setImage(UIImage(named: "TaskCircle"), for: .normal)
+            checkBoxButton.setImage(UIImage(named: "TaskChecked"), for: .selected)
+        }
+    }
+    
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
     func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
         self.actionable = actionable
         self.delegateTaskCell = delegate
+        adaptUI(forActionableType: actionable.type)
         show(state: actionable.checkedState(forDate: date))
         showTaskProgress(isProgressing: actionable.isProgressing(atDate: date))
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
