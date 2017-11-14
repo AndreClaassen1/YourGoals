@@ -15,7 +15,6 @@ enum GoalComposerError:Error {
 
 /// modify and compose goals in core data and save the result in the database
 class GoalComposer:StorageManagerWorker {
-    
     /// add a new task with the information from the task info to the goal and save
     /// it back to the core data store
     ///
@@ -24,13 +23,13 @@ class GoalComposer:StorageManagerWorker {
     ///   - goal: the goal
     /// - Returns: the modified goal with the new task
     /// - Throws: core data exception
-    func add(actionableInfo: ActionableInfo, toGoal goal: Goal) throws -> Goal {
-        let taskFactory = TaskFactory(manager: self.manager)
-        let task = taskFactory.create(actionableInfo: actionableInfo)
-        task.prio = -1
-        goal.addToTasks(task)
+    func create(actionableInfo: ActionableInfo, toGoal goal: Goal) throws -> Goal {
+        let factory = factoryForType(actionableInfo.type)
+        var actionable = factory.create(actionableInfo: actionableInfo)
+        actionable.prio = -1
+        goal.add(actionable: actionable)
         let taskOrderManager = TaskOrderManager(manager: self.manager)
-        taskOrderManager.updateTasksOrderByPrio(forGoal: goal)
+        taskOrderManager.updateOrderByPrio(forGoal: goal, andType: actionableInfo.type)
         try self.manager.dataManager.saveContext()
         return goal
     }
@@ -71,5 +70,18 @@ class GoalComposer:StorageManagerWorker {
         try self.manager.dataManager.saveContext()
         return goal
     }
+    
+    func factoryForType(_ type:ActionableType) -> ActionableFactory {
+        switch type {
+        case .task:
+            return TaskFactory(manager: self.manager)
+            
+        case .habit:
+            return HabitFactory(manager: self.manager)
+        }
+    }
+    
+    
+    
 
 }

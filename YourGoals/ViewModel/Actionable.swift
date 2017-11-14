@@ -46,6 +46,8 @@ protocol Actionable {
     /// the associated goal for this
     var goal:Goal? { get }
     
+    var prio:Int16 { set get }
+    
     /// obtain the checked state for agiven state
     ///
     /// - Parameter date: checked at a given date

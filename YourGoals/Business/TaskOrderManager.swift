@@ -7,6 +7,23 @@
 //
 
 import Foundation
+import CoreData
+
+extension ActionableType {
+    
+    /// get the name of the entity in core data for the actionable type
+    ///
+    /// - Returns: name of the entity
+    func entityName() -> String {
+        switch self {
+        case .habit:
+            return "Habit"
+        case .task:
+            return "Task"
+        }
+    }
+}
+
 
 /// priority management for tasks
 class TaskOrderManager:StorageManagerWorker {
@@ -24,22 +41,40 @@ class TaskOrderManager:StorageManagerWorker {
         return tasks
     }
     
-    /// update the task order by prio and "renumber" the prio in the tasks
+    func habitsByOrder(forGoal goal: Goal) throws -> [Habit] {
+        let habits = try self.manager.habitStore.fetchItems { request in
+            request.predicate = NSPredicate(format: "goal == %@", goal)
+            request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
+        }
+        return habits
+    }
+    
+    
+    func actionablesByOrder(forGoal goal: Goal, andType type:ActionableType) throws -> [Actionable] {
+        switch type {
+        case .task:
+            return try tasksByOrder(forGoal: goal)
+        case .habit:
+            return try habitsByOrder(forGoal: goal)
+        }
+    }
+    
+    /// update the order of actionables by prio and "renumber" the prio in the tasks
     ///
     /// - Parameter goal: update the task order for this goal
-    func updateTasksOrderByPrio(forGoal goal: Goal) {
-        let taskSortedByPrio = goal.allTasks().sorted(by: { $0.prio < $1.prio })
-        updateTasksOrder(tasks: taskSortedByPrio)
+    func updateOrderByPrio(forGoal goal: Goal, andType type:ActionableType) {
+        let actionablesSortedByPrio = goal.all(actionableType: type).sorted(by: { $0.prio < $1.prio })
+        updateOrder(actionables: actionablesSortedByPrio, type: type)
     }
 
-    /// update the order of the tasks
+    /// update the order of actionabels by renumbering the prio in order to the offset in the array
     ///
     /// - Parameter tasks: ordered array of tasks
-    func updateTasksOrder(tasks: [Task]) {
-        for tuple in tasks.enumerated() {
+    func updateOrder(actionables: [Actionable], type: ActionableType) {
+        for tuple in actionables.enumerated() {
             let prio = Int16(tuple.offset)
-            let task = tuple.element
-            task.prio = prio
+            var actionable = tuple.element
+            actionable.prio = prio
         }
     }
     
@@ -55,7 +90,7 @@ class TaskOrderManager:StorageManagerWorker {
     func updateTaskPosition(tasks: [Task], fromPosition: Int, toPosition: Int) throws  {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
-        updateTasksOrder(tasks: tasksReorderd)
+        updateOrder(actionables: tasksReorderd, type: .task)
         try self.manager.dataManager.saveContext()
     }
 }

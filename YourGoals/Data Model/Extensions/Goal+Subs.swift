@@ -21,6 +21,11 @@ extension Goal {
         return tasks?.allObjects as? [Task] ?? []
     }
     
+    /// retrieve all habits
+    func allHabits() -> [Habit] {
+        return habits?.allObjects as? [Habit] ?? []
+    }
+    
     /// calculate the number of tasks with the given state
     ///
     /// - Parameter state: active or done

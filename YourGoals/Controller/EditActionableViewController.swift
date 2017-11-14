@@ -62,7 +62,7 @@ class EditActionableViewController: UIViewController {
             return nil
         }
         
-        return ActionableInfo(name: taskTextView.text)
+        return ActionableInfo(type: self.editActionableType!, name: taskTextView.text)
     }
 
     @IBAction func closerAction(_ sender: Any) {

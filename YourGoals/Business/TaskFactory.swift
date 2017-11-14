@@ -9,7 +9,7 @@
 import Foundation
 
 /// factory for creating new persistent task objects
-class TaskFactory:StorageManagerWorker {
+class TaskFactory:StorageManagerWorker, ActionableFactory {
       
     /// create a new task with name and state
     ///
@@ -51,6 +51,13 @@ class TaskFactory:StorageManagerWorker {
         task.name = actionableInfo.name
         task.setTaskState(state: .active)
         task.prio = 999
+        return task
+    }
+    
+    // Mark: - ActionableFactory
+    
+    func create(actionableInfo: ActionableInfo) -> Actionable {
+        let task:Task = create(actionableInfo: actionableInfo)
         return task
     }
 }

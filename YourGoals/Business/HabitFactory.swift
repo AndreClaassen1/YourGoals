@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HabitFactory:StorageManagerWorker {
+class HabitFactory:StorageManagerWorker, ActionableFactory {
     
     /// create a new habit
     ///
@@ -18,5 +18,11 @@ class HabitFactory:StorageManagerWorker {
         let habit = self.manager.habitStore.createPersistentObject()
         habit.name = name
         return habit
+    }
+    
+    // MARK: - ActionableFactory
+    
+    func create(actionableInfo: ActionableInfo) -> Actionable {
+        return createHabit(name: actionableInfo.name)
     }
 }

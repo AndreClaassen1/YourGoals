@@ -149,7 +149,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func createNewActionable(actionableInfo: ActionableInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.add(actionableInfo: actionableInfo, toGoal: goal)
+        self.goal = try goalComposer.create(actionableInfo: actionableInfo, toGoal: goal)
         try self.refreshView()
     }
     

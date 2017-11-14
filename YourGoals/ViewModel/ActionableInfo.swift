@@ -10,12 +10,17 @@ import Foundation
 
 /// a view model representation an actionable (task or habit)
 struct ActionableInfo {
+    /// its a trap, habit or a task
+    let type:ActionableType
+    
+    /// the name of the actionabe
     let name:String
     
     /// initialize the actionable with the needed values
     ///
     /// - Parameter name: the name of the actionable
-    init(name:String){
+    init(type: ActionableType, name:String){
+        self.type = type
         assert(!name.isEmpty)
         self.name = name
     }
