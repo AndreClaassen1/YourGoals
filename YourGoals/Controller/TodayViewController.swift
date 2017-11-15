@@ -11,8 +11,6 @@ import CoreData
 
 /// show the today view screen of the YourGoals App
 class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditActionableViewControllerDelegate {
-    
-    @IBOutlet weak var activeWorkPane: UIView!
     /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     
