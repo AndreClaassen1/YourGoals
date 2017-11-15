@@ -178,6 +178,14 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         return cell
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
+    }
+    
     // MARK: - ActionableTableCellDelegate
     
     func actionableStateChangeDesired(actionable: Actionable) {

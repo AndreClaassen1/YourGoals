@@ -12,6 +12,7 @@ import CoreData
 /// show the today view screen of the YourGoals App
 class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditActionableViewControllerDelegate {
     
+    @IBOutlet weak var activeWorkPane: UIView!
     /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
     
@@ -44,7 +45,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         
         self.configure(collectionView: self.goalsCollectionView)
         self.committedTasksView.configure(dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.committedTasksHeight)
-        self.activeWorkTasksView.configure(dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.activeTasksHeight)
+        self.activeWorkTasksView.configure(dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
         self.habitsTableView.configure(dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
         
         // Do any additional setup after loading the view.
@@ -101,6 +102,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             
             if showActivWorkTasksView {
                 self.activeTasksHeight.constant = originalTasksHeight
+                self.activeWorkTasksView.isHidden = false
                 self.activeWorkTasksView.reload()
             } else {
                 self.activeTasksHeight.constant = 0.0
