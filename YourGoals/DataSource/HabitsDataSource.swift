@@ -11,7 +11,8 @@ import Foundation
 
 
 /// a data source for retrieving ordered tasks from a goal
-class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol {
+class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, ActionableSwitchProtocol {
+    
     let habitManager:HabitManager
     let goal:Goal?
     
@@ -31,7 +32,14 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol {
     }
     
     func switchProtocol(forBehavior behavior: ActionableBehavior) -> ActionableSwitchProtocol? {
-        return nil
+        switch behavior {
+        case .state:
+            return self
+        case .progress:
+            return nil
+        case .commitment:
+            return nil
+        }
     }
     
     // MARK: ActionablePositioningProtocol
@@ -39,4 +47,30 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol {
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
         try self.habitManager.updatePosition(habits: actionables.map { $0 as! Habit }, fromPosition: fromPosition, toPosition: toPosition)
     }
+    
+    // MARK: ActionableSwitchProtocol
+    
+    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
+        guard let habit = actionable as? Habit else {
+            NSLog("couldn't get habit from actionable: \(actionable)")
+            return
+        }
+        
+        let checked = habit.isChecked(forDate: date)
+        if checked {
+            try self.habitManager.checkHabit(forHabit: habit, state: .notChecked, atDate: date)
+        } else {
+            try self.habitManager.checkHabit(forHabit: habit, state: .checked, atDate: date)
+        }
+    }
+    
+    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
+        guard let habit = actionable as? Habit else {
+            NSLog("couldn't get habit from actionable: \(actionable)")
+            return false
+        }
+        
+        return habit.isChecked(forDate: date)
+    }
+
 }

@@ -154,24 +154,14 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     }
     
     func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
-        guard let id = (actionable as? NSManagedObject)?.objectID else {
-            NSLog("could not obtain object id from actionable: \(actionable)")
-            return
-        }
-        
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.update(actionableInfo: updateInfo, withId: id, toGoal: goal)
+        self.goal = try goalComposer.update(actionable: actionable, withInfo: updateInfo)
         try self.refreshView()
     }
     
     func deleteActionable(actionable: Actionable) throws {
-        guard let id = (actionable as? NSManagedObject)?.objectID else {
-            NSLog("could not obtain object id from actionable: \(actionable)")
-            return
-        }
-        
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.delete(taskWithId: id, fromGoal: self.goal)
+        self.goal = try goalComposer.delete(actionable: actionable)
         try self.refreshView()
     }
 

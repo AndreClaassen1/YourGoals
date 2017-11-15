@@ -41,7 +41,7 @@ protocol Actionable {
     var type:ActionableType { get }
     
     /// name of the actionable
-    var name:String? { get }
+    var name:String? { set get }
     
     /// the associated goal for this
     var goal:Goal? { get }

@@ -11,6 +11,7 @@ import CoreData
 
 enum GoalComposerError:Error {
     case noTaskForIdFound
+    case noGoalForActionableFound
 }
 
 /// modify and compose goals in core data and save the result in the database
@@ -33,40 +34,48 @@ class GoalComposer:StorageManagerWorker {
         try self.manager.dataManager.saveContext()
         return goal
     }
-
-    /// update a task for a goal withnew valuees
-    ///
-    /// - Parameters:
-    ///   - actionableInfo: task info
-    ///   - id: object id of the task
-    ///   - goal: the goal
-    /// - Returns: the modified goal with the updated task
-    /// - Throws: core data exception
     
-    func update(actionableInfo: ActionableInfo, withId id: NSManagedObjectID, toGoal goal: Goal) throws -> Goal {
-        guard let task = goal.taskForId(id) else {
-            throw GoalComposerError.noTaskForIdFound
+    
+    func update(actionable: Actionable, withInfo info: ActionableInfo) throws -> Goal {
+        guard let goal = actionable.goal else {
+            throw GoalComposerError.noGoalForActionableFound
         }
         
-        task.name = actionableInfo.name
+        var actionable = actionable // make the actionable writeable.
+        actionable.name = info.name
+ 
         try self.manager.dataManager.saveContext()
         return goal
     }
     
-    /// delete a task with id from the given goal
+    func delete(task: Task, fromGoal goal: Goal) throws {
+        goal.removeFromTasks(task)
+        self.manager.tasksStore.managedObjectContext.delete(task)
+    }
+    
+    func delete(habit: Habit, fromGoal goal: Goal) throws {
+        goal.removeFromHabits(habit)
+        self.manager.tasksStore.managedObjectContext.delete(habit)
+    }
+    
+    /// delete an actionable from the given goal
     ///
     /// - Parameters:
-    ///   - id: object id from the task
+    ///   - actinable: the actionable
     ///   - goal: the parent goal for the task
     /// - Returns: the goal without the task
     /// - Throws: core data exception
-    func delete(taskWithId id:NSManagedObjectID, fromGoal goal: Goal) throws -> Goal {
-        guard let task = goal.taskForId(id) else {
-            throw GoalComposerError.noTaskForIdFound
+    func delete(actionable: Actionable) throws -> Goal {
+        guard let goal = actionable.goal else {
+            throw GoalComposerError.noGoalForActionableFound
         }
-
-        goal.removeFromTasks(task)
-        self.manager.tasksStore.managedObjectContext.delete(task)
+        
+        switch actionable.type {
+        case .habit:
+            try delete(habit: actionable as! Habit, fromGoal: goal)
+        case .task:
+             try delete(task: actionable as! Task, fromGoal: goal)
+        }
         try self.manager.dataManager.saveContext()
         return goal
     }

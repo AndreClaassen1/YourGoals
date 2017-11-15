@@ -63,7 +63,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.committedTasksView.reload()
+        self.reloadAll()
     }
 
     // MARK: - Navigation
@@ -96,6 +96,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         do {
             self.reloadCollectionView(collectionView: self.goalsCollectionView)
             self.committedTasksView.reload()
+            self.habitsTableView.reload()
             let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: Date())
             
             if showActivWorkTasksView {
@@ -139,12 +140,14 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     }
     
     func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
-        // :todo: update code
+        let goalComposer = GoalComposer(manager: self.manager)
+        let _ = try goalComposer.update(actionable: actionable, withInfo: updateInfo)
         self.reloadAll()
     }
     
     func deleteActionable(actionable: Actionable) throws {
-        // :todo: delete code
+        let goalComposer = GoalComposer(manager: self.manager)
+        let _ = try goalComposer.delete(actionable: actionable)
         self.reloadAll()
     }
 }

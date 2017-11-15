@@ -8,16 +8,6 @@
 
 import Foundation
 
-//
-//  CommittedTasksDataSource.swift
-//  YourGoals
-//
-//  Created by André Claaßen on 09.11.17.
-//  Copyright © 2017 André Claaßen. All rights reserved.
-//
-
-import Foundation
-
 class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     let taskManager:TaskProgressManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
