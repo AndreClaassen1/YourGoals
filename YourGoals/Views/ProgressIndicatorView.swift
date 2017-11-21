@@ -68,10 +68,14 @@ class ProgressIndicatorView: UIView {
             self.createCirle()
         } else {
             self.circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
+            self.circleChart.current = NSNumber(value: self.progressInPercent)
             self.circleChart.update(byCurrent: NSNumber(value: self.progressInPercent))
         }
     }
     
+    /// show the progress of the goal as a colored circle
+    ///
+    /// - Parameter goal: the goal
     func setProgress(forGoal goal:Goal) {
         let calculator = GoalProgressCalculator()
         let progress = calculator.calculateProgress(forGoal: goal, forDate: Date())
@@ -79,6 +83,10 @@ class ProgressIndicatorView: UIView {
         self.setProgress(progressInPercent: progress.progressInPercent, progressIndicator: progress.indicator)
     }
     
+    /// convert the progress indicator to a traffic color
+    ///
+    /// - Parameter progressIndicator: the progress indicator
+    /// - Returns: a color represnetation the state of the progress
     func calculateColor(fromIndicator progressIndicator: ProgressIndicator) -> UIColor {
         switch progressIndicator {
         case .met:

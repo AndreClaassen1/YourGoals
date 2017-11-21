@@ -8,8 +8,8 @@
 
 import Foundation
 
+/// task switching behavior
 class TaskSwitchProtocolProvider {
-    
     let stateManager:ActionableSwitchProtocol
     let progressManager:ActionableSwitchProtocol
     let commitmentManager:ActionableSwitchProtocol

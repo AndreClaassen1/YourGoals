@@ -238,6 +238,7 @@ displayCountingLabel:(BOOL)displayCountingLabel
         [self.countingLabel countFrom:totalPercentageValue to:totalPercentageValue withDuration:self.duration];
     }
     
+    _circle.strokeColor = _strokeColor.CGColor;
     _circle.strokeEnd   = [current floatValue] / [total floatValue];
     _current = current;
     _total = total;

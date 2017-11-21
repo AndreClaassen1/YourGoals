@@ -81,6 +81,11 @@ class GoalMiniCell: UICollectionViewCell {
     }
     // MARK: - Content
     
+    /// show a small goal cell
+    ///
+    /// - Parameters:
+    ///   - goal: show this goal
+    ///   - goalIsActive: true, if this goal is active
     func show(goal: Goal, goalIsActive:Bool) {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
