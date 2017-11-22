@@ -38,7 +38,15 @@ class GoalContentView: NibLoadingView {
         }
     }
     
-    func show(goal: Goal, goalIsActive:Bool) {
+    /// show a goal in the view with a progress indicator of the given date
+    ///
+    /// - Parameters:
+    ///   - goal: a goal
+    ///   - date: calculate progress for this date
+    ///   - goalIsActive: an indicator, that this goal is active
+    ///   - manager: a core data storage managner
+    /// - Throws: core data excepiton
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -54,7 +62,7 @@ class GoalContentView: NibLoadingView {
         reasonLabel.sizeToFit()
         titleLabel.text = goal.name
         titleLabel.sizeToFit()
-        progressIndicatorView.setProgress(forGoal: goal)
+        try progressIndicatorView.setProgress(forGoal: goal, forDate: date,  manager: manager)
     }
     
     override func awakeFromNib() {

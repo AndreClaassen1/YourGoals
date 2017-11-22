@@ -30,23 +30,21 @@ class GoalFactory:StorageManagerWorker {
     ///   - startDate: start date for the goal
     ///   - targetDate: the projected target date of the goal
     ///   - image: an optional image which should be convertable to a JPEG
+    ///   - type: type of the goal: .strategy, .userGoal or .todayGoal
     ///
     /// - Returns: the new created goal
     /// - Throws: a goal factory exception
-    func create(name: String, prio:Int, reason: String, startDate:Date, targetDate:Date, image:UIImage?) throws -> Goal {
+    func create(name: String, prio:Int, reason: String, startDate:Date, targetDate:Date, image:UIImage?, type:GoalType = .userGoal) throws -> Goal {
         let goal = self.manager.goalsStore.createPersistentObject()
         goal.name = name
         goal.prio = 999
         goal.reason = reason
         goal.startDate = startDate
-        goal.targetDate = targetDate    
+        goal.targetDate = targetDate
+        goal.type = type.rawValue
         
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: image)
         return goal
     }
-    
-    
-  
-    
 }

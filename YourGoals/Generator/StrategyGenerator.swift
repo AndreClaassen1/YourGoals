@@ -31,7 +31,7 @@ class StrategyGenerator : Generator, GeneratorProtocol {
     
     func generate() throws {
         
-        let strategy = try StrategyManager(manager: self.manager).assertActiveStrategy()
+        let strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
         
         for tuple in goals {
             let goal = self.manager.goalsStore.createPersistentObject()

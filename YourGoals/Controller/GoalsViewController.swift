@@ -14,6 +14,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     // data properties
     var manager:GoalsStorageManager!
     var strategy:Goal!
+    var goals:[Goal] = []
     var selectedGoal:Goal?
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController()
@@ -22,35 +23,14 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        do {
-            super.viewDidLoad()
-            // Do any additional setup after loading the view, typically from a nib.
-            
-            self.manager = GoalsStorageManager.defaultStorageManager
-            try reloadStrategy()
-            
-            configure(collectionView: collectionView)
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
-        catch let error {
-            self.showNotification(forError: error)
-        }
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.manager = GoalsStorageManager.defaultStorageManager
+        configure(collectionView: collectionView)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-    func reloadStrategy() throws {
-        self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
-    }
-    
-    func reloadGoalsCollection() {
-        do {
-            try reloadStrategy()
-            self.collectionView.reloadData()
-        }
-        catch let error {
-            showNotification(forError: error)
-        }
-    }
-    
+     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true

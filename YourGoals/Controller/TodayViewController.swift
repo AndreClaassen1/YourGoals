@@ -31,6 +31,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     /// the storage manager needed for various core data operaitons
     var manager = GoalsStorageManager.defaultStorageManager
     var selectedGoal:Goal? = nil
+    var goals:[Goal] = []
     var strategy:Goal! = nil
     var editActionable:Actionable? = nil
     var editActionableType:ActionableType? = nil

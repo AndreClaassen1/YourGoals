@@ -18,7 +18,7 @@ class GoalInfoManager:StorageManagerWorker {
 
         // brute force
         
-        let activeStrategy = try StrategyManager(manager: self.manager).activeStrategy()!
+        let activeStrategy = try StrategyManager(manager: self.manager).retrieveActiveStrategy()!
         let goalsWithProgress = activeStrategy.allGoals().filter{ $0.isActive(forDate: date) }
         return goalsWithProgress
         

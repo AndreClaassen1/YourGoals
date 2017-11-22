@@ -15,7 +15,12 @@ class GoalProgressCalculatorTests: StorageTestCase {
         // setup
         let taskFactory = TaskFactory(manager: self.manager)
         let goalFactory = GoalFactory(manager: self.manager)
+        let strategyManager = StrategyManager(manager: self.manager)
+        
+        
         let goal = try! goalFactory.create(name: "Test goal for calculation", prio: 999, reason: "no reason", startDate: startDate, targetDate: targetDate, image: nil)
+        try! strategyManager.addToStrategy(goal: goal)
+        
         let activeTasks = taskFactory.createTasks(numberOfTasks: numberOfActiveTasks, state: .active)
         goal.addToTasks(activeTasks)
         let doneTasks = taskFactory.createTasks(numberOfTasks: numberOfDoneTasks, state: .done  )
@@ -34,8 +39,8 @@ class GoalProgressCalculatorTests: StorageTestCase {
         let expectedProgress = 0.5
         
         // act
-        let progressCalculator = GoalProgressCalculator()
-        let progress = progressCalculator.calculateProgress(forGoal: goal, forDate: testDate)
+        let progressCalculator = GoalProgressCalculator(manager: self.manager)
+        let progress = try! progressCalculator.calculateProgress(forGoal: goal, forDate: testDate)
         
         // test
         XCTAssertEqual(expectedProgress, progress.progress)

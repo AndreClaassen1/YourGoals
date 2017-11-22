@@ -28,8 +28,16 @@ internal class GoalCell2: BaseRoundedCardCell {
     
     // MARK: - Content
     
-    func show(goal: Goal, goalIsActive:Bool) {
-        goalContentView.show(goal: goal, goalIsActive: goalIsActive)
+    /// show a goal in the mini ui collection view cell
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - date: show the progress for this date
+    ///   - goalIsActive: true, if goal is active
+    ///   - manager: a core data storage manager
+    /// - Throws: a core data exception
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
+        try goalContentView.show(goal: goal, forDate: date, goalIsActive: goalIsActive, manager: manager)
     }
 
     override func awakeFromNib() {

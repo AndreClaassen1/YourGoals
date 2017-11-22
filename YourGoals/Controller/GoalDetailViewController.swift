@@ -29,7 +29,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-
+    
     // view for presenting tasks and habits
     @IBOutlet private weak var goalContentView: GoalContentView!
     @IBOutlet private weak var tasksView: ActionableTableView!
@@ -44,29 +44,36 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     var reorderTableView: LongPressReorderTableView!
     var mode = GoalDetailViewControllerMode.tasksMode
     
-    fileprivate func configure(goal:Goal) {
+    fileprivate func configure(goal:Goal) throws {
         // Do any additional setup after loading the view.
         self.goal = goal
-        self.goalContentView.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
+        try self.goalContentView.show(goal: goal, forDate: Date(), goalIsActive: goal.isActive(forDate: Date()), manager: self.manager)
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        configure(goal: self.goal)
-        self.configureTableView(forMode: mode)
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
+        do {
+            super.viewDidLoad()
+            try configure(goal: self.goal)
+            self.configureTableView(forMode: mode)
+            let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+            swipeDown.direction = .down
+            self.view.addGestureRecognizer(swipeDown)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
+    }
+    
+    func convertControllerModeToType(mode: GoalDetailViewControllerMode) -> ActionableType {
+        switch mode {
+        case .habitsMode: return .habit
+        case .tasksMode: return .task
+        }
     }
     
     func dataSourceForMode(_ mode: GoalDetailViewControllerMode) -> ActionableDataSource {
-        switch mode {
-        case .tasksMode:
-            return GoalTasksDataSource(manager: self.manager, forGoal: self.goal)
-            
-        case .habitsMode:
-            return HabitsDataSource(manager: self.manager, forGoal: self.goal)
-        }
+        let actionableType = convertControllerModeToType(mode: mode)
+        return ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: self.goal, andType: actionableType)
     }
     
     func configureTableView(forMode mode: GoalDetailViewControllerMode) {
@@ -130,7 +137,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             case .habitsMode:
                 editActionableController.editActionableType = .habit
             }
-
+            
             self.editActionable = nil
         }
         
@@ -142,7 +149,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func refreshView() throws {
         self.tasksView.reload()
-        self.configure(goal: self.goal)
+        try self.configure(goal: self.goal)
     }
     
     // MARK: - EditActionableViewControllerDelegate
@@ -164,7 +171,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         self.goal = try goalComposer.delete(actionable: actionable)
         try self.refreshView()
     }
-
+    
     // MARK: - EditGoalViewControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
@@ -176,12 +183,12 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let goalUpdater = GoalUpdater(manager: self.manager)
             try goalUpdater.update(goal: goal, withGoalInfo: goalInfo)
             self.delegate?.goalChanged()
+            try configure(goal: goal)
         }
         catch let error {
             self.showNotification(forError: error)
         }
         
-        configure(goal: goal)
     }
     
     func delete(goal: Goal) {
@@ -211,9 +218,15 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     }
     
     func goalChanged(goal: Goal) {
-        self.goal = goal
-        self.configure(goal: goal)
-        self.delegate?.goalChanged()
+        do {
+            self.goal = goal
+            try self.configure(goal: goal)
+            self.delegate?.goalChanged()
+            
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
     
     func progressChanged(actionable: Actionable) {

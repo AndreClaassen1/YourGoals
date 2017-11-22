@@ -86,7 +86,7 @@ class GoalMiniCell: UICollectionViewCell {
     /// - Parameters:
     ///   - goal: show this goal
     ///   - goalIsActive: true, if this goal is active
-    func show(goal: Goal, goalIsActive:Bool) {
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -100,6 +100,6 @@ class GoalMiniCell: UICollectionViewCell {
         motivationImage.image = image
         titleLabel.sizeToFit()
         progressIndicatorView.viewMode = .mini
-        progressIndicatorView.setProgress(forGoal: goal)
+        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, manager: manager)
     }
 }

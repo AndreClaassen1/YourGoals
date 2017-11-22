@@ -19,6 +19,7 @@ extension Goal {
             self.addToHabits(actionable as! Habit)
         case .task:
             self.addToTasks(actionable as! Task)
+
         }
     }
     
@@ -32,6 +33,7 @@ extension Goal {
             return self.allHabits()
         case .task:
             return self.allTasks()
+
         }
     }
 }

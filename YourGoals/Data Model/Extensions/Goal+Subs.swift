@@ -16,6 +16,19 @@ extension Goal {
         return subGoals?.allObjects as? [Goal] ?? []
     }
     
+    /// retrieve all goals sorted by goals type (today goal first) and then by prio
+    ///
+    /// - Returns: sorted by prio
+    func allGoalsOrderedByPrio() -> [Goal] {
+        return allGoals().sorted(by: {
+            if $0.type == $1.type {
+                return $0.prio < $1.prio
+            } else {
+                return $0.type > $1.type // types are sorted descendent because of the today goal with the type 2
+            }
+        })
+    }
+    
     /// retrieve all associated tasks for this goal
     func allTasks() -> [Task] {
         return tasks?.allObjects as? [Task] ?? []

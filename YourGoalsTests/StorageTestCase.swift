@@ -21,11 +21,11 @@ class StorageTestCase:XCTestCase {
         self.manager = GoalsStorageManager.defaultUnitTestStorageManager
         try! self.manager.deleteRepository()
         self.generator = TestDataGenerator.defaultUnitTestGenerator
-        let _ = try! StrategyManager(manager: self.manager).assertActiveStrategy()
+        let _ = try! StrategyManager(manager: self.manager).assertValidActiveStrategy()
         self.testDataCreator = TestDataCreator(manager: self.manager)
     }
     
     var activeStrategy:Goal {
-        return try! StrategyManager(manager: self.manager).activeStrategy()!
+        return try! StrategyManager(manager: self.manager).retrieveActiveStrategy()!
     }
 }

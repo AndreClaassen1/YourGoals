@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                try generator.generate()
 //            #else
                 let retriever = StrategyManager(manager: manager)
-                let strategy = try retriever.activeStrategy()
+                let strategy = try retriever.retrieveActiveStrategy()
                 let generator = TestDataGenerator(manager: manager)
                 if strategy == nil {
                     try generator.generate()

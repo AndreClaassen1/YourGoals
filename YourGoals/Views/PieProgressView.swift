@@ -23,8 +23,6 @@ import UIKit
             progressLayer.setNeedsDisplay()
         }
     }
-    
-
 
     /// progress bar color
     @IBInspectable open var progressTintColor: UIColor {

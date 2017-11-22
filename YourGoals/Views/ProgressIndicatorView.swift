@@ -34,7 +34,7 @@ class ProgressIndicatorView: UIView {
         self.progressView = PieProgressView(frame: self.bounds)
         self.addSubview(progressView)
     }
-   
+    
     func setProgress(progress:Double, progressIndicator:ProgressIndicator) {
         let color = calculateColor(fromIndicator: progressIndicator)
         self.progressView.progressTintColor = color
@@ -44,11 +44,15 @@ class ProgressIndicatorView: UIView {
     }
     
     /// show the progress of the goal as a colored circle
-    ///
-    /// - Parameter goal: the goal
-    func setProgress(forGoal goal:Goal) {
-        let calculator = GoalProgressCalculator()
-        let progress = calculator.calculateProgress(forGoal: goal, forDate: Date())
+
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - date: calculation of progress for this date
+    ///   - manager: a manager to retrieve actual data from the core data sotre
+    /// - Throws: core data exception
+    func setProgress(forGoal goal:Goal, forDate date: Date, manager: GoalsStorageManager) throws {
+        let calculator = GoalProgressCalculator(manager: manager)
+        let progress = try calculator.calculateProgress(forGoal: goal, forDate: date)
         self.setProgress(progress: progress.progress, progressIndicator: progress.indicator)
     }
     

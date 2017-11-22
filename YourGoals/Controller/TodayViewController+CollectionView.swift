@@ -14,7 +14,8 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - Configuration
     
     func reloadStrategy() throws {
-        self.strategy = try StrategyManager(manager: self.manager).activeStrategy()
+        self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
+        self.goals = self.strategy.allGoalsOrderedByPrio()
     }
     
     func reloadCollectionView(collectionView: UICollectionView) {
@@ -39,11 +40,11 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - Goal Handling helper methods
     
     func numberOfGoals() -> Int {
-        return self.strategy.allGoals().count
+        return self.goals.count
     }
     
     func goalForIndexPath(path:IndexPath) -> Goal {
-        return self.strategy.allGoals()[path.row]
+        return self.goals[path.row]
     }
     
     // MARK: - UICollectionViewDataSource
@@ -57,10 +58,17 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let goalCell = GoalMiniCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
-        let goal = self.goalForIndexPath(path: indexPath)
-        goalCell.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
-        return goalCell
+        do {
+            let goalCell = GoalMiniCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+            let goal = self.goalForIndexPath(path: indexPath)
+            let date = Date()
+            try goalCell.show(goal: goal, forDate: date, goalIsActive: goal.isActive(forDate: date), manager: self.manager)
+            return goalCell
+        }
+        catch let error {
+            self.showNotification(forError: error)
+            return UICollectionViewCell()
+        }
     }
     
     // MARK: - UICollectionViewDelegate

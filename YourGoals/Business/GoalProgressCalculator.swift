@@ -26,7 +26,7 @@ enum ProgressIndicator {
 }
 
 /// this class calculates the progress on this goal in percent
-class GoalProgressCalculator {
+class GoalProgressCalculator:StorageManagerWorker {
     
     /// calculate the progress made on this goal. compare progress of tasks done versus progress of time elapsed
     ///
@@ -34,8 +34,8 @@ class GoalProgressCalculator {
     ///   - goal: the goal
     ///   - date: the date for comparision
     /// - Returns: progress of tasks in percent and a progress indicator
-    func calculateProgress(forGoal goal: Goal, forDate date: Date) -> (progress:Double, indicator:ProgressIndicator) {
-        let progressTasks = calculateProgressOfTasks(forGoal: goal)
+    func calculateProgress(forGoal goal: Goal, forDate date: Date) throws -> (progress:Double, indicator:ProgressIndicator) {
+        let progressTasks = try calculateProgressOfActionables(forGoal: goal, andDate: date)
         let progressDate = calculateProgressOfTime(forGoal: goal, forDate: date)
         let progressIndicator = calculateIndicator(progressTasks: progressTasks, progressDate: progressDate)
         return (progressTasks, progressIndicator)
@@ -43,14 +43,20 @@ class GoalProgressCalculator {
     
     /// calculate the progress of tasks done in per
     ///
-    /// - Parameter goal: the goal
+    /// - Parameters
+    ///     - goal: the goal
+    ///     - date: the date for the actionables
     /// - Returns: ratio of done tasks and all tasks (between 0.0 and 1.0)
-    func calculateProgressOfTasks(forGoal goal: Goal) -> Double {
-        if goal.allTasks().count == 0 {
+    func calculateProgressOfActionables(forGoal goal: Goal, andDate date: Date) throws -> Double {
+        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
+        
+        let actionables = try dataSource.fetchActionables(forDate: date)
+        if actionables .count == 0 {
             return 0.0
         }
         
-        let progress = Double(goal.numberOfTasks(forState: .done)) / Double(goal.allTasks().count)
+        let numberOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.count
+        let progress = Double(numberOfDone) / Double(actionables.count)
         return progress
     }
     
@@ -61,8 +67,9 @@ class GoalProgressCalculator {
     ///   - date: the date for calculate the progress of time since start of the goal
     /// - Returns: progress of time elapsed from the goal (between 0.0 and 1.0)
     func calculateProgressOfTime(forGoal goal: Goal, forDate date:Date) -> Double {
-        let startDate = goal.startDate ?? Date.minimalDate
-        let endDate = goal.targetDate ?? Date.maximalDate
+        let range = goal.logicalDateRange(forDate: date)
+        let startDate = range.start
+        let endDate = range.end
         
         let timeSpanGoal = endDate.timeIntervalSince(startDate)
         let timeSpanForDate = date.timeIntervalSince(startDate)

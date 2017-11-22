@@ -15,23 +15,34 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     internal func configure(collectionView: UICollectionView) {
         self.manager = GoalsStorageManager.defaultStorageManager
-        self.strategy = try! StrategyManager(manager: self.manager).activeStrategy()
         collectionView.registerReusableCell(GoalCell2.self)
         collectionView.registerReusableCell(NewGoalCell.self)
         collectionView.registerSupplementaryView(GoalsSectionHeader.self, kind: UICollectionElementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        self.reloadGoalsCollection()
+    }
+    
+    func reloadGoalsCollection() {
+        do {
+            self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
+            self.goals = strategy.allGoalsOrderedByPrio()
+            self.collectionView.reloadData()
+        }
+        catch let error {
+            showNotification(forError: error)
+        }
     }
     
     // MARK: - Goal Handling helper methods
     
     func numberOfGoals() -> Int {
-        return self.strategy.allGoals().count
+        return self.goals.count
     }
-
+    
     func goalForIndexPath(path:IndexPath) -> Goal {
-        return self.strategy.allGoals()[path.row]
+        return self.goals[path.row]
     }
     
     // MARK: - UICollectionViewDataSource
@@ -46,15 +57,22 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.row == numberOfGoals() {
-            let newGoalCell = NewGoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
-            newGoalCell.configure(owner: self)
-            return newGoalCell
-        } else {
-            let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
-            let goal = self.goalForIndexPath(path: indexPath)
-            goalCell.show(goal: goal, goalIsActive: goal.isActive(forDate: Date()))
-            return goalCell
+        do {
+            if indexPath.row == numberOfGoals() {
+                let newGoalCell = NewGoalCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+                newGoalCell.configure(owner: self)
+                return newGoalCell
+            } else {
+                let date = Date()
+                let goalCell = GoalCell2.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+                let goal = self.goalForIndexPath(path: indexPath)
+                try goalCell.show(goal: goal, forDate: date, goalIsActive: goal.isActive(forDate: date), manager: self.manager)
+                return goalCell
+            }
+        }
+        catch let error {
+            self.showNotification(forError: error)
+            return UICollectionViewCell()
         }
     }
     

@@ -13,7 +13,7 @@ class TasksGenerator : Generator, GeneratorProtocol{
     
     func generate() throws {
         let retriever = StrategyManager(manager: self.manager)
-        guard let strategy = try retriever.activeStrategy() else {
+        guard let strategy = try retriever.retrieveActiveStrategy() else {
             fatalError("no strategy found")
         }
         

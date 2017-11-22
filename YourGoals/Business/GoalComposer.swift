@@ -89,8 +89,4 @@ class GoalComposer:StorageManagerWorker {
             return HabitFactory(manager: self.manager)
         }
     }
-    
-    
-    
-
 }
