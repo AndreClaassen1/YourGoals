@@ -96,6 +96,8 @@ displayCountingLabel:(BOOL)displayCountingLabel
         _circleBackground.lineCap     = kCALineCapRound;
         _circleBackground.fillColor   = [[UIColor whiteColor] colorWithAlphaComponent:0.7 ].CGColor;
         
+        // _circleBackground.fillColor   = [[UIColor whiteColor] colorWithAlphaComponent:0.7 ].CGColor;
+        
         _circleBackground.lineWidth   = [_lineWidth floatValue];
         _circleBackground.strokeColor = (hasBackgroundShadow ? backgroundShadowColor.CGColor : [UIColor clearColor].CGColor);
         _circleBackground.strokeEnd   = 1.0;

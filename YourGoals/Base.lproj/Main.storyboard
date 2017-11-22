@@ -404,6 +404,7 @@
                     <connections>
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
+                        <segue destination="PMd-9U-cjl" kind="relationship" relationship="viewControllers" id="Pyr-2q-eZj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoU-Np-3Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -601,6 +602,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W62-FI-Sv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2554" y="108"/>
+        </scene>
+        <!--ProgressView-->
+        <scene sceneID="dNF-ku-dky">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProgressView" id="PMd-9U-cjl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="eVl-Wz-Ywd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urt-cc-eXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1002" y="-103"/>
         </scene>
     </scenes>
     <resources>

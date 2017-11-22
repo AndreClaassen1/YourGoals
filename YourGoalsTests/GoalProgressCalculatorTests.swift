@@ -38,7 +38,7 @@ class GoalProgressCalculatorTests: StorageTestCase {
         let progress = progressCalculator.calculateProgress(forGoal: goal, forDate: testDate)
         
         // test
-        XCTAssertEqual(expectedProgress, progress.progressInPercent)
+        XCTAssertEqual(expectedProgress, progress.progress)
         XCTAssertEqual(ProgressIndicator.onTrack, progress.indicator)
     }
 }

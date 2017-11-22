@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HiV-Uh-NmL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Progress View Controller-->
+        <scene sceneID="3V3-e9-TZb">
+            <objects>
+                <viewController id="HiV-Uh-NmL" userLabel="Progress View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CRz-Ih-oEK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pie Progress Test Ground" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR4-hc-0JD">
+                                <rect key="frame" x="24" y="40" width="331" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="oqo-ZI-Ncm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZQ-Wf-sCB" customClass="PieProgressView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="20" y="97" width="331" height="570"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MZQ-Wf-sCB" firstAttribute="top" secondItem="oR4-hc-0JD" secondAttribute="bottom" constant="28" id="69W-vL-dHr"/>
+                            <constraint firstItem="oR4-hc-0JD" firstAttribute="leading" secondItem="MZQ-Wf-sCB" secondAttribute="leading" constant="4" id="DSV-dG-1YN"/>
+                            <constraint firstItem="oR4-hc-0JD" firstAttribute="trailing" secondItem="MZQ-Wf-sCB" secondAttribute="trailing" constant="4" id="KbS-1d-bQT"/>
+                            <constraint firstItem="kKm-tE-Nuk" firstAttribute="bottom" secondItem="MZQ-Wf-sCB" secondAttribute="bottom" id="Kgp-VT-cM1"/>
+                            <constraint firstItem="oR4-hc-0JD" firstAttribute="trailing" secondItem="CRz-Ih-oEK" secondAttribute="trailingMargin" constant="-4" id="ObU-r6-M0K"/>
+                            <constraint firstItem="oR4-hc-0JD" firstAttribute="leading" secondItem="kKm-tE-Nuk" secondAttribute="leading" constant="24" id="Sgu-CC-fBR"/>
+                            <constraint firstItem="oR4-hc-0JD" firstAttribute="top" secondItem="kKm-tE-Nuk" secondAttribute="top" constant="20" id="ozD-Rr-ghn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kKm-tE-Nuk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nfm-ZC-h7E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPq-cV-R2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1135.6821589205399" y="210.40000000000001"/>
+        </scene>
+    </scenes>
+</document>

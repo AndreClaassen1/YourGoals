@@ -14,13 +14,10 @@ enum ProgressIndicatorViewMode {
     case mini
 }
 
+/// a circle progress indicator
 class ProgressIndicatorView: UIView {
-
     var viewMode = ProgressIndicatorViewMode.normal
-    var progressInPercent = 0.0
-    var progressIndicator:ProgressIndicator = ProgressIndicator.notStarted
-    var circleChart:PNCircleChart!
-    var label:UILabel!
+    var progressView:PieProgressView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,43 +31,16 @@ class ProgressIndicatorView: UIView {
     
     func commonInit() {
         self.backgroundColor = UIColor.clear
+        self.progressView = PieProgressView(frame: self.bounds)
+        self.addSubview(progressView)
     }
-    
-    func createCirle() {
-        let circleFrame = CGRect(x: 5.0, y: 5.0, width: self.frame.width - 10.0, height: self.frame.height - 10.0)
-        self.circleChart = PNCircleChart(frame: circleFrame, total: 1.0, current: NSNumber(value: self.progressInPercent), clockwise: true, shadow: false, shadowColor: UIColor.clear, displayCountingLabel: viewMode == .normal)
-        
-        circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
-        if self.viewMode == .normal {
-            circleChart.lineWidth = 5.0
-        }
-        else {
-            circleChart.lineWidth = 2.0
-        }
-        circleChart.backgroundColor = UIColor.clear
-        circleChart.displayAnimated = true
-        self.addSubview(self.circleChart)
-        
-        if self.viewMode == .normal {
-            let labelSize = CGSize(width: 100, height: 21)
-            let x = (frame.width - labelSize.width) / 2
-            let y = (frame.height - labelSize.height) / 2
-            self.label = UILabel(frame: CGRect(x: x, y: y, width: labelSize.width, height: labelSize.height))
-            self.addSubview(self.label)
-
-        }
-    }
-
-    func setProgress(progressInPercent:Double, progressIndicator:ProgressIndicator) {
-        self.progressInPercent = progressInPercent
-        self.progressIndicator = progressIndicator
-        if self.circleChart == nil {
-            self.createCirle()
-        } else {
-            self.circleChart.strokeColor = calculateColor(fromIndicator: self.progressIndicator)
-            self.circleChart.current = NSNumber(value: self.progressInPercent)
-            self.circleChart.update(byCurrent: NSNumber(value: self.progressInPercent))
-        }
+   
+    func setProgress(progress:Double, progressIndicator:ProgressIndicator) {
+        let color = calculateColor(fromIndicator: progressIndicator)
+        self.progressView.progressTintColor = color
+        self.progressView.trackTintColor = color
+        self.progressView.fillColor = color.withAlphaComponent(0.3)
+        self.progressView.progress = CGFloat(progress)
     }
     
     /// show the progress of the goal as a colored circle
@@ -79,8 +49,7 @@ class ProgressIndicatorView: UIView {
     func setProgress(forGoal goal:Goal) {
         let calculator = GoalProgressCalculator()
         let progress = calculator.calculateProgress(forGoal: goal, forDate: Date())
-        
-        self.setProgress(progressInPercent: progress.progressInPercent, progressIndicator: progress.indicator)
+        self.setProgress(progress: progress.progress, progressIndicator: progress.indicator)
     }
     
     /// convert the progress indicator to a traffic color
@@ -111,12 +80,5 @@ class ProgressIndicatorView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    }
-    
-    
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        circleChart.stroke()
     }
 }

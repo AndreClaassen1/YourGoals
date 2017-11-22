@@ -34,9 +34,9 @@ class GoalProgressCalculator {
     ///   - goal: the goal
     ///   - date: the date for comparision
     /// - Returns: progress of tasks in percent and a progress indicator
-    func calculateProgress(forGoal goal: Goal, forDate date: Date) -> (progressInPercent:Double, indicator:ProgressIndicator) {
-        let progressTasks = calculateProgressOfTasksInPercent(forGoal: goal)
-        let progressDate = calculateProgressOfTimeInPercent(forGoal: goal, forDate: date)
+    func calculateProgress(forGoal goal: Goal, forDate date: Date) -> (progress:Double, indicator:ProgressIndicator) {
+        let progressTasks = calculateProgressOfTasks(forGoal: goal)
+        let progressDate = calculateProgressOfTime(forGoal: goal, forDate: date)
         let progressIndicator = calculateIndicator(progressTasks: progressTasks, progressDate: progressDate)
         return (progressTasks, progressIndicator)
     }
@@ -44,14 +44,14 @@ class GoalProgressCalculator {
     /// calculate the progress of tasks done in per
     ///
     /// - Parameter goal: the goal
-    /// - Returns: ratio of done tasks and all tasks
-    func calculateProgressOfTasksInPercent(forGoal goal: Goal) -> Double {
+    /// - Returns: ratio of done tasks and all tasks (between 0.0 and 1.0)
+    func calculateProgressOfTasks(forGoal goal: Goal) -> Double {
         if goal.allTasks().count == 0 {
             return 0.0
         }
         
-        let percent = Double(goal.numberOfTasks(forState: .done)) / Double(goal.allTasks().count)
-        return percent
+        let progress = Double(goal.numberOfTasks(forState: .done)) / Double(goal.allTasks().count)
+        return progress
     }
     
     /// calculate the progress of time in relation to the given date
@@ -59,8 +59,8 @@ class GoalProgressCalculator {
     /// - Parameters:
     ///   - goal: the goal
     ///   - date: the date for calculate the progress of time since start of the goal
-    /// - Returns: percentage of time elapsed from the goal
-    func calculateProgressOfTimeInPercent(forGoal goal: Goal, forDate date:Date) -> Double {
+    /// - Returns: progress of time elapsed from the goal (between 0.0 and 1.0)
+    func calculateProgressOfTime(forGoal goal: Goal, forDate date:Date) -> Double {
         let startDate = goal.startDate ?? Date.minimalDate
         let endDate = goal.targetDate ?? Date.maximalDate
         
