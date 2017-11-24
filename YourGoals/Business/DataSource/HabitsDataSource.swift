@@ -13,18 +13,20 @@ import Foundation
 /// a data source for retrieving ordered tasks from a goal
 class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, ActionableSwitchProtocol {
     
-    let habitManager:HabitManager
+    let habitOrderManager:HabitOrderManager
+    let habitCheckManager:HabitCheckManager
     let goal:Goal?
     
     init(manager: GoalsStorageManager, forGoal goal: Goal? = nil) {
-        self.habitManager  = HabitManager(manager: manager)
+        self.habitOrderManager  = HabitOrderManager(manager: manager)
+        self.habitCheckManager = HabitCheckManager(manager: manager)
         self.goal = goal
     }
     
     // MARK: ActionableTableViewDataSource
     
     func fetchActionables(forDate date: Date) throws -> [Actionable] {
-        return try habitManager.habitsByOrder(forGoal: self.goal)
+        return try habitOrderManager.habitsByOrder(forGoal: self.goal)
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -45,7 +47,7 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
     // MARK: ActionablePositioningProtocol
     
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
-        try self.habitManager.updatePosition(habits: actionables.map { $0 as! Habit }, fromPosition: fromPosition, toPosition: toPosition)
+        try self.habitOrderManager.updatePosition(habits: actionables.map { $0 as! Habit }, fromPosition: fromPosition, toPosition: toPosition)
     }
     
     // MARK: ActionableSwitchProtocol
@@ -58,9 +60,9 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
         
         let checked = habit.isChecked(forDate: date)
         if checked {
-            try self.habitManager.checkHabit(forHabit: habit, state: .notChecked, atDate: date)
+            try self.habitCheckManager.checkHabit(forHabit: habit, state: .notChecked, atDate: date)
         } else {
-            try self.habitManager.checkHabit(forHabit: habit, state: .checked, atDate: date)
+            try self.habitCheckManager.checkHabit(forHabit: habit, state: .checked, atDate: date)
         }
     }
     

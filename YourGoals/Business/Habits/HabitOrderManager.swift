@@ -8,41 +8,7 @@
 
 import Foundation
 
-class HabitManager:StorageManagerWorker {
-    
-    /// delete all check instances for the date. there is usually only one instance
-    ///
-    /// - Parameters:
-    ///   - habit: the habit
-    ///   - date: the date
-    func deleteAllChecks(forHabit habit:Habit, atDate date: Date) {
-        let checks = habit.allHabitChecks().filter{ $0.check == date.day() }
-        for habitCheck in checks {
-            habit.removeFromChecks(habitCheck)
-            manager.context.delete(habitCheck)
-        }
-    }
-    
-    /// check the habit for the given date and save the result in the database
-    ///
-    /// - Parameters:
-    ///   - habit: the habit
-    ///   - state: .checked or .unchecked state for the date
-    ///   - date: the date to check or uncheck
-    /// - Throws: core data exception
-    func checkHabit(forHabit habit:Habit, state: HabitCheckedState, atDate date: Date) throws {
-        let dayDate = date.day()
-        
-        deleteAllChecks(forHabit: habit, atDate: dayDate)
-        if state == .checked {
-            let habitCheck = manager.habitCheckStore.createPersistentObject()
-            habitCheck.check = dayDate
-            habit.addToChecks(habitCheck)
-        }
-        
-        try self.manager.context.save()
-    }
-    
+class HabitOrderManager:StorageManagerWorker {
     func habitsByOrder(forGoal goal:Goal?) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
             if let goal = goal {
@@ -54,7 +20,7 @@ class HabitManager:StorageManagerWorker {
         return habits
     }
     
-    func allHabits() throws -> [Habit] {
+    func habitsByOrder() throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
         }
