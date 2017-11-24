@@ -23,6 +23,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         task.commitmentPrio = 1
         task.setTaskState(state: .active)
         try manager.dataManager.saveContext()
+        NotificationCenter.default.post(Notification(name: StrategyModelNotification.commitStateChanged.name, object: task, userInfo: nil))
     }
     
     /// deaktivate the committment
@@ -33,6 +34,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         task.commitmentDate = nil
         task.commitmentPrio = 999
         try manager.dataManager.saveContext()
+        NotificationCenter.default.post(Notification(name: StrategyModelNotification.commitStateChanged.name, object: task, userInfo: nil))
     }
     
     /// fetch all tasks committed for the given date

@@ -42,5 +42,6 @@ class HabitCheckManager:StorageManagerWorker {
         }
         
         try self.manager.context.save()
+        NotificationCenter.default.post(name: StrategyModelNotification.habitCheckStateChanged.name, object: habit)
     }
 }

@@ -128,6 +128,9 @@
 		7BE4BB4F1FC8076A00E1BEF9 /* HabitCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB4E1FC8076A00E1BEF9 /* HabitCheckManager.swift */; };
 		7BE4BB551FC80B2700E1BEF9 /* GoalMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE4BB531FC80B2600E1BEF9 /* GoalMiniCell.xib */; };
 		7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB541FC80B2700E1BEF9 /* GoalMiniCell.swift */; };
+		7BE4BB591FC80D3100E1BEF9 /* AppBadgeActualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB581FC80D3100E1BEF9 /* AppBadgeActualizer.swift */; };
+		7BE4BB5B1FC811A100E1BEF9 /* InitializerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB5A1FC811A100E1BEF9 /* InitializerContext.swift */; };
+		7BE4BB5D1FC818FA00E1BEF9 /* AppBadgeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB5C1FC818FA00E1BEF9 /* AppBadgeCalculator.swift */; };
 		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
 		7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */; };
 		7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */; };
@@ -365,6 +368,9 @@
 		7BE4BB4E1FC8076A00E1BEF9 /* HabitCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckManager.swift; sourceTree = "<group>"; };
 		7BE4BB531FC80B2600E1BEF9 /* GoalMiniCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalMiniCell.xib; sourceTree = "<group>"; };
 		7BE4BB541FC80B2700E1BEF9 /* GoalMiniCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalMiniCell.swift; sourceTree = "<group>"; };
+		7BE4BB581FC80D3100E1BEF9 /* AppBadgeActualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBadgeActualizer.swift; sourceTree = "<group>"; };
+		7BE4BB5A1FC811A100E1BEF9 /* InitializerContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializerContext.swift; sourceTree = "<group>"; };
+		7BE4BB5C1FC818FA00E1BEF9 /* AppBadgeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBadgeCalculator.swift; sourceTree = "<group>"; };
 		7BEBBAAA1F9F175F003D16AE /* GoalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsModel.xcdatamodel; sourceTree = "<group>"; };
 		7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBase.swift; sourceTree = "<group>"; };
 		7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsStorageManager.swift; sourceTree = "<group>"; };
@@ -642,12 +648,12 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7BE4BB571FC80D1500E1BEF9 /* Main */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
 				7BE4BB501FC80A3200E1BEF9 /* UI */,
 				7B994E0D1FA229C700B704E1 /* Error */,
 				7BEBBAA81F9F1693003D16AE /* Data Model */,
 				7B17DD801F9E7385008E90A2 /* Utility */,
-				7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */,
 				7BAAFEF21F9CA2FA00BB102E /* Info.plist */,
 			);
 			path = YourGoals;
@@ -787,6 +793,17 @@
 				7BAAFEEF1F9CA2FA00BB102E /* LaunchScreen.storyboard */,
 			);
 			path = Ressources;
+			sourceTree = "<group>";
+		};
+		7BE4BB571FC80D1500E1BEF9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7BAAFEE61F9CA2FA00BB102E /* AppDelegate.swift */,
+				7BE4BB581FC80D3100E1BEF9 /* AppBadgeActualizer.swift */,
+				7BE4BB5A1FC811A100E1BEF9 /* InitializerContext.swift */,
+				7BE4BB5C1FC818FA00E1BEF9 /* AppBadgeCalculator.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		7BEBBAA81F9F1693003D16AE /* Data Model */ = {
@@ -1206,6 +1223,7 @@
 				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
+				7BE4BB591FC80D3100E1BEF9 /* AppBadgeActualizer.swift in Sources */,
 				7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */,
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
@@ -1216,6 +1234,7 @@
 				7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
 				7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */,
+				7BE4BB5D1FC818FA00E1BEF9 /* AppBadgeCalculator.swift in Sources */,
 				7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */,
 				7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */,
 				7B58CE001FACC00D00628C65 /* TodayViewController+CollectionView.swift in Sources */,
@@ -1277,6 +1296,7 @@
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
 				7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */,
 				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
+				7BE4BB5B1FC811A100E1BEF9 /* InitializerContext.swift in Sources */,
 				7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */,
 				7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,

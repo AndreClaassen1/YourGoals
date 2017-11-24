@@ -7,15 +7,36 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
+    let initializers:[Initializer] = [
+        TestDataInitializer(),
+        AppBadgeActualizerInitializer()
+    ]
     
+    func initAll() {
+        let context = InitializerContext(defaultStorageManager: GoalsStorageManager.defaultStorageManager)
+        
+        let current = UNUserNotificationCenter.current()
+        current.delegate = self
+        current.requestAuthorization(options: [.badge]) { (granted, error) in
+            if let error = error {
+                NSLog("UNUserNotificationCenter.current().requestAuthorization: \(error.localizedDescription)")
+            }
+        }
+        
+        for initializer in self.initializers {
+            initializer.initialize(context: context)
+        }
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        ensureTestData()
+        initAll()
         return true
     }
     
@@ -44,25 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: my own logic
     
-    func ensureTestData() {
-        do {
-            let manager = GoalsStorageManager.defaultStorageManager
-//            #if (arch(i386) || arch(x86_64)) && os(iOS)
-//                let generator = TestDataGenerator(manager: manager)
-//                try generator.generate()
-//            #else
-                let retriever = StrategyManager(manager: manager)
-                let strategy = try retriever.retrieveActiveStrategy()
-                let generator = TestDataGenerator(manager: manager)
-                if strategy == nil {
-                    try generator.generate()
-                }
-//            #endif
-        }
-        catch let error  {
-            fatalError("couldn't create or access test data: \(error.localizedDescription)")
-        }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.badge)
     }
-    
 }
 

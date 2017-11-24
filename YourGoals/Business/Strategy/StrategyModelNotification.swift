@@ -11,6 +11,7 @@ import Foundation
 public enum StrategyModelNotification:String {
     case taskStateChanged
     case habitCheckStateChanged
+    case commitStateChanged
     
     /// retrieve the identifier as notification name
     public var name : Notification.Name {

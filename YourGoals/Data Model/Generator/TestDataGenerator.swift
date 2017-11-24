@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TestDataGenerator {
-
+    
     let manager:GoalsStorageManager!
     let generators:[GeneratorProtocol]
     
@@ -20,12 +20,28 @@ class TestDataGenerator {
         generators = [
             StrategyGenerator(manager: self.manager),
             TasksGenerator(manager: self.manager)
-         ]
+        ]
     }
-
+    
     func generate() throws {
         try manager.deleteRepository()
         try generators.forEach{ try $0.generate() }
         try manager.dataManager.saveContext()
+    }
+}
+
+class TestDataInitializer:Initializer {
+    func initialize(context: InitializerContext) {
+        do {
+            let retriever = StrategyManager(manager: context.defaultStorageManager)
+            let strategy = try retriever.retrieveActiveStrategy()
+            let generator = TestDataGenerator(manager: context.defaultStorageManager)
+            if strategy == nil {
+                try generator.generate()
+            }
+        }
+        catch let error  {
+            fatalError("couldn't create or access test data: \(error.localizedDescription)")
+        }
     }
 }
