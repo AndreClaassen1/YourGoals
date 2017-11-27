@@ -223,22 +223,26 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXc-AY-4jx" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="378"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZn-VI-Ygl" userLabel="GoalsView">
-                                                <rect key="frame" x="0.0" y="20" width="375" height="170"/>
+                                                <rect key="frame" x="0.0" y="20" width="375" height="223"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mze-Uy-ayv">
-                                                        <rect key="frame" x="8" y="8" width="119" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mze-Uy-ayv">
+                                                        <rect key="frame" x="8" y="8" width="119" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="XSg-MJ-4XE"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-Wn-cjM" userLabel="GoalsCollectionView">
-                                                        <rect key="frame" x="0.0" y="37" width="375" height="140"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-Wn-cjM" userLabel="GoalsCollectionView">
+                                                        <rect key="frame" x="0.0" y="40" width="375" height="200"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="200" id="yIk-T7-V6G"/>
+                                                        </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="F1a-j5-KV8">
                                                             <size key="itemSize" width="140" height="140"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -250,11 +254,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="170" id="HkN-Mr-5UR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lRG-Wn-cjM" secondAttribute="trailing" id="ETc-b4-wrM"/>
+                                                    <constraint firstItem="mze-Uy-ayv" firstAttribute="top" secondItem="EZn-VI-Ygl" secondAttribute="topMargin" id="eGj-fi-ipC"/>
+                                                    <constraint firstItem="lRG-Wn-cjM" firstAttribute="top" secondItem="mze-Uy-ayv" secondAttribute="bottom" constant="8" symbolic="YES" id="fYL-xI-P9u"/>
+                                                    <constraint firstItem="lRG-Wn-cjM" firstAttribute="leading" secondItem="EZn-VI-Ygl" secondAttribute="leading" id="fbt-fx-2UL"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mze-Uy-ayv" secondAttribute="trailingMargin" id="mhV-sf-4Pl"/>
+                                                    <constraint firstItem="mze-Uy-ayv" firstAttribute="leading" secondItem="EZn-VI-Ygl" secondAttribute="leadingMargin" id="qWl-IB-EM0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="lRG-Wn-cjM" secondAttribute="bottom" constant="-17" id="vQe-PO-oyW"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-uc-2ee" userLabel="Active Task">
-                                                <rect key="frame" x="0.0" y="190" width="375" height="95"/>
+                                                <rect key="frame" x="0.0" y="243" width="375" height="95"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your active Work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-tr-sKF" userLabel="Your active Task">
                                                         <rect key="frame" x="8" y="16" width="158" height="24"/>
@@ -278,7 +288,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-lf-8kj" userLabel="Commitment View">
-                                                <rect key="frame" x="0.0" y="285" width="375" height="45"/>
+                                                <rect key="frame" x="0.0" y="338" width="375" height="45"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7z-pV-BBO" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="45" width="375" height="0.0"/>
@@ -307,7 +317,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZ9-MV-BG1" userLabel="Habits View">
-                                                <rect key="frame" x="0.0" y="330" width="375" height="48"/>
+                                                <rect key="frame" x="0.0" y="383" width="375" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsk-9c-jXu">
                                                         <rect key="frame" x="8" y="16" width="109" height="24"/>

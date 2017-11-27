@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreMotion
 
 class GoalMiniCell: UICollectionViewCell {
 
@@ -15,13 +14,13 @@ class GoalMiniCell: UICollectionViewCell {
     @IBOutlet weak var motivationImage: UIImageView!
     /// Shadow View
     private weak var shadowView: UIView?
-    private let kInnerMargin: CGFloat = 20.0
-    /// Core Motion Manager
-    private let motionManager = CMMotionManager()
+    private let innerMargin: CGFloat = 8.0
+    private let cornerRadius: CGFloat = 4.0
+    private var goalIsActive = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        motivationImage.layer.cornerRadius = 5.0
+        motivationImage.layer.cornerRadius = cornerRadius
         motivationImage.clipsToBounds = true
     }
 
@@ -34,7 +33,6 @@ class GoalMiniCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         configureShadow()
     }
     
@@ -43,36 +41,27 @@ class GoalMiniCell: UICollectionViewCell {
     private func configureShadow() {
         // Shadow View
         self.shadowView?.removeFromSuperview()
-        let shadowView = UIView(frame: CGRect(x: kInnerMargin,
-                                              y: kInnerMargin,
-                                              width: bounds.width - (2 * kInnerMargin),
-                                              height: bounds.height - (2 * kInnerMargin)))
+        let shadowView = UIView(frame: CGRect(x: innerMargin,
+                                              y: innerMargin,
+                                              width: bounds.width - (2 * innerMargin),
+                                              height: bounds.height - (2 * innerMargin)))
         insertSubview(shadowView, at: 0)
         self.shadowView = shadowView
-        
-        // Roll/Pitch Dynamic Shadow
-        if motionManager.isDeviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.02
-            motionManager.startDeviceMotionUpdates(to: .main, withHandler: { (motion, error) in
-                if let motion = motion {
-                    let pitch = motion.attitude.pitch * 10 // x-axis
-                    let roll = motion.attitude.roll * 10 // y-axis
-                    self.applyShadow(width: CGFloat(roll), height: CGFloat(pitch))
-                }
-            })
-        }
+        applyShadow(width: innerMargin / 2.0, height: innerMargin / 2.0)
     }
     
     internal func shadowColorAndOpacity() -> (color:UIColor, opacicty:Float) {
-        return (UIColor.black, 0.35)
+        return self.goalIsActive ?
+            (UIColor(red: 0.0, green: 0.3, blue: 0.0, alpha: 1.0), 0.5) :
+            (UIColor.black, 0.35)
     }
     
     private func applyShadow(width: CGFloat, height: CGFloat) {
         if let shadowView = shadowView {
             let colorAndOpacity = shadowColorAndOpacity()
-            let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
+            let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius)
             shadowView.layer.masksToBounds = false
-            shadowView.layer.shadowRadius = 8.0
+            shadowView.layer.shadowRadius = cornerRadius
             shadowView.layer.shadowColor = colorAndOpacity.color.cgColor
             shadowView.layer.shadowOffset = CGSize(width: width, height: height)
             shadowView.layer.shadowOpacity = colorAndOpacity.opacicty
@@ -100,6 +89,7 @@ class GoalMiniCell: UICollectionViewCell {
         motivationImage.image = image
         titleLabel.sizeToFit()
         progressIndicatorView.viewMode = .mini
+        self.goalIsActive = goalIsActive
         try progressIndicatorView.setProgress(forGoal: goal, forDate: date, manager: manager)
     }
 }
