@@ -29,11 +29,15 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+
     // view for presenting tasks and habits
     @IBOutlet private weak var goalContentView: GoalContentView!
     @IBOutlet private weak var tasksView: ActionableTableView!
     @IBOutlet private weak var toggleHabitsButton: UIButton!
+    
+    @IBOutlet weak var buttonView: UIView!
+    
     
     /// Header Image Height
     var goal:Goal!
@@ -96,23 +100,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
-        containerLeadingConstraint.constant = left
-        containerTrailingConstraint.constant = right
-        containerTopConstraint.constant = top
-        containerBottomConstraint.constant = bottom
-        view.layoutIfNeeded()
-    }
-    
-    //    internal func setHeaderHeight(_ height: CGFloat) {
-    //        headerImageHeightConstraint.constant = height
-    //        view.layoutIfNeeded()
-    //    }
-    //
-    //    internal func configureRoundedCorners(shouldRound: Bool) {
-    //        headerImageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
-    //    }
+
     //
     override var prefersStatusBarHidden: Bool {
         return true
@@ -246,5 +234,44 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func commitmentChanged() {
         self.delegate?.goalChanged()
+    }
+    
+    
+    // MARK: - Animation Helper Methods
+    
+    /// animaition helper function to positoin the container at the start and
+    /// and of the anmiaiton
+    ///
+    /// - Parameters:
+    ///   - left: value for the leading container constraing
+    ///   - right: value for the trailing container constraint
+    ///   - top: value for the top constraint
+    ///   - bottom: value for the bottom constraint
+    internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
+        containerLeadingConstraint.constant = left
+        containerTrailingConstraint.constant = right
+        containerTopConstraint.constant = top
+        containerBottomConstraint.constant = bottom
+        view.layoutIfNeeded()
+    }
+    
+    /// helper function for the presentStoryViewAnimationController
+    ///
+    /// - Parameter shouldRound: true for round corners
+    internal func configureRoundedCorners(shouldRound: Bool) {
+        self.goalContentView.configureRoundedCorners(shouldRound: shouldRound)
+    }
+    
+    /// set the height of the detail view
+    ///
+    /// - Parameter height: height in pixel
+    internal func setHeaderHeight(_ height: CGFloat) {
+        self.headerHeightConstraint.constant = height
+        self.view.layoutIfNeeded()
+    }
+    
+    internal func setTaskViewAlpha(_ alpha:CGFloat) {
+        self.tasksView.alpha = alpha
+        self.buttonView.alpha = alpha
     }
 }

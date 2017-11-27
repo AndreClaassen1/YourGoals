@@ -430,17 +430,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="20" y="40" width="335" height="627"/>
+                                <rect key="frame" x="0.0" y="40" width="964" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="964" height="325"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="-7" y="-7" width="348" height="292"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="964" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="290" id="qqG-LW-9io"/>
+                                                </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="619.5" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -450,43 +453,59 @@
                                                     <action selector="closeButtonDidPress:" destination="0GV-ni-XMq" eventType="touchUpInside" id="dqO-V7-L72"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
-                                                <rect key="frame" x="8" y="290" width="90" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Edit Goal"/>
-                                                <connections>
-                                                    <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentGoal" id="mr5-wE-ViI"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
-                                                <rect key="frame" x="240" y="290" width="95" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Add new Task"/>
-                                                <connections>
-                                                    <segue destination="cPY-Y6-b5y" kind="presentation" identifier="presentEditTask" id="0Yq-QS-UOB"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
-                                                <rect key="frame" x="122" y="290" width="90" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Show Habits"/>
-                                                <connections>
-                                                    <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
-                                                </connections>
-                                            </button>
+                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D47-xr-2df" userLabel="button view">
+                                                <rect key="frame" x="0.0" y="290" width="964" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
+                                                        <rect key="frame" x="0.0" y="3" width="419.5" height="30"/>
+                                                        <state key="normal" title="Edit Goal"/>
+                                                        <connections>
+                                                            <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentGoal" id="mr5-wE-ViI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
+                                                        <rect key="frame" x="-43" y="3" width="86" height="30"/>
+                                                        <state key="normal" title="Show Habits"/>
+                                                        <connections>
+                                                            <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
+                                                        <rect key="frame" x="574.5" y="3" width="0.0" height="30"/>
+                                                        <state key="normal" title="Add new Task"/>
+                                                        <connections>
+                                                            <segue destination="cPY-Y6-b5y" kind="presentation" identifier="presentEditTask" id="0Yq-QS-UOB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="waP-mC-s99" firstAttribute="centerY" secondItem="D47-xr-2df" secondAttribute="centerY" id="7as-7O-6NY"/>
+                                                    <constraint firstItem="waP-mC-s99" firstAttribute="centerX" secondItem="D47-xr-2df" secondAttribute="centerX" id="Gu8-hk-yK1"/>
+                                                    <constraint firstItem="nFg-Vd-Eym" firstAttribute="centerY" secondItem="D47-xr-2df" secondAttribute="centerY" id="Tib-xK-ufN"/>
+                                                    <constraint firstItem="nFg-Vd-Eym" firstAttribute="leading" relation="lessThanOrEqual" secondItem="waP-mC-s99" secondAttribute="trailing" constant="387" id="Tx9-F0-hu1"/>
+                                                    <constraint firstItem="vGA-R2-NME" firstAttribute="leading" secondItem="D47-xr-2df" secondAttribute="leading" id="ZwC-Wk-ZEM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nFg-Vd-Eym" secondAttribute="trailing" id="a2b-1n-vKY"/>
+                                                    <constraint firstItem="vGA-R2-NME" firstAttribute="centerY" secondItem="D47-xr-2df" secondAttribute="centerY" id="kWO-qV-phj"/>
+                                                    <constraint firstItem="waP-mC-s99" firstAttribute="leading" relation="lessThanOrEqual" secondItem="vGA-R2-NME" secondAttribute="trailing" constant="62.5" id="tOT-Zg-5Lv"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="D47-xr-2df" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" id="9H5-mr-NnQ"/>
                                             <constraint firstAttribute="trailing" secondItem="jZE-2f-nmG" secondAttribute="trailing" constant="10" id="AoQ-gs-ZXA"/>
-                                            <constraint firstAttribute="trailing" secondItem="fNu-zJ-BPD" secondAttribute="trailing" constant="-6" id="DQg-JT-5yY"/>
-                                            <constraint firstItem="fNu-zJ-BPD" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" constant="-7" id="EXg-Fc-vup"/>
+                                            <constraint firstAttribute="trailing" secondItem="fNu-zJ-BPD" secondAttribute="trailing" id="DQg-JT-5yY"/>
+                                            <constraint firstItem="fNu-zJ-BPD" firstAttribute="leading" secondItem="JbV-To-7pk" secondAttribute="leading" id="EXg-Fc-vup"/>
                                             <constraint firstAttribute="bottom" secondItem="fNu-zJ-BPD" secondAttribute="bottom" constant="35" id="OJk-bL-UAO"/>
-                                            <constraint firstAttribute="height" constant="320" id="p7D-np-u7d"/>
-                                            <constraint firstItem="fNu-zJ-BPD" firstAttribute="top" secondItem="JbV-To-7pk" secondAttribute="top" constant="-7" id="rDT-MY-iTi"/>
+                                            <constraint firstItem="D47-xr-2df" firstAttribute="top" secondItem="fNu-zJ-BPD" secondAttribute="bottom" id="Xzi-bx-9c1"/>
+                                            <constraint firstAttribute="bottom" secondItem="D47-xr-2df" secondAttribute="bottom" constant="-1" id="bpw-vV-6cy"/>
+                                            <constraint firstAttribute="trailing" secondItem="D47-xr-2df" secondAttribute="trailing" id="nTs-XZ-CT0"/>
+                                            <constraint firstItem="fNu-zJ-BPD" firstAttribute="top" secondItem="JbV-To-7pk" secondAttribute="top" id="rDT-MY-iTi"/>
                                             <constraint firstItem="jZE-2f-nmG" firstAttribute="top" secondItem="JbV-To-7pk" secondAttribute="top" id="rv0-pp-o3A"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="319" width="335" height="308"/>
+                                        <rect key="frame" x="0.0" y="324" width="964" height="303"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -512,12 +531,14 @@
                         <viewLayoutGuide key="safeArea" id="aVo-3o-xr6"/>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="D47-xr-2df" id="dTc-Ak-Fxg"/>
                         <outlet property="containerBottomConstraint" destination="a2j-Ad-q1z" id="mG6-xO-4Pg"/>
                         <outlet property="containerLeadingConstraint" destination="ELQ-7v-4VX" id="aaB-p1-TA1"/>
                         <outlet property="containerTopConstraint" destination="bhZ-YM-MSD" id="He2-1w-mid"/>
                         <outlet property="containerTrailingConstraint" destination="Zau-Tu-14k" id="pLe-j6-JH5"/>
                         <outlet property="contentContainerView" destination="4Vg-1u-3Q8" id="LMM-ub-z8k"/>
                         <outlet property="goalContentView" destination="fNu-zJ-BPD" id="9Ud-zV-CsR"/>
+                        <outlet property="headerHeightConstraint" destination="qqG-LW-9io" id="Pqh-tv-Fu1"/>
                         <outlet property="tasksView" destination="Lqw-Eb-2ha" id="nDP-bP-2eu"/>
                         <outlet property="toggleHabitsButton" destination="waP-mC-s99" id="qvM-MH-jat"/>
                     </connections>
@@ -629,7 +650,7 @@
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xV6-IT-lU4"/>
+        <segue reference="0Yq-QS-UOB"/>
         <segue reference="8yY-7N-175"/>
         <segue reference="mr5-wE-ViI"/>
     </inferredMetricsTieBreakers>

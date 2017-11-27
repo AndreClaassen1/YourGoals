@@ -71,4 +71,10 @@ class GoalContentView: NibLoadingView {
         titleLabel.numberOfLines = 0
     }
     
+    // MARK: - Animation helper methods
+    
+    internal func configureRoundedCorners(shouldRound: Bool) {
+        imageView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
+    }
+
 }

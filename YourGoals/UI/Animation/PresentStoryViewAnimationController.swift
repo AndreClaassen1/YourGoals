@@ -24,14 +24,18 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
         }
         
         // 2
+        
+        
+        let imageFrame = selectedCardFrame.insetBy(dx: 20.0, dy: 20.0)
         containerView.addSubview(toViewController.view)
         toViewController.positionContainer(left: 20.0,
                                            right: 20.0,
-                                           top: selectedCardFrame.origin.y + 20.0,
+                                           top: imageFrame.origin.y,
                                            bottom: 0.0)
-//        toViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
-//        toViewController.configureRoundedCorners(shouldRound: true)
-//
+        toViewController.setHeaderHeight(imageFrame.size.height)
+        toViewController.configureRoundedCorners(shouldRound: true)
+        toViewController.setTaskViewAlpha(0.0)
+        //
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: { 
@@ -39,9 +43,10 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
                                                right: 0.0,
                                                top: 0.0,
                                                bottom: 0.0)
-//            toViewController.setHeaderHeight(500)
+            toViewController.setHeaderHeight(320)
             toViewController.view.backgroundColor = .white
-//            toViewController.configureRoundedCorners(shouldRound: false)
+            toViewController.configureRoundedCorners(shouldRound: false)
+            toViewController.setTaskViewAlpha(1.0)
         }) { (_) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
@@ -49,7 +54,7 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.1
+        return 0.5
     }
     
 }
