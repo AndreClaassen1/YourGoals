@@ -21,16 +21,16 @@
                         <rect key="frame" x="20" y="20" width="290" height="318"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOz-gq-cwB" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                <rect key="frame" x="-8" y="-8" width="306" height="333"/>
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="318"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dOz-gq-cwB" firstAttribute="top" secondItem="2Oa-U5-2af" secondAttribute="top" constant="-8" id="Abb-9l-gs0"/>
-                            <constraint firstItem="dOz-gq-cwB" firstAttribute="leading" secondItem="2Oa-U5-2af" secondAttribute="leading" constant="-8" id="Ye2-yW-WIS"/>
-                            <constraint firstAttribute="bottom" secondItem="dOz-gq-cwB" secondAttribute="bottom" constant="-7" id="jyW-wH-LTP"/>
-                            <constraint firstAttribute="trailing" secondItem="dOz-gq-cwB" secondAttribute="trailing" constant="-8" id="p6G-yK-nuA"/>
+                            <constraint firstItem="dOz-gq-cwB" firstAttribute="top" secondItem="2Oa-U5-2af" secondAttribute="top" id="Abb-9l-gs0"/>
+                            <constraint firstItem="dOz-gq-cwB" firstAttribute="leading" secondItem="2Oa-U5-2af" secondAttribute="leading" id="Ye2-yW-WIS"/>
+                            <constraint firstAttribute="bottom" secondItem="dOz-gq-cwB" secondAttribute="bottom" id="jyW-wH-LTP"/>
+                            <constraint firstAttribute="trailing" secondItem="dOz-gq-cwB" secondAttribute="trailing" id="p6G-yK-nuA"/>
                         </constraints>
                     </view>
                 </subviews>

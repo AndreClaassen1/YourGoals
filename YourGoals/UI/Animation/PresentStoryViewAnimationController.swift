@@ -24,14 +24,12 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
         }
         
         // 2
-        
-        
         let imageFrame = selectedCardFrame.insetBy(dx: 20.0, dy: 20.0)
         containerView.addSubview(toViewController.view)
         toViewController.positionContainer(left: 20.0,
                                            right: 20.0,
                                            top: imageFrame.origin.y,
-                                           bottom: 0.0)
+                                           bottom: -imageFrame.origin.y)
         toViewController.setHeaderHeight(imageFrame.size.height)
         toViewController.configureRoundedCorners(shouldRound: true)
         toViewController.setTaskViewAlpha(0.0)
@@ -54,7 +52,7 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 8.0
     }
     
 }

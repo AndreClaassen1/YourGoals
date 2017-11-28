@@ -435,7 +435,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
                                         <rect key="frame" x="0.0" y="0.0" width="964" height="325"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="964" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -509,7 +509,6 @@
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="JbV-To-7pk" firstAttribute="top" secondItem="4Vg-1u-3Q8" secondAttribute="top" id="6cg-rf-0zB"/>
                                     <constraint firstAttribute="trailing" secondItem="JbV-To-7pk" secondAttribute="trailing" id="O5w-PO-ncG"/>
@@ -521,7 +520,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4Vg-1u-3Q8" firstAttribute="leading" secondItem="aVo-3o-xr6" secondAttribute="leading" constant="20" id="ELQ-7v-4VX"/>
                             <constraint firstItem="aVo-3o-xr6" firstAttribute="trailing" secondItem="4Vg-1u-3Q8" secondAttribute="trailing" constant="20" id="Zau-Tu-14k"/>
@@ -651,7 +650,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Yq-QS-UOB"/>
-        <segue reference="8yY-7N-175"/>
+        <segue reference="6eA-8s-RYt"/>
         <segue reference="mr5-wE-ViI"/>
     </inferredMetricsTieBreakers>
 </document>

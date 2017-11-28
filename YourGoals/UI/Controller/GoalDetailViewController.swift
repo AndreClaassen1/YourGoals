@@ -259,7 +259,8 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     ///
     /// - Parameter shouldRound: true for round corners
     internal func configureRoundedCorners(shouldRound: Bool) {
-        self.goalContentView.configureRoundedCorners(shouldRound: shouldRound)
+        self.goalContentView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
+        self.view.layoutIfNeeded()
     }
     
     /// set the height of the detail view
@@ -274,4 +275,5 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         self.tasksView.alpha = alpha
         self.buttonView.alpha = alpha
     }
+  
 }
