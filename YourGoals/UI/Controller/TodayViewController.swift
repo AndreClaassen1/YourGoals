@@ -36,6 +36,9 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     var editActionable:Actionable? = nil
     var editActionableType:ActionableType? = nil
     
+    internal let presentStoryAnimationController = PresentStoryViewAnimationController(origin: .fromMiniCell)
+    internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.originalTasksHeight = activeTasksHeight.constant
@@ -72,6 +75,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         if let detailController = destinationViewController as? GoalDetailViewController {
+            detailController.transitioningDelegate = self
             detailController.goal = self.selectedGoal
             detailController.delegate = self
             return
@@ -150,5 +154,18 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         let goalComposer = GoalComposer(manager: self.manager)
         let _ = try goalComposer.delete(actionable: actionable)
         self.reloadAll()
+    }
+}
+
+extension TodayViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return presentStoryAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return dismissStoryAnimationController
     }
 }

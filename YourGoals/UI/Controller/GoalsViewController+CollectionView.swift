@@ -127,7 +127,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) {
-            let frame = self.collectionView.convert(cell.frame, to: self.view)
+            let frame = collectionView.convert(cell.frame, to: self.view)
             
             presentStoryAnimationController.selectedCardFrame = frame
             dismissStoryAnimationController.selectedCardFrame = frame

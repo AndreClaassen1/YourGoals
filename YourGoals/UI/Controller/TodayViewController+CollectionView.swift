@@ -75,6 +75,14 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedGoal = goalForIndexPath(path: indexPath)
+  
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            let frame = collectionView.convert(cell.frame, to: self.view)
+            
+            presentStoryAnimationController.selectedCardFrame = frame
+            dismissStoryAnimationController.selectedCardFrame = frame
+        }
+        
         performSegue(withIdentifier: "presentGoal", sender: self)
     }
 }

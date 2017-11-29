@@ -12,6 +12,13 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     
     internal var selectedCardFrame: CGRect = .zero
     
+    let origin:AnimationControllerOrigin
+    
+    init(origin: AnimationControllerOrigin) {
+        self.origin = origin
+        super.init()
+    }
+    
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -24,14 +31,32 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
         }
         
         // 2
-        let imageFrame = selectedCardFrame.insetBy(dx: 20.0, dy: 20.0)
+        var innerMargin:CGFloat = 0.0
+        var radius:CGFloat = 0.0
+        switch self.origin {
+        case .fromLargeCell:
+            radius = 14.0
+            innerMargin = 20.0
+        case .fromMiniCell:
+            innerMargin = 8.0
+            radius = 4.0
+        }
+        
+        let imageFrame = selectedCardFrame.insetBy(dx: innerMargin, dy: innerMargin)
+        let left = imageFrame.origin.x
+        let right = containerView.frame.width - (imageFrame.origin.x + imageFrame.width)
+        
         containerView.addSubview(toViewController.view)
-        toViewController.positionContainer(left: 20.0,
-                                           right: 20.0,
-                                           top: imageFrame.origin.y,
+        
+        if origin == .fromMiniCell {
+            toViewController.configureDescriptionItems(shouldBeVisible: false)
+        }
+        toViewController.positionContainer(left: left,
+                                           right: right,
+                                           top: imageFrame.origin.y - 15.0,
                                            bottom: -imageFrame.origin.y)
         toViewController.setHeaderHeight(imageFrame.size.height)
-        toViewController.configureRoundedCorners(shouldRound: true)
+        toViewController.configureRoundedCorners(radius: radius)
         toViewController.setTaskViewAlpha(0.0)
         //
         // 3
@@ -43,16 +68,16 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
                                                bottom: 0.0)
             toViewController.setHeaderHeight(320)
             toViewController.view.backgroundColor = .white
-            toViewController.configureRoundedCorners(shouldRound: false)
+            toViewController.configureRoundedCorners(radius: 0.0)
             toViewController.setTaskViewAlpha(1.0)
         }) { (_) in
+            toViewController.configureDescriptionItems(shouldBeVisible: true)
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 8.0
+        return 0.3
     }
-    
 }

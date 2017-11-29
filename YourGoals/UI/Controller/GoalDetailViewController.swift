@@ -37,6 +37,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBOutlet private weak var toggleHabitsButton: UIButton!
     
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var closerButton: UIButton!
     
     
     /// Header Image Height
@@ -258,9 +259,15 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     /// helper function for the presentStoryViewAnimationController
     ///
     /// - Parameter shouldRound: true for round corners
-    internal func configureRoundedCorners(shouldRound: Bool) {
-        self.goalContentView.layer.cornerRadius = shouldRound ? 14.0 : 0.0
+    internal func configureRoundedCorners(radius: CGFloat) {
+        self.goalContentView.layer.cornerRadius = radius
         self.view.layoutIfNeeded()
+    }
+    
+    internal func configureDescriptionItems(shouldBeVisible: Bool) {
+        self.goalContentView.configureDescriptionItems(shouldBeVisible: shouldBeVisible)
+        let isHidden = !shouldBeVisible
+        self.closerButton.isHidden = isHidden
     }
     
     /// set the height of the detail view

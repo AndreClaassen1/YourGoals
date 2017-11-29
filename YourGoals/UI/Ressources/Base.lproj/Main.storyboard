@@ -531,6 +531,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonView" destination="D47-xr-2df" id="dTc-Ak-Fxg"/>
+                        <outlet property="closerButton" destination="jZE-2f-nmG" id="o3d-Ur-Yho"/>
                         <outlet property="containerBottomConstraint" destination="a2j-Ad-q1z" id="mG6-xO-4Pg"/>
                         <outlet property="containerLeadingConstraint" destination="ELQ-7v-4VX" id="aaB-p1-TA1"/>
                         <outlet property="containerTopConstraint" destination="bhZ-YM-MSD" id="He2-1w-mid"/>

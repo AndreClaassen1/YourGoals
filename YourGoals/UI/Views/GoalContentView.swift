@@ -71,5 +71,14 @@ class GoalContentView: NibLoadingView {
         titleLabel.numberOfLines = 0
     }
     
+    // MARK: - Animiation
+    
+    internal func configureDescriptionItems(shouldBeVisible: Bool) {
+        let isHidden = !shouldBeVisible
+        self.progressIndicatorView.isHidden = isHidden
+        self.titleLabel.isHidden = isHidden
+        self.reasonLabel.isHidden = isHidden
+        self.overlayView.isHidden = isHidden
+    }
  
 }

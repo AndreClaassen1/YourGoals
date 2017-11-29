@@ -41,7 +41,8 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
         
         
         // 2
-        toViewController.view.alpha = 0.0
+        //toViewController.view.alpha = 0.0
+        toViewController.view.isHidden = true
         containerView.addSubview(navigationController.view)
         
         // 3
@@ -52,9 +53,10 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
                                                  top: self.selectedCardFrame.origin.y + 20.0 - 15.0,
                                                  bottom: 0.0)
             fromViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
-            fromViewController.configureRoundedCorners(shouldRound: true)
-            toViewController.view.alpha = 1.0
+            fromViewController.configureRoundedCorners(radius: 14.0)
+            //toViewController.view.alpha = 1.0
         }) { (_) in
+            toViewController.view.isHidden = false
             fromViewController.view.removeFromSuperview()
             transitionContext.completeTransition(true)
         }
@@ -62,6 +64,6 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 5.0
+        return 0.3
     }
 }
