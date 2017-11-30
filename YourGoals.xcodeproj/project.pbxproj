@@ -144,7 +144,7 @@
 		7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */; };
 		7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC71F9F1D40003D16AE /* TestDataGenerator.swift */; };
 		7BEBBADD1F9F5545003D16AE /* StrategyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */; };
-		7BF45C021FB0D7DF00B0E3B7 /* HabitManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF45C011FB0D7DF00B0E3B7 /* HabitManagerTests.swift */; };
+		7BF45C021FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */; };
 		7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */; };
 		7BFC1E021FA35A13003DE484 /* TaskProgressManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */; };
 		7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */; };
@@ -387,7 +387,7 @@
 		7BEBBAD11F9F4087003D16AE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGenerator.swift; sourceTree = "<group>"; };
 		7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyManager.swift; sourceTree = "<group>"; };
-		7BF45C011FB0D7DF00B0E3B7 /* HabitManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitManagerTests.swift; sourceTree = "<group>"; };
+		7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckManagerTests.swift; sourceTree = "<group>"; };
 		7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorInfo.swift"; sourceTree = "<group>"; };
 		7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProgressManagerTests.swift; sourceTree = "<group>"; };
 		7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManagerTests.swift; sourceTree = "<group>"; };
@@ -686,7 +686,7 @@
 				7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */,
 				7B2BAE4C1FADB8EF00441AFD /* TasksRequesterTests.swift */,
 				7B0A72661FB0485D0000586D /* HabitTests.swift */,
-				7BF45C011FB0D7DF00B0E3B7 /* HabitManagerTests.swift */,
+				7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -1347,7 +1347,7 @@
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
 				7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */,
 				7BFC1E021FA35A13003DE484 /* TaskProgressManagerTests.swift in Sources */,
-				7BF45C021FB0D7DF00B0E3B7 /* HabitManagerTests.swift in Sources */,
+				7BF45C021FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

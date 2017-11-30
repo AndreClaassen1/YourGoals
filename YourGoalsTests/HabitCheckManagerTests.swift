@@ -9,7 +9,8 @@
 import XCTest
 @testable import YourGoals
 
-class HabitManagerTests: StorageManagerWorker {
+/// unit tests for the HabitCheckManager
+class HabitCheckManagerTests: StorageManagerWorker {
     
     func testCheckHabitForDate() {
         // setup
@@ -18,7 +19,7 @@ class HabitManagerTests: StorageManagerWorker {
         let habit = HabitFactory(manager: self.manager).createHabit(name: "Test Habit")
         
         // act
-        try! HabitManager(manager: self.manager).checkHabit(forHabit: habit, state: .checked , atDate: dateTime)
+        try! HabitCheckManager(manager: self.manager).checkHabit(forHabit: habit, state: .checked , atDate: dateTime)
         
         // test
         let habitReloaded = self.manager.context.object(with: habit.objectID) as! Habit
@@ -32,8 +33,8 @@ class HabitManagerTests: StorageManagerWorker {
         let habit = HabitFactory(manager: self.manager).createHabit(name: "Test Habit")
         
         // act
-        try! HabitManager(manager: self.manager).checkHabit(forHabit: habit, state: .checked , atDate: dateTime)
-        try! HabitManager(manager: self.manager).checkHabit(forHabit: habit, state: .notChecked , atDate: dateTime)
+        try! HabitCheckManager(manager: self.manager).checkHabit(forHabit: habit, state: .checked , atDate: dateTime)
+        try! HabitCheckManager(manager: self.manager).checkHabit(forHabit: habit, state: .notChecked , atDate: dateTime)
 
         // test
         let habitReloaded = self.manager.context.object(with: habit.objectID) as! Habit

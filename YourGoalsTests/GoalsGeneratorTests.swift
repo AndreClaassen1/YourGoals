@@ -27,8 +27,8 @@ class GoalsGeneratorTests: StorageTestCase  {
     func testGoals() {
         testGeneratedGoals {
             goals in
-        
-            XCTAssertEqual(2, goals.count)
+
+            XCTAssertEqual(2+1, goals.count, "2 generated goals and the virtually created today goal")
             
         }
     }
