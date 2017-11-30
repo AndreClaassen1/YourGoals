@@ -88,7 +88,7 @@
 		7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */; };
 		7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */; };
 		7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */; };
-		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */; };
+		7BAA7A7B1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */; };
 		7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */; };
 		7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */; };
 		7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA7A801FA0C5CB005B16EE /* TasksGenerator.swift */; };
@@ -110,6 +110,8 @@
 		7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */; };
 		7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAAFF251F9CA2FB00BB102E /* ComplicationController.swift */; };
 		7BAAFF281F9CA2FB00BB102E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */; };
+		7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */; };
+		7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */; };
 		7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC75C81FC5970000113C5F /* ProgressView.storyboard */; };
 		7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9B8201FC573DD00786A86 /* PieProgressView.swift */; };
 		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
@@ -319,7 +321,7 @@
 		7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManagerTests.swift; sourceTree = "<group>"; };
 		7B9E28F21FA6794700BB6003 /* GoalInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoManager.swift; sourceTree = "<group>"; };
 		7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoManagerTests.swift; sourceTree = "<group>"; };
-		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+AnimationDelegate.swift"; sourceTree = "<group>"; };
+		7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAA7A7C1FA0C13C005B16EE /* GoalCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalCell2.xib; sourceTree = "<group>"; };
 		7BAA7A7D1FA0C13C005B16EE /* GoalCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell2.swift; sourceTree = "<group>"; };
 		7BAA7A801FA0C5CB005B16EE /* TasksGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksGenerator.swift; sourceTree = "<group>"; };
@@ -350,6 +352,8 @@
 		7BAAFF271F9CA2FB00BB102E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BAAFF291F9CA2FB00BB102E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailsViewController+Animation.swift"; sourceTree = "<group>"; };
+		7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAC75C91FC5970000113C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProgressView.storyboard; sourceTree = "<group>"; };
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
 		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
@@ -475,13 +479,15 @@
 			children = (
 				7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */,
 				7B17DD761F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift */,
-				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift */,
+				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
+				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
 				7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
 				7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */,
 				7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */,
 				7B58CDFF1FACC00D00628C65 /* TodayViewController+CollectionView.swift */,
+				7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1232,7 +1238,7 @@
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
-				7BAA7A7B1FA0726E005B16EE /* GoalsViewController+AnimationDelegate.swift in Sources */,
+				7BAA7A7B1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift in Sources */,
 				7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */,
 				7BAA7A851FA0C788005B16EE /* Goal+Subs.swift in Sources */,
 				7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */,
@@ -1258,7 +1264,9 @@
 				7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */,
 				7B130B621FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift in Sources */,
 				7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */,
+				7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
+				7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,

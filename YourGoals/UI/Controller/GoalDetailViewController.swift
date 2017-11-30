@@ -20,20 +20,21 @@ protocol GoalDetailViewControllerDelegate {
     func commitmentChanged()
 }
 
+
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
     
     // container and constraints for animating this view
-    @IBOutlet private weak var contentContainerView: UIView!
-    @IBOutlet private weak var containerLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var containerTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var containerTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet internal weak var contentContainerView: UIView!
+    @IBOutlet internal weak var containerLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet internal weak var containerTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet internal weak var containerTopConstraint: NSLayoutConstraint!
+    @IBOutlet internal weak var containerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet internal var headerHeightConstraint: NSLayoutConstraint!
 
     // view for presenting tasks and habits
-    @IBOutlet private weak var goalContentView: GoalContentView!
-    @IBOutlet private weak var tasksView: ActionableTableView!
+    @IBOutlet internal weak var goalContentView: GoalContentView!
+    @IBOutlet internal weak var tasksView: ActionableTableView!
     @IBOutlet private weak var toggleHabitsButton: UIButton!
     
     @IBOutlet weak var buttonView: UIView!
@@ -236,51 +237,4 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     func commitmentChanged() {
         self.delegate?.goalChanged()
     }
-    
-    
-    // MARK: - Animation Helper Methods
-    
-    /// animaition helper function to positoin the container at the start and
-    /// and of the anmiaiton
-    ///
-    /// - Parameters:
-    ///   - left: value for the leading container constraing
-    ///   - right: value for the trailing container constraint
-    ///   - top: value for the top constraint
-    ///   - bottom: value for the bottom constraint
-    internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
-        containerLeadingConstraint.constant = left
-        containerTrailingConstraint.constant = right
-        containerTopConstraint.constant = top
-        containerBottomConstraint.constant = bottom
-        view.layoutIfNeeded()
-    }
-    
-    /// helper function for the presentStoryViewAnimationController
-    ///
-    /// - Parameter shouldRound: true for round corners
-    internal func configureRoundedCorners(radius: CGFloat) {
-        self.goalContentView.layer.cornerRadius = radius
-        self.view.layoutIfNeeded()
-    }
-    
-    internal func configureDescriptionItems(shouldBeVisible: Bool) {
-        self.goalContentView.configureDescriptionItems(shouldBeVisible: shouldBeVisible)
-        let isHidden = !shouldBeVisible
-        self.closerButton.isHidden = isHidden
-    }
-    
-    /// set the height of the detail view
-    ///
-    /// - Parameter height: height in pixel
-    internal func setHeaderHeight(_ height: CGFloat) {
-        self.headerHeightConstraint.constant = height
-        self.view.layoutIfNeeded()
-    }
-    
-    internal func setTaskViewAlpha(_ alpha:CGFloat) {
-        self.tasksView.alpha = alpha
-        self.buttonView.alpha = alpha
-    }
-  
 }
