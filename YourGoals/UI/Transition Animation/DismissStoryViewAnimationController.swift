@@ -49,7 +49,7 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 10.0
+        return 0.3
         // return 10.0
     }
 }

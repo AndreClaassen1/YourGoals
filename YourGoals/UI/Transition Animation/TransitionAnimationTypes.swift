@@ -9,15 +9,27 @@
 import Foundation
 import UIKit
 
+/// origin of the animation
+///
+/// - fromLargeCell: origin is a large cell similare to the destionation viewanimation
+/// - fromMiniCell: origin is a mini cell
 enum TransitionAnimationOrigin {
     case fromLargeCell
     case fromMiniCell
 }
 
+/// retrieve the metrics of the selected UIViewCell relative to the view of the viewcontroller
 protocol TransitionAnimationSourceMetrics {
     func animationMetrics(relativeTo view: UIView) -> TransitionAnimationMetrics
 }
 
+/// form and look at the start and end of the animation transition (in the GoalDetailsViewConroller)
+protocol TransitionAnimationBehavior {
+    func startPointTransitionAnimation(origin:TransitionAnimationOrigin, selectedCardMetris metrics: TransitionAnimationMetrics, constraints: TransitionAnimationConstraints)
+    func endPointTransitionAnimation()
+}
+
+/// constraint values for the start of the animation calculated from the selected UIViewCell
 struct TransitionAnimationConstraints {
     
     static let zero = TransitionAnimationConstraints(left: 0.0, right: 0.0, top: 0.0, bottom: 0.0)
@@ -28,6 +40,7 @@ struct TransitionAnimationConstraints {
     let bottom: CGFloat
 }
 
+/// metrics of the selected view cell. absolute position relative to the view controller and radius of the cordners
 struct TransitionAnimationMetrics {
     let selectedFrame:CGRect
     let cornerRadius:CGFloat

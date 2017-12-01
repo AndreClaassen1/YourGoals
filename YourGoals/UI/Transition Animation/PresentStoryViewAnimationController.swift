@@ -22,21 +22,21 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         // 1
         let containerView = transitionContext.containerView
-        guard let toViewController = transitionContext.viewController(forKey: .to) as? GoalDetailAnimationBehavior else {
-            // assertionFailure("couldn't locate apropriate controller")
+        guard let animationBehavior = transitionContext.viewController(forKey: .to) as? TransitionAnimationBehavior else {
+            assertionFailure("couldn't locate the animation behavior from the anticipated GoalDetailViewController calss")
             return
         }
         
         // 2 Calculate the constraints.
         
-        containerView.addSubview(toViewController.view)
+        containerView.addSubview(transitionContext.view(forKey: .to)!)
         let constraints = selectedCardMetrics.calculateOriginConstraints(containerFrame: containerView.frame)
-        toViewController.startPointTransitionAnimation(origin: self.origin, selectedCardMetris: self.selectedCardMetrics, constraints: constraints)
+        animationBehavior.startPointTransitionAnimation(origin: self.origin, selectedCardMetris: self.selectedCardMetrics, constraints: constraints)
         
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: { 
-            toViewController.endPointTransitionAnimation(origin: self.origin)
+            animationBehavior.endPointTransitionAnimation()
         }) { (_) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }

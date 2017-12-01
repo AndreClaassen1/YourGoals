@@ -9,19 +9,16 @@
 import Foundation
 import UIKit
 
-// MARK: - GoalDetailAnimationBehaviour
+// MARK: - TransitionAnimationBehavior
 
-protocol GoalDetailAnimationBehavior {
-    var view:UIView! {
-        get
-    }
+extension GoalDetailViewController: TransitionAnimationBehavior {
     
-    func startPointTransitionAnimation(origin:TransitionAnimationOrigin, selectedCardMetris metrics: TransitionAnimationMetrics, constraints: TransitionAnimationConstraints)
-    func endPointTransitionAnimation(origin: TransitionAnimationOrigin)
-}
-
-extension GoalDetailViewController: GoalDetailAnimationBehavior {
-    
+    /// start point of the animation. this is the selected cell in the UIViewCollection
+    ///
+    /// - Parameters:
+    ///   - origin: make a tranisition from a mini cell or a large cell
+    ///   - metrics: metrics of the cell and radius of the corners
+    ///   - constraints: constraints to modify in this view
     func startPointTransitionAnimation(origin:TransitionAnimationOrigin, selectedCardMetris metrics: TransitionAnimationMetrics, constraints: TransitionAnimationConstraints) {
         if origin == .fromMiniCell {
             self.configureDescriptionAlpha(0.0)
@@ -33,7 +30,8 @@ extension GoalDetailViewController: GoalDetailAnimationBehavior {
         self.view.backgroundColor = .clear
     }
     
-    func endPointTransitionAnimation(origin: TransitionAnimationOrigin) {
+    /// end of the animation is the resized goal view size without rounded cornders
+    func endPointTransitionAnimation() {
         self.configureDescriptionAlpha(1.0)
         self.positionContainer(constraints: TransitionAnimationConstraints.zero)
         self.setHeaderHeight(320.0)

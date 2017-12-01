@@ -28,7 +28,7 @@
 		7B17DD891F9E88F3008E90A2 /* GoalsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD861F9E88E6008E90A2 /* GoalsSectionHeader.xib */; };
 		7B1D60BF1FB719BB00E617ED /* ActionableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D60BE1FB719BB00E617ED /* ActionableFactory.swift */; };
 		7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */; };
-		7B2B48711FCE101100FC095F /* TransitionAnimationMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B48701FCE101100FC095F /* TransitionAnimationMetrics.swift */; };
+		7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */; };
 		7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BAE4C1FADB8EF00441AFD /* TasksRequesterTests.swift */; };
 		7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */; };
 		7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B851FA9F45900BA2FB6 /* Task+Commitment.swift */; };
@@ -263,7 +263,7 @@
 		7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7B1D60BE1FB719BB00E617ED /* ActionableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFactory.swift; sourceTree = "<group>"; };
 		7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Actionable.swift"; sourceTree = "<group>"; };
-		7B2B48701FCE101100FC095F /* TransitionAnimationMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationMetrics.swift; sourceTree = "<group>"; };
+		7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationTypes.swift; sourceTree = "<group>"; };
 		7B2BAE4C1FADB8EF00441AFD /* TasksRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRequesterTests.swift; sourceTree = "<group>"; };
 		7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		7B303B851FA9F45900BA2FB6 /* Task+Commitment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Commitment.swift"; sourceTree = "<group>"; };
@@ -547,7 +547,7 @@
 		7B1A4B351F9F9D1700703885 /* Transition Animation */ = {
 			isa = PBXGroup;
 			children = (
-				7B2B48701FCE101100FC095F /* TransitionAnimationMetrics.swift */,
+				7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */,
 				7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */,
 				7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */,
 			);
@@ -1234,7 +1234,7 @@
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
 				7BE4BB591FC80D3100E1BEF9 /* AppBadgeActualizer.swift in Sources */,
 				7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */,
-				7B2B48711FCE101100FC095F /* TransitionAnimationMetrics.swift in Sources */,
+				7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */,
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
