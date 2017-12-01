@@ -59,7 +59,7 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        return 0.3
-        return 10.0
+       return 0.3
+ //       return 10.0
     }
 }
