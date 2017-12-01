@@ -11,9 +11,7 @@ import UIKit
 internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
     internal var selectedCardMetrics:TransitionAnimationMetrics! = nil
-    
     let origin:TransitionAnimationOrigin
-    
     init(origin: TransitionAnimationOrigin) {
         self.origin = origin
         super.init()
@@ -31,28 +29,15 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
         
         // 2 Calculate the constraints.
         
-        let constraints = selectedCardMetrics.calculateOriginConstraints(containerFrame: containerView.frame)
-        
         containerView.addSubview(toViewController.view)
+        let constraints = selectedCardMetrics.calculateOriginConstraints(containerFrame: containerView.frame)
+        toViewController.startPointTransitionAnimation(origin: self.origin, selectedCardMetris: self.selectedCardMetrics, constraints: constraints)
         
-        if origin == .fromMiniCell {
-            toViewController.configureDescriptionItems(shouldBeVisible: false)
-        }
-        toViewController.positionContainer(constraints: constraints)
-        toViewController.setHeaderHeight(selectedCardMetrics.selectedFrame.size.height)
-        toViewController.configureRoundedCorners(radius: selectedCardMetrics.cornerRadius)
-        toViewController.setTaskViewAlpha(0.0)
-        //
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: { 
-            toViewController.positionContainer(constraints: TransitionAnimationConstraints.zero)
-            toViewController.setHeaderHeight(320)
-            toViewController.view.backgroundColor = .white
-            toViewController.configureRoundedCorners(radius: 0.0)
-            toViewController.setTaskViewAlpha(1.0)
+            toViewController.endPointTransitionAnimation(origin: self.origin)
         }) { (_) in
-            toViewController.configureDescriptionItems(shouldBeVisible: true)
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         
@@ -60,6 +45,6 @@ internal class PresentStoryViewAnimationController: NSObject, UIViewControllerAn
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
        return 0.3
- //       return 10.0
+  //      return 10.0
     }
 }

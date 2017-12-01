@@ -37,7 +37,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     var editActionableType:ActionableType? = nil
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController(origin: .fromMiniCell)
-    internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
+    internal let dismissStoryAnimationController = DismissStoryViewAnimationController(origin: .fromMiniCell)
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,15 +15,32 @@ protocol GoalDetailAnimationBehavior {
     var view:UIView! {
         get
     }
-
-    func positionContainer(constraints: TransitionAnimationConstraints)
-    func configureRoundedCorners(radius: CGFloat)
-    func configureDescriptionItems(shouldBeVisible: Bool)
-    func setHeaderHeight(_ height: CGFloat)
-    func setTaskViewAlpha(_ alpha:CGFloat)
+    
+    func startPointTransitionAnimation(origin:TransitionAnimationOrigin, selectedCardMetris metrics: TransitionAnimationMetrics, constraints: TransitionAnimationConstraints)
+    func endPointTransitionAnimation(origin: TransitionAnimationOrigin)
 }
 
 extension GoalDetailViewController: GoalDetailAnimationBehavior {
+    
+    func startPointTransitionAnimation(origin:TransitionAnimationOrigin, selectedCardMetris metrics: TransitionAnimationMetrics, constraints: TransitionAnimationConstraints) {
+        if origin == .fromMiniCell {
+            self.configureDescriptionAlpha(0.0)
+        }
+        self.positionContainer(constraints: constraints)
+        self.setHeaderHeight(metrics.selectedFrame.size.height)
+        self.configureRoundedCorners(radius: metrics.cornerRadius)
+        self.setTaskViewAlpha(0.0)
+        self.view.backgroundColor = .clear
+    }
+    
+    func endPointTransitionAnimation(origin: TransitionAnimationOrigin) {
+        self.configureDescriptionAlpha(1.0)
+        self.positionContainer(constraints: TransitionAnimationConstraints.zero)
+        self.setHeaderHeight(320.0)
+        self.configureRoundedCorners(radius: 0.0)
+        self.setTaskViewAlpha(1.0)
+        self.view.backgroundColor = .white
+    }
     
     /// animaition helper function to positoin the container at the start and
     /// and of the anmiaiton
@@ -49,10 +66,9 @@ extension GoalDetailViewController: GoalDetailAnimationBehavior {
         self.view.layoutIfNeeded()
     }
     
-    internal func configureDescriptionItems(shouldBeVisible: Bool) {
-        self.goalContentView.configureDescriptionItems(shouldBeVisible: shouldBeVisible)
-        let isHidden = !shouldBeVisible
-        self.closerButton.isHidden = isHidden
+    internal func configureDescriptionAlpha(_ alpha: CGFloat) {
+        self.goalContentView.configureDescriptionAlpha(alpha)
+        self.closerButton.alpha = alpha
     }
     
     /// set the height of the detail view

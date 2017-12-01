@@ -18,7 +18,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     var selectedGoal:Goal?
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController(origin: .fromLargeCell)
-    internal let dismissStoryAnimationController = DismissStoryViewAnimationController()
+    internal let dismissStoryAnimationController = DismissStoryViewAnimationController(origin: .fromLargeCell)
     
     @IBOutlet weak var collectionView: UICollectionView!
     

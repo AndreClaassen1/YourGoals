@@ -13,7 +13,11 @@ import UIKit
 internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
     internal var selectedCardMetrics:TransitionAnimationMetrics! = nil
-    
+    let origin:TransitionAnimationOrigin
+    init(origin: TransitionAnimationOrigin) {
+        self.origin = origin
+        super.init()
+    }
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -24,45 +28,28 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
             return
         }
         
-        guard let navigationController = transitionContext.viewController(forKey: .to) as? UINavigationController else {
-            assertionFailure("couldn't extract navigation view controller")
-            return
-        }
-        
-        guard let tabbarController = navigationController.viewControllers[0] as? UITabBarController else {
-            assertionFailure("couldn't extract tabbar controller")
-            return
-        }
-        
-        guard let toViewController = tabbarController.viewControllers?[1] as? GoalsViewController else {
-            assertionFailure("couldn't extract goals view controller")
-            return
-        }
-        
+        let toView = transitionContext.view(forKey: .to)!
+        toView.alpha = 0.0
+        containerView.backgroundColor = .white
         
         // 2
-        //toViewController.view.alpha = 0.0
-        toViewController.view.isHidden = true
-        containerView.addSubview(fromViewController.view)
+        containerView.insertSubview(toView, at: 0)
+        
         let constraints = selectedCardMetrics.calculateOriginConstraints(containerFrame: containerView.frame)
         
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: {
-            
-            fromViewController.positionContainer(constraints: constraints)
-            fromViewController.setHeaderHeight(self.selectedCardMetrics.selectedFrame.size.height)
-            fromViewController.configureRoundedCorners(radius: self.selectedCardMetrics.cornerRadius)
+            fromViewController.startPointTransitionAnimation(origin: self.origin, selectedCardMetris: self.selectedCardMetrics, constraints: constraints)
+            toView.alpha = 1.0
         }) { (_) in
-            toViewController.view.isHidden = false
-            fromViewController.view.removeFromSuperview()
             transitionContext.completeTransition(true)
+            fromViewController.view.removeFromSuperview()
         }
-        
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 10.0
         // return 10.0
     }
 }
