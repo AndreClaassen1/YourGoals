@@ -16,7 +16,7 @@ protocol GoalDetailAnimationBehavior {
         get
     }
 
-    func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat)
+    func positionContainer(constraints: TransitionAnimationConstraints)
     func configureRoundedCorners(radius: CGFloat)
     func configureDescriptionItems(shouldBeVisible: Bool)
     func setHeaderHeight(_ height: CGFloat)
@@ -33,11 +33,11 @@ extension GoalDetailViewController: GoalDetailAnimationBehavior {
     ///   - right: value for the trailing container constraint
     ///   - top: value for the top constraint
     ///   - bottom: value for the bottom constraint
-    internal func positionContainer(left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
-        containerLeadingConstraint.constant = left
-        containerTrailingConstraint.constant = right
-        containerTopConstraint.constant = top
-        containerBottomConstraint.constant = bottom
+    internal func positionContainer(constraints: TransitionAnimationConstraints) {
+        containerLeadingConstraint.constant = constraints.left
+        containerTrailingConstraint.constant = constraints.right
+        containerTopConstraint.constant = constraints.top
+        containerBottomConstraint.constant = constraints.bottom
         view.layoutIfNeeded()
     }
     

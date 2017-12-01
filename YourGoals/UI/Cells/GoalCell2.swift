@@ -16,6 +16,8 @@ internal class GoalCell2: BaseRoundedCardCell {
     @IBOutlet weak var goalContentView: GoalContentView!
     
     var goalIsActive = false
+    let cornerRadius:CGFloat = 14.0
+    
     
     // MARK: - Factory Method
     
@@ -43,8 +45,21 @@ internal class GoalCell2: BaseRoundedCardCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        cornerView.layer.cornerRadius = 14.0
+        cornerView.layer.cornerRadius = cornerRadius
         cornerView.clipsToBounds = true
     }
+}
 
+// MARK: - TransitionAnimationSourceMetrics
+
+extension GoalCell2: TransitionAnimationSourceMetrics {
+    /// retrieve the metrics of the selected image relative to the given controller view
+    ///
+    /// - Parameter view: controller view
+    /// - Returns: the transition animation metrics
+    func animationMetrics(relativeTo view: UIView) -> TransitionAnimationMetrics {
+        let frame = self.goalContentView.convert(self.goalContentView.imageView.frame, to: view)
+        let metrics = TransitionAnimationMetrics(selectedFrame: frame, cornerRadius: self.cornerRadius)
+        return metrics
+    }
 }

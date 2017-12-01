@@ -12,7 +12,7 @@ import UIKit
 
 internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
-    internal var selectedCardFrame: CGRect = .zero
+    internal var selectedCardMetrics:TransitionAnimationMetrics! = nil
     
     // MARK: - UIViewControllerAnimatedTransitioning
     
@@ -43,18 +43,16 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
         // 2
         //toViewController.view.alpha = 0.0
         toViewController.view.isHidden = true
-        containerView.addSubview(navigationController.view)
+        containerView.addSubview(fromViewController.view)
+        let constraints = selectedCardMetrics.calculateOriginConstraints(containerFrame: containerView.frame)
         
         // 3
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: {
-            fromViewController.positionContainer(left: 20.0,
-                                                 right: 20.0,
-                                                 top: self.selectedCardFrame.origin.y + 20.0 - 15.0,
-                                                 bottom: 0.0)
-            fromViewController.setHeaderHeight(self.selectedCardFrame.size.height - 40.0)
-            fromViewController.configureRoundedCorners(radius: 14.0)
-            //toViewController.view.alpha = 1.0
+            
+            fromViewController.positionContainer(constraints: constraints)
+            fromViewController.setHeaderHeight(self.selectedCardMetrics.selectedFrame.size.height)
+            fromViewController.configureRoundedCorners(radius: self.selectedCardMetrics.cornerRadius)
         }) { (_) in
             toViewController.view.isHidden = false
             fromViewController.view.removeFromSuperview()
@@ -64,6 +62,7 @@ internal class DismissStoryViewAnimationController: NSObject, UIViewControllerAn
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+     //   return 0.3
+        return 10.0
     }
 }

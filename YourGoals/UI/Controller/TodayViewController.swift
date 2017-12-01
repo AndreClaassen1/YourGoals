@@ -157,15 +157,4 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     }
 }
 
-extension TodayViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return presentStoryAnimationController
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return dismissStoryAnimationController
-    }
-}
+

@@ -93,3 +93,18 @@ class GoalMiniCell: UICollectionViewCell {
         try progressIndicatorView.setProgress(forGoal: goal, forDate: date, manager: manager)
     }
 }
+
+// MARK: - TransitionAnimationSourceMetrics
+
+extension GoalMiniCell: TransitionAnimationSourceMetrics {
+    /// retrieve the metrics of the selected image relative to the given controller view
+    ///
+    /// - Parameter view: controller view
+    /// - Returns: the transition animation metrics
+    func animationMetrics(relativeTo controllerView: UIView) -> TransitionAnimationMetrics {
+        let frame = self.motivationImage.convert(self.motivationImage.frame, to: controllerView)
+        let metrics = TransitionAnimationMetrics(selectedFrame: frame, cornerRadius: self.cornerRadius)
+        return metrics
+    }
+}
+
