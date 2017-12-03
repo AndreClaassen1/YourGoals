@@ -10,6 +10,7 @@ target 'YourGoals' do
     pod 'TEAChart'
     pod 'PNChart'
     pod 'LongPressReorder'
+    pod 'Eureka'
     #    pod 'ACTabScrollView'
 end
 
