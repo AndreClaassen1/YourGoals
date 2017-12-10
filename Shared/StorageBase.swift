@@ -117,14 +117,20 @@ public class StorageBase<T:NSManagedObject> : Storage {
     }
     
     public func deleteAllEntries() throws {
-        let request = createFetchRequestForEntity(entity: nil)
-        let items =  try self.managedObjectContext.fetch(request)
-
-        for managedObject in items {
-            self.managedObjectContext.delete(managedObject)
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        try self.managedObjectContext.execute(deleteRequest)
         }
-
-    }
+//
+//
+//        let request = createFetchRequestForEntity(entity: nil)
+//        let items =  try self.managedObjectContext.fetch(request)
+//
+//        for managedObject in items {
+//            self.managedObjectContext.delete(managedObject)
+//        }
+//
+//    }
     
     public func flush() throws {
         if self.managedObjectContext.hasChanges {

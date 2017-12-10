@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-/// a factory class for creating an new goal
+/// a factory class for creating new goals
 class GoalFactory:StorageManagerWorker {
      
     /// create a goal form a goalInfo structure
@@ -18,7 +18,7 @@ class GoalFactory:StorageManagerWorker {
     /// - Parameter goalInfo: a goal info structure
     /// - Throws: goal factory exception
     func create(fromGoalInfo goalInfo: GoalInfo) throws -> Goal {
-        return try create(name: goalInfo.name, prio: 999, reason: goalInfo.reason, startDate: goalInfo.startDate, targetDate: goalInfo.targetDate, image: goalInfo.image)
+        return try create(name: goalInfo.name, prio: goalInfo.prio, reason: goalInfo.reason, startDate: goalInfo.startDate, targetDate: goalInfo.targetDate, image: goalInfo.image)
     }
 
     /// create a new goal with discrete values
@@ -34,10 +34,10 @@ class GoalFactory:StorageManagerWorker {
     ///
     /// - Returns: the new created goal
     /// - Throws: a goal factory exception
-    func create(name: String, prio:Int, reason: String, startDate:Date, targetDate:Date, image:UIImage?, type:GoalType = .userGoal) throws -> Goal {
+    func create(name: String, prio:Int16, reason: String, startDate:Date, targetDate:Date, image:UIImage?, type:GoalType = .userGoal) throws -> Goal {
         let goal = self.manager.goalsStore.createPersistentObject()
         goal.name = name
-        goal.prio = 999
+        goal.prio = prio
         goal.reason = reason
         goal.startDate = startDate
         goal.targetDate = targetDate

@@ -81,11 +81,12 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             return
         }
         
-        if let editTaskController = segue.destination as? EditActionableViewController {
+        if var editTaskController = segue.destination as? EditActionableViewControllerParameter {
             editTaskController.goal = self.editActionable?.goal
             editTaskController.delegate = self
             editTaskController.editActionable = self.editActionable
             editTaskController.editActionableType = self.editActionableType
+            editTaskController.manager = self.manager
             self.editActionable = nil
             self.editActionableType = nil
         }

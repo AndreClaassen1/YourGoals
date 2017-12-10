@@ -11,6 +11,10 @@ import XCTest
 
 class GoalInfoManagerTests: StorageTestCase {
     
+    override func setUp() {
+        super.setUp()
+    }
+    
     func testGoalsWithProgress() {
         // setup
         let startDate = Date.dateWithYear(2017, month: 10, day: 30)

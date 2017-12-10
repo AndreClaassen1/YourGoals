@@ -20,7 +20,6 @@ protocol GoalDetailViewControllerDelegate {
     func commitmentChanged()
 }
 
-
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
     
@@ -39,7 +38,6 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var closerButton: UIButton!
-    
     
     /// Header Image Height
     var goal:Goal!
@@ -64,6 +62,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
             swipeDown.direction = .down
             self.view.addGestureRecognizer(swipeDown)
+            
         }
         catch let error {
             self.showNotification(forError: error)
@@ -116,10 +115,11 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let editActionableController = segue.destination as? EditActionableViewController {
+        if var editActionableController = segue.destination as? EditActionableViewControllerParameter {
             editActionableController.goal = self.goal
             editActionableController.delegate = self
             editActionableController.editActionable = self.editActionable
+            editActionableController.manager = self.manager
             
             switch mode {
             case .tasksMode:
@@ -129,11 +129,13 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             }
             
             self.editActionable = nil
+            return
         }
         
         if let editGoalController = segue.destination as? EditGoalViewController {
             editGoalController.delegate = self
             editGoalController.editGoal = self.goal
+            return
         }
     }
     
@@ -204,7 +206,11 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     func requestForEdit(actionable: Actionable) {
         self.editActionable = actionable
         
-        performSegue(withIdentifier: "presentEditTask", sender: self)
+        if SettingsUserDefault.standard.newFunctions {
+            performSegue(withIdentifier: "presentEditTaskForm", sender: self)
+        } else {
+            performSegue(withIdentifier: "presentEditTask", sender: self)
+        }
     }
     
     func goalChanged(goal: Goal) {
@@ -237,4 +243,18 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     func commitmentChanged() {
         self.delegate?.goalChanged()
     }
+    
+    // MARK: - UI Events
+    
+    @IBAction func addNewActionableTouched(_ sender: Any) {
+        
+        self.editActionable = nil
+        if SettingsUserDefault.standard.newFunctions {
+            performSegue(withIdentifier: "presentEditTaskForm", sender: self)
+        } else {
+            performSegue(withIdentifier: "presentEditTask", sender: self)
+        }
+        
+    }
+    
 }

@@ -211,6 +211,41 @@
             </objects>
             <point key="canvasLocation" x="1277.5999999999999" y="122.78860569715144"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bau-wx-G6L">
+            <objects>
+                <navigationController id="Ga9-RV-KRV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fp2-f7-HR1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XS4-gN-Bmt" kind="relationship" relationship="rootViewController" id="1XN-Dc-3wR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VrB-cY-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="920"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="VQv-MJ-XAN">
+            <objects>
+                <viewController id="XS4-gN-Bmt" customClass="EditTaskFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Nu-8t-oPO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NNz-BB-BdQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Dwd-J0-v0V">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0md-nD-VCs"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Hfd-br-4VH"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87w-FM-P24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2230" y="928"/>
+        </scene>
         <!--Today-->
         <scene sceneID="lHh-c6-cQF">
             <objects>
@@ -399,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07J-Pi-17x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="184.85757121439281"/>
+            <point key="canvasLocation" x="-258" y="380"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oFB-or-icE">
@@ -415,6 +450,7 @@
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
                         <segue destination="PMd-9U-cjl" kind="relationship" relationship="viewControllers" id="Pyr-2q-eZj"/>
+                        <segue destination="Q4F-TG-JGR" kind="relationship" relationship="viewControllers" id="bKX-xE-vb8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoU-Np-3Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,20 +466,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="964" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="964" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="325"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="964" height="290"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="290" id="qqG-LW-9io"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="619.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -454,27 +490,27 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D47-xr-2df" userLabel="button view">
-                                                <rect key="frame" x="0.0" y="290" width="964" height="36"/>
+                                                <rect key="frame" x="0.0" y="290" width="335" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
-                                                        <rect key="frame" x="0.0" y="3" width="419.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="3" width="62" height="30"/>
                                                         <state key="normal" title="Edit Goal"/>
                                                         <connections>
                                                             <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentGoal" id="mr5-wE-ViI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
-                                                        <rect key="frame" x="-43" y="3" width="86" height="30"/>
+                                                        <rect key="frame" x="124.5" y="3" width="86" height="30"/>
                                                         <state key="normal" title="Show Habits"/>
                                                         <connections>
                                                             <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
-                                                        <rect key="frame" x="574.5" y="3" width="0.0" height="30"/>
+                                                        <rect key="frame" x="240" y="3" width="95" height="30"/>
                                                         <state key="normal" title="Add new Task"/>
                                                         <connections>
-                                                            <segue destination="cPY-Y6-b5y" kind="presentation" identifier="presentEditTask" id="0Yq-QS-UOB"/>
+                                                            <action selector="addNewActionableTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="uKe-C8-BpG"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -505,7 +541,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324" width="964" height="303"/>
+                                        <rect key="frame" x="0.0" y="324" width="335" height="303"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -541,6 +577,7 @@
                         <outlet property="headerHeightConstraint" destination="qqG-LW-9io" id="Pqh-tv-Fu1"/>
                         <outlet property="tasksView" destination="Lqw-Eb-2ha" id="nDP-bP-2eu"/>
                         <outlet property="toggleHabitsButton" destination="waP-mC-s99" id="qvM-MH-jat"/>
+                        <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditTaskForm" id="kJV-AZ-9qx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB5-Y3-a37" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,13 +681,66 @@
             </objects>
             <point key="canvasLocation" x="-1002" y="-103"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="IXp-Pq-36a">
+            <objects>
+                <tableViewController id="Q4F-TG-JGR" customClass="SettingsViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MlC-ho-9jp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="2oV-51-FUf">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2O6-KV-UM4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2O6-KV-UM4" id="mjL-1N-oLR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-HW-zwL">
+                                                    <rect key="frame" x="7" y="11" width="123.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW2-Zb-hhj">
+                                                    <rect key="frame" x="316" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uW2-Zb-hhj" secondAttribute="trailing" constant="10" id="ATP-D1-Bpw"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AK3-HW-zwL" secondAttribute="trailing" constant="20" symbolic="YES" id="Kji-Yh-Len"/>
+                                                <constraint firstItem="AK3-HW-zwL" firstAttribute="leading" secondItem="mjL-1N-oLR" secondAttribute="leading" constant="7" id="OIE-SO-Qrj"/>
+                                                <constraint firstItem="AK3-HW-zwL" firstAttribute="centerY" secondItem="mjL-1N-oLR" secondAttribute="centerY" id="rNb-59-Tid"/>
+                                                <constraint firstItem="uW2-Zb-hhj" firstAttribute="centerY" secondItem="mjL-1N-oLR" secondAttribute="centerY" id="zDc-Nw-Z6I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Q4F-TG-JGR" id="HIl-Lf-KVM"/>
+                            <outlet property="delegate" destination="Q4F-TG-JGR" id="Drb-BS-sVp"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" id="sH3-Y0-iqu"/>
+                    <connections>
+                        <outlet property="newTaskEditorSwitch" destination="uW2-Zb-hhj" id="hGh-L1-hYD"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xh-br-VbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1351.2" y="397.15142428785612"/>
+        </scene>
     </scenes>
     <resources>
         <image name="YourGoals" width="1115" height="1115"/>
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Yq-QS-UOB"/>
         <segue reference="6eA-8s-RYt"/>
         <segue reference="mr5-wE-ViI"/>
     </inferredMetricsTieBreakers>

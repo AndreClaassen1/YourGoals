@@ -15,7 +15,16 @@ protocol EditActionableViewControllerDelegate {
     func deleteActionable(actionable: Actionable) throws
 }
 
-class EditActionableViewController: UIViewController {
+protocol EditActionableViewControllerParameter {
+    var manager:GoalsStorageManager! { get set }
+    var goal:Goal! { get set }
+    var editActionable:Actionable? { get set }
+    var editActionableType:ActionableType? { get set }
+    var delegate:EditActionableViewControllerDelegate? { get set }
+}
+
+/// a controller for editing a task or an actionable
+class EditActionableViewController: UIViewController, EditActionableViewControllerParameter {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var taskTextView: UITextView!
     @IBOutlet weak var taskSaveButton: UIButton!
@@ -26,6 +35,7 @@ class EditActionableViewController: UIViewController {
     var editActionable:Actionable?
     var editActionableType:ActionableType?
     var delegate:EditActionableViewControllerDelegate?
+    var manager:GoalsStorageManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()

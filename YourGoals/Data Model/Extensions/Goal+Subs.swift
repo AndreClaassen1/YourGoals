@@ -8,19 +8,28 @@
 
 import Foundation
 import CoreData
-
 extension Goal {
     
-    /// retrieve all subgoals
-    func allGoals() -> [Goal] {
-        return subGoals?.allObjects as? [Goal] ?? []
+    /// retrieve all subgoals (with the given type
+    ///
+    /// - Parameter goalTypes: an array  of types or nil for all sub golas
+    /// - Returns: the goals
+    func allGoals(withTypes goalTypes: [GoalType]? = nil) -> [Goal] {
+        let allGoals = subGoals?.allObjects as? [Goal] ?? []
+        return allGoals.filter { goal in
+            if let types = goalTypes {
+                return types.first { goal.goalType() == $0 } != nil
+            } else {
+                return true
+            }
+        }
     }
     
     /// retrieve all goals sorted by goals type (today goal first) and then by prio
     ///
     /// - Returns: sorted by prio
-    func allGoalsOrderedByPrio() -> [Goal] {
-        return allGoals().sorted(by: {
+    func allGoalsByPrio(withTypes goalTypes: [GoalType]? = nil) -> [Goal] {
+        return allGoals(withTypes: goalTypes).sorted(by: {
             if $0.type == $1.type {
                 return $0.prio < $1.prio
             } else {

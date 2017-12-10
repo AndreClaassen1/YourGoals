@@ -17,9 +17,7 @@ class GoalProgressCalculatorTests: StorageTestCase {
         let goalFactory = GoalFactory(manager: self.manager)
         let strategyManager = StrategyManager(manager: self.manager)
         
-        
-        let goal = try! goalFactory.create(name: "Test goal for calculation", prio: 999, reason: "no reason", startDate: startDate, targetDate: targetDate, image: nil)
-        try! strategyManager.addToStrategy(goal: goal)
+        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: "Test goal for calculation", reason: "no reason", startDate: startDate, targetDate: targetDate))
         
         let activeTasks = taskFactory.createTasks(numberOfTasks: numberOfActiveTasks, state: .active)
         goal.addToTasks(activeTasks)

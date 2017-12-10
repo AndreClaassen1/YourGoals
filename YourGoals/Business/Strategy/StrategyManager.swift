@@ -24,19 +24,15 @@ extension StrategyManagerError:LocalizedError {
 
 class StrategyManager:StorageManagerWorker {
     
-    var strategy:Goal? = nil
-    
     /// assert, that a strategy exists
     ///
     /// - Returns: the strategy
     /// - Throws: an excepiton
     private func assertActiveStrategy() throws -> Goal {
         let strategy = try retrieveActiveStrategy()
-        
         if strategy == nil {
             let newStrategy = try GoalFactory(manager: self.manager).create(name: "Strategy", prio: 0, reason: "Master Plan", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: nil, type: .strategyGoal)
             try self.manager.dataManager.saveContext()
-            self.strategy = newStrategy
             return newStrategy
         }
         
@@ -65,27 +61,20 @@ class StrategyManager:StorageManagerWorker {
     /// - Returns: the active strategy or nil
     /// - Throws: core data excepption
     func retrieveActiveStrategy() throws -> Goal? {
-        if strategy != nil {
-            return strategy
-        }
         
-        self.strategy =  try self.manager.goalsStore.fetchFirstEntry {
+        let strategy =  try self.manager.goalsStore.fetchFirstEntry {
             $0.predicate = NSPredicate(format: "(parentGoal = nil)")
         }
         
-        return self.strategy
+        return strategy
     }
     
     /// add a goal to the strategy
     ///
     /// - Parameter goal: the newly created goal
     /// - Throws: core data exception
-    func addToStrategy(goal: Goal) throws {
+    private func add(goal: Goal, toStrategy strategy: Goal) throws {
         assert(goal.parentGoal == nil, "this goal shouldn't be part of a strategy")
-        
-        guard let strategy = try self.retrieveActiveStrategy() else {
-            throw StrategyManagerError.activeStrategyMissingError
-        }
         
         strategy.addToSubGoals(goal)
         try manager.dataManager.saveContext()
@@ -98,8 +87,12 @@ class StrategyManager:StorageManagerWorker {
     /// - Returns: a newly created goal
     /// - Throws: core data exception
     func createNewGoalForStrategy(goalInfo: GoalInfo) throws -> Goal  {
+        guard let strategy = try self.retrieveActiveStrategy() else {
+            throw StrategyManagerError.activeStrategyMissingError
+        }
+        
         let goal = try GoalFactory(manager: self.manager).create(fromGoalInfo: goalInfo)
-        try self.addToStrategy(goal: goal)
+        try self.add(goal: goal, toStrategy: strategy)
         return goal
     }
 }

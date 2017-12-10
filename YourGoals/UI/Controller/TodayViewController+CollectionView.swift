@@ -15,7 +15,7 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func reloadStrategy() throws {
         self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
-        self.goals = self.strategy.allGoalsOrderedByPrio()
+        self.goals = self.strategy.allGoalsByPrio()
     }
     
     func reloadCollectionView(collectionView: UICollectionView) {

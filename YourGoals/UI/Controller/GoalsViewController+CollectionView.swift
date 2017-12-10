@@ -27,7 +27,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func reloadGoalsCollection() {
         do {
             self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
-            self.goals = strategy.allGoalsOrderedByPrio()
+            self.goals = strategy.allGoalsByPrio()
             self.collectionView.reloadData()
         }
         catch let error {
