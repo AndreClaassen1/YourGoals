@@ -87,10 +87,10 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             editTaskController.editActionable = self.editActionable
             editTaskController.editActionableType = self.editActionableType
             editTaskController.manager = self.manager
+            editTaskController.commitParameter()
             self.editActionable = nil
             self.editActionableType = nil
         }
-        
     }
     
     // MARK: - ActionableTableViewDelegate

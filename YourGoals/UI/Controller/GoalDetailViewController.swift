@@ -30,7 +30,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBOutlet internal weak var containerTopConstraint: NSLayoutConstraint!
     @IBOutlet internal weak var containerBottomConstraint: NSLayoutConstraint!
     @IBOutlet internal var headerHeightConstraint: NSLayoutConstraint!
-
+    
     // view for presenting tasks and habits
     @IBOutlet internal weak var goalContentView: GoalContentView!
     @IBOutlet internal weak var tasksView: ActionableTableView!
@@ -101,7 +101,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     //
     override var prefersStatusBarHidden: Bool {
         return true
@@ -113,29 +113,50 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var editActionableController = segue.destination as? EditActionableViewControllerParameter {
-            editActionableController.goal = self.goal
-            editActionableController.delegate = self
-            editActionableController.editActionable = self.editActionable
-            editActionableController.manager = self.manager
-            
-            switch mode {
-            case .tasksMode:
-                editActionableController.editActionableType = .task
-            case .habitsMode:
-                editActionableController.editActionableType = .habit
-            }
-            
-            self.editActionable = nil
-            return
+    fileprivate func setEditActionableViewControllerParameter(parameter: EditActionableViewControllerParameter) {
+        // make parameter variable
+        var parameter = parameter
+        
+        parameter.goal = self.goal
+        parameter.delegate = self
+        parameter.editActionable = self.editActionable
+        parameter.manager = self.manager
+        
+        switch mode {
+        case .tasksMode:
+            parameter.editActionableType = .task
+        case .habitsMode:
+            parameter.editActionableType = .habit
         }
         
-        if let editGoalController = segue.destination as? EditGoalViewController {
+        parameter.commitParameter()
+        self.editActionable = nil
+    }
+    
+    /// In a storyboard-based application,
+    /// you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            assertionFailure("no identifier set in segue \(segue)")
+            return
+        }
+    
+        switch identifier {
+        case "presentEditTask":
+            let parameter = segue.destination as! EditActionableViewControllerParameter
+            setEditActionableViewControllerParameter(parameter: parameter)
+            return
+        case "presentEditTaskForm":
+            let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
+            setEditActionableViewControllerParameter(parameter: parameter)
+            return
+        case "presentEditGoal":
+            let editGoalController = segue.destination as! EditGoalViewController
             editGoalController.delegate = self
             editGoalController.editGoal = self.goal
             return
+        default:
+            assertionFailure("couldn't prepare segue with destination: \(segue)")
         }
     }
     
@@ -148,7 +169,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func createNewActionable(actionableInfo: ActionableInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.create(actionableInfo: actionableInfo, toGoal: goal)
+        self.goal = try goalComposer.create(actionableInfo: actionableInfo, toGoal: goal).goal
         try self.refreshView()
     }
     

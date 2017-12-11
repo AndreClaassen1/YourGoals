@@ -10,12 +10,25 @@ import Foundation
 import Eureka
 
 class EditTaskFormController : FormViewController, EditActionableViewControllerParameter {
-    
     var goal:Goal!
     var editActionable:Actionable?
     var editActionableType:ActionableType?
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
+    var parameterCommitted = false
+    
+    func commitParameter() {
+        assert(self.manager != nil)
+        assert(self.delegate != nil)
+        assert(self.goal != nil)
+        assert(self.editActionableType != nil)
+        assert(self.editActionableType == .task)
+        if editActionable != nil {
+            assert(self.editActionable?.type == self.editActionableType)
+        }
+        
+        self.parameterCommitted = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +46,22 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
     }
     
     private func initializeForm() {
+        assert(self.parameterCommitted, "The parameter weren't committed")
         form +++
             Section()
-            <<< TextRow("Task").cellSetup { cell, row in
+            <<< TextRow(tag: EditTaskFormTag.taskTag.rawValue).cellSetup { cell, row in
                 cell.textField.placeholder = row.tag
             }
             
             <<< PushRow<Goal>() { row in
+                row.tag = EditTaskFormTag.goalTag.rawValue
                 row.title = "Select a Goal"
                 row.options = userGoalsByPrio()
-        }
+            }
         
-        /// <<< Goal
-        
-        Section()
-            <<< PushRow<String>() { row in
+            Section()
+                <<< PushRow<String>() { row in
+                row.tag = EditTaskFormTag.commitDateTag.rawValue
                 row.title = "Select a commit date"
                 row.options = ["Today", "tomorrow", "Tuesday"]
                 
@@ -55,16 +69,12 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
                 ///
                 ///     Uncommit, Today, Tomorrow, Di, Mi,Do, Fr, Sa, Son
                 ///     Schedule
-                
-                Section()
-                    <<< TextAreaRow() {
+                }
+            Section()
+                <<< TextAreaRow() {
                         $0.placeholder = "Remarks on your task"
                         $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
-                        
-                        
-                        
                 }
-        }
     }
     
     // Mark: - data helper methods

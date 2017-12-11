@@ -19,7 +19,7 @@ class GoalComposerTests: StorageTestCase {
         let goal = super.testDataCreator.createGoal(name: "Test Goal")
         
         // act
-        let updatedGoal = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: "Test task"), toGoal: goal)
+        let updatedGoal = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: "Test task"), toGoal: goal).goal!
         
         // test
         XCTAssertEqual(1, updatedGoal.allTasks().count)

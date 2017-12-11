@@ -11,7 +11,6 @@ import Foundation
 extension Task:Actionable {
     
     /// this is a task
-    
     var type: ActionableType {
         return .task
     }

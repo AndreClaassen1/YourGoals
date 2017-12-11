@@ -9,6 +9,7 @@
 import Foundation
 @testable import YourGoals
 
+/// this class makes the creation of goals and tasks a little bit easier
 class TestDataCreator:StorageManagerWorker {
     
     /// create a goal for unit testing
@@ -18,4 +19,17 @@ class TestDataCreator:StorageManagerWorker {
     func createGoal(name: String) -> Goal {
         return try! GoalFactory(manager: self.manager).create(name: name, prio: 1, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: nil)
     }
+    
+    /// create a task for unit testing for the given goal with the name
+    ///
+    /// - Parameters:
+    ///   - name: name of the task
+    ///   - goal: the goal
+    /// - Returns: a new  task
+    func createTask(name: String, forGoal goal: Goal) -> Task {
+        let composer = GoalComposer(manager: self.manager)
+        let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name), toGoal: goal) as! Task
+        return task
+    }
+    
 }

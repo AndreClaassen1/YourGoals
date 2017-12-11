@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 @testable import YourGoals
 
+/// base class for unit testing with the core data objects
 class StorageTestCase:XCTestCase {
 
     var manager:GoalsStorageManager!

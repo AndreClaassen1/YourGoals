@@ -21,6 +21,7 @@ protocol EditActionableViewControllerParameter {
     var editActionable:Actionable? { get set }
     var editActionableType:ActionableType? { get set }
     var delegate:EditActionableViewControllerDelegate? { get set }
+    func commitParameter()
 }
 
 /// a controller for editing a task or an actionable
@@ -36,9 +37,24 @@ class EditActionableViewController: UIViewController, EditActionableViewControll
     var editActionableType:ActionableType?
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
+    var parameterCommitted = false
+    
+    /// validate the parameters
+    func commitParameter() {
+        assert(self.manager != nil)
+        assert(self.delegate != nil)
+        assert(self.goal != nil)
+        assert(self.editActionableType != nil)
+        if editActionable != nil {
+            assert(self.editActionable?.type == self.editActionableType)
+        }
+        parameterCommitted = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        assert(parameterCommitted, "The parameter aren't committed")
 
         // Do any additional setup after loading the view.
         self.taskTextView.showBorder()
