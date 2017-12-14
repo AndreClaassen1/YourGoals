@@ -45,6 +45,7 @@ class GoalFactory:StorageManagerWorker {
         
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: image)
+        try self.manager.saveContext()
         return goal
     }
 }

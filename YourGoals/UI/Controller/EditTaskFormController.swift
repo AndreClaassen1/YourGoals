@@ -38,27 +38,39 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
         self.navigationItem.leftBarButtonItem?.target = self
         self.navigationItem.leftBarButtonItem?.action = #selector(cancelTapped(_:))
         
-        self.initializeForm()
+        do {
+            let viewModel = try EditTaskForm(manager: self.manager, goal: self.goal, actionable: self.editActionable)
+            self.createForm(withViewModel: viewModel)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
     
     @objc func cancelTapped(_ barButtonItem: UIBarButtonItem) {
         self.dismiss(animated: false)
     }
     
-    private func initializeForm() {
+    private func createForm(withViewModel viewModel:EditTaskForm) {
         assert(self.parameterCommitted, "The parameter weren't committed")
         form +++
             Section()
             <<< TextRow(tag: EditTaskFormTag.taskTag.rawValue).cellSetup { cell, row in
                 cell.textField.placeholder = row.tag
+                row.value = viewModel[row.tag]!.value
             }
             
-            <<< PushRow<Goal>() { row in
-                row.tag = EditTaskFormTag.goalTag.rawValue
+            <<< PushRow<Goal>(EditTaskFormTag.goalTag.rawValue) { row in
                 row.title = "Select a Goal"
-                row.options = userGoalsByPrio()
-            }
-        
+                row.value = viewModel[row.tag]!.value
+                row.options = viewModel[row.tag]!.options
+                }.onPresent{ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.text = row.selectableValue?.name
+                    }
+                }.cellSetup{ (cell, row) in
+                    cell.textLabel?.text = row.value?.name
+                }
             Section()
                 <<< PushRow<String>() { row in
                 row.tag = EditTaskFormTag.commitDateTag.rawValue
@@ -78,20 +90,4 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
     }
     
     // Mark: - data helper methods
-    
-    /// retrieve an ordered list of goals for the strategy
-    ///
-    /// - Parameter goalTypes: goal types
-    /// - Throws: an array of goals for the strategy
-    func userGoalsByPrio() -> [Goal]  {
-        do {
-            let strategyOrderManager = StrategyOrderManager(manager: self.manager)
-            return try strategyOrderManager.goalsByPrio(withTypes: [GoalType.userGoal] )
-        }
-        catch let error {
-            showNotification(forError: error)
-        }
-        
-        return []
-    }
 }

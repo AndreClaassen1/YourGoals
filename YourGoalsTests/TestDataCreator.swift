@@ -17,7 +17,9 @@ class TestDataCreator:StorageManagerWorker {
     /// - Parameter name: name of the goal
     /// - Returns: the goal
     func createGoal(name: String) -> Goal {
-        return try! GoalFactory(manager: self.manager).create(name: name, prio: 1, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: nil)
+        let strategyManager = StrategyManager(manager: self.manager)
+        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: name, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate))
+        return goal
     }
     
     /// create a task for unit testing for the given goal with the name

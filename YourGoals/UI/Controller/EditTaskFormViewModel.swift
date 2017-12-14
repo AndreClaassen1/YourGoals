@@ -21,14 +21,49 @@ enum EditTaskFormTag:String {
     case commitDateTag = "Commit Date"
 }
 
+protocol FormItem {
+}
+
+//protocol TypedFormItem:FormItem {
+//    associatedtype FormItemType
+//
+//    var value:FormItemType { get }
+//    var options:[FormItemType] { get }
+//}
+
+class TypedFormItem<T>:FormItem {
+    let value:T
+    let options:[T]
+    
+    init(_ value:T) {
+        self.value = value
+        self.options = []
+    }
+    
+    init(value:T, options:[T]) {
+        self.value = value
+        self.options = options
+    }
+    
+}
+
+
 /// a value for the form field
-struct EditTaskFormItem {
-    let value:Any
+class  TextFormItem : TypedFormItem<String> {
+}
+
+class OptionFormItem<T>:TypedFormItem<T> {
+    let valueToText:(T) -> String
+    
+    init(value: T, options:[T], valueToText:@escaping (T) -> String) {
+        self.valueToText = valueToText
+        super.init(value: value, options: options)
+    }
 }
 
 /// this class return all form value entries for the the edit task form object
 class EditTaskForm {
-    var formItems:[EditTaskFormTag: EditTaskFormItem] = [:]
+    var formItems:[EditTaskFormTag: FormItem] = [:]
     let goal:Goal
     let actionable:Actionable?
     let manager:GoalsStorageManager
@@ -50,22 +85,42 @@ class EditTaskForm {
     /// access the edit task form item via the tag
     ///
     /// - Parameter tag: the task form tag (field tag)
-    public subscript(tag: EditTaskFormTag) -> EditTaskFormItem {
+    public subscript<T>(tag: EditTaskFormTag) -> TypedFormItem<T>? {
         guard let item = self.formItems[tag] else {
             NSLog("the tag \(tag) isn't available for this form")
             assertionFailure()
-            return EditTaskFormItem(value: "./.")
+            return nil
         }
         
-        return item
+        guard let typedItem = item as? TypedFormItem<T> else {
+            assertionFailure("couldn't convert item for tag \(tag) to typedItem of type \(T.self)")
+            return nil
+        }
+
+        return typedItem
+    }
+    
+    public subscript<T>(tag: String?) -> TypedFormItem<T>? {
+        guard let tag = tag else {
+            assertionFailure("tag isn't available")
+            return nil
+        }
+        
+        guard let editTaskFormTag = EditTaskFormTag(rawValue: tag) else {
+            assertionFailure("tag \(tag) isn't a valid edittaskformtag")
+            return nil
+        }
+        
+        
+        return self[editTaskFormTag]
     }
 
     /// configure the various form item object needed for the EditTaskForm
     ///
     /// - Throws: a core data exception
     func configure() throws {
-        formItems[EditTaskFormTag.taskTag] = EditTaskFormItem(value: actionable?.name ?? "")
-        formItems[EditTaskFormTag.goalTag] = EditTaskFormItem(value: try selectableGoals())
+        formItems[EditTaskFormTag.taskTag] = TextFormItem(actionable?.name ?? "")
+        formItems[EditTaskFormTag.goalTag] = OptionFormItem<Goal>(value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" })
     }
     
     /// an array of selectable goals
