@@ -57,13 +57,14 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
             Section()
             <<< TextRow(tag: EditTaskFormTag.taskTag.rawValue).cellSetup { cell, row in
                 cell.textField.placeholder = row.tag
-                row.value = viewModel[row.tag]!.value
+                row.value = viewModel.item(tag: row.tag).value
             }
             
             <<< PushRow<Goal>(EditTaskFormTag.goalTag.rawValue) { row in
                 row.title = "Select a Goal"
-                row.value = viewModel[row.tag]!.value
-                row.options = viewModel[row.tag]!.options
+//                row.value = viewModel[row.tag]!.value
+//                let goals:[Goal] = viewModel[row.tag]!.options
+               // row.options = goals
                 }.onPresent{ (_, to) in
                     to.selectableRowCellUpdate = { cell, row in
                         cell.textLabel?.text = row.selectableValue?.name

@@ -22,9 +22,10 @@ class EditTaskFormTests: StorageTestCase {
         
         // act
         let editForm = try! EditTaskForm(manager: self.manager, goal: goal, actionable: task)
+        let taskName:String? = editForm.item(tag: .taskTag).value
         
         // test
-        XCTAssertEqual("A task which should be edited", editForm[.taskTag]!.value)
-        XCTAssertEqual(3, (editForm[.goalTag]!.options as [Goal]).count)
+        XCTAssertEqual("A task which should be edited", taskName)
+        XCTAssertEqual(3, (editForm.item(tag: .goalTag).options as [Goal]).count)
     }
 }

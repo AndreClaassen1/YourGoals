@@ -21,49 +21,48 @@ enum EditTaskFormTag:String {
     case commitDateTag = "Commit Date"
 }
 
-protocol FormItem {
+class FormItem {
+    var tag:EditTaskFormTag
+    
+    init(tag:EditTaskFormTag) {
+        self.tag = tag
+    }
 }
-
-//protocol TypedFormItem:FormItem {
-//    associatedtype FormItemType
-//
-//    var value:FormItemType { get }
-//    var options:[FormItemType] { get }
-//}
 
 class TypedFormItem<T>:FormItem {
     let value:T
     let options:[T]
     
-    init(_ value:T) {
+    init(tag:EditTaskFormTag, value:T) {
         self.value = value
         self.options = []
+        super.init(tag: tag)
     }
     
-    init(value:T, options:[T]) {
+    init(tag:EditTaskFormTag, value:T, options:[T]) {
         self.value = value
         self.options = options
+        super.init(tag: tag)
     }
-    
 }
 
 
 /// a value for the form field
-class  TextFormItem : TypedFormItem<String> {
+class  TextFormItem : TypedFormItem<String?> {
 }
 
 class OptionFormItem<T>:TypedFormItem<T> {
     let valueToText:(T) -> String
     
-    init(value: T, options:[T], valueToText:@escaping (T) -> String) {
+    init(tag: EditTaskFormTag, value: T, options:[T], valueToText:@escaping (T) -> String) {
         self.valueToText = valueToText
-        super.init(value: value, options: options)
+        super.init(tag: tag, value: value, options: options)
     }
 }
 
 /// this class return all form value entries for the the edit task form object
 class EditTaskForm {
-    var formItems:[EditTaskFormTag: FormItem] = [:]
+    var formItems = [FormItem]()
     let goal:Goal
     let actionable:Actionable?
     let manager:GoalsStorageManager
@@ -82,45 +81,42 @@ class EditTaskForm {
         try configure()
     }
     
-    /// access the edit task form item via the tag
-    ///
-    /// - Parameter tag: the task form tag (field tag)
-    public subscript<T>(tag: EditTaskFormTag) -> TypedFormItem<T>? {
-        guard let item = self.formItems[tag] else {
-            NSLog("the tag \(tag) isn't available for this form")
-            assertionFailure()
-            return nil
+    public func item<T>(tag: EditTaskFormTag) -> TypedFormItem<T> {
+        guard let item = self.formItems.first(where: {$0.tag == tag}) else {
+            fatalError("the tag \(tag) isn't available for this form")
         }
         
         guard let typedItem = item as? TypedFormItem<T> else {
-            assertionFailure("couldn't convert item for tag \(tag) to typedItem of type \(T.self)")
-            return nil
+            fatalError("item with type \(T.self) is for \(tag) not available")
         }
-
+        
         return typedItem
     }
     
-    public subscript<T>(tag: String?) -> TypedFormItem<T>? {
+    /// get an typed form item out of the view model. this is method is optimized for row types for Eureka
+    ///
+    /// - Parameter tag: the tag
+    /// - Returns: a typed form item
+    public func item<T>(tag: String?) -> TypedFormItem<T> {
         guard let tag = tag else {
-            assertionFailure("tag isn't available")
-            return nil
+            fatalError("tag isn't available")
         }
         
         guard let editTaskFormTag = EditTaskFormTag(rawValue: tag) else {
-            assertionFailure("tag \(tag) isn't a valid edittaskformtag")
-            return nil
+            fatalError("couldn't convert tag \(tag) to EditTaskFormTag")
         }
+    
+        let typedItem = item(tag: editTaskFormTag) as TypedFormItem<T>
         
-        
-        return self[editTaskFormTag]
+        return typedItem
     }
-
-    /// configure the various form item object needed for the EditTaskForm
+    
+    /// configure the view model with various form item object needed for the EditTaskForm
     ///
     /// - Throws: a core data exception
     func configure() throws {
-        formItems[EditTaskFormTag.taskTag] = TextFormItem(actionable?.name ?? "")
-        formItems[EditTaskFormTag.goalTag] = OptionFormItem<Goal>(value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" })
+        formItems.append(TextFormItem(tag: .taskTag, value: actionable?.name ?? ""))
+        formItems.append(OptionFormItem<Goal>(tag: .goalTag, value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
     }
     
     /// an array of selectable goals
