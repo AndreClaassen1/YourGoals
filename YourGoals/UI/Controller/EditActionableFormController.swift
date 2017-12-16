@@ -1,5 +1,5 @@
 //
-//  EditTaskFormController.swift
+//  EditActionableFormController.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 04.12.17.
@@ -9,7 +9,7 @@
 import Foundation
 import Eureka
 
-class EditTaskFormController : FormViewController, EditActionableViewControllerParameter {
+class EditActionableFormController : FormViewController, EditActionableViewControllerParameter {
     var goal:Goal!
     var editActionable:Actionable?
     var editActionableType:ActionableType?
@@ -41,7 +41,14 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
         self.navigationItem.rightBarButtonItem?.action = #selector(saveTapped(_:))
         
         do {
-            let viewModel = try EditTaskForm(manager: self.manager, goal: self.goal, actionable: self.editActionable)
+            let formModelCreator = ActionableViewModelCreator(manager: self.manager)
+            var viewModel:FormViewModel!
+            if let actionable = self.editActionable {
+                viewModel = try formModelCreator.createViewModel(for: actionable)
+            } else {
+                viewModel = try formModelCreator.createViewModel(for: self.goal, andType: self.editActionableType!)
+            }
+            
             self.createForm(withViewModel: viewModel)
         }
         catch let error {
@@ -49,7 +56,7 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
         }
     }
  
-    private func createForm(withViewModel viewModel:EditTaskForm) {
+    private func createForm(withViewModel viewModel:FormViewModel) {
         assert(self.parameterCommitted, "The parameter weren't committed")
         form
             +++ Section()
@@ -62,7 +69,7 @@ class EditTaskFormController : FormViewController, EditActionableViewControllerP
             
             <<< PushRow<Goal>(EditTaskFormTag.goalTag.rawValue) { row in
                 row.title = "Select a Goal"
-                let goalItem:TypedFormItem<Goal> = viewModel.item(tag: .goalTag) as TypedFormItem<Goal>
+                let goalItem:TypedFormItem<Goal> = viewModel.item(tag: row.tag) as TypedFormItem<Goal>
                 row.value = goalItem.value
                 row.options = goalItem.options
                 }.onPresent{ (_, to) in

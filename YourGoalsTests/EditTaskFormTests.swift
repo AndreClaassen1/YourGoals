@@ -21,11 +21,15 @@ class EditTaskFormTests: StorageTestCase {
         let _ = self.testDataCreator.createGoal(name: "Goal 3")
         
         // act
-        let editForm = try! EditTaskForm(manager: self.manager, goal: goal, actionable: task)
-        let taskName:String? = editForm.item(tag: .taskTag).value
+        let creator = ActionableViewModelCreator(manager: self.manager)
+        let editForm = try! creator.createViewModel(for: task)
+        let taskName:String? = editForm.item(tag: EditTaskFormTag.taskTag.rawValue).value
+        let title:String? = editForm.item(tag: EditTaskFormTag.titleTag.rawValue).value
         
         // test
+        XCTAssertEqual("Edit Task", title)
         XCTAssertEqual("A task which should be edited", taskName)
-        XCTAssertEqual(3, (editForm.item(tag: .goalTag).options as [Goal]).count)
+        XCTAssertEqual(3, (editForm.item(tag: EditTaskFormTag.goalTag.rawValue).options as [Goal]).count)
+    
     }
 }

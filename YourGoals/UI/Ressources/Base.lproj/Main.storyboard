@@ -230,7 +230,7 @@
         <!--Edit Task Form  Controller-->
         <scene sceneID="VQv-MJ-XAN">
             <objects>
-                <viewController id="XS4-gN-Bmt" userLabel="Edit Task Form  Controller" customClass="EditTaskFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XS4-gN-Bmt" userLabel="Edit Task Form  Controller" customClass="EditActionableFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Nu-8t-oPO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
