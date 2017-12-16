@@ -120,7 +120,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     func requestForEdit(actionable: Actionable) {
         self.editActionable = actionable
         self.editActionableType = actionable.type
-        performSegue(withIdentifier: "presentEditTask", sender: self)
+        performSegue(withIdentifier: "presentEditActionable", sender: self)
     }
     
     func goalChanged(goal: Goal) {

@@ -142,11 +142,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         }
     
         switch identifier {
-        case "presentEditTask":
-            let parameter = segue.destination as! EditActionableViewControllerParameter
-            setEditActionableViewControllerParameter(parameter: parameter)
-            return
-        case "presentEditTaskForm":
+        case "presentEditActionable":
             let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
             setEditActionableViewControllerParameter(parameter: parameter)
             return
@@ -226,12 +222,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     /// - Parameter task: the task
     func requestForEdit(actionable: Actionable) {
         self.editActionable = actionable
-        
-        if SettingsUserDefault.standard.newFunctions {
-            performSegue(withIdentifier: "presentEditTaskForm", sender: self)
-        } else {
-            performSegue(withIdentifier: "presentEditTask", sender: self)
-        }
+        performSegue(withIdentifier: "presentEditActionable", sender: self)
     }
     
     func goalChanged(goal: Goal) {
@@ -270,12 +261,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBAction func addNewActionableTouched(_ sender: Any) {
         
         self.editActionable = nil
-        if SettingsUserDefault.standard.newFunctions {
-            performSegue(withIdentifier: "presentEditTaskForm", sender: self)
-        } else {
-            performSegue(withIdentifier: "presentEditTask", sender: self)
-        }
-        
+        performSegue(withIdentifier: "presentEditActionable", sender: self)
     }
     
 }

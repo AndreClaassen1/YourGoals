@@ -9,6 +9,21 @@
 import Foundation
 import Eureka
 
+protocol EditActionableViewControllerDelegate {
+    func createNewActionable(actionableInfo: ActionableInfo) throws
+    func updateActionable(actionable: Actionable,  updateInfo: ActionableInfo) throws
+    func deleteActionable(actionable: Actionable) throws
+}
+
+protocol EditActionableViewControllerParameter {
+    var manager:GoalsStorageManager! { get set }
+    var goal:Goal! { get set }
+    var editActionable:Actionable? { get set }
+    var editActionableType:ActionableType? { get set }
+    var delegate:EditActionableViewControllerDelegate? { get set }
+    func commitParameter()
+}
+
 /// new form controller for editing tasks and habits based on eureka
 class EditActionableFormController : FormViewController, EditActionableViewControllerParameter {
     var goal:Goal!

@@ -74,7 +74,6 @@
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
 		7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */; };
 		7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */; };
-		7B994E011FA21CD300B704E1 /* EditActionableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */; };
 		7B994E031FA21CEC00B704E1 /* EditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */; };
 		7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E041FA225B800B704E1 /* Date+dateHelper.swift */; };
 		7B994E071FA2261A00B704E1 /* EditGoalViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */; };
@@ -318,7 +317,6 @@
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalCell.swift; sourceTree = "<group>"; };
 		7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalCell.xib; sourceTree = "<group>"; };
-		7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionableViewController.swift; sourceTree = "<group>"; };
 		7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewController.swift; sourceTree = "<group>"; };
 		7B994E041FA225B800B704E1 /* Date+dateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+dateHelper.swift"; sourceTree = "<group>"; };
 		7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditGoalViewController+ImagePicker.swift"; sourceTree = "<group>"; };
@@ -500,7 +498,6 @@
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
-				7B994E001FA21CD300B704E1 /* EditActionableViewController.swift */,
 				7BF0B02B1FDDAF84008165FA /* FormViewModel.swift */,
 				7BB6E0061FE5A182006358CA /* ActionableViewModelCreator.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
@@ -1329,7 +1326,6 @@
 				7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */,
 				7B6E35AF1FC6072300F55089 /* TodayAllActionablesDataSource.swift in Sources */,
 				7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */,
-				7B994E011FA21CD300B704E1 /* EditActionableViewController.swift in Sources */,
 				7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
