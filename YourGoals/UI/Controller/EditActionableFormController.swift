@@ -9,6 +9,7 @@
 import Foundation
 import Eureka
 
+/// new form controller for editing tasks and habits based on eureka
 class EditActionableFormController : FormViewController, EditActionableViewControllerParameter {
     var goal:Goal!
     var editActionable:Actionable?
@@ -22,7 +23,6 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         assert(self.delegate != nil)
         assert(self.goal != nil)
         assert(self.editActionableType != nil)
-        assert(self.editActionableType == .task)
         if editActionable != nil {
             assert(self.editActionable?.type == self.editActionableType)
         }
@@ -32,30 +32,36 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewModel = createViewModel()
+        
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.topItem?.title = "New Task"
+        self.navigationController?.navigationBar.topItem?.title = viewModel.item(tag: EditTaskFormTag.titleTag.rawValue).value
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem?.target = self
         self.navigationItem.leftBarButtonItem?.action = #selector(cancelTapped(_:))
         self.navigationItem.rightBarButtonItem?.target = self
         self.navigationItem.rightBarButtonItem?.action = #selector(saveTapped(_:))
         
+        self.createForm(withViewModel: viewModel)
+    }
+ 
+    func createViewModel() -> FormViewModel {
+        var viewModel:FormViewModel!
         do {
             let formModelCreator = ActionableViewModelCreator(manager: self.manager)
-            var viewModel:FormViewModel!
             if let actionable = self.editActionable {
                 viewModel = try formModelCreator.createViewModel(for: actionable)
             } else {
                 viewModel = try formModelCreator.createViewModel(for: self.goal, andType: self.editActionableType!)
             }
-            
-            self.createForm(withViewModel: viewModel)
         }
         catch let error {
             self.showNotification(forError: error)
         }
+        
+        return viewModel
     }
- 
+    
     private func createForm(withViewModel viewModel:FormViewModel) {
         assert(self.parameterCommitted, "The parameter weren't committed")
         form
@@ -85,11 +91,6 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
                 row.tag = EditTaskFormTag.commitDateTag.rawValue
                 row.title = "Select a commit date"
                 row.options = ["Today", "tomorrow", "Tuesday"]
-                
-                /// <<< Commit for Day
-                ///
-                ///     Uncommit, Today, Tomorrow, Di, Mi,Do, Fr, Sa, Son
-                ///     Schedule
             }
             +++ Section()
             <<< TextAreaRow() {
@@ -139,7 +140,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
             return nil
         }
         
-        return ActionableInfo(type: .task, name: name)
+        return ActionableInfo(type: editActionableType!, name: name)
     }
     
     

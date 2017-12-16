@@ -34,7 +34,7 @@ class ActionableViewModelCreator:StorageManagerWorker {
     /// - Throws: a core data exception
     func createViewModel(for goal:Goal, andType type: ActionableType) throws -> FormViewModel {
         let viewModel = FormViewModel()
-        viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "New \(type.asString)"))
+        viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "New \(type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  ""))
         viewModel.add(item: OptionFormItem<Goal>(tag: EditTaskFormTag.goalTag.rawValue, value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
         return viewModel
