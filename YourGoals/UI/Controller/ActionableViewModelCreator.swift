@@ -22,8 +22,6 @@ enum EditTaskFormTag:String  {
     case commitDateTag
 }
 
-/// a tuple representing a commit date in the future and a string representation
-typealias CommitDateTuple = (text:String, date:Date?)
 
 /// this class creates a view model for a new/existing task or habit
 class ActionableViewModelCreator:StorageManagerWorker {
@@ -39,7 +37,14 @@ class ActionableViewModelCreator:StorageManagerWorker {
         let viewModel = FormViewModel()
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "New \(type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  ""))
-        viewModel.add(item: OptionFormItem<Goal>(tag: EditTaskFormTag.goalTag.rawValue, value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
+        try self.addGoal(goal: goal, toViewModel: viewModel)
+        switch type {
+        case .task:
+            try self.addCommitDate(date: nil, toViewModel: viewModel)
+        case .habit:
+            break
+        }
+        
         return viewModel
     }
     
@@ -52,8 +57,24 @@ class ActionableViewModelCreator:StorageManagerWorker {
         let viewModel = FormViewModel()
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "Edit \(actionable.type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  actionable.name))
-        viewModel.add(item: OptionFormItem<Goal>(tag: EditTaskFormTag.goalTag.rawValue, value: actionable.goal!, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
+        try self.addGoal(goal: actionable.goal!, toViewModel: viewModel)
         return viewModel
+    }
+    
+    /// add a selectable goal to the view model
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - viewModel: the view model
+    /// - Throws: a core data exception
+    func addGoal(goal: Goal, toViewModel viewModel:FormViewModel) throws {
+        viewModel.add(item: OptionFormItem<Goal>(tag: EditTaskFormTag.goalTag.rawValue, value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
+    }
+    
+    func addCommitDate(date: Date?, toViewModel viewModel:FormViewModel) throws {
+        
+        
+        
     }
     
     /// an array of selectable goals for this actionable
@@ -65,20 +86,5 @@ class ActionableViewModelCreator:StorageManagerWorker {
         let goals = try strategyOrderManager.goalsByPrio(withTypes: [GoalType.userGoal] )
         return goals
     }
-    
-    /// create a list of commit dates for the next 7 days with a string
-    /// representation of the date
-    ///
-    /// None (date = nil)
-    /// Today
-    /// Tommorrow
-    /// Tuesday (12/19/2017) (for 19.12.2017
-    /// Wednesday
-    ///
-    /// - Parameter date: start date for the list
-    /// - Returns: a list of formatted dates
-    func selectableCommitDates(startingWith date:Date, numberOfDays:Int) -> [CommitDateTuple] {
-        
-        return []
-    }
+
 }

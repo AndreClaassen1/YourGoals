@@ -8,6 +8,8 @@
 
 import Foundation
 
+// this extension is based on ideas of
+// http://adampreble.net/blog/2014/09/iterating-over-range-of-dates-swift/
 extension Calendar {
     
     /// create a range from start date to end date. default is stepping a day with interval 1

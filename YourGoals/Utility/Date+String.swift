@@ -39,6 +39,13 @@ extension Date {
             return NSLocalizedString("Yesterday", comment: "yesterday")
         }
         
+        let sevenDaysFromNow = Date().addDaysToDate(7)
+        if date >= Date() && date <= sevenDaysFromNow {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
+        }
+        
         return date.formattedInLocaleFormat()
     }
 }
