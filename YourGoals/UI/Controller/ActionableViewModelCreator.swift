@@ -22,6 +22,9 @@ enum EditTaskFormTag:String  {
     case commitDateTag
 }
 
+/// a tuple representing a commit date in the future and a string representation
+typealias CommitDateTuple = (text:String, date:Date?)
+
 /// this class creates a view model for a new/existing task or habit
 class ActionableViewModelCreator:StorageManagerWorker {
     
@@ -61,5 +64,21 @@ class ActionableViewModelCreator:StorageManagerWorker {
         let strategyOrderManager = StrategyOrderManager(manager: self.manager)
         let goals = try strategyOrderManager.goalsByPrio(withTypes: [GoalType.userGoal] )
         return goals
+    }
+    
+    /// create a list of commit dates for the next 7 days with a string
+    /// representation of the date
+    ///
+    /// None (date = nil)
+    /// Today
+    /// Tommorrow
+    /// Tuesday (12/19/2017) (for 19.12.2017
+    /// Wednesday
+    ///
+    /// - Parameter date: start date for the list
+    /// - Returns: a list of formatted dates
+    func selectableCommitDates(startingWith date:Date, numberOfDays:Int) -> [CommitDateTuple] {
+        
+        return []
     }
 }

@@ -38,7 +38,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     
     internal let presentStoryAnimationController = PresentStoryViewAnimationController(origin: .fromMiniCell)
     internal let dismissStoryAnimationController = DismissStoryViewAnimationController(origin: .fromMiniCell)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.originalTasksHeight = activeTasksHeight.constant
@@ -53,7 +53,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         // Do any additional setup after loading the view.
         self.reloadAll()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,28 +68,39 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         super.viewDidAppear(animated)
         self.reloadAll()
     }
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
-        if let detailController = destinationViewController as? GoalDetailViewController {
+        guard let identifier = segue.identifier else {
+            fatalError("couldn't process segue with no identifier")
+        }
+        
+        switch identifier {
+        case "presentEditActionable":
+            var parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
+            
+            parameter.goal = self.editActionable?.goal
+            parameter.delegate = self
+            parameter.editActionable = self.editActionable
+            parameter.editActionableType = self.editActionableType
+            parameter.manager = self.manager
+            parameter.commitParameter()
+            self.editActionable = nil
+            self.editActionableType = nil
+            
+        case "presentGoal":
+            guard let detailController = destinationViewController as? GoalDetailViewController else {
+                fatalError("couldn't extract goal view controller for segue presentEditGoal")
+            }
             detailController.transitioningDelegate = self
             detailController.goal = self.selectedGoal
             detailController.delegate = self
-            return
-        }
         
-        if var editTaskController = segue.destination as? EditActionableViewControllerParameter {
-            editTaskController.goal = self.editActionable?.goal
-            editTaskController.delegate = self
-            editTaskController.editActionable = self.editActionable
-            editTaskController.editActionableType = self.editActionableType
-            editTaskController.manager = self.manager
-            editTaskController.commitParameter()
-            self.editActionable = nil
-            self.editActionableType = nil
+        default:
+            fatalError("couldn't process segue: \(String(describing: segue.identifier))")
         }
     }
     
@@ -138,9 +149,9 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     func progressChanged(actionable: Actionable) {
         self.reloadAll()
     }
-
+    
     // MARK: - GoalDetailViewControllerDelegate
-
+    
     func createNewActionable(actionableInfo: ActionableInfo) throws {
         
     }

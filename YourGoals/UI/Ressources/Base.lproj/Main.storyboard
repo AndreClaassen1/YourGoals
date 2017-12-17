@@ -225,12 +225,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VrB-cY-nLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="920"/>
+            <point key="canvasLocation" x="291" y="1018"/>
         </scene>
-        <!--Edit Task Form  Controller-->
+        <!--Edit Actionable Form  Controller-->
         <scene sceneID="VQv-MJ-XAN">
             <objects>
-                <viewController id="XS4-gN-Bmt" userLabel="Edit Task Form  Controller" customClass="EditActionableFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XS4-gN-Bmt" userLabel="Edit Actionable Form  Controller" customClass="EditActionableFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Nu-8t-oPO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87w-FM-P24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2230" y="928"/>
+            <point key="canvasLocation" x="893" y="1054"/>
         </scene>
         <!--Today-->
         <scene sceneID="lHh-c6-cQF">
@@ -429,6 +429,7 @@
                         <outlet property="habitsTableHeight" destination="XvF-0a-Ony" id="WRd-5V-GYB"/>
                         <outlet property="habitsTableView" destination="RgX-QO-7ea" id="wUt-Di-26Y"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentGoal" id="8yY-7N-175"/>
+                        <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="Cp9-T4-e9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07J-Pi-17x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -653,7 +654,8 @@
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6eA-8s-RYt"/>
+        <segue reference="8yY-7N-175"/>
+        <segue reference="Cp9-T4-e9d"/>
         <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>
 </document>

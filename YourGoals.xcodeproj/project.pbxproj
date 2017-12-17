@@ -35,6 +35,8 @@
 		7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */; };
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
+		7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */; };
+		7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */; };
 		7B3FCFAF1FC6139C004D9E32 /* Goal+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FCFAE1FC6139C004D9E32 /* Goal+Date.swift */; };
 		7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */; };
 		7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */; };
@@ -278,6 +280,8 @@
 		7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentTests.swift; sourceTree = "<group>"; };
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
+		7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateRange.swift"; sourceTree = "<group>"; };
+		7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		7B3FCFAE1FC6139C004D9E32 /* Goal+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Date.swift"; sourceTree = "<group>"; };
 		7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalContentView.swift; sourceTree = "<group>"; };
 		7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalContentView.xib; sourceTree = "<group>"; };
@@ -534,12 +538,13 @@
 			children = (
 				7B17DD811F9E73A2008E90A2 /* Reusable.swift */,
 				7B5FA3D21FA33BC5004556C1 /* TimeCapsule.swift */,
-				7B994E041FA225B800B704E1 /* Date+dateHelper.swift */,
 				7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */,
 				7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */,
 				7B9E28EE1FA65C9400BB6003 /* Array+Rearrange.swift */,
 				7B9A19631FA7199B002CA72B /* UITextView+Border.swift */,
+				7B994E041FA225B800B704E1 /* Date+dateHelper.swift */,
 				7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */,
+				7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */,
 				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 				7BF5629F1FD563FD00A4DF6C /* Settings.swift */,
 			);
@@ -711,6 +716,7 @@
 				7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */,
 				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
 				7BF0B02D1FDE5BCF008165FA /* EditTaskFormTests.swift */,
+				7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -1337,6 +1343,7 @@
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
 				7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */,
+				7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */,
 				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
 				7BE4BB5B1FC811A100E1BEF9 /* InitializerContext.swift in Sources */,
 				7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */,
@@ -1371,6 +1378,7 @@
 				7BF0B02E1FDE5BCF008165FA /* EditTaskFormTests.swift in Sources */,
 				7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
+				7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */,
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */,
 				7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */,
