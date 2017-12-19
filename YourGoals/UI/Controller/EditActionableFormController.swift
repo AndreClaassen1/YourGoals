@@ -159,11 +159,26 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     func actionableInfoFromFields() -> ActionableInfo? {
         let row:TextRow = self.form.rowBy(tag: EditTaskFormTag.taskTag.rawValue)!
         guard let name = row.value else {
-            NSLog("couldn't read name of task or habit")
-            return nil
+            fatalError("couldn't read name of task or habit")
+        }
+   
+        guard let rowGoal:PushRow<Goal> = self.form.rowBy(tag: EditTaskFormTag.goalTag.rawValue) else {
+            fatalError("couldn't extract row for Goal")
         }
         
-        return ActionableInfo(type: editActionableType!, name: name)
+        let parentGoal = rowGoal.value
+        
+        var commitDate:Date? = nil
+        
+        if self.editActionableType == .task {
+            guard let rowCommitDate:PushRow<CommitDateTuple> = self.form.rowBy(tag: EditTaskFormTag.commitDateTag.rawValue) else {
+                fatalError("couldn't extract row by commit date")
+            }
+            
+            commitDate = rowCommitDate.value?.date
+        }
+        
+        return ActionableInfo(type: editActionableType!, name: name, commitDate: commitDate, parentGoal: parentGoal)
     }
     
     
