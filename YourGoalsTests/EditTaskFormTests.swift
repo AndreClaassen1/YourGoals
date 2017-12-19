@@ -14,15 +14,15 @@ class EditTaskFormTests: StorageTestCase {
     
     func testFormForExistingTask() {
         // setup
+        let testDate = Date.dateWithYear(2017, month: 12, day: 19)
         let goal = self.testDataCreator.createGoal(name: "Goal for the Edit Form")
         let _ = self.testDataCreator.createGoal(name: "Goal 2")
         let _ = self.testDataCreator.createGoal(name: "Goal 3")
-        
         let task = self.testDataCreator.createTask(name: "A task which should be edited", forGoal: goal)
 
         // act
         let creator = ActionableViewModelCreator(manager: self.manager)
-        let editForm = try! creator.createViewModel(for: task)
+        let editForm = try! creator.createViewModel(for: task, atDate: testDate)
         let taskName:String? = editForm.item(tag: EditTaskFormTag.taskTag.rawValue).value
         let title:String? = editForm.item(tag: EditTaskFormTag.titleTag.rawValue).value
         
@@ -34,11 +34,12 @@ class EditTaskFormTests: StorageTestCase {
     
     func testFormForNewTask() {
         // setup
+        let testDate = Date.dateWithYear(2017, month: 12, day: 19)
         let goal = self.testDataCreator.createGoal(name: "Goal for the Edit Form")
         
         // act
         let creator = ActionableViewModelCreator(manager: self.manager)
-        let editForm = try! creator.createViewModel(for: goal, andType: .task)
+        let editForm = try! creator.createViewModel(for: goal, andType: .task, atDate: testDate)
         let title:String? = editForm.item(tag: EditTaskFormTag.titleTag.rawValue).value
         
         // test

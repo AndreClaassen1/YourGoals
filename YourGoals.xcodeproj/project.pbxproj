@@ -37,7 +37,7 @@
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
 		7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */; };
 		7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */; };
-		7B3FA9DA1FE670290052B587 /* CommitDatesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D91FE670290052B587 /* CommitDatesCreator.swift */; };
+		7B3FA9DA1FE670290052B587 /* SelectableCommitDatesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */; };
 		7B3FA9DC1FE6E3170052B587 /* CommitDateCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9DB1FE6E3170052B587 /* CommitDateCreatorTests.swift */; };
 		7B3FCFAF1FC6139C004D9E32 /* Goal+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FCFAE1FC6139C004D9E32 /* Goal+Date.swift */; };
 		7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */; };
@@ -284,7 +284,7 @@
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
 		7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateRange.swift"; sourceTree = "<group>"; };
 		7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
-		7B3FA9D91FE670290052B587 /* CommitDatesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDatesCreator.swift; sourceTree = "<group>"; };
+		7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCommitDatesCreator.swift; sourceTree = "<group>"; };
 		7B3FA9DB1FE6E3170052B587 /* CommitDateCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDateCreatorTests.swift; sourceTree = "<group>"; };
 		7B3FCFAE1FC6139C004D9E32 /* Goal+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Date.swift"; sourceTree = "<group>"; };
 		7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalContentView.swift; sourceTree = "<group>"; };
@@ -507,7 +507,7 @@
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
 				7BF0B02B1FDDAF84008165FA /* FormViewModel.swift */,
-				7B3FA9D91FE670290052B587 /* CommitDatesCreator.swift */,
+				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
 				7BB6E0061FE5A182006358CA /* ActionableViewModelCreator.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
@@ -1356,7 +1356,7 @@
 				7BF5629E1FD5614200A4DF6C /* SettingsViewController.swift in Sources */,
 				7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
-				7B3FA9DA1FE670290052B587 /* CommitDatesCreator.swift in Sources */,
+				7B3FA9DA1FE670290052B587 /* SelectableCommitDatesCreator.swift in Sources */,
 				7B6E35AD1FC6006100F55089 /* ActionableDataSourceProvider.swift in Sources */,
 				7B994E0C1FA228E000B704E1 /* ActionableInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,

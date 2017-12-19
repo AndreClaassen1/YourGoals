@@ -10,8 +10,9 @@ import Foundation
 
 /// the form tags for the FormViewModel
 ///
-/// A tag is a unique field identifier
+/// **Hint**: A tag is a unique field identifier
 ///
+/// - titleTag: the tag for the title in the navigation bar of the form
 /// - taskTag: the tag id of the task
 /// - goalTag: the tag id of the selectable goal
 /// - commitDateTag: the task id of the commit date
@@ -22,7 +23,6 @@ enum EditTaskFormTag:String  {
     case commitDateTag
 }
 
-
 /// this class creates a view model for a new/existing task or habit
 class ActionableViewModelCreator:StorageManagerWorker {
     
@@ -31,33 +31,33 @@ class ActionableViewModelCreator:StorageManagerWorker {
     /// - Parameters:
     ///   - goal: for this goal
     ///   - type: with this type (task or habit)
+    ///     date: the date of the day for creating a list of commit dates
+    ///
     /// - Returns: the view model
     /// - Throws: a core data exception
-    func createViewModel(for goal:Goal, andType type: ActionableType) throws -> FormViewModel {
+    func createViewModel(for goal:Goal, andType type: ActionableType, atDate date: Date) throws -> FormViewModel {
         let viewModel = FormViewModel()
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "New \(type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  ""))
-        try self.addGoal(goal: goal, toViewModel: viewModel)
-        switch type {
-        case .task:
-            try self.addCommitDate(date: nil, toViewModel: viewModel)
-        case .habit:
-            break
-        }
-        
+        try self.add(goal: goal, toViewModel: viewModel)
+        self.add(commitDate: nil, startingWithDate: date, toViewModel: viewModel)
         return viewModel
     }
     
     /// create a view mode for an existing actionable
     ///
-    /// - Parameter actionable: the actionable
+    /// - Parameters
+    ///     actionable: the actionable
+    ///     date: the date of the day for creating a list of commit dates
+    ///
     /// - Returns: a form view model for this actionable
     /// - Throws: a core data exception
-    func createViewModel(for actionable:Actionable) throws -> FormViewModel {
+    func createViewModel(for actionable:Actionable, atDate date: Date) throws -> FormViewModel {
         let viewModel = FormViewModel()
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "Edit \(actionable.type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  actionable.name))
-        try self.addGoal(goal: actionable.goal!, toViewModel: viewModel)
+        try self.add(goal: actionable.goal!, toViewModel: viewModel)
+        self.add(commitDate: actionable.commitmentDate, startingWithDate: date, toViewModel: viewModel)
         return viewModel
     }
     
@@ -67,14 +67,23 @@ class ActionableViewModelCreator:StorageManagerWorker {
     ///   - goal: the goal
     ///   - viewModel: the view model
     /// - Throws: a core data exception
-    func addGoal(goal: Goal, toViewModel viewModel:FormViewModel) throws {
+    func add(goal: Goal, toViewModel viewModel:FormViewModel) throws {
         viewModel.add(item: OptionFormItem<Goal>(tag: EditTaskFormTag.goalTag.rawValue, value: goal, options: try selectableGoals(), valueToText: { $0.name ?? "no goal name" }))
     }
     
-    func addCommitDate(date: Date?, toViewModel viewModel:FormViewModel) throws {
-        
-        
-        
+    /// add a list of easy selectable commit dates to the view model
+    ///
+    /// - Parameters:
+    ///   - date: a commit date
+    ///   - viewModel: the view model
+    /// - Throws: a core data excepiton
+    func add(commitDate: Date?, startingWithDate date:Date, toViewModel viewModel:FormViewModel)  {
+        let commitDateCreator = SelectableCommitDatesCreator()
+        let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: commitDate)
+        let value = commitDateCreator.dateAsTuple(date: commitDate)
+        let item = OptionFormItem<CommitDateTuple>(tag: EditTaskFormTag.commitDateTag.rawValue, value: value, options: tuples,
+                                                   valueToText: { $0.text })
+        viewModel.add(item: item)
     }
     
     /// an array of selectable goals for this actionable

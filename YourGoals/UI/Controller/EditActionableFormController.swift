@@ -65,9 +65,9 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         do {
             let formModelCreator = ActionableViewModelCreator(manager: self.manager)
             if let actionable = self.editActionable {
-                viewModel = try formModelCreator.createViewModel(for: actionable)
+                viewModel = try formModelCreator.createViewModel(for: actionable, atDate: Date())
             } else {
-                viewModel = try formModelCreator.createViewModel(for: self.goal, andType: self.editActionableType!)
+                viewModel = try formModelCreator.createViewModel(for: self.goal, andType: self.editActionableType!, atDate: Date())
             }
         }
         catch let error {
@@ -102,10 +102,13 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
                     cell.detailTextLabel?.text = row.value?.name
             }
             +++ Section()
-            <<< PushRow<String>() { row in
+            <<< PushRow<CommitDateTuple>() { row in
                 row.tag = EditTaskFormTag.commitDateTag.rawValue
+                let item:OptionFormItem<CommitDateTuple> = viewModel.item(tag: row.tag) as! OptionFormItem<CommitDateTuple>
+                
                 row.title = "Select a commit date"
-                row.options = ["Today", "tomorrow", "Tuesday"]
+                row.value = item.value
+                row.options = item.options
             }
             +++ Section()
             <<< TextAreaRow() {

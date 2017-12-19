@@ -13,7 +13,7 @@ class CommitDateCreatorTests: XCTestCase {
     
     func testCommitDates() {
         // setup
-        let creator = CommitDateCreator()
+        let creator = SelectableCommitDatesCreator()
         
         // act
         let tuples = creator.selectableCommitDates(startingWith: Date(), numberOfDays: 10, includingDate: Date.dateWithYear(2017, month: 11, day: 30 ))
