@@ -40,7 +40,7 @@ class ActionableViewModelCreator:StorageManagerWorker {
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "New \(type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  ""))
         try self.add(goal: goal, toViewModel: viewModel)
-        self.add(commitDate: nil, startingWithDate: date, toViewModel: viewModel)
+        self.add(forType: type, commitDate: nil, startingWithDate: date, toViewModel: viewModel)
         return viewModel
     }
     
@@ -57,7 +57,7 @@ class ActionableViewModelCreator:StorageManagerWorker {
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.titleTag.rawValue, value:  "Edit \(actionable.type.asString())"))
         viewModel.add(item: TextFormItem(tag: EditTaskFormTag.taskTag.rawValue, value:  actionable.name))
         try self.add(goal: actionable.goal!, toViewModel: viewModel)
-        self.add(commitDate: actionable.commitmentDate, startingWithDate: date, toViewModel: viewModel)
+        self.add(forType: actionable.type, commitDate: actionable.commitmentDate, startingWithDate: date, toViewModel: viewModel)
         return viewModel
     }
     
@@ -74,15 +74,19 @@ class ActionableViewModelCreator:StorageManagerWorker {
     /// add a list of easy selectable commit dates to the view model
     ///
     /// - Parameters:
-    ///   - date: a commit date
+    ///   - type: selectable commit dates are only available for tassk
+    ///   - commitDate: a (optional) commit date
+    ///   - date: today date
     ///   - viewModel: the view model
-    /// - Throws: a core data excepiton
-    func add(commitDate: Date?, startingWithDate date:Date, toViewModel viewModel:FormViewModel)  {
+    func add(forType type:ActionableType, commitDate: Date?, startingWithDate date:Date, toViewModel viewModel:FormViewModel)  {
         let commitDateCreator = SelectableCommitDatesCreator()
         let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: commitDate)
         let value = commitDateCreator.dateAsTuple(date: commitDate)
-        let item = OptionFormItem<CommitDateTuple>(tag: EditTaskFormTag.commitDateTag.rawValue, value: value, options: tuples,
-                                                   valueToText: { $0.text })
+        let item = OptionFormItem<CommitDateTuple>(tag: EditTaskFormTag.commitDateTag.rawValue,
+                                                   value: value, options: tuples,
+                                                   valueToText: { $0.text }
+        )
+
         viewModel.add(item: item)
     }
     

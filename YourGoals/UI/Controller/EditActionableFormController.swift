@@ -101,11 +101,16 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
                     cell.textLabel?.text = "Goal"
                     cell.detailTextLabel?.text = row.value?.name
             }
-            +++ Section()
+            
+            +++ Section() {
+                section in
+                section.hidden = Condition.function([], { (_) -> Bool in
+                    self.editActionableType == .habit
+                })
+            }
             <<< PushRow<CommitDateTuple>() { row in
                 row.tag = EditTaskFormTag.commitDateTag.rawValue
                 let item:OptionFormItem<CommitDateTuple> = viewModel.item(tag: row.tag) as! OptionFormItem<CommitDateTuple>
-                
                 row.title = "Select a commit date"
                 row.value = item.value
                 row.options = item.options
