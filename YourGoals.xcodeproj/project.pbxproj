@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		262C7DD718E1DCF833988CC4 /* Pods_YourGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */; };
+		572591EC54BE9BF7E7E4C02C /* Pods_YourGoalsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */; };
 		7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72601FB043410000586D /* Task+Actionable.swift */; };
 		7B0A72631FB044BD0000586D /* Habit+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72621FB044BD0000586D /* Habit+Actionable.swift */; };
 		7B0A72651FB045AA0000586D /* Habit+Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72641FB045AA0000586D /* Habit+Check.swift */; };
@@ -72,6 +73,7 @@
 		7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */; };
 		7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */; };
 		7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8847911FD6AB77009C01F9 /* GoalTests.swift */; };
+		7B8B799D1FEB85C000C51F05 /* ActionableFormCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
 		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
@@ -119,7 +121,6 @@
 		7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */; };
 		7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */; };
 		7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC75C81FC5970000113C5F /* ProgressView.storyboard */; };
-		7BB6E0071FE5A182006358CA /* ActionableViewModelCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E0061FE5A182006358CA /* ActionableViewModelCreator.swift */; };
 		7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9B8201FC573DD00786A86 /* PieProgressView.swift */; };
 		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
 		7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */; };
@@ -151,8 +152,7 @@
 		7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */; };
 		7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC71F9F1D40003D16AE /* TestDataGenerator.swift */; };
 		7BEBBADD1F9F5545003D16AE /* StrategyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */; };
-		7BF0B02C1FDDAF84008165FA /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0B02B1FDDAF84008165FA /* FormViewModel.swift */; };
-		7BF0B02E1FDE5BCF008165FA /* EditTaskFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0B02D1FDE5BCF008165FA /* EditTaskFormTests.swift */; };
+		7BF0B02E1FDE5BCF008165FA /* ActionableFormCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */; };
 		7BF45C021FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */; };
 		7BF5629C1FD560E100A4DF6C /* EditActionableFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */; };
 		7BF5629E1FD5614200A4DF6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */; };
@@ -252,6 +252,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F3EA82C85128DCC73528467 /* Pods-YourGoalsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoalsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0A72601FB043410000586D /* Task+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Actionable.swift"; sourceTree = "<group>"; };
 		7B0A72621FB044BD0000586D /* Habit+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Actionable.swift"; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 		7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrderManager.swift; sourceTree = "<group>"; };
 		7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOrderManagerTests.swift; sourceTree = "<group>"; };
 		7B8847911FD6AB77009C01F9 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
+		7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFormCreator.swift; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
@@ -373,7 +377,6 @@
 		7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailsViewController+Animation.swift"; sourceTree = "<group>"; };
 		7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAC75C91FC5970000113C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProgressView.storyboard; sourceTree = "<group>"; };
-		7BB6E0061FE5A182006358CA /* ActionableViewModelCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableViewModelCreator.swift; sourceTree = "<group>"; };
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
 		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+convinience.swift"; sourceTree = "<group>"; };
@@ -406,8 +409,7 @@
 		7BEBBAD11F9F4087003D16AE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGenerator.swift; sourceTree = "<group>"; };
 		7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyManager.swift; sourceTree = "<group>"; };
-		7BF0B02B1FDDAF84008165FA /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
-		7BF0B02D1FDE5BCF008165FA /* EditTaskFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskFormTests.swift; sourceTree = "<group>"; };
+		7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFormCreatorTests.swift; sourceTree = "<group>"; };
 		7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckManagerTests.swift; sourceTree = "<group>"; };
 		7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionableFormController.swift; sourceTree = "<group>"; };
 		7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572591EC54BE9BF7E7E4C02C /* Pods_YourGoalsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +484,8 @@
 			children = (
 				BD19F870FB93366833490C6F /* Pods-YourGoals.debug.xcconfig */,
 				81A82407DA275D962967A460 /* Pods-YourGoals.release.xcconfig */,
+				0F3EA82C85128DCC73528467 /* Pods-YourGoalsTests.debug.xcconfig */,
+				78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -506,9 +511,8 @@
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
-				7BF0B02B1FDDAF84008165FA /* FormViewModel.swift */,
 				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
-				7BB6E0061FE5A182006358CA /* ActionableViewModelCreator.swift */,
+				7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
 				7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */,
@@ -720,7 +724,7 @@
 				7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */,
 				7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */,
 				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
-				7BF0B02D1FDE5BCF008165FA /* EditTaskFormTests.swift */,
+				7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */,
 				7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */,
 				7B3FA9DB1FE6E3170052B587 /* CommitDateCreatorTests.swift */,
 			);
@@ -908,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */,
+				224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -954,9 +959,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BAAFF381F9CA2FB00BB102E /* Build configuration list for PBXNativeTarget "YourGoalsTests" */;
 			buildPhases = (
+				EF22F3C4AA7474E568C2C3CB /* [CP] Check Pods Manifest.lock */,
 				7BAAFEF31F9CA2FA00BB102E /* Sources */,
 				7BAAFEF41F9CA2FA00BB102E /* Frameworks */,
 				7BAAFEF51F9CA2FA00BB102E /* Resources */,
+				AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */,
+				AF1013E68AE28E20420FD7BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1259,6 +1267,57 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AF1013E68AE28E20420FD7BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF22F3C4AA7474E568C2C3CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YourGoalsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1266,6 +1325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8B799D1FEB85C000C51F05 /* ActionableFormCreator.swift in Sources */,
 				7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */,
 				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
@@ -1286,7 +1346,6 @@
 				7BE4BB5D1FC818FA00E1BEF9 /* AppBadgeCalculator.swift in Sources */,
 				7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */,
 				7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */,
-				7BB6E0071FE5A182006358CA /* ActionableViewModelCreator.swift in Sources */,
 				7B58CE001FACC00D00628C65 /* TodayViewController+CollectionView.swift in Sources */,
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
@@ -1323,7 +1382,6 @@
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
 				7B130B571FB4F00D0072F6C8 /* CommittedTasksDataSource.swift in Sources */,
 				7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */,
-				7BF0B02C1FDDAF84008165FA /* FormViewModel.swift in Sources */,
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
 				7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */,
 				7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */,
@@ -1382,7 +1440,7 @@
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
-				7BF0B02E1FDE5BCF008165FA /* EditTaskFormTests.swift in Sources */,
+				7BF0B02E1FDE5BCF008165FA /* ActionableFormCreatorTests.swift in Sources */,
 				7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
 				7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */,
@@ -1729,8 +1787,9 @@
 		};
 		7BAAFF391F9CA2FB00BB102E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F3EA82C85128DCC73528467 /* Pods-YourGoalsTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;
@@ -1746,8 +1805,9 @@
 		};
 		7BAAFF3A1F9CA2FB00BB102E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;

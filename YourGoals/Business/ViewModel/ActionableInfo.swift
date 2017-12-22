@@ -13,7 +13,7 @@ struct ActionableInfo {
     let type:ActionableType
     
     /// the name of the actionabe
-    let name:String
+    let name:String?
     
     /// commit date for tasks
     let commitDate:Date?
@@ -27,11 +27,20 @@ struct ActionableInfo {
     ///   - name: name of the actionable
     ///   - commitDate: commit date (only for tasks)
     ///   - parentGoal: parentGoal
-    init(type: ActionableType, name:String, commitDate:Date? = nil, parentGoal:Goal? = nil ){
+    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil ){
         self.type = type
-        assert(!name.isEmpty)
         self.name = name
         self.commitDate = commitDate
         self.parentGoal = parentGoal
+    }
+    
+    /// initialize the info with a valid actionable object
+    ///
+    /// - Parameter actionable: the actionable object
+    init(actionable:Actionable) {
+        self.type = actionable.type
+        self.name = actionable.name
+        self.commitDate = actionable.commitmentDate
+        self.parentGoal = actionable.goal
     }
 }

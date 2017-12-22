@@ -23,6 +23,6 @@ class HabitFactory:StorageManagerWorker, ActionableFactory {
     // MARK: - ActionableFactory
     
     func create(actionableInfo: ActionableInfo) -> Actionable {
-        return createHabit(name: actionableInfo.name)
+        return createHabit(name: actionableInfo.name ?? "")
     }
 }

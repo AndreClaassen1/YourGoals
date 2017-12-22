@@ -19,7 +19,7 @@ protocol EditActionableViewControllerParameter {
     var manager:GoalsStorageManager! { get set }
     var goal:Goal! { get set }
     var editActionable:Actionable? { get set }
-    var editActionableType:ActionableType? { get set }
+    var editActionableType:ActionableType! { get set }
     var delegate:EditActionableViewControllerDelegate? { get set }
     func commitParameter()
 }
@@ -28,7 +28,7 @@ protocol EditActionableViewControllerParameter {
 class EditActionableFormController : FormViewController, EditActionableViewControllerParameter {
     var goal:Goal!
     var editActionable:Actionable?
-    var editActionableType:ActionableType?
+    var editActionableType:ActionableType!
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
     var parameterCommitted = false
@@ -47,78 +47,22 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewModel = createViewModel()
-        
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.topItem?.title = viewModel.item(tag: EditTaskFormTag.titleTag.rawValue).value
+        self.navigationController?.navigationBar.topItem?.title = getTitle()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem?.target = self
         self.navigationItem.leftBarButtonItem?.action = #selector(cancelTapped(_:))
         self.navigationItem.rightBarButtonItem?.target = self
         self.navigationItem.rightBarButtonItem?.action = #selector(saveTapped(_:))
         
-        self.createForm(withViewModel: viewModel)
-    }
- 
-    func createViewModel() -> FormViewModel {
-        var viewModel:FormViewModel!
-        do {
-            let formModelCreator = ActionableViewModelCreator(manager: self.manager)
-            if let actionable = self.editActionable {
-                viewModel = try formModelCreator.createViewModel(for: actionable, atDate: Date())
-            } else {
-                viewModel = try formModelCreator.createViewModel(for: self.goal, andType: self.editActionableType!, atDate: Date())
-            }
-        }
-        catch let error {
-            self.showNotification(forError: error)
-        }
+        ///self.createForm(withViewModel: viewModel)
         
-        return viewModel
-    }
-    
-    private func createForm(withViewModel viewModel:FormViewModel) {
-        assert(self.parameterCommitted, "The parameter weren't committed")
-        form
-            +++ Section()
-            <<< TextRow(tag: EditTaskFormTag.taskTag.rawValue).cellSetup { cell, row in
-                cell.textField.placeholder = row.tag
-                row.value = viewModel.item(tag: row.tag).value
-                row.add(rule: RuleRequired())
-                row.validationOptions = .validatesAlways
-            }
-            
-            <<< PushRow<Goal>(EditTaskFormTag.goalTag.rawValue) { row in
-                row.title = "Select a Goal"
-                let goalItem:TypedFormItem<Goal> = viewModel.item(tag: row.tag) as TypedFormItem<Goal>
-                row.value = goalItem.value
-                row.options = goalItem.options
-                }.onPresent{ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
-                        cell.textLabel?.text = row.selectableValue?.name
-                    }
-                }.cellUpdate{ (cell, row) in
-                    cell.textLabel?.text = "Goal"
-                    cell.detailTextLabel?.text = row.value?.name
-            }
-            
-            +++ Section() {
-                section in
-                section.hidden = Condition.function([], { (_) -> Bool in
-                    self.editActionableType == .habit
-                })
-            }
-            <<< PushRow<CommitDateTuple>() { row in
-                row.tag = EditTaskFormTag.commitDateTag.rawValue
-                let item:OptionFormItem<CommitDateTuple> = viewModel.item(tag: row.tag) as! OptionFormItem<CommitDateTuple>
-                row.title = "Select a commit date"
-                row.value = item.value
-                row.options = item.options
-            }
-            +++ Section()
-            <<< TextAreaRow() {
-                $0.placeholder = "Remarks on your task"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
+        let formCreator = ActionableFormCreator(form: self.form, manager: self.manager)
+        let startingDateForCommits = Date()
+        if let actionable = self.editActionable {
+            formCreator.createForm(for: actionable, atDate: startingDateForCommits)
+        } else {
+            formCreator.createForm(for: self.goal, andType: self.editActionableType!, atDate: startingDateForCommits)
         }
     }
     
@@ -181,6 +125,14 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         return ActionableInfo(type: editActionableType!, name: name, commitDate: commitDate, parentGoal: parentGoal)
     }
     
+    /// create a title string depending on editing or creating an actionable
+    ///
+    /// - Returns: the title string
+    func getTitle() -> String {
+        let keyWord = editActionable == nil ? "New" : "Edit"
+        
+        return "\(keyWord) \(editActionableType.asString())"
+    }
     
     // Mark: - data helper methods
 }

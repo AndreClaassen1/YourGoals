@@ -14,3 +14,6 @@ target 'YourGoals' do
     #    pod 'ACTabScrollView'
 end
 
+target 'YourGoalsTests' do
+   pod 'Eureka'
+end
