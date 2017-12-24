@@ -56,6 +56,8 @@ class ActionableFormCreator:StorageManagerWorker {
     /// new entry or editing an existing enty
     let newEntry:Bool
     
+    var deleteHandler: (() -> Void)? = nil
+    
     /// initialize the form creator with the (empty) eureka form and a storage managerand
     ///
     /// - Parameters:
@@ -63,7 +65,7 @@ class ActionableFormCreator:StorageManagerWorker {
     ///   - type: .habit or .task
     ///   - newEntry: create a task/habit or edit one
     ///   - manager: the storage manager
-    init(form: Form, forType type: ActionableType, newEntry:Bool, manager: GoalsStorageManager) {
+    init(form: Form, forType type: ActionableType, newEntry:Bool,  manager: GoalsStorageManager) {
         self.form = form
         self.type = type
         self.newEntry = newEntry
@@ -90,9 +92,21 @@ class ActionableFormCreator:StorageManagerWorker {
                 $0.hidden = Condition.function([], { _ in self.newEntry })
                 }.cellSetup({ (cell, row) in
                     cell.backgroundColor = UIColor.red
-                    cell.textLabel?.textColor = UIColor.white
-                })
+                    cell.tintColor = UIColor.white
+                }).onCellSelection{ _, _ in
+                    self.deleteHandler?()
+        }
     }
+    
+    /// call back is called, when user is clicking on the delete handler
+    ///
+    /// - Parameter callback: the callback function called after touching delte
+    @discardableResult
+    func onDelete(_ callback: @escaping (() -> Void)) -> Self {
+        self.deleteHandler = callback
+        return self
+    }
+
     
     /// set the values of the form based on the actionableInfo for the specific date
     ///
@@ -176,7 +190,7 @@ class ActionableFormCreator:StorageManagerWorker {
         }
     }
     
-    /// a row with remarks for the tasks
+    /// create a row with remarks for the tasks
     ///
     /// - Parameter remarks: the remakrs
     /// - Returns: a row with remarks for a date

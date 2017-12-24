@@ -9,12 +9,14 @@
 import Foundation
 import Eureka
 
+/// actions created by the user for this form (CRUD)
 protocol EditActionableViewControllerDelegate {
     func createNewActionable(actionableInfo: ActionableInfo) throws
     func updateActionable(actionable: Actionable,  updateInfo: ActionableInfo) throws
     func deleteActionable(actionable: Actionable) throws
 }
 
+/// parameter block for the form. the parameter will be set in the prepare segue call
 protocol EditActionableViewControllerParameter {
     var manager:GoalsStorageManager! { get set }
     var goal:Goal! { get set }
@@ -32,7 +34,14 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
     var parameterCommitted = false
+    var formCreator:ActionableFormCreator!
     
+    /// true, if the actionable is a new record
+    func isNewActionable() -> Bool {
+        return editActionable == nil
+    }
+    
+    /// end of transfering parameter to the view controller
     func commitParameter() {
         assert(self.manager != nil)
         assert(self.delegate != nil)
@@ -45,6 +54,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         self.parameterCommitted = true
     }
     
+    /// load the view 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
@@ -57,13 +67,25 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         
         ///self.createForm(withViewModel: viewModel)
         
-        let formCreator = ActionableFormCreator(form: self.form, forType: self.editActionableType, newEntry: self.editActionable == nil, manager: self.manager)
+        self.formCreator = ActionableFormCreator(form: self.form, forType: self.editActionableType, newEntry: self.isNewActionable(), manager: self.manager)
         let startingDateForCommits = Date()
         let actionableInfo = actionableInfoFromParameter()
-        formCreator.createForm()
-        formCreator.setValues(for: actionableInfo, forDate: startingDateForCommits)
+        self.formCreator.createForm()
+        self.formCreator.setValues(for: actionableInfo, forDate: startingDateForCommits)
+        self.formCreator.onDelete {
+            do {
+                try self.delegate?.deleteActionable(actionable: self.editActionable!)
+                self.dismiss(animated: false)
+            }
+            catch let error {
+                self.showNotification(forError: error)
+            }
+        }
     }
     
+    /// create an actionable info from the parameters for the form
+    ///
+    /// - Returns: the actionable ifo
     func actionableInfoFromParameter() -> ActionableInfo {
         if let actionable = self.editActionable {
             return ActionableInfo(actionable: actionable)
@@ -74,23 +96,21 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     
     // MARK: Navigation Bar Button Events
     
+    /// the user aborts the editing of the actionable
     @objc func cancelTapped(_ barButtonItem: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
     
+    /// the user wants to save his edits
     @objc func saveTapped(_ barButtonItem: UIBarButtonItem) {
         do {
-            
             let validationErrors = form.validate()
             guard validationErrors.count == 0 else {
                 showNotification(text: "There are validation errors")
                 return
             }
             
-            guard let actionableInfo = actionableInfoFromFields() else {
-                showNotification(text: "Bug: Could not create a task or habit")
-                return
-            }
+            let actionableInfo = self.formCreator.getActionableInfoFromValues()
             
             if let actionable = self.editActionable  {
                 try delegate?.updateActionable(actionable: actionable, updateInfo: actionableInfo)
@@ -106,31 +126,6 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         }
     }
     
-    func actionableInfoFromFields() -> ActionableInfo? {
-        let row:TextRow = self.form.rowBy(tag: EditTaskFormTag.taskTag.rawValue)!
-        guard let name = row.value else {
-            fatalError("couldn't read name of task or habit")
-        }
-   
-        guard let rowGoal:PushRow<Goal> = self.form.rowBy(tag: EditTaskFormTag.goalTag.rawValue) else {
-            fatalError("couldn't extract row for Goal")
-        }
-        
-        let parentGoal = rowGoal.value
-        
-        var commitDate:Date? = nil
-        
-        if self.editActionableType == .task {
-            guard let rowCommitDate:PushRow<CommitDateTuple> = self.form.rowBy(tag: EditTaskFormTag.commitDateTag.rawValue) else {
-                fatalError("couldn't extract row by commit date")
-            }
-            
-            commitDate = rowCommitDate.value?.date
-        }
-        
-        return ActionableInfo(type: editActionableType!, name: name, commitDate: commitDate, parentGoal: parentGoal)
-    }
-    
     /// create a title string depending on editing or creating an actionable
     ///
     /// - Returns: the title string
@@ -139,6 +134,4 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         
         return "\(keyWord) \(editActionableType.asString())"
     }
-    
-    // Mark: - data helper methods
 }
