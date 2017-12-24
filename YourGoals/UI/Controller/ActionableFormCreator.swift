@@ -23,19 +23,50 @@ enum EditTaskFormTag:String  {
     case commitDateTag
 }
 
+// MARK: - ActionableInfo
+
+extension ActionableInfo {
+    
+    /// create an actionable info based on the values of the eureka actionable form
+    ///
+    /// - Parameters:
+    ///   - type: type of the acgtinoable
+    ///   - values: the values
+    init(type: ActionableType, values: [String: Any?]) {
+        guard let name = values[EditTaskFormTag.taskTag.rawValue] as? String? else {
+            fatalError("There should be a name value")
+        }
+        
+        let goal = values[EditTaskFormTag.goalTag.rawValue] as? Goal
+        let commitDateTuple = values[EditTaskFormTag.commitDateTag.rawValue] as? CommitDateTuple
+        
+        self.init(type: type, name: name, commitDate: commitDateTuple?.date, parentGoal: goal)
+    }
+}
+
 /// create an Eureka form for editing or creation actionables (tasks or habits)
 class ActionableFormCreator:StorageManagerWorker {
     
     /// the Eureka form
     let form:Form
     
+    /// a .task or .habit
+    let type:ActionableType
+    
+    /// new entry or editing an existing enty
+    let newEntry:Bool
+    
     /// initialize the form creator with the (empty) eureka form and a storage managerand
     ///
     /// - Parameters:
     ///   - form: the eureka formand
+    ///   - type: .habit or .task
+    ///   - newEntry: create a task/habit or edit one
     ///   - manager: the storage manager
-    init(form: Form, manager: GoalsStorageManager) {
+    init(form: Form, forType type: ActionableType, newEntry:Bool, manager: GoalsStorageManager) {
         self.form = form
+        self.type = type
+        self.newEntry = newEntry
         super.init(manager: manager)
     }
     
@@ -44,51 +75,61 @@ class ActionableFormCreator:StorageManagerWorker {
     /// ** Hint **: The date is needed to create a range of selectable commit date
     ///             textes like today, tomorrow and so on.
     ///
-    /// - Parameters:
-    ///   - actionableInfo: the actionable info object with all needed values
-    ///   - date: the date needed to create the the commit date textes
-    func createForm(for actionableInfo: ActionableInfo, atDate date: Date) {
+    func createForm() {
         self.form
             +++ Section()
-            <<< taskNameRow(name: actionableInfo.name)
-            <<< parentGoalRow(goal: actionableInfo.parentGoal!)
-            +++ Section() { $0.hidden = Condition.function([], { _ in actionableInfo.type == .habit }) }
-            <<< commitDateRow(commitDate: actionableInfo.commitDate, startingDate: date)
+            <<< taskNameRow()
+            <<< parentGoalRow()
+            +++ Section() { $0.hidden = Condition.function([], { _ in self.type == .habit }) }
+            <<< commitDateRow()
             +++ Section()
             <<< remarksRow(remarks: nil)
+            +++ Section()
+            <<< ButtonRow() {
+                $0.title = "Delete \(type.asString())"
+                $0.hidden = Condition.function([], { _ in self.newEntry })
+                }.cellSetup({ (cell, row) in
+                    cell.backgroundColor = UIColor.red
+                    cell.textLabel?.textColor = UIColor.white
+                })
     }
     
-    /// create a form for editing a new actionable of the given type and for the goal.
+    /// set the values of the form based on the actionableInfo for the specific date
     ///
     /// - Parameters:
-    ///   - goal: new actionable for this goal
-    ///   - type: new actionable with this type (a task or a habit)
-    ///   - date: the date needed to create the the commit date textes
-    func createForm(for goal:Goal, andType type: ActionableType, atDate date: Date) {
-        let actionableInfo = ActionableInfo(type: type, name: "", commitDate: nil, parentGoal: goal)
-        createForm(for: actionableInfo, atDate: date)
+    ///   - actionableInfo: the actionable info
+    ///   - date: the date for the row options for the commit date
+    func setValues(for actionableInfo: ActionableInfo, forDate date: Date) {
+        let commitDateCreator = SelectableCommitDatesCreator()
+        
+        var values = [String: Any?]()
+        values[EditTaskFormTag.taskTag.rawValue] = actionableInfo.name
+        values[EditTaskFormTag.goalTag.rawValue] = actionableInfo.parentGoal
+        values[EditTaskFormTag.commitDateTag.rawValue] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
+        
+        let pushRow:PushRow<CommitDateTuple> = self.form.rowBy(tag: EditTaskFormTag.commitDateTag.rawValue)!
+        let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: actionableInfo.commitDate)
+        pushRow.options = tuples
+        
+        self.form.setValues(values)
     }
     
-    /// create a form for editing an existing actinable
+    /// read the input values out of the form and create an ActionableInfo
     ///
-    /// - Parameters:
-    ///   - actionable: the actionable
-    ///   - date: the date needed to create the the commit date textes
-    func createForm(for actionable:Actionable, atDate date:Date) {
-        let actionableInfo = ActionableInfo(actionable: actionable)
-        createForm(for: actionableInfo, atDate: date)
+    /// - Returns: the actionableinfo
+    func getActionableInfoFromValues() -> ActionableInfo {
+        let values = self.form.values()
+        return ActionableInfo(type: self.type, values: values)
     }
     
     // MARK: - Row creating helper functions
     
     /// create a row for editing the task name
     ///
-    /// - Parameter name: the task name
     /// - Returns: a base row
-    func taskNameRow(name:String?) -> BaseRow {
+    func taskNameRow() -> BaseRow {
         let row = TextRow(tag: EditTaskFormTag.taskTag.rawValue).cellSetup { cell, row in
             cell.textField.placeholder = "Please enter your task"
-            row.value = name
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesAlways
         }
@@ -98,12 +139,10 @@ class ActionableFormCreator:StorageManagerWorker {
     
     /// create a row for selecting a goal
     ///
-    /// - Parameter goal: the goal
     /// - Returns: the row
-    func parentGoalRow(goal: Goal) -> BaseRow {
+    func parentGoalRow() -> BaseRow {
         return PushRow<Goal>(EditTaskFormTag.goalTag.rawValue) { row in
             row.title = "Select a Goal"
-            row.value = goal
             row.options = selectableGoals()
             }.onPresent{ (_, to) in
                 to.selectableRowCellUpdate = { cell, row in
@@ -118,18 +157,15 @@ class ActionableFormCreator:StorageManagerWorker {
     /// create a row for selecting a commit date
     ///
     /// - Parameters:
-    ///   - commitDate: the commit date
     ///   - date: starting date for create meaningful texts
+    ///
     /// - Returns: the commit date
-    func commitDateRow(commitDate:Date?, startingDate date: Date) -> BaseRow {
-        let commitDateCreator = SelectableCommitDatesCreator()
-        let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: commitDate)
+    func commitDateRow() -> BaseRow {
         
         return PushRow<CommitDateTuple>() { row in
             row.tag = EditTaskFormTag.commitDateTag.rawValue
             row.title = "Select a commit date"
-            row.value = commitDateCreator.dateAsTuple(date: commitDate)
-            row.options = tuples
+            row.options = []
             }.onPresent { (_, to) in
                 to.selectableRowCellUpdate = { cell, row in
                     cell.textLabel?.text = row.selectableValue?.text
@@ -146,8 +182,8 @@ class ActionableFormCreator:StorageManagerWorker {
     /// - Returns: a row with remarks for a date
     func remarksRow(remarks:String?) -> BaseRow {
         return TextAreaRow() {
-                $0.placeholder = "Remarks on your task"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
+            $0.placeholder = "Remarks on your task"
+            $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
         }
     }
     
@@ -168,5 +204,4 @@ class ActionableFormCreator:StorageManagerWorker {
             return []
         }
     }
-    
 }

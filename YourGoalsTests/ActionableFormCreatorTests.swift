@@ -13,41 +13,64 @@ import Eureka
 /// tests of the MVVM object EditTaskFor
 class ActionableFormCreatorTests: StorageTestCase {
     
+    var formVC:FormViewController!
+    
+    override func setUp() {
+        // load the view to test the cells
+        self.formVC = FormViewController()
+        formVC.view.frame = CGRect(x: 0, y: 0, width: 375, height: 3000)
+        formVC.tableView?.frame = formVC.view.frame
+        super.setUp()
+    }
+    
     func testFormForExistingTask() {
         // setup
         // load the view to test the cells
-        let formVC = FormViewController()
-        formVC.view.frame = CGRect(x: 0, y: 0, width: 375, height: 3000)
-        formVC.tableView?.frame = formVC.view.frame
-        
         let testDate = Date.dateWithYear(2017, month: 12, day: 19)
         let goal = self.testDataCreator.createGoal(name: "Goal for the Edit Form")
-        let _ = self.testDataCreator.createGoal(name: "Goal 2")
-        let _ = self.testDataCreator.createGoal(name: "Goal 3")
         let task = self.testDataCreator.createTask(name: "A task which should be edited", forGoal: goal)
         
         // act
-        let creator = ActionableFormCreator(form: formVC.form, manager: self.manager)
-        creator.createForm(for: task, atDate: testDate)
+        let creator = ActionableFormCreator(form: formVC.form, forType: .task, newEntry: false, manager: self.manager)
+        creator.createForm()
+        creator.setValues(for: ActionableInfo(actionable: task), forDate: testDate)
         
-        // test
-        let values = formVC.form.values()
-        XCTAssertEqual("A task which should be edited", values[EditTaskFormTag.taskTag.rawValue]! as! String?)
-        XCTAssertEqual(goal, values[EditTaskFormTag.goalTag.rawValue]! as! Goal?)
+        // test get values
+        let actionableInfo = creator.getActionableInfoFromValues()
+        XCTAssertEqual("A task which should be edited", actionableInfo.name)
+        XCTAssertEqual(goal, actionableInfo.parentGoal)
     }
     
-//    func testFormForNewTask() {
-//        // setup
-//        let testDate = Date.dateWithYear(2017, month: 12, day: 19)
-//        let goal = self.testDataCreator.createGoal(name: "Goal for the Edit Form")
-//
-//        // act
-//        let creator = ActionableViewModelCreator(manager: self.manager)
-//        let editForm = try! creator.createViewModel(for: goal, andType: .task, atDate: testDate)
-//        let title:String? = editForm.item(tag: EditTaskFormTag.titleTag.rawValue).value
-//
-//        // test
-//        XCTAssertEqual("New Task", title)
-//        XCTAssertEqual(1, (editForm.item(tag: EditTaskFormTag.goalTag.rawValue).options as [Goal]).count)
-//    }
+    func testGoalOptions() {
+        // setup
+        let testDate = Date.dateWithYear(2017, month: 12, day: 19)
+        let goal = self.testDataCreator.createGoal(name: "Goal for the Edit Form", prio: 1)
+        let _ = self.testDataCreator.createGoal(name: "Goal 2", prio: 2)
+        let _ = self.testDataCreator.createGoal(name: "Goal 3", prio: 3)
+        let task = self.testDataCreator.createTask(name: "A task which should be edited", forGoal: goal)
+        
+        // act
+        let creator = ActionableFormCreator(form: formVC.form, forType: .task, newEntry: false, manager: self.manager)
+        creator.createForm()
+        creator.setValues(for: ActionableInfo(actionable: task), forDate: testDate)
+        
+        // test
+        let rowGoal:PushRow<Goal> = self.formVC.form.rowBy(tag: EditTaskFormTag.goalTag.rawValue)!
+        let options = rowGoal.options!
+        XCTAssertEqual(["Goal for the Edit Form", "Goal 2", "Goal 3"], options.map{ $0.name! })
+    }
+    
+    func testFormForNewTask() {
+        // setup
+        let testDate = Date.dateWithYear(2017, month: 12, day: 19)
+
+        // act
+        let creator = ActionableFormCreator(form: formVC.form, forType: .task, newEntry: true, manager: self.manager)
+        creator.createForm()
+        creator.setValues(for: ActionableInfo(type: .task, name: nil), forDate: testDate)
+        
+        // test
+        let actionableInfo = creator.getActionableInfoFromValues()
+        XCTAssertEqual(nil, actionableInfo.name)
+    }
 }

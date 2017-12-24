@@ -16,9 +16,9 @@ class TestDataCreator:StorageManagerWorker {
     ///
     /// - Parameter name: name of the goal
     /// - Returns: the goal
-    func createGoal(name: String) -> Goal {
+    func createGoal(name: String, prio: Int16 = 1) -> Goal {
         let strategyManager = StrategyManager(manager: self.manager)
-        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: name, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate))
+        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: name, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate, prio: prio))
         return goal
     }
     

@@ -57,12 +57,18 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         
         ///self.createForm(withViewModel: viewModel)
         
-        let formCreator = ActionableFormCreator(form: self.form, manager: self.manager)
+        let formCreator = ActionableFormCreator(form: self.form, forType: self.editActionableType, newEntry: self.editActionable == nil, manager: self.manager)
         let startingDateForCommits = Date()
+        let actionableInfo = actionableInfoFromParameter()
+        formCreator.createForm()
+        formCreator.setValues(for: actionableInfo, forDate: startingDateForCommits)
+    }
+    
+    func actionableInfoFromParameter() -> ActionableInfo {
         if let actionable = self.editActionable {
-            formCreator.createForm(for: actionable, atDate: startingDateForCommits)
+            return ActionableInfo(actionable: actionable)
         } else {
-            formCreator.createForm(for: self.goal, andType: self.editActionableType!, atDate: startingDateForCommits)
+            return ActionableInfo(type: self.editActionableType, name: nil, commitDate: nil, parentGoal: self.goal)
         }
     }
     
