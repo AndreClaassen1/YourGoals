@@ -91,7 +91,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             self.editActionable = nil
             self.editActionableType = nil
             
-        case "presentGoal":
+        case "presentEditGoal":
             guard let detailController = destinationViewController as? GoalDetailViewController else {
                 fatalError("couldn't extract goal view controller for segue presentEditGoal")
             }

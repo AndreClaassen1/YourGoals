@@ -134,6 +134,6 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         }
         
         self.selectedGoal = goalForIndexPath(path: indexPath)
-        performSegue(withIdentifier: "presentGoal", sender: self)
+        performSegue(withIdentifier: "presentEditGoal", sender: self)
     }
 }

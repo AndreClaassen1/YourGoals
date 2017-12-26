@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,7 +61,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
-                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentGoal" id="6eA-8s-RYt"/>
+                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentEditGoal" id="6eA-8s-RYt"/>
                         <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoal" id="cjO-Ie-qW9"/>
                     </connections>
                 </viewController>
@@ -428,7 +428,7 @@
                         <outlet property="goalsCollectionView" destination="lRG-Wn-cjM" id="MCB-5U-TAc"/>
                         <outlet property="habitsTableHeight" destination="XvF-0a-Ony" id="WRd-5V-GYB"/>
                         <outlet property="habitsTableView" destination="RgX-QO-7ea" id="wUt-Di-26Y"/>
-                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentGoal" id="8yY-7N-175"/>
+                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentEditGoal" id="8yY-7N-175"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="Cp9-T4-e9d"/>
                     </connections>
                 </viewController>
@@ -466,20 +466,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="964" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="964" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="325"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="964" height="290"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="290" id="qqG-LW-9io"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="619.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -490,24 +490,24 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D47-xr-2df" userLabel="button view">
-                                                <rect key="frame" x="0.0" y="290" width="964" height="36"/>
+                                                <rect key="frame" x="0.0" y="290" width="335" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
-                                                        <rect key="frame" x="0.0" y="3" width="419.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="3" width="62" height="30"/>
                                                         <state key="normal" title="Edit Goal"/>
                                                         <connections>
-                                                            <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentGoal" id="mr5-wE-ViI"/>
+                                                            <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoal" id="mr5-wE-ViI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
-                                                        <rect key="frame" x="-43" y="3" width="86" height="30"/>
+                                                        <rect key="frame" x="124.5" y="3" width="86" height="30"/>
                                                         <state key="normal" title="Show Habits"/>
                                                         <connections>
                                                             <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
-                                                        <rect key="frame" x="574.5" y="3" width="0.0" height="30"/>
+                                                        <rect key="frame" x="240" y="3" width="95" height="30"/>
                                                         <state key="normal" title="Add new Task"/>
                                                         <connections>
                                                             <action selector="addNewActionableTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="uKe-C8-BpG"/>
@@ -541,7 +541,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324" width="964" height="303"/>
+                                        <rect key="frame" x="0.0" y="324" width="335" height="303"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -654,7 +654,7 @@
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8yY-7N-175"/>
+        <segue reference="6eA-8s-RYt"/>
         <segue reference="Cp9-T4-e9d"/>
         <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>

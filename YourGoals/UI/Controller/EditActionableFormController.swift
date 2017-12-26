@@ -34,7 +34,6 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
     var parameterCommitted = false
-    var formCreator:ActionableFormCreator!
     
     /// true, if the actionable is a new record
     func isNewActionable() -> Bool {
@@ -67,20 +66,8 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         
         ///self.createForm(withViewModel: viewModel)
         
-        self.formCreator = ActionableFormCreator(form: self.form, forType: self.editActionableType, newEntry: self.isNewActionable(), manager: self.manager)
-        let startingDateForCommits = Date()
         let actionableInfo = actionableInfoFromParameter()
-        self.formCreator.createForm()
-        self.formCreator.setValues(for: actionableInfo, forDate: startingDateForCommits)
-        self.formCreator.onDelete {
-            do {
-                try self.delegate?.deleteActionable(actionable: self.editActionable!)
-                self.dismiss(animated: false)
-            }
-            catch let error {
-                self.showNotification(forError: error)
-            }
-        }
+        configure(form: self.form, withInfo: actionableInfo, newEntry: self.editActionable == nil, forDate: Date())
     }
     
     /// create an actionable info from the parameters for the form
@@ -110,7 +97,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
                 return
             }
             
-            let actionableInfo = self.formCreator.getActionableInfoFromValues()
+            let actionableInfo = self.getActionableInfoFromValues(form: self.form)
             
             if let actionable = self.editActionable  {
                 try delegate?.updateActionable(actionable: actionable, updateInfo: actionableInfo)
@@ -133,5 +120,21 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         let keyWord = editActionable == nil ? "New" : "Edit"
         
         return "\(keyWord) \(editActionableType.asString())"
+    }
+    
+    // MARK: - Call Back from Eureka Extension
+    
+    /// handle the click of the delete button.
+    func deleteClicked() {
+        do {
+            guard let actionable = self.editActionable else {
+                fatalError("editActionable is nil")
+            }
+            
+            try self.delegate?.deleteActionable(actionable: actionable)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
     }
 }

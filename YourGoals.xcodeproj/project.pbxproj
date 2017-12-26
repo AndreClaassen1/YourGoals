@@ -73,7 +73,6 @@
 		7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */; };
 		7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */; };
 		7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8847911FD6AB77009C01F9 /* GoalTests.swift */; };
-		7B8B799D1FEB85C000C51F05 /* ActionableFormCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
 		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
@@ -122,6 +121,7 @@
 		7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */; };
 		7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC75C81FC5970000113C5F /* ProgressView.storyboard */; };
 		7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9B8201FC573DD00786A86 /* PieProgressView.swift */; };
+		7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */; };
 		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
 		7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */; };
 		7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */; };
@@ -152,7 +152,7 @@
 		7BEBBAD41F9F4087003D16AE /* StrategyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */; };
 		7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC71F9F1D40003D16AE /* TestDataGenerator.swift */; };
 		7BEBBADD1F9F5545003D16AE /* StrategyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */; };
-		7BF0B02E1FDE5BCF008165FA /* ActionableFormCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */; };
+		7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0B02D1FDE5BCF008165FA /* EditActionableFormControllerTests.swift */; };
 		7BF45C021FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */; };
 		7BF5629C1FD560E100A4DF6C /* EditActionableFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */; };
 		7BF5629E1FD5614200A4DF6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */; };
@@ -322,7 +322,6 @@
 		7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrderManager.swift; sourceTree = "<group>"; };
 		7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOrderManagerTests.swift; sourceTree = "<group>"; };
 		7B8847911FD6AB77009C01F9 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
-		7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFormCreator.swift; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
@@ -378,6 +377,7 @@
 		7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAC75C91FC5970000113C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProgressView.storyboard; sourceTree = "<group>"; };
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
+		7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditActionableFormController+Eureka.swift"; sourceTree = "<group>"; };
 		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+convinience.swift"; sourceTree = "<group>"; };
 		7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUpdater.swift; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		7BEBBAD11F9F4087003D16AE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		7BEBBAD21F9F4087003D16AE /* StrategyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGenerator.swift; sourceTree = "<group>"; };
 		7BEBBADC1F9F5545003D16AE /* StrategyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyManager.swift; sourceTree = "<group>"; };
-		7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFormCreatorTests.swift; sourceTree = "<group>"; };
+		7BF0B02D1FDE5BCF008165FA /* EditActionableFormControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionableFormControllerTests.swift; sourceTree = "<group>"; };
 		7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckManagerTests.swift; sourceTree = "<group>"; };
 		7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionableFormController.swift; sourceTree = "<group>"; };
 		7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -512,8 +512,8 @@
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
 				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
-				7B8B799C1FEB85C000C51F05 /* ActionableFormCreator.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
+				7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
 				7B994E061FA2261900B704E1 /* EditGoalViewController+ImagePicker.swift */,
 				7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */,
@@ -724,7 +724,7 @@
 				7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */,
 				7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */,
 				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
-				7BF0B02D1FDE5BCF008165FA /* ActionableFormCreatorTests.swift */,
+				7BF0B02D1FDE5BCF008165FA /* EditActionableFormControllerTests.swift */,
 				7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */,
 				7B3FA9DB1FE6E3170052B587 /* CommitDateCreatorTests.swift */,
 			);
@@ -1325,7 +1325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8B799D1FEB85C000C51F05 /* ActionableFormCreator.swift in Sources */,
 				7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */,
 				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
@@ -1340,6 +1339,7 @@
 				7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */,
 				7BAA7A851FA0C788005B16EE /* Goal+Subs.swift in Sources */,
 				7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */,
+				7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */,
 				7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
 				7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */,
@@ -1440,7 +1440,7 @@
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
-				7BF0B02E1FDE5BCF008165FA /* ActionableFormCreatorTests.swift in Sources */,
+				7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */,
 				7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
 				7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */,
