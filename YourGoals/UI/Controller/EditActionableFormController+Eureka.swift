@@ -16,7 +16,7 @@ import Eureka
 /// - task: the tag id of the task
 /// - goal: the tag id of the selectable goal
 /// - commitDate: the task id of the commit date
-private struct FormFieldTag  {
+struct FormFieldTag  {
     static let task = "Task"
     static let goal = "Goal"
     static let commitDate = "CommitDate"
