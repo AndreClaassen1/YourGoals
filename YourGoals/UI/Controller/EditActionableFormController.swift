@@ -132,6 +132,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
             }
             
             try self.delegate?.deleteActionable(actionable: actionable)
+            self.dismiss(animated: true)
         }
         catch let error {
             self.showNotification(forError: error)

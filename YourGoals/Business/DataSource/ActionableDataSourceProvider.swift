@@ -53,6 +53,7 @@ class ActionableDataSourceProvider:StorageManagerWorker {
                 return HabitsDataSource(manager: self.manager)
             case .tasks:
                 return CommittedTasksDataSource(manager: self.manager)
+                
             case .allActionables:
                 return TodayAllActionablesDataSource(manager: self.manager)
             }

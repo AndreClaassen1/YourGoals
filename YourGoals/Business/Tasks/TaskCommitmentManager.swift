@@ -72,6 +72,24 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         return tasks
     }
     
+    /// even the uncommitted tasks for the today goal are implicit committed.
+    ///
+    /// - Returns: tasks accociated with the today goal
+    /// - Throws: core data excepiton
+    func uncommittedTasksForTodayGoal() throws -> [Task] {
+        let strategyManager = StrategyManager(manager: self.manager)
+        let todayGoal = try strategyManager.assertTodayGoal(strategy: try strategyManager.assertValidActiveStrategy())
+        let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format:
+                "commitmentDate == nil AND goal == %@", todayGoal)
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "commitmentPrio", ascending: true)
+            ]
+        })
+        
+        return tasks
+    }
+    
     /// combine the committed tasks for today and tasks of the path
     ///
     /// - Parameter date: date
@@ -82,6 +100,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     
         tasks.append(contentsOf: try committedTasks(forDate: date))
         tasks.append(contentsOf: try committedTasksPast(forDate: date))
+        tasks.append(contentsOf: try uncommittedTasksForTodayGoal())
         
         return tasks
     }

@@ -39,15 +39,23 @@ class StrategyManager:StorageManagerWorker {
         return strategy!
     }
     
-    private func assertTodayGoal(strategy:Goal) throws {
-        guard nil == strategy.allGoals().first(where: { $0.type == GoalType.todayGoal.rawValue }) else  {
-            return
+    @discardableResult
+    
+    /// assert a today goal for the strategy and returns it.
+    ///
+    /// - Parameter strategy: the strategy
+    /// - Returns: a valid today goal
+    /// - Throws: core data exception
+    func assertTodayGoal(strategy:Goal) throws -> Goal  {
+        if let todayGoal = strategy.allGoals().first(where: { $0.type == GoalType.todayGoal.rawValue })   {
+            return todayGoal
         }
         
         let todayGoal = try GoalFactory(manager: self.manager).create(name: "Today", prio: 0, reason: "Your tasks for today. You have committed them all", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: UIImage(named: "YourToday"), type: .todayGoal)
         
         strategy.addToSubGoals(todayGoal)
         try manager.dataManager.saveContext()
+        return todayGoal
     }
 
     func assertValidActiveStrategy() throws -> Goal {

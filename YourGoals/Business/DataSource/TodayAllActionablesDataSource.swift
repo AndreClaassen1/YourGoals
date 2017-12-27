@@ -22,6 +22,4 @@ class TodayAllActionablesDataSource : StorageManagerWorker, ActionableDataSource
     func switchProtocol(forBehavior behavior: ActionableBehavior) -> ActionableSwitchProtocol? {
         return nil
     }
-    
-    
 }
