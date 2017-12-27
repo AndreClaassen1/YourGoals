@@ -16,7 +16,7 @@ import Eureka
 /// - task: the tag id of the task
 /// - goal: the tag id of the selectable goal
 /// - commitDate: the task id of the commit date
-struct FormFieldTag  {
+struct TaskFormTag  {
     static let task = "Task"
     static let goal = "Goal"
     static let commitDate = "CommitDate"
@@ -32,12 +32,12 @@ extension ActionableInfo {
     ///   - type: type of the acgtinoable
     ///   - values: the values
     init(type: ActionableType, values: [String: Any?]) {
-        guard let name = values[FormFieldTag.task] as? String? else {
+        guard let name = values[TaskFormTag.task] as? String? else {
             fatalError("There should be a name value")
         }
         
-        let goal = values[FormFieldTag.goal] as? Goal
-        let commitDateTuple = values[FormFieldTag.commitDate] as? CommitDateTuple
+        let goal = values[TaskFormTag.goal] as? Goal
+        let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
         self.init(type: type, name: name, commitDate: commitDateTuple?.date, parentGoal: goal)
     }
 }
@@ -96,11 +96,11 @@ extension EditActionableFormController {
         let commitDateCreator = SelectableCommitDatesCreator()
         
         var values = [String: Any?]()
-        values[FormFieldTag.task] = actionableInfo.name
-        values[FormFieldTag.goal] = actionableInfo.parentGoal
-        values[FormFieldTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
+        values[TaskFormTag.task] = actionableInfo.name
+        values[TaskFormTag.goal] = actionableInfo.parentGoal
+        values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
         
-        let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: FormFieldTag.commitDate)!
+        let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: TaskFormTag.commitDate)!
         let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: actionableInfo.commitDate)
         pushRow.options = tuples
         
@@ -121,7 +121,7 @@ extension EditActionableFormController {
     ///
     /// - Returns: a base row
     func taskNameRow() -> BaseRow {
-        let row = TextRow(tag: FormFieldTag.task).cellSetup { cell, row in
+        let row = TextRow(tag: TaskFormTag.task).cellSetup { cell, row in
             cell.textField.placeholder = "Please enter your task"
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesAlways
@@ -134,7 +134,7 @@ extension EditActionableFormController {
     ///
     /// - Returns: the row
     func parentGoalRow() -> BaseRow {
-        return PushRow<Goal>(FormFieldTag.goal) { row in
+        return PushRow<Goal>(TaskFormTag.goal) { row in
             row.title = "Select a Goal"
             row.options = selectableGoals()
             }.onPresent{ (_, to) in
@@ -156,7 +156,7 @@ extension EditActionableFormController {
     func commitDateRow() -> BaseRow {
         
         return PushRow<CommitDateTuple>() { row in
-            row.tag = FormFieldTag.commitDate
+            row.tag = TaskFormTag.commitDate
             row.title = "Select a commit date"
             row.options = []
             }.onPresent { (_, to) in

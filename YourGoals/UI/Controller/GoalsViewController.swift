@@ -59,7 +59,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     // MARK: - NewGoalCellDelegate
     
     func newGoalClicked() {
-        performSegue(withIdentifier: "presentEditGoal", sender: self)
+        performSegue(withIdentifier: "presentEditGoalOld", sender: self)
     }
     
     // MARK: - EditGoalViewControllerDelegate

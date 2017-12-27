@@ -146,7 +146,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
             setEditActionableViewControllerParameter(parameter: parameter)
             return
-        case "presentEditGoal":
+        case "presentEditGoalOld":
             let editGoalController = segue.destination as! EditGoalViewController
             editGoalController.delegate = self
             editGoalController.editGoal = self.goal

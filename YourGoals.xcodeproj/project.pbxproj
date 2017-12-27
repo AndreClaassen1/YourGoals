@@ -36,6 +36,8 @@
 		7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */; };
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
+		7B3935771FF39B0E009E752F /* EditGoalFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935761FF39B0E009E752F /* EditGoalFormController.swift */; };
+		7B3935791FF39B5A009E752F /* EditGoalFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */; };
 		7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */; };
 		7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */; };
 		7B3FA9DA1FE670290052B587 /* SelectableCommitDatesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */; };
@@ -285,6 +287,8 @@
 		7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentTests.swift; sourceTree = "<group>"; };
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
+		7B3935761FF39B0E009E752F /* EditGoalFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalFormController.swift; sourceTree = "<group>"; };
+		7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditGoalFormController+Eureka.swift"; sourceTree = "<group>"; };
 		7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateRange.swift"; sourceTree = "<group>"; };
 		7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCommitDatesCreator.swift; sourceTree = "<group>"; };
@@ -512,6 +516,8 @@
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
 				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
+				7B3935761FF39B0E009E752F /* EditGoalFormController.swift */,
+				7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
 				7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
@@ -1335,6 +1341,7 @@
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
+				7B3935771FF39B0E009E752F /* EditGoalFormController.swift in Sources */,
 				7BAA7A7B1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift in Sources */,
 				7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */,
 				7BAA7A851FA0C788005B16EE /* Goal+Subs.swift in Sources */,
@@ -1351,6 +1358,7 @@
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
+				7B3935791FF39B5A009E752F /* EditGoalFormController+Eureka.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */,
 				7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */,
