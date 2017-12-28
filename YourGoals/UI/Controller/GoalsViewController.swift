@@ -30,7 +30,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
         configure(collectionView: collectionView)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
@@ -42,17 +42,30 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationViewController = segue.destination
-        if let detailController = destinationViewController as? GoalDetailViewController {
-            destinationViewController.transitioningDelegate = self
-            detailController.goal = self.selectedGoal
-            detailController.delegate = self
+        guard let identifier = segue.identifier else {
+            assertionFailure("couldn't prepare without an identifier")
             return
         }
         
-        if let newGoalController = destinationViewController as? EditGoalViewController {
-            newGoalController.delegate = self
-            return
+        switch identifier {
+        case "presentShowGoal":
+            let detailController = segue.destination as! GoalDetailViewController
+            detailController.transitioningDelegate = self
+            detailController.goal = self.selectedGoal
+            detailController.delegate = self
+            
+        case "presentEditGoalOld":
+            var parameter = segue.destination as! EditGoalSegueParameter
+            parameter.delegate = self
+            parameter.commit()
+            
+        case "presentEditGoal":
+            var parameter = (segue.destination as! UINavigationController).topViewController as! EditGoalSegueParameter
+            parameter.delegate = self
+            parameter.commit()
+        default:
+            assertionFailure("no segue with identifier \(identifier) found")
+            
         }
     }
     

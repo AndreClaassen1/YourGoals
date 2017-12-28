@@ -146,12 +146,17 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
             setEditActionableViewControllerParameter(parameter: parameter)
             return
-        case "presentEditGoalOld", "presentEditGoal":
+        case "presentEditGoalOld":
             var editGoalController = segue.destination as! EditGoalSegueParameter
             editGoalController.delegate = self
             editGoalController.editGoal = self.goal
             editGoalController.commit()
             return
+        case "presentEditGoal":
+            var parameter = (segue.destination as! UINavigationController).topViewController! as! EditGoalSegueParameter
+            parameter.delegate = self
+            parameter.editGoal = self.goal
+            parameter.commit()
         default:
             assertionFailure("couldn't prepare segue with destination: \(segue)")
         }

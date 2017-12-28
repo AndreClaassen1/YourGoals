@@ -9,10 +9,16 @@
 import Foundation
 import Eureka
 
-class EditGoalFormController:FormViewController {
-    var goal:Goal!
+class EditGoalFormController:FormViewController, EditGoalSegueParameter {
+    var delegate: EditGoalViewControllerDelegate!
+    var boolCommitted = false
+    var editGoal: Goal?
     
-    override func viewDidLoad() {
+    func commit() {
+        boolCommitted = true
+    }
+    
+     override func viewDidLoad() {
         super.viewDidLoad()
     }
     

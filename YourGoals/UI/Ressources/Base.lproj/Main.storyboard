@@ -63,6 +63,7 @@
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentShowGoal" id="6eA-8s-RYt"/>
                         <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="cjO-Ie-qW9"/>
+                        <segue destination="DPx-KP-TuC" kind="presentation" identifier="presentEditGoal" id="qB2-Uh-IRL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -606,7 +607,7 @@
         <!--Edit Goal-->
         <scene sceneID="6Rs-Mg-8qH">
             <objects>
-                <viewController id="hU8-FK-oFr" sceneMemberID="viewController">
+                <viewController id="hU8-FK-oFr" customClass="EditGoalFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Edit Goal" largeTitleDisplayMode="always" id="kf5-LP-2tK">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Qsk-oN-uiW"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="LPL-eP-lGi"/>
@@ -686,8 +687,9 @@
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8yY-7N-175"/>
+        <segue reference="qB2-Uh-IRL"/>
+        <segue reference="6eA-8s-RYt"/>
         <segue reference="kJV-AZ-9qx"/>
-        <segue reference="UMp-cE-4SY"/>
+        <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>
 </document>
