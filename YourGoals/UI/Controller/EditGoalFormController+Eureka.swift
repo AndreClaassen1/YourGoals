@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Eureka
 
 /// the form tags for the FormViewModel
@@ -16,6 +17,7 @@ struct GoalFormTag  {
     static let targetDate = "targetDate"
     static let visionImage = "visionImage"
 }
+
 
 extension EditGoalFormController {
     
@@ -88,5 +90,9 @@ extension EditGoalFormController {
             }).onCellSelection{ _, _ in
                 self.deleteClicked()
         }
+    }
+    
+    func goalInfoFromValues(form: Form) -> GoalInfo {
+        return GoalInfo()
     }
 }

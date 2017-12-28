@@ -18,7 +18,7 @@ class GoalFactory:StorageManagerWorker {
     /// - Parameter goalInfo: a goal info structure
     /// - Throws: goal factory exception
     func create(fromGoalInfo goalInfo: GoalInfo) throws -> Goal {
-        return try create(name: goalInfo.name, prio: goalInfo.prio, reason: goalInfo.reason, startDate: goalInfo.startDate, targetDate: goalInfo.targetDate, image: goalInfo.image)
+        return try create(name: goalInfo.name!, prio: goalInfo.prio, reason: goalInfo.reason, startDate: goalInfo.startDate ?? Date.minimalDate, targetDate: goalInfo.targetDate ?? Date.maximalDate, image: goalInfo.image)
     }
 
     /// create a new goal with discrete values
