@@ -22,6 +22,7 @@ protocol GoalDetailViewControllerDelegate {
 
 /// show a goal and all of its tasks in detail
 class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
+    @IBOutlet weak var editGoalButton: UIButton!
     
     // container and constraints for animating this view
     @IBOutlet internal weak var contentContainerView: UIView!
@@ -62,7 +63,6 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
             swipeDown.direction = .down
             self.view.addGestureRecognizer(swipeDown)
-            
         }
         catch let error {
             self.showNotification(forError: error)
@@ -146,10 +146,11 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
             setEditActionableViewControllerParameter(parameter: parameter)
             return
-        case "presentEditGoalOld":
-            let editGoalController = segue.destination as! EditGoalViewController
+        case "presentEditGoalOld", "presentEditGoal":
+            var editGoalController = segue.destination as! EditGoalSegueParameter
             editGoalController.delegate = self
             editGoalController.editGoal = self.goal
+            editGoalController.commit()
             return
         default:
             assertionFailure("couldn't prepare segue with destination: \(segue)")
@@ -264,4 +265,11 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         performSegue(withIdentifier: "presentEditActionable", sender: self)
     }
     
+    @IBAction func editButtonTouched(_ sender: Any) {
+        if SettingsUserDefault.standard.newFunctions {
+            performSegue(withIdentifier: "presentEditGoal", sender: self)
+        } else {
+            performSegue(withIdentifier: "presentEditGoalOld", sender: self)
+        }
+    }
 }

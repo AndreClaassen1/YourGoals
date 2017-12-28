@@ -9,14 +9,9 @@
 import UIKit
 import CoreData
 
-protocol EditGoalViewControllerDelegate {
-    func createNewGoal(goalInfo: GoalInfo)
-    func update(goal: Goal, withGoalInfo goalInfo:GoalInfo)
-    func delete(goal: Goal)
-    func dismissController()
-}
 
-class EditGoalViewController: UIViewController {
+
+class EditGoalViewController: UIViewController, EditGoalSegueParameter {
     @IBOutlet weak var goalNameField: UITextField!
     @IBOutlet weak var reasonField: UITextView!
     @IBOutlet weak var targetDatePicker: UIDatePicker!
@@ -25,7 +20,7 @@ class EditGoalViewController: UIViewController {
     @IBOutlet weak var deleteGoalButton: UIButton!
     
     let imagePicker = UIImagePickerController()
-    var delegate:EditGoalViewControllerDelegate?
+    var delegate:EditGoalViewControllerDelegate!
     var editGoal:Goal?
     
     override func viewDidLoad() {
@@ -36,6 +31,10 @@ class EditGoalViewController: UIViewController {
         
         configureGoal(withGoal: self.editGoal)
         configureImagePicker(imagePicker: self.imagePicker)
+    }
+    
+    func commit() {
+        assert(delegate != nil)
     }
     
     func configureGoal(withGoal goal:Goal?) {

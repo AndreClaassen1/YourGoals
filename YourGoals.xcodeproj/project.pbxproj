@@ -38,6 +38,7 @@
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
 		7B3935771FF39B0E009E752F /* EditGoalFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935761FF39B0E009E752F /* EditGoalFormController.swift */; };
 		7B3935791FF39B5A009E752F /* EditGoalFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */; };
+		7B39357B1FF3A102009E752F /* EditGoalSegueParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */; };
 		7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */; };
 		7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */; };
 		7B3FA9DA1FE670290052B587 /* SelectableCommitDatesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */; };
@@ -289,6 +290,7 @@
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
 		7B3935761FF39B0E009E752F /* EditGoalFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalFormController.swift; sourceTree = "<group>"; };
 		7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditGoalFormController+Eureka.swift"; sourceTree = "<group>"; };
+		7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalSegueParameter.swift; sourceTree = "<group>"; };
 		7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateRange.swift"; sourceTree = "<group>"; };
 		7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCommitDatesCreator.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
 				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
+				7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */,
 				7B3935761FF39B0E009E752F /* EditGoalFormController.swift */,
 				7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
@@ -1418,6 +1421,7 @@
 				7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */,
 				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
 				7BE4BB5B1FC811A100E1BEF9 /* InitializerContext.swift in Sources */,
+				7B39357B1FF3A102009E752F /* EditGoalSegueParameter.swift in Sources */,
 				7B0A726B1FB049900000586D /* HabitFactory.swift in Sources */,
 				7BF5629E1FD5614200A4DF6C /* SettingsViewController.swift in Sources */,
 				7B130B5B1FB59CE20072F6C8 /* ActiveTasksDataSource.swift in Sources */,

@@ -61,7 +61,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
-                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentEditGoalOld" id="6eA-8s-RYt"/>
+                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentShowGoal" id="6eA-8s-RYt"/>
                         <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="cjO-Ie-qW9"/>
                     </connections>
                 </viewController>
@@ -428,7 +428,7 @@
                         <outlet property="goalsCollectionView" destination="lRG-Wn-cjM" id="MCB-5U-TAc"/>
                         <outlet property="habitsTableHeight" destination="XvF-0a-Ony" id="WRd-5V-GYB"/>
                         <outlet property="habitsTableView" destination="RgX-QO-7ea" id="wUt-Di-26Y"/>
-                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentEditGoalOld" id="8yY-7N-175"/>
+                        <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentShowGoal" id="8yY-7N-175"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="Cp9-T4-e9d"/>
                     </connections>
                 </viewController>
@@ -496,7 +496,7 @@
                                                         <rect key="frame" x="0.0" y="3" width="62" height="30"/>
                                                         <state key="normal" title="Edit Goal"/>
                                                         <connections>
-                                                            <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="mr5-wE-ViI"/>
+                                                            <action selector="editButtonTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="dmA-at-WoI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
@@ -573,12 +573,14 @@
                         <outlet property="containerTopConstraint" destination="bhZ-YM-MSD" id="He2-1w-mid"/>
                         <outlet property="containerTrailingConstraint" destination="Zau-Tu-14k" id="pLe-j6-JH5"/>
                         <outlet property="contentContainerView" destination="4Vg-1u-3Q8" id="LMM-ub-z8k"/>
+                        <outlet property="editGoalButton" destination="vGA-R2-NME" id="lEq-9S-lO7"/>
                         <outlet property="goalContentView" destination="fNu-zJ-BPD" id="9Ud-zV-CsR"/>
                         <outlet property="headerHeightConstraint" destination="qqG-LW-9io" id="Pqh-tv-Fu1"/>
                         <outlet property="tasksView" destination="Lqw-Eb-2ha" id="nDP-bP-2eu"/>
                         <outlet property="toggleHabitsButton" destination="waP-mC-s99" id="qvM-MH-jat"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="kJV-AZ-9qx"/>
-                        <segue destination="DPx-KP-TuC" kind="show" identifier="presentEditGoal2" id="vWh-25-qmt"/>
+                        <segue destination="DPx-KP-TuC" kind="presentation" identifier="presentEditGoal" id="vWh-25-qmt"/>
+                        <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="UMp-cE-4SY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB5-Y3-a37" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -686,6 +688,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="8yY-7N-175"/>
         <segue reference="kJV-AZ-9qx"/>
-        <segue reference="mr5-wE-ViI"/>
+        <segue reference="UMp-cE-4SY"/>
     </inferredMetricsTieBreakers>
 </document>
