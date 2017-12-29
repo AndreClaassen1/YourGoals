@@ -75,4 +75,19 @@ class EditGoalControllerTests: StorageTestCase, EditGoalFormControllerDelegate {
         let result = self.formVC.goalInfoFromValues(form: self.form)
         XCTAssertEqual("Goal for the Edit Form", result.name)
     }
+    
+    func testTodayGoal() {
+        //setup
+        let strategyManager = StrategyManager(manager: self.manager)
+        let todayGoal = try! strategyManager.assertTodayGoal(strategy: try! strategyManager.assertValidActiveStrategy())
+        
+        // act
+        self.loadController(with: todayGoal)
+        
+        // tests the hidden buttons
+        XCTAssert(self.form.rowBy(tag: GoalFormTag.startDate)!.isHidden)
+        XCTAssert(self.form.rowBy(tag: GoalFormTag.targetDate)!.isHidden)
+        XCTAssert(self.form.rowBy(tag: GoalFormTag.deleteButton)!.isHidden)
+    }
+
 }

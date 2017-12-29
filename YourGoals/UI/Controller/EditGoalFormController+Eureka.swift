@@ -17,8 +17,8 @@ struct GoalFormTag  {
     static let startDate = "startDate"
     static let targetDate = "targetDate"
     static let visionImage = "visionImage"
+    static let deleteButton = "deleteButton"
 }
-
 
 extension EditGoalFormController {
     
@@ -72,7 +72,7 @@ extension EditGoalFormController {
             
             +++ Section()
             
-            <<< ButtonRow() {
+            <<< ButtonRow(GoalFormTag.deleteButton) {
                 $0.title = "Delete Goal"
                 $0.hidden = Condition.init(booleanLiteral: newEntry || todayGoal)
                 }.cellSetup({ (cell, row) in
