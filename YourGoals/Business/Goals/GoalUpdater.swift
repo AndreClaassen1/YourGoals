@@ -12,9 +12,27 @@ import CoreData
 /// helper class for updating a goal in the data store
 class GoalUpdater:StorageManagerWorker {
 
+    /// update the goal with informations from the goal info object
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - goalInfo: goal info data from the form editor
+    /// - Throws: core data exception
     func update(goal:Goal, withGoalInfo goalInfo: GoalInfo) throws {
-        goal.name = goalInfo.name
+        if let name = goalInfo.name {
+            goal.name = name
+        }
         goal.reason = goalInfo.reason
+        if goal.goalType() != .todayGoal {
+            if let startDate = goalInfo.startDate {
+                goal.startDate = startDate
+            }
+            
+            if let targetDate = goalInfo.targetDate {
+                goal.targetDate = targetDate
+            }
+        }
+        
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: goalInfo.image)
         try self.manager.dataManager.saveContext()

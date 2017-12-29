@@ -89,5 +89,4 @@ class EditGoalControllerTests: StorageTestCase, EditGoalFormControllerDelegate {
         XCTAssert(self.form.rowBy(tag: GoalFormTag.targetDate)!.isHidden)
         XCTAssert(self.form.rowBy(tag: GoalFormTag.deleteButton)!.isHidden)
     }
-
 }

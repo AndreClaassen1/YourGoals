@@ -51,6 +51,9 @@ class EditGoalFormController:FormViewController, EditGoalSegueParameter {
     func deleteClicked() {
         assert(self.editGoal != nil)
         self.delegate.delete(goal: self.editGoal!)
+        self.dismiss(animated: true,completion: {
+            self.delegate?.dismissController()
+        })
     }
     
     // MARK: Navigation Bar Methods
