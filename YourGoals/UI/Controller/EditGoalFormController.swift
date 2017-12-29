@@ -31,7 +31,7 @@ class EditGoalFormController:FormViewController, EditGoalSegueParameter {
         self.navigationItem.rightBarButtonItem?.action = #selector(saveTapped(_:))
         
         let goalInfo = goalInfoFromParameter()
-        self.configure(form: self.form, withInfo: goalInfo, newEntry: self.editGoal == nil)
+        self.configure(form: self.form, withInfo: goalInfo, newEntry: self.editGoal == nil, todayGoal: self.editGoal?.goalType() == .todayGoal)
     }
     
     /// create a goal info from the parameter passed to this controller

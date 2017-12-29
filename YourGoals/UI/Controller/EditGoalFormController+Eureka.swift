@@ -29,8 +29,8 @@ extension EditGoalFormController {
     ///   - goal: configure the form with the goal
     ///   - newEntry: true, if it is a new entry
     ///   - date: configure the selection of the commit dates with the current date as a starting poitn
-    func configure(form: Form, withInfo goalInfo: GoalInfo, newEntry: Bool) {
-        self.createForm(form: form, newEntry: newEntry)
+    func configure(form: Form, withInfo goalInfo: GoalInfo, newEntry: Bool, todayGoal: Bool) {
+        self.createForm(form: form, newEntry: newEntry, todayGoal: todayGoal)
         self.setValues(forGoalInfo: goalInfo)
     }
     
@@ -40,7 +40,7 @@ extension EditGoalFormController {
     ///   - form: the eureka form
     ///   - newEntry: true, if its is a new entry. old entries get an additional
     ///               delete button
-    func createForm(form: Form, newEntry: Bool) {
+    func createForm(form: Form, newEntry: Bool, todayGoal: Bool) {
         form
             +++ Section()
             <<< TextRow(tag: GoalFormTag.goalName).cellSetup { cell, row in
@@ -52,21 +52,35 @@ extension EditGoalFormController {
             <<< ImageRow(GoalFormTag.visionImage) {
                 $0.title = "Image for your goal"
             }
-         
+            
             <<< TextAreaRow(GoalFormTag.reason) {
                 $0.placeholder = "The real reason for your goal"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
             }
             
+            +++ Section()
+            
             <<< DateRow(GoalFormTag.startDate) {
                 $0.title = "Start Date"
+                $0.hidden = Condition.init(booleanLiteral: todayGoal)
             }
             
             <<< DateRow(GoalFormTag.targetDate) {
                 $0.title = "Target Date for Goal"
+                $0.hidden = Condition.init(booleanLiteral: todayGoal)
             }
             
-            <<< deleteButtonRow(newEntry: newEntry)
+            +++ Section()
+            
+            <<< ButtonRow() {
+                $0.title = "Delete Goal"
+                $0.hidden = Condition.init(booleanLiteral: newEntry || todayGoal)
+                }.cellSetup({ (cell, row) in
+                    cell.backgroundColor = UIColor.red
+                    cell.tintColor = UIColor.white
+                }).onCellSelection{ _, _ in
+                    self.deleteClicked()
+        }
     }
     
     /// fill the rows of the form with the values of the goalInfo object
@@ -85,19 +99,10 @@ extension EditGoalFormController {
         form.setValues(values)
     }
     
-    
-    func deleteButtonRow(newEntry: Bool) -> BaseRow {
-        return ButtonRow() {
-            $0.title = "Delete Goal"
-            $0.hidden = Condition.function([], { _ in newEntry })
-            }.cellSetup({ (cell, row) in
-                cell.backgroundColor = UIColor.red
-                cell.tintColor = UIColor.white
-            }).onCellSelection{ _, _ in
-                self.deleteClicked()
-        }
-    }
-    
+    /// retrieve values from the form
+    ///
+    /// - Parameter form: the form
+    /// - Returns: the values
     func goalInfoFromValues(form: Form) -> GoalInfo {
         let values = form.values()
         
