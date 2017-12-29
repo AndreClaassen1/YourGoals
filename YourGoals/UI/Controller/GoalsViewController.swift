@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewControllerDelegate, GoalDetailViewControllerDelegate {
+class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalFormControllerDelegate, GoalDetailViewControllerDelegate {
     
     // data properties
     var manager:GoalsStorageManager!
@@ -80,7 +80,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalViewCo
         }
     }
     
-    // MARK: - EditGoalViewControllerDelegate
+    // MARK: - EditGoalFormControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
         do {

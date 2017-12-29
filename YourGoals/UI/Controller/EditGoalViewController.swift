@@ -20,7 +20,7 @@ class EditGoalViewController: UIViewController, EditGoalSegueParameter {
     @IBOutlet weak var deleteGoalButton: UIButton!
     
     let imagePicker = UIImagePickerController()
-    var delegate:EditGoalViewControllerDelegate!
+    var delegate:EditGoalFormControllerDelegate!
     var editGoal:Goal?
     
     override func viewDidLoad() {

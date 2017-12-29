@@ -9,12 +9,12 @@
 import Foundation
 
 protocol EditGoalSegueParameter {
-    var delegate:EditGoalViewControllerDelegate! { get set }
+    var delegate:EditGoalFormControllerDelegate! { get set }
     var editGoal:Goal? { get set }
     func commit()
 }
 
-protocol EditGoalViewControllerDelegate {
+protocol EditGoalFormControllerDelegate {
     func createNewGoal(goalInfo: GoalInfo)
     func update(goal: Goal, withGoalInfo goalInfo:GoalInfo)
     func delete(goal: Goal)

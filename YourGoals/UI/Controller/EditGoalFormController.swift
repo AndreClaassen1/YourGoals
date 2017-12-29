@@ -11,7 +11,7 @@ import Eureka
 
 /// controller for editing an goal
 class EditGoalFormController:FormViewController, EditGoalSegueParameter {
-    var delegate: EditGoalViewControllerDelegate!
+    var delegate: EditGoalFormControllerDelegate!
     var parameterCommitted = false
     var editGoal: Goal?
     

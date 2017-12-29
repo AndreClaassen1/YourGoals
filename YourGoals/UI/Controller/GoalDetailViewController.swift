@@ -21,7 +21,7 @@ protocol GoalDetailViewControllerDelegate {
 }
 
 /// show a goal and all of its tasks in detail
-class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalViewControllerDelegate, ActionableTableViewDelegate {
+class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalFormControllerDelegate, ActionableTableViewDelegate {
     @IBOutlet weak var editGoalButton: UIButton!
     
     // container and constraints for animating this view
@@ -187,7 +187,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         try self.refreshView()
     }
     
-    // MARK: - EditGoalViewControllerDelegate
+    // MARK: - EditGoalFormControllerDelegate
     
     func createNewGoal(goalInfo: GoalInfo) {
         assertionFailure("this function")
