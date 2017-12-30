@@ -47,9 +47,20 @@ extension EditGoalFormController {
                 cell.textField.placeholder = "Enter your goal"
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesAlways
-            }
+                }.cellUpdate({ (cell, row) in
+                    if !row.isValid {
+                        cell.backgroundColor = UIColor.red
+                        cell.tintColor = UIColor.white
+                    }
+                    else {
+                        cell.backgroundColor = UIColor.white
+                        cell.tintColor = UIColor.black
+                    }
+                })
             
             <<< ImageRow(GoalFormTag.visionImage) {
+                $0.sourceTypes = .PhotoLibrary
+                $0.add(rule: RuleRequired())
                 $0.title = "Image for your goal"
             }
             
@@ -61,13 +72,32 @@ extension EditGoalFormController {
             +++ Section()
             
             <<< DateRow(GoalFormTag.startDate) {
-                $0.title = "Start Date"
+                $0.title = "Starting Date"
                 $0.hidden = Condition.init(booleanLiteral: todayGoal)
+                $0.add(rule: RuleRequired())
             }
             
-            <<< DateRow(GoalFormTag.targetDate) {
-                $0.title = "Target Date for Goal"
-                $0.hidden = Condition.init(booleanLiteral: todayGoal)
+            <<< DateRow(GoalFormTag.targetDate) { row in
+                row.title = "Target Date"
+                row.hidden = Condition.init(booleanLiteral: todayGoal)
+                row.add(rule: RuleClosure<Date> { targetDate in
+                    guard let startDate = (form.rowBy(tag: GoalFormTag.startDate) as! DateRow).value else { return nil }
+                    guard let targetDate = targetDate else { return nil }
+                    
+                    if startDate.compare(targetDate) == .orderedDescending {
+                        return ValidationError(msg: "the target date must be greater than the start date")
+                    }
+                    
+                    return nil
+                })
+                row.add(rule: RuleRequired())
+                row.validationOptions = .validatesAlways
+                }.cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.backgroundColor = UIColor.red
+                    } else {
+                        cell.backgroundColor = UIColor.white
+                    }
             }
             
             +++ Section()
@@ -94,7 +124,11 @@ extension EditGoalFormController {
         let startDate = goalInfo.startDate ?? Date()
         values[GoalFormTag.startDate] = startDate
         values[GoalFormTag.targetDate] = goalInfo.targetDate ?? startDate.addDaysToDate(30)
-        values[GoalFormTag.visionImage] = goalInfo.image
+        if let image = goalInfo.image {
+            values[GoalFormTag.visionImage] = image
+        } else {
+            values[GoalFormTag.visionImage] = #imageLiteral(resourceName: "Success")
+        }
         
         form.setValues(values)
     }
@@ -108,8 +142,8 @@ extension EditGoalFormController {
         
         let name = values[GoalFormTag.goalName] as! String?
         let reason = values[GoalFormTag.reason] as! String?
-        let startDate = values[GoalFormTag.startDate] as! Date?
-        let targetDate = values[GoalFormTag.targetDate] as! Date?
+        let startDate = values[GoalFormTag.startDate] as? Date
+        let targetDate = values[GoalFormTag.targetDate] as? Date
         let image = values[GoalFormTag.visionImage] as! UIImage?
         
         return GoalInfo(name: name, reason: reason, startDate: startDate, targetDate: targetDate, image: image, prio: 999)

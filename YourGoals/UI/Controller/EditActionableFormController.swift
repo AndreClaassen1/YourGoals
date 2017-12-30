@@ -93,7 +93,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         do {
             let validationErrors = form.validate()
             guard validationErrors.count == 0 else {
-                showNotification(text: "There are validation errors")
+                showNotification(forValidationErrors: validationErrors)
                 return
             }
             

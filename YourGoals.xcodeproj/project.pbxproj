@@ -70,6 +70,7 @@
 		7B7AECD71FF598C80096EE5D /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */; };
 		7B7AECD81FF598C80096EE5D /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD61FF598C80096EE5D /* ImageRow.swift */; };
 		7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */; };
+		7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECDB1FF81E900096EE5D /* showValidationErrors.swift */; };
 		7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */; };
 		7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */; };
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
@@ -325,6 +326,7 @@
 		7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		7B7AECD61FF598C80096EE5D /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
 		7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalControllerTests.swift; sourceTree = "<group>"; };
+		7B7AECDB1FF81E900096EE5D /* showValidationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showValidationErrors.swift; sourceTree = "<group>"; };
 		7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Progress.swift"; sourceTree = "<group>"; };
 		7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+SwipeableCell.swift"; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 			children = (
 				7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */,
 				7B7AECD61FF598C80096EE5D /* ImageRow.swift */,
+				7B7AECDB1FF81E900096EE5D /* showValidationErrors.swift */,
 			);
 			path = Eureka;
 			sourceTree = "<group>";
@@ -1426,6 +1429,7 @@
 				7B6E35AF1FC6072300F55089 /* TodayAllActionablesDataSource.swift in Sources */,
 				7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */,
 				7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */,
+				7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,

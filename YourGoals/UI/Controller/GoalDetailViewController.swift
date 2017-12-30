@@ -203,7 +203,6 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         catch let error {
             self.showNotification(forError: error)
         }
-        
     }
     
     func delete(goal: Goal) {

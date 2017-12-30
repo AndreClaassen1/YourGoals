@@ -67,7 +67,7 @@ class EditGoalFormController:FormViewController, EditGoalSegueParameter {
     @objc func saveTapped(_ barButtonItem: UIBarButtonItem) {
         let validationErrors = form.validate()
         guard validationErrors.count == 0 else {
-            showNotification(text: "There are validation errors")
+            showNotification(forValidationErrors: validationErrors)
             return
         }
         

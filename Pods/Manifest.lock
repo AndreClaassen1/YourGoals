@@ -3,7 +3,7 @@ PODS:
   - CSNotificationView (0.5.4)
   - Eureka (4.0.1)
   - LongPressReorder (1.1.0)
-  - MGSwipeTableCell (1.6.1)
+  - MGSwipeTableCell (1.6.6)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - TEAChart (1.0.0)
@@ -23,7 +23,7 @@ SPEC CHECKSUMS:
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
   Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
   LongPressReorder: 1f652eb6572dbd37fb3e10d0af459ac76351b84d
-  MGSwipeTableCell: 19a1d65dcc1ceaea42eb44bb2adae32101904514
+  MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   TEAChart: 4bfb34461d9da2672d3e63ccf1a486e5bb4bceb7
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa

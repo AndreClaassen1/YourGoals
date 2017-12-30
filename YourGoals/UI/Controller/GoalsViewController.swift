@@ -86,7 +86,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalFormCo
         do {
             let strategyManager = StrategyManager(manager: self.manager)
             let _ = try strategyManager.createNewGoalForStrategy(goalInfo: goalInfo)
-            self.collectionView.reloadData()
+            self.reloadGoalsCollection()
         }
         catch let error {
             self.showNotification(forError: error)
