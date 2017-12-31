@@ -10,6 +10,25 @@ import Foundation
 
 // MARK: - Actionable Extension for feeding the ActionableTableView and its cells
 extension Habit:Actionable {
+    var size: Float {
+        get {
+            return 0.0
+        }
+        set {
+            
+        }
+    }
+    
+    
+    /// ignore commitment date
+    var commitmentDate: Date? {
+        get {
+            return nil
+        }
+        set {
+            
+        }
+    }
     
     /// this is a habit
     var type:ActionableType {
@@ -41,7 +60,6 @@ extension Habit:Actionable {
         return false
     }
     
-    var commitmentDate:Date? { return nil }
     
     func committingState(forDate date:Date) -> CommittingState {
         return .notCommitted

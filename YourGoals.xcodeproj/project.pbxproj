@@ -27,6 +27,8 @@
 		7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD811F9E73A2008E90A2 /* Reusable.swift */; };
 		7B17DD881F9E88EA008E90A2 /* GoalsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD871F9E88E7008E90A2 /* GoalsSectionHeader.swift */; };
 		7B17DD891F9E88F3008E90A2 /* GoalsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD861F9E88E6008E90A2 /* GoalsSectionHeader.xib */; };
+		7B1BBC311FF8E481003934B1 /* WeekdayRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BBC301FF8E481003934B1 /* WeekdayRow.swift */; };
+		7B1BBC331FF8E51A003934B1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1BBC321FF8E51A003934B1 /* WeekDaysCell.xib */; };
 		7B1D60BF1FB719BB00E617ED /* ActionableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D60BE1FB719BB00E617ED /* ActionableFactory.swift */; };
 		7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */; };
 		7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */; };
@@ -283,6 +285,8 @@
 		7B17DD871F9E88E7008E90A2 /* GoalsSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSectionHeader.swift; sourceTree = "<group>"; };
 		7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissStoryViewAnimationController.swift; sourceTree = "<group>"; };
+		7B1BBC301FF8E481003934B1 /* WeekdayRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayRow.swift; sourceTree = "<group>"; };
+		7B1BBC321FF8E51A003934B1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		7B1D60BE1FB719BB00E617ED /* ActionableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableFactory.swift; sourceTree = "<group>"; };
 		7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Actionable.swift"; sourceTree = "<group>"; };
 		7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationTypes.swift; sourceTree = "<group>"; };
@@ -653,6 +657,8 @@
 				7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */,
 				7B7AECD61FF598C80096EE5D /* ImageRow.swift */,
 				7B7AECDB1FF81E900096EE5D /* showValidationErrors.swift */,
+				7B1BBC301FF8E481003934B1 /* WeekdayRow.swift */,
+				7B1BBC321FF8E51A003934B1 /* WeekDaysCell.xib */,
 			);
 			path = Eureka;
 			sourceTree = "<group>";
@@ -1172,6 +1178,7 @@
 				7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */,
 				7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */,
 				7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */,
+				7B1BBC331FF8E51A003934B1 /* WeekDaysCell.xib in Resources */,
 				7BE4BB551FC80B2700E1BEF9 /* GoalMiniCell.xib in Resources */,
 				7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */,
 				7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */,
@@ -1441,6 +1448,7 @@
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
 				7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */,
 				7B3FA9D61FE666BC0052B587 /* Date+DateRange.swift in Sources */,
+				7B1BBC311FF8E481003934B1 /* WeekdayRow.swift in Sources */,
 				7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */,
 				7BE4BB5B1FC811A100E1BEF9 /* InitializerContext.swift in Sources */,
 				7B39357B1FF3A102009E752F /* EditGoalSegueParameter.swift in Sources */,

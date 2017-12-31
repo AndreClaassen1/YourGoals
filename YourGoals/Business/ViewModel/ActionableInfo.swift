@@ -18,6 +18,9 @@ struct ActionableInfo {
     /// commit date for tasks
     let commitDate:Date?
     
+    /// size of the Actionable in Minutes
+    let size:Float
+    
     /// changed goal
     let parentGoal:Goal?
     
@@ -27,11 +30,13 @@ struct ActionableInfo {
     ///   - name: name of the actionable
     ///   - commitDate: commit date (only for tasks)
     ///   - parentGoal: parentGoal
-    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil ){
+    ///   - size: size of the task (only for tasks). nil makes a default size of 30 Minutes
+    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil ){
         self.type = type
         self.name = name
         self.commitDate = commitDate
         self.parentGoal = parentGoal
+        self.size = size ?? 30.0
     }
     
     /// initialize the info with a valid actionable object
@@ -42,5 +47,6 @@ struct ActionableInfo {
         self.name = actionable.name
         self.commitDate = actionable.commitmentDate
         self.parentGoal = actionable.goal
+        self.size = actionable.size
     }
 }

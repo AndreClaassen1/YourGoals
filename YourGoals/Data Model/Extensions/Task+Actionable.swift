@@ -18,5 +18,4 @@ extension Task:Actionable {
     func checkedState(forDate date: Date) -> ActionableState {
         return self.getTaskState()
     }
-    
 }

@@ -19,6 +19,7 @@ import Eureka
 struct TaskFormTag  {
     static let task = "Task"
     static let goal = "Goal"
+    static let duration = "Duration"
     static let commitDate = "CommitDate"
 }
 
@@ -38,7 +39,8 @@ extension ActionableInfo {
         
         let goal = values[TaskFormTag.goal] as? Goal
         let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
-        self.init(type: type, name: name, commitDate: commitDateTuple?.date, parentGoal: goal)
+        let size = values [TaskFormTag.duration] as? Float
+        self.init(type: type, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
     }
 }
 
@@ -70,10 +72,20 @@ extension EditActionableFormController {
         form
             +++ Section()
             <<< taskNameRow()
-            <<< parentGoalRow()
             +++ Section() { $0.hidden = Condition.function([], { _ in type == .habit }) }
+            <<< SliderRow(TaskFormTag.duration) {
+                $0.title = "Size in Minutes"
+                $0.minimumValue = 0.0
+                $0.maximumValue = 240.0
+                $0.steps = 16
+                }
+            
             <<< commitDateRow()
+            <<< WeekDayRow(){
+                $0.value = [.monday, .wednesday, .friday]
+            }
             +++ Section()
+            <<< parentGoalRow()
             <<< remarksRow(remarks: nil)
             +++ Section()
             <<< ButtonRow() {
@@ -99,6 +111,7 @@ extension EditActionableFormController {
         values[TaskFormTag.task] = actionableInfo.name
         values[TaskFormTag.goal] = actionableInfo.parentGoal
         values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
+        values[TaskFormTag.duration] = actionableInfo.size
         
         let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: TaskFormTag.commitDate)!
         let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: actionableInfo.commitDate)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -33,6 +33,7 @@
         <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Float" defaultValueString="30" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal" syncable="YES"/>
         <relationship name="progress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskProgress" inverseName="task" inverseEntity="TaskProgress" syncable="YES"/>
@@ -47,7 +48,7 @@
         <element name="Habit" positionX="-261" positionY="-375" width="128" height="105"/>
         <element name="HabitCheck" positionX="-81" positionY="-363" width="128" height="75"/>
         <element name="ImageData" positionX="-243" positionY="-198" width="128" height="75"/>
-        <element name="Task" positionX="-234" positionY="-12" width="128" height="165"/>
+        <element name="Task" positionX="-234" positionY="-12" width="128" height="180"/>
         <element name="TaskProgress" positionX="-36" positionY="9" width="128" height="90"/>
     </elements>
 </model>

@@ -44,7 +44,7 @@ protocol Actionable {
     var name:String? { set get }
     
     /// the associated goal for this
-    var goal:Goal? { get }
+    var goal:Goal? { set get }
     
     var prio:Int16 { set get }
     
@@ -64,7 +64,10 @@ protocol Actionable {
     func isProgressing(atDate date: Date) -> Bool
     
     /// commitet day of the work
-    var commitmentDate:Date? { get }
+    var commitmentDate:Date? { set get }
+    
+    /// estimated size of the work in minute
+    var size:Float { set get }
     
     /// get the commiting state of the work for a specific day
     ///
