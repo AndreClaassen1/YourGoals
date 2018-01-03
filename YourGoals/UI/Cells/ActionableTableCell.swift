@@ -9,12 +9,17 @@
 import UIKit
 import MGSwipeTableCell
 
+/// the user
 protocol ActionableTableCellDelegate {
     func actionableStateChangeDesired(actionable:Actionable)
+ }
+
+protocol ActionableCell {
+    func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate)
 }
 
 /// a table cell for displaying habits or tasks. experimental
-class ActionableTableCell: MGSwipeTableCell {
+class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
@@ -99,18 +104,7 @@ class ActionableTableCell: MGSwipeTableCell {
         }
     }
     
-    /// get a human readable string for a time interval (:ugly:)
-    ///
-    /// - Parameter ti: time interval
-    /// - Returns: string representation in format 0:00:00
-    func stringFromTime(interval ti: TimeInterval) -> String {
-        let seconds = Int(ti.truncatingRemainder(dividingBy: 60))
-        let minutes = Int((ti / 60).truncatingRemainder(dividingBy: 60))
-        let hours = Int(ti / 3600)
-        
-        let result = String(format: "%d:%0.2d:%0.2d", hours, minutes, seconds)
-        return result
-    }
+
     
     /// show the working time on this task.
     ///
@@ -121,7 +115,7 @@ class ActionableTableCell: MGSwipeTableCell {
             return
         }
         
-        self.workingTimeLabel.text = stringFromTime(interval: progress)
+        self.workingTimeLabel.text = progress.formattedAsString()
     }
     
     func adaptUI(forActionableType type: ActionableType) {

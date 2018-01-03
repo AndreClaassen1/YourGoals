@@ -45,6 +45,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         self.backgroundColor = UIColor.clear
         self.tasksTableView = UITableView(frame: self.bounds)
         self.tasksTableView.registerReusableCell(ActionableTableCell.self)
+        self.tasksTableView.registerReusableCell(WorkInProgressCell.self)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
         self.reorderTableView.delegate = self
         self.reorderTableView.enableLongPressReorder()
@@ -171,19 +172,26 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        let date = Date()
+        var actionableCell:ActionableCell!
         let actionable = self.actionableForIndexPath(path: indexPath)
-        cell.configure(actionable: actionable, forDate: Date(), delegate: self)
-        configure(swipeableCell: cell)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        if actionable.isProgressing(atDate: date) {
+            actionableCell = WorkInProgressCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        } else {
+            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        }
+        actionableCell.configure(actionable: actionable, forDate: Date(), delegate: self)
+        configure(swipeableCell: actionableCell as! MGSwipeTableCell)
+        return actionableCell as! UITableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        let actionable = self.actionableForIndexPath(path: indexPath)
+        if actionable.isProgressing(atDate: Date()) {
+            return 170.0
+        } else {
+            return 44.0
+        }
     }
     
     // MARK: - ActionableTableCellDelegate

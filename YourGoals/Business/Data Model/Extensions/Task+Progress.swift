@@ -50,4 +50,23 @@ extension Task {
         
         return progression
     }
+    
+    // Mark: - Calculate remaining time for the task
+
+    /// calculate the task size as a timeinterval (task size in seconds)
+    ///
+    /// - Returns: task size as a time interval
+    func taskSizeAsInterval() -> TimeInterval {
+        return TimeInterval(self.size * 60.0)
+    }
+    
+    /// calculates the remaining time for the task based on the size of the time in minutes and the progress
+    ///
+    /// - Parameter date: the date for the calculation
+    /// - Returns: the remaining time as a time interval (time in seconds)
+    func calcRemainingTimeInterval(atDate date:Date) -> TimeInterval {
+        let progression = self.calcProgressDuration(atDate: date) ?? TimeInterval(0.0)
+        let remainingTime = taskSizeAsInterval() - progression
+        return remainingTime
+    }
 }

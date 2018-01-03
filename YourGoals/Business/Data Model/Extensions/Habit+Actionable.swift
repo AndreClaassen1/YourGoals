@@ -52,6 +52,10 @@ extension Habit:Actionable {
         return nil
     }
     
+    func calcRemainingTimeInterval(atDate date: Date) -> TimeInterval {
+        return 0.0
+    }
+    
     /// a habit is never progressing at any date
     ///
     /// - Parameter date: date
