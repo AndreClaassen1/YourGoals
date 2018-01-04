@@ -116,7 +116,8 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: Date())
             
             if showActivWorkTasksView {
-                self.activeTasksHeight.constant = originalTasksHeight
+               // self.activeTasksHeight.constant = originalTasksHeight
+                self.activeTasksHeight.constant = 215.0
                 self.activeWorkTasksView.isHidden = false
                 self.activeWorkTasksView.reload()
             } else {
