@@ -75,6 +75,10 @@ extension Task {
     }
     
     func calcRemainingPercentage(atDate date: Date) -> Double {
+        if taskSizeAsInterval() == 0.0 {
+            return 0.0
+        }
+        
         let percentage = calcRemainingTimeInterval(atDate: date) / taskSizeAsInterval()
         
         return percentage < 0.0 ? 0.0 : (percentage > 1.0 ? 1.0 : percentage)

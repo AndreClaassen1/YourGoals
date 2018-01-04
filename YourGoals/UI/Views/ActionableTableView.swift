@@ -30,6 +30,9 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var dataSource:ActionableDataSource!
     var constraint:NSLayoutConstraint? = nil
     var constraintOffset:CGFloat = 0
+    var panGestureRecognizer:UIPanGestureRecognizer!
+    var manager: GoalsStorageManager!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +67,8 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     ///   - dataSource: a actionable data source
     ///   - delegate: a delegate for actions like editing or so.
     ///   - varyingHeightConstraint: an optional constraint, if the actionable table view should modify the constriaitn
-    func configure(dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
+    func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
+        self.manager = manager
         self.dataSource = dataSource
         self.delegate = delegate
         if let constraint = varyingHeightConstraint {
@@ -180,7 +184,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         } else {
             actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         }
-        actionableCell.configure(actionable: actionable, forDate: Date(), delegate: self)
+        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), delegate: self)
         configure(swipeableCell: actionableCell as! MGSwipeTableCell)
         return actionableCell as! UITableViewCell
     }

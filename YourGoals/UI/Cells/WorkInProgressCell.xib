@@ -21,6 +21,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-6a-m9L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="168.5"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a7-rr-G23" userLabel="Remaining Time">
+                                <rect key="frame" x="40" y="22" width="240" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="cuE-7N-of0"/>
+                                    <constraint firstAttribute="height" constant="55" id="vh4-57-xAc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Task your are working on" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVL-8p-2hY" userLabel="Task">
                                 <rect key="frame" x="8" y="98" width="304" height="47"/>
                                 <constraints>
@@ -48,30 +58,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a7-rr-G23" userLabel="Remaining Time">
-                                <rect key="frame" x="0.0" y="22" width="320" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Uo-GSo" userLabel="MinusTimer">
+                                <rect key="frame" x="28" y="34" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="vh4-57-xAc"/>
+                                    <constraint firstAttribute="width" constant="32" id="4wS-ww-rB8"/>
+                                    <constraint firstAttribute="height" constant="32" id="bNj-It-nz9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" image="MinusTimer"/>
+                                <connections>
+                                    <action selector="minusTimerTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DmS-mt-MOL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SZ-G9-bi6" userLabel="PlusTimer">
+                                <rect key="frame" x="261" y="34" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="3oX-5o-xkU"/>
+                                    <constraint firstAttribute="width" constant="32" id="7Ag-Hs-GWh"/>
+                                </constraints>
+                                <state key="normal" image="PlusTimer"/>
+                                <connections>
+                                    <action selector="plusTimerTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0w3-5I-i4R"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="O6G-ef-xdn" secondAttribute="trailing" id="0Xl-RO-F5x"/>
-                            <constraint firstItem="1a7-rr-G23" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" id="DTL-RO-uJk"/>
                             <constraint firstItem="tVL-8p-2hY" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" constant="8" id="G12-kb-duL"/>
+                            <constraint firstItem="1a7-rr-G23" firstAttribute="centerX" secondItem="nmf-6a-m9L" secondAttribute="centerX" id="GeS-qR-w6Z"/>
                             <constraint firstAttribute="bottom" secondItem="tVL-8p-2hY" secondAttribute="bottom" constant="23.5" id="Ipw-Av-w0k"/>
                             <constraint firstItem="1a7-rr-G23" firstAttribute="top" secondItem="nmf-6a-m9L" secondAttribute="top" constant="22" id="Kg8-iQ-y4q"/>
                             <constraint firstAttribute="trailing" secondItem="tVL-8p-2hY" secondAttribute="trailing" constant="8" id="KsS-o5-P2P"/>
+                            <constraint firstItem="1a7-rr-G23" firstAttribute="leading" secondItem="iy4-Uo-GSo" secondAttribute="trailing" constant="-20" id="UBY-8f-Y2U"/>
                             <constraint firstItem="tVL-8p-2hY" firstAttribute="top" secondItem="1a7-rr-G23" secondAttribute="bottom" constant="21" id="Uvk-ZE-zA4"/>
-                            <constraint firstAttribute="trailing" secondItem="1a7-rr-G23" secondAttribute="trailing" id="Vjz-bm-iBA"/>
                             <constraint firstItem="O6G-ef-xdn" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" id="YSX-Vx-JNB"/>
+                            <constraint firstItem="5SZ-G9-bi6" firstAttribute="leading" secondItem="1a7-rr-G23" secondAttribute="trailing" constant="-19" id="egq-kh-1CB"/>
                             <constraint firstItem="Jcd-bx-MJj" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" constant="8" id="hbf-2Z-0zU"/>
                             <constraint firstAttribute="trailing" secondItem="Jcd-bx-MJj" secondAttribute="trailing" constant="8" id="ioD-co-ign"/>
                             <constraint firstItem="Jcd-bx-MJj" firstAttribute="top" secondItem="1a7-rr-G23" secondAttribute="bottom" constant="-3" id="mS6-PA-w2y"/>
+                            <constraint firstItem="5SZ-G9-bi6" firstAttribute="centerY" secondItem="1a7-rr-G23" secondAttribute="centerY" id="nH3-Ev-acg"/>
                             <constraint firstAttribute="bottom" secondItem="O6G-ef-xdn" secondAttribute="bottom" constant="0.5" id="o0p-sf-ru8"/>
+                            <constraint firstItem="iy4-Uo-GSo" firstAttribute="centerY" secondItem="1a7-rr-G23" secondAttribute="centerY" id="tvE-gu-w2C"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -92,4 +119,8 @@
             <point key="canvasLocation" x="44" y="116.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="MinusTimer" width="64" height="64"/>
+        <image name="PlusTimer" width="64" height="64"/>
+    </resources>
 </document>

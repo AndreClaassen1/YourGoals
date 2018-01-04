@@ -18,9 +18,14 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
     
     let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
     
+    
+    var panGesture:UIPanGestureRecognizer!
+    var taskProgressManager:TaskProgressManager!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,14 +50,44 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
         return cell
     }
     
+    @IBAction func minusTimerTouched(_ sender: Any) {
+        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: -15.0)
+        showRemainingTime(date: Date())
+    }
+    
+    @IBAction func plusTimerTouched(_ sender: Any) {
+        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: 15.0)
+        showRemainingTime(date: Date())
+    }
+    
     // MARK: Actionable Cell Protocol
     
-    func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
+    var actionable: Actionable!
+    
+    @objc
+    func handlePan(_ sender:UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self)
+        
+        NSLog("handle pan called with \(translation) in view size \(self.frame.size)")
+        
+    }
+    
+    func showRemainingTime(date: Date) {
+        self.remainingTimeLabel.text = actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+        self.backgroundColor = self.colorCalculator.calculateColor(percent: CGFloat(actionable.calcRemainingPercentage(atDate: date)))
+    }
+    
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
+        self.taskProgressManager = TaskProgressManager(manager: manager)
+        self.isUserInteractionEnabled = true
+        self.panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.panGesture.delegate = self
+      //  self.addGestureRecognizer(self.panGesture)
+        self.actionable = actionable
         self.taskLabel.text = actionable.name
         self.goalLabel.text = actionable.goal?.name ?? "No goal set"
-        self.remainingTimeLabel.text = actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+        showRemainingTime(date: date)
         let progress = actionable.calcProgressDuration(atDate: date) ?? 0.0
         self.timeAlreadySpent.text = "Time already spent \(progress.formattedAsString())"
-        self.backgroundColor = self.colorCalculator.calculateColor(percent: CGFloat(actionable.calcRemainingPercentage(atDate: date)))
     }
 }

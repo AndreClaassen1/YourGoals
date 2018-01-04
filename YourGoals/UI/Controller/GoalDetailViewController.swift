@@ -83,7 +83,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func configureTableView(forMode mode: GoalDetailViewControllerMode) {
         let dataSource = dataSourceForMode(mode)
-        self.tasksView.configure(dataSource: dataSource,delegate: self)
+        self.tasksView.configure(manager: self.manager, dataSource: dataSource,delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {

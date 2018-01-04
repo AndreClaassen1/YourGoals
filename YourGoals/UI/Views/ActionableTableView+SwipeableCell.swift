@@ -13,6 +13,7 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     
     // MARK: - configuration of the swipeable cell
     
+    
     func configure(swipeableCell cell:MGSwipeTableCell) {
         cell.delegate = self
     }
@@ -56,7 +57,7 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     /// - Returns: an array of MGSwipeButtons
     func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
         
-        guard let taskCell = cell as? ActionableTableCell else {
+        guard let taskCell = cell as? ActionableCell else {
             NSLog("illegal cell type: \(cell)")
             return nil
         }
@@ -109,7 +110,7 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     /// - Returns: true for old good handlign
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         do {
-            guard let taskCell = cell as? ActionableTableCell else {
+            guard let taskCell = cell as? ActionableCell else {
                 NSLog("illegal cell type: \(cell)")
                 return true
             }

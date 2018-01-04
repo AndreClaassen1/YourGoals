@@ -133,4 +133,19 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
         return actionable.isProgressing(atDate: date)
     }
+    
+    
+    func changeTaskSize(forTask actionable: Actionable, delta: Float) throws {
+        guard let task = actionable as? Task else {
+            NSLog("change task size is only supported for tasks")
+            return
+        }
+        
+        task.size += delta
+        if task.size < 0.0 {
+            task.size = 0.0
+        }
+        
+        try self.manager.saveContext()
+    }
 }

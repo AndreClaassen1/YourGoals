@@ -15,7 +15,8 @@ protocol ActionableTableCellDelegate {
  }
 
 protocol ActionableCell {
-    func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate)
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate)
+    var actionable:Actionable! { get }
 }
 
 /// a table cell for displaying habits or tasks. experimental
@@ -132,7 +133,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     /// show the content of the task in this cell
     ///
     /// - Parameter task: a task
-    func configure(actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
         self.actionable = actionable
         self.delegateTaskCell = delegate
         adaptUI(forActionableType: actionable.type)
