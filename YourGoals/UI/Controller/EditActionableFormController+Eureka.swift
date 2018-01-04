@@ -74,7 +74,7 @@ extension EditActionableFormController {
             <<< taskNameRow()
             +++ Section() { $0.hidden = Condition.function([], { _ in type == .habit }) }
             <<< SliderRow(TaskFormTag.duration) {
-                $0.title = "Size in Minutes"
+                $0.title = "Timebox in Minutes"
                 $0.minimumValue = 0.0
                 $0.maximumValue = 240.0
                 $0.steps = 16

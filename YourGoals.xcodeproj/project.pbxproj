@@ -76,6 +76,7 @@
 		7B74BC561FFD6C1F00D06D48 /* ColorCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */; };
 		7B74BC581FFE191900D06D48 /* UIColor+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */; };
 		7B74BC5A1FFE1DC700D06D48 /* CalculateColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */; };
+		7B74BC5C1FFE981E00D06D48 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */; };
 		7B7AECD71FF598C80096EE5D /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */; };
 		7B7AECD81FF598C80096EE5D /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD61FF598C80096EE5D /* ImageRow.swift */; };
 		7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */; };
@@ -341,6 +342,7 @@
 		7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCalculator.swift; sourceTree = "<group>"; };
 		7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+rgb.swift"; sourceTree = "<group>"; };
 		7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateColorsTests.swift; sourceTree = "<group>"; };
+		7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Brightness.swift"; sourceTree = "<group>"; };
 		7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		7B7AECD61FF598C80096EE5D /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
 		7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalControllerTests.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				7B1BBC3A1FFD65F4003934B1 /* TimeInterval+Format.swift */,
 				7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */,
 				7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */,
+				7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1487,6 +1490,7 @@
 				7B6E35AD1FC6006100F55089 /* ActionableDataSourceProvider.swift in Sources */,
 				7B994E0C1FA228E000B704E1 /* ActionableInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
+				7B74BC5C1FFE981E00D06D48 /* UIColor+Brightness.swift in Sources */,
 				7B6AE97A1FAC905F00E15A9D /* StrategyModelNotification.swift in Sources */,
 				7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */,
 				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,

@@ -26,10 +26,16 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
     @IBOutlet weak var commmittingDateLabel: UILabel!
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var pieProgressView: PieProgressView!
     
     var actionable:Actionable!
     var delegateTaskCell: ActionableTableCellDelegate!
-    
+    let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
+    var taskProgressManager:TaskProgressManager!
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -71,10 +77,21 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     
     /// show the task progress state
     ///
-    /// - Parameters:
-    ///   - isProgressing: task is currently progressing
-    func showTaskProgress(isProgressing: Bool) {
-        self.contentView.backgroundColor = isProgressing ? UIColor.green : UIColor.white
+    func showTaskProgress(forDate date: Date) {
+        let isProgressing = actionable.isProgressing(atDate: date)
+        self.progressView.isHidden = !isProgressing
+        if isProgressing {
+            let remainingPercentage = CGFloat(actionable.calcRemainingPercentage(atDate: date))
+            let progressColor = self.colorCalculator.calculateColor(percent: remainingPercentage)
+            self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
+            self.remainingTimeLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+            self.pieProgressView.progress = remainingPercentage
+            self.pieProgressView.progressTintColor = progressColor
+            self.pieProgressView.fillColor = UIColor.clear
+            self.pieProgressView.trackTintColor = progressColor 
+        } else {
+            self.contentView.backgroundColor = UIColor.white
+        }
     }
     
     /// show the date for committing and its state in the date label
@@ -105,7 +122,10 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         }
     }
     
-
+    @IBAction func timerPlusTouched(_ sender: Any) {
+        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: 15.0)
+        showTaskProgress(forDate: Date())
+    }
     
     /// show the working time on this task.
     ///
@@ -134,11 +154,12 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///
     /// - Parameter task: a task
     func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, delegate: ActionableTableCellDelegate) {
+        self.taskProgressManager = TaskProgressManager(manager: manager)
         self.actionable = actionable
         self.delegateTaskCell = delegate
         adaptUI(forActionableType: actionable.type)
         show(state: actionable.checkedState(forDate: date))
-        showTaskProgress(isProgressing: actionable.isProgressing(atDate: date))
+        showTaskProgress(forDate: date)
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
         showWorkingTime(actionable: actionable)
         taskDescriptionLabel.text = actionable.name

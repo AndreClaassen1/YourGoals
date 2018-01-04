@@ -45,6 +45,7 @@ import UIKit
             progressLayer.setNeedsDisplay()
         }
     }
+    
     ///  current progress (not observed from any active animations)
     @IBInspectable open var progress: CGFloat {
         get {

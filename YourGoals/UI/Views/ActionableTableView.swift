@@ -180,7 +180,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         var actionableCell:ActionableCell!
         let actionable = self.actionableForIndexPath(path: indexPath)
         if actionable.isProgressing(atDate: date) {
-            actionableCell = WorkInProgressCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         } else {
             actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         }
@@ -192,7 +192,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let actionable = self.actionableForIndexPath(path: indexPath)
         if actionable.isProgressing(atDate: Date()) {
-            return 170.0
+            return 161.0
         } else {
             return 44.0
         }
