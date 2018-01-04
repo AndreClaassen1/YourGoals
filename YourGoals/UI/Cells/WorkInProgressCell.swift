@@ -16,6 +16,8 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var timeAlreadySpent: UILabel!
     
+    let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

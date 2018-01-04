@@ -56,6 +56,14 @@ extension Habit:Actionable {
         return 0.0
     }
     
+    func calcRemainingPercentage(atDate date: Date) -> Double {
+        if checkedState(forDate: date) == .done {
+            return 0.0
+        } else {
+            return 1.0
+        }
+    }
+    
     /// a habit is never progressing at any date
     ///
     /// - Parameter date: date

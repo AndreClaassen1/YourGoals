@@ -57,7 +57,9 @@ protocol Actionable {
     /// get the progress in time for the given date
     func calcProgressDuration(atDate date:Date) -> TimeInterval?
     
-    func calcRemainingTimeInterval(atDate date:Date) -> TimeInterval 
+    func calcRemainingTimeInterval(atDate date:Date) -> TimeInterval
+    
+    func calcRemainingPercentage(atDate date:Date) -> Double
     
     /// true, if task is in progressing state at date
     ///
