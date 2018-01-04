@@ -16,7 +16,7 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var timeAlreadySpent: UILabel!
     
-    let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
+    let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,5 +53,6 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
         self.remainingTimeLabel.text = actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
         let progress = actionable.calcProgressDuration(atDate: date) ?? 0.0
         self.timeAlreadySpent.text = "Time already spent \(progress.formattedAsString())"
+        self.backgroundColor = self.colorCalculator.calculateColor(percent: CGFloat(actionable.calcRemainingPercentage(atDate: date)))
     }
 }
