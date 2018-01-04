@@ -21,15 +21,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-6a-m9L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="168.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a7-rr-G23" userLabel="Remaining Time">
-                                <rect key="frame" x="0.0" y="35" width="320" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="vh4-57-xAc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Task your are working on" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVL-8p-2hY" userLabel="Task">
                                 <rect key="frame" x="8" y="98" width="304" height="47"/>
                                 <constraints>
@@ -48,6 +39,24 @@
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time already spent  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-bx-MJj">
+                                <rect key="frame" x="8" y="74" width="304" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Y1b-gn-Xe3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a7-rr-G23" userLabel="Remaining Time">
+                                <rect key="frame" x="0.0" y="22" width="320" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="vh4-57-xAc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1618596118" green="0.9992641807" blue="0.018462520780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -55,11 +64,14 @@
                             <constraint firstItem="1a7-rr-G23" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" id="DTL-RO-uJk"/>
                             <constraint firstItem="tVL-8p-2hY" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" constant="8" id="G12-kb-duL"/>
                             <constraint firstAttribute="bottom" secondItem="tVL-8p-2hY" secondAttribute="bottom" constant="23.5" id="Ipw-Av-w0k"/>
-                            <constraint firstItem="1a7-rr-G23" firstAttribute="top" secondItem="nmf-6a-m9L" secondAttribute="top" constant="35" id="Kg8-iQ-y4q"/>
+                            <constraint firstItem="1a7-rr-G23" firstAttribute="top" secondItem="nmf-6a-m9L" secondAttribute="top" constant="22" id="Kg8-iQ-y4q"/>
                             <constraint firstAttribute="trailing" secondItem="tVL-8p-2hY" secondAttribute="trailing" constant="8" id="KsS-o5-P2P"/>
-                            <constraint firstItem="tVL-8p-2hY" firstAttribute="top" secondItem="1a7-rr-G23" secondAttribute="bottom" constant="8" id="Uvk-ZE-zA4"/>
+                            <constraint firstItem="tVL-8p-2hY" firstAttribute="top" secondItem="1a7-rr-G23" secondAttribute="bottom" constant="21" id="Uvk-ZE-zA4"/>
                             <constraint firstAttribute="trailing" secondItem="1a7-rr-G23" secondAttribute="trailing" id="Vjz-bm-iBA"/>
                             <constraint firstItem="O6G-ef-xdn" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" id="YSX-Vx-JNB"/>
+                            <constraint firstItem="Jcd-bx-MJj" firstAttribute="leading" secondItem="nmf-6a-m9L" secondAttribute="leading" constant="8" id="hbf-2Z-0zU"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcd-bx-MJj" secondAttribute="trailing" constant="8" id="ioD-co-ign"/>
+                            <constraint firstItem="Jcd-bx-MJj" firstAttribute="top" secondItem="1a7-rr-G23" secondAttribute="bottom" constant="-3" id="mS6-PA-w2y"/>
                             <constraint firstAttribute="bottom" secondItem="O6G-ef-xdn" secondAttribute="bottom" constant="0.5" id="o0p-sf-ru8"/>
                         </constraints>
                     </view>
@@ -76,6 +88,7 @@
                 <outlet property="goalLabel" destination="O6G-ef-xdn" id="Mpz-TQ-gQF"/>
                 <outlet property="remainingTimeLabel" destination="1a7-rr-G23" id="RdN-7R-r3p"/>
                 <outlet property="taskLabel" destination="tVL-8p-2hY" id="a6x-WI-fgn"/>
+                <outlet property="timeAlreadySpent" destination="Jcd-bx-MJj" id="nfZ-Y1-I5c"/>
             </connections>
             <point key="canvasLocation" x="44" y="116.5"/>
         </tableViewCell>

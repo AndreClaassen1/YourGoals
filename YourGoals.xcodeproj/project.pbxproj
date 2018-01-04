@@ -73,6 +73,9 @@
 		7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E35AA1FC5F5AE00F55089 /* Goal+Type.swift */; };
 		7B6E35AD1FC6006100F55089 /* ActionableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E35AC1FC6006100F55089 /* ActionableDataSourceProvider.swift */; };
 		7B6E35AF1FC6072300F55089 /* TodayAllActionablesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E35AE1FC6072300F55089 /* TodayAllActionablesDataSource.swift */; };
+		7B74BC561FFD6C1F00D06D48 /* ColorCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */; };
+		7B74BC581FFE191900D06D48 /* UIColor+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */; };
+		7B74BC5A1FFE1DC700D06D48 /* CalculateColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */; };
 		7B7AECD71FF598C80096EE5D /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */; };
 		7B7AECD81FF598C80096EE5D /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD61FF598C80096EE5D /* ImageRow.swift */; };
 		7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */; };
@@ -335,6 +338,9 @@
 		7B6E35AA1FC5F5AE00F55089 /* Goal+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Type.swift"; sourceTree = "<group>"; };
 		7B6E35AC1FC6006100F55089 /* ActionableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableDataSourceProvider.swift; sourceTree = "<group>"; };
 		7B6E35AE1FC6072300F55089 /* TodayAllActionablesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAllActionablesDataSource.swift; sourceTree = "<group>"; };
+		7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCalculator.swift; sourceTree = "<group>"; };
+		7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+rgb.swift"; sourceTree = "<group>"; };
+		7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateColorsTests.swift; sourceTree = "<group>"; };
 		7B7AECD51FF598C80096EE5D /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		7B7AECD61FF598C80096EE5D /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
 		7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalControllerTests.swift; sourceTree = "<group>"; };
@@ -588,6 +594,8 @@
 				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 				7BF5629F1FD563FD00A4DF6C /* Settings.swift */,
 				7B1BBC3A1FFD65F4003934B1 /* TimeInterval+Format.swift */,
+				7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */,
+				7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -772,6 +780,7 @@
 				7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */,
 				7B3FA9DB1FE6E3170052B587 /* CommitDateCreatorTests.swift */,
 				7B1BBC381FFD601C003934B1 /* CalcProgressTests.swift */,
+				7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */,
 			);
 			path = YourGoalsTests;
 			sourceTree = "<group>";
@@ -1391,6 +1400,7 @@
 				7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */,
 				7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */,
 				7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */,
+				7B74BC561FFD6C1F00D06D48 /* ColorCalculator.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
 				7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */,
 				7BE4BB5D1FC818FA00E1BEF9 /* AppBadgeCalculator.swift in Sources */,
@@ -1420,6 +1430,7 @@
 				7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */,
+				7B74BC581FFE191900D06D48 /* UIColor+rgb.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
 				7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */,
 				7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */,
@@ -1503,6 +1514,7 @@
 				7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
 				7B3FA9D81FE669AD0052B587 /* DateRangeTests.swift in Sources */,
+				7B74BC5A1FFE1DC700D06D48 /* CalculateColorsTests.swift in Sources */,
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */,
 				7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */,

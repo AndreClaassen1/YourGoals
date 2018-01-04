@@ -14,6 +14,7 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var goalLabel: UILabel!
+    @IBOutlet weak var timeAlreadySpent: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,5 +49,7 @@ class WorkInProgressCell: MGSwipeTableCell, ActionableCell {
         self.taskLabel.text = actionable.name
         self.goalLabel.text = actionable.goal?.name ?? "No goal set"
         self.remainingTimeLabel.text = actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+        let progress = actionable.calcProgressDuration(atDate: date) ?? 0.0
+        self.timeAlreadySpent.text = "Time already spent \(progress.formattedAsString())"
     }
 }

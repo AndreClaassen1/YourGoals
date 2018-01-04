@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Task {
     
@@ -67,6 +68,9 @@ extension Task {
     func calcRemainingTimeInterval(atDate date:Date) -> TimeInterval {
         let progression = self.calcProgressDuration(atDate: date) ?? TimeInterval(0.0)
         let remainingTime = taskSizeAsInterval() - progression
+        if remainingTime < 0.0 {
+            return 0.0
+        }
         return remainingTime
     }
 }
