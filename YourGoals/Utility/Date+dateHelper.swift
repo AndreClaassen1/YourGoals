@@ -31,6 +31,11 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    
+    public static func timeFromMinutes(_ minutes:Double) -> Date {
+        return timeWith(0, minute: Int(minutes), second: 0)
+    }
+    
     public func extractTime() -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.hour, .minute, .second],
@@ -77,6 +82,9 @@ extension Date {
         
         return calendar.date(from: components)!
     }
-
-
+    
+    public func convertToMinutes() -> Double {
+        let minutes = self.timeIntervalSince(Date.timeWith(0, minute: 0, second: 0)) / 60.0
+        return minutes
+    }
 }

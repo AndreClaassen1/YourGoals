@@ -51,6 +51,9 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
         task.name = actionableInfo.name
         task.setTaskState(state: .active)
         task.prio = 999
+        task.size = actionableInfo.size
+        task.commitmentDate = actionableInfo.commitDate
+        task.goal = actionableInfo.parentGoal
         return task
     }
     

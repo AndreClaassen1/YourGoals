@@ -23,26 +23,6 @@ struct TaskFormTag  {
     static let commitDate = "CommitDate"
 }
 
-// MARK: - ActionableInfo
-
-extension ActionableInfo {
-    
-    /// create an actionable info based on the values of the eureka actionable form
-    ///
-    /// - Parameters:
-    ///   - type: type of the acgtinoable
-    ///   - values: the values
-    init(type: ActionableType, values: [String: Any?]) {
-        guard let name = values[TaskFormTag.task] as? String? else {
-            fatalError("There should be a name value")
-        }
-        
-        let goal = values[TaskFormTag.goal] as? Goal
-        let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
-        let size = values [TaskFormTag.duration] as? Float
-        self.init(type: type, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
-    }
-}
 
 // MARK: - Extension for creating and handling the Eureka Form
 extension EditActionableFormController {
@@ -73,17 +53,14 @@ extension EditActionableFormController {
             +++ Section()
             <<< taskNameRow()
             +++ Section() { $0.hidden = Condition.function([], { _ in type == .habit }) }
-            <<< SliderRow(TaskFormTag.duration) {
-                $0.title = "Timebox in Minutes"
-                $0.minimumValue = 0.0
-                $0.maximumValue = 240.0
-                $0.steps = 16
-                }
+            <<< CountDownRow(TaskFormTag.duration) {
+                $0.title = "Timebox your task"
+            }
             
             <<< commitDateRow()
-            <<< WeekDayRow(){
-                $0.value = [.monday, .wednesday, .friday]
-            }
+//            <<< WeekDayRow(){
+//                $0.value = [.monday, .wednesday, .friday]
+//            }
             +++ Section()
             <<< parentGoalRow()
             <<< remarksRow(remarks: nil)
@@ -111,7 +88,7 @@ extension EditActionableFormController {
         values[TaskFormTag.task] = actionableInfo.name
         values[TaskFormTag.goal] = actionableInfo.parentGoal
         values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
-        values[TaskFormTag.duration] = actionableInfo.size
+        values[TaskFormTag.duration] = Date.timeFromMinutes(Double(actionableInfo.size))
         
         let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: TaskFormTag.commitDate)!
         let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: actionableInfo.commitDate)
@@ -125,7 +102,15 @@ extension EditActionableFormController {
     /// - Returns: the actionableinfo
     func getActionableInfoFromValues(form: Form) -> ActionableInfo {
         let values = form.values()
-        return ActionableInfo(type: self.editActionableType, values: values)
+
+        guard let name = values[TaskFormTag.task] as? String? else {
+            fatalError("There should be a name value")
+        }
+        
+        let goal = values[TaskFormTag.goal] as? Goal
+        let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
+        let size = Float((values [TaskFormTag.duration] as! Date).convertToMinutes())
+        return ActionableInfo(type: .task, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
     }
     
     // MARK: - Row creating helper functions
