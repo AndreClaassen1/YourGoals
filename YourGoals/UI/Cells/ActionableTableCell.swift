@@ -85,10 +85,11 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
             let progressColor = self.colorCalculator.calculateColor(percent: remainingPercentage)
             self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
             self.remainingTimeLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
-            self.pieProgressView.progress = remainingPercentage
-            self.pieProgressView.progressTintColor = progressColor
+            self.pieProgressView.progress = 1.0 - remainingPercentage
+            self.pieProgressView.progressTintColor = progressColor.darker()
             self.pieProgressView.fillColor = UIColor.clear
-            self.pieProgressView.trackTintColor = progressColor 
+            self.pieProgressView.trackTintColor = progressColor.darker()
+            self.pieProgressView.clockwise = true
         } else {
             self.contentView.backgroundColor = UIColor.white
         }

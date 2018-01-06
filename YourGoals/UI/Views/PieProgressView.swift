@@ -56,6 +56,16 @@ import UIKit
             progressLayer.setNeedsDisplay()
         }
     }
+  
+    @IBInspectable open var clockwise: Bool {
+        get {
+            return progressLayer.clockwise
+        }
+        set {
+            progressLayer.clockwise = newValue
+            progressLayer.setNeedsDisplay()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -105,6 +115,7 @@ class ProgressLayer: CALayer {
     var progressTintColor = UIColor.blue
     var trackTintColor = UIColor.blue
     var fillColor = UIColor.blue.withAlphaComponent(0.3)
+    var clockwise = true
     
     func fillProgressIfNecessary(ctx: CGContext, centerPoint:CGPoint, radius:CGFloat, radians:CGFloat) {
         guard progress >= 0.0 else {
@@ -114,7 +125,13 @@ class ProgressLayer: CALayer {
         ctx.setFillColor(progressTintColor.cgColor)
         let progressPath = CGMutablePath()
         progressPath.move(to: centerPoint)
-        progressPath.addArc(center: centerPoint, radius: radius, startAngle: CGFloat(3 * (Double.pi / 2)), endAngle: radians, clockwise: false)
+        let topAngle = CGFloat(3 * (Double.pi / 2))
+        
+        if clockwise {
+            progressPath.addArc(center: centerPoint, radius: radius, startAngle: topAngle, endAngle: radians, clockwise: false )
+        } else {
+            progressPath.addArc(center: centerPoint, radius: radius, startAngle: radians, endAngle: topAngle, clockwise: true)
+        }
         progressPath.closeSubpath()
         ctx.addPath(progressPath)
         ctx.fillPath()
@@ -145,7 +162,9 @@ class ProgressLayer: CALayer {
         let progress: CGFloat = min(self.progress, CGFloat(1 - Float.ulpOfOne))
         
         // clockwise progress
-        let radians = CGFloat((Double(progress) * 2 * Double.pi) - (Double.pi / 2))
+        let radians = clockwise ?
+            CGFloat((Double(progress) * 2.0 * Double.pi) - (Double.pi / 2)) :
+            CGFloat( 2.0 * Double.pi - (Double(progress) * 2.0 * Double.pi) - (Double.pi / 2.0))
         
         fillProgressIfNecessary(ctx: ctx, centerPoint: centerPoint, radius: progressRadius, radians: radians)
         fillBackgroundCircle(ctx: ctx, centerPoint: centerPoint, radius: radius)
