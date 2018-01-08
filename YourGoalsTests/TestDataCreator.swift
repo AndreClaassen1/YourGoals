@@ -28,10 +28,31 @@ class TestDataCreator:StorageManagerWorker {
     ///   - name: name of the task
     ///   - goal: the goal
     /// - Returns: a new  task
-    func createTask(name: String, withSize size: Float = 30.0, forGoal goal: Goal) -> Task {
+    @discardableResult
+    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, forGoal goal: Goal) -> Task {
         let composer = GoalComposer(manager: self.manager)
-        let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, size: size), toGoal: goal) as! Task
+        let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, commitDate: commitmentDate, size: size), toGoal: goal) as! Task
+        if let prio = prio {
+            task.prio = Int16(prio)
+        }
+        try! self.manager.saveContext()
+        
         return task
+    }
+    
+    /// create a range of tasks and a goal
+    ///
+    /// - Parameter infos: infos for the tassk
+    /// - Returns: goal
+    func createGoalWithTasks(infos: [(name: String, prio:Int, size:Float, commitmentDate: Date? )]) -> Goal {
+       
+        let goal = self.createGoal(name: "New Unit-Test Goal")
+        
+        for info in infos {
+            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, forGoal: goal)
+        }
+        
+        return goal
     }
     
     func startProgress(forTask task: Task, atDate date: Date) {
