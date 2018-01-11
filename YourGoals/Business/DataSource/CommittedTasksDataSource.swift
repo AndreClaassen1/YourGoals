@@ -9,10 +9,17 @@
 import Foundation
 
 class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
+    enum Mode {
+        case activeTasksIncluded
+        case activeTasksNotIncluded
+    }
+    
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
+    let mode: Mode
     
-    init(manager: GoalsStorageManager) {
+    init(manager: GoalsStorageManager, mode: Mode = .activeTasksIncluded) {
+        self.mode = mode
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
@@ -20,9 +27,14 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     // MARK: ActionableTableViewDataSource
     
     func fetchActionables(forDate date: Date) throws -> [Actionable] {
-        return try taskManager.committedTasksTodayAndFromTHePath(forDate: date)
+        let committedTasks = try taskManager.committedTasksTodayAndFromTHePath(forDate: date)
+        switch mode {
+        case .activeTasksIncluded:
+            return committedTasks
+        case .activeTasksNotIncluded:
+            return committedTasks.filter { !$0.isProgressing(atDate: date) }
+        }
     }
-    
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
         return self

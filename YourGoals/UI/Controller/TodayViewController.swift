@@ -48,7 +48,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             self.navigationController?.navigationBar.prefersLargeTitles = true
             
             self.configure(collectionView: self.goalsCollectionView)
-            self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.committedTasksHeight)
+            self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager, mode: .activeTasksNotIncluded), delegate: self, varyingHeightConstraint: self.committedTasksHeight)
             self.activeWorkTasksView.configure(manager: self.manager, dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
             self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
             try self.workloadView.configure(manager: self.manager, forDate: Date())
@@ -117,11 +117,14 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     /// hide the active task pane, if there are no active tasks which aren't committed
     func reloadAll() {
         do {
+            let startingTime = Date()
+            
             self.reloadCollectionView(collectionView: self.goalsCollectionView)
             self.committedTasksView.reload()
             self.habitsTableView.reload()
-            let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: Date())
-            
+            //            let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate:
+            let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasks(forDate: startingTime)
+
             if showActivWorkTasksView {
                 // self.activeTasksHeight.constant = originalTasksHeight
                 self.activeTasksHeight.constant = 215.0

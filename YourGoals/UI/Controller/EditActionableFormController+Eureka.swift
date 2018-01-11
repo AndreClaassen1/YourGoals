@@ -23,7 +23,6 @@ struct TaskFormTag  {
     static let commitDate = "CommitDate"
 }
 
-
 // MARK: - Extension for creating and handling the Eureka Form
 extension EditActionableFormController {
     

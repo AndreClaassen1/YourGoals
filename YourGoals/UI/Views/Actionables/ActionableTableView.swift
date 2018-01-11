@@ -48,7 +48,6 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         self.backgroundColor = UIColor.clear
         self.tasksTableView = UITableView(frame: self.bounds)
         self.tasksTableView.registerReusableCell(ActionableTableCell.self)
-        self.tasksTableView.registerReusableCell(WorkInProgressCell.self)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
         self.reorderTableView.delegate = self
         self.reorderTableView.enableLongPressReorder()
@@ -184,7 +183,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         } else {
             actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         }
-        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), delegate: self)
+        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), estimatedStartingTime: nil, delegate: self)
         configure(swipeableCell: actionableCell as! MGSwipeTableCell)
         return actionableCell as! UITableViewCell
     }

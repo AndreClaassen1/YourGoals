@@ -9,6 +9,18 @@
 import Foundation
 
 class TasksRequester : StorageManagerWorker {
+  
+    /// is there any active task?
+    ///
+    /// This request is nesseccary to decide, if you should see the active tasks pane
+    ///
+    /// - Parameter date: date
+    /// - Returns: true, if there are active tasks
+    ///            false, if there are no active tasks
+    func areThereActiveTasks(forDate date: Date) throws -> Bool {
+        let activeTasks =  try TaskProgressManager(manager: self.manager).activeTasks(forDate: date)
+        return activeTasks.count > 0
+    }
     
     /// is there any active task, which isn't a commtted task?
     ///
