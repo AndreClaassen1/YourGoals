@@ -12,9 +12,9 @@ extension Date {
     
     /// format a date in short locale format
     ///
-    /// - Returns: a string representation
+    /// - Returns: a string representation of the date without the time
     public func formattedInLocaleFormat() -> String {
-        let formattedDate = DateFormatter.createShortDateTimeFormatter().string(from: self)
+        let formattedDate = DateFormatter.createShortDateFormatter().string(from: self)
         return formattedDate
     }
     

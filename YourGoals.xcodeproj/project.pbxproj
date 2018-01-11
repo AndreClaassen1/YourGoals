@@ -42,12 +42,11 @@
 		7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */; };
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
-		7B36F22F200377DB00095389 /* WorkloadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F22D200377DB00095389 /* WorkloadTableCell.swift */; };
-		7B36F23220037C7E00095389 /* WorkloadTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B36F23120037C7D00095389 /* WorkloadTableCell.xib */; };
 		7B36F234200381BE00095389 /* WorkloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F233200381BE00095389 /* WorkloadView.swift */; };
 		7B36F236200381F400095389 /* WorkloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B36F235200381F400095389 /* WorkloadView.xib */; };
 		7B36F2392003931500095389 /* TodayWorkloadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */; };
 		7B36F23B2003933C00095389 /* TodayWorkloadInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F23A2003933C00095389 /* TodayWorkloadInfoTests.swift */; };
+		7B36F23D2003A0F100095389 /* Date+Timeformat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F23C2003A0F100095389 /* Date+Timeformat.swift */; };
 		7B3935771FF39B0E009E752F /* EditGoalFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935761FF39B0E009E752F /* EditGoalFormController.swift */; };
 		7B3935791FF39B5A009E752F /* EditGoalFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */; };
 		7B39357B1FF3A102009E752F /* EditGoalSegueParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */; };
@@ -315,12 +314,11 @@
 		7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentTests.swift; sourceTree = "<group>"; };
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
-		7B36F22D200377DB00095389 /* WorkloadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkloadTableCell.swift; sourceTree = "<group>"; };
-		7B36F23120037C7D00095389 /* WorkloadTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkloadTableCell.xib; sourceTree = "<group>"; };
 		7B36F233200381BE00095389 /* WorkloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkloadView.swift; sourceTree = "<group>"; };
 		7B36F235200381F400095389 /* WorkloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkloadView.xib; sourceTree = "<group>"; };
 		7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkloadCalculator.swift; sourceTree = "<group>"; };
 		7B36F23A2003933C00095389 /* TodayWorkloadInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkloadInfoTests.swift; sourceTree = "<group>"; };
+		7B36F23C2003A0F100095389 /* Date+Timeformat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Timeformat.swift"; sourceTree = "<group>"; };
 		7B3935761FF39B0E009E752F /* EditGoalFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalFormController.swift; sourceTree = "<group>"; };
 		7B3935781FF39B5A009E752F /* EditGoalFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditGoalFormController+Eureka.swift"; sourceTree = "<group>"; };
 		7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalSegueParameter.swift; sourceTree = "<group>"; };
@@ -591,8 +589,6 @@
 				7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */,
 				7B994DFC1FA2176B00B704E1 /* NewGoalCell.swift */,
 				7B994DFD1FA2176B00B704E1 /* NewGoalCell.xib */,
-				7B36F22D200377DB00095389 /* WorkloadTableCell.swift */,
-				7B36F23120037C7D00095389 /* WorkloadTableCell.xib */,
 				7B36F233200381BE00095389 /* WorkloadView.swift */,
 				7B36F235200381F400095389 /* WorkloadView.xib */,
 			);
@@ -611,6 +607,7 @@
 				7B994E041FA225B800B704E1 /* Date+dateHelper.swift */,
 				7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */,
 				7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */,
+				7B36F23C2003A0F100095389 /* Date+Timeformat.swift */,
 				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 				7BF5629F1FD563FD00A4DF6C /* Settings.swift */,
 				7B1BBC3A1FFD65F4003934B1 /* TimeInterval+Format.swift */,
@@ -1233,7 +1230,6 @@
 				7BAAFEEE1F9CA2FA00BB102E /* Assets.xcassets in Resources */,
 				7B1BBC371FFADD61003934B1 /* WorkInProgressCell.xib in Resources */,
 				7B1BBC331FF8E51A003934B1 /* WeekDaysCell.xib in Resources */,
-				7B36F23220037C7E00095389 /* WorkloadTableCell.xib in Resources */,
 				7BE4BB551FC80B2700E1BEF9 /* GoalMiniCell.xib in Resources */,
 				7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */,
 				7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */,
@@ -1441,7 +1437,6 @@
 				7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */,
 				7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */,
 				7B58CE001FACC00D00628C65 /* TodayViewController+CollectionView.swift in Sources */,
-				7B36F22F200377DB00095389 /* WorkloadTableCell.swift in Sources */,
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
@@ -1473,6 +1468,7 @@
 				7B1D60BF1FB719BB00E617ED /* ActionableFactory.swift in Sources */,
 				7B994E031FA21CEC00B704E1 /* EditGoalViewController.swift in Sources */,
 				7B4E0BE91FAF10BD00602FD1 /* Actionable.swift in Sources */,
+				7B36F23D2003A0F100095389 /* Date+Timeformat.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Task+State.swift in Sources */,
 				7B36F234200381BE00095389 /* WorkloadView.swift in Sources */,
 				7B994E071FA2261A00B704E1 /* EditGoalViewController+ImagePicker.swift in Sources */,

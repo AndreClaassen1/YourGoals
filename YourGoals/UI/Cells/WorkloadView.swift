@@ -20,17 +20,12 @@ class WorkloadView: UIView {
         xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(xibView)
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    
+    func configure(manager: GoalsStorageManager, forDate date: Date) throws {
+        let workloadCalculator = TodayWorkloadCalculator(manager: manager)
+        let info = try workloadCalculator.calcWorkload(forDate: date)
+        totalTimeLabel.text = info.totalRemainingTime.formattedAsString()
+        tasksLeftLabel.text = "\(info.totalTasksLeft)"
+        endTimeLabel.text  = info.endTime.formattedTime()
     }
 }

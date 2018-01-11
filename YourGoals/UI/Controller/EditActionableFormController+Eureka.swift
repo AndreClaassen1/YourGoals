@@ -109,8 +109,8 @@ extension EditActionableFormController {
         
         let goal = values[TaskFormTag.goal] as? Goal
         let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
-        let size = Float((values [TaskFormTag.duration] as! Date).convertToMinutes())
-        return ActionableInfo(type: .task, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
+        let size = Float((values [TaskFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
+        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
     }
     
     // MARK: - Row creating helper functions

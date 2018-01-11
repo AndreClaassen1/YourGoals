@@ -461,6 +461,7 @@
                         <outlet property="goalsCollectionView" destination="lRG-Wn-cjM" id="MCB-5U-TAc"/>
                         <outlet property="habitsTableHeight" destination="XvF-0a-Ony" id="WRd-5V-GYB"/>
                         <outlet property="habitsTableView" destination="RgX-QO-7ea" id="wUt-Di-26Y"/>
+                        <outlet property="workloadView" destination="NBy-fP-XtK" id="3vx-W5-nZj"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentShowGoal" id="8yY-7N-175"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="Cp9-T4-e9d"/>
                     </connections>

@@ -28,6 +28,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     /// a taask view with the active task
     @IBOutlet weak var activeWorkTasksView: ActionableTableView!
     
+    @IBOutlet weak var workloadView: WorkloadView!
     /// the storage manager needed for various core data operaitons
     var manager = GoalsStorageManager.defaultStorageManager
     var selectedGoal:Goal? = nil
@@ -40,18 +41,24 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     internal let dismissStoryAnimationController = DismissStoryViewAnimationController(origin: .fromMiniCell)
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.originalTasksHeight = activeTasksHeight.constant
-        self.navigationController?.navigationBar.topItem?.title = "Today"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        self.configure(collectionView: self.goalsCollectionView)
-        self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.committedTasksHeight)
-        self.activeWorkTasksView.configure(manager: self.manager, dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
-        self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
-        
-        // Do any additional setup after loading the view.
-        self.reloadAll()
+        do {
+            super.viewDidLoad()
+            self.originalTasksHeight = activeTasksHeight.constant
+            self.navigationController?.navigationBar.topItem?.title = "Today"
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            
+            self.configure(collectionView: self.goalsCollectionView)
+            self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.committedTasksHeight)
+            self.activeWorkTasksView.configure(manager: self.manager, dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self)
+            self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
+            try self.workloadView.configure(manager: self.manager, forDate: Date())
+            
+            // Do any additional setup after loading the view.
+            self.reloadAll()
+        }
+        catch let error{
+            self.showNotification(forError: error)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,7 +105,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             detailController.transitioningDelegate = self
             detailController.goal = self.selectedGoal
             detailController.delegate = self
-        
+            
         default:
             fatalError("couldn't process segue: \(String(describing: segue.identifier))")
         }
@@ -116,7 +123,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: Date())
             
             if showActivWorkTasksView {
-               // self.activeTasksHeight.constant = originalTasksHeight
+                // self.activeTasksHeight.constant = originalTasksHeight
                 self.activeTasksHeight.constant = 215.0
                 self.activeWorkTasksView.isHidden = false
                 self.activeWorkTasksView.reload()
