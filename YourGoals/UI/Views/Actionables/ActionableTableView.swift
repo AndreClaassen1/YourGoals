@@ -23,6 +23,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var actionables = [Actionable]()
+    var startingTimes:[Date]?
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
@@ -32,6 +33,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var constraintOffset:CGFloat = 0
     var panGestureRecognizer:UIPanGestureRecognizer!
     var manager: GoalsStorageManager!
+    var calculatestartingTimes = false
     
     
     override init(frame: CGRect) {
@@ -66,9 +68,10 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     ///   - dataSource: a actionable data source
     ///   - delegate: a delegate for actions like editing or so.
     ///   - varyingHeightConstraint: an optional constraint, if the actionable table view should modify the constriaitn
-    func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
+    func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, calculatestartingTimes:Bool = false, varyingHeightConstraint: NSLayoutConstraint? = nil) {
         self.manager = manager
         self.dataSource = dataSource
+        self.calculatestartingTimes = calculatestartingTimes
         self.delegate = delegate
         if let constraint = varyingHeightConstraint {
             self.configure(constraint: constraint)
@@ -81,6 +84,11 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     func reload() {
         do {
             self.actionables = try self.dataSource.fetchActionables(forDate: Date())
+            if calculatestartingTimes {
+                self.startingTimes = try TodayScheduleCalculator(manager: self.manager).calculateStartingTimes(forTime: Date(), actionables: self.actionables)
+            } else {
+                self.startingTimes = nil
+            }
             self.tasksTableView.reloadData()
         }
         catch let error {
@@ -104,20 +112,23 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             return
         }
         
-        guard let tableView = timer.userInfo as? UITableView else {
-            assertionFailure("couldn't extract tableView from userInfo")
-            return
-        }
+        self.reload()
         
-        let paths = indexPathsInProgress()
-        if paths.count > 0 {
-            tableView.beginUpdates()
-            tableView.reloadRows(at: paths, with: UITableViewRowAnimation.none)
-            tableView.endUpdates()
-        }
+        
+//        guard let tableView = timer.userInfo as? UITableView else {
+//            assertionFailure("couldn't extract tableView from userInfo")
+//            return
+//        }
+//
+//        let paths = indexPathsInProgress()
+//        if paths.count > 0 {
+//            tableView.beginUpdates()
+//            tableView.reloadRows(at: paths, with: UITableViewRowAnimation.none)
+//            tableView.endUpdates()
+//        }
     }
     
-    func reloadTableView() throws {
+    func reloadTableView() {
         self.tasksTableView.reloadData()
     }
     
@@ -129,6 +140,14 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     
     func actionableForIndexPath(path: IndexPath) -> Actionable {
         return self.actionables[path.row]
+    }
+    
+    func estimatedStartingTime(forPath path: IndexPath) -> Date? {
+        guard let startingTimes = self.startingTimes else {
+            return nil
+        }
+        
+        return startingTimes[path.row]
     }
     
     func updateTaskOrder(initialIndex: IndexPath, finalIndex: IndexPath) throws {
@@ -183,7 +202,10 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         } else {
             actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         }
-        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), estimatedStartingTime: nil, delegate: self)
+        
+        let startingTime = self.estimatedStartingTime(forPath: indexPath)
+        
+        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), estimatedStartingTime: startingTime, delegate: self)
         configure(swipeableCell: actionableCell as! MGSwipeTableCell)
         return actionableCell as! UITableViewCell
     }

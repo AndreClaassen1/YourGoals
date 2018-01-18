@@ -133,12 +133,28 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///
     /// - Parameter task: task
     func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) {
-        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
         
+        guard actionable.type == .task else {
+            self.workingTimeLabel.text = ""
+            return
+        }
+        
+        guard actionable.checkedState(forDate: date) == .active else {
+            self.workingTimeLabel.text = ""
+            return
+        }
+        
+        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
         if let startingTime = time {
             self.workingTimeLabel.text = startingTime.formattedTime() + " - " + remainingTime.formattedAsString()
         } else {
             self.workingTimeLabel.text = remainingTime.formattedAsString()
+        }
+        
+        if remainingTime <= 0.1 {
+            self.taskDescriptionLabel.tintColor = UIColor.darkRed
+        } else {
+            self.taskDescriptionLabel.tintColor = UIColor.black
         }
     }
     

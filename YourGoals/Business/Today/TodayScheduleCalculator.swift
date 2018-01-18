@@ -20,7 +20,6 @@ class TodayScheduleCalculator:StorageManagerWorker {
     /// - Returns: array with associated starting ties
     /// - Throws: core data exception
     func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [Date] {
-        assert(actionables.first(where: { $0.isProgressing(atDate: time) }) == nil, "there are no progressing actionables allowed")
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
         var startingTimes = [Date]()
