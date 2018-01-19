@@ -49,17 +49,13 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     func commonSetup() {
         self.backgroundColor = UIColor.clear
         self.tasksTableView = UITableView(frame: self.bounds)
-        self.tasksTableView.registerReusableCell(ActionableTableCell.self)
+        self.configureTaskTableView(self.tasksTableView)
         self.reorderTableView = LongPressReorderTableView(self.tasksTableView, selectedRowScale: .big)
         self.reorderTableView.delegate = self
         self.reorderTableView.enableLongPressReorder()
-        self.tasksTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.tasksTableView.translatesAutoresizingMaskIntoConstraints = true
         self.addSubview(self.tasksTableView)
         self.reorderTableView.delegate = self
         self.scheduleTimerWithTimeInterval(tableView: self.tasksTableView)
-        self.tasksTableView.delegate = self
-        self.tasksTableView.dataSource = self
     }
     
     /// configure the actionable task view with a data source for actionabels and a delegate for actions
@@ -183,42 +179,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         return indexPaths
     }
     
-    // MARK: - UITableViewDataSource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfActionables()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let date = Date()
-        var actionableCell:ActionableCell!
-        let actionable = self.actionableForIndexPath(path: indexPath)
-        if actionable.isProgressing(atDate: date) {
-            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        } else {
-            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        }
-        
-        let startingTime = self.estimatedStartingTime(forPath: indexPath)
-        
-        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), estimatedStartingTime: startingTime, delegate: self)
-        configure(swipeableCell: actionableCell as! MGSwipeTableCell)
-        return actionableCell as! UITableViewCell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let actionable = self.actionableForIndexPath(path: indexPath)
-        if actionable.isProgressing(atDate: Date()) {
-            return 161.0
-        } else {
-            return 44.0
-        }
-    }
-    
+       
     // MARK: - ActionableTableCellDelegate
     
     func actionableStateChangeDesired(actionable: Actionable) {

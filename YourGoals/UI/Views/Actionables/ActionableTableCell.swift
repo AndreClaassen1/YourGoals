@@ -12,7 +12,7 @@ import MGSwipeTableCell
 /// the user
 protocol ActionableTableCellDelegate {
     func actionableStateChangeDesired(actionable:Actionable)
- }
+}
 
 protocol ActionableCell {
     func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?,  delegate: ActionableTableCellDelegate)
@@ -21,7 +21,7 @@ protocol ActionableCell {
 
 /// a table cell for displaying habits or tasks. experimental
 class ActionableTableCell: MGSwipeTableCell, ActionableCell {
-    
+    @IBOutlet weak var totalWorkingTimeLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
@@ -30,24 +30,27 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var pieProgressView: PieProgressView!
+    @IBOutlet weak var progressViewHeightConstraint: NSLayoutConstraint!
+    
     
     var actionable:Actionable!
     var delegateTaskCell: ActionableTableCellDelegate!
     let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
     var taskProgressManager:TaskProgressManager!
-
-
+    var defaultProgressViewHeight:CGFloat = 0.0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        defaultProgressViewHeight = progressViewHeightConstraint.constant
         checkBoxButton.setImage(UIImage(named: "TaskCircle"), for: .normal)
         checkBoxButton.setImage(UIImage(named: "TaskChecked"), for: .selected)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -76,11 +79,13 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         }
     }
     
-    /// show the task progress state
+    /// show the task progress state and resize the control for the needed height
     ///
+    /// - Parameter date: show progress for date
     func showTaskProgress(forDate date: Date) {
         let isProgressing = actionable.isProgressing(atDate: date)
         self.progressView.isHidden = !isProgressing
+        self.progressViewHeightConstraint.constant = isProgressing ? defaultProgressViewHeight : 0.0
         if isProgressing {
             let remainingPercentage = CGFloat(actionable.calcRemainingPercentage(atDate: date))
             let progressColor = self.colorCalculator.calculateColor(percent: remainingPercentage)
@@ -107,7 +112,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
             self.commmittingDateLabel.isHidden = true
             return
         }
-
+        
         switch state {
         case .committedForDate:
             self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
@@ -129,33 +134,47 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         showTaskProgress(forDate: Date())
     }
     
+    /// calculate several textes for the working time and progress
+    /// of the actionables
+    ///
+    /// - Parameters:
+    ///   - actionable: the task or habit
+    ///   - date: calculate values for this date
+    ///   - time: estimated starting time of the task
+    /// - Returns: a tuple consisting of formatted strings of
+    //             workingTimeRange, remaining time and the total working time
+    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
+        
+        guard actionable.type == .task else {
+            return (nil, nil, nil)
+        }
+        
+        let totalWorkingTime = actionable.calcProgressDuration(atDate: date)?.formattedAsString()
+        
+        guard actionable.checkedState(forDate: date) == .active else {
+            return (nil, nil, totalWorkingTime)
+        }
+
+        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
+        let remainingTimeText = remainingTime.formattedAsString()
+        
+        if let startingTime = time {
+            let endingTime = startingTime.addingTimeInterval(remainingTime)
+            let workingTimeText = startingTime.formattedTime() + " - " + endingTime.formattedTime()
+            return (workingTimeText, remainingTimeText, totalWorkingTime)
+        } else {
+            return (nil, remainingTimeText, totalWorkingTime)
+        }
+    }
+    
     /// show the working time on this task.
     ///
     /// - Parameter task: task
     func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) {
-        
-        guard actionable.type == .task else {
-            self.workingTimeLabel.text = ""
-            return
-        }
-        
-        guard actionable.checkedState(forDate: date) == .active else {
-            self.workingTimeLabel.text = ""
-            return
-        }
-        
-        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
-        if let startingTime = time {
-            self.workingTimeLabel.text = startingTime.formattedTime() + " - " + remainingTime.formattedAsString()
-        } else {
-            self.workingTimeLabel.text = remainingTime.formattedAsString()
-        }
-        
-        if remainingTime <= 0.1 {
-            self.taskDescriptionLabel.tintColor = UIColor.darkRed
-        } else {
-            self.taskDescriptionLabel.tintColor = UIColor.black
-        }
+        let tuple = getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: time)
+        self.workingTimeLabel.text = tuple.workingTime
+        self.remainingTimeLabel.text = tuple.remainingTime
+        self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
     }
     
     func adaptUI(forActionableType type: ActionableType) {
@@ -181,6 +200,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         self.taskProgressManager = TaskProgressManager(manager: manager)
         self.actionable = actionable
         self.delegateTaskCell = delegate
+        self.taskDescriptionLabel.sizeToFit()
         adaptUI(forActionableType: actionable.type)
         show(state: actionable.checkedState(forDate: date))
         showTaskProgress(forDate: date)
