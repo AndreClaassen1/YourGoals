@@ -52,7 +52,8 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
                                               calculatestartingTimes: true,
                                               varyingHeightConstraint: self.committedTasksHeight)
             self.activeWorkTasksView.configure(manager: self.manager, dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self,
-                                               calculatestartingTimes: true)
+                                               calculatestartingTimes: true,
+                                               varyingHeightConstraint: self.activeTasksHeight)
             self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
             try self.workloadView.configure(manager: self.manager, forDate: Date())
             
@@ -129,11 +130,10 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             let showActivWorkTasksView = try TasksRequester(manager: self.manager).areThereActiveTasks(forDate: startingTime)
 
             if showActivWorkTasksView {
-                // self.activeTasksHeight.constant = originalTasksHeight
-                self.activeTasksHeight.constant = 215.0
                 self.activeWorkTasksView.isHidden = false
                 self.activeWorkTasksView.reload()
             } else {
+                self.activeWorkTasksView.isHidden = true
                 self.activeTasksHeight.constant = 0.0
             }
         }
