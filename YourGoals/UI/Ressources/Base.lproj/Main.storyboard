@@ -600,6 +600,7 @@
                         <viewLayoutGuide key="safeArea" id="aVo-3o-xr6"/>
                     </view>
                     <connections>
+                        <outlet property="addNewActionableButton" destination="nFg-Vd-Eym" id="R39-ke-7C9"/>
                         <outlet property="buttonView" destination="D47-xr-2df" id="dTc-Ak-Fxg"/>
                         <outlet property="closerButton" destination="jZE-2f-nmG" id="o3d-Ur-Yho"/>
                         <outlet property="containerBottomConstraint" destination="a2j-Ad-q1z" id="mG6-xO-4Pg"/>
@@ -720,9 +721,9 @@
         <image name="light-close-button" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qB2-Uh-IRL"/>
+        <segue reference="vWh-25-qmt"/>
         <segue reference="8yY-7N-175"/>
-        <segue reference="Cp9-T4-e9d"/>
-        <segue reference="cjO-Ie-qW9"/>
+        <segue reference="kJV-AZ-9qx"/>
+        <segue reference="UMp-cE-4SY"/>
     </inferredMetricsTieBreakers>
 </document>

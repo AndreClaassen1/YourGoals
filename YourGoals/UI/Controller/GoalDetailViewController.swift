@@ -37,6 +37,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     @IBOutlet internal weak var tasksView: ActionableTableView!
     @IBOutlet private weak var toggleHabitsButton: UIButton!
     
+    @IBOutlet weak var addNewActionableButton: UIButton!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var closerButton: UIButton!
     
@@ -59,6 +60,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         do {
             super.viewDidLoad()
             try configure(goal: self.goal)
+            self.configureActionButtons(forMode: mode)
             self.configureTableView(forMode: mode)
             let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
             swipeDown.direction = .down
@@ -246,6 +248,18 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
         self.delegate?.goalChanged()
     }
     
+    func configureActionButtons(forMode mode: GoalDetailViewControllerMode)  {
+        switch mode {
+        case .habitsMode:
+            self.addNewActionableButton.setTitle("Add Habit", for: .normal)
+            self.toggleHabitsButton.setTitle("Show Tasks", for: .normal)
+            
+        case .tasksMode:
+            self.addNewActionableButton.setTitle("Add Task", for: .normal)
+            self.toggleHabitsButton.setTitle("Show Habits", for: .normal)
+        }
+    }
+    
     /// toggle between habits and tasks and reload the table view
     @IBAction func toggleHabitsAction(_ sender: Any) {
         if self.mode == .tasksMode {
@@ -254,6 +268,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             self.mode = .tasksMode
         }
         
+        configureActionButtons(forMode: self.mode)
         configureTableView(forMode: self.mode)
     }
     
