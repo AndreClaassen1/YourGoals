@@ -10,6 +10,19 @@ import Foundation
 
 extension TimeInterval {
 
+    /// format the remaining time in Minutes.
+    /// If the remaining time is 0 you've got an empty string
+    ///
+    /// - Returns: remaining time in minutes
+    func formattedInMinutesAsString() -> String {
+        let minutes = Int(self / 60.0)
+        if minutes == 0 {
+            return ""
+        }
+        
+        return "\(minutes) m"
+    }
+    
     /// get a human readable string for a time interval (:ugly:)
     ///
     /// - Parameter ti: time interval

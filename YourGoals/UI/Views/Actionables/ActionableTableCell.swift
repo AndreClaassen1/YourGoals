@@ -144,7 +144,6 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     /// - Returns: a tuple consisting of formatted strings of
     //             workingTimeRange, remaining time and the total working time
     func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
-        
         guard actionable.type == .task else {
             return (nil, nil, nil)
         }
@@ -160,7 +159,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         
         if let startingTime = time {
             let endingTime = startingTime.addingTimeInterval(remainingTime)
-            let workingTimeText = startingTime.formattedTime() + " - " + endingTime.formattedTime()
+            let workingTimeText = "\(startingTime.formattedTime()) - \(endingTime.formattedTime()) (\(remainingTime.formattedInMinutesAsString()))"
             return (workingTimeText, remainingTimeText, totalWorkingTime)
         } else {
             return (nil, remainingTimeText, totalWorkingTime)
