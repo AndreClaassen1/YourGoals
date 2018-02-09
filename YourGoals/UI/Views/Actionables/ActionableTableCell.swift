@@ -140,10 +140,10 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     /// - Parameters:
     ///   - actionable: the task or habit
     ///   - date: calculate values for this date
-    ///   - time: estimated starting time of the task
+    ///   - estimatedStartingTime: estimated starting time of the task
     /// - Returns: a tuple consisting of formatted strings of
     //             workingTimeRange, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
+    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
         guard actionable.type == .task else {
             return (nil, nil, nil)
         }
@@ -157,8 +157,8 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
         let remainingTimeText = remainingTime.formattedAsString()
         
-        if let startingTime = time {
-            let endingTime = startingTime.addingTimeInterval(remainingTime)
+        if let startingTime = estimatedStartingTime {
+            let endingTime = date.addingTimeInterval(remainingTime)
             let workingTimeText = "\(startingTime.formattedTime()) - \(endingTime.formattedTime()) (\(remainingTime.formattedInMinutesAsString()))"
             return (workingTimeText, remainingTimeText, totalWorkingTime)
         } else {
