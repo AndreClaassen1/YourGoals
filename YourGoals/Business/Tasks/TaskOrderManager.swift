@@ -35,7 +35,10 @@ class TaskOrderManager:StorageManagerWorker {
     func tasksByOrder(forGoal goal: Goal) throws -> [Task] {
         let tasks = try self.manager.tasksStore.fetchItems { request in
             request.predicate = NSPredicate(format: "goal == %@", goal)
-            request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "state", ascending: true),
+                NSSortDescriptor(key: "prio", ascending: true)
+            ]
         }
         return tasks
     }
