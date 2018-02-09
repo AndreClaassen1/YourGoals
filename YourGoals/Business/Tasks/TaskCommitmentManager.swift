@@ -90,19 +90,47 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         return tasks
     }
     
+    /// commitment group is needed for sorting committed tasks for today
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - date: check commitment date against date
+    /// - Returns: 0: commitmentDate == date
+    ///            1: commitmentDate == past
+    ///            2: everything else
+    func commitmentGroup(task:Task, forDate date:Date) -> Int {
+        let date = date.day()
+        
+        guard let commitmentDate  = task.commitmentDate?.day() else {
+            return 2
+        }
+        
+        if commitmentDate.compare(date) == .orderedSame { return 0 }
+        if commitmentDate.compare(date) == .orderedDescending { return 1}
+        return 2
+    }
+    
     /// combine the committed tasks for today and tasks of the path
     ///
     /// - Parameter date: date
     /// - Returns: a collection of actual and past committed tasks
     /// - Throws: core data exception
-    func committedTasksTodayAndFromTHePath(forDate date:Date) throws -> [Task] {
+    func committedTasksTodayAndFromThePast(forDate date:Date) throws -> [Task] {
         var tasks = [Task]()
     
         tasks.append(contentsOf: try committedTasks(forDate: date))
         tasks.append(contentsOf: try committedTasksPast(forDate: date))
         tasks.append(contentsOf: try uncommittedTasksForTodayGoal())
         
-        return tasks
+        let sorted = tasks.sorted { (t1, t2) -> Bool in
+            if t1.state != t2.state {
+                return t1.state < t2.state
+            }
+            
+            return commitmentGroup(task: t1, forDate: date) < commitmentGroup(task: t2, forDate: date)
+        }
+        
+        return sorted
     }
     
     // MARK: - TaskPositioningProtocol

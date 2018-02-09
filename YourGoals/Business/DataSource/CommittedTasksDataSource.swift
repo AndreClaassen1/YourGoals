@@ -27,7 +27,7 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     // MARK: ActionableTableViewDataSource
     
     func fetchActionables(forDate date: Date) throws -> [Actionable] {
-        let committedTasks = try taskManager.committedTasksTodayAndFromTHePath(forDate: date)
+        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date)
         switch mode {
         case .activeTasksIncluded:
             return committedTasks
