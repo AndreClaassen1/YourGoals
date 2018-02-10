@@ -17,6 +17,7 @@ enum ActionableBehavior {
     case state
     case commitment
     case progress
+    case tomorrow
 }
 
 /// protocol for fetching actionables

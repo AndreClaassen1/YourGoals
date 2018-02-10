@@ -71,9 +71,9 @@ class ActionableSwipeButtonCreator {
         switch behavior {
         case .commitment:
             if behaviorIsActive {
-                return ("Normalize", UIColor.black, UIColor.gray)
+                return ("Someday", UIColor.black, UIColor.gray)
             } else {
-                return ("Committed!", UIColor.black, UIColor.yellow)
+                return ("Today", UIColor.black, UIColor.yellow)
             }
         
         case .progress:
@@ -89,6 +89,12 @@ class ActionableSwipeButtonCreator {
             } else {
                 return ("Open", nil, UIColor.blue)
             }
-        }
+        case .tomorrow:
+            if behaviorIsActive {
+                return (" ", UIColor.black, UIColor.white)
+            } else {
+                return ("Tomorrow", UIColor.black, UIColor.blue)
+            }
+       }
     }
 }

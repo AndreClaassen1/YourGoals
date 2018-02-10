@@ -41,6 +41,9 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
             return nil
         case .commitment:
             return nil
+        case .tomorrow:
+            return nil
+            
         }
     }
     

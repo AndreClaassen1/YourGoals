@@ -29,13 +29,12 @@ class TaskSwitchProtocolProvider {
     /// - Returns: an abstract switching protocol for the desired behavior
     func switchProtocol(forBehavior behavior: ActionableBehavior) -> ActionableSwitchProtocol {
         switch behavior {
-        case .commitment:
+        case .commitment, .tomorrow:
             return commitmentManager
         case .progress:
             return progressManager
         case .state:
             return stateManager
-    
         }
     }
 }

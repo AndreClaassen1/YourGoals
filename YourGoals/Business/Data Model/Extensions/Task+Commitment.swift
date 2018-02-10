@@ -12,6 +12,7 @@ enum CommittingState {
     case notCommitted
     case committedForDate
     case committedForPast
+    case committedForFuture
 }
 
 extension Task {
@@ -37,6 +38,10 @@ extension Task {
         if commitmentDate.compare(dayOfDate) == .orderedAscending &&
             self.getTaskState() == .active {
             return .committedForPast
+        }
+        
+        if commitmentDate.compare(dayOfDate) == .orderedDescending {
+            return .committedForFuture
         }
         
         return .notCommitted

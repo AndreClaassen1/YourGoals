@@ -118,11 +118,16 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
             self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
             self.commmittingDateLabel.isHidden = false
             self.commmittingDateLabel.textColor  = UIColor.darkGreen
-            
+        
         case .committedForPast:
             self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
             self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.textColor = UIColor.darkRed
+            self.commmittingDateLabel.textColor  = UIColor.darkGreen
+            
+        case .committedForFuture:
+            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+            self.commmittingDateLabel.isHidden = false
+            self.commmittingDateLabel.textColor = UIColor.blue
             
         case .notCommitted:
             self.commmittingDateLabel.isHidden = true
@@ -158,7 +163,9 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         let remainingTimeText = remainingTime.formattedAsString()
         
         if let startingTime = estimatedStartingTime {
-            let endingTime = date.addingTimeInterval(remainingTime)
+            
+            let endingTime = date.compare(startingTime) == .orderedDescending ?  date.addingTimeInterval(remainingTime) : startingTime.addingTimeInterval(remainingTime)
+            
             let workingTimeText = "\(startingTime.formattedTime()) - \(endingTime.formattedTime()) (\(remainingTime.formattedInMinutesAsString()))"
             return (workingTimeText, remainingTimeText, totalWorkingTime)
         } else {
