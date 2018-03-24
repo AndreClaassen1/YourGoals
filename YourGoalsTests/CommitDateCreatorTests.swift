@@ -21,7 +21,8 @@ class CommitDateCreatorTests: XCTestCase {
         // test
         XCTAssertEqual(10+2, tuples.count, "10 dates plus nil date plus not included date")
         XCTAssertEqual("No commit date", tuples[0].text)
-        XCTAssertEqual("November 30, 2017", tuples[1].text)
+        XCTAssertEqualLocalized("en", "November 30, 2017", tuples[1].text)
+        XCTAssertEqualLocalized("de-DE", "30. November 2017", tuples[1].text)
         XCTAssertEqual("Today", tuples[2].text)
         XCTAssertEqual("Tomorrow", tuples[3].text)
     }

@@ -95,6 +95,9 @@
 		7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */; };
 		7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */; };
 		7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8847911FD6AB77009C01F9 /* GoalTests.swift */; };
+		7B97202A20665246007D142E /* XCTestCast+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B97202920665246007D142E /* XCTestCast+Localization.swift */; };
+		7B97202C20665342007D142E /* String+VisualBasicExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B97202B20665342007D142E /* String+VisualBasicExtension.swift */; };
+		7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
 		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
@@ -368,6 +371,9 @@
 		7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrderManager.swift; sourceTree = "<group>"; };
 		7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOrderManagerTests.swift; sourceTree = "<group>"; };
 		7B8847911FD6AB77009C01F9 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
+		7B97202920665246007D142E /* XCTestCast+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCast+Localization.swift"; sourceTree = "<group>"; };
+		7B97202B20665342007D142E /* String+VisualBasicExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+VisualBasicExtension.swift"; sourceTree = "<group>"; };
+		7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionMethods.swift"; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
@@ -603,6 +609,8 @@
 				7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */,
 				7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */,
 				7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */,
+				7B97202B20665342007D142E /* String+VisualBasicExtension.swift */,
+				7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -692,6 +700,14 @@
 			path = Eureka;
 			sourceTree = "<group>";
 		};
+		7B9720282066522B007D142E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7B97202920665246007D142E /* XCTestCast+Localization.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7B9759C51FB37B74009DED89 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,6 +783,7 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B9720282066522B007D142E /* Helper */,
 				7BAAFEFD1F9CA2FA00BB102E /* Info.plist */,
 				7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */,
 				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
@@ -1474,6 +1491,7 @@
 				7B7AECD81FF598C80096EE5D /* ImageRow.swift in Sources */,
 				7B0A72651FB045AA0000586D /* Habit+Check.swift in Sources */,
 				7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */,
+				7B97202C20665342007D142E /* String+VisualBasicExtension.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */,
 				7B0A726D1FB04D000000586D /* HabitOrderManager.swift in Sources */,
@@ -1526,6 +1544,7 @@
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */,
+				7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
 				7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
@@ -1570,6 +1589,7 @@
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
+				7B97202A20665246007D142E /* XCTestCast+Localization.swift in Sources */,
 				7B36F23B2003933C00095389 /* TodayWorkloadInfoTests.swift in Sources */,
 				7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */,
 				7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */,
