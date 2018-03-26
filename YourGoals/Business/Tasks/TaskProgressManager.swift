@@ -31,7 +31,9 @@ extension TaskProgressError: LocalizedError {
 class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     /// start working and making progress on a task
     ///
-    /// **Important**: If the task is not active, it will be made active again
+    /// **Important:**
+    ///  - If the task is not active, it will be made active again
+    ///  - the commitment date of the task will be set to today
     ///
     /// - Parameters:
     ///   - task: start progress on this task
@@ -55,6 +57,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         newProgress.start = date
         newProgress.end = nil
         task.addToProgress(newProgress)
+        task.commitmentDate = date.day()
         
         try self.manager.dataManager.saveContext()
     }
@@ -117,6 +120,12 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     
     // MARK: - ActionableSwitchProtocol
     
+    /// switch behaviour eg. starting stopping a task progress
+    ///
+    /// - Parameters:
+    ///   - actionable: the task
+    ///   - date: the date
+    /// - Throws: throws an excpeiont
     func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
         guard let task = actionable as? Task else {
             assertionFailure("switchState failed. Actionable isn't a task")

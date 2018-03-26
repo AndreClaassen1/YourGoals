@@ -20,7 +20,7 @@ protocol GoalDetailViewControllerDelegate {
     func commitmentChanged()
 }
 
-/// show a goal and all of its tasks in detail
+/// show a goal and all of its tasks in detail. this controller enables you to add tasks and habits to your goal
 class GoalDetailViewController: UIViewController, EditActionableViewControllerDelegate, EditGoalFormControllerDelegate, ActionableTableViewDelegate {
     @IBOutlet weak var editGoalButton: UIButton!
     
@@ -115,6 +115,9 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     // MARK: - Navigation
     
+    /// set the parameter for the actionable detail from the state of the current detail view controlelr
+    ///
+    /// - Parameter parameter: parameter block for the EditActionableViewControlle
     fileprivate func setEditActionableViewControllerParameter(parameter: EditActionableViewControllerParameter) {
         // make parameter variable
         var parameter = parameter

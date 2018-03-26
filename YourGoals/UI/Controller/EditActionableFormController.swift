@@ -16,13 +16,25 @@ protocol EditActionableViewControllerDelegate {
     func deleteActionable(actionable: Actionable) throws
 }
 
-/// parameter block for the form. the parameter will be set in the prepare segue call
+/// parameter block for editing or creating a new actionabe.
+/// the parameter will be passed to the form in the prepare segue call
 protocol EditActionableViewControllerParameter {
+    /// the storage manager
     var manager:GoalsStorageManager! { get set }
+    
+    /// the goals
     var goal:Goal! { get set }
+    
+    /// if this parameter is set, we edit an actionable. otherwise a new actionable will be created
     var editActionable:Actionable? { get set }
+    
+    /// type of the actionable: Task or habit
     var editActionableType:ActionableType! { get set }
+    
+    /// a feedback delegate after the actionable is edited
     var delegate:EditActionableViewControllerDelegate? { get set }
+    
+    /// commit call. We have passed all parameters
     func commitParameter()
 }
 
@@ -34,7 +46,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     var delegate:EditActionableViewControllerDelegate?
     var manager:GoalsStorageManager!
     var parameterCommitted = false
-    
+
     /// true, if the actionable is a new record
     func isNewActionable() -> Bool {
         return editActionable == nil
@@ -77,7 +89,8 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
         if let actionable = self.editActionable {
             return ActionableInfo(actionable: actionable)
         } else {
-            return ActionableInfo(type: self.editActionableType, name: nil, commitDate: nil, parentGoal: self.goal)
+            let infoCreator = ActionableInfoCreator()
+            return infoCreator.create(type: self.editActionableType, forGoal: self.goal, forDate: Date())
         }
     }
     

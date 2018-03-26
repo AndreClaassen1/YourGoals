@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// protocol for the Task- and HabitFactory to create a reasonable task or habit out of an actionableinfo
 protocol ActionableFactory {
     func create(actionableInfo: ActionableInfo) -> Actionable
 }

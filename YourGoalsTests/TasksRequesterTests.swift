@@ -16,6 +16,7 @@ class TasksRequesterTests: StorageTestCase {
         return tasks[0]
     }
     
+    /// new at 2018/03/24 - Active tasks are automatically committed.
     func testActiveTasksButNotComitted() {
         // setup
         let date = Date.dateWithYear(2017, month: 11, day: 02)
@@ -29,7 +30,7 @@ class TasksRequesterTests: StorageTestCase {
         let activeTasksButNotCommitted = try! TasksRequester(manager: self.manager).areThereActiveTasksWhichAreNotCommitted(forDate: date)
         
         // test
-        XCTAssertTrue(activeTasksButNotCommitted)
+        XCTAssertFalse(activeTasksButNotCommitted)
     }
     
     func testActiveTasksButComitted() {
