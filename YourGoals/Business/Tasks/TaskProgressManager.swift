@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+extension Notification.Name {
+    static let startProgress = Notification.Name("startProgress")
+    static let stopProgress = Notification.Name("stopProgress")
+}
+
+
 /// errors for the Task progress maanger
 ///
 /// - noProgressNeedActiveTask: you can't start/stop progress on a non active task
@@ -29,6 +35,19 @@ extension TaskProgressError: LocalizedError {
 
 /// business class to start and stop progress on a task and modifieing state in the database
 class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
+    
+    let taskNotificationProtocol:TaskNotificationProviderProtocol
+    
+    /// initialize the task progress manager.
+    ///
+    /// - Parameters:
+    ///   - manager: the storage manager
+    ///   - taskNotificationProtocol: the object which consumes the triggering of notificaitons. This parameter is important for unit test purposes
+    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationManager.defaultManager) {
+        self.taskNotificationProtocol = taskNotificationProtocol;
+        super.init(manager: manager)
+    }
+    
     /// start working and making progress on a task
     ///
     /// **Important:**
@@ -58,6 +77,9 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         newProgress.end = nil
         task.addToProgress(newProgress)
         task.commitmentDate = date.day()
+
+        // inform all objects interested in the start of the progress
+        postStartProgressNotification(task: task, date: date)
         
         try self.manager.dataManager.saveContext()
     }
@@ -77,6 +99,16 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         try self.manager.dataManager.saveContext()
     }
     
+    /// post a startProgerss notification with the task and the remaining time
+    ///
+    /// - Parameters:
+    ///   - task: a Task
+    ///   - date: current date es base for the calculation for the rmemaining time
+    func postStartProgressNotification(task: Task, date: Date) {
+        let remainingTimeInterval = task.calcRemainingTimeInterval(atDate: date)
+        self.taskNotificationProtocol.startProgress(forTask: task, referenceDate: date, remainingTime: remainingTimeInterval)
+    }
+    
     /// stop progress from all tasks at the given date
     /// - Parameter date: this is the end date for all open progress
     /// - Throws: core data exception
@@ -88,6 +120,8 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         for progress in activeProgress {
             progress.end = date
         }
+        
+        self.taskNotificationProtocol.stopProgress()
     }
     
     /// retrieve all active tasks started before the given dateactive
@@ -108,7 +142,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     /// Important Note: In reality this number should be 0 or 1 because
     /// there couldn't be more than one task with a progress
     ///
-    /// - Returns: number of tasks with progress
+    /// - Returns: number of tasks with progressu
     /// - Throws: core data exception
     func numberOfTasksWithProgress() throws -> Int {
         let n = try self.manager.taskProgressStore.countEntries(qualifyRequest: {
