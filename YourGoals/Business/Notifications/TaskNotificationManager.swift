@@ -63,7 +63,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         content.body = taskName
         content.title = text
         content.userInfo = [
-            "task": task
+            "task": task.objectID.uriRepresentation().absoluteString
         ]
         
         let scheduleTime = referenceDate.addingTimeInterval(remainingTime);
@@ -72,8 +72,6 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         
         self.center.add(request, withCompletionHandler: nil)
     }
-    
-
     
     func resetNotifications() {
         self.center.removeAllPendingNotificationRequests()
@@ -96,6 +94,16 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         center.setNotificationCategories([category])
     }
     
+    /// show depending notifications on log
+    func debugPendingNotifications() {
+        self.center.getPendingNotificationRequests { (requests) in
+            for r in requests {
+                NSLog("user local notification is pending: \(r.content.title)")
+            }
+            NSLog("+++ ready")
+        }
+    }
+    
     // mark: - TaskNotificationProviderProtocol
     
     /// inform the task notification manager about a start of a task
@@ -107,6 +115,8 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
     func startProgress(forTask task: Task, referenceDate: Date, remainingTime: TimeInterval) {
         scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceDate: referenceDate, remainingTime: remainingTime - (10.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceDate: referenceDate, remainingTime: remainingTime)
+      
+        // debugPendingNotifications()
     }
     
     /// all progress is stoppped. kill all pending notifications
