@@ -56,7 +56,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     ///
     /// - Parameters:
     ///   - task: start progress on this task
-    ///   - date: at this date
+    ///   - date: at this date and time
     /// - Throws: core data exception
     func startProgress(forTask task: Task, atDate date: Date) throws {
         try stopProgressForAllTasks(atDate: date)

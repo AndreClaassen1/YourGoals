@@ -10,7 +10,7 @@ import Foundation
 import UserNotifications
 
 struct TaskNotificationIdentifier {
-    static let timeIsRunningOut = "timeIsRunningOUt"
+    static let timeIsRunningOut = "timeIsRunningOut"
 }
 
 struct TaskNotificationCategory {
@@ -30,7 +30,6 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
     /// the user notification center
     let center:UNNotificationCenterProtocol
 
-    
     /// initialize the task notification maanger with the user notification cente
     ///
     /// - Parameter notificationCenter: default is UNUserNotificationCenter.current() or a UnitTest Mockup
@@ -38,7 +37,6 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         self.center = notificationCenter
         setupNotificationActions()
     }
-    
     
     /// schedule a local notification for the task to informa about remaining time
     ///
@@ -62,6 +60,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         content.categoryIdentifier = TaskNotificationCategory.taskNotificationCategory
         content.body = taskName
         content.title = text
+        content.sound = UNNotificationSound.default()
         content.userInfo = [
             "task": task.objectID.uriRepresentation().absoluteString
         ]
@@ -73,6 +72,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         self.center.add(request, withCompletionHandler: nil)
     }
     
+    /// eliminate all notifications
     func resetNotifications() {
         self.center.removeAllPendingNotificationRequests()
         self.center.removeAllDeliveredNotifications()
@@ -114,6 +114,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
     ///   - remainingTime: remaining time for the task. this is important for calculate the calendar trigger time
     func startProgress(forTask task: Task, referenceDate: Date, remainingTime: TimeInterval) {
         scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceDate: referenceDate, remainingTime: remainingTime - (10.0 * 60.0))
+        scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceDate: referenceDate, remainingTime: remainingTime - (5.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceDate: referenceDate, remainingTime: remainingTime)
       
         // debugPendingNotifications()
@@ -124,6 +125,4 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         // kill all notifications
         resetNotifications()
     }
-    
-
 }

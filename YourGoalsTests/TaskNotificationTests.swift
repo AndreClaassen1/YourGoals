@@ -34,7 +34,7 @@ class TaskNotificationTests: StorageTestCase {
             expectation.fulfill()
             
             // then I've got two local user notification
-            XCTAssertEqual(2, requests.count)
+            XCTAssertEqual(3, requests.count)
         }
         
         waitForExpectations(timeout: 1.0, handler: nil)

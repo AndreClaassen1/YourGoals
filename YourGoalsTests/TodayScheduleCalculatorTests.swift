@@ -33,7 +33,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
     }
     
     /// calculate a list of starting times
-    func testCalulateStartingTimesWittActiveTask() {
+    func testCalulateStartingTimesWithActiveTask() {
         // setup
         let commitmentDate = Date.dateWithYear(2018, month: 01, day: 11)
         let testDateTime = Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 00, second: 00)
@@ -43,6 +43,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
             ])
         let actionables = goal.allTasks()
         let activeTask = actionables.first!
+       
         // task is progressing since 15 Minutes
         try! TaskProgressManager(manager: self.manager).startProgress(forTask: activeTask, atDate: testDateTime.addingTimeInterval(60.0 * 15.0))
         
