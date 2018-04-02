@@ -12,7 +12,6 @@ import UserNotifications
 
 /// Mock Notifications
 class MockNotification  {
-    
     let date:Date
     let request:UNNotificationRequest
     
@@ -28,6 +27,13 @@ class MockUserNotificationCenter : UNNotificationCenterProtocol {
     var pendingRequests = [UNNotificationRequest]()
     var deliverdRequests = [MockNotification]()
     
+    /// add a request to the mock user notification center.
+    ///
+    /// important: For next trigger date to work, you should add requests far in the future.
+    ///
+    /// - Parameters:
+    ///   - request: a request
+    ///   - completionHandler: a completion handler after delivering
     func add(_ request: UNNotificationRequest, withCompletionHandler completionHandler: ((Error?) -> Swift.Void)? ) {
         let calendarTrigger = request.trigger as! UNCalendarNotificationTrigger
         if let _ = calendarTrigger.nextTriggerDate() {

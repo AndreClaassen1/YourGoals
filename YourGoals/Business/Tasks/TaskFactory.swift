@@ -17,12 +17,14 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
     ///   - name: name of the task
     ///   - state: state of the task
     ///   - prio: prio of the task
+    ///   - sizeInMinutes: size of the task in minutes. Default is 30 Minutes
     /// - Returns: the task
-    func create(name: String, state: ActionableState, prio:Int16) -> Task {
+    func create(name: String, state: ActionableState, prio:Int16, sizeInMinutes: Float = 30) -> Task {
         let task = manager.tasksStore.createPersistentObject()
         task.name = name
         task.setTaskState(state: state)
         task.prio = prio
+        task.size = sizeInMinutes
         return task
     }
     

@@ -32,7 +32,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 30, second: 00), times[1])
     }
     
-    /// calculate a list of starting times
+    /// calculate a list of starti3ng times
     func testCalulateStartingTimesWithActiveTask() {
         // setup
         let commitmentDate = Date.dateWithYear(2018, month: 01, day: 11)

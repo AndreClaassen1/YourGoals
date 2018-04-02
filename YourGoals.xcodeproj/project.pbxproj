@@ -42,7 +42,7 @@
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
 		7B30FE5D2068D8CB002BFF40 /* TaskNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5C2068D8CB002BFF40 /* TaskNotificationManager.swift */; };
-		7B30FE5F2068D8ED002BFF40 /* TaskNotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5E2068D8ED002BFF40 /* TaskNotificationTests.swift */; };
+		7B30FE5F2068D8ED002BFF40 /* TaskNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */; };
 		7B36F234200381BE00095389 /* WorkloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F233200381BE00095389 /* WorkloadView.swift */; };
 		7B36F236200381F400095389 /* WorkloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B36F235200381F400095389 /* WorkloadView.xib */; };
 		7B36F2392003931500095389 /* TodayWorkloadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */; };
@@ -326,7 +326,7 @@
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
 		7B30FE5C2068D8CB002BFF40 /* TaskNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationManager.swift; sourceTree = "<group>"; };
-		7B30FE5E2068D8ED002BFF40 /* TaskNotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationTests.swift; sourceTree = "<group>"; };
+		7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationManagerTests.swift; sourceTree = "<group>"; };
 		7B36F233200381BE00095389 /* WorkloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkloadView.swift; sourceTree = "<group>"; };
 		7B36F235200381F400095389 /* WorkloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkloadView.xib; sourceTree = "<group>"; };
 		7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkloadCalculator.swift; sourceTree = "<group>"; };
@@ -849,7 +849,7 @@
 				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
 				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */,
-				7B30FE5E2068D8ED002BFF40 /* TaskNotificationTests.swift */,
+				7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */,
 				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
 				7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */,
@@ -1658,7 +1658,7 @@
 				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
-				7B30FE5F2068D8ED002BFF40 /* TaskNotificationTests.swift in Sources */,
+				7B30FE5F2068D8ED002BFF40 /* TaskNotificationManagerTests.swift in Sources */,
 				7B3DA17A206E4CCD00C0ED0F /* MockUserNotificationCenter.swift in Sources */,
 				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
 				7B97202A20665246007D142E /* XCTestCast+Localization.swift in Sources */,

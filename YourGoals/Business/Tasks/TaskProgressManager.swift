@@ -106,7 +106,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     ///   - date: current date es base for the calculation for the rmemaining time
     func postStartProgressNotification(task: Task, date: Date) {
         let remainingTimeInterval = task.calcRemainingTimeInterval(atDate: date)
-        self.taskNotificationProtocol.startProgress(forTask: task, referenceDate: date, remainingTime: remainingTimeInterval)
+        self.taskNotificationProtocol.startProgress(forTask: task, referenceTime: date, remainingTime: remainingTimeInterval)
     }
     
     /// stop progress from all tasks at the given date
