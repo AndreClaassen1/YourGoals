@@ -79,7 +79,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         task.commitmentDate = date.day()
 
         // inform all objects interested in the start of the progress
-        postStartProgressNotification(task: task, date: date)
+        postProgressingNotification(task: task, date: date)
         
         try self.manager.dataManager.saveContext()
     }
@@ -104,7 +104,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     /// - Parameters:
     ///   - task: a Task
     ///   - date: current date es base for the calculation for the rmemaining time
-    func postStartProgressNotification(task: Task, date: Date) {
+    func postProgressingNotification(task: Task, date: Date) {
         let remainingTimeInterval = task.calcRemainingTimeInterval(atDate: date)
         self.taskNotificationProtocol.startProgress(forTask: task, referenceTime: date, remainingTime: remainingTimeInterval)
     }
@@ -177,8 +177,14 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         return actionable.isProgressing(atDate: date)
     }
     
-    
-    func changeTaskSize(forTask actionable: Actionable, delta: Float) throws {
+    /// the user needs more time.
+    ///
+    /// - Parameters:
+    ///   - actionable: task
+    ///   - delta: time to add to task
+    ///   - forDate: date for calculate, if task is  progressing
+    /// - Throws: a core data exception
+    func changeTaskSize(forTask actionable: Actionable, delta: Float, forDate date: Date) throws {
         guard let task = actionable as? Task else {
             NSLog("change task size is only supported for tasks")
             return
@@ -190,5 +196,10 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         }
         
         try self.manager.saveContext()
+        
+        if task.isProgressing(atDate: date) {
+            // inform all objects interested in the start of the progress
+            postProgressingNotification(task: task, date: date)
+        }
     }
 }

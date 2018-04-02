@@ -134,9 +134,13 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         }
     }
     
+    /// quick :hack: to change the progress of a task.
+    ///
+    /// - Parameter sender: self
     @IBAction func timerPlusTouched(_ sender: Any) {
-        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: 15.0)
-        showTaskProgress(forDate: Date())
+        let progressingDate = Date()
+        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: 15.0, forDate: progressingDate)
+        showTaskProgress(forDate: progressingDate)
     }
     
     /// calculate several textes for the working time and progress
