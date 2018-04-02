@@ -67,7 +67,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         
         let scheduleTime = referenceTime.addingTimeInterval(remainingTime);
         let trigger = UNCalendarNotificationTrigger(fireDate: scheduleTime)
-        let request = UNNotificationRequest(identifier: taskName , content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: text , content: content, trigger: trigger)
         
         self.center.add(request, withCompletionHandler: nil)
     }

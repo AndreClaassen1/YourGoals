@@ -35,6 +35,10 @@ class MockUserNotificationCenter : UNNotificationCenterProtocol {
     ///   - request: a request
     ///   - completionHandler: a completion handler after delivering
     func add(_ request: UNNotificationRequest, withCompletionHandler completionHandler: ((Error?) -> Swift.Void)? ) {
+        
+        /// remove all pending requests with the same identifier
+        pendingRequests = pendingRequests.filter({ $0.identifier != request.identifier })
+    
         let calendarTrigger = request.trigger as! UNCalendarNotificationTrigger
         if let _ = calendarTrigger.nextTriggerDate() {
             self.pendingRequests.append(request)
