@@ -11,6 +11,9 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
+    var watchConnectivityHandler:WatchConnectivityHandler!
+    var taskNotificationScheduler:TaskNotificationScheduler!
     
     var window: UIWindow?
     let initializers:[Initializer] = [
@@ -20,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func initAll() {
         let context = InitializerContext(defaultStorageManager: GoalsStorageManager.defaultStorageManager)
-        
         let current = UNUserNotificationCenter.current()
         current.delegate = self
         current.requestAuthorization(options: [.badge]) { (granted, error) in
@@ -32,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         for initializer in self.initializers {
             initializer.initialize(context: context)
         }
+        
+        self.watchConnectivityHandler = WatchConnectivityHandler(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
+        self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

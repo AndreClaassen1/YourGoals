@@ -12,7 +12,24 @@
         <!--Actionable Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" userLabel="Actionable Interface Controller" customClass="ActionableInterfaceController" customModule="YourGoals_WatchKit_Extension"/>
+                <controller id="AgC-eL-Hgc" userLabel="Actionable Interface Controller" customClass="WatchProgressInterfaceController" customModule="YourGoals_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="kbO-uP-ajy">
+                            <items>
+                                <label alignment="left" text="Task" id="7TD-SG-aeV"/>
+                                <timer width="1" alignment="left" textAlignment="center" id="YvX-nX-Lrd">
+                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                </timer>
+                                <imageView height="0.59999999999999998" alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="progressPieImage" destination="9R1-6c-sbk" id="fmg-yZ-wEq"/>
+                        <outlet property="progressTimer" destination="YvX-nX-Lrd" id="kqK-ds-ugV"/>
+                        <outlet property="progressTitleLabel" destination="7TD-SG-aeV" id="gV3-Dj-jvQ"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>

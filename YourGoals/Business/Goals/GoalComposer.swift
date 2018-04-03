@@ -26,7 +26,7 @@ class GoalComposer:StorageManagerWorker {
     /// - Parameters:
     ///   - manager: the storage manager
     ///   - taskNotificationProtocol: a task notification protocol for informing accociated tasks
-    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationScheduler.defaultManager) {
+    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationObserver.defaultObserver) {
         self.taskNotificationProtocol = taskNotificationProtocol
         super.init(manager: manager)
     }

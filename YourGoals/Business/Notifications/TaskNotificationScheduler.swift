@@ -9,27 +9,18 @@
 import Foundation
 import UserNotifications
 
-
-/// a protocol for triggering the create of local user notifications
-protocol TaskNotificationProviderProtocol {
-    func progressStarted(forTask task:Task, referenceTime:Date)
-    func progressChanged(forTask task:Task, referenceTime:Date)
-    func progressStopped()
-}
-
 /// this class creates notification on started or stopped tasks
 class TaskNotificationScheduler:TaskNotificationProviderProtocol {
-     static let defaultManager = TaskNotificationScheduler()
-    
     /// the user notification center
     let center:UNNotificationCenterProtocol
 
     /// initialize the task notification maanger with the user notification cente
     ///
     /// - Parameter notificationCenter: default is UNUserNotificationCenter.current() or a UnitTest Mockup
-    init(notificationCenter:UNNotificationCenterProtocol = UNUserNotificationCenter.current()) {
+    init(notificationCenter:UNNotificationCenterProtocol, observer:TaskNotificationObserver) {
         self.center = notificationCenter
         setupNotificationActions()
+        observer.register(provider: self)
     }
     
     /// schedule a local notification for the task to informa about remaining time
@@ -124,11 +115,11 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         scheduleRemainingTimeNotifications(forTask: task, referenceTime: referenceTime)
     }
     
-    /// informt he task notification
+    /// inform the user about start and remaining time for a task
     ///
     /// - Parameters:
-    ///   - task: <#task description#>
-    ///   - referenceTime: <#referenceTime description#>
+    ///   - task: the task
+    ///   - referenceTime: the reference time for the notification
     func progressChanged(forTask task: Task, referenceTime: Date) {
         resetNotifications()
         scheduleRemainingTimeNotifications(forTask: task, referenceTime: referenceTime)
