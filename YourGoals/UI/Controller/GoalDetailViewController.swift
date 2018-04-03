@@ -182,7 +182,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
-        self.goal = try goalComposer.update(actionable: actionable, withInfo: updateInfo)
+        self.goal = try goalComposer.update(actionable: actionable, withInfo: updateInfo, forDate: Date())
         try self.refreshView()
     }
     

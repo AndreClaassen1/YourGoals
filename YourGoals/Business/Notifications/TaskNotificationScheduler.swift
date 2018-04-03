@@ -12,8 +12,9 @@ import UserNotifications
 
 /// a protocol for triggering the create of local user notifications
 protocol TaskNotificationProviderProtocol {
-    func startProgress(forTask task:Task, referenceTime:Date, remainingTime:TimeInterval)
-    func stopProgress()
+    func progressStarted(forTask task:Task, referenceTime:Date)
+    func progressChanged(forTask task:Task, referenceTime:Date)
+    func progressStopped()
 }
 
 /// this class creates notification on started or stopped tasks
@@ -101,26 +102,40 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
             NSLog("+++ ready")
         }
     }
+ 
+    func scheduleRemainingTimeNotifications(forTask task: Task, referenceTime:Date) {
+        let remainingTime = task.calcRemainingTimeInterval(atDate: referenceTime)
+        scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
+        scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
+        scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceTime: referenceTime, remainingTime: remainingTime)
+    }
+    
     
     // mark: - TaskNotificationProviderProtocol
     
-    /// inform the task notification manager about a start of a task
+    /// create user local notifications for a freshly started task. 
     ///
     /// - Parameters:
     ///   - task: the task
     ///   - referenceTime: the reference date for calculation
     ///   - remainingTime: remaining time for the task. this is important for calculate the calendar trigger time
-    func startProgress(forTask task: Task, referenceTime: Date, remainingTime: TimeInterval) {
+    func progressStarted(forTask task: Task, referenceTime: Date) {
         scheduleLocalNotification(forTask: task, withText: "Your Task is startet. Do your work!", referenceTime: referenceTime.addingTimeInterval(10.0), remainingTime: 0.0)
-        scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
-        scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
-        scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceTime: referenceTime, remainingTime: remainingTime)
-      
-        // debugPendingNotifications()
+        scheduleRemainingTimeNotifications(forTask: task, referenceTime: referenceTime)
+    }
+    
+    /// informt he task notification
+    ///
+    /// - Parameters:
+    ///   - task: <#task description#>
+    ///   - referenceTime: <#referenceTime description#>
+    func progressChanged(forTask task: Task, referenceTime: Date) {
+        resetNotifications()
+        scheduleRemainingTimeNotifications(forTask: task, referenceTime: referenceTime)
     }
     
     /// all progress is stoppped. kill all pending notifications
-    func stopProgress() {
+    func progressStopped() {
         // kill all notifications
         resetNotifications()
     }

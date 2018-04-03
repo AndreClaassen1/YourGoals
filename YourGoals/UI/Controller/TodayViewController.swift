@@ -172,7 +172,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     
     func updateActionable(actionable: Actionable, updateInfo: ActionableInfo) throws {
         let goalComposer = GoalComposer(manager: self.manager)
-        let _ = try goalComposer.update(actionable: actionable, withInfo: updateInfo)
+        let _ = try goalComposer.update(actionable: actionable, withInfo: updateInfo, forDate: Date())
         self.reloadAll()
     }
     

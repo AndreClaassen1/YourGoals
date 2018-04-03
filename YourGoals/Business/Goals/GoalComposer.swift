@@ -19,6 +19,18 @@ enum GoalComposerError:Error {
 /// modify and compose goals in core data and save the result in the database
 class GoalComposer:StorageManagerWorker {
     
+    let taskNotificationProtocol:TaskNotificationProviderProtocol
+
+    /// initialize the goal composer
+    ///
+    /// - Parameters:
+    ///   - manager: the storage manager
+    ///   - taskNotificationProtocol: a task notification protocol for informing accociated tasks
+    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationScheduler.defaultManager) {
+        self.taskNotificationProtocol = taskNotificationProtocol
+        super.init(manager: manager)
+    }
+    
     /// add a new task or habit with the information from the actionable info to the goal and save
     /// it back to the core data store
     ///
@@ -45,7 +57,7 @@ class GoalComposer:StorageManagerWorker {
     ///   - info: a info with new values for the actionable
     /// - Returns: the goal, which is updated
     /// - Throws: an exception
-    func update(actionable: Actionable, withInfo info: ActionableInfo) throws -> Goal {
+    func update(actionable: Actionable, withInfo info: ActionableInfo, forDate date:Date) throws -> Goal {
         guard let goal = actionable.goal else {
             throw GoalComposerError.noGoalForActionableFound
         }
@@ -57,6 +69,10 @@ class GoalComposer:StorageManagerWorker {
         actionable.size = info.size
  
         try self.manager.dataManager.saveContext()
+        if actionable.isProgressing(atDate: date), let task = actionable as? Task {
+            self.taskNotificationProtocol.progressChanged(forTask: task, referenceTime: date)
+        }
+    
         return goal
     }
     

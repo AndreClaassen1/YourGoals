@@ -65,7 +65,6 @@ class TaskNotificationSchedulerTests: StorageTestCase {
         let progressStartDate = Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 00, second: 00)
         try! self.progressManager.startProgress(forTask: task, atDate: progressStartDate)
 
-        
         // when I change after 10 Minutes progressing and add 30 Minutes
         let progressChangedTime = progressStartDate.addingTimeInterval(10.0 * 60.0)
         try! self.progressManager.changeTaskSize(forTask: task, delta: 30.0, forDate: progressChangedTime)
@@ -75,7 +74,6 @@ class TaskNotificationSchedulerTests: StorageTestCase {
             self.expectation.fulfill()
             let nextTriggerDates = requests.map { ($0.trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!  }
             XCTAssertEqual ( [
-                Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 10, second: 10), // start notification your task is started
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 50, second: 00), // first notification 10 minutes before task end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 55, second: 00), // seconod notification 5 minutes before the tasks end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 13, minute: 00, second: 00)  // last notification at end of the task

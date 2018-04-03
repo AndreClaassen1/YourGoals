@@ -15,15 +15,17 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     
     /// the task progress manager
     let progressManager:TaskProgressManager!
+    let stateManager:TaskStateManager!
     let manager: GoalsStorageManager!
     
     /// init the handler of the task notificaiton
     ///
     /// - Parameters:
-    ///   - progressManager: progress mamanger
-    init(progressManager:TaskProgressManager) {
-        self.progressManager = progressManager
-        self.manager = progressManager.manager
+    ///   - manager: a Goals Storage Manager
+    init(manager: GoalsStorageManager) {
+        self.manager = manager
+        self.progressManager = TaskProgressManager(manager: manager)
+        self.stateManager = TaskStateManager(manager: manager)
         super.init()
     }
     
@@ -38,7 +40,7 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         let task = try self.manager.tasksStore.retrieveExistingObject(fromUriStr: uri)
         switch identifier {
         case TaskNotificationActionIdentifier.done:
-            try progressManager.stopProgress(forTask: task, atDate: date)
+            try stateManager.setTaskState(task: task, state: .done, atDate: date)
             break
         case TaskNotificationActionIdentifier.needMoreTime:
             try progressManager.changeTaskSize(forTask: task, delta: 15.0, forDate: date)

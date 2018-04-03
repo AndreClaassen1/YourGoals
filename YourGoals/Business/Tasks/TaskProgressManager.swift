@@ -79,8 +79,8 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         task.commitmentDate = date.day()
 
         // inform all objects interested in the start of the progress
-        postProgressingNotification(task: task, date: date)
-        
+        self.taskNotificationProtocol.progressStarted(forTask: task, referenceTime: date)
+
         try self.manager.dataManager.saveContext()
     }
     
@@ -97,18 +97,9 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         
         activeProgress.end = date
         try self.manager.dataManager.saveContext()
+        self.taskNotificationProtocol.progressStopped()
     }
-    
-    /// post a startProgerss notification with the task and the remaining time
-    ///
-    /// - Parameters:
-    ///   - task: a Task
-    ///   - date: current date es base for the calculation for the rmemaining time
-    func postProgressingNotification(task: Task, date: Date) {
-        let remainingTimeInterval = task.calcRemainingTimeInterval(atDate: date)
-        self.taskNotificationProtocol.startProgress(forTask: task, referenceTime: date, remainingTime: remainingTimeInterval)
-    }
-    
+   
     /// stop progress from all tasks at the given date
     /// - Parameter date: this is the end date for all open progress
     /// - Throws: core data exception
@@ -120,8 +111,6 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         for progress in activeProgress {
             progress.end = date
         }
-        
-        self.taskNotificationProtocol.stopProgress()
     }
     
     /// retrieve all active tasks started before the given dateactive
@@ -199,7 +188,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         
         if task.isProgressing(atDate: date) {
             // inform all objects interested in the start of the progress
-            postProgressingNotification(task: task, date: date)
+            self.taskNotificationProtocol.progressChanged(forTask: task, referenceTime: date)
         }
     }
 }
