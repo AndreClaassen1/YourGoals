@@ -1,5 +1,5 @@
 //
-//  TaskNotificationManager.swift
+//  TaskNotificationScheduler.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 26.03.18.
@@ -9,13 +9,6 @@
 import Foundation
 import UserNotifications
 
-struct TaskNotificationIdentifier {
-    static let timeIsRunningOut = "timeIsRunningOut"
-}
-
-struct TaskNotificationCategory {
-    static let taskNotificationCategory = "taskNotificationCategory"
-}
 
 /// a protocol for triggering the create of local user notifications
 protocol TaskNotificationProviderProtocol {
@@ -24,8 +17,8 @@ protocol TaskNotificationProviderProtocol {
 }
 
 /// this class creates notification on started or stopped tasks
-class TaskNotificationManager:TaskNotificationProviderProtocol {
-     static let defaultManager = TaskNotificationManager()
+class TaskNotificationScheduler:TaskNotificationProviderProtocol {
+     static let defaultManager = TaskNotificationScheduler()
     
     /// the user notification center
     let center:UNNotificationCenterProtocol
@@ -51,7 +44,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
             return
         }
         
-        guard remainingTime > 0.0 else {
+        guard remainingTime >= 0.0 else {
             NSLog("there is no time left for task \(taskName) to schedule a notification!")
             return
         }
@@ -62,7 +55,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
         content.title = text
         content.sound = UNNotificationSound.default()
         content.userInfo = [
-            "task": task.objectID.uriRepresentation().absoluteString
+            "taskUri": task.objectID.uriRepresentation().absoluteString
         ]
         
         let scheduleTime = referenceTime.addingTimeInterval(remainingTime);
@@ -82,14 +75,19 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
     /// edit action for taking immediate input
     /// delay action for delaying a motivation card
     func setupNotificationActions() {
+        let needMoreTimeAction = UNNotificationAction(
+            identifier: TaskNotificationActionIdentifier.needMoreTime ,
+            title:  "I need more time",
+            options: [])
         
-        let timeIsRunningOutAction = UNNotificationAction(
-            identifier: TaskNotificationIdentifier.timeIsRunningOut ,
-            title:  "Your time is over",
+        let doneAction = UNNotificationAction(
+            identifier: TaskNotificationActionIdentifier.done ,
+            title:  "I'm done'",
             options: [])
 
-    
-        let category = UNNotificationCategory(identifier: TaskNotificationCategory.taskNotificationCategory, actions: [timeIsRunningOutAction], intentIdentifiers: [], options: [])
+        let category = UNNotificationCategory(identifier: TaskNotificationCategory.taskNotificationCategory,
+                                              actions: [needMoreTimeAction, doneAction],
+                                              intentIdentifiers: [], options: [])
 
         center.setNotificationCategories([category])
     }
@@ -113,6 +111,7 @@ class TaskNotificationManager:TaskNotificationProviderProtocol {
     ///   - referenceTime: the reference date for calculation
     ///   - remainingTime: remaining time for the task. this is important for calculate the calendar trigger time
     func startProgress(forTask task: Task, referenceTime: Date, remainingTime: TimeInterval) {
+        scheduleLocalNotification(forTask: task, withText: "Your Task is startet. Do your work!", referenceTime: referenceTime.addingTimeInterval(10.0), remainingTime: 0.0)
         scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceTime: referenceTime, remainingTime: remainingTime)

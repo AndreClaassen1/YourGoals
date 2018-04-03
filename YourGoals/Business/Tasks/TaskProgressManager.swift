@@ -43,7 +43,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     /// - Parameters:
     ///   - manager: the storage manager
     ///   - taskNotificationProtocol: the object which consumes the triggering of notificaitons. This parameter is important for unit test purposes
-    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationManager.defaultManager) {
+    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationScheduler.defaultManager) {
         self.taskNotificationProtocol = taskNotificationProtocol;
         super.init(manager: manager)
     }

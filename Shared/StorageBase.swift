@@ -15,6 +15,20 @@ protocol Storage {
     func deleteAllEntries() throws
 }
 
+public enum StorageBaseError : LocalizedError {
+    case illegalManagedObjectUriString(uri:String)
+    case illegalManagedObjectUrl(url:URL)
+    
+    public var localizedDescription: String {
+        switch self {
+        case let .illegalManagedObjectUriString(uri):
+            return "the uri string \(uri) isn't a valid URL."
+        case let .illegalManagedObjectUrl(url):
+            return "the url \(url) couldn't convert to a managed object id "
+        }
+    }
+}
+
 public typealias QualifyRequestDictionary = (NSFetchRequest<NSDictionary>)->Void
 
 /// Base class for core data storage operations for one or more entities
@@ -47,6 +61,24 @@ public class StorageBase<T:NSManagedObject> : Storage {
     public func retrieveExistingObject(objectId:NSManagedObjectID) -> T {
         let obj = try! self.managedObjectContext.existingObject(with: objectId)
         return obj as! T
+    }
+    
+    /// retrieves an existing object from an uri string
+    ///
+    /// - Parameter uri: the uri string
+    /// - Returns: an managedn object
+    /// - Throws:
+    public func retrieveExistingObject(fromUriStr uri:String) throws -> T {
+        
+        guard let url = URL(string: uri) else {
+            throw StorageBaseError.illegalManagedObjectUriString(uri: uri)
+        }
+        
+        guard let objectId = self.managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else {
+            throw StorageBaseError.illegalManagedObjectUrl(url: url)
+        }
+        
+        return self.retrieveExistingObject(objectId: objectId)
     }
 
     public func getEntityDescription(entity:String?=nil) -> NSEntityDescription {

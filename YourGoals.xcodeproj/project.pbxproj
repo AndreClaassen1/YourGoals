@@ -41,8 +41,8 @@
 		7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */; };
 		7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */; };
 		7B303B8E1FAA00E300BA2FB6 /* ActionableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */; };
-		7B30FE5D2068D8CB002BFF40 /* TaskNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5C2068D8CB002BFF40 /* TaskNotificationManager.swift */; };
-		7B30FE5F2068D8ED002BFF40 /* TaskNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */; };
+		7B30FE5D2068D8CB002BFF40 /* TaskNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5C2068D8CB002BFF40 /* TaskNotificationScheduler.swift */; };
+		7B30FE5F2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30FE5E2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift */; };
 		7B36F234200381BE00095389 /* WorkloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F233200381BE00095389 /* WorkloadView.swift */; };
 		7B36F236200381F400095389 /* WorkloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B36F235200381F400095389 /* WorkloadView.xib */; };
 		7B36F2392003931500095389 /* TodayWorkloadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */; };
@@ -167,6 +167,9 @@
 		7BDAF7701FC56CF8004C7E46 /* YourGoals_Views.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDAF75B1FC56CF7004C7E46 /* YourGoals_Views.framework */; };
 		7BDAF7711FC56CF8004C7E46 /* YourGoals_Views.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDAF75B1FC56CF7004C7E46 /* YourGoals_Views.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7BDAF77A1FC56D1F004C7E46 /* RPCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDAF7791FC56D1F004C7E46 /* RPCircularProgress.swift */; };
+		7BDC42372072415F00146730 /* TaskNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC42362072415F00146730 /* TaskNotificationHandler.swift */; };
+		7BDC42392072696F00146730 /* TaskNotificationStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC42382072696F00146730 /* TaskNotificationStructs.swift */; };
+		7BDC423B20739A0200146730 /* TaskNotificationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDC423A20739A0200146730 /* TaskNotificationHandlerTests.swift */; };
 		7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B791F9F80220023844E /* GoalDetailViewController.swift */; };
 		7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE11B7E1F9F85070023844E /* ImageData+Image.swift */; };
 		7BE4BB4F1FC8076A00E1BEF9 /* HabitCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4BB4E1FC8076A00E1BEF9 /* HabitCheckManager.swift */; };
@@ -325,8 +328,8 @@
 		7B303B871FA9F77E00BA2FB6 /* TaskCommitmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentTests.swift; sourceTree = "<group>"; };
 		7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCommitmentManager.swift; sourceTree = "<group>"; };
 		7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableView.swift; sourceTree = "<group>"; };
-		7B30FE5C2068D8CB002BFF40 /* TaskNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationManager.swift; sourceTree = "<group>"; };
-		7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationManagerTests.swift; sourceTree = "<group>"; };
+		7B30FE5C2068D8CB002BFF40 /* TaskNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationScheduler.swift; sourceTree = "<group>"; };
+		7B30FE5E2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationSchedulerTests.swift; sourceTree = "<group>"; };
 		7B36F233200381BE00095389 /* WorkloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkloadView.swift; sourceTree = "<group>"; };
 		7B36F235200381F400095389 /* WorkloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkloadView.xib; sourceTree = "<group>"; };
 		7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkloadCalculator.swift; sourceTree = "<group>"; };
@@ -459,6 +462,9 @@
 		7BDAF76A1FC56CF8004C7E46 /* YourGoals_ViewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourGoals_ViewsTests.swift; sourceTree = "<group>"; };
 		7BDAF76C1FC56CF8004C7E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BDAF7791FC56D1F004C7E46 /* RPCircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCircularProgress.swift; sourceTree = "<group>"; };
+		7BDC42362072415F00146730 /* TaskNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationHandler.swift; sourceTree = "<group>"; };
+		7BDC42382072696F00146730 /* TaskNotificationStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationStructs.swift; sourceTree = "<group>"; };
+		7BDC423A20739A0200146730 /* TaskNotificationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotificationHandlerTests.swift; sourceTree = "<group>"; };
 		7BE11B791F9F80220023844E /* GoalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewController.swift; sourceTree = "<group>"; };
 		7BE11B7E1F9F85070023844E /* ImageData+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageData+Image.swift"; sourceTree = "<group>"; };
 		7BE4BB4E1FC8076A00E1BEF9 /* HabitCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckManager.swift; sourceTree = "<group>"; };
@@ -656,9 +662,11 @@
 		7B30FE5B2068D894002BFF40 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				7BDC42382072696F00146730 /* TaskNotificationStructs.swift */,
+				7B30FE5C2068D8CB002BFF40 /* TaskNotificationScheduler.swift */,
 				7B3DA174206D771000C0ED0F /* UNCalendarNotificationTrigger+Date.swift */,
-				7B30FE5C2068D8CB002BFF40 /* TaskNotificationManager.swift */,
 				7B3DA176206E4B5500C0ED0F /* UNNotificationCenterProtocol.swift */,
+				7BDC42362072415F00146730 /* TaskNotificationHandler.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -849,9 +857,10 @@
 				7BEBBACF1F9F3E29003D16AE /* SotrageManagerExtension.swift */,
 				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */,
-				7B30FE5E2068D8ED002BFF40 /* TaskNotificationManagerTests.swift */,
-				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
+				7B30FE5E2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift */,
+				7BDC423A20739A0200146730 /* TaskNotificationHandlerTests.swift */,
+				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
 				7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */,
 				7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */,
 				7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */,
@@ -1545,7 +1554,7 @@
 				7B303B861FA9F45900BA2FB6 /* Task+Commitment.swift in Sources */,
 				7B58CE001FACC00D00628C65 /* TodayViewController+CollectionView.swift in Sources */,
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
-				7B30FE5D2068D8CB002BFF40 /* TaskNotificationManager.swift in Sources */,
+				7B30FE5D2068D8CB002BFF40 /* TaskNotificationScheduler.swift in Sources */,
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
@@ -1588,6 +1597,7 @@
 				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
 				7B3DA177206E4B5500C0ED0F /* UNNotificationCenterProtocol.swift in Sources */,
+				7BDC42372072415F00146730 /* TaskNotificationHandler.swift in Sources */,
 				7B130B571FB4F00D0072F6C8 /* CommittedTasksDataSource.swift in Sources */,
 				7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */,
 				7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */,
@@ -1595,6 +1605,7 @@
 				7B303B8A1FA9F93500BA2FB6 /* TaskCommitmentManager.swift in Sources */,
 				7BFD35C420076FCE00602FC8 /* TodayScheduleCalculator.swift in Sources */,
 				7B5FA3D11FA33AE5004556C1 /* TaskProgressManager.swift in Sources */,
+				7BDC42392072696F00146730 /* TaskNotificationStructs.swift in Sources */,
 				7B17DD881F9E88EA008E90A2 /* GoalsSectionHeader.swift in Sources */,
 				7B58CE021FADB69B00628C65 /* TasksRequester.swift in Sources */,
 				7BF562A01FD563FD00A4DF6C /* Settings.swift in Sources */,
@@ -1658,7 +1669,7 @@
 				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
-				7B30FE5F2068D8ED002BFF40 /* TaskNotificationManagerTests.swift in Sources */,
+				7B30FE5F2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift in Sources */,
 				7B3DA17A206E4CCD00C0ED0F /* MockUserNotificationCenter.swift in Sources */,
 				7B9E28F51FA67C0C00BB6003 /* GoalInfoManagerTests.swift in Sources */,
 				7B97202A20665246007D142E /* XCTestCast+Localization.swift in Sources */,
@@ -1681,6 +1692,7 @@
 				7B0A72671FB0485D0000586D /* HabitTests.swift in Sources */,
 				7B1BBC391FFD601C003934B1 /* CalcProgressTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
+				7BDC423B20739A0200146730 /* TaskNotificationHandlerTests.swift in Sources */,
 				7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */,
 				7BFC1E021FA35A13003DE484 /* TaskProgressManagerTests.swift in Sources */,
 				7BF45C021FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift in Sources */,

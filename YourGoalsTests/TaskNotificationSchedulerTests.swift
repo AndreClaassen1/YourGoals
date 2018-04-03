@@ -10,8 +10,8 @@ import XCTest
 import UserNotifications
 @testable import YourGoals
 
-/// Tests for the TaskNotificationManager
-class TaskNotificationManagerTests: StorageTestCase {
+/// Tests for the TaskNotificationScheduler
+class TaskNotificationSchedulerTests: StorageTestCase {
     var expectation:XCTestExpectation!
     var progressManager:TaskProgressManager!
     var mockUserNotificationCenter:MockUserNotificationCenter!
@@ -21,8 +21,8 @@ class TaskNotificationManagerTests: StorageTestCase {
         super.setUp()
         self.expectation = self.expectation(description: "pending notification")
         self.mockUserNotificationCenter = MockUserNotificationCenter()
-        let taskNotificationManager = TaskNotificationManager(notificationCenter: mockUserNotificationCenter)
-        self.progressManager = TaskProgressManager(manager: self.manager, taskNotificationProtocol: taskNotificationManager)
+        let taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: self.mockUserNotificationCenter)
+        self.progressManager = TaskProgressManager(manager: self.manager, taskNotificationProtocol: taskNotificationScheduler)
     }
     
     /// Given an task action
@@ -44,6 +44,7 @@ class TaskNotificationManagerTests: StorageTestCase {
             self.expectation.fulfill()
             let nextTriggerDates = requests.map { ($0.trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!  }
             XCTAssertEqual ( [
+                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 00, second: 10), // start notification your task is started
                     Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 20, second: 00), // first notification 10 minutes before task end
                     Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 25, second: 00), // seconod notification 5 minutes before the tasks end
                     Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 30, second: 00)  // last notification at end of the task
@@ -74,6 +75,7 @@ class TaskNotificationManagerTests: StorageTestCase {
             self.expectation.fulfill()
             let nextTriggerDates = requests.map { ($0.trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!  }
             XCTAssertEqual ( [
+                Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 10, second: 10), // start notification your task is started
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 50, second: 00), // first notification 10 minutes before task end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 55, second: 00), // seconod notification 5 minutes before the tasks end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 13, minute: 00, second: 00)  // last notification at end of the task

@@ -66,7 +66,14 @@ extension Date {
     public func addDaysToDate(_ numberOfDays: Int) -> Date {
         let addedDate = Calendar.current.date(byAdding: Calendar.Component.day, value: numberOfDays, to: self)
         return addedDate!
-
+    }
+    
+    /// add some minutes to a date
+    ///
+    /// - Parameter numberOfMinutes: number of minutes
+    /// - Returns: the new date
+    public func addMinutesToDate(_ numberOfMinutes: Int) -> Date {
+        return Calendar.current.date(byAdding: Calendar.Component.minute , value: numberOfMinutes, to: self)!
     }
     
     /// extract only the day for the datetime
