@@ -10,10 +10,11 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var watchConnectivityHandler:WatchConnectivityHandler!
     var taskNotificationScheduler:TaskNotificationScheduler!
+    var taskNotificationHandler:TaskNotificationHandler!
     
     var window: UIWindow?
     let initializers:[Initializer] = [
@@ -23,13 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func initAll() {
         let context = InitializerContext(defaultStorageManager: GoalsStorageManager.defaultStorageManager)
-        let current = UNUserNotificationCenter.current()
-        current.delegate = self
-        current.requestAuthorization(options: [.badge]) { (granted, error) in
-            if let error = error {
-                NSLog("UNUserNotificationCenter.current().requestAuthorization: \(error.localizedDescription)")
-            }
-        }
+        
+        
         
         for initializer in self.initializers {
             initializer.initialize(context: context)
@@ -37,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         self.watchConnectivityHandler = WatchConnectivityHandler(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
+        self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
+        self.taskNotificationHandler.registerNotifications()
+
+
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -70,8 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: my own logic
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.badge)
-    }
+
 }
 

@@ -46,10 +46,15 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        NSLog("didReceiveMessage: %@", message)
+        NSLog("didReceiveMessage with reply: %@", message)
         if message["request"] as? String == "date" {
             replyHandler(["date" : "\(Date())"])
         }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        NSLog("didReceiveMessage without reply: %@", message)
+        updateContextWithState()
     }
     
     func updateContextWithProgress(forTask task:Task, referenceTime: Date) {

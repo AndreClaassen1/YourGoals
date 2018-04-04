@@ -39,6 +39,19 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         // Configure interface objects here.
     }
     
+    func updateProgressImageInterval() {
+        if state == .progressing {
+            self.updateProgressImage()
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
+                self.updateProgressImage()
+            })
+        }
+    }
+    
+    override func didAppear() {
+        updateProgressImageInterval()
+    }
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -46,8 +59,12 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         session = WCSession.default
         session.delegate = self
         session.activate()
+        NSLog("\(session.applicationContext)")
+        session.sendMessage(["actualizeState":"post"], replyHandler: nil, errorHandler: nil)
+        
         updateProgressingState()
     }
+
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
@@ -61,10 +78,6 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         self.progressPieImage.setImage(progressImage)
     }
 
-    @objc func handleTimerEvent() {
-        self.updateProgressImage()
-    }
-    
     func updateProgressingState() {
         updateTimerForImage?.invalidate()
         var hideProgressControls = true
@@ -78,8 +91,7 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         case .progressing:
             hideProgressControls = false
             self.progressTimer.setDate(self.targetDate)
-            updateProgressImage()
-            updateTimerForImage = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(handleTimerEvent), userInfo: nil, repeats: true)
+            updateProgressImageInterval()
         }
         
         self.progressTimer.setHidden(hideProgressControls)

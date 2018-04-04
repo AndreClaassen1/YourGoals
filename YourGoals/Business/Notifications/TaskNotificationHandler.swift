@@ -29,6 +29,17 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         super.init()
     }
     
+    /// connect this class with the notification center and register the badge
+    func registerNotifications() {
+        let current = UNUserNotificationCenter.current()
+        current.delegate = self
+        current.requestAuthorization(options: [.badge]) { (granted, error) in
+            if let error = error {
+                NSLog("UNUserNotificationCenter.current().requestAuthorization: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     /// handle the real action response as a testable function
     ///
     /// - Parameters:
@@ -69,5 +80,9 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         catch let error {
             NSLog("TaskNotificationHandler: error occured: \(error)")
         }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+         completionHandler([.sound, .alert, .badge])
     }
 }
