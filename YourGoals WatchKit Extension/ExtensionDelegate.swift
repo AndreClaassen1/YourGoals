@@ -13,7 +13,13 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenter
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        UNUserNotificationCenter.current().delegate = self
+        let current = UNUserNotificationCenter.current()
+        current.delegate = self
+        current.requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
+            if let error = error {
+                NSLog("UNUserNotificationCenter.current().requestAuthorization: \(error.localizedDescription)")
+            }
+        }
     }
 
     func applicationDidBecomeActive() {

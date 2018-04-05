@@ -33,7 +33,7 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     func registerNotifications() {
         let current = UNUserNotificationCenter.current()
         current.delegate = self
-        current.requestAuthorization(options: [.badge]) { (granted, error) in
+        current.requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
             if let error = error {
                 NSLog("UNUserNotificationCenter.current().requestAuthorization: \(error.localizedDescription)")
             }
