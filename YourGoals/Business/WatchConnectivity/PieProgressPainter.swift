@@ -79,22 +79,10 @@ class PieProgressPainter {
         fillOuterCircle(ctx: ctx, centerPoint: centerPoint, radius: radius)
     }
     
-    func calcPercentage(remainingTime:TimeInterval, taskSize:TimeInterval) -> CGFloat? {
-        if taskSize <= 0.0 {
-            NSLog("draw aborted. task size is not valid: \(taskSize)" )
-            return nil
-        }
-        
-        let percentage = 1.0 - CGFloat(remainingTime / taskSize)
-        
-        return percentage < 0.0 ? 0.0 : (percentage > 1.0 ? 1.0 : percentage)
-    }
-
-    func draw(remainingTime:TimeInterval, taskSize:TimeInterval) -> UIImage? {
-        guard let percentage = calcPercentage(remainingTime: remainingTime, taskSize: taskSize) else {
-            NSLog("aborting with illegal percentage")
-            return nil
-        }
+    func draw(percentage: CGFloat, tintColor: UIColor) -> UIImage? {
+        self.progressTintColor = tintColor
+        self.trackTintColor = tintColor
+        self.fillColor = tintColor.withAlphaComponent(0.3)
         
         UIGraphicsBeginImageContext(chartSize)
         let context = UIGraphicsGetCurrentContext()!

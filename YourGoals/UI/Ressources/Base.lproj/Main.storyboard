@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kcl-Qz-1iM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Goals" id="cBk-4O-gkX"/>
+                    <tabBarItem key="tabBarItem" title="Goals" selectedImage="goals_icon" id="cBk-4O-gkX"/>
                     <navigationItem key="navigationItem" title="Your Goals" leftItemsSupplementBackButton="YES" id="cke-61-Lwf">
                         <barButtonItem key="backBarButtonItem" title="Montag, 23. Oktober" id="JI4-4q-2PF"/>
                     </navigationItem>
@@ -452,7 +452,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ibu-wD-YEb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Today" id="yZY-dX-zMq" userLabel="Today"/>
+                    <tabBarItem key="tabBarItem" title="Today" selectedImage="today_icon" id="yZY-dX-zMq" userLabel="Today"/>
                     <connections>
                         <outlet property="activeTasksHeight" destination="Hn6-8C-JfB" id="dgL-fJ-EFK"/>
                         <outlet property="activeWorkTasksView" destination="Hd0-5Q-p8B" id="TsK-BI-1In"/>
@@ -483,7 +483,6 @@
                     <connections>
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
-                        <segue destination="PMd-9U-cjl" kind="relationship" relationship="viewControllers" id="Pyr-2q-eZj"/>
                         <segue destination="Q4F-TG-JGR" kind="relationship" relationship="viewControllers" id="bKX-xE-vb8"/>
                     </connections>
                 </tabBarController>
@@ -500,20 +499,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="0.0" y="40" width="964" height="627"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="964" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="325"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="964" height="290"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="290" id="qqG-LW-9io"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="619.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -524,24 +523,24 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D47-xr-2df" userLabel="button view">
-                                                <rect key="frame" x="0.0" y="290" width="964" height="36"/>
+                                                <rect key="frame" x="0.0" y="290" width="335" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
-                                                        <rect key="frame" x="0.0" y="3" width="419.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="3" width="62" height="30"/>
                                                         <state key="normal" title="Edit Goal"/>
                                                         <connections>
                                                             <action selector="editButtonTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="dmA-at-WoI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
-                                                        <rect key="frame" x="-43" y="3" width="86" height="30"/>
+                                                        <rect key="frame" x="124.5" y="3" width="86" height="30"/>
                                                         <state key="normal" title="Show Habits"/>
                                                         <connections>
                                                             <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
-                                                        <rect key="frame" x="574.5" y="3" width="0.0" height="30"/>
+                                                        <rect key="frame" x="240" y="3" width="95" height="30"/>
                                                         <state key="normal" title="Add new Task"/>
                                                         <connections>
                                                             <action selector="addNewActionableTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="uKe-C8-BpG"/>
@@ -575,7 +574,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324" width="964" height="303"/>
+                                        <rect key="frame" x="0.0" y="324" width="335" height="303"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -706,7 +705,7 @@
                             <outlet property="delegate" destination="Q4F-TG-JGR" id="Drb-BS-sVp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="sH3-Y0-iqu"/>
+                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="settings_icon" id="sH3-Y0-iqu"/>
                     <connections>
                         <outlet property="newTaskEditorSwitch" destination="uW2-Zb-hhj" id="hGh-L1-hYD"/>
                     </connections>
@@ -718,12 +717,15 @@
     </scenes>
     <resources>
         <image name="YourGoals" width="1115" height="1115"/>
+        <image name="goals_icon" width="25" height="25"/>
         <image name="light-close-button" width="40" height="40"/>
+        <image name="settings_icon" width="25" height="25"/>
+        <image name="today_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vWh-25-qmt"/>
-        <segue reference="8yY-7N-175"/>
-        <segue reference="kJV-AZ-9qx"/>
-        <segue reference="UMp-cE-4SY"/>
+        <segue reference="qB2-Uh-IRL"/>
+        <segue reference="6eA-8s-RYt"/>
+        <segue reference="Cp9-T4-e9d"/>
+        <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>
 </document>

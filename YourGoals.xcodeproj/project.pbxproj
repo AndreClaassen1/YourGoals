@@ -92,6 +92,9 @@
 		7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */; };
 		7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AECDB1FF81E900096EE5D /* showValidationErrors.swift */; };
 		7B7CE91E1FA687BE00ACFA65 /* Goal+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE91D1FA687BE00ACFA65 /* Goal+Progress.swift */; };
+		7B7E58DA207605A700B5511C /* UIColor+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC571FFE191900D06D48 /* UIColor+rgb.swift */; };
+		7B7E58DB207605DB00B5511C /* ColorCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC551FFD6C1F00D06D48 /* ColorCalculator.swift */; };
+		7B7E58DC2076070500B5511C /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */; };
 		7B7F0A771FAA06FE001BBB17 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* TasksDataSource.swift */; };
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
@@ -1723,8 +1726,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */,
+				7B7E58DB207605DB00B5511C /* ColorCalculator.swift in Sources */,
 				7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */,
 				7B2019152073DD9200B7775B /* PieProgressPainter.swift in Sources */,
+				7B7E58DC2076070500B5511C /* UIColor+Brightness.swift in Sources */,
+				7B7E58DA207605A700B5511C /* UIColor+rgb.swift in Sources */,
 				7BAAFF221F9CA2FB00BB102E /* ExtensionDelegate.swift in Sources */,
 				7BAAFF201F9CA2FB00BB102E /* WatchProgressInterfaceController.swift in Sources */,
 			);

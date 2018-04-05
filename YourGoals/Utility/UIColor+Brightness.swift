@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension UIColor {
     /**
      Create a ligher color

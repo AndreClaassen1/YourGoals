@@ -20,6 +20,10 @@
                                 <timer width="1" alignment="left" textAlignment="center" id="YvX-nX-Lrd">
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                 </timer>
+                                <label width="1" alignment="center" text="Time is over!" textAlignment="center" id="4od-Ay-a8S">
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="24"/>
+                                </label>
                                 <imageView height="0.59999999999999998" alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
                             </items>
                         </group>
@@ -28,6 +32,7 @@
                         <outlet property="progressPieImage" destination="9R1-6c-sbk" id="fmg-yZ-wEq"/>
                         <outlet property="progressTimer" destination="YvX-nX-Lrd" id="kqK-ds-ugV"/>
                         <outlet property="progressTitleLabel" destination="7TD-SG-aeV" id="gV3-Dj-jvQ"/>
+                        <outlet property="timeIsOverLabel" destination="4od-Ay-a8S" id="3OU-uY-ezp"/>
                     </connections>
                 </controller>
             </objects>

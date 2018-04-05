@@ -18,38 +18,44 @@ enum ProgressInterfaceState {
     case progressing
 }
 
+/// show the progress of the active task on the watch
 class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate {
     var session:WCSession!
     
     var state = ProgressInterfaceState.noData
     var title:String!
     var referenceTime:Date!
-    var remainingTime:TimeInterval!
-    var targetDate:Date!
+    var targetTime:Date!
     var taskSize:TimeInterval!
     var updateTimerForImage:Timer?
+    var hapticStopAlreadyPlayed = false
+    let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
     
     @IBOutlet var progressPieImage: WKInterfaceImage!
     @IBOutlet var progressTimer: WKInterfaceTimer!
     @IBOutlet var progressTitleLabel: WKInterfaceLabel!
-    
+    @IBOutlet var timeIsOverLabel: WKInterfaceLabel!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
     }
     
-    func updateProgressImageInterval() {
+    func updateProgressPeriodically() {
+        updateProgressingState()
         if state == .progressing {
-            self.updateProgressImage()
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
-                self.updateProgressImage()
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+                let remainingTime = self.targetTime.timeIntervalSince(Date())
+                self.updateProgressControls(remainingTime: remainingTime)
+                if remainingTime < 0.0 {
+                    timer.invalidate()
+                }
             })
         }
     }
     
     override func didAppear() {
-        updateProgressImageInterval()
+        updateProgressPeriodically()
     }
     
     override func willActivate() {
@@ -65,22 +71,60 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         updateProgressingState()
     }
 
-    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
-    func updateProgressImage() {
-        let imagePainter = PieProgressPainter()
-        let remainingTime = targetDate.timeIntervalSince(Date())
-        let progressImage = imagePainter.draw(remainingTime: remainingTime, taskSize: taskSize)
-        self.progressPieImage.setImage(progressImage)
+    func calcPercentage(remainingTime:TimeInterval, taskSize:TimeInterval) -> CGFloat? {
+        if taskSize <= 0.0 {
+            NSLog("draw aborted. task size is not valid: \(taskSize)" )
+            return nil
+        }
+        
+        let percentage = 1.0 - CGFloat(remainingTime / taskSize)
+        
+        return percentage < 0.0 ? 0.0 : (percentage > 1.0 ? 1.0 : percentage)
     }
 
+    func updateProgressPieChart(remainingTime: TimeInterval) {
+        let percentage = calcPercentage(remainingTime: remainingTime, taskSize: taskSize) ?? 0.0
+        let progressColor = self.colorCalculator.calculateColor(percent: percentage)
+        let imagePainter = PieProgressPainter()
+        let progressImage = imagePainter.draw(percentage: percentage, tintColor: progressColor)
+        self.progressPieImage.setImage(progressImage)
+    }
+    
+    func updateProgressControls(remainingTime: TimeInterval) {
+        self.progressPieImage.setHidden(false)
+        self.progressTitleLabel.setText(self.title)
+        updateProgressPieChart(remainingTime: remainingTime)
+        if remainingTime >= 0.0 {
+            self.hapticStopAlreadyPlayed  = false
+            self.progressTimer.setDate(self.targetTime)
+            self.progressTimer.setHidden(false)
+            self.timeIsOverLabel.setHidden(true)
+            self.progressTimer.start()
+        } else {
+            self.timeIsOverLabel.setHidden(false)
+            self.progressTimer.setHidden(true)
+            self.progressTimer.stop()
+            self.hapticStop()
+        }
+    }
+
+    func hapticStop() {
+        guard !self.hapticStopAlreadyPlayed else {
+            return
+        }
+        
+        WKInterfaceDevice.current().play(.stop)
+        self.hapticStopAlreadyPlayed = true
+    }
+    
+    
     func updateProgressingState() {
         updateTimerForImage?.invalidate()
-        var hideProgressControls = true
         switch self.state {
         case .noData:
             title = "Waiting for Data ..."
@@ -89,14 +133,14 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         case .notProgressing:
             title = "No active task"
         case .progressing:
-            hideProgressControls = false
-            self.progressTimer.setDate(self.targetDate)
-            updateProgressImageInterval()
+            let remainingTime = targetTime.timeIntervalSince(Date())
+            updateProgressControls(remainingTime: remainingTime)
+            return
         }
         
-        self.progressTimer.setHidden(hideProgressControls)
-        self.progressTimer.start()
-        self.progressPieImage.setHidden(hideProgressControls)
+        self.timeIsOverLabel.setHidden(true)
+        self.progressTimer.setHidden(true)
+        self.progressPieImage.setHidden(true)
         self.progressTitleLabel.setText(title)
     }
 
@@ -116,12 +160,13 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
             if progressing {
                 self.title = applicationContext["title"] as? String
                 self.referenceTime = applicationContext["referenceTime"] as? Date
-                self.remainingTime = applicationContext["remainingTime"] as? TimeInterval
+                let remainingTime = applicationContext["remainingTime"] as? TimeInterval
                 self.taskSize = applicationContext["taskSize"] as? TimeInterval
                 
-                if self.title != nil && self.referenceTime != nil && self.remainingTime != nil && self.taskSize != nil {
+                if self.title != nil && self.referenceTime != nil && remainingTime != nil && self.taskSize != nil {
                     self.state = .progressing
-                    self.targetDate = self.referenceTime.addingTimeInterval(self.remainingTime)
+                    // self.targetTime = Date().addingTimeInterval(10.0)
+                    self.targetTime = self.referenceTime.addingTimeInterval(remainingTime!)
                 } else {
                     NSLog("couldn't extract all needed date out of context: \(applicationContext)")
                 }
