@@ -9,6 +9,7 @@
 import Foundation
 
 class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
+    
     enum Mode {
         case activeTasksIncluded
         case activeTasksNotIncluded
@@ -26,7 +27,11 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchActionables(forDate date: Date) throws -> [Actionable] {
+    func fetchSections(forDate date: Date) throws -> [ActionableSection] {
+        return []
+    }
+    
+    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
         let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date)
         switch mode {
         case .activeTasksIncluded:

@@ -28,7 +28,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var timerPaused = false
     var editTask:Task? = nil
     var delegate:ActionableTableViewDelegate!
-    var dataSource:ActionableDataSource!
+    var dataSource:ActionableDataSource?
     var constraint:NSLayoutConstraint? = nil
     var constraintOffset:CGFloat = 0
     var panGestureRecognizer:UIPanGestureRecognizer!
@@ -79,7 +79,13 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     /// reload the tasks table view
     func reload() {
         do {
-            self.actionables = try self.dataSource.fetchActionables(forDate: Date())
+            guard let dataSource = self.dataSource else {
+                assertionFailure("you need to configure the ActionableTableView with a datasource first")
+                return
+            }
+            
+            
+            self.actionables = try dataSource.fetchActionables(forDate: Date(), andSection: nil)
             if calculatestartingTimes {
                 self.startingTimes = try TodayScheduleCalculator(manager: self.manager).calculateStartingTimes(forTime: Date(), actionables: self.actionables)
             } else {
@@ -152,7 +158,13 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             return
         }
         
-        guard let positioning = self.dataSource.positioningProtocol() else {
+        guard let dataSource = self.dataSource else {
+            assertionFailure("you need to configure the datasource first")
+            return
+        }
+        
+        
+        guard let positioning = dataSource.positioningProtocol() else {
             NSLog("no repositioning protocol found")
             return
         }

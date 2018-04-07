@@ -21,7 +21,7 @@ class TaskNotificationSchedulerTests: StorageTestCase {
         super.setUp()
         self.expectation = self.expectation(description: "pending notification")
         self.mockUserNotificationCenter = MockUserNotificationCenter()
-        let taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: self.mockUserNotificationCenter)
+        let taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: self.mockUserNotificationCenter, observer: TaskNotificationObserver())
         self.progressManager = TaskProgressManager(manager: self.manager, taskNotificationProtocol: taskNotificationScheduler)
     }
     

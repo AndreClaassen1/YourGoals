@@ -48,7 +48,12 @@ class ActionableSwipeButtonCreator {
     ///   - behaviors: an array of behaviors
     ///   - dataSource: a actionable data source ( list of ordered tasks or habits)
     /// - Returns: an arra of swipe buttons
-    func createSwipeButtons(forDate date: Date, forActionable actionable:Actionable, forBehaviors behaviors:[ActionableBehavior], dataSource: ActionableDataSource) -> [MGSwipeButton] {
+    func createSwipeButtons(forDate date: Date, forActionable actionable:Actionable, forBehaviors behaviors:[ActionableBehavior], dataSource: ActionableDataSource?) -> [MGSwipeButton] {
+        guard let dataSource = dataSource else {
+            NSLog("no datasource configured")
+            return []
+        }
+        
         var buttons = [MGSwipeButton]()
         
         for behavior in behaviors {

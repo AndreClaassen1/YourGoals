@@ -25,7 +25,11 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchActionables(forDate date: Date) throws -> [Actionable] {
+    func fetchSections(forDate date: Date) throws -> [ActionableSection] {
+        return []
+    }
+    
+    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
         return try habitOrderManager.habitsByOrder(forGoal: self.goal)
     }
     

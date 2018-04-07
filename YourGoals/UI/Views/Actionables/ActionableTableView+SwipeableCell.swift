@@ -21,7 +21,7 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     // MARK: - swipe button handling
     
     func switchBehavior(actionable: Actionable, date: Date, behavior: ActionableBehavior) throws {
-        guard let switchProtocol = self.dataSource.switchProtocol(forBehavior: behavior) else {
+        guard let switchProtocol = self.dataSource?.switchProtocol(forBehavior: behavior) else {
             assertionFailure("no progress protocol for behavior \(behavior) available")
             return
         }

@@ -9,6 +9,7 @@
 import Foundation
 
 class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
+    
     let taskManager:TaskProgressManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
 
@@ -19,7 +20,11 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchActionables(forDate date: Date) throws -> [Actionable] {
+    func fetchSections(forDate date: Date) throws -> [ActionableSection] {
+        return []
+    }
+    
+    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
         return try taskManager.activeTasks(forDate: date)
     }
     

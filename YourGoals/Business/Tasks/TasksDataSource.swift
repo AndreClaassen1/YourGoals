@@ -20,14 +20,33 @@ enum ActionableBehavior {
     case tomorrow
 }
 
+protocol ActionableSection {
+    var sectionTitle:String {
+        get
+    }
+}
+
+
 /// protocol for fetching actionables
 protocol ActionableDataSource {
+    
+    /// fetch the actionable sections. if not sections were delivered, then thi
+    /// datasource doesn't provide sections
+    ///
+    /// - Parameter date: the date for calculating the datas
+    /// - Returns: an array of sections. if this array is empty, sections aren't supported
+    /// - Throws: core data exception
+    func fetchSections(forDate date:Date) throws -> [ActionableSection]
+    
     /// fetch a ordered array of actionables fromt he data source
     ///
-    /// - Parameter date: fetch items for this date
+    /// - Parameter
+    ///   - date: fetch items for this date
+    ///   - andSection: an optional section, if sections were supported
+    ///
     /// - Returns: an ordered array of actionables
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date) throws -> [Actionable]
+    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable]
     
     /// retrieve the reordering protocol, if the datasource allows task reordering
     ///

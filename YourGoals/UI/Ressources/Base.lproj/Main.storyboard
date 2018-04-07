@@ -470,21 +470,36 @@
             </objects>
             <point key="canvasLocation" x="-258.39999999999998" y="379.16041979010498"/>
         </scene>
-        <!--Item-->
+        <!--Planning-->
         <scene sceneID="5TO-uZ-LQ9">
             <objects>
-                <viewController id="iWG-d2-4VV" sceneMemberID="viewController">
+                <viewController id="iWG-d2-4VV" customClass="PlanningViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BV3-bF-CCI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-uV-guY" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Iah-uV-guY" firstAttribute="leading" secondItem="As5-kY-K2n" secondAttribute="leading" id="8Tp-YS-JA6"/>
+                            <constraint firstItem="As5-kY-K2n" firstAttribute="trailing" secondItem="Iah-uV-guY" secondAttribute="trailing" id="R6C-4b-VCA"/>
+                            <constraint firstItem="As5-kY-K2n" firstAttribute="bottom" secondItem="Iah-uV-guY" secondAttribute="bottom" id="cdr-ar-4GQ"/>
+                            <constraint firstItem="Iah-uV-guY" firstAttribute="top" secondItem="As5-kY-K2n" secondAttribute="top" id="hvn-sn-6b7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="As5-kY-K2n"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="nVW-1p-Vfr"/>
+                    <tabBarItem key="tabBarItem" title="Planning" image="planning_icon" selectedImage="planning_icon" id="nVW-1p-Vfr"/>
+                    <connections>
+                        <outlet property="actionableTableView" destination="Iah-uV-guY" id="sBl-56-MQR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rL-Zz-CeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-103" y="-1343"/>
+            <point key="canvasLocation" x="-103.2" y="-1343.4782608695652"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oFB-or-icE">
@@ -498,9 +513,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
+                        <segue destination="iWG-d2-4VV" kind="relationship" relationship="viewControllers" id="9gp-Na-zbx"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
                         <segue destination="Q4F-TG-JGR" kind="relationship" relationship="viewControllers" id="bKX-xE-vb8"/>
-                        <segue destination="iWG-d2-4VV" kind="relationship" relationship="viewControllers" id="9gp-Na-zbx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoU-Np-3Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -736,12 +751,13 @@
         <image name="YourGoals" width="1115" height="1115"/>
         <image name="goals_icon" width="25" height="25"/>
         <image name="light-close-button" width="40" height="40"/>
+        <image name="planning_icon" width="25" height="25"/>
         <image name="settings_icon" width="25" height="25"/>
         <image name="today_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qB2-Uh-IRL"/>
-        <segue reference="8yY-7N-175"/>
+        <segue reference="6eA-8s-RYt"/>
         <segue reference="Cp9-T4-e9d"/>
         <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>
