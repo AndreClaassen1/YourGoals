@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0FC1CB21D1B64FAAC47A6478616DA728'
-               BlueprintName = 'PNChart'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PNChart.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0FC1CB21D1B64FAAC47A6478616DA728"
+               BlueprintName = "PNChart"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "PNChart.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

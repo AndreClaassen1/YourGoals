@@ -55,7 +55,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kcl-Qz-1iM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Goals" selectedImage="goals_icon" id="cBk-4O-gkX"/>
+                    <tabBarItem key="tabBarItem" title="Goals" image="goals_icon" selectedImage="goals_icon" id="cBk-4O-gkX"/>
                     <navigationItem key="navigationItem" title="Your Goals" leftItemsSupplementBackButton="YES" id="cke-61-Lwf">
                         <barButtonItem key="backBarButtonItem" title="Montag, 23. Oktober" id="JI4-4q-2PF"/>
                     </navigationItem>
@@ -452,7 +452,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ibu-wD-YEb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Today" selectedImage="today_icon" id="yZY-dX-zMq" userLabel="Today"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="today_icon" selectedImage="today_icon" id="yZY-dX-zMq" userLabel="Today"/>
                     <connections>
                         <outlet property="activeTasksHeight" destination="Hn6-8C-JfB" id="dgL-fJ-EFK"/>
                         <outlet property="activeWorkTasksView" destination="Hd0-5Q-p8B" id="TsK-BI-1In"/>
@@ -470,6 +470,22 @@
             </objects>
             <point key="canvasLocation" x="-258.39999999999998" y="379.16041979010498"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="5TO-uZ-LQ9">
+            <objects>
+                <viewController id="iWG-d2-4VV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BV3-bF-CCI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="As5-kY-K2n"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nVW-1p-Vfr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rL-Zz-CeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-103" y="-1343"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oFB-or-icE">
             <objects>
@@ -484,6 +500,7 @@
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
                         <segue destination="Q4F-TG-JGR" kind="relationship" relationship="viewControllers" id="bKX-xE-vb8"/>
+                        <segue destination="iWG-d2-4VV" kind="relationship" relationship="viewControllers" id="9gp-Na-zbx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoU-Np-3Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,7 +722,7 @@
                             <outlet property="delegate" destination="Q4F-TG-JGR" id="Drb-BS-sVp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="settings_icon" id="sH3-Y0-iqu"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings_icon" selectedImage="settings_icon" id="sH3-Y0-iqu"/>
                     <connections>
                         <outlet property="newTaskEditorSwitch" destination="uW2-Zb-hhj" id="hGh-L1-hYD"/>
                     </connections>
@@ -724,7 +741,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qB2-Uh-IRL"/>
-        <segue reference="6eA-8s-RYt"/>
+        <segue reference="8yY-7N-175"/>
         <segue reference="Cp9-T4-e9d"/>
         <segue reference="cjO-Ie-qW9"/>
     </inferredMetricsTieBreakers>
