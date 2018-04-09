@@ -10,16 +10,17 @@ import UIKit
 
 
 /// view controller for planning a week or more
-class PlanningViewController: UIViewController {
-
+class PlanningViewController: UIViewController, ActionableTableViewDelegate {
     @IBOutlet weak var actionableTableView: ActionableTableView!
+    
+    /// the storage manager needed for various core data operaitons
+    var manager = GoalsStorageManager.defaultStorageManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Planning"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
-        // Do any additional setup after loading the view.
+        self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager), delegate: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,5 +38,22 @@ class PlanningViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - ActionableTableViewDelegate
+    
+    func requestForEdit(actionable: Actionable) {
+        
+    }
+    
+    func goalChanged(goal: Goal) {
+        
+    }
+    
+    func progressChanged(actionable: Actionable) {
+        
+    }
+    
+    func commitmentChanged() {
+        
+    }
 }

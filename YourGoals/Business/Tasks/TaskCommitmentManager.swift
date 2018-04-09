@@ -11,7 +11,6 @@ import CoreData
 
 class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     
-    
     /// make a commitment to do the task for the given date.
     ///
     /// - Parameters:
@@ -131,6 +130,25 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         }
         
         return sorted
+    }
+    
+    /// fetch all tasks which have a commitmentdate
+    ///
+    /// - Parameter date: date
+    /// - Returns: a collection of all committed tasks
+    /// - Throws: core data exception
+    func allCommittedTasks(forDate date:Date) throws -> [Task] {
+        let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format:
+                "commitmentDate != nil",
+                                            date.day() as NSDate)
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "commitmentDate", ascending: false),
+                NSSortDescriptor(key: "commitmentPrio", ascending: true)
+            ]
+        })
+        
+        return tasks
     }
     
     // MARK: - TaskPositioningProtocol
