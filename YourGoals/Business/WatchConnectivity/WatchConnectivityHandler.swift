@@ -10,12 +10,14 @@ import Foundation
 import WatchConnectivity
 
 class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationProviderProtocol {
-
+    
     var session = WCSession.default
     let progressManager:TaskProgressManager!
-
+    let taskResponder:ActiveTaskResponder!
+    
     init(observer:TaskNotificationObserver, manager:GoalsStorageManager) {
         self.progressManager = TaskProgressManager(manager: manager)
+        self.taskResponder = ActiveTaskResponder(manager: manager)
         super.init()
         session.delegate = self
         session.activate()
@@ -54,7 +56,26 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         NSLog("didReceiveMessage without reply: %@", message)
-        updateContextWithState()
+        guard let actionStr = message["action"] as? String else {
+            NSLog("couldn't extract action")
+            return
+        }
+        
+        guard let actionType = WatchAction(rawValue: actionStr) else {
+            NSLog("session error: couldn't extract action token")
+            return
+        }
+        
+        let date = Date()
+        
+        switch actionType {
+        case .actionActualizeState:
+            updateContextWithState()
+        case .actionDone:
+            taskResponder.performAction(taskUri: message["taskUri]"] as? String, action: .done, forDate: date)
+        case .actionNeedMoreTime:
+            taskResponder.performAction(taskUri: message["taskUri]"] as? String, action: .needMoreTime, forDate: date)
+        }
     }
     
     func updateContextWithProgress(forTask task:Task, referenceTime: Date) {
@@ -67,7 +88,8 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
             "title": title,
             "referenceTime" : referenceTime,
             "remainingTime": remainingTime,
-            "taskSize": taskSize
+            "taskSize": taskSize,
+            "taskUri": task.objectID.uriRepresentation().absoluteString
         ]
         
         do{
@@ -106,7 +128,7 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
     }
     
     // MARK: TaskNotificationProviderProtocol
-
+    
     
     func progressStarted(forTask task: Task, referenceTime: Date) {
         updateContextWithProgress(forTask: task, referenceTime: referenceTime)

@@ -13,17 +13,19 @@ struct PlannableActionableSection:ActionableSection {
     
     /// return the date as section title
     var sectionTitle: String {
-        return date.formattedInLocaleFormat()
+        return date.formattedWithTodayTommorrowYesterday()
     }
 }
 
 class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     let taskManager:TaskCommitmentManager
+    let committedDataSource:CommittedTasksDataSource
     let switchProtocolProvider:TaskSwitchProtocolProvider
     
     init(manager: GoalsStorageManager) {
         self.taskManager  = TaskCommitmentManager(manager: manager)
+        self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .activeTasksNotIncluded)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
     
@@ -57,7 +59,13 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
             return []
         }
         
-        let tasks = try taskManager.committedTasks(forDate: plannableSection.date)
+        var tasks = [Actionable]()
+        
+        if date.day().compare(plannableSection.date.day()) == .orderedSame {
+            tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, andSection: nil)
+        } else {
+            tasks = try taskManager.committedTasks(forDate: plannableSection.date)
+        }
         return tasks
     }
     

@@ -12,8 +12,6 @@ class TodayScheduleCalculator:StorageManagerWorker {
     
     /// calculate the starting times relative to the given time for the actionables.
     ///
-    /// ** Important **: There should be no actionable which is progressing
-    ///
     /// - Parameters:
     ///   - time: start time for all actionalbes
     ///   - actionables: the actinalbes

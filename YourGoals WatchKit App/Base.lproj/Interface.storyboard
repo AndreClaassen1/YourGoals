@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
     </dependencies>
     <scenes>
         <!--Actionable Interface Controller-->
@@ -16,19 +16,31 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="kbO-uP-ajy">
                             <items>
-                                <label alignment="left" text="Task" id="7TD-SG-aeV"/>
+                                <label width="1" alignment="left" text="Task" textAlignment="center" id="7TD-SG-aeV"/>
                                 <timer width="1" alignment="left" textAlignment="center" id="YvX-nX-Lrd">
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                 </timer>
+                                <imageView alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
                                 <label width="1" alignment="center" text="Time is over!" textAlignment="center" id="4od-Ay-a8S">
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="24"/>
                                 </label>
-                                <imageView height="0.59999999999999998" alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
+                                <button width="1" alignment="left" title="I need more time" id="UUj-vi-ZmG">
+                                    <connections>
+                                        <action selector="clickedNeedMoreTimeButton" destination="AgC-eL-Hgc" id="rnO-zd-p8q"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="I'm done" id="gRQ-iE-Qqe">
+                                    <connections>
+                                        <action selector="clickedDoneButton" destination="AgC-eL-Hgc" id="kqo-T9-8aC"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
                     <connections>
+                        <outlet property="doneButton" destination="gRQ-iE-Qqe" id="zel-q5-gdH"/>
+                        <outlet property="needMoreTimeButton" destination="UUj-vi-ZmG" id="fLG-53-38n"/>
                         <outlet property="progressPieImage" destination="9R1-6c-sbk" id="fmg-yZ-wEq"/>
                         <outlet property="progressTimer" destination="YvX-nX-Lrd" id="kqK-ds-ugV"/>
                         <outlet property="progressTitleLabel" destination="7TD-SG-aeV" id="gV3-Dj-jvQ"/>

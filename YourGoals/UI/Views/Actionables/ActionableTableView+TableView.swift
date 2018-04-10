@@ -25,11 +25,19 @@ extension ActionableTableView {
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count == 0 ? 1 : sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfActionables()
+        return numberOfActionables(section)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard sections.count > section  else {
+            return nil
+        }
+        
+        return sections[section].sectionTitle
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,12 +57,4 @@ extension ActionableTableView {
         configure(swipeableCell: actionableCell as! MGSwipeTableCell)
         return actionableCell as! UITableViewCell
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let actionable = self.actionableForIndexPath(path: indexPath)
-//        if actionable.isProgressing(atDate: Date()) {
-//            return 161.0
-//        } else {
-//            return 44.0
-//        }
-//    }
 }

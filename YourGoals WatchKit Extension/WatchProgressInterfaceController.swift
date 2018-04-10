@@ -10,7 +10,6 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-
 enum ProgressInterfaceState {
     case noData
     case illegalData
@@ -27,6 +26,7 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     var referenceTime:Date!
     var targetTime:Date!
     var taskSize:TimeInterval!
+    var taskUri:String!
     var updateTimerForImage:Timer?
     var hapticStopAlreadyPlayed = false
     let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
@@ -35,10 +35,23 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     @IBOutlet var progressTimer: WKInterfaceTimer!
     @IBOutlet var progressTitleLabel: WKInterfaceLabel!
     @IBOutlet var timeIsOverLabel: WKInterfaceLabel!
+    @IBOutlet var needMoreTimeButton: WKInterfaceButton!
+    @IBOutlet var doneButton: WKInterfaceButton!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+    }
+    
+    func sendWatchAction(action: WatchAction, taskUri uri:String?) {
+        var userInfo = [String:Any]()
+
+        userInfo["action"] = action.rawValue
+        if uri != nil {
+            userInfo["taskUri"] = uri
+        }
+        
+        session.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
     }
     
     func updateProgressPeriodically() {
@@ -66,8 +79,7 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         session.delegate = self
         session.activate()
         NSLog("\(session.applicationContext)")
-        session.sendMessage(["actualizeState":"post"], replyHandler: nil, errorHandler: nil)
-        
+        sendWatchAction(action: .actionActualizeState, taskUri: nil)
         updateProgressingState()
     }
 
@@ -96,6 +108,8 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     }
     
     func updateProgressControls(remainingTime: TimeInterval) {
+        self.needMoreTimeButton.setHidden(false)
+        self.doneButton.setHidden(false)
         self.progressPieImage.setHidden(false)
         self.progressTitleLabel.setText(self.title)
         updateProgressPieChart(remainingTime: remainingTime)
@@ -138,6 +152,8 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
             return
         }
         
+        self.needMoreTimeButton.setHidden(true)
+        self.doneButton.setHidden(true)
         self.timeIsOverLabel.setHidden(true)
         self.progressTimer.setHidden(true)
         self.progressPieImage.setHidden(true)
@@ -162,6 +178,7 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
                 self.referenceTime = applicationContext["referenceTime"] as? Date
                 let remainingTime = applicationContext["remainingTime"] as? TimeInterval
                 self.taskSize = applicationContext["taskSize"] as? TimeInterval
+                self.taskUri = applicationContext["taskUri"] as? String
                 
                 if self.title != nil && self.referenceTime != nil && remainingTime != nil && self.taskSize != nil {
                     self.state = .progressing
@@ -179,5 +196,13 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         }
         
         updateProgressingState()
+    }
+    
+    @IBAction func clickedNeedMoreTimeButton() {
+        sendWatchAction(action: .actionNeedMoreTime, taskUri: self.taskUri)
+    }
+    
+    @IBAction func clickedDoneButton() {
+        sendWatchAction(action: .actionDone, taskUri: self.taskUri)
     }
 }

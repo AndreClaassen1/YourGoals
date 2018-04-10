@@ -13,19 +13,14 @@ import UserNotifications
 /// this class handles the actions of a task notification
 class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     
-    /// the task progress manager
-    let progressManager:TaskProgressManager!
-    let stateManager:TaskStateManager!
-    let manager: GoalsStorageManager!
+    let taskResponder:ActiveTaskResponder!
     
     /// init the handler of the task notificaiton
     ///
     /// - Parameters:
     ///   - manager: a Goals Storage Manager
     init(manager: GoalsStorageManager) {
-        self.manager = manager
-        self.progressManager = TaskProgressManager(manager: manager)
-        self.stateManager = TaskStateManager(manager: manager)
+        self.taskResponder = ActiveTaskResponder(manager: manager)
         super.init()
     }
     
@@ -48,13 +43,12 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     ///   - date: the reference date and time for changing the progress
     /// - Throws: a core data or storage error
     func handleActionResponse(forIdentifier identifier: String, andTaskUri uri:String, forDate date:Date) throws {
-        let task = try self.manager.tasksStore.retrieveExistingObject(fromUriStr: uri)
         switch identifier {
         case TaskNotificationActionIdentifier.done:
-            try stateManager.setTaskState(task: task, state: .done, atDate: date)
+            self.taskResponder.performAction(taskUri: uri, action: .done, forDate: date)
             break
         case TaskNotificationActionIdentifier.needMoreTime:
-            try progressManager.changeTaskSize(forTask: task, delta: 15.0, forDate: date)
+            self.taskResponder.performAction(taskUri: uri, action: .needMoreTime, forDate: date)
             break
         default:
             assertionFailure("unknown response.actionIdentifier: \(identifier)")
