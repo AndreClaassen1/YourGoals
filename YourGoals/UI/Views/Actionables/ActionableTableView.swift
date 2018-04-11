@@ -24,7 +24,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
     var actionables = [[Actionable]]()
-    var startingTimes:[Date]?
+    var startingTimes:[[Date]]?
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
@@ -85,12 +85,11 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 assertionFailure("you need to configure the ActionableTableView with a datasource first")
                 return
             }
-            
+       
+            // load sections and actionables
             let date = Date()
-            self.startingTimes = nil
             self.sections = try dataSource.fetchSections(forDate: date)
             self.actionables.removeAll()
-            
             if self.sections.count == 0 {
                 self.actionables.append(try dataSource.fetchActionables(forDate: date, andSection: nil))
             } else {
@@ -99,8 +98,23 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 }
             }
             
+            // calculate starting times
+            self.startingTimes = nil
             if calculatestartingTimes {
-                self.startingTimes = try TodayScheduleCalculator(manager: self.manager).calculateStartingTimes(forTime: date, actionables: self.actionables[0])
+                let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
+                self.startingTimes = [[Date]]()
+                if self.sections.count == 0 {
+                    self.startingTimes = [try scheduleCalculator.calculateStartingTimes(forTime: date, actionables: self.actionables[0])]
+                } else {
+                    for tuple in self.sections.enumerated()  {
+                        if let startingTimeForSection = tuple.element.calculateStartingTime(forDate: date) {
+                            self.startingTimes?.append(try scheduleCalculator.calculateStartingTimes(forTime: startingTimeForSection, actionables: self.actionables[tuple.offset]))
+                        }
+                        else {
+                            self.startingTimes?.append([])
+                        }
+                    }
+                }
             }
             self.tasksTableView.reloadData()
         }
@@ -146,15 +160,17 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         return self.actionables[path.section][path.row]
     }
     
+    /// retrieve the estimated starting time for a path
+    ///
+    /// - Parameter path: the path
+    /// - Returns: the starting time for the cell
     func estimatedStartingTime(forPath path: IndexPath) -> Date? {
         guard let startingTimes = self.startingTimes else {
             return nil
         }
         
-        return startingTimes[path.row]
+        return startingTimes[path.section][path.row]
     }
-    
-  
     
     /// retrieve the index path of all task cells, which are in progess
     ///

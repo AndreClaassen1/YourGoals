@@ -23,7 +23,7 @@ class PlanningViewController: UIViewController, ActionableTableViewDelegate, Edi
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Planning"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager), delegate: self)
+        self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager), delegate: self, calculatestartingTimes: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +34,12 @@ class PlanningViewController: UIViewController, ActionableTableViewDelegate, Edi
     func reloadAll() {
         self.actionableTableView.reload()
     }
-    
-    
 
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationViewController = segue.destination
+        // let destinationViewController = segue.destination
         guard let identifier = segue.identifier else {
             fatalError("couldn't process segue with no identifier")
         }
@@ -88,10 +86,6 @@ class PlanningViewController: UIViewController, ActionableTableViewDelegate, Edi
     }
     
     // MARK: EditActionableViewControllerDelegate
-    
-    
-    
-    // MARK: - GoalDetailViewControllerDelegate
     
     func createNewActionable(actionableInfo: ActionableInfo) throws {
         

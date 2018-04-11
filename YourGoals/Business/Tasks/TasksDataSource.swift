@@ -24,6 +24,12 @@ protocol ActionableSection {
     var sectionTitle:String {
         get
     }
+    
+    /// return the base time for calculate the time table for all actionables in the section if appliable
+    ///
+    /// - Parameter date: the actual system date
+    /// - Returns: a calculates starting time
+    func calculateStartingTime(forDate date: Date) -> Date?
 }
 
 

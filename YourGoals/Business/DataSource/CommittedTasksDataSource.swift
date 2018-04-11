@@ -14,6 +14,7 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     enum Mode {
         case activeTasksIncluded
         case activeTasksNotIncluded
+        case doneTasksNotIncluced
     }
     
     let taskManager:TaskCommitmentManager
@@ -39,6 +40,8 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
             return committedTasks
         case .activeTasksNotIncluded:
             return committedTasks.filter { !$0.isProgressing(atDate: date) }
+        case .doneTasksNotIncluced:
+            return committedTasks.filter { $0.getTaskState() != .done  }
         }
     }
     

@@ -15,6 +15,16 @@ struct PlannableActionableSection:ActionableSection {
     var sectionTitle: String {
         return date.formattedWithTodayTommorrowYesterday()
     }
+    
+    func calculateStartingTime(forDate date: Date) -> Date? {
+        let startingTimeForSection = self.date.day().addMinutesToDate(8 * 60)
+        
+        if startingTimeForSection.compare(date) == .orderedDescending {
+            return startingTimeForSection
+        }
+        
+        return date
+    }
 }
 
 class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
@@ -25,7 +35,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     init(manager: GoalsStorageManager) {
         self.taskManager  = TaskCommitmentManager(manager: manager)
-        self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .activeTasksNotIncluded)
+        self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .doneTasksNotIncluced)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
     
