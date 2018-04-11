@@ -44,4 +44,8 @@ class GoalTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
         try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
     }
+    
+    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+        assertionFailure("this method shouldn't be called")
+    }
 }

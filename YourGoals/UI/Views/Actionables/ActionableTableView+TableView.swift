@@ -29,7 +29,12 @@ extension ActionableTableView {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfActionables(section)
+        var n = numberOfActionables(section)
+        if let reorderInfo = self.reorderInfo {
+            n += reorderInfo.offsetForDraggingRow(section)
+        }
+        
+        return n
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -170,7 +170,14 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         updateTasksOrder(tasks: tasksReorderd)
         try self.manager.dataManager.saveContext()
     }
-    
+
+    func insertTaskAtPosition(task: Task, tasks: [Task], toPosition: Int) throws   {
+        var tasksReorderd = tasks
+        tasksReorderd.insert(task, at: toPosition)
+        updateTasksOrder(tasks: tasksReorderd)
+        try self.manager.dataManager.saveContext()
+    }
+
     // MARK: - ActionableSwitchProtocol
     
     func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {

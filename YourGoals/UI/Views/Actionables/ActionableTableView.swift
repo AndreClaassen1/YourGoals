@@ -19,7 +19,7 @@ protocol ActionableTableViewDelegate {
 }
 
 /// a specialized UITableView for displaying tasks
-class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, ActionableTableCellDelegate, LongPressReorder {
+class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, ActionableTableCellDelegate {
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
@@ -35,6 +35,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var panGestureRecognizer:UIPanGestureRecognizer!
     var manager: GoalsStorageManager!
     var calculatestartingTimes = false
+    var reorderInfo:ReorderInfo?
     
     
     override init(frame: CGRect) {
@@ -153,27 +154,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         return startingTimes[path.row]
     }
     
-    func updateTaskOrder(initialIndex: IndexPath, finalIndex: IndexPath) throws {
-        guard initialIndex != finalIndex else {
-            NSLog("no update of order neccessary")
-            return
-        }
-        
-        guard let dataSource = self.dataSource else {
-            assertionFailure("you need to configure the datasource first")
-            return
-        }
-        
-        
-        guard let positioning = dataSource.positioningProtocol() else {
-            NSLog("no repositioning protocol found")
-            return
-        }
-        
-        try positioning.updatePosition(actionables: self.actionables[0], fromPosition: initialIndex.row, toPosition: finalIndex.row)
-        
-        reload()
-    }
+  
     
     /// retrieve the index path of all task cells, which are in progess
     ///
@@ -210,30 +191,5 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         delegate.requestForEdit(actionable: self.actionableForIndexPath(path: indexPath))
     }
     
-    // MARK: - Reorder handling
-    
-    func startReorderingRow(atIndex indexPath: IndexPath) -> Bool {
-        self.timerPaused = true
-        return true
-    }
-    
-    func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
-        do {
-            NSLog("reorder finished: init:\(initialIndex) final:\(finalIndex)")
-            try updateTaskOrder(initialIndex: initialIndex, finalIndex: finalIndex)
-            NSLog("core data store updateted")
-            self.timerPaused = false
-        }
-        catch let error {
-            self.delegate?.showNotification(forError: error)
-        }
-    }
-    
-    func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
-        
-    }
-    
-    func allowChangingRow(atIndex indexPath: IndexPath) -> Bool {
-        return true
-    }
+ 
 }

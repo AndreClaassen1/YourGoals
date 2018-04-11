@@ -55,7 +55,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     /// - Throws: core data exception
     func fetchActionables(forDate date: Date, andSection section: ActionableSection?) throws -> [Actionable] {
         guard let plannableSection = section as? PlannableActionableSection else {
-            NSLog("illegal section type: \(section)")
+            NSLog("illegal section type: \(String(describing: section))")
             return []
         }
         
@@ -81,5 +81,22 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
         try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
+    }
+    
+    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+        guard let task = actionable as? Task else {
+            assertionFailure("function needs a task as actionable: \(actionable )")
+            return
+        }
+        
+        guard let plannableSection = section as? PlannableActionableSection else {
+            assertionFailure("function needs a plannable section: \(section)")
+            return
+        }
+        
+        let tasksInSection = try taskManager.committedTasks(forDate: plannableSection.date)
+        task.commitmentDate = plannableSection.date
+        
+        try self.taskManager.insertTaskAtPosition(task: task, tasks: tasksInSection, toPosition: toPosition)
     }
 }

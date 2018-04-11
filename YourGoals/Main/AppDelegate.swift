@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for initializer in self.initializers {
             initializer.initialize(context: context)
         }
-        
+         
         self.watchConnectivityHandler = WatchConnectivityHandler(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
         self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)

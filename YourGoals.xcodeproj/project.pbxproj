@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		262C7DD718E1DCF833988CC4 /* Pods_YourGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */; };
 		572591EC54BE9BF7E7E4C02C /* Pods_YourGoalsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */; };
+		7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */; };
 		7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72601FB043410000586D /* Task+Actionable.swift */; };
 		7B0A72631FB044BD0000586D /* Habit+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72621FB044BD0000586D /* Habit+Actionable.swift */; };
 		7B0A72651FB045AA0000586D /* Habit+Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72641FB045AA0000586D /* Habit+Check.swift */; };
@@ -306,6 +307,7 @@
 		224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoalsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Reorder.swift"; sourceTree = "<group>"; };
 		7B0A72601FB043410000586D /* Task+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Actionable.swift"; sourceTree = "<group>"; };
 		7B0A72621FB044BD0000586D /* Habit+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Actionable.swift"; sourceTree = "<group>"; };
 		7B0A72641FB045AA0000586D /* Habit+Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Check.swift"; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 				7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */,
 				7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */,
 				7B303B8D1FAA00E300BA2FB6 /* ActionableTableView.swift */,
+				7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */,
 				7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */,
 				7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */,
 				7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */,
@@ -1665,6 +1668,7 @@
 				7B8C942D206FD08B004699C3 /* WatchConnectivityHandler.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
+				7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */,
 				7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */,
 				7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,

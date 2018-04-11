@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+ 
 /// an action for a active progressing task
 ///
 /// - done: the user wants to stop the task

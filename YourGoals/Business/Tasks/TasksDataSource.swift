@@ -68,6 +68,14 @@ protocol ActionablePositioningProtocol {
     ///   - toPosition: new position for the task in the array
     /// - Returns: updated task order
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws
+    
+    /// move an actionable into a new section
+    ///
+    /// - Parameters:
+    ///   - section: the section
+    ///   - toPosition: the position in the section
+    /// - Throws: an exception
+    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws
 }
 
 /// switch the behavior of an actionable-

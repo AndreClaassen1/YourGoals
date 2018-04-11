@@ -41,4 +41,8 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
+    
+    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+        assertionFailure("this method shouldn't be called")
+    }
 }

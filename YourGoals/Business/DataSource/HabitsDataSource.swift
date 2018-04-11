@@ -57,6 +57,11 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
         try self.habitOrderManager.updatePosition(habits: actionables.map { $0 as! Habit }, fromPosition: fromPosition, toPosition: toPosition)
     }
     
+    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+        assertionFailure("this method shouldn't be called")
+    }
+
+    
     // MARK: ActionableSwitchProtocol
     
     func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
