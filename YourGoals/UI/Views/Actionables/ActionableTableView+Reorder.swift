@@ -60,7 +60,14 @@ extension ActionableTableView: LongPressReorder {
         if initialIndex.section == finalIndex.section {
             try positioning.updatePosition(actionables: self.actionables[initialIndex.section], fromPosition: initialIndex.row, toPosition: finalIndex.row)
         } else {
-            try positioning.moveIntoSection(actionable: actionableForIndexPath(path: initialIndex), section: self.sections[finalIndex.section], toPosition: finalIndex.row)
+            // handling for empty cells
+            
+            var toPosition = finalIndex.row
+            if actionables[finalIndex.section].count < toPosition {
+                toPosition = actionables[finalIndex.section].count
+            }
+            
+            try positioning.moveIntoSection(actionable: actionableForIndexPath(path: initialIndex), section: self.sections[finalIndex.section], toPosition: toPosition)
         }
         
         reload()
@@ -70,6 +77,11 @@ extension ActionableTableView: LongPressReorder {
     
     func startReorderingRow(atIndex indexPath: IndexPath) -> Bool {
         self.timerPaused = true
+        guard self.actionables[indexPath.section].count > 0 else {
+            return false
+        }
+        
+        
         self.reorderInfo = ReorderInfo(startIndex: indexPath, currentIndex: nil)
         return true
     }

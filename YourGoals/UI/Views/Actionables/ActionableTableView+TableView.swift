@@ -13,6 +13,7 @@ import MGSwipeTableCell
 extension ActionableTableView {
     
     func configureTaskTableView(_ tableView: UITableView) {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "emptyCell")
         tableView.registerReusableCell(ActionableTableCell.self)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48.0
@@ -22,14 +23,29 @@ extension ActionableTableView {
         tableView.translatesAutoresizingMaskIntoConstraints = true
     }
     
+    /// if a section has no actionables, then we've got an empty cell to support dragging.
+    ///
+    /// - Parameter indexPath: index path to test
+    /// - Returns: if it is an empty cell
+    func isEmptyCell(_ indexPath:IndexPath) -> Bool {
+        return numberOfActionables(indexPath.section) == 0
+    }
+    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count == 0 ? 1 : sections.count
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var n = numberOfActionables(section)
+       
+        // logic for empty sectins
+        if self.sections.count > 0 && n == 0 {
+            n += 1
+        }
+        
         if let reorderInfo = self.reorderInfo {
             n += reorderInfo.offsetForDraggingRow(section)
         }
@@ -46,6 +62,21 @@ extension ActionableTableView {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // logic for empty cell in sections eg. No Items for this section
+        if isEmptyCell(indexPath) {
+            var emptyTableCell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath)
+            
+            if emptyTableCell == nil {
+                emptyTableCell = UITableViewCell(style: .default, reuseIdentifier: "emptyCell")
+            }
+            emptyTableCell.textLabel?.text = "noch nichts geplant"
+
+            return emptyTableCell
+        }
+        
+        
+        
         let date = Date()
         var actionableCell:ActionableCell!
         let actionable = self.actionableForIndexPath(path: indexPath)
