@@ -185,8 +185,9 @@ extension EditActionableFormController {
     /// - Throws: a core data exception
     func selectableGoals() -> [Goal] {
         do {
+            let settings = SettingsUserDefault()
             let strategyOrderManager = StrategyOrderManager(manager: self.manager)
-            let goals = try strategyOrderManager.goalsByPrio(withTypes: [GoalType.userGoal] )
+            let goals = try strategyOrderManager.goalsByPrio(withTypes: [GoalType.userGoal], withBackburned: settings.backburnedGoals )
             return goals
         }
         catch let error {

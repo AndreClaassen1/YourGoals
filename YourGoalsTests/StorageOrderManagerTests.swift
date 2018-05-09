@@ -22,7 +22,7 @@ class StorageOrderManagerTests: StorageTestCase {
         
         // act
         let strategyOrderManager = StrategyOrderManager(manager: self.manager)
-        let goalsOrdered = try! strategyOrderManager.goalsByPrio(withTypes: [.userGoal])
+        let goalsOrdered = try! strategyOrderManager.goalsByPrio(withTypes: [.userGoal], withBackburned: true)
         
         // test
         XCTAssertEqual(3, goalsOrdered.count)

@@ -12,12 +12,14 @@ class StrategyOrderManager:StorageManagerWorker {
     
     /// retrieve all goals for the strategy by prio
     ///
-    /// - Parameter goalTypes: nil for all goal types or a filter of special types like userGoal or todayGoal
+    /// - Parameter
+    ///     - goalTypes: nil for all goal types or a filter of special types like userGoal or todayGoal
+    ///     - backburned: include backburned goals in the filture
     /// - Returns: the strategy
     /// - Throws: all goals by prio
-    func goalsByPrio(withTypes goalTypes: [GoalType]? = nil) throws -> [Goal] {
+    func goalsByPrio(withTypes goalTypes: [GoalType]? = nil, withBackburned backburned: Bool) throws -> [Goal] {
         let strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
-        let goals = strategy.allGoalsByPrio(withTypes: goalTypes)
+        let goals = strategy.allGoalsByPrio(withTypes: goalTypes, withBackburned: backburned)
         return goals
     }
 }

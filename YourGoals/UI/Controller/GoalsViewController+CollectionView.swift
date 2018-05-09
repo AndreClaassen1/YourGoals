@@ -26,8 +26,10 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func reloadGoalsCollection() {
         do {
+            let settings = SettingsUserDefault()
+            
             self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
-            self.goals = strategy.allGoalsByPrio()
+            self.goals = strategy.allGoalsByPrio(withBackburned: settings.backburnedGoals)
             self.collectionView.reloadData()
         }
         catch let error {

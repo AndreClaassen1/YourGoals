@@ -14,8 +14,9 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // MARK: - Configuration
     
     func reloadStrategy() throws {
+        let settings = SettingsUserDefault()
         self.strategy = try StrategyManager(manager: self.manager).assertValidActiveStrategy()
-        self.goals = self.strategy.allGoalsByPrio()
+        self.goals = self.strategy.allGoalsByPrio(withBackburned: settings.backburnedGoals)
     }
     
     func reloadCollectionView(collectionView: UICollectionView) {

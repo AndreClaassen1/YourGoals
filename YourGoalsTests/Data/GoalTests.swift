@@ -10,18 +10,20 @@ import XCTest
 @testable import YourGoals
 class GoalTests: StorageTestCase {
    
-    func strategyWithUserGoals() -> Goal {
+    func createStrategyWithUserGoals(goals: [(name:String, backburned: Bool)] ) -> Goal {
         let strategyManager = StrategyManager(manager: self.manager)
         let strategy = try! strategyManager.assertValidActiveStrategy()
-        let _ = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: "Goal 1"))
-        let _ = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: "Goal 2"))
+        for info in goals {
+            let _ = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: info.name, backburned: info.backburned))
+        }
         return strategy
     }
+    
     
     /// test all goals
     func testAllGoals() {
         // setup 2 user goals and one implicit today goal
-        let strategy = strategyWithUserGoals()
+        let strategy = createStrategyWithUserGoals(goals: [(name: "Goal 1", backburned: false), (name: "Goal 2", backburned: false)])
         
         // act
         let goals = strategy.allGoals()
@@ -33,13 +35,26 @@ class GoalTests: StorageTestCase {
     /// test all goals but I want only the today goal back
     func testAllGoalsWithToday() {
         // setup 2 user goals and one implicit today goal
-        let strategy = strategyWithUserGoals()
-        
+        let strategy = createStrategyWithUserGoals(goals: [(name: "Goal 1", backburned: false), (name: "Goal 2", backburned: false)])
+
         // act
         let goals = strategy.allGoals(withTypes: [GoalType.todayGoal])
         
         // tests
         XCTAssertEqual(1, goals.count, "1 Today Goal")
         XCTAssertEqual(GoalType.todayGoal, goals[0].goalType())
+    }
+    
+    func testAllGoalsBackburned() {
+        // setup 2 user goals and one implicit today goal
+        let strategy = createStrategyWithUserGoals(goals: [(name: "Goal 1", backburned: false), (name: "Goal 2", backburned: true)])
+        
+        // act
+        let goals = strategy.allGoalsByPrio(withBackburned: false)
+        
+        // tests
+        XCTAssertEqual(2, goals.count, "1 user Goal which isn't backburned and today goals")
+        XCTAssertEqual("Goal 1", goals[1].name)
+
     }
 }

@@ -12,6 +12,7 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var newTaskEditorSwitch: UISwitch!
     
+    @IBOutlet weak var showBackburnedGoalsSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 

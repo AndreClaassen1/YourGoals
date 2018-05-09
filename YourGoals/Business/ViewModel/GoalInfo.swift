@@ -29,6 +29,8 @@ struct GoalInfo {
     /// the prio of the goal
     let prio:Int16
     
+    /// the goal is backburned
+    let backburned:Bool
     
     /// initialize a goal info struct with defaults for easier unit testing
     ///
@@ -40,13 +42,14 @@ struct GoalInfo {
     ///   - image: motivating image of the goal
     ///   - prio: priority of the goal
     /// - Throws: an exception, if the data values are invalid
-    init(name:String? = nil, reason:String? = nil, startDate:Date? = nil, targetDate:Date? = nil, image:UIImage? = nil, prio:Int16 = 999) {
+    init(name:String? = nil, reason:String? = nil, startDate:Date? = nil, targetDate:Date? = nil, image:UIImage? = nil, prio:Int16 = 999, backburned:Bool = false) {
         self.name = name
         self.reason = reason ?? ""
         self.startDate = startDate
         self.targetDate = targetDate
         self.image = image
         self.prio = prio
+        self.backburned = backburned
     }
     
     /// initialize the struct with data from an existing goal
@@ -63,5 +66,6 @@ struct GoalInfo {
         self.startDate = goal.startDate
         self.targetDate = goal.targetDate
         self.prio = goal.prio
+        self.backburned = goal.backburned
     }
 }

@@ -12,6 +12,10 @@ protocol Settings {
     
     /// enable new untested functionality
     var newFunctions:Bool { get set }
+    
+    
+    /// show backburned goals
+    var backburnedGoals:Bool { get set }
 }
 
 class SettingsUserDefault:Settings {
@@ -24,6 +28,16 @@ class SettingsUserDefault:Settings {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "SettingNewFunction")
+        }
+    }
+    
+    /// show backburned goals
+    var backburnedGoals: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "SettingBackburnedGoals")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "SettingBackburnedGoals")
         }
     }
 }

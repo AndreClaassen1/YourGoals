@@ -878,7 +878,7 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BBB30F7207BA83C00F637E0 /* DataSources */,
+				7BBB30F7207BA83C00F637E0 /* Data */,
 				7B3DA178206E4CBD00C0ED0F /* Mocks */,
 				7B9720282066522B007D142E /* Helper */,
 				7BAAFEFD1F9CA2FA00BB102E /* Info.plist */,
@@ -900,7 +900,6 @@
 				7B0A72661FB0485D0000586D /* HabitTests.swift */,
 				7BF45C011FB0D7DF00B0E3B7 /* HabitCheckManagerTests.swift */,
 				7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */,
-				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
 				7BF0B02D1FDE5BCF008165FA /* EditActionableFormControllerTests.swift */,
 				7B7AECD91FF6268D0096EE5D /* EditGoalControllerTests.swift */,
 				7B3FA9D71FE669AD0052B587 /* DateRangeTests.swift */,
@@ -947,12 +946,13 @@
 			path = "YourGoals WatchKit Extension";
 			sourceTree = "<group>";
 		};
-		7BBB30F7207BA83C00F637E0 /* DataSources */ = {
+		7BBB30F7207BA83C00F637E0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
 				7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */,
 			);
-			path = DataSources;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		7BDAF75C1FC56CF7004C7E46 /* YourGoals Views */ = {

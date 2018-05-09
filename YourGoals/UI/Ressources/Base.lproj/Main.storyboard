@@ -702,22 +702,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection id="2oV-51-FUf">
+                            <tableViewSection headerTitle="Goals" id="2oV-51-FUf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2O6-KV-UM4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2O6-KV-UM4" id="mjL-1N-oLR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Goal Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-HW-zwL">
-                                                    <rect key="frame" x="7" y="11" width="123" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show backburned goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-HW-zwL">
+                                                    <rect key="frame" x="7" y="11" width="184" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW2-Zb-hhj">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW2-Zb-hhj" userLabel="Backburned Goals Switch">
                                                     <rect key="frame" x="316" y="6" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -732,6 +732,36 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Features" id="wgn-Mc-3nW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hf0-Ha-ZNo">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hf0-Ha-ZNo" id="pig-4n-5go">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Goal Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-9O-PF3">
+                                                    <rect key="frame" x="7" y="11" width="123" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-Lf-f8r">
+                                                    <rect key="frame" x="316" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p9J-9O-PF3" firstAttribute="leading" secondItem="pig-4n-5go" secondAttribute="leading" constant="7" id="5F0-ja-PY7"/>
+                                                <constraint firstAttribute="trailing" secondItem="xJ5-Lf-f8r" secondAttribute="trailing" constant="10" id="Jhj-8j-pcu"/>
+                                                <constraint firstItem="xJ5-Lf-f8r" firstAttribute="centerY" secondItem="pig-4n-5go" secondAttribute="centerY" id="gZk-bL-qR0"/>
+                                                <constraint firstItem="p9J-9O-PF3" firstAttribute="centerY" secondItem="pig-4n-5go" secondAttribute="centerY" id="sg0-2X-6fb"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p9J-9O-PF3" secondAttribute="trailing" constant="20" symbolic="YES" id="t9d-AV-YO5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Q4F-TG-JGR" id="HIl-Lf-KVM"/>
@@ -740,7 +770,8 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings_icon" selectedImage="settings_icon" id="sH3-Y0-iqu"/>
                     <connections>
-                        <outlet property="newTaskEditorSwitch" destination="uW2-Zb-hhj" id="hGh-L1-hYD"/>
+                        <outlet property="newTaskEditorSwitch" destination="xJ5-Lf-f8r" id="ldv-iw-Fjl"/>
+                        <outlet property="showBackburnedGoalsSwitch" destination="uW2-Zb-hhj" id="Pqk-lK-pOQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xh-br-VbE" userLabel="First Responder" sceneMemberID="firstResponder"/>

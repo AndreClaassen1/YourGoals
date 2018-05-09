@@ -18,7 +18,7 @@ class GoalFactory:StorageManagerWorker {
     /// - Parameter goalInfo: a goal info structure
     /// - Throws: goal factory exception
     func create(fromGoalInfo goalInfo: GoalInfo) throws -> Goal {
-        return try create(name: goalInfo.name!, prio: goalInfo.prio, reason: goalInfo.reason, startDate: goalInfo.startDate ?? Date.minimalDate, targetDate: goalInfo.targetDate ?? Date.maximalDate, image: goalInfo.image)
+        return try create(name: goalInfo.name!, prio: goalInfo.prio, reason: goalInfo.reason, startDate: goalInfo.startDate ?? Date.minimalDate, targetDate: goalInfo.targetDate ?? Date.maximalDate, image: goalInfo.image, backburned: goalInfo.backburned)
     }
 
     /// create a new goal with discrete values
@@ -31,10 +31,11 @@ class GoalFactory:StorageManagerWorker {
     ///   - targetDate: the projected target date of the goal
     ///   - image: an optional image which should be convertable to a JPEG
     ///   - type: type of the goal: .strategy, .userGoal or .todayGoal
+    ///   - backburned: true, if the goal is backburned
     ///
     /// - Returns: the new created goal
     /// - Throws: a goal factory exception
-    func create(name: String, prio:Int16, reason: String, startDate:Date, targetDate:Date, image:UIImage?, type:GoalType = .userGoal) throws -> Goal {
+    func create(name: String, prio:Int16, reason: String, startDate:Date, targetDate:Date, image:UIImage?, type:GoalType = .userGoal, backburned: Bool) throws -> Goal {
         let goal = self.manager.goalsStore.createPersistentObject()
         goal.name = name
         goal.prio = prio
@@ -42,6 +43,7 @@ class GoalFactory:StorageManagerWorker {
         goal.startDate = startDate
         goal.targetDate = targetDate
         goal.type = type.rawValue
+        goal.backburned = backburned
         
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: image)

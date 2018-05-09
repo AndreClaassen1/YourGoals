@@ -27,15 +27,23 @@ extension Goal {
     
     /// retrieve all goals sorted by goals type (today goal first) and then by prio
     ///
-    /// - Returns: sorted by prio
-    func allGoalsByPrio(withTypes goalTypes: [GoalType]? = nil) -> [Goal] {
-        return allGoals(withTypes: goalTypes).sorted(by: {
+    /// - Parameters:
+    ///   - goalTypes: include the specified goal types or all
+    ///   - backburned: include backburned goals or not
+    /// - Returns: goals sorted by prio
+    func allGoalsByPrio(withTypes goalTypes: [GoalType]? = nil, withBackburned backburned: Bool) -> [Goal] {
+        let goals = allGoals(withTypes: goalTypes).sorted(by: {
             if $0.type == $1.type {
                 return $0.prio < $1.prio
             } else {
                 return $0.type > $1.type // types are sorted descendent because of the today goal with the type 2
             }
+        }).filter({
+            return backburned ? true : !$0.backburned
         })
+        
+        return goals
+        
     }
     
     /// retrieve all associated tasks for this goal
