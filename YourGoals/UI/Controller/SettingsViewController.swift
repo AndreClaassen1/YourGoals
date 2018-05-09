@@ -11,18 +11,20 @@ import UIKit
 class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var newTaskEditorSwitch: UISwitch!
-    
     @IBOutlet weak var showBackburnedGoalsSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     
         newTaskEditorSwitch.isOn = SettingsUserDefault.standard.newFunctions
+        showBackburnedGoalsSwitch.isOn  = SettingsUserDefault.standard.backburnedGoals
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         SettingsUserDefault.standard.newFunctions = newTaskEditorSwitch.isOn
+        SettingsUserDefault.standard.backburnedGoals = showBackburnedGoalsSwitch.isOn
     }
     
     override func didReceiveMemoryWarning() {
