@@ -44,9 +44,10 @@ class GoalContentView: NibLoadingView {
     ///   - goal: a goal
     ///   - date: calculate progress for this date
     ///   - goalIsActive: an indicator, that this goal is active
+    ///   - backburned: true, if the goal is backburned
     ///   - manager: a core data storage managner
     /// - Throws: core data excepiton
-    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburned: Bool, manager: GoalsStorageManager) throws {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -57,7 +58,11 @@ class GoalContentView: NibLoadingView {
         
         showActiveGoalState(goalIsActive)
         self.goalIsActive = goalIsActive
-        imageView.image = image
+        if backburned {
+            imageView.image = image.convertToGrayScale()
+        } else {
+            imageView.image = image
+        }
         reasonLabel.text = goal.reason
         reasonLabel.sizeToFit()
         titleLabel.text = goal.name

@@ -74,8 +74,12 @@ class GoalMiniCell: UICollectionViewCell {
     ///
     /// - Parameters:
     ///   - goal: show this goal
+    ///   - date: show the progress of the goal for the given date
     ///   - goalIsActive: true, if this goal is active
-    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
+    ///   - backburned: true, if this goal is backburned
+    ///   - manager: a sorage manager we need to show the progress indicator
+    /// - Throws: core data exception
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburned: Bool, manager: GoalsStorageManager) throws {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -84,9 +88,14 @@ class GoalMiniCell: UICollectionViewCell {
             fatalError ("could not create Image from data: \(data)")
         }
         
+        if backburned {
+            motivationImage.image = image.convertToGrayScale()
+        } else {
+            motivationImage.image = image
+        }
+        
         titleLabel.text = goal.name
         titleLabel.tintColor = UIColor.white
-        motivationImage.image = image
         titleLabel.sizeToFit()
         progressIndicatorView.viewMode = .mini
         self.goalIsActive = goalIsActive

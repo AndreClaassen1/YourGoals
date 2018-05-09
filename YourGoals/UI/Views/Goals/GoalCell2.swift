@@ -36,10 +36,11 @@ internal class GoalCell2: BaseRoundedCardCell {
     ///   - goal: the goal
     ///   - date: show the progress for this date
     ///   - goalIsActive: true, if goal is active
+    ///   - backburned: true, if the goal is backburend
     ///   - manager: a core data storage manager
     /// - Throws: a core data exception
-    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, manager: GoalsStorageManager) throws {
-        try goalContentView.show(goal: goal, forDate: date, goalIsActive: goalIsActive, manager: manager)
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburned: Bool, manager: GoalsStorageManager) throws {
+        try goalContentView.show(goal: goal, forDate: date, goalIsActive: goalIsActive, backburned: backburned, manager: manager)
     }
 
     override func awakeFromNib() {
