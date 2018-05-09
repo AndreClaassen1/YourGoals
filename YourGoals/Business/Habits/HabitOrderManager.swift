@@ -16,7 +16,7 @@ class HabitOrderManager:StorageManagerWorker {
                     NSPredicate(format: "goal == %@", goal)  :
                     NSPredicate(format: "goal == %@ AND goal.backburned == NO", goal)
             } else {
-                if backburned {
+                if !backburned {
                     request.predicate = NSPredicate(format: "goal.backburned == NO")
                 }
             }
@@ -28,7 +28,7 @@ class HabitOrderManager:StorageManagerWorker {
     
     func habitsByOrder(backburned: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
-            if backburned {
+            if !backburned {
                 request.predicate = NSPredicate(format: "goal.backburned == NO")
             }
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
