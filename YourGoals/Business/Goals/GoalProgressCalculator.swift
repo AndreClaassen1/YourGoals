@@ -48,7 +48,7 @@ class GoalProgressCalculator:StorageManagerWorker {
     ///     - date: the date for the actionables
     /// - Returns: ratio of done tasks and all tasks (between 0.0 and 1.0)
     func calculateProgressOfActionables(forGoal goal: Goal, andDate date: Date) throws -> Double {
-        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
+        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task, withBackburned: SettingsUserDefault.standard.backburnedGoals)
         
         let actionables = try dataSource.fetchActionables(forDate: date, andSection: nil)
         if actionables .count == 0 {

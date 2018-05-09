@@ -36,7 +36,7 @@ class PlannableTasksDataSourceTests: StorageTestCase {
         generateTasks(startDate: referenceDate, data: testData)
         
         // when i read the datasource
-        let dataSource = PlannableTasksDataSource(manager: self.manager)
+        let dataSource = PlannableTasksDataSource(manager: self.manager, backburned: true)
         let sections = try! dataSource.fetchSections(forDate: referenceDate)
         
         // i've got 7 sections for the week with 3 sections with tasks

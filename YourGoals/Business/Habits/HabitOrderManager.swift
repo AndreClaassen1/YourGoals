@@ -9,10 +9,16 @@
 import Foundation
 
 class HabitOrderManager:StorageManagerWorker {
-    func habitsByOrder(forGoal goal:Goal?) throws -> [Habit] {
+    func habitsByOrder(forGoal goal:Goal?, backburned: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
             if let goal = goal {
-                request.predicate = NSPredicate(format: "goal == %@", goal)
+                request.predicate = backburned ?
+                    NSPredicate(format: "goal == %@", goal)  :
+                    NSPredicate(format: "goal == %@ AND goal.backburned == NO", goal)
+            } else {
+                if backburned {
+                    request.predicate = NSPredicate(format: "goal.backburned == NO")
+                }
             }
             
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
@@ -20,8 +26,11 @@ class HabitOrderManager:StorageManagerWorker {
         return habits
     }
     
-    func habitsByOrder() throws -> [Habit] {
+    func habitsByOrder(backburned: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
+            if backburned {
+                request.predicate = NSPredicate(format: "goal.backburned == NO")
+            }
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
         }
         return habits

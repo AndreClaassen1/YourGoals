@@ -33,9 +33,9 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     let committedDataSource:CommittedTasksDataSource
     let switchProtocolProvider:TaskSwitchProtocolProvider
     
-    init(manager: GoalsStorageManager) {
+    init(manager: GoalsStorageManager, backburned: Bool) {
         self.taskManager  = TaskCommitmentManager(manager: manager)
-        self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .doneTasksNotIncluced)
+        self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .doneTasksNotIncluced, backburned: backburned)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
     
@@ -74,7 +74,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
         if date.day().compare(plannableSection.date.day()) == .orderedSame {
             tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, andSection: nil)
         } else {
-            tasks = try taskManager.committedTasks(forDate: plannableSection.date)
+            tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburned: SettingsUserDefault.standard.backburnedGoals)
         }
         return tasks
     }
@@ -104,7 +104,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
             return
         }
         
-        let tasksInSection = try taskManager.committedTasks(forDate: plannableSection.date)
+        let tasksInSection = try taskManager.committedTasks(forDate: plannableSection.date, backburned: SettingsUserDefault.standard.backburnedGoals)
         task.commitmentDate = plannableSection.date
         
         try self.taskManager.insertTaskAtPosition(task: task, tasks: tasksInSection, toPosition: toPosition)

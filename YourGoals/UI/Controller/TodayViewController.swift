@@ -47,13 +47,13 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             self.navigationController?.navigationBar.prefersLargeTitles = true
             
             self.configure(collectionView: self.goalsCollectionView)
-            self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager, mode: .activeTasksNotIncluded), delegate: self,
+            self.committedTasksView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager, mode: .activeTasksNotIncluded, backburned: SettingsUserDefault.standard.backburnedGoals), delegate: self,
                                               calculatestartingTimes: true,
                                               varyingHeightConstraint: self.committedTasksHeight)
             self.activeWorkTasksView.configure(manager: self.manager, dataSource: ActiveTasksDataSource(manager: self.manager), delegate: self,
                                                calculatestartingTimes: true,
                                                varyingHeightConstraint: self.activeTasksHeight)
-            self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
+            self.habitsTableView.configure(manager: self.manager, dataSource: HabitsDataSource(manager: self.manager, backburned: SettingsUserDefault.standard.backburnedGoals), delegate: self, varyingHeightConstraint: self.habitsTableHeight)
             try self.workloadView.configure(manager: self.manager, forDate: Date())
             
             // Do any additional setup after loading the view.

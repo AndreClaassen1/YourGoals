@@ -20,9 +20,11 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
     let mode: Mode
+    let backburned: Bool
     
-    init(manager: GoalsStorageManager, mode: Mode = .activeTasksIncluded) {
+    init(manager: GoalsStorageManager, mode: Mode = .activeTasksIncluded, backburned: Bool) {
         self.mode = mode
+        self.backburned = backburned
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
@@ -34,7 +36,7 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     }
     
     func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
-        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date)
+        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburned: backburned)
         switch mode {
         case .activeTasksIncluded:
             return committedTasks

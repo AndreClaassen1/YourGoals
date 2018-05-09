@@ -80,7 +80,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     
     func dataSourceForMode(_ mode: GoalDetailViewControllerMode) -> ActionableDataSource {
         let actionableType = convertControllerModeToType(mode: mode)
-        return ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: self.goal, andType: actionableType)
+        return ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: self.goal, andType: actionableType, withBackburned: SettingsUserDefault.standard.backburnedGoals)
     }
     
     func configureTableView(forMode mode: GoalDetailViewControllerMode) {

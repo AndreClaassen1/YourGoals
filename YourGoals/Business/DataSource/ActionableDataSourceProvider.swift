@@ -44,18 +44,18 @@ class ActionableDataSourceProvider:StorageManagerWorker {
     ///   - goal: goal like user goal, strategy goal or today goal
     ///   - type: type like habit or task or nil for all type
     /// - Returns: a appropriate data source
-    func dataSource(forGoal goal: Goal, andType type:ActionableType?) -> ActionableDataSource {
+    func dataSource(forGoal goal: Goal, andType type:ActionableType?, withBackburned backburned: Bool) -> ActionableDataSource {
         let dataSourceType = DataSourceType(type: type)
         switch goal.goalType() {
         case .todayGoal:
             switch dataSourceType {
             case .habits:
-                return HabitsDataSource(manager: self.manager)
+                return HabitsDataSource(manager: self.manager, backburned: backburned)
             case .tasks:
-                return CommittedTasksDataSource(manager: self.manager)
+                return CommittedTasksDataSource(manager: self.manager, backburned: backburned)
                 
             case .allActionables:
-                return TodayAllActionablesDataSource(manager: self.manager)
+                return TodayAllActionablesDataSource(manager: self.manager, backburned: backburned)
             }
             
         case .strategyGoal:
@@ -64,7 +64,7 @@ class ActionableDataSourceProvider:StorageManagerWorker {
         case .userGoal:
             switch dataSourceType {
             case .habits:
-                return HabitsDataSource(manager: manager, forGoal: goal)
+                return HabitsDataSource(manager: manager, forGoal: goal, backburned: backburned)
             case .tasks:
                 return GoalTasksDataSource(manager: manager, forGoal: goal)
             case .allActionables:

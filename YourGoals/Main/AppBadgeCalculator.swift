@@ -12,8 +12,8 @@ class AppBadgeCalculator {
     
     let todayActionablesDataSource:TodayAllActionablesDataSource
     
-    init(manager:GoalsStorageManager) {
-        self.todayActionablesDataSource = TodayAllActionablesDataSource(manager: manager)
+    init(manager:GoalsStorageManager, backburned: Bool) {
+        self.todayActionablesDataSource = TodayAllActionablesDataSource(manager: manager, backburned: backburned)
     }
     
     /// calculate the number of active actionables for the given date

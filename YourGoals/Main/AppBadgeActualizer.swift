@@ -20,7 +20,7 @@ class AppBadgeActualizer : NSObject {
     ///
     /// - Parameter storage: journal entry storage
     init(manager: GoalsStorageManager) {
-        self.calculator = AppBadgeCalculator(manager: manager)
+        self.calculator = AppBadgeCalculator(manager: manager, backburned: SettingsUserDefault.standard.backburnedGoals)
         super.init()
         
         self.actualize(forDate: Date())
