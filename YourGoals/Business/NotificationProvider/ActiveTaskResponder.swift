@@ -40,11 +40,7 @@ class ActiveTaskResponder {
     ///   - action: a active task repsonder action
     ///   - date: the date for the action
     /// - Throws: a core data exception
-    func performAction(taskUri uri: String?, action: ActiveTaskResponderAction, forDate date: Date) {
-        guard let uri = uri else {
-            NSLog("performAction aborted because of nil uri")
-            return
-        }
+    func performAction(taskUri uri: String, action: ActiveTaskResponderAction, forDate date: Date) {
         do {
             let task = try self.manager.tasksStore.retrieveExistingObject(fromUriStr: uri)
             switch action {

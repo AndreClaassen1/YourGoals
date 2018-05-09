@@ -17,30 +17,32 @@
                         <group width="1" alignment="left" layout="vertical" id="kbO-uP-ajy">
                             <items>
                                 <label width="1" alignment="left" text="Task" textAlignment="center" id="7TD-SG-aeV"/>
+                                <imageView alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
                                 <timer width="1" alignment="left" textAlignment="center" id="YvX-nX-Lrd">
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                 </timer>
-                                <imageView alignment="left" id="9R1-6c-sbk" userLabel="progressPieImage"/>
                                 <label width="1" alignment="center" text="Time is over!" textAlignment="center" id="4od-Ay-a8S">
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="24"/>
                                 </label>
-                                <button width="1" alignment="left" title="I need more time" id="UUj-vi-ZmG">
-                                    <connections>
-                                        <action selector="clickedNeedMoreTimeButton" destination="AgC-eL-Hgc" id="rnO-zd-p8q"/>
-                                    </connections>
-                                </button>
-                                <button width="1" alignment="left" title="I'm done" id="gRQ-iE-Qqe">
-                                    <connections>
-                                        <action selector="clickedDoneButton" destination="AgC-eL-Hgc" id="kqo-T9-8aC"/>
-                                    </connections>
-                                </button>
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="AQO-JK-wXb">
+                        <items>
+                            <menuItem title="Need more time" icon="add" id="tye-C0-ZzG">
+                                <connections>
+                                    <action selector="menuNeedMoreTime" destination="AgC-eL-Hgc" id="phg-1r-v1c"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="I am done" icon="accept" id="IYO-a0-iH7">
+                                <connections>
+                                    <action selector="menuDone" destination="AgC-eL-Hgc" id="e80-N6-BtA"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
-                        <outlet property="doneButton" destination="gRQ-iE-Qqe" id="zel-q5-gdH"/>
-                        <outlet property="needMoreTimeButton" destination="UUj-vi-ZmG" id="fLG-53-38n"/>
                         <outlet property="progressPieImage" destination="9R1-6c-sbk" id="fmg-yZ-wEq"/>
                         <outlet property="progressTimer" destination="YvX-nX-Lrd" id="kqK-ds-ugV"/>
                         <outlet property="progressTitleLabel" destination="7TD-SG-aeV" id="gV3-Dj-jvQ"/>

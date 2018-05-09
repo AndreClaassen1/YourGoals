@@ -72,9 +72,11 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
         case .actionActualizeState:
             updateContextWithState()
         case .actionDone:
-            taskResponder.performAction(taskUri: message["taskUri]"] as? String, action: .done, forDate: date)
+            let taskUri = message["taskUri"] as! String
+            taskResponder.performAction(taskUri: taskUri, action: .done, forDate: date)
         case .actionNeedMoreTime:
-            taskResponder.performAction(taskUri: message["taskUri]"] as? String, action: .needMoreTime, forDate: date)
+            let taskUri = message["taskUri"] as! String
+            taskResponder.performAction(taskUri: taskUri, action: .needMoreTime, forDate: date)
         }
     }
     

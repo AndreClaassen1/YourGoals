@@ -35,8 +35,8 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     @IBOutlet var progressTimer: WKInterfaceTimer!
     @IBOutlet var progressTitleLabel: WKInterfaceLabel!
     @IBOutlet var timeIsOverLabel: WKInterfaceLabel!
-    @IBOutlet var needMoreTimeButton: WKInterfaceButton!
-    @IBOutlet var doneButton: WKInterfaceButton!
+    
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -108,8 +108,6 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     }
     
     func updateProgressControls(remainingTime: TimeInterval) {
-        self.needMoreTimeButton.setHidden(false)
-        self.doneButton.setHidden(false)
         self.progressPieImage.setHidden(false)
         self.progressTitleLabel.setText(self.title)
         updateProgressPieChart(remainingTime: remainingTime)
@@ -152,8 +150,6 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
             return
         }
         
-        self.needMoreTimeButton.setHidden(true)
-        self.doneButton.setHidden(true)
         self.timeIsOverLabel.setHidden(true)
         self.progressTimer.setHidden(true)
         self.progressPieImage.setHidden(true)
@@ -198,11 +194,11 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         updateProgressingState()
     }
     
-    @IBAction func clickedNeedMoreTimeButton() {
+    @IBAction func menuNeedMoreTime() {
         sendWatchAction(action: .actionNeedMoreTime, taskUri: self.taskUri)
     }
     
-    @IBAction func clickedDoneButton() {
+    @IBAction func menuDone() {
         sendWatchAction(action: .actionDone, taskUri: self.taskUri)
     }
 }

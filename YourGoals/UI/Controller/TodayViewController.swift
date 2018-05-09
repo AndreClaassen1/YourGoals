@@ -44,7 +44,6 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
         do {
             super.viewDidLoad()
             self.originalTasksHeight = activeTasksHeight.constant
-            self.navigationController?.navigationBar.topItem?.title = "Today"
             self.navigationController?.navigationBar.prefersLargeTitles = true
             
             self.configure(collectionView: self.goalsCollectionView)
@@ -73,6 +72,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.topItem?.title = "Today"
     }
     
     override func viewDidAppear(_ animated: Bool) {

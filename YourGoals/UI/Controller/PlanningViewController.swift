@@ -12,7 +12,6 @@ import UIKit
 /// view controller for planning a week or more
 class PlanningViewController: UIViewController, ActionableTableViewDelegate, EditActionableViewControllerDelegate {
   
-    
     @IBOutlet weak var actionableTableView: ActionableTableView!
     
     /// the storage manager needed for various core data operaitons
@@ -21,9 +20,13 @@ class PlanningViewController: UIViewController, ActionableTableViewDelegate, Edi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "Planning"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager), delegate: self, calculatestartingTimes: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.topItem?.title = "Planning"
     }
 
     override func didReceiveMemoryWarning() {
