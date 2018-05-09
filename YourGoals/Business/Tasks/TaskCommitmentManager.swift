@@ -43,7 +43,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = backburned ?
                 NSPredicate(format: "commitmentDate == %@", date.day() as NSDate) :
-                  NSPredicate(format: "commitmentDate == %@ AND goal.backburned != NO", date.day() as NSDate)
+                  NSPredicate(format: "commitmentDate == %@ AND goal.backburned == NO", date.day() as NSDate)
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)
@@ -63,7 +63,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = backburned ?
                 NSPredicate(format: "commitmentDate < %@ AND state == 0", date.day() as NSDate) :
-                NSPredicate(format: "commitmentDate < %@ AND state == 0 AND goal.backburned != NO", date.day() as NSDate)
+                NSPredicate(format: "commitmentDate < %@ AND state == 0 AND goal.backburned == NO", date.day() as NSDate)
                 
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
@@ -84,7 +84,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = backburned ?
                 NSPredicate(format: "commitmentDate == nil AND goal == %@", todayGoal) :
-                NSPredicate(format: "commitmentDate == nil AND goal == %@ AND goal.backburned != NO", todayGoal)
+                NSPredicate(format: "commitmentDate == nil AND goal == %@ AND goal.backburned == NO", todayGoal)
             
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)

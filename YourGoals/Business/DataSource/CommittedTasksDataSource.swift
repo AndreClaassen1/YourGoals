@@ -10,7 +10,6 @@ import Foundation
 
 class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
  
-    
     enum Mode {
         case activeTasksIncluded
         case activeTasksNotIncluded

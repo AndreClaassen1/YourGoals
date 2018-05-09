@@ -54,6 +54,6 @@ class CommittedTasksDataSourceTests: StorageTestCase {
     }
     
     func testBackCommittedTasksExclBackburnedGoals() {
-        testBackburnedTasks(inclTasksFromBackburnedGoals: false, expectedNumberOfTasks: 7)
+        testBackburnedTasks(inclTasksFromBackburnedGoals: false, expectedNumberOfTasks: 3)
     }
 }
