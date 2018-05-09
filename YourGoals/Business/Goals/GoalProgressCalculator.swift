@@ -34,8 +34,8 @@ class GoalProgressCalculator:StorageManagerWorker {
     ///   - goal: the goal
     ///   - date: the date for comparision
     /// - Returns: progress of tasks in percent and a progress indicator
-    func calculateProgress(forGoal goal: Goal, forDate date: Date) throws -> (progress:Double, indicator:ProgressIndicator) {
-        let progressTasks = try calculateProgressOfActionables(forGoal: goal, andDate: date)
+    func calculateProgress(forGoal goal: Goal, forDate date: Date, withBackburned backburned: Bool) throws -> (progress:Double, indicator:ProgressIndicator) {
+        let progressTasks = try calculateProgressOfActionables(forGoal: goal, andDate: date, withBackburned: backburned)
         let progressDate = calculateProgressOfTime(forGoal: goal, forDate: date)
         let progressIndicator = calculateIndicator(progressTasks: progressTasks, progressDate: progressDate)
         return (progressTasks, progressIndicator)
@@ -47,10 +47,10 @@ class GoalProgressCalculator:StorageManagerWorker {
     ///     - goal: the goal
     ///     - date: the date for the actionables
     /// - Returns: ratio of done tasks and all tasks (between 0.0 and 1.0)
-    func calculateProgressOfActionables(forGoal goal: Goal, andDate date: Date) throws -> Double {
-        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task, withBackburned: SettingsUserDefault.standard.backburnedGoals)
+    func calculateProgressOfActionables(forGoal goal: Goal, andDate date: Date, withBackburned backburned: Bool) throws -> Double {
+        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
         
-        let actionables = try dataSource.fetchActionables(forDate: date, andSection: nil)
+        let actionables = try dataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: nil)
         if actionables .count == 0 {
             return 0.0
         }

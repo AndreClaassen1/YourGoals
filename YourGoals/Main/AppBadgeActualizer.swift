@@ -20,10 +20,10 @@ class AppBadgeActualizer : NSObject {
     ///
     /// - Parameter storage: journal entry storage
     init(manager: GoalsStorageManager) {
-        self.calculator = AppBadgeCalculator(manager: manager, backburned: SettingsUserDefault.standard.backburnedGoals)
+        self.calculator = AppBadgeCalculator(manager: manager)
         super.init()
         
-        self.actualize(forDate: Date())
+        self.actualize(forDate: Date(), withBackburned: SettingsUserDefault.standard.backburnedGoals)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNumberOfActionablesChanged(_:)), name: StrategyModelNotification.taskStateChanged.name, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNumberOfActionablesChanged(_:)), name: StrategyModelNotification.habitCheckStateChanged.name, object: nil)
@@ -32,9 +32,9 @@ class AppBadgeActualizer : NSObject {
     }
     
     /// actualize the application badge with number of waiting actionables
-    func actualize(forDate date: Date) {
+    func actualize(forDate date: Date, withBackburned backburned:Bool) {
         do {
-            let numberOfActiveActionables = try self.calculator.numberOfActiveActionables(forDate: date)
+            let numberOfActiveActionables = try self.calculator.numberOfActiveActionables(forDate: date, withBackburned: backburned)
             let content = UNMutableNotificationContent()
             content.badge = numberOfActiveActionables
             
@@ -57,7 +57,7 @@ class AppBadgeActualizer : NSObject {
     ///
     /// - Parameter notification: number of pending and unsynchronized journal entries
     @objc func handleNumberOfActionablesChanged (_ notification: Notification) {
-        actualize(forDate: Date())
+        actualize(forDate: Date(), withBackburned: SettingsUserDefault.standard.backburnedGoals)
     }
 }
 

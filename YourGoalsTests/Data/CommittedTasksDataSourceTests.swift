@@ -42,8 +42,8 @@ class CommittedTasksDataSourceTests: StorageTestCase {
             ])
         
         // act
-        let ds = CommittedTasksDataSource(manager: self.manager, backburned: backburned)
-        let actionables = try! ds.fetchActionables(forDate: testDate, andSection: nil)
+        let ds = CommittedTasksDataSource(manager: self.manager)
+        let actionables = try! ds.fetchActionables(forDate: testDate, withBackburned: backburned, andSection: nil)
         
         // test
         XCTAssertEqual(expectedNumberOfTasks, actionables.count)

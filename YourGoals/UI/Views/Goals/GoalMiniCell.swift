@@ -99,7 +99,7 @@ class GoalMiniCell: UICollectionViewCell {
         titleLabel.sizeToFit()
         progressIndicatorView.viewMode = .mini
         self.goalIsActive = goalIsActive
-        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, manager: manager)
+        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, withBackburned: backburned, manager: manager)
     }
 }
 

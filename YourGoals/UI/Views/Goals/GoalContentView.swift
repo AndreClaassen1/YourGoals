@@ -67,7 +67,7 @@ class GoalContentView: NibLoadingView {
         reasonLabel.sizeToFit()
         titleLabel.text = goal.name
         titleLabel.sizeToFit()
-        try progressIndicatorView.setProgress(forGoal: goal, forDate: date,  manager: manager)
+        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, withBackburned: backburned, manager: manager)
     }
     
     override func awakeFromNib() {

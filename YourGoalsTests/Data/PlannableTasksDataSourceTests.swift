@@ -36,15 +36,15 @@ class PlannableTasksDataSourceTests: StorageTestCase {
         generateTasks(startDate: referenceDate, data: testData)
         
         // when i read the datasource
-        let dataSource = PlannableTasksDataSource(manager: self.manager, backburned: true)
-        let sections = try! dataSource.fetchSections(forDate: referenceDate)
+        let dataSource = PlannableTasksDataSource(manager: self.manager)
+        let sections = try! dataSource.fetchSections(forDate: referenceDate, withBackburned: true)
         
         // i've got 7 sections for the week with 3 sections with tasks
         XCTAssertEqual(7, sections.count)
         var numberOfSectionsWithTasks = 0
         
         for section in sections {
-            let n = try! dataSource.fetchActionables(forDate: referenceDate, andSection: section)
+            let n = try! dataSource.fetchActionables(forDate: referenceDate, withBackburned: true, andSection: section)
             NSLog("[\(n.count)] = \(section)")
             if n.count > 0 {
                 numberOfSectionsWithTasks += 1

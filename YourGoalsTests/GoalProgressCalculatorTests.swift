@@ -38,7 +38,7 @@ class GoalProgressCalculatorTests: StorageTestCase {
         
         // act
         let progressCalculator = GoalProgressCalculator(manager: self.manager)
-        let progress = try! progressCalculator.calculateProgress(forGoal: goal, forDate: testDate)
+        let progress = try! progressCalculator.calculateProgress(forGoal: goal, forDate: testDate, withBackburned: true)
         
         // test
         XCTAssertEqual(expectedProgress, progress.progress)

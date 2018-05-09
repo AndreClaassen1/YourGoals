@@ -50,9 +50,9 @@ class ProgressIndicatorView: UIView {
     ///   - date: calculation of progress for this date
     ///   - manager: a manager to retrieve actual data from the core data sotre
     /// - Throws: core data exception
-    func setProgress(forGoal goal:Goal, forDate date: Date, manager: GoalsStorageManager) throws {
+    func setProgress(forGoal goal:Goal, forDate date: Date, withBackburned backburned:Bool, manager: GoalsStorageManager) throws {
         let calculator = GoalProgressCalculator(manager: manager)
-        let progress = try calculator.calculateProgress(forGoal: goal, forDate: date)
+        let progress = try calculator.calculateProgress(forGoal: goal, forDate: date, withBackburned: backburned)
         self.setProgress(progress: progress.progress, progressIndicator: progress.indicator)
     }
     

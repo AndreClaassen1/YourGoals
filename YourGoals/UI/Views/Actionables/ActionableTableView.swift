@@ -87,14 +87,15 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             }
        
             // load sections and actionables
+            let backburned = SettingsUserDefault.standard.backburnedGoals
             let date = Date()
-            self.sections = try dataSource.fetchSections(forDate: date)
+            self.sections = try dataSource.fetchSections(forDate: date, withBackburned: backburned)
             self.actionables.removeAll()
             if self.sections.count == 0 {
-                self.actionables.append(try dataSource.fetchActionables(forDate: date, andSection: nil))
+                self.actionables.append(try dataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: nil))
             } else {
                 for section in sections {
-                    self.actionables.append(try dataSource.fetchActionables(forDate: date, andSection: section))
+                    self.actionables.append(try dataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: section))
                 }
             }
             

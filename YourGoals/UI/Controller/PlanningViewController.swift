@@ -21,7 +21,7 @@ class PlanningViewController: UIViewController, ActionableTableViewDelegate, Edi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager, backburned: SettingsUserDefault.standard.backburnedGoals), delegate: self, calculatestartingTimes: true)
+        self.actionableTableView.configure(manager: self.manager, dataSource: PlannableTasksDataSource(manager: self.manager), delegate: self, calculatestartingTimes: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

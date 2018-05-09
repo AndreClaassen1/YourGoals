@@ -16,23 +16,21 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
     let habitOrderManager:HabitOrderManager
     let habitCheckManager:HabitCheckManager
     let goal:Goal?
-    let backburned:Bool
     
-    init(manager: GoalsStorageManager, forGoal goal: Goal? = nil, backburned: Bool) {
+    init(manager: GoalsStorageManager, forGoal goal: Goal? = nil) {
         self.habitOrderManager  = HabitOrderManager(manager: manager)
         self.habitCheckManager = HabitCheckManager(manager: manager)
         self.goal = goal
-        self.backburned = backburned
     }
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchSections(forDate date: Date) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
         return []
     }
     
-    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
-        return try habitOrderManager.habitsByOrder(forGoal: self.goal, backburned: self.backburned)
+    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection: ActionableSection?) throws -> [Actionable] {
+        return try habitOrderManager.habitsByOrder(forGoal: self.goal, backburned: backburned)
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

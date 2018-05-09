@@ -20,11 +20,11 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchSections(forDate date: Date) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
         return []
     }
     
-    func fetchActionables(forDate date: Date, andSection: ActionableSection?) throws -> [Actionable] {
+    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection: ActionableSection?) throws -> [Actionable] {
         return try taskManager.activeTasks(forDate: date)
     }
     
