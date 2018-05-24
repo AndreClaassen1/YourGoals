@@ -13,8 +13,8 @@ class TodayGoalComposer:StorageManagerWorker {
     let goalComposer:GoalComposer!
     let strategyManager:StrategyManager!
     
-    override init(manager: GoalsStorageManager)  {
-        self.goalComposer = GoalComposer(manager: manager)
+    init(manager: GoalsStorageManager, taskNotificationProtocol:TaskNotificationProviderProtocol = TaskNotificationObserver.defaultObserver)  {
+        self.goalComposer = GoalComposer(manager: manager, taskNotificationProtocol: taskNotificationProtocol)
         self.strategyManager = StrategyManager(manager: manager)
         super.init(manager: manager)
     }

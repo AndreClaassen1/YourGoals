@@ -130,4 +130,8 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         // kill all notifications
         resetNotifications()
     }
+    
+    func tasksChanged() {
+        
+    }
 }

@@ -83,7 +83,7 @@ class WatchConnectivityHandlerForApp: NSObject, WCSessionDelegate, TaskNotificat
             let taskUri = message["taskUri"] as! String
             taskResponder.performAction(action: .startTask, taskUri: taskUri, forDate: date)
         case .actionAddTask:
-            guard let taskDescription = message["taskDescription"] as? String else {
+            guard let taskDescription = message["description"] as? String else {
                 NSLog("couldn't receive a task description \(message)")
                 return
             }
@@ -145,6 +145,10 @@ class WatchConnectivityHandlerForApp: NSObject, WCSessionDelegate, TaskNotificat
     }
     
     func progressStopped() {
+        updateApplicationContext()
+    }
+    
+    func tasksChanged() {
         updateApplicationContext()
     }
 }

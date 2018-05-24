@@ -33,4 +33,9 @@ class TaskNotificationObserver: TaskNotificationProviderProtocol {
     func progressStopped() {
         notificationProvider.forEach({ $0.progressStopped() })
     }
+    
+    func tasksChanged() {
+        notificationProvider.forEach({ $0.tasksChanged() })
+    }
+    
 }

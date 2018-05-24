@@ -14,4 +14,5 @@ protocol TaskNotificationProviderProtocol {
     func progressStarted(forTask task:Task, referenceTime:Date)
     func progressChanged(forTask task:Task, referenceTime:Date)
     func progressStopped()
+    func tasksChanged()
 }

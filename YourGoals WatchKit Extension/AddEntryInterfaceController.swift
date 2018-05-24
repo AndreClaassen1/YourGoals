@@ -45,5 +45,6 @@ class AddEntryInterfaceController: WKInterfaceController {
 
     @IBAction func addTaskAction() {
         self.watchActionSender.send(action: .actionAddTask, taskDescription: self.taskDescription)
+        self.dismiss()
     }
 }

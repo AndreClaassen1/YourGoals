@@ -47,6 +47,7 @@ class GoalComposer:StorageManagerWorker {
         let taskOrderManager = TaskOrderManager(manager: self.manager)
         taskOrderManager.updateOrderByPrio(forGoal: goal, andType: actionableInfo.type)
         try self.manager.dataManager.saveContext()
+        self.taskNotificationProtocol.tasksChanged()
         return actionable
     }
     
@@ -73,6 +74,7 @@ class GoalComposer:StorageManagerWorker {
             self.taskNotificationProtocol.progressChanged(forTask: task, referenceTime: date)
         }
     
+        self.taskNotificationProtocol.tasksChanged()
         return goal
     }
     
@@ -105,6 +107,7 @@ class GoalComposer:StorageManagerWorker {
              try delete(task: actionable as! Task, fromGoal: goal)
         }
         try self.manager.dataManager.saveContext()
+        self.taskNotificationProtocol.tasksChanged()
         return goal
     }
     
