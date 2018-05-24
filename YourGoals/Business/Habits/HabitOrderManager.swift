@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// sorts habits by order and suppresses habits from backburned goals.
 class HabitOrderManager:StorageManagerWorker {
     func habitsByOrder(forGoal goal:Goal?, backburned: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in

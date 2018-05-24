@@ -30,7 +30,12 @@
                     </items>
                     <menu key="menu" id="AQO-JK-wXb">
                         <items>
-                            <menuItem title="Need more time" icon="add" id="tye-C0-ZzG">
+                            <menuItem title="Add Item" id="Ta2-zh-zE3">
+                                <connections>
+                                    <action selector="menuAddItem" destination="AgC-eL-Hgc" id="ozl-LI-c0s"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Need more time" icon="more" id="tye-C0-ZzG">
                                 <connections>
                                     <action selector="menuNeedMoreTime" destination="AgC-eL-Hgc" id="phg-1r-v1c"/>
                                 </connections>
@@ -47,10 +52,80 @@
                         <outlet property="progressTimer" destination="YvX-nX-Lrd" id="kqK-ds-ugV"/>
                         <outlet property="progressTitleLabel" destination="7TD-SG-aeV" id="gV3-Dj-jvQ"/>
                         <outlet property="timeIsOverLabel" destination="4od-Ay-a8S" id="3OU-uY-ezp"/>
+                        <segue destination="E0w-J5-CK7" kind="relationship" relationship="nextPage" id="1Wb-lI-O08"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Today Interface Controller-->
+        <scene sceneID="4SL-bU-Q9E">
+            <objects>
+                <controller id="E0w-J5-CK7" customClass="TodayInterfaceController" customModule="YourGoals_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="TQB-yt-Xhb">
+                            <items>
+                                <tableRow identifier="taskRowController" id="05w-U0-YRP">
+                                    <group key="rootItem" width="1" height="100" alignment="left" layout="vertical" id="T1A-gD-KYv">
+                                        <items>
+                                            <group width="1" alignment="left" id="EXb-Rx-ugK" userLabel="TaskDetailsGroup">
+                                                <items>
+                                                    <imageView width="40" alignment="left" id="5la-ju-wL1"/>
+                                                    <label alignment="left" text="Label" id="E2u-OW-tKp"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label alignment="left" text="Zielbeschreibung" id="V8j-oc-bOw">
+                            <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="left" text="Start bis Ende" id="vxZ-1G-UN4"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="446" y="345"/>
+        </scene>
+        <!--AddEntryInterfaceController-->
+        <scene sceneID="VJe-Ii-rDK">
+            <objects>
+                <controller identifier="AddEntryInterfaceController" id="I7K-XS-Oik" customClass="AddEntryInterfaceController" customModule="YourGoals_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="0.69999999999999996" alignment="left" layout="vertical" id="PyV-xs-STX" userLabel="Background Group">
+                            <items>
+                                <group width="1" alignment="left" radius="0.0" id="XRg-F7-Zi6" userLabel="Title Group">
+                                    <items>
+                                        <label width="1" alignment="left" text="New Task" textAlignment="center" id="OkC-FJ-J7Y">
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </group>
+                                <label width="1" height="0.80000000000000004" alignment="left" text="Label" textAlignment="left" id="Nhr-fE-lFb" userLabel="taskLabel">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="Hzv-P2-7U1" userLabel="Button Group">
+                            <items>
+                                <button width="1" alignment="left" title="Add" id="a32-Xh-2dA">
+                                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="addTaskAction" destination="I7K-XS-Oik" id="q3X-8E-fb8"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="taskLabel" destination="Nhr-fE-lFb" id="Thv-GW-217"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="673" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

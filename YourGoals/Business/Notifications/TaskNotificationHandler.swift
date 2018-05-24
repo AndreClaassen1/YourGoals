@@ -45,10 +45,10 @@ class TaskNotificationHandler: NSObject, UNUserNotificationCenterDelegate {
     func handleActionResponse(forIdentifier identifier: String, andTaskUri uri:String, forDate date:Date) throws {
         switch identifier {
         case TaskNotificationActionIdentifier.done:
-            self.taskResponder.performAction(taskUri: uri, action: .done, forDate: date)
+            self.taskResponder.performAction(action: .done, taskUri: uri, forDate: date)
             break
         case TaskNotificationActionIdentifier.needMoreTime:
-            self.taskResponder.performAction(taskUri: uri, action: .needMoreTime, forDate: date)
+            self.taskResponder.performAction(action: .needMoreTime, taskUri: uri, forDate: date)
             break
         default:
             assertionFailure("unknown response.actionIdentifier: \(identifier)")

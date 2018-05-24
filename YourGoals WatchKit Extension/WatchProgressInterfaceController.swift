@@ -20,6 +20,7 @@ enum ProgressInterfaceState {
 /// show the progress of the active task on the watch
 class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate {
     var session:WCSession!
+    var watchActionSender:WatchActionSender!
     
     var state = ProgressInterfaceState.noData
     var title:String!
@@ -36,23 +37,12 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     @IBOutlet var progressTitleLabel: WKInterfaceLabel!
     @IBOutlet var timeIsOverLabel: WKInterfaceLabel!
     
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
     }
     
-    func sendWatchAction(action: WatchAction, taskUri uri:String?) {
-        var userInfo = [String:Any]()
-
-        userInfo["action"] = action.rawValue
-        if uri != nil {
-            userInfo["taskUri"] = uri
-        }
-        
-        session.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
-    }
     
     func updateProgressPeriodically() {
         updateProgressingState()
@@ -75,11 +65,13 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        session = WCSession.default
+        self.session = WCSession.default
         session.delegate = self
         session.activate()
         NSLog("\(session.applicationContext)")
-        sendWatchAction(action: .actionActualizeState, taskUri: nil)
+        self.watchActionSender = WatchActionSender(session: self.session)
+        
+        self.watchActionSender.send(action: .actionActualizeState, taskUri: nil)
         updateProgressingState()
     }
 
@@ -194,11 +186,27 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         updateProgressingState()
     }
     
+    @IBAction func menuAddItem() {
+        #if targetEnvironment(simulator)
+            let testInput = ["Test entry 1", "Test entry 2", "Test entry 3" ]
+        #else
+            let testInput = [String]()
+        #endif
+        
+        self.presentTextInputController(withSuggestions: testInput, allowedInputMode: .plain) {
+            results in
+            
+            guard let userInput = results?[0] as? String else { return }
+            self.presentController(withName: "AddEntryInterfaceController", context: userInput )
+        }
+    
+    }
+    
     @IBAction func menuNeedMoreTime() {
-        sendWatchAction(action: .actionNeedMoreTime, taskUri: self.taskUri)
+        self.watchActionSender.send(action: .actionNeedMoreTime, taskUri: self.taskUri)
     }
     
     @IBAction func menuDone() {
-        sendWatchAction(action: .actionDone, taskUri: self.taskUri)
+        self.watchActionSender.send(action: .actionDone, taskUri: self.taskUri)
     }
 }

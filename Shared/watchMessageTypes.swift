@@ -12,4 +12,5 @@ enum WatchAction:String {
     case actionActualizeState
     case actionNeedMoreTime
     case actionDone
+    case actionAddTask
 }
