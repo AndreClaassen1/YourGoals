@@ -39,6 +39,10 @@
 		7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */; };
 		7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */; };
 		7B26EB8120B6C12200155158 /* TodayGoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB8020B6C12200155158 /* TodayGoalComposer.swift */; };
+		7B26EB8320B6CB5100155158 /* Task+Uri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB8220B6CB5100155158 /* Task+Uri.swift */; };
+		7B26EB8520B6CCBA00155158 /* WatchTasksContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB8420B6CCBA00155158 /* WatchTasksContextProvider.swift */; };
+		7B26EB8820B6CDDA00155158 /* WatchTasksContextProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB8720B6CDDA00155158 /* WatchTasksContextProviderTests.swift */; };
+		7B26EB8A20B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB8920B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift */; };
 		7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */; };
 		7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BAE4C1FADB8EF00441AFD /* TasksRequesterTests.swift */; };
 		7B303B841FA9EE8900BA2FB6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */; };
@@ -108,10 +112,11 @@
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
 		7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85B5652000D74B00096BC4 /* Date+HelperTests.swift */; };
+		7B85F31920B6DB390034B437 /* WatchTaskRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85F31820B6DB390034B437 /* WatchTaskRowController.swift */; };
 		7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */; };
 		7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */; };
 		7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8847911FD6AB77009C01F9 /* GoalTests.swift */; };
-		7B8C942D206FD08B004699C3 /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C942C206FD08B004699C3 /* WatchConnectivityHandler.swift */; };
+		7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C942C206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift */; };
 		7B8C9430206FD1E7004699C3 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C942F206FD1E7004699C3 /* NotificationProvider.swift */; };
 		7B9145A2207D3EDA00B2C5F8 /* watchMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */; };
 		7B9145A3207D3EDF00B2C5F8 /* watchMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */; };
@@ -345,6 +350,10 @@
 		7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayInterfaceController.swift; sourceTree = "<group>"; };
 		7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchActionSender.swift; sourceTree = "<group>"; };
 		7B26EB8020B6C12200155158 /* TodayGoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayGoalComposer.swift; sourceTree = "<group>"; };
+		7B26EB8220B6CB5100155158 /* Task+Uri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Uri.swift"; sourceTree = "<group>"; };
+		7B26EB8420B6CCBA00155158 /* WatchTasksContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTasksContextProvider.swift; sourceTree = "<group>"; };
+		7B26EB8720B6CDDA00155158 /* WatchTasksContextProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTasksContextProviderTests.swift; sourceTree = "<group>"; };
+		7B26EB8920B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandlerForWatch.swift; sourceTree = "<group>"; };
 		7B2B48701FCE101100FC095F /* TransitionAnimationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationTypes.swift; sourceTree = "<group>"; };
 		7B2BAE4C1FADB8EF00441AFD /* TasksRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksRequesterTests.swift; sourceTree = "<group>"; };
 		7B303B831FA9EE8900BA2FB6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -411,10 +420,11 @@
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
 		7B85B5652000D74B00096BC4 /* Date+HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+HelperTests.swift"; sourceTree = "<group>"; };
+		7B85F31820B6DB390034B437 /* WatchTaskRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTaskRowController.swift; sourceTree = "<group>"; };
 		7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrderManager.swift; sourceTree = "<group>"; };
 		7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOrderManagerTests.swift; sourceTree = "<group>"; };
 		7B8847911FD6AB77009C01F9 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
-		7B8C942C206FD08B004699C3 /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
+		7B8C942C206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandlerForApp.swift; sourceTree = "<group>"; };
 		7B8C942F206FD1E7004699C3 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchMessageTypes.swift; sourceTree = "<group>"; };
 		7B9145A4207D416700B2C5F8 /* ActiveTaskResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTaskResponder.swift; sourceTree = "<group>"; };
@@ -702,16 +712,26 @@
 				7B7D60AB20AF3C070049F331 /* AddEntryInterfaceController.swift */,
 				7BAAFF1F1F9CA2FB00BB102E /* WatchProgressInterfaceController.swift */,
 				7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */,
+				7B85F31820B6DB390034B437 /* WatchTaskRowController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		7B26EB7D20B6B8CB00155158 /* Communication */ = {
+		7B26EB7D20B6B8CB00155158 /* Connectivity */ = {
 			isa = PBXGroup;
 			children = (
 				7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */,
+				7B26EB8920B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift */,
 			);
-			name = Communication;
+			name = Connectivity;
+			sourceTree = "<group>";
+		};
+		7B26EB8620B6CDB500155158 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				7B26EB8720B6CDDA00155158 /* WatchTasksContextProviderTests.swift */,
+			);
+			path = Watch;
 			sourceTree = "<group>";
 		};
 		7B30FE5B2068D894002BFF40 /* Notifications */ = {
@@ -803,8 +823,9 @@
 		7B8C942B206FD067004699C3 /* WatchConnectivity */ = {
 			isa = PBXGroup;
 			children = (
-				7B8C942C206FD08B004699C3 /* WatchConnectivityHandler.swift */,
+				7B8C942C206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift */,
 				7B2019132073DBD000B7775B /* PieProgressPainter.swift */,
+				7B26EB8420B6CCBA00155158 /* WatchTasksContextProvider.swift */,
 			);
 			path = WatchConnectivity;
 			sourceTree = "<group>";
@@ -910,6 +931,7 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B26EB8620B6CDB500155158 /* Watch */,
 				7BBB30F7207BA83C00F637E0 /* Data */,
 				7B3DA178206E4CBD00C0ED0F /* Mocks */,
 				7B9720282066522B007D142E /* Helper */,
@@ -967,7 +989,7 @@
 		7BAAFF1E1F9CA2FB00BB102E /* YourGoals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7B26EB7D20B6B8CB00155158 /* Communication */,
+				7B26EB7D20B6B8CB00155158 /* Connectivity */,
 				7B26EB7A20B6ADDD00155158 /* Controller */,
 				7BAAFF211F9CA2FB00BB102E /* ExtensionDelegate.swift */,
 				7BAAFF231F9CA2FB00BB102E /* NotificationController.swift */,
@@ -1024,6 +1046,7 @@
 				7B0A72641FB045AA0000586D /* Habit+Check.swift */,
 				7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */,
 				7B3FCFAE1FC6139C004D9E32 /* Goal+Date.swift */,
+				7B26EB8220B6CB5100155158 /* Task+Uri.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1645,6 +1668,7 @@
 				7B97202C20665342007D142E /* String+VisualBasicExtension.swift in Sources */,
 				7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */,
 				7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */,
+				7B26EB8320B6CB5100155158 /* Task+Uri.swift in Sources */,
 				7B8C9430206FD1E7004699C3 /* NotificationProvider.swift in Sources */,
 				7B0A726D1FB04D000000586D /* HabitOrderManager.swift in Sources */,
 				7B130B641FB5EA5A0072F6C8 /* HabitsDataSource.swift in Sources */,
@@ -1701,7 +1725,7 @@
 				7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */,
 				7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
-				7B8C942D206FD08B004699C3 /* WatchConnectivityHandler.swift in Sources */,
+				7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */,
@@ -1710,6 +1734,7 @@
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
 				7B994E051FA225B900B704E1 /* Date+dateHelper.swift in Sources */,
 				7B17DD831F9E82C7008E90A2 /* UICollectionView+Reusable.swift in Sources */,
+				7B26EB8520B6CCBA00155158 /* WatchTasksContextProvider.swift in Sources */,
 				7B36F2392003931500095389 /* TodayWorkloadCalculator.swift in Sources */,
 				7BAA7A791F9F9EC8005B16EE /* PresentStoryViewAnimationController.swift in Sources */,
 				7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */,
@@ -1760,6 +1785,7 @@
 				7B36F23B2003933C00095389 /* TodayWorkloadInfoTests.swift in Sources */,
 				7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */,
 				7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */,
+				7B26EB8820B6CDDA00155158 /* WatchTasksContextProviderTests.swift in Sources */,
 				7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */,
 				7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */,
 				7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */,
@@ -1796,7 +1822,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */,
+				7B26EB8A20B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift in Sources */,
 				7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */,
+				7B85F31920B6DB390034B437 /* WatchTaskRowController.swift in Sources */,
 				7B7E58DB207605DB00B5511C /* ColorCalculator.swift in Sources */,
 				7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */,
 				7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */,

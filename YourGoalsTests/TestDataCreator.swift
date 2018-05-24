@@ -22,6 +22,24 @@ class TestDataCreator:StorageManagerWorker {
         return goal
     }
     
+    /// generate valid test data with goals and tasks. you can specifiy, if a goal is backburned or not
+    ///
+    /// - Parameters:
+    ///   - date: date for committed tasks
+    ///   - data: testsdata with tuples of goalnames, backburned indicator and number of tasks for the goal
+    func generateTestData(startDate date: Date, data: [(goalName:String, backburned: Bool, numberOfTasks: Int)]) {
+        for d in data {
+            let goal = self.createGoal(name: d.goalName, backburned: d.backburned)
+            for i in 0 ..< d.numberOfTasks {
+                let task = self.createTask(name: "Task #\(i) for Goal \(d.goalName)", forGoal: goal)
+                task.commitmentDate = date
+            }
+        }
+        
+        try! self.manager.saveContext()
+    }
+
+    
     /// create a task for unit testing for the given goal with the name
     ///
     /// - Parameters:

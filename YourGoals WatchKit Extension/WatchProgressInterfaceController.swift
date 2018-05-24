@@ -18,7 +18,8 @@ enum ProgressInterfaceState {
 }
 
 /// show the progress of the active task on the watch
-class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate {
+class WatchProgressInterfaceController: WKInterfaceController, WatchContextNotification {
+    
     var session:WCSession!
     var watchActionSender:WatchActionSender!
     
@@ -29,6 +30,7 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     var taskSize:TimeInterval!
     var taskUri:String!
     var updateTimerForImage:Timer?
+    var watchHandler:WatchConnectivityHandlerForWatch!
     var hapticStopAlreadyPlayed = false
     let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
     
@@ -40,9 +42,12 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        self.watchHandler = WatchConnectivityHandlerForWatch.defaultHandler
+        self.watchHandler.registerDelegate(delegate: self)
+        self.watchHandler.activate()
+        
         // Configure interface objects here.
     }
-    
     
     func updateProgressPeriodically() {
         updateProgressingState()
@@ -66,9 +71,6 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         super.willActivate()
         
         self.session = WCSession.default
-        session.delegate = self
-        session.activate()
-        NSLog("\(session.applicationContext)")
         self.watchActionSender = WatchActionSender(session: self.session)
         
         self.watchActionSender.send(action: .actionActualizeState, taskUri: nil)
@@ -148,43 +150,6 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
         self.progressTitleLabel.setText(title)
     }
 
-    // MARK: WCSessionDelegate
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        NSLog("activationDidCompleteWith activationState: \(activationState)")
-    }
-    
-    /// process the new application context from the host
-    ///
-    /// - Parameters:
-    ///   - session: the session
-    ///   - applicationContext: the application context
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let progressing = applicationContext["isProgressing"] as? Bool {
-            if progressing {
-                self.title = applicationContext["title"] as? String
-                self.referenceTime = applicationContext["referenceTime"] as? Date
-                let remainingTime = applicationContext["remainingTime"] as? TimeInterval
-                self.taskSize = applicationContext["taskSize"] as? TimeInterval
-                self.taskUri = applicationContext["taskUri"] as? String
-                
-                if self.title != nil && self.referenceTime != nil && remainingTime != nil && self.taskSize != nil {
-                    self.state = .progressing
-                    // self.targetTime = Date().addingTimeInterval(10.0)
-                    self.targetTime = self.referenceTime.addingTimeInterval(remainingTime!)
-                } else {
-                    NSLog("couldn't extract all needed date out of context: \(applicationContext)")
-                }
-            } else {
-                state = .notProgressing
-            }
-        } else {
-            state = .illegalData
-            NSLog("couldn't extract isProgressing from context")
-        }
-        
-        updateProgressingState()
-    }
     
     @IBAction func menuAddItem() {
         #if targetEnvironment(simulator)
@@ -209,4 +174,37 @@ class WatchProgressInterfaceController: WKInterfaceController, WCSessionDelegate
     @IBAction func menuDone() {
         self.watchActionSender.send(action: .actionDone, taskUri: self.taskUri)
     }
+    
+    // MARK: WatchContextNotification
+    
+    func progressContextReceived(progressContext: [String: Any]) {
+        if let progressing = progressContext["isProgressing"] as? Bool {
+            if progressing {
+                self.title = progressContext["title"] as? String
+                self.referenceTime = progressContext["referenceTime"] as? Date
+                let remainingTime = progressContext["remainingTime"] as? TimeInterval
+                self.taskSize = progressContext["taskSize"] as? TimeInterval
+                self.taskUri = progressContext["taskUri"] as? String
+                
+                if self.title != nil && self.referenceTime != nil && remainingTime != nil && self.taskSize != nil {
+                    self.state = .progressing
+                    // self.targetTime = Date().addingTimeInterval(10.0)
+                    self.targetTime = self.referenceTime.addingTimeInterval(remainingTime!)
+                } else {
+                    NSLog("couldn't extract all needed date out of context: \(progressContext)")
+                }
+            } else {
+                state = .notProgressing
+            }
+        } else {
+            state = .illegalData
+            NSLog("couldn't extract isProgressing from context")
+        }
+        
+        updateProgressingState()
+    }
+    
+    func todayTasksReceived(tasks: [WatchTaskInfo]) {
+        
+    }    
 }

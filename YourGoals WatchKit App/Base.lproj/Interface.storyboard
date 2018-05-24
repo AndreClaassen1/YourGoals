@@ -65,25 +65,37 @@
                     <items>
                         <table alignment="left" id="TQB-yt-Xhb">
                             <items>
-                                <tableRow identifier="taskRowController" id="05w-U0-YRP">
-                                    <group key="rootItem" width="1" height="100" alignment="left" layout="vertical" id="T1A-gD-KYv">
+                                <tableRow identifier="taskRowController" id="05w-U0-YRP" customClass="WatchTaskRowController" customModule="YourGoals_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="T1A-gD-KYv">
                                         <items>
-                                            <group width="1" alignment="left" id="EXb-Rx-ugK" userLabel="TaskDetailsGroup">
-                                                <items>
-                                                    <imageView width="40" alignment="left" id="5la-ju-wL1"/>
-                                                    <label alignment="left" text="Label" id="E2u-OW-tKp"/>
-                                                </items>
-                                            </group>
+                                            <button alignment="left" id="idK-GE-qbT">
+                                                <group key="contentGroup" width="1" alignment="left" id="MQ7-Mc-D0q">
+                                                    <items>
+                                                        <imageView width="40" alignment="left" id="5la-ju-wL1"/>
+                                                        <label alignment="left" text="Label" id="E2u-OW-tKp"/>
+                                                    </items>
+                                                </group>
+                                                <connections>
+                                                    <action selector="taskButtonClicked" destination="05w-U0-YRP" id="fll-6x-Gd9"/>
+                                                </connections>
+                                            </button>
+                                            <label alignment="left" text="Zielbeschreibung" id="V8j-oc-bOw">
+                                                <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="goalNameLabel" destination="V8j-oc-bOw" id="h0j-fO-EOg"/>
+                                        <outlet property="taskImage" destination="5la-ju-wL1" id="4tk-ck-s7w"/>
+                                        <outlet property="taskNameLabel" destination="E2u-OW-tKp" id="IU8-gO-iNI"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
-                        <label alignment="left" text="Zielbeschreibung" id="V8j-oc-bOw">
-                            <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </label>
-                        <label alignment="left" text="Start bis Ende" id="vxZ-1G-UN4"/>
                     </items>
+                    <connections>
+                        <outlet property="tasksTable" destination="TQB-yt-Xhb" id="91F-Xt-4R8"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="446" y="345"/>

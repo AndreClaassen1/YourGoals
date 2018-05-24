@@ -9,15 +9,17 @@
 import Foundation
 import WatchConnectivity
 
-class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationProviderProtocol {
+class WatchConnectivityHandlerForApp: NSObject, WCSessionDelegate, TaskNotificationProviderProtocol {
     
     var session = WCSession.default
     let progressManager:TaskProgressManager!
     let taskResponder:ActiveTaskResponder!
+    let watchTasksContextProvider:WatchTasksContextProvider!
     
     init(observer:TaskNotificationObserver, manager:GoalsStorageManager) {
         self.progressManager = TaskProgressManager(manager: manager)
         self.taskResponder = ActiveTaskResponder(manager: manager)
+        self.watchTasksContextProvider = WatchTasksContextProvider(manager: manager)
         super.init()
         session.delegate = self
         session.activate()
@@ -29,7 +31,7 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         NSLog("%@", "activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
-        updateContextWithState()
+        updateApplicationContext()
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -43,7 +45,7 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
     func sessionWatchStateDidChange(_ session: WCSession) {
         NSLog("%@", "sessionWatchStateDidChange: \(session)")
         if session.activationState == .activated {
-            updateContextWithState()
+            updateApplicationContext()
         }
     }
     
@@ -70,13 +72,16 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
         
         switch actionType {
         case .actionActualizeState:
-            updateContextWithState()
+            updateApplicationContext()
         case .actionDone:
             let taskUri = message["taskUri"] as! String
             taskResponder.performAction(action: .done, taskUri: taskUri, forDate: date)
         case .actionNeedMoreTime:
             let taskUri = message["taskUri"] as! String
             taskResponder.performAction(action: .needMoreTime, taskUri: taskUri, forDate: date)
+        case .actionStartTask:
+            let taskUri = message["taskUri"] as! String
+            taskResponder.performAction(action: .startTask, taskUri: taskUri, forDate: date)
         case .actionAddTask:
             guard let taskDescription = message["taskDescription"] as? String else {
                 NSLog("couldn't receive a task description \(message)")
@@ -87,68 +92,59 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate, TaskNotificationPro
         }
     }
     
-    func updateContextWithProgress(forTask task:Task, referenceTime: Date) {
+    func progressContext(referenceDate: Date) throws -> [String:Any] {
+        guard let task = try progressManager.activeTasks(forDate: referenceDate).first else  {
+            return ["isProgressing": false]
+        }
+        
         let title = task.name ?? "unknown task"
-        let remainingTime = task.calcRemainingTimeInterval(atDate: referenceTime)
+        let remainingTime = task.calcRemainingTimeInterval(atDate: referenceDate)
         let taskSize = task.taskSizeAsInterval()
         
         let context:[String: Any] = [
             "isProgressing": true,
             "title": title,
-            "referenceTime" : referenceTime,
+            "referenceTime" : referenceDate,
             "remainingTime": remainingTime,
             "taskSize": taskSize,
-            "taskUri": task.objectID.uriRepresentation().absoluteString
+            "taskUri": task.uri
         ]
         
-        do{
-            try self.session.updateApplicationContext(context)
-        }
-        catch let error {
-            NSLog("transmitting application context failed with: \(error)")
-        }
+        return context
     }
     
-    func updateContextWithNoProgress() {
-        let context:[String: Any] = [
-            "isProgressing": false
-        ]
-        
-        do{
-            try self.session.updateApplicationContext(context)
-        }
-        catch let error {
-            NSLog("transmitting application context failed with: \(error)")
-        }
-    }
-    
-    func updateContextWithState() {
+    /// update the application context on the apple watch
+    func updateApplicationContext() {
         do {
-            let referenceDate = Date()
-            if let activeTask = try progressManager.activeTasks(forDate: referenceDate).first {
-                updateContextWithProgress(forTask: activeTask, referenceTime: referenceDate )
-            } else {
-                updateContextWithNoProgress()
-            }
+            let date = Date()
+            let progress = try progressContext(referenceDate: date)
+            let tasks = try self.watchTasksContextProvider.todayTasks(referenceDate: date, withBackburned: SettingsUserDefault.standard.backburnedGoals)
+            
+            let tasksContext = tasks.map{ $0.asDictionary }
+        
+            let applicationContext:[String:Any] = [
+                "progress": progress,
+                "todayTasks": tasksContext
+            ]
+            
+            try self.session.updateApplicationContext(applicationContext)
         }
         catch let error {
-            NSLog("updateContextWithState error: \(error)")
+            NSLog("updateApplicationContext error: \(error)")
         }
     }
     
     // MARK: TaskNotificationProviderProtocol
     
-    
     func progressStarted(forTask task: Task, referenceTime: Date) {
-        updateContextWithProgress(forTask: task, referenceTime: referenceTime)
+        updateApplicationContext()
     }
     
     func progressChanged(forTask task: Task, referenceTime: Date) {
-        updateContextWithProgress(forTask: task, referenceTime: referenceTime)
+        updateApplicationContext()
     }
     
     func progressStopped() {
-        updateContextWithNoProgress()
+        updateApplicationContext()
     }
-    
 }

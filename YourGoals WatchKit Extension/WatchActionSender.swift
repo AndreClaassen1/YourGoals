@@ -17,6 +17,12 @@ class WatchActionSender {
         self.session = session
     }
 
+    /// send an action (command) to the iOS App
+    ///
+    /// - Parameters:
+    ///   - action: action
+    ///   - uri: a task uri for task orientated actions
+    ///   - description: a task description
     func send(action: WatchAction, taskUri uri:String? = nil, taskDescription description:String? = nil) {
         var userInfo = [String:Any]()
         

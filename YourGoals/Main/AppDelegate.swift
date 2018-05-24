@@ -12,7 +12,7 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var watchConnectivityHandler:WatchConnectivityHandler!
+    var watchConnectivityHandler:WatchConnectivityHandlerForApp!
     var taskNotificationScheduler:TaskNotificationScheduler!
     var taskNotificationHandler:TaskNotificationHandler!
     
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initializer.initialize(context: context)
         }
          
-        self.watchConnectivityHandler = WatchConnectivityHandler(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
+        self.watchConnectivityHandler = WatchConnectivityHandlerForApp(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
         self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationHandler.registerNotifications()

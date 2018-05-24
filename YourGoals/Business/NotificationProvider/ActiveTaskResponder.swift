@@ -16,6 +16,7 @@ enum ActiveTaskResponderAction {
     case done
     case needMoreTime
     case addTask
+    case startTask
 }
 
 /// the user clicks on a button on a notification or on the watch to perform a certain action for the active progressing task
@@ -51,6 +52,8 @@ class ActiveTaskResponder {
                 try stateManager.setTaskState(task: task, state: .done, atDate: date)
             case .needMoreTime:
                 try progressManager.changeTaskSize(forTask: task, delta: 15.0, forDate: date)
+            case .startTask:
+                try stateManager.setTaskState(task: task, state: .active, atDate: date)
             default:
                 assertionFailure("performAction taskUri: action not allowed")
             }
