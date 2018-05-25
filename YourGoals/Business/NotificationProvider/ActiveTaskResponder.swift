@@ -35,7 +35,7 @@ class ActiveTaskResponder {
         self.progressManager = TaskProgressManager(manager: manager)
         self.stateManager = TaskStateManager(manager: manager)
         self.todayGoalComposer = TodayGoalComposer(manager: manager)
-    }
+     }
     
     /// perform an action for the active progressing task
     ///
@@ -53,7 +53,7 @@ class ActiveTaskResponder {
             case .needMoreTime:
                 try progressManager.changeTaskSize(forTask: task, delta: 15.0, forDate: date)
             case .startTask:
-                try stateManager.setTaskState(task: task, state: .active, atDate: date)
+                try progressManager.startProgress(forTask: task, atDate: date)
             default:
                 assertionFailure("performAction taskUri: action not allowed")
             }
