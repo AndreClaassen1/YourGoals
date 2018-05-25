@@ -16,14 +16,13 @@ enum WatchAction:String {
     case actionStartTask
 }
 
-
-
 struct WatchTaskInfo {
     let taskName:String
     let percentage:Double
     let remainingTime:TimeInterval
     let goalName:String
     let taskUri:String
+    let isProgressing:Bool
 
     #if os(iOS)
     
@@ -32,6 +31,7 @@ struct WatchTaskInfo {
         self.remainingTime = task.calcRemainingTimeInterval(atDate: date)
         self.taskName = task.name ?? "no task name"
         self.goalName = task.goal?.name ?? "no goal"
+        self.isProgressing = task.isProgressing(atDate: date)
         self.taskUri = task.uri
     }
     #endif
@@ -42,6 +42,7 @@ struct WatchTaskInfo {
         self.remainingTime = dic["remainingTime"] as! TimeInterval
         self.goalName = dic["goalName"] as! String
         self.taskUri = dic["taskUri"] as! String
+        self.isProgressing = dic["isProgressing"] as! Bool
     }
     
     var asDictionary:[String: Any] {
@@ -50,7 +51,8 @@ struct WatchTaskInfo {
             "percentage": self.percentage,
             "remainingTime": self.remainingTime,
             "goalName": self.goalName,
-            "taskUri": self.taskUri
+            "taskUri": self.taskUri,
+            "isProgressing": self.isProgressing
         ]
     }
 }

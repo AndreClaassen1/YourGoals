@@ -66,7 +66,7 @@
                         <table alignment="left" id="TQB-yt-Xhb">
                             <items>
                                 <tableRow identifier="taskRowController" id="05w-U0-YRP" customClass="WatchTaskRowController" customModule="YourGoals_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="T1A-gD-KYv">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="T1A-gD-KYv" userLabel="rowGroup">
                                         <items>
                                             <button alignment="left" id="idK-GE-qbT">
                                                 <group key="contentGroup" width="1" alignment="left" id="MQ7-Mc-D0q">
@@ -86,6 +86,7 @@
                                     </group>
                                     <connections>
                                         <outlet property="goalNameLabel" destination="V8j-oc-bOw" id="h0j-fO-EOg"/>
+                                        <outlet property="rowBackgroundGroup" destination="T1A-gD-KYv" id="UrL-2I-EOw"/>
                                         <outlet property="taskImage" destination="5la-ju-wL1" id="4tk-ck-s7w"/>
                                         <outlet property="taskNameLabel" destination="E2u-OW-tKp" id="IU8-gO-iNI"/>
                                     </connections>

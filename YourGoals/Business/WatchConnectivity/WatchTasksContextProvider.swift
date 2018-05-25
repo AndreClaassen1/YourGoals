@@ -11,9 +11,11 @@ import Foundation
 class WatchTasksContextProvider:StorageManagerWorker {
 
     let committedTasksDataSource:CommittedTasksDataSource!
+    let activeTasksDataSource:ActiveTasksDataSource!
     
     override init(manager: GoalsStorageManager) {
-        self.committedTasksDataSource = CommittedTasksDataSource(manager: manager)
+        self.committedTasksDataSource = CommittedTasksDataSource(manager: manager, mode: .activeTasksNotIncluded)
+        self.activeTasksDataSource = ActiveTasksDataSource(manager: manager)
         super.init(manager: manager)
     }
     
@@ -26,9 +28,11 @@ class WatchTasksContextProvider:StorageManagerWorker {
     /// - Throws: core data exception
     func todayTasks(referenceDate date: Date, withBackburned backburned: Bool) throws -> [WatchTaskInfo] {
         
+        let activeTasks = try activeTasksDataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: nil)
         let todayTasks = try committedTasksDataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: nil)
+        let allTasks = activeTasks + todayTasks
         
-        let watchTasks = todayTasks.map { actionable -> WatchTaskInfo in
+        let watchTasks = allTasks.map { actionable -> WatchTaskInfo in
             let task = actionable as! Task
             let watchTaskInfo = WatchTaskInfo(task: task, date: Date())
             return watchTaskInfo
