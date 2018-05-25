@@ -20,12 +20,17 @@ class WatchTaskRowController:NSObject {
     
     let colorCalculator = ColorCalculator(colors: [UIColor.green, UIColor.yellow, UIColor.red])
     
-    func set(watchActionSender:WatchActionSender!, info:WatchTaskInfo) {
+    func set(watchActionSender:WatchActionSender!, info:WatchTaskInfo, progressingInfo:WatchProgressingInfo? = nil) {
         self.taskUri = info.taskUri
         self.watchActionSender = watchActionSender
         self.taskNameLabel.setText(info.taskName)
         self.goalNameLabel.setText(info.goalName)
-        self.showProgress(isProgressing: info.isProgressing, percentage: CGFloat(info.percentage))
+        var percentage = CGFloat(1.0) - CGFloat(info.percentage)
+        
+        if let progressingInfo = progressingInfo {
+            percentage = progressingInfo.calcPercentage(forDate: Date())
+        }
+        self.showProgress(isProgressing: info.isProgressing, percentage: percentage)
     }
 
     @IBAction func taskButtonClicked() {

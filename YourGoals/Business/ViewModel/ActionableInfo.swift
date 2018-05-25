@@ -34,7 +34,7 @@ struct ActionableInfo {
     init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil ){
         self.type = type
         self.name = name
-        self.commitDate = commitDate
+        self.commitDate = commitDate?.day()
         self.parentGoal = parentGoal
         self.size = size ?? 30.0
     }

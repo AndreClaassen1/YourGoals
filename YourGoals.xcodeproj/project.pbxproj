@@ -177,6 +177,7 @@
 		7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9B8201FC573DD00786A86 /* PieProgressView.swift */; };
 		7BBB30F6207BA83100F637E0 /* PlannableTasksDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */; };
 		7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */; };
+		7BC33A0620B80A4C00DDC25A /* WatchProgressingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */; };
 		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
 		7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */; };
 		7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */; };
@@ -491,6 +492,7 @@
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
 		7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannableTasksDataSourceTests.swift; sourceTree = "<group>"; };
 		7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditActionableFormController+Eureka.swift"; sourceTree = "<group>"; };
+		7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressingInfo.swift; sourceTree = "<group>"; };
 		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+convinience.swift"; sourceTree = "<group>"; };
 		7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUpdater.swift; sourceTree = "<group>"; };
@@ -989,6 +991,7 @@
 		7BAAFF1E1F9CA2FB00BB102E /* YourGoals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7BC33A0420B80A3200DDC25A /* Business */,
 				7B26EB7D20B6B8CB00155158 /* Connectivity */,
 				7B26EB7A20B6ADDD00155158 /* Controller */,
 				7BAAFF211F9CA2FB00BB102E /* ExtensionDelegate.swift */,
@@ -1009,6 +1012,14 @@
 				7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		7BC33A0420B80A3200DDC25A /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */,
+			);
+			name = Business;
 			sourceTree = "<group>";
 		};
 		7BDAF75C1FC56CF7004C7E46 /* YourGoals Views */ = {
@@ -1829,6 +1840,7 @@
 				7BAAFF261F9CA2FB00BB102E /* ComplicationController.swift in Sources */,
 				7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */,
 				7B2019152073DD9200B7775B /* PieProgressPainter.swift in Sources */,
+				7BC33A0620B80A4C00DDC25A /* WatchProgressingInfo.swift in Sources */,
 				7B9145A3207D3EDF00B2C5F8 /* watchMessageTypes.swift in Sources */,
 				7B7E58DC2076070500B5511C /* UIColor+Brightness.swift in Sources */,
 				7B7D60AC20AF3C070049F331 /* AddEntryInterfaceController.swift in Sources */,

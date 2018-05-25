@@ -71,7 +71,7 @@
                                             <button alignment="left" id="idK-GE-qbT">
                                                 <group key="contentGroup" width="1" alignment="left" id="MQ7-Mc-D0q">
                                                     <items>
-                                                        <imageView width="50" height="50" alignment="left" id="5la-ju-wL1"/>
+                                                        <imageView width="50" height="50" alignment="left" contentMode="scaleAspectFit" id="5la-ju-wL1"/>
                                                         <label alignment="left" text="Text mit mehreren Zeilen" numberOfLines="0" id="E2u-OW-tKp"/>
                                                     </items>
                                                 </group>

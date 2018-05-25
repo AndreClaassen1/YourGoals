@@ -13,6 +13,7 @@ import Foundation
 class TodayInterfaceController: WKInterfaceController, WatchContextNotification {
     
     @IBOutlet var tasksTable: WKInterfaceTable!
+    var progressingInfo = WatchProgressingInfo()
     
     let watchActionSender = WatchActionSender(session: WCSession.default)
     
@@ -36,14 +37,20 @@ class TodayInterfaceController: WKInterfaceController, WatchContextNotification 
     // MARK: WatchContextNotification
     
     func progressContextReceived(progressContext: [String : Any]) {
+        self.progressingInfo = WatchProgressingInfo(fromContext: progressContext)
         
     }
     
     func todayTasksReceived(tasks: [WatchTaskInfo]) {
         tasksTable.setNumberOfRows(tasks.count, withRowType: "taskRowController")
         for tuple in tasks.enumerated() {
+            let taskInfo = tuple.element
             let taskRowController = tasksTable.rowController(at: tuple.offset) as! WatchTaskRowController
-            taskRowController.set(watchActionSender: self.watchActionSender, info: tuple.element)
+            if progressingInfo.state == .progressing && progressingInfo.taskName == taskInfo.taskName && taskInfo.isProgressing {
+                taskRowController.set(watchActionSender: self.watchActionSender, info: tuple.element, progressingInfo: progressingInfo)
+            } else {
+                taskRowController.set(watchActionSender: self.watchActionSender, info: tuple.element)
+            }
         }
     }
 }

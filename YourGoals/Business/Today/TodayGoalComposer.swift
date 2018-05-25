@@ -28,8 +28,7 @@ class TodayGoalComposer:StorageManagerWorker {
     func addTask(withDescription description: String, forDate date: Date) throws {
         let strategy = try self.strategyManager.assertValidActiveStrategy()
         let todayGoal = try self.strategyManager.assertTodayGoal(strategy: strategy)
-        
-        let actionableInfo = ActionableInfo(type: .task, name: description, commitDate: date, parentGoal: todayGoal, size: 30.0)
+        let actionableInfo = ActionableInfo(type: .task, name: description, commitDate: date, parentGoal: todayGoal)
         let _ = try self.goalComposer.create(actionableInfo: actionableInfo, toGoal: todayGoal)
     }
 }
