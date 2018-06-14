@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -516,12 +516,32 @@
                         <segue destination="IgL-zS-0MF" kind="relationship" relationship="viewControllers" id="Sgr-y3-KLV"/>
                         <segue destination="iWG-d2-4VV" kind="relationship" relationship="viewControllers" id="9gp-Na-zbx"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="8g6-Qp-LC6"/>
+                        <segue destination="L7T-QD-U0t" kind="relationship" relationship="viewControllers" id="CYT-RJ-2ox"/>
                         <segue destination="Q4F-TG-JGR" kind="relationship" relationship="viewControllers" id="bKX-xE-vb8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoU-Np-3Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-258" y="-564"/>
+        </scene>
+        <!--Protocol-->
+        <scene sceneID="JGg-xx-xGQ">
+            <objects>
+                <tableViewController id="L7T-QD-U0t" customClass="ProtocolTableViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0rK-Zk-mU1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="L7T-QD-U0t" id="69b-7x-yl6"/>
+                            <outlet property="delegate" destination="L7T-QD-U0t" id="cVN-vH-J66"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Protocol" image="protocol_icon" id="gSc-sn-e5i"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rgq-jF-1pc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="418" y="-11"/>
         </scene>
         <!--Goal Detail View Controller-->
         <scene sceneID="7zK-xK-Jx2">
@@ -691,7 +711,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urt-cc-eXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1002" y="-103"/>
+            <point key="canvasLocation" x="-1380" y="-189"/>
         </scene>
         <!--Settings-->
         <scene sceneID="IXp-Pq-36a">
@@ -784,6 +804,7 @@
         <image name="goals_icon" width="25" height="25"/>
         <image name="light-close-button" width="40" height="40"/>
         <image name="planning_icon" width="25" height="25"/>
+        <image name="protocol_icon" width="25" height="25"/>
         <image name="settings_icon" width="25" height="25"/>
         <image name="today_icon" width="25" height="25"/>
     </resources>
