@@ -50,8 +50,20 @@ class ProtocolTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
-        return header
+        let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
+        return headerView
+    }
+    
+    /// calculate the size of the header for the protocol
+    ///
+    /// - Parameters:
+    ///   - tableView: the protocol table view
+    ///   - section: the section number (will be ignored)
+    /// - Returns: the  size of the section
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
+        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        return size.height
     }
     
     /*
