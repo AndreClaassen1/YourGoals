@@ -61,9 +61,7 @@ class ProtocolTableViewController: UITableViewController {
     ///   - section: the section number (will be ignored)
     /// - Returns: the  size of the section
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
-        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        return size.height
+        return 138.0
     }
     
     /*

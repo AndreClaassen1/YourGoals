@@ -130,6 +130,5 @@ internal class BaseRoundedCardCell: UICollectionViewCell {
             self.isPressed = false
         }
     }
-    
 }
 
