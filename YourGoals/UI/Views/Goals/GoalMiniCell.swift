@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GoalMiniCell: UICollectionViewCell {
+class GoalMiniCell: NibLoadingView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressIndicatorView: ProgressIndicatorView!
@@ -24,13 +24,6 @@ class GoalMiniCell: UICollectionViewCell {
         motivationImage.clipsToBounds = true
     }
 
-    internal static func dequeue(fromCollectionView collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> GoalMiniCell {
-        guard let cell: GoalMiniCell = collectionView.dequeueReusableCell(indexPath: indexPath) else {
-            fatalError("*** Failed to dequeue GetStartedListCell ***")
-        }
-        return cell
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         configureShadow()

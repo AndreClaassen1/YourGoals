@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="521" height="137"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="js8-8Z-Kou" customClass="PieProgressView" customModule="YourGoals" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="js8-8Z-Kou" customClass="GoalMiniCell" customModule="YourGoals" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -60,6 +60,9 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="goalMiniCell" destination="js8-8Z-Kou" id="veX-l5-n3b"/>
+            </connections>
             <point key="canvasLocation" x="121.5" y="86.5"/>
         </view>
     </objects>

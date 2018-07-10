@@ -32,10 +32,11 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     internal func configure(collectionView: UICollectionView) {
         self.manager = GoalsStorageManager.defaultStorageManager
         try! reloadStrategy()
-        collectionView.registerReusableCell(GoalMiniCell.self)
+        collectionView.register(GoalMiniCollectionViewCell.self, forCellWithReuseIdentifier: "GoalMiniCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.allowsSelection = true
     }
     
     // MARK: - Goal Handling helper methods
@@ -60,7 +61,7 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         do {
-            let goalCell = GoalMiniCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
+            let goalCell = GoalMiniCollectionViewCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
             let goal = self.goalForIndexPath(path: indexPath)
             let date = Date()
             try goalCell.show(goal: goal, forDate: date, goalIsActive: goal.isActive(forDate: date), backburned: goal.backburned,  manager: self.manager)
