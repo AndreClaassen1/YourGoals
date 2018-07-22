@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="backburned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,6 +17,7 @@
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="repetitionValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="checks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HabitCheck" inverseName="habit" inverseEntity="HabitCheck" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="habits" inverseEntity="Goal" syncable="YES"/>
     </entity>
@@ -34,7 +35,8 @@
         <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="size" optional="YES" attributeType="Float" defaultValueString="30" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="repetitionValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal" syncable="YES"/>
         <relationship name="progress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskProgress" inverseName="task" inverseEntity="TaskProgress" syncable="YES"/>
@@ -46,10 +48,10 @@
     </entity>
     <elements>
         <element name="Goal" positionX="-504" positionY="-282" width="128" height="225"/>
-        <element name="Habit" positionX="-261" positionY="-375" width="128" height="105"/>
+        <element name="Habit" positionX="-261" positionY="-375" width="128" height="120"/>
         <element name="HabitCheck" positionX="-81" positionY="-363" width="128" height="75"/>
         <element name="ImageData" positionX="-243" positionY="-198" width="128" height="75"/>
-        <element name="Task" positionX="-234" positionY="-12" width="128" height="180"/>
+        <element name="Task" positionX="-234" positionY="-12" width="128" height="195"/>
         <element name="TaskProgress" positionX="-36" positionY="9" width="128" height="90"/>
     </elements>
 </model>

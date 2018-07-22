@@ -34,14 +34,14 @@ enum ActionableType {
     }
 }
 
-enum ActionableRepetition {
-    case none
-    case monday
-    case tuesday
-    case wednesday
-    case thursday
-    case saturday
-    case sunday
+enum ActionableRepetition:String {
+    case none = "None"
+    case monday = "Mon"
+    case tuesday = "Tue"
+    case wednesday = "Wed"
+    case thursday = "Thu"
+    case saturday = "Sat"
+    case sunday = "Sun"
     
     static func values() -> [ActionableRepetition] {
         return [
