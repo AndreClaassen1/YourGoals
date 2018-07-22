@@ -32,7 +32,6 @@ protocol ActionableSection {
     func calculateStartingTime(forDate date: Date) -> Date?
 }
 
-
 /// protocol for fetching actionables (tasks or habits) in various controllers
 protocol ActionableDataSource {
     

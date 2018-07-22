@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+
+struct ProtocolGoalInfo {
+    
+}
+
+struct ProtocolProgressInfo {
+    
+}
+
+/// <#Description#>
+class ProtocolDataSource : StorageManagerWorker {
+    func fetchWorkedGoals(forDate date: Date) throws -> [ProtocolGoalInfo] {
+        return []
+    }
+    
+    func fetchProgressOnGoal(goalInfo: ProtocolGoalInfo) -> [ProtocolProgressInfo] {
+        return []
+    }
+}

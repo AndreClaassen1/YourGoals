@@ -71,6 +71,7 @@
 		7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */; };
 		7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */; };
 		7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */; };
+		7B4DFD7B20F51FA700F0E575 /* ProtocolDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DFD7A20F51FA700F0E575 /* ProtocolDataSourceTests.swift */; };
 		7B4E0BE61FAF0CE500602FD1 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */; };
 		7B4E0BE71FAF0CE500602FD1 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */; };
 		7B4E0BE91FAF10BD00602FD1 /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */; };
@@ -390,6 +391,7 @@
 		7B4B579C1FA6F4C10099FF62 /* GoalContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalContentView.swift; sourceTree = "<group>"; };
 		7B4B579E1FA6F4D90099FF62 /* GoalContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalContentView.xib; sourceTree = "<group>"; };
 		7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
+		7B4DFD7A20F51FA700F0E575 /* ProtocolDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolDataSourceTests.swift; sourceTree = "<group>"; };
 		7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitTableViewCell.xib; sourceTree = "<group>"; };
 		7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				7B8847911FD6AB77009C01F9 /* GoalTests.swift */,
 				7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */,
 				7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */,
+				7B4DFD7A20F51FA700F0E575 /* ProtocolDataSourceTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1848,6 +1851,7 @@
 				7BAAFEFC1F9CA2FA00BB102E /* GoalsGeneratorTests.swift in Sources */,
 				7B0A72671FB0485D0000586D /* HabitTests.swift in Sources */,
 				7B1BBC391FFD601C003934B1 /* CalcProgressTests.swift in Sources */,
+				7B4DFD7B20F51FA700F0E575 /* ProtocolDataSourceTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* SotrageManagerExtension.swift in Sources */,
 				7BDC423B20739A0200146730 /* TaskNotificationHandlerTests.swift in Sources */,
 				7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */,
