@@ -34,6 +34,22 @@ enum ActionableType {
     }
 }
 
+enum ActionableRepetition {
+    case none
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case saturday
+    case sunday
+    
+    static func values() -> [ActionableRepetition] {
+        return [
+            .none, .monday, .tuesday, .wednesday, .thursday, .saturday, .sunday
+        ]
+    }
+}
+
 /// protocol to unify the behavior of a task or an habit for the task view
 protocol Actionable {
     
@@ -47,6 +63,8 @@ protocol Actionable {
     var goal:Goal? { set get }
     
     var prio:Int16 { set get }
+    
+    var repetition:Set<ActionableRepetition> { set get }
     
     /// obtain the checked state for agiven state
     ///

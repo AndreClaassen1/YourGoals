@@ -9,6 +9,16 @@
 import Foundation
 
 extension Task:Actionable {
+    var repetition: Set<ActionableRepetition> {
+        get {
+            return Set<ActionableRepetition>()
+        }
+        
+        set {
+            
+        }
+    }
+    
     
     /// this is a task
     var type: ActionableType {

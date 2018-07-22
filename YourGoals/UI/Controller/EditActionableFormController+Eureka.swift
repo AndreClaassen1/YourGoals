@@ -23,6 +23,10 @@ struct TaskFormTag  {
     static let commitDate = "CommitDate"
 }
 
+typealias Emoji = String
+let 👦🏼 = "👦🏼", 🍐 = "🍐", 💁🏻 = "💁🏻", 🐗 = "🐗", 🐼 = "🐼", 🐻 = "🐻", 🐖 = "🐖", 🐡 = "🐡"
+
+
 // MARK: - Extension for creating and handling the Eureka Form
 extension EditActionableFormController {
     
@@ -57,9 +61,7 @@ extension EditActionableFormController {
             }
             
             <<< commitDateRow()
-//            <<< WeekDayRow(){
-//                $0.value = [.monday, .wednesday, .friday]
-//            }
+            <<< repetitionRow()
             +++ Section()
             <<< parentGoalRow()
             <<< remarksRow(remarks: nil)
@@ -113,6 +115,24 @@ extension EditActionableFormController {
     }
     
     // MARK: - Row creating helper functions
+    
+    func repetitionRow() -> BaseRow {
+        let row = MultipleSelectorRow<ActionableRepetition>() {
+            $0.title = "Repetition"
+            $0.options = ActionableRepetition.values()
+            $0.value = [ .none ]
+            }
+            .onPresent { from, to in
+                to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))
+        }
+
+        return row
+    }
+    
+    @objc func multipleSelectorDone(_ item:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+
     
     /// create a row for editing the task name
     ///
