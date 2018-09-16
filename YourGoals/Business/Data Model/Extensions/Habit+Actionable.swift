@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Actionable Extension for feeding the ActionableTableView and its cells
 extension Habit:Actionable {
-    var repetition: Set<ActionableRepetition> {
+    var repetitions: Set<ActionableRepetition> {
         get {
             return []
         }

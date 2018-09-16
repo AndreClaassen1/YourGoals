@@ -24,6 +24,9 @@ struct ActionableInfo {
     /// changed goal
     let parentGoal:Goal?
     
+    /// a set of repetitions
+    let repetitions:Set<ActionableRepetition>?
+    
     /// initialize the actionable with the needed values
     /// - Parameters:
     ///   - type: type of the actionable: task or hapti
@@ -31,12 +34,14 @@ struct ActionableInfo {
     ///   - commitDate: commit date (only for tasks)
     ///   - parentGoal: parentGoal
     ///   - size: size of the task (only for tasks). nil makes a default size of 30 Minutes
-    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil ){
+    ///   - repetetions: a set of repetitions like sunday, weekday, monday, etc.
+    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil, repetitions:Set<ActionableRepetition>? = nil) {
         self.type = type
         self.name = name
         self.commitDate = commitDate?.day()
         self.parentGoal = parentGoal
         self.size = size ?? 30.0
+        self.repetitions = repetitions
     }
     
     /// initialize the info with a valid actionable object
@@ -48,5 +53,6 @@ struct ActionableInfo {
         self.commitDate = actionable.commitmentDate
         self.parentGoal = actionable.goal
         self.size = actionable.size
+        self.repetitions = actionable.repetitions
     }
 }

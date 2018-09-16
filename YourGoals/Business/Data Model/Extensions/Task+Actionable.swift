@@ -9,7 +9,7 @@
 import Foundation
 
 extension Task:Actionable {
-    var repetition: Set<ActionableRepetition> {
+    var repetitions: Set<ActionableRepetition> {
         get {
             return Set<ActionableRepetition>()
         }

@@ -34,7 +34,16 @@ enum ActionableType {
     }
 }
 
-enum ActionableRepetition:String {
+/// valid repetitions
+///
+/// - none: no repetition
+/// - monday: every monday
+/// - tuesday: every tuesday
+/// - wednesday: every wednesday
+/// - thursday: every thursday
+/// - saturday: every saturday
+/// - sunday: every sunday
+enum ActionableRepetition:String, Encodable, Decodable {
     case none = "None"
     case monday = "Mon"
     case tuesday = "Tue"
@@ -64,7 +73,7 @@ protocol Actionable {
     
     var prio:Int16 { set get }
     
-    var repetition:Set<ActionableRepetition> { set get }
+    var repetitions:Set<ActionableRepetition> { set get }
     
     /// obtain the checked state for agiven state
     ///

@@ -48,7 +48,7 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
     /// create a new task with the given task info
     ///
     /// - Parameter actionableInfo: task info (view model)
-    func create(actionableInfo: ActionableInfo) -> Task {
+    func createTask(actionableInfo: ActionableInfo) -> Task {
         let task = manager.tasksStore.createPersistentObject()
         task.name = actionableInfo.name
         task.setTaskState(state: .active)
@@ -62,7 +62,7 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
     // Mark: - ActionableFactory
     
     func create(actionableInfo: ActionableInfo) -> Actionable {
-        let task:Task = create(actionableInfo: actionableInfo)
+        let task:Task = createTask(actionableInfo: actionableInfo)
         return task
     }
 }
