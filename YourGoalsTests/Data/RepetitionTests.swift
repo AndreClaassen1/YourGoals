@@ -35,16 +35,21 @@ class RepetitionTests: StorageTestCase {
         XCTAssertEqual(repetitions, expectedRepetitions)
     }
     
-    func testRepetitionWithTask() {
+    func testReloadingRepetitionWithNewlyCreatedTask() {
         // setup
+        let repetitions:Set<ActionableRepetition> = [.monday, .wednesday]
         let factory = TaskFactory(manager: self.manager)
-        let actionableInfo = ActionableInfo(type: .task, name: "This is a task with repetion", commitDate: nil, parentGoal: nil, size: 3.0, repetitions: nil)
+        let actionableInfo = ActionableInfo(type: .task, name: "This is a task with repetion", commitDate: nil, parentGoal: nil, size: 3.0, repetitions: repetitions)
         
-        factory.create(actionableInfo: actionableInfo)
+        let task = factory.create(actionableInfo: actionableInfo) as! Task
         
         // act
-        
+        try! self.manager.saveContext()
+        // get the real objectID after saving to the store
+        let objectId = task.objectID
+
         // test
-        
+        let taskReloaded = self.manager.tasksStore.retrieveExistingObject(objectId: objectId)
+        XCTAssertEqual(repetitions, taskReloaded.repetitions)
     }
 }

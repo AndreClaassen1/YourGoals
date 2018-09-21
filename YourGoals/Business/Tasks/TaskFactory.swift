@@ -56,6 +56,9 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
         task.size = actionableInfo.size
         task.commitmentDate = actionableInfo.commitDate
         task.goal = actionableInfo.parentGoal
+        if let repetitions = actionableInfo.repetitions {
+            task.repetitions = repetitions
+        }
         return task
     }
     

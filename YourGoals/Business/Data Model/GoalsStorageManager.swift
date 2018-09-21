@@ -72,8 +72,13 @@ class GoalsStorageManager {
         try self.dataManager.saveContext()
     }
 
-    convenience init(databaseName: String) {
-        self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self)))
+    /// convinience initializer
+    ///
+    /// - Parameters:
+    ///   - databaseName: database file name
+    ///   - journalingEnabled: true, if journaling is enabled (default)
+    convenience init(databaseName: String, journalingEnabled: Bool = true) {
+        self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self), journalingEnabled: journalingEnabled))
     }
     
     /// delete all entity objects from the database

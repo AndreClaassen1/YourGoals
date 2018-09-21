@@ -15,8 +15,19 @@ class CoreDataManager {
     let modelURL:URL
     let databaseName:String
     
-    init(databaseName:String, modelName:String, bundle:Bundle) {
+    // true, if write ahead logging (WAL-Mode) on sqllite is enabled (default)
+    let journalingEnabled: Bool
+    
+    /// create a new sqlite database with the given name for a bundle
+    ///
+    /// - Parameters:
+    ///   - databaseName: name of the database file
+    ///   - modelName: name of the data model
+    ///   - bundle: the bundle for storing
+    ///   - journalingEnabled: true, if write ahead mode is enabled
+    init(databaseName:String, modelName:String, bundle:Bundle, journalingEnabled: Bool) {
         self.databaseName = databaseName
+        self.journalingEnabled = journalingEnabled
         self.modelURL = bundle.url(forResource: modelName, withExtension: "momd")!
     }
     
@@ -40,10 +51,15 @@ class CoreDataManager {
         let url = self.applicationDocumentsDirectory.appendingPathComponent(self.databaseName)
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            let options:[String : Any] = [
+            var options:[String : Any] = [
                 NSMigratePersistentStoresAutomaticallyOption: true,
                 NSInferMappingModelAutomaticallyOption: true
             ]
+            
+            // disable write ahead mode for sqlite, if journaling is not enabled
+            if !self.journalingEnabled {
+                options[NSSQLitePragmasOption] = ["journal_mode" : "DELETE"]
+            }
             
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch {

@@ -10,7 +10,8 @@ import Foundation
 @testable import YourGoals
 
 extension GoalsStorageManager {
-    static let defaultUnitTestStorageManager = GoalsStorageManager(databaseName: "TestGoals.sqlite")
+    /// in unit test, we are disabling write ahead mode
+    static let defaultUnitTestStorageManager = GoalsStorageManager(databaseName: "TestGoals.sqlite", journalingEnabled: false)
 }
 
 extension TestDataGenerator {
