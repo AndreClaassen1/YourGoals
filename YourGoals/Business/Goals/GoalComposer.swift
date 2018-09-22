@@ -68,6 +68,7 @@ class GoalComposer:StorageManagerWorker {
         actionable.commitmentDate  = info.commitDate
         actionable.goal = info.parentGoal
         actionable.size = info.size
+        actionable.repetitions = info.repetitions ?? []
  
         try self.manager.dataManager.saveContext()
         if actionable.isProgressing(atDate: date), let task = actionable as? Task {

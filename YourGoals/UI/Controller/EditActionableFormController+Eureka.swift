@@ -21,6 +21,7 @@ struct TaskFormTag  {
     static let goal = "Goal"
     static let duration = "Duration"
     static let commitDate = "CommitDate"
+    static let repetitions = "Repetitions"
 }
 
 typealias Emoji = String
@@ -111,16 +112,20 @@ extension EditActionableFormController {
         let goal = values[TaskFormTag.goal] as? Goal
         let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
         let size = Float((values [TaskFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
-        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size)
+        let repetitions = values[TaskFormTag.repetitions] as? Set<ActionableRepetition>
+        
+        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size, repetitions: repetitions)
     }
     
     // MARK: - Row creating helper functions
     
+    /// create a row with all repetitions base
     func repetitionRow() -> BaseRow {
         let row = MultipleSelectorRow<ActionableRepetition>() {
             $0.title = "Repetition"
+            $0.tag = TaskFormTag.repetitions
             $0.options = ActionableRepetition.values()
-            $0.value = [ .none ]
+            $0.value = self.editActionable?.repetitions ?? []
             }
             .onPresent { from, to in
                 to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))

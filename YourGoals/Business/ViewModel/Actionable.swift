@@ -36,7 +36,6 @@ enum ActionableType {
 
 /// valid repetitions
 ///
-/// - none: no repetition
 /// - monday: every monday
 /// - tuesday: every tuesday
 /// - wednesday: every wednesday
@@ -44,7 +43,6 @@ enum ActionableType {
 /// - saturday: every saturday
 /// - sunday: every sunday
 enum ActionableRepetition:String, Encodable, Decodable {
-    case none = "None"
     case monday = "Mon"
     case tuesday = "Tue"
     case wednesday = "Wed"
@@ -54,7 +52,7 @@ enum ActionableRepetition:String, Encodable, Decodable {
     
     static func values() -> [ActionableRepetition] {
         return [
-            .none, .monday, .tuesday, .wednesday, .thursday, .saturday, .sunday
+            .monday, .tuesday, .wednesday, .thursday, .saturday, .sunday
         ]
     }
 }
