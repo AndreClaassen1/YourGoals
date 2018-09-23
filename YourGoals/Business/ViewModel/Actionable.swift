@@ -47,13 +47,46 @@ enum ActionableRepetition:String, Encodable, Decodable {
     case tuesday = "Tue"
     case wednesday = "Wed"
     case thursday = "Thu"
+    case friday = "Fri"
     case saturday = "Sat"
     case sunday = "Sun"
     
     static func values() -> [ActionableRepetition] {
         return [
-            .monday, .tuesday, .wednesday, .thursday, .saturday, .sunday
+            .monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday
         ]
+    }
+    
+    /// calculate the repetition value for the weekday of the date
+    ///
+    /// - Parameter date: the date
+    /// - Returns: a repetition value for the day of the week
+    static func repetitionForDate(date: Date) -> ActionableRepetition {
+        let weekday = date.weekday()
+        switch weekday {
+        case 1:
+            return .sunday
+            
+        case 2:
+            return .monday
+        case 3:
+            return .tuesday
+            
+        case 4:
+            return .wednesday
+            
+        case 5:
+            return .thursday
+            
+        case 6:
+            return .friday
+            
+        case 7:
+            return .saturday
+            
+        default:
+            fatalError("illegal weekday number \(weekday) for date \(date)")
+        }
     }
 }
 

@@ -27,7 +27,6 @@ struct TaskFormTag  {
 typealias Emoji = String
 let 👦🏼 = "👦🏼", 🍐 = "🍐", 💁🏻 = "💁🏻", 🐗 = "🐗", 🐼 = "🐼", 🐻 = "🐻", 🐖 = "🐖", 🐡 = "🐡"
 
-
 // MARK: - Extension for creating and handling the Eureka Form
 extension EditActionableFormController {
     
