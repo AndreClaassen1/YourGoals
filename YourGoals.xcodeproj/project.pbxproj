@@ -226,7 +226,7 @@
 		7BF5629E1FD5614200A4DF6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */; };
 		7BF562A01FD563FD00A4DF6C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5629F1FD563FD00A4DF6C /* Settings.swift */; };
 		7BF9FF9121576E9900CD2C82 /* TaskRepetitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9FF9021576E9900CD2C82 /* TaskRepetitionManager.swift */; };
-		7BF9FF93215793AA00CD2C82 /* Date+weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9FF92215793AA00CD2C82 /* Date+weekday.swift */; };
+		7BF9FF93215793AA00CD2C82 /* Date + weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9FF92215793AA00CD2C82 /* Date + weekday.swift */; };
 		7BF9FF962157989C00CD2C82 /* TaskRepetitionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9FF952157989C00CD2C82 /* TaskRepetitionManagerTests.swift */; };
 		7BFAA9A720F3CF3D00C4E44E /* GoalMiniCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFAA9A620F3CF3D00C4E44E /* GoalMiniCollectionViewCell.swift */; };
 		7BFC1E001FA356B5003DE484 /* UIViewController+ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */; };
@@ -555,7 +555,7 @@
 		7BF5629D1FD5614200A4DF6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7BF5629F1FD563FD00A4DF6C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7BF9FF9021576E9900CD2C82 /* TaskRepetitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepetitionManager.swift; sourceTree = "<group>"; };
-		7BF9FF92215793AA00CD2C82 /* Date+weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+weekday.swift"; sourceTree = "<group>"; };
+		7BF9FF92215793AA00CD2C82 /* Date + weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + weekday.swift"; sourceTree = "<group>"; };
 		7BF9FF952157989C00CD2C82 /* TaskRepetitionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepetitionManagerTests.swift; sourceTree = "<group>"; };
 		7BFAA9A620F3CF3D00C4E44E /* GoalMiniCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMiniCollectionViewCell.swift; sourceTree = "<group>"; };
 		7BFC1DFF1FA356B5003DE484 /* UIViewController+ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorInfo.swift"; sourceTree = "<group>"; };
@@ -710,7 +710,7 @@
 				7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */,
 				7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */,
 				7B36F23C2003A0F100095389 /* Date+Timeformat.swift */,
-				7BF9FF92215793AA00CD2C82 /* Date+weekday.swift */,
+				7BF9FF92215793AA00CD2C82 /* Date + weekday.swift */,
 				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 				7BF5629F1FD563FD00A4DF6C /* Settings.swift */,
 				7B1BBC3A1FFD65F4003934B1 /* TimeInterval+Format.swift */,
@@ -1809,7 +1809,7 @@
 				7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
-				7BF9FF93215793AA00CD2C82 /* Date+weekday.swift in Sources */,
+				7BF9FF93215793AA00CD2C82 /* Date + weekday.swift in Sources */,
 				7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */,
 				7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */,
 				7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */,

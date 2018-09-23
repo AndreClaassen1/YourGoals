@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-/// show the today view screen of the YourGoals App
+/// show the today view screen of the YourGoals App.
+/// the today screen shows the active goals and all tasks of the daet
 class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDetailViewControllerDelegate, EditActionableViewControllerDelegate {
     /// a collaction view for small goals pictures
     @IBOutlet weak var goalsCollectionView: UICollectionView!
@@ -122,6 +123,8 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
     func reloadAll() {
         do {
             let startingTime = Date()
+            
+            try TaskRepetitionManager(manager: self.manager).updateRepetitionState(forDate: Date())
             
             self.reloadCollectionView(collectionView: self.goalsCollectionView)
             self.committedTasksView.reload()
