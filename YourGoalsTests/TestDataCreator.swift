@@ -80,8 +80,8 @@ class TestDataCreator:StorageManagerWorker {
     @discardableResult
     func createProgress(forTask task: Task, start: Date, end: Date) -> TaskProgress {
         let taskProgress = self.manager.taskProgressStore.createPersistentObject()
-        taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
-        taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
+        taskProgress.start = start
+        taskProgress.end = end
         task.addToProgress(taskProgress)
         try! self.manager.saveContext()
         return taskProgress
