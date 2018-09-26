@@ -33,4 +33,16 @@ extension TaskProgress {
         let interval = endDate.timeIntervalSince(startDate)
         return interval >= 0 ? interval : TimeInterval(0)
     }
+    
+    /// calculate the time interval worked on a given date
+    ///
+    /// - Parameter date: time interval
+    func timeInterval(on date:Date) -> TimeInterval {
+        let day = date.day()
+        let startDate = max(day.startOfDay, self.start ?? day.startOfDay )
+        let endDate = min(day.endOfDay, self.end ?? date)
+        
+        let interval = endDate.timeIntervalSince(startDate)
+        return interval >= 0 ? interval : TimeInterval(0)
+    }
 }

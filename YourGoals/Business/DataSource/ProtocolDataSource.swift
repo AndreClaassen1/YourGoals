@@ -11,28 +11,36 @@ import Foundation
 /// progress on a goal for a given date
 struct ProtocolGoalInfo {
     let goal:Goal
-    let workedOnGoal:TimeInterval
     let date:Date
     
     init(goal: Goal, date:Date) {
         self.goal = goal
         self.date = date
-        workedOnGoal = 0
     }
 }
 
 /// progress on a task for a given date
 protocol ProtocolProgressInfo {
     var title:String { get }
-    var timeRange:String { get }
     var description:String { get }
+
+    func timeRange(onDate: Date) -> String
+    func workedTime(onDate: Date) -> TimeInterval
 }
 
 struct TaskProgressInfo:ProtocolProgressInfo {
     let progress:TaskProgress
+
+    func workedTime(onDate date: Date) -> TimeInterval {
+        return progress.timeInterval(on: date)
+    }
     
-    var timeRange: String {
-        return "0:00 - 0:00"
+    func timeRange(onDate date: Date) -> String {
+        let day = date.day()
+        let startTime = progress.start ?? day.startOfDay
+        let endTime = progress.end ?? date
+        
+        return "\(startTime.formattedTime()) - \(endTime.formattedTime())"
     }
     
     var description: String {
@@ -48,13 +56,18 @@ struct TaskProgressInfo:ProtocolProgressInfo {
     }
 }
 
-struct HabitProgressInfo:ProtocolProgressInfo {
+struct HabitProgressInfo:ProtocolProgressInfo {    
+    func workedTime(onDate: Date) -> TimeInterval {
+        return 0
+    }
+    
+    func timeRange(onDate date: Date) -> String {
+        return "undefined"
+    }
+        
     var title: String
-    
     var timeRange: String
-    
     var description: String
-
 }
 
 /// a data source for providing a protocol info
@@ -91,6 +104,8 @@ class ProtocolDataSource : StorageManagerWorker {
         let endOfDay = goalInfo.date.endOfDay
         let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: { request in
             request.predicate = NSPredicate(format: "task.goal = %@ && start >= %@ AND end <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
+            request.sortDescriptors = [NSSortDescriptor(key: "end", ascending: false)]
+
         }).map { TaskProgressInfo(progress: $0) }
     
         return progress

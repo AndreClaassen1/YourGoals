@@ -35,15 +35,16 @@ class ProtocolTableViewController: UITableViewController {
         self.tableView.registerReusableCell(ProtocolTableViewCell.self)
         let nib = UINib(nibName: "ProtocolSectionView", bundle: nil)
         self.tableView.register(nib, forHeaderFooterViewReuseIdentifier: "ProtocolSectionView")
-
-        reloadProtocolHistory()
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadProtocolHistory()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,19 +65,23 @@ class ProtocolTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let date = Date()
         let protocolCell = ProtocolTableViewCell.dequeue(fromTableView: self.tableView, atIndexPath: indexPath)
-        
         let protocolInfo = protocolHistory[indexPath.section][indexPath.row]
-        protocolCell.configure(protocolInfo: protocolInfo)
+        protocolCell.configure(protocolInfo: protocolInfo, onDate: date)
         return protocolCell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let protocolSectionView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
-        
+        let date = Date()
         let protocolGoalInfo = self.protocolGoalInfos[section]
         do {
-            try protocolSectionView.configure(manager: self.manager, goalInfo: protocolGoalInfo)
+            let workedOnGoal = self.protocolHistory[section].reduce(TimeInterval(0)) {
+                return $0 + $1.workedTime(onDate: date)
+            }
+            
+            try protocolSectionView.configure(manager: self.manager, goalInfo: protocolGoalInfo, workedOnGoal: workedOnGoal)
         }
         catch let error {
             self.showNotification(forError: error)

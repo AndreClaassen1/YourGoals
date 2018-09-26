@@ -33,9 +33,9 @@ class ProtocolTableViewCell: UITableViewCell {
     }
     
     /// confiure the cell with the values of the entry
-    func configure(protocolInfo:ProtocolProgressInfo) {
+    func configure(protocolInfo:ProtocolProgressInfo, onDate date:Date) {
         titleLabel.text = protocolInfo.title
-        durationLabel.text = protocolInfo.timeRange
+        durationLabel.text = protocolInfo.timeRange(onDate: date)
         descriptionLabel.text = protocolInfo.description
     }
     
