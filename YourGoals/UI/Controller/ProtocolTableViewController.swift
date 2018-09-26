@@ -10,11 +10,34 @@ import UIKit
 
 class ProtocolTableViewController: UITableViewController {
 
+    var manager:GoalsStorageManager!
+    var protocolGoalInfos = [ProtocolGoalInfo]()
+    var protocolHistory = [[ProtocolProgressInfo]]()
+    
+    
+    func reloadProtocolHistory() {
+        do {
+            let protocolDataSource = ProtocolDataSource(manager: self.manager)
+            protocolGoalInfos = try protocolDataSource.fetchWorkedGoals(forDate: Date())
+            for goalInfo in protocolGoalInfos {
+                let protocolProgressInfos = try protocolDataSource.fetchProgressOnGoal(goalInfo: goalInfo)
+                protocolHistory.append(protocolProgressInfos)
+            }
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.manager = GoalsStorageManager.defaultStorageManager
         self.tableView.registerReusableCell(ProtocolTableViewCell.self)
         let nib = UINib(nibName: "ProtocolSectionView", bundle: nil)
         self.tableView.register(nib, forHeaderFooterViewReuseIdentifier: "ProtocolSectionView")
+
+        reloadProtocolHistory()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,28 +53,36 @@ class ProtocolTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    /// retrieve the number of goals on which you work on the actual day
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return protocolGoalInfos.count
     }
-
+    
+    /// retrieve the number of history items where you worked on
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+        return protocolHistory[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let protocolCell = ProtocolTableViewCell.dequeue(fromTableView: self.tableView, atIndexPath: indexPath)
         
-        
-        // Configure the cell...
-
+        let protocolInfo = protocolHistory[indexPath.section][indexPath.row]
+        protocolCell.configure(protocolInfo: protocolInfo)
         return protocolCell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
-        return headerView
+        let protocolSectionView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProtocolSectionView") as! ProtocolSectionView
+        
+        let protocolGoalInfo = self.protocolGoalInfos[section]
+        do {
+            try protocolSectionView.configure(manager: self.manager, goalInfo: protocolGoalInfo)
+        }
+        catch let error {
+            self.showNotification(forError: error)
+        }
+        
+        return protocolSectionView
     }
     
     /// calculate the size of the header for the protocol

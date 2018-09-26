@@ -8,8 +8,11 @@
 
 import UIKit
 
+/// a table view cell for displaying a protocol entry in the done history
 class ProtocolTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +30,13 @@ class ProtocolTableViewCell: UITableViewCell {
         }
         
         return cell
+    }
+    
+    /// confiure the cell with the values of the entry
+    func configure(protocolInfo:ProtocolProgressInfo) {
+        titleLabel.text = protocolInfo.title
+        durationLabel.text = protocolInfo.timeRange
+        descriptionLabel.text = protocolInfo.description
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

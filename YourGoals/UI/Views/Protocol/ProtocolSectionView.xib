@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="width" secondItem="js8-8Z-Kou" secondAttribute="height" multiplier="1:1" id="8x8-h1-1ed"/>
                         <constraint firstAttribute="height" constant="128" id="B1l-3x-ywl"/>
                         <constraint firstAttribute="width" constant="128" id="QKh-rm-Sff"/>
                     </constraints>
@@ -61,7 +63,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="dateLabel" destination="Fho-hp-Axf" id="BJI-nq-Y1O"/>
+                <outlet property="goalExplanationLabel" destination="7Yi-Bz-JDL" id="AvV-DD-OpE"/>
                 <outlet property="goalMiniCell" destination="js8-8Z-Kou" id="veX-l5-n3b"/>
+                <outlet property="goalWorkedTimeLabel" destination="hVk-he-wKH" id="8hI-SE-ZSe"/>
             </connections>
             <point key="canvasLocation" x="121.5" y="86.5"/>
         </view>

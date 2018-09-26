@@ -11,6 +11,9 @@ import UIKit
 class ProtocolSectionView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var goalMiniCell: GoalMiniCell!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var goalExplanationLabel: UILabel!
+    @IBOutlet weak var goalWorkedTimeLabel: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -18,5 +21,15 @@ class ProtocolSectionView: UITableViewHeaderFooterView {
         // Drawing code
     }
     */
+    
+    /// configure this view with values
+    func configure(manager: GoalsStorageManager, goalInfo: ProtocolGoalInfo) throws {
+        
+        try self.goalMiniCell.show(goal: goalInfo.goal, forDate: goalInfo.date, goalIsActive: false, backburned: false, manager: manager)
+        
+        dateLabel.text = goalInfo.date.formattedInLocaleFormat()
+        goalExplanationLabel.text = goalInfo.goal.description
+        goalWorkedTimeLabel.text = "Sie haben 30 Minuten gearbeitet."
+    }
 
 }
