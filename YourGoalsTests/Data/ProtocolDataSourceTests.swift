@@ -18,15 +18,18 @@ class ProtocolDataSourceTests: StorageTestCase {
         self.protocolDataSource = ProtocolDataSource(manager: self.manager)
     }
     
-    func testDataSource() {
+    func createTaskWithProgress(forGoal goal:Goal, withName name:String, forDay date:Date, startProgressHour hour: Int, durationProgressInMinutes duration: Int) {
+        let task = self.testDataCreator.createTask(name: name, commitmentDate: date, forGoal: goal)
+        let progressStart = date.addMinutesToDate(hour * 60)
+        let progressEnd = progressStart.addMinutesToDate(duration)
+        self.testDataCreator.createProgress(forTask: task, start: progressStart, end: progressEnd)
+    }
+    
+    func testDataSourceFetchedWorkedGoals() {
         // setup
         let referenceDate = Date.dateWithYear(2018, month: 09, day: 25)
-        let progressStart = referenceDate.addMinutesToDate(10*60) // progress starts at 10:00 am
-        let progressEnd = progressStart.addMinutesToDate(60)
-        
         let goalWorked = self.testDataCreator.createGoal(name: "Test Goal with work")
-        let taskWithProgress = self.testDataCreator.createTask(name: "Task with progress", commitmentDate: referenceDate, forGoal: goalWorked)
-        self.testDataCreator.createProgress(forTask: taskWithProgress, start: progressStart, end: progressEnd)
+        self.createTaskWithProgress(forGoal: goalWorked, withName: "Task with Progress", forDay: referenceDate, startProgressHour: 10, durationProgressInMinutes: 60)
         
         // act
         let protocolGoalInfos = try! self.protocolDataSource.fetchWorkedGoals(forDate: referenceDate)

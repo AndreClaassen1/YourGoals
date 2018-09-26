@@ -22,7 +22,6 @@ struct ProtocolGoalInfo {
 }
 
 /// progress on a task for a given date
-
 protocol ProtocolProgressInfo {
     var title:String { get }
     var timeRange:String { get }
@@ -61,15 +60,17 @@ class ProtocolDataSource : StorageManagerWorker {
         let endOfDay = startOfDay.addDaysToDate(1).addingTimeInterval(-1)
         
         let progressGoals = try self.manager.goalsStore.fetchItems(qualifyRequest: { request in
-            // [NSPredicate predicateWithFormat:@"SUBQUERY(bs, $B, SUBQUERY($B.cs, $C, $C.ds.name != \"xxx\").@count > 0).@count > 0"];
-            request.predicate = NSPredicate(format: "SUBQUERY(tasks, $t, SUBQUERY($t.progress, $progress, $progress.start >= %@ AND $progress.end <= %@).@count > 0).@count > 0",
+            request.predicate = NSPredicate(format:
+                "SUBQUERY(tasks, $t, " +
+                    "SUBQUERY($t.progress, $progress, $progress.start >= %@ AND $progress.end <= %@).@count > 0" +
+                ").@count > 0",
                 startOfDay as NSDate, endOfDay as NSDate)
         }).map { ProtocolGoalInfo(goal: $0, date: date) }
         
         return progressGoals
     }
     
-    func fetchProgressOnGoal(goalInfo: ProtocolGoalInfo) -> [ProtocolProgressInfo] {
+    func fetchProgresysOnGoal(goalInfo: ProtocolGoalInfo) -> [ProtocolProgressInfo] {
         return []
     }
 }

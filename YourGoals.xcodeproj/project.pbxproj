@@ -91,6 +91,7 @@
 		7B6AE97A1FAC905F00E15A9D /* StrategyModelNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9791FAC905F00E15A9D /* StrategyModelNotification.swift */; };
 		7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */; };
 		7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */; };
+		7B6B4BA2215B800300154470 /* Date+startendofday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6B4BA1215B800300154470 /* Date+startendofday.swift */; };
 		7B6E11222078A9C8004605B1 /* PlanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E11212078A9C8004605B1 /* PlanningViewController.swift */; };
 		7B6E11242078BC43004605B1 /* PlannableTasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E11232078BC43004605B1 /* PlannableTasksDataSource.swift */; };
 		7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E35AA1FC5F5AE00F55089 /* Goal+Type.swift */; };
@@ -416,6 +417,7 @@
 		7B6AE9791FAC905F00E15A9D /* StrategyModelNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyModelNotification.swift; sourceTree = "<group>"; };
 		7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposerTests.swift; sourceTree = "<group>"; };
 		7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
+		7B6B4BA1215B800300154470 /* Date+startendofday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+startendofday.swift"; sourceTree = "<group>"; };
 		7B6E11212078A9C8004605B1 /* PlanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanningViewController.swift; sourceTree = "<group>"; };
 		7B6E11232078BC43004605B1 /* PlannableTasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannableTasksDataSource.swift; sourceTree = "<group>"; };
 		7B6E35AA1FC5F5AE00F55089 /* Goal+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Type.swift"; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				7B97202B20665342007D142E /* String+VisualBasicExtension.swift */,
 				7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */,
 				7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */,
+				7B6B4BA1215B800300154470 /* Date+startendofday.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1833,6 +1836,7 @@
 				7B7AECD71FF598C80096EE5D /* ImagePickerController.swift in Sources */,
 				7BAAFEE71F9CA2FA00BB102E /* AppDelegate.swift in Sources */,
 				7B3FA9DA1FE670290052B587 /* SelectableCommitDatesCreator.swift in Sources */,
+				7B6B4BA2215B800300154470 /* Date+startendofday.swift in Sources */,
 				7B6E35AD1FC6006100F55089 /* ActionableDataSourceProvider.swift in Sources */,
 				7B994E0C1FA228E000B704E1 /* ActionableInfo.swift in Sources */,
 				7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */,
