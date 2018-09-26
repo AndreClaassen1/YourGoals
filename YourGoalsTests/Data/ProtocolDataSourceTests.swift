@@ -37,4 +37,17 @@ class ProtocolDataSourceTests: StorageTestCase {
         // test
         XCTAssertEqual(1, protocolGoalInfos.count)
     }
+
+    func testDataSourceFetchedWorkedGoalsWithoutProgress() {
+        // setup
+        let referenceDate = Date.dateWithYear(2018, month: 09, day: 25)
+        let goalWorked = self.testDataCreator.createGoal(name: "Test Goal with work")
+        self.testDataCreator.createTask(name: "task without progress", forGoal: goalWorked)
+        // act
+        let protocolGoalInfos = try! self.protocolDataSource.fetchWorkedGoals(forDate: referenceDate)
+        
+        // test
+        XCTAssertEqual(0, protocolGoalInfos.count)
+    }
+
 }
