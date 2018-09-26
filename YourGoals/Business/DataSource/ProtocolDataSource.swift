@@ -29,12 +29,23 @@ protocol ProtocolProgressInfo {
 }
 
 struct TaskProgressInfo:ProtocolProgressInfo {
-    var timeRange: String
-    var description: String
-    var title: String
-    let task:Task
-    let percentageReached:Double
-    let progress:Progress
+    let progress:TaskProgress
+    
+    var timeRange: String {
+        return "0:00 - 0:00"
+    }
+    
+    var description: String {
+        return "Du bist deinem Ziel 3% näher gekommen!"
+    }
+    
+    var title: String {
+        return self.progress.task?.name ?? "Kein Task bekannt"
+    }
+    
+    init(progress: TaskProgress) {
+        self.progress = progress
+    }
 }
 
 struct HabitProgressInfo:ProtocolProgressInfo {
@@ -55,9 +66,8 @@ class ProtocolDataSource : StorageManagerWorker {
     /// - Returns: array of ProtocolGoalInfo
     /// - Throws: a core data exception
     func fetchWorkedGoals(forDate date: Date) throws -> [ProtocolGoalInfo] {
-        let calendar = Calendar.current
-        let startOfDay = calendar.startOfDay(for: date)
-        let endOfDay = startOfDay.addDaysToDate(1).addingTimeInterval(-1)
+        let startOfDay = date.startOfDay
+        let endOfDay = date.endOfDay
         
         let progressGoals = try self.manager.goalsStore.fetchItems(qualifyRequest: { request in
             request.predicate = NSPredicate(format:
@@ -70,7 +80,19 @@ class ProtocolDataSource : StorageManagerWorker {
         return progressGoals
     }
     
-    func fetchProgresysOnGoal(goalInfo: ProtocolGoalInfo) -> [ProtocolProgressInfo] {
-        return []
+    /// fetch progress items for a goal for the given date
+    ///
+    /// - Parameters
+    ///   - goalInfo: the goal info structiore
+    /// - Returns: an array of Protocol Progress Info Items
+    /// - Throws: Core Data Exception
+    func fetchProgressOnGoal(goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
+        let startOfDay = goalInfo.date.startOfDay
+        let endOfDay = goalInfo.date.endOfDay
+        let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format: "task.goal = %@ && start >= %@ AND end <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
+        }).map { TaskProgressInfo(progress: $0) }
+    
+        return progress
     }
 }
