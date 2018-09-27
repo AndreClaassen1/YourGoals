@@ -58,8 +58,6 @@ class TaskStateManager:ActionableSwitchProtocol {
             return
         }
         
-        let date = date.day()
-        
         if task.taskIsActive() {
             try self.setTaskState(task: task, state: .done, atDate: date)
         } else {

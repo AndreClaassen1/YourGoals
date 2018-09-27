@@ -22,7 +22,9 @@ class TaskRepetitionManager : StorageManagerWorker {
         
         // select all tasks which are done, where the done date != today
         let progress = try self.manager.tasksStore.fetchItems(qualifyRequest: {
-            $0.predicate = NSPredicate(format: "state == 1 AND doneDate != %@ AND repetitionValue CONTAINS[cd] %@", date as NSDate, repetitionForDate.rawValue)
+            $0.predicate = NSPredicate(format: "state == 1 AND doneDate < %@ AND repetitionValue CONTAINS[cd] %@",
+                                       date as NSDate,
+                                       repetitionForDate.rawValue)
         })
         for t in progress {
             t.setTaskState(state: .active)
