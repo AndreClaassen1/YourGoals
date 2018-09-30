@@ -39,12 +39,16 @@ class TestDataCreator:StorageManagerWorker {
         try! self.manager.saveContext()
     }
     
-    /// create a task for unit testing for the given goal with the name
+    /// create a task for unit testing for the given goal with the name. the date is already saved in the
+    /// core data storage
     ///
     /// - Parameters:
     ///   - name: name of the task
-    ///   - goal: the goal
-    /// - Returns: a new  task
+    ///   - size: size in minutes. Default is 30 minutes
+    ///   - prio: the priority of the task
+    ///   - commitmentDate: the commitment date or nil
+    ///   - goal: the goal, for which the task is created for
+    /// - Returns: the task
     @discardableResult
     func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, forGoal goal: Goal) -> Task {
         let composer = GoalComposer(manager: self.manager)
@@ -57,7 +61,7 @@ class TestDataCreator:StorageManagerWorker {
         return task
     }
     
-    /// create a range of tasks and a goal
+    /// create a range of tasks and a goal and save them in the storage
     ///
     /// - Parameter infos: infos for the tassk
     /// - Returns: goal

@@ -32,11 +32,27 @@ class ProtocolTableViewCell: UITableViewCell {
         return cell
     }
     
+    /// create a description string which includes the progress made on the goal so far.
+    ///
+    /// - Parameters:
+    ///   - protocolInfo: the protocol info with the percentage of the progress
+    ///   - date: the date as the foundation for the calculation
+    /// - Returns: a formatted string: "You made 3% progress on your goal!"
+    func progressDescription(from protocolInfo: ProtocolProgressInfo, onDate date:Date) -> String {
+        let percentage = protocolInfo.progress(onDate: date)
+        if percentage == 0.0 {
+            return "You made no progress on your goal!"
+        } else {
+            let percentageString = String.localizedStringWithFormat("%.2f", percentage * 100.0)
+            return "You made \(percentageString)% progress on your goal!"
+        }
+    }
+    
     /// confiure the cell with the values of the entry
     func configure(protocolInfo:ProtocolProgressInfo, onDate date:Date) {
         titleLabel.text = protocolInfo.title
         durationLabel.text = protocolInfo.timeRange(onDate: date)
-        descriptionLabel.text = protocolInfo.description
+        descriptionLabel.text = progressDescription(from: protocolInfo, onDate: date)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,5 +60,4 @@ class ProtocolTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -20,7 +20,7 @@ class RepetitionTests: StorageTestCase {
         let repetitionValue = try! RepetitionValueEncoder().repetitionValue(fromSet: repetitions)
         
         // test
-        XCTAssertEqual("[\"Wed\",\"Mon\"]", repetitionValue)
+        XCTAssert(repetitionValue == "[\"Mon\",\"Wed\"]" || repetitionValue == "[\"Wed\",\"Mon\"]")
     }
     
     func testRepetitionValueDecoder() {
