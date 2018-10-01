@@ -231,7 +231,6 @@ class DoneTaskProvider:ProtocolProgressProvider {
         })
         
         let goalInfos = goals.map { ProtocolGoalInfo(goal: $0, date: date)}
-        
         return goalInfos
     }
     

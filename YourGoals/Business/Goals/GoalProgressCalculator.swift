@@ -55,8 +55,13 @@ class GoalProgressCalculator:StorageManagerWorker {
             return 0.0
         }
         
-        let numberOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.count
-        let progress = Double(numberOfDone) / Double(actionables.count)
+        let sizeOfAll = actionables.reduce(0.0, { return $0 + $1.size })
+        let sizeOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.reduce(0.0, { return $0 + $1.size })
+        
+//        let numberOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.count
+//        let progress = Double(numberOfDone) / Double(actionables.count)
+
+        let progress = Double(sizeOfDone / sizeOfAll)
         return progress
     }
     
