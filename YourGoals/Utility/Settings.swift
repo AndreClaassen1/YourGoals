@@ -14,7 +14,7 @@ protocol Settings {
     var newFunctions:Bool { get set }
     
     
-    /// show backburned goals
+    /// show backburnedGoals: goals
     var backburnedGoals:Bool { get set }
 }
 
@@ -31,7 +31,7 @@ class SettingsUserDefault:Settings {
         }
     }
     
-    /// show backburned goals
+    /// show backburnedGoals: goals
     var backburnedGoals: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "SettingBackburnedGoals")

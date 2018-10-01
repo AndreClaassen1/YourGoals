@@ -9,6 +9,8 @@
 import Foundation
 @testable import YourGoals
 
+typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date? )
+
 /// this class makes the creation of goals and tasks a little bit easier
 class TestDataCreator:StorageManagerWorker {
     
@@ -16,20 +18,20 @@ class TestDataCreator:StorageManagerWorker {
     ///
     /// - Parameter name: name of the goal
     /// - Returns: the goal
-    func createGoal(name: String, prio: Int16 = 1, backburned: Bool = false) -> Goal {
+    func createGoal(name: String, prio: Int16 = 1, backburnedGoals: Bool = false) -> Goal {
         let strategyManager = StrategyManager(manager: self.manager)
-        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: name, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate, prio: prio, backburned: backburned))
+        let goal = try! strategyManager.createNewGoalForStrategy(goalInfo: GoalInfo(name: name, reason: "test reasons", startDate: Date.minimalDate, targetDate: Date.maximalDate, prio: prio, backburnedGoals: backburnedGoals))
         return goal
     }
     
-    /// generate valid test data with goals and tasks. you can specifiy, if a goal is backburned or not
+    /// generate valid test data with goals and tasks. you can specifiy, if a goal is backburnedGoals: or not
     ///
     /// - Parameters:
     ///   - date: date for committed tasks
-    ///   - data: testsdata with tuples of goalnames, backburned indicator and number of tasks for the goal
-    func generateTestData(startDate date: Date, data: [(goalName:String, backburned: Bool, numberOfTasks: Int)]) {
+    ///   - data: testsdata with tuples of goalnames, backburnedGoals: indicator and number of tasks for the goal
+    func generateTestData(startDate date: Date, data: [(goalName:String, backburnedGoals: Bool, numberOfTasks: Int)]) {
         for d in data {
-            let goal = self.createGoal(name: d.goalName, backburned: d.backburned)
+            let goal = self.createGoal(name: d.goalName, backburnedGoals: d.backburnedGoals)
             for i in 0 ..< d.numberOfTasks {
                 let task = self.createTask(name: "Task #\(i) for Goal \(d.goalName)", forGoal: goal)
                 task.commitmentDate = date
@@ -61,18 +63,24 @@ class TestDataCreator:StorageManagerWorker {
         return task
     }
     
+    /// create a bunch of tasks for a given goal
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - infos: infos for the tasks
+    func createTasks(forGoal goal: Goal, infos: [TaskInfoTuple] ) {
+        for info in infos {
+            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, forGoal: goal)
+        }
+    }
+    
     /// create a range of tasks and a goal and save them in the storage
     ///
     /// - Parameter infos: infos for the tassk
     /// - Returns: goal
-    func createGoalWithTasks(infos: [(name: String, prio:Int, size:Float, commitmentDate: Date? )]) -> Goal {
-       
+    func createGoalWithTasks(infos: [TaskInfoTuple]) -> Goal {
         let goal = self.createGoal(name: "New Unit-Test Goal")
-        
-        for info in infos {
-            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, forGoal: goal)
-        }
-        
+        createTasks(forGoal: goal, infos: infos)
         return goal
     }
     

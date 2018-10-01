@@ -39,11 +39,11 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     /// fetch all tasks committed for the given date
     ///
     /// - Throws: core data exception
-    func committedTasks(forDate date:Date, backburned: Bool) throws -> [Task] {
+    func committedTasks(forDate date:Date, backburnedGoals: Bool) throws -> [Task] {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
-            request.predicate = backburned ?
+            request.predicate = backburnedGoals ?
                 NSPredicate(format: "commitmentDate == %@", date.day() as NSDate) :
-                  NSPredicate(format: "commitmentDate == %@ AND goal.backburned == NO", date.day() as NSDate)
+                  NSPredicate(format: "commitmentDate == %@ AND goal.backburnedGoals == NO", date.day() as NSDate)
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)
@@ -59,11 +59,11 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     /// - Parameter date: date
     /// - Returns: a list of tasks committed past the given date
     /// - Throws: core data exception
-    func committedTasksPast(forDate date:Date, backburned: Bool) throws -> [Task] {
+    func committedTasksPast(forDate date:Date, backburnedGoals: Bool) throws -> [Task] {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
-            request.predicate = backburned ?
+            request.predicate = backburnedGoals ?
                 NSPredicate(format: "commitmentDate < %@ AND state == 0", date.day() as NSDate) :
-                NSPredicate(format: "commitmentDate < %@ AND state == 0 AND goal.backburned == NO", date.day() as NSDate)
+                NSPredicate(format: "commitmentDate < %@ AND state == 0 AND goal.backburnedGoals == NO", date.day() as NSDate)
                 
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
@@ -78,13 +78,13 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     ///
     /// - Returns: tasks accociated with the today goal
     /// - Throws: core data excepiton
-    func uncommittedTasksForTodayGoal(backburned: Bool) throws -> [Task] {
+    func uncommittedTasksForTodayGoal(backburnedGoals: Bool) throws -> [Task] {
         let strategyManager = StrategyManager(manager: self.manager)
         let todayGoal = try strategyManager.assertTodayGoal(strategy: try strategyManager.assertValidActiveStrategy())
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
-            request.predicate = backburned ?
+            request.predicate = backburnedGoals ?
                 NSPredicate(format: "commitmentDate == nil AND goal == %@", todayGoal) :
-                NSPredicate(format: "commitmentDate == nil AND goal == %@ AND goal.backburned == NO", todayGoal)
+                NSPredicate(format: "commitmentDate == nil AND goal == %@ AND goal.backburnedGoals == NO", todayGoal)
             
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)
@@ -119,12 +119,12 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     /// - Parameter date: date
     /// - Returns: a collection of actual and past committed tasks
     /// - Throws: core data exception
-    func committedTasksTodayAndFromThePast(forDate date:Date, backburned: Bool) throws -> [Task] {
+    func committedTasksTodayAndFromThePast(forDate date:Date, backburnedGoals: Bool) throws -> [Task] {
         var tasks = [Task]()
     
-        tasks.append(contentsOf: try committedTasks(forDate: date, backburned: backburned))
-        tasks.append(contentsOf: try committedTasksPast(forDate: date, backburned: backburned))
-        tasks.append(contentsOf: try uncommittedTasksForTodayGoal(backburned: backburned))
+        tasks.append(contentsOf: try committedTasks(forDate: date, backburnedGoals: backburnedGoals))
+        tasks.append(contentsOf: try committedTasksPast(forDate: date, backburnedGoals: backburnedGoals))
+        tasks.append(contentsOf: try uncommittedTasksForTodayGoal(backburnedGoals: backburnedGoals))
         
         let sorted = tasks.sorted { (t1, t2) -> Bool in
             if t1.state != t2.state {

@@ -18,7 +18,7 @@ struct GoalFormTag  {
     static let targetDate = "targetDate"
     static let visionImage = "visionImage"
     static let deleteButton = "deleteButton"
-    static let backburned = "backburned"
+    static let backburnedGoals = "backburnedGoals"
 }
 
 extension EditGoalFormController {
@@ -102,7 +102,7 @@ extension EditGoalFormController {
             }
             
             +++ Section()
-            <<< SwitchRow(GoalFormTag.backburned) {
+            <<< SwitchRow(GoalFormTag.backburnedGoals) {
                 $0.title = "Backburn Goal?"
             }
             
@@ -133,7 +133,7 @@ extension EditGoalFormController {
         } else {
             values[GoalFormTag.visionImage] = #imageLiteral(resourceName: "Success")
         }
-        values[GoalFormTag.backburned] = goalInfo.backburned
+        values[GoalFormTag.backburnedGoals] = goalInfo.backburnedGoals
 
         form.setValues(values)
     }
@@ -150,8 +150,8 @@ extension EditGoalFormController {
         let startDate = values[GoalFormTag.startDate] as? Date
         let targetDate = values[GoalFormTag.targetDate] as? Date
         let image = values[GoalFormTag.visionImage] as! UIImage?
-        let backburned = values[GoalFormTag.backburned] as! Bool
+        let backburnedGoals = values[GoalFormTag.backburnedGoals] as! Bool
         
-        return GoalInfo(name: name, reason: reason, startDate: startDate, targetDate: targetDate, image: image, prio: 999, backburned: backburned)
+        return GoalInfo(name: name, reason: reason, startDate: startDate, targetDate: targetDate, image: image, prio: 999, backburnedGoals: backburnedGoals)
     }
 }

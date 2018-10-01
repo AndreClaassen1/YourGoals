@@ -32,9 +32,9 @@ class AppBadgeActualizer : NSObject {
     }
     
     /// actualize the application badge with number of waiting actionables
-    func actualize(forDate date: Date, withBackburned backburned:Bool) {
+    func actualize(forDate date: Date, withBackburned backburnedGoals:Bool) {
         do {
-            let numberOfActiveActionables = try self.calculator.numberOfActiveActionables(forDate: date, withBackburned: backburned)
+            let numberOfActiveActionables = try self.calculator.numberOfActiveActionables(forDate: date, withBackburned: backburnedGoals)
             let content = UNMutableNotificationContent()
             content.badge = numberOfActiveActionables
             

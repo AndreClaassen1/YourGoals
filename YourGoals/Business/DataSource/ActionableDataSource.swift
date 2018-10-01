@@ -41,7 +41,7 @@ protocol ActionableDataSource {
     /// - Parameter date: the date for calculating the datas
     /// - Returns: an array of sections. if this array is empty, sections aren't supported
     /// - Throws: core data exception
-    func fetchSections(forDate date:Date, withBackburned backburned: Bool) throws -> [ActionableSection]
+    func fetchSections(forDate date:Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection]
     
     /// fetch a ordered array of actionables fromt he data source
     ///
@@ -51,7 +51,7 @@ protocol ActionableDataSource {
     ///
     /// - Returns: an ordered array of actionables
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection: ActionableSection?) throws -> [Actionable]
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable]
     
     /// retrieve the reordering protocol, if the datasource allows task reordering
     ///

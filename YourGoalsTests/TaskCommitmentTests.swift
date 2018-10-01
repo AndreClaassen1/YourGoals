@@ -35,7 +35,7 @@ class TaskCommitmentTests: StorageTestCase {
         try! commitmentManager.commit(task: task, forDate: testDate)
         
         // done
-        let committedTasks = try! commitmentManager.committedTasks(forDate: testDate, backburned: true)
+        let committedTasks = try! commitmentManager.committedTasks(forDate: testDate, backburnedGoals: true)
         XCTAssertEqual(1, committedTasks.count)
         XCTAssertEqual(CommittingState.committedForDate, committedTasks[0].committingState(forDate: testDate))
     }
@@ -53,7 +53,7 @@ class TaskCommitmentTests: StorageTestCase {
         
         // act
         let commitmentManager = TaskCommitmentManager(manager: self.manager)
-        let committedTasksFromThePast = try! commitmentManager.committedTasksPast(forDate: testDate, backburned: true)
+        let committedTasksFromThePast = try! commitmentManager.committedTasksPast(forDate: testDate, backburnedGoals: true)
         
         // test
         XCTAssertEqual(2, committedTasksFromThePast.count)
@@ -88,7 +88,7 @@ class TaskCommitmentTests: StorageTestCase {
         
         // act
         let commitmentManager = TaskCommitmentManager(manager: self.manager)
-        let committedTasksFromThePast = try! commitmentManager.committedTasksTodayAndFromThePast(forDate: testDate, backburned: true)
+        let committedTasksFromThePast = try! commitmentManager.committedTasksTodayAndFromThePast(forDate: testDate, backburnedGoals: true)
         
         // test
         XCTAssertEqual(4, committedTasksFromThePast.count)

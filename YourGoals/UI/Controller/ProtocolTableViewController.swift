@@ -14,10 +14,9 @@ class ProtocolTableViewController: UITableViewController {
     var protocolGoalInfos = [ProtocolGoalInfo]()
     var protocolHistory = [[ProtocolProgressInfo]]()
     
-    
     func reloadProtocolHistory() {
         do {
-            let protocolDataSource = ProtocolDataSource(manager: self.manager)
+            let protocolDataSource = ProtocolDataSource(manager: self.manager, backburnedGoals: SettingsUserDefault.standard.backburnedGoals )
             protocolGoalInfos = try protocolDataSource.fetchWorkedGoals(forDate: Date())
             for goalInfo in protocolGoalInfos {
                 let protocolProgressInfos = try protocolDataSource.fetchProgressOnGoal(goalInfo: goalInfo)

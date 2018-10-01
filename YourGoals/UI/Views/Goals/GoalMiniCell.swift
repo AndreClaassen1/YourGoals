@@ -69,10 +69,10 @@ class GoalMiniCell: NibLoadingView {
     ///   - goal: show this goal
     ///   - date: show the progress of the goal for the given date
     ///   - goalIsActive: true, if this goal is active
-    ///   - backburned: true, if this goal is backburned
+    ///   - backburnedGoals: true, if this goal is backburnedGoals:
     ///   - manager: a sorage manager we need to show the progress indicator
     /// - Throws: core data exception
-    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburned: Bool, manager: GoalsStorageManager) throws {
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburnedGoals: Bool, manager: GoalsStorageManager) throws {
         guard let data = goal.imageData?.data else {
             fatalError ("could not extract data: \(String(describing: goal.imageData))")
         }
@@ -81,7 +81,7 @@ class GoalMiniCell: NibLoadingView {
             fatalError ("could not create Image from data: \(data)")
         }
         
-        if backburned {
+        if backburnedGoals {
             motivationImage.image = image.convertToGrayScale()
         } else {
             motivationImage.image = image
@@ -92,7 +92,7 @@ class GoalMiniCell: NibLoadingView {
         titleLabel.sizeToFit()
         progressIndicatorView.viewMode = .mini
         self.goalIsActive = goalIsActive
-        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, withBackburned: backburned, manager: manager)
+        try progressIndicatorView.setProgress(forGoal: goal, forDate: date, withBackburned: backburnedGoals, manager: manager)
     }
 }
 

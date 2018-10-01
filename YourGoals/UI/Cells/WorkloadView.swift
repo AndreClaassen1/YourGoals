@@ -23,7 +23,7 @@ class WorkloadView: UIView {
     
     func configure(manager: GoalsStorageManager, forDate date: Date) throws {
         let workloadCalculator = TodayWorkloadCalculator(manager: manager)
-        let info = try workloadCalculator.calcWorkload(forDate: date, backburned: SettingsUserDefault.standard.backburnedGoals)
+        let info = try workloadCalculator.calcWorkload(forDate: date, backburnedGoals: SettingsUserDefault.standard.backburnedGoals)
         totalTimeLabel.text = info.totalRemainingTime.formattedAsString()
         tasksLeftLabel.text = "\(info.totalTasksLeft)"
         endTimeLabel.text  = info.endTime.formattedTime()

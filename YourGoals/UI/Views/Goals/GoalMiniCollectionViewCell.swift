@@ -33,8 +33,8 @@ class GoalMiniCollectionViewCell: UICollectionViewCell {
         return cell
     }
     
-    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburned: Bool, manager: GoalsStorageManager) throws {
-        try self.goalMiniCell.show(goal: goal, forDate: date, goalIsActive: goalIsActive, backburned: backburned, manager: manager)
+    func show(goal: Goal, forDate date: Date, goalIsActive:Bool, backburnedGoals: Bool, manager: GoalsStorageManager) throws {
+        try self.goalMiniCell.show(goal: goal, forDate: date, goalIsActive: goalIsActive, backburnedGoals: backburnedGoals, manager: manager)
     }
 }
 

@@ -15,7 +15,7 @@ class ProtocolDataSourceTests: StorageTestCase {
     
     override func setUp() {
         super.setUp()
-        self.protocolDataSource = ProtocolDataSource(manager: self.manager)
+        self.protocolDataSource = ProtocolDataSource(manager: self.manager, backburnedGoals: false)
     }
     
     func createTaskWithProgress(forGoal goal:Goal, withName name:String, forDay date:Date, startProgressHour hour: Int, durationProgressInMinutes duration: Int) {

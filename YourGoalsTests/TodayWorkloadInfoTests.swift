@@ -23,7 +23,7 @@ class TodayWorkloadInfoTests: StorageTestCase {
             ])
         
         // act
-        let info = try! TodayWorkloadCalculator(manager: self.manager).calcWorkload(forDate: workloadDate, backburned: true)
+        let info = try! TodayWorkloadCalculator(manager: self.manager).calcWorkload(forDate: workloadDate, backburnedGoals: true)
     
         // test
         XCTAssertEqual(2, info.totalTasksLeft)

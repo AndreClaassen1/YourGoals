@@ -18,9 +18,9 @@ class TodayWorkloadCalculator: StorageManagerWorker {
 
     typealias infoTuple = (remainingTime: TimeInterval, tasksLeft: Int)
     
-    func calcWorkload(forDate date: Date, backburned: Bool) throws -> WorkloadInfo {
+    func calcWorkload(forDate date: Date, backburnedGoals: Bool) throws -> WorkloadInfo {
         let todayDataSource  = TodayAllActionablesDataSource(manager: self.manager)
-        let actionables = try todayDataSource.fetchActionables(forDate: date, withBackburned: backburned, andSection: nil)
+        let actionables = try todayDataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
         let sumInfo = actionables.reduce((remainingTime: TimeInterval(0.0), tasksLeft: 0)) { i, actionable in
             let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
             return (i.remainingTime +  remainingTime, i.tasksLeft + 1)

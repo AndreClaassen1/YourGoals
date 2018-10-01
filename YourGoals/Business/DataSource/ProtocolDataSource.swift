@@ -34,14 +34,19 @@ protocol ProtocolProgressInfo {
 /// a info about worked time on a task for a time range.
 struct TaskProgressInfo:ProtocolProgressInfo {
     
+    let manager:GoalsStorageManager
+    let backburnedGoals:Bool
+    
     /// the progress on the task
     let progress:TaskProgress
     
     /// initialize this info the progress data
     ///
     /// - Parameter progress: the task progress data from core data
-    init(progress: TaskProgress) {
+    init(manager: GoalsStorageManager, progress: TaskProgress, backburnedGoals: Bool) {
+        self.manager = manager
         self.progress = progress
+        self.backburnedGoals = backburnedGoals
     }
 
     /// the date for sorting purposes
@@ -79,7 +84,7 @@ struct TaskProgressInfo:ProtocolProgressInfo {
     /// - Parameter onDate: the date, where I made progress for
     /// - Returns: the progress
     func progress(onDate: Date) -> Double {
-        let calculator = TaskProgressCalculator()
+        let calculator = TaskProgressCalculator(manager: self.manager, backburnedGoals: self.backburnedGoals)
         return calculator.calculateProgressOnGoal(taskProgress: self.progress, forDate: onDate)
     }
 }
@@ -158,14 +163,17 @@ protocol ProtocolProgressProvider {
 
 /// a provider for progress based on worked time for on tsks
 class TaskProgressProvider:ProtocolProgressProvider {
+    
     /// core data storage manager
     let manager:GoalsStorageManager
+    let backburnedGoals:Bool
     
     /// initialize the task provider
     ///
     /// - Parameter manager: core data storage manager
-    init(manager:GoalsStorageManager) {
+    init(manager:GoalsStorageManager, backburnedGoals:Bool) {
         self.manager = manager
+        self.backburnedGoals = backburnedGoals
     }
     
     /// fetch all goals where is progress on a givne date
@@ -199,7 +207,7 @@ class TaskProgressProvider:ProtocolProgressProvider {
         let endOfDay = goalInfo.date.endOfDay
         let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: { request in
             request.predicate = NSPredicate(format: "task.goal = %@ && start >= %@ AND end <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
-        }).map { TaskProgressInfo(progress: $0) }
+        }).map { TaskProgressInfo(manager: self.manager, progress: $0, backburnedGoals: self.backburnedGoals) }
         return progress
     }
 }
@@ -260,9 +268,9 @@ class ProtocolDataSource : StorageManagerWorker {
     /// initialize the protocol data source with a core data storage manager
     ///
     /// - Parameter manager: core data storage manager
-    override init(manager:GoalsStorageManager) {
+    init(manager:GoalsStorageManager, backburnedGoals: Bool) {
         self.protocolProviders = [
-            TaskProgressProvider(manager: manager),
+            TaskProgressProvider(manager: manager, backburnedGoals: backburnedGoals),
             DoneTaskProvider(manager: manager)
         ]
         

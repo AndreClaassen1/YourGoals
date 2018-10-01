@@ -16,8 +16,8 @@ class WatchTasksContextProviderTests: StorageTestCase {
         // setup
         let testDate = Date.dateWithYear(2018, month: 05, day: 24)
         self.testDataCreator.generateTestData(startDate: testDate, data: [
-            (goalName: "Regular Goal", backburned: false, numberOfTasks: 3),
-            (goalName: "Backburned Goal", backburned: true, numberOfTasks: 4)
+            (goalName: "Regular Goal", backburnedGoals: false, numberOfTasks: 3),
+            (goalName: "Backburned Goal", backburnedGoals: true, numberOfTasks: 4)
             ])
         
         let wcp = WatchTasksContextProvider(manager: self.manager)

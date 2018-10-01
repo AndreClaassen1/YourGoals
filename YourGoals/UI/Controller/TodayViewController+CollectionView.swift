@@ -64,7 +64,7 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
             let goalCell = GoalMiniCollectionViewCell.dequeue(fromCollectionView: collectionView, atIndexPath: indexPath)
             let goal = self.goalForIndexPath(path: indexPath)
             let date = Date()
-            try goalCell.show(goal: goal, forDate: date, goalIsActive: goal.isActive(forDate: date), backburned: goal.backburned,  manager: self.manager)
+            try goalCell.show(goal: goal, forDate: date, goalIsActive: goal.isActive(forDate: date), backburnedGoals: goal.backburnedGoals,  manager: self.manager)
             return goalCell
         }
         catch let error {

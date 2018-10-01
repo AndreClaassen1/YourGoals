@@ -53,7 +53,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     fileprivate func configure(goal:Goal) throws {
         // Do any additional setup after loading the view.
         self.goal = goal
-        try self.goalContentView.show(goal: goal, forDate: Date(), goalIsActive: goal.isActive(forDate: Date()), backburned: goal.backburned, manager: self.manager)
+        try self.goalContentView.show(goal: goal, forDate: Date(), goalIsActive: goal.isActive(forDate: Date()), backburnedGoals: goal.backburnedGoals, manager: self.manager)
     }
     
     override func viewDidLoad() {

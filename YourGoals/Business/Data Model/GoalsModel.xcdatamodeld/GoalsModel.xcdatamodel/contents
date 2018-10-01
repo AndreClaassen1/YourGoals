@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
-        <attribute name="backburned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="backburnedGoals" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,11 +47,11 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="progress" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-504" positionY="-282" width="128" height="225"/>
-        <element name="Habit" positionX="-261" positionY="-375" width="128" height="120"/>
-        <element name="HabitCheck" positionX="-81" positionY="-363" width="128" height="75"/>
-        <element name="ImageData" positionX="-243" positionY="-198" width="128" height="75"/>
-        <element name="Task" positionX="-234" positionY="-12" width="128" height="195"/>
-        <element name="TaskProgress" positionX="-36" positionY="9" width="128" height="90"/>
+        <element name="Goal" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Habit" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HabitCheck" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ImageData" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TaskProgress" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

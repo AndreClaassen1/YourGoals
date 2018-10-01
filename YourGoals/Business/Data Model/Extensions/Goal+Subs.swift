@@ -29,9 +29,9 @@ extension Goal {
     ///
     /// - Parameters:
     ///   - goalTypes: include the specified goal types or all
-    ///   - backburned: include backburned goals or not
+    ///   - backburnedGoals: include backburnedGoals: goals or not
     /// - Returns: goals sorted by prio
-    func allGoalsByPrio(withTypes goalTypes: [GoalType]? = nil, withBackburned backburned: Bool) -> [Goal] {
+    func allGoalsByPrio(withTypes goalTypes: [GoalType]? = nil, withBackburned backburnedGoals: Bool) -> [Goal] {
         let goals = allGoals(withTypes: goalTypes).sorted(by: {
             if $0.type == $1.type {
                 return $0.prio < $1.prio
@@ -39,7 +39,7 @@ extension Goal {
                 return $0.type > $1.type // types are sorted descendent because of the today goal with the type 2
             }
         }).filter({
-            return backburned ? true : !$0.backburned
+            return backburnedGoals ? true : !$0.backburnedGoals
         })
         
         return goals

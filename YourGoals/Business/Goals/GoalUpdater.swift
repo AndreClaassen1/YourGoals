@@ -32,7 +32,7 @@ class GoalUpdater:StorageManagerWorker {
                 goal.targetDate = targetDate
             }
         }
-        goal.backburned = goalInfo.backburned
+        goal.backburnedGoals = goalInfo.backburnedGoals
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: goalInfo.image)
         try self.manager.dataManager.saveContext()

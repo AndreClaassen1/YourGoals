@@ -10,13 +10,13 @@ import Foundation
 
 class TodayAllActionablesDataSource : StorageManagerWorker, ActionableDataSource {
     
-    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
-        var actionables = try CommittedTasksDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburned, andSection: section)
-        actionables.append(contentsOf: try HabitsDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburned, andSection: section))
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
+        var actionables = try CommittedTasksDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: section)
+        actionables.append(contentsOf: try HabitsDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: section))
         return actionables
     }
     

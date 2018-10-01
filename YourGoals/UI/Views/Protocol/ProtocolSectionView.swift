@@ -27,7 +27,7 @@ class ProtocolSectionView: UITableViewHeaderFooterView {
     /// configure this view with values
     func configure(manager: GoalsStorageManager, goalInfo: ProtocolGoalInfo, workedOnGoal:TimeInterval) throws {
         
-        try self.goalMiniCell.show(goal: goalInfo.goal, forDate: goalInfo.date, goalIsActive: false, backburned: false, manager: manager)
+        try self.goalMiniCell.show(goal: goalInfo.goal, forDate: goalInfo.date, goalIsActive: false, backburnedGoals: false, manager: manager)
         
         dateLabel.text = goalInfo.date.formattedInLocaleFormat()
         goalExplanationLabel.text = goalInfo.goal.reason

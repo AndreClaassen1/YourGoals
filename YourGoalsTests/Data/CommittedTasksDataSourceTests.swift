@@ -10,22 +10,22 @@ import XCTest
 @testable import YourGoals
 
 class CommittedTasksDataSourceTests: StorageTestCase {
-    /// test the CommittedTasksDataSource with a backburned indicator and expected number of tasks as a result
+    /// test the CommittedTasksDataSource with a backburnedGoals: indicator and expected number of tasks as a result
     ///
     /// - Parameters:
-    ///   - backburned: true, if tasks from backburned goals should be included
+    ///   - backburnedGoals: true, if tasks from backburnedGoals: goals should be included
     ///   - expectedNumberOfTasks: expected number of tasks in the result set.
-    func testBackburnedTasks(inclTasksFromBackburnedGoals backburned: Bool, expectedNumberOfTasks: Int) {
+    func testBackburnedTasks(inclTasksFromBackburnedGoals backburnedGoals: Bool, expectedNumberOfTasks: Int) {
         // setup
         let testDate = Date.dateWithYear(2018, month: 05, day: 09)
         self.testDataCreator.generateTestData(startDate: testDate, data: [
-            (goalName: "Regular Goal", backburned: false, numberOfTasks: 3),
-            (goalName: "Backburned Goal", backburned: true, numberOfTasks: 4)
+            (goalName: "Regular Goal", backburnedGoals: false, numberOfTasks: 3),
+            (goalName: "Backburned Goal", backburnedGoals: true, numberOfTasks: 4)
             ])
         
         // act
         let ds = CommittedTasksDataSource(manager: self.manager)
-        let actionables = try! ds.fetchActionables(forDate: testDate, withBackburned: backburned, andSection: nil)
+        let actionables = try! ds.fetchActionables(forDate: testDate, withBackburned: backburnedGoals, andSection: nil)
         
         // test
         XCTAssertEqual(expectedNumberOfTasks, actionables.count)

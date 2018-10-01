@@ -20,7 +20,7 @@ class TaskOrderManagerTests: StorageTestCase {
     
         
         let goalFactory = GoalFactory(manager: self.manager)
-        let goal = try! goalFactory.create(name: "New Unit-Test Goal", prio: 1, reason: "unit test", startDate: Date.dateWithYear(2017, month: 10, day: 30), targetDate: Date.dateWithYear(2017, month: 11, day: 01), image: nil, backburned: false)
+        let goal = try! goalFactory.create(name: "New Unit-Test Goal", prio: 1, reason: "unit test", startDate: Date.dateWithYear(2017, month: 10, day: 30), targetDate: Date.dateWithYear(2017, month: 11, day: 01), image: nil, backburnedGoals: false)
         goal.addToTasks(tasksUnsorted)
         try! self.manager.dataManager.saveContext()
         return goal

@@ -45,7 +45,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     ///
     /// - Returns: an array with the next 7 days
     /// - Throws: nothing
-    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         let today = date.day()
         var sections = [ActionableSection]()
         
@@ -63,7 +63,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     ///   - section: a section which has the date for fetching actionables
     /// - Returns: committed tasks for the section
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
         guard let plannableSection = section as? PlannableActionableSection else {
             NSLog("illegal section type: \(String(describing: section))")
             return []
@@ -72,9 +72,9 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
         var tasks = [Actionable]()
         
         if date.day().compare(plannableSection.date.day()) == .orderedSame {
-            tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, withBackburned: backburned, andSection: nil)
+            tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, withBackburned: backburnedGoals, andSection: nil)
         } else {
-            tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburned: backburned)
+            tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburnedGoals: backburnedGoals)
         }
         return tasks
     }
@@ -104,7 +104,7 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
             return
         }
         
-        let tasksInSection = try taskManager.committedTasks(forDate: plannableSection.date, backburned: SettingsUserDefault.standard.backburnedGoals)
+        let tasksInSection = try taskManager.committedTasks(forDate: plannableSection.date, backburnedGoals: SettingsUserDefault.standard.backburnedGoals)
         task.commitmentDate = plannableSection.date
         
         try self.taskManager.insertTaskAtPosition(task: task, tasks: tasksInSection, toPosition: toPosition)

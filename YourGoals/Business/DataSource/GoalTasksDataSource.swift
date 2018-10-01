@@ -23,11 +23,11 @@ class GoalTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection: ActionableSection?) throws -> [Actionable] {
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
         return try taskManager.tasksByOrder(forGoal: goal)
     }
     

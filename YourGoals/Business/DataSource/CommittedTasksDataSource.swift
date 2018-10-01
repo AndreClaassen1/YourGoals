@@ -28,12 +28,12 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     // MARK: ActionableTableViewDataSource
     
-    func fetchSections(forDate date: Date, withBackburned backburned: Bool) throws -> [ActionableSection] {
+    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburned: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburned: backburned)
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
+        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburnedGoals: backburnedGoals)
         switch mode {
         case .activeTasksIncluded:
             return committedTasks

@@ -8,17 +8,17 @@
 
 import Foundation
 
-/// sorts habits by order and suppresses habits from backburned goals.
+/// sorts habits by order and suppresses habits from backburnedGoals: goals.
 class HabitOrderManager:StorageManagerWorker {
-    func habitsByOrder(forGoal goal:Goal?, backburned: Bool) throws -> [Habit] {
+    func habitsByOrder(forGoal goal:Goal?, backburnedGoals: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
             if let goal = goal {
-                request.predicate = backburned ?
+                request.predicate = backburnedGoals ?
                     NSPredicate(format: "goal == %@", goal)  :
-                    NSPredicate(format: "goal == %@ AND goal.backburned == NO", goal)
+                    NSPredicate(format: "goal == %@ AND goal.backburnedGoals == NO", goal)
             } else {
-                if !backburned {
-                    request.predicate = NSPredicate(format: "goal.backburned == NO")
+                if !backburnedGoals {
+                    request.predicate = NSPredicate(format: "goal.backburnedGoals == NO")
                 }
             }
             
@@ -27,10 +27,10 @@ class HabitOrderManager:StorageManagerWorker {
         return habits
     }
     
-    func habitsByOrder(backburned: Bool) throws -> [Habit] {
+    func habitsByOrder(backburnedGoals: Bool) throws -> [Habit] {
         let habits = try self.manager.habitStore.fetchItems { request in
-            if !backburned {
-                request.predicate = NSPredicate(format: "goal.backburned == NO")
+            if !backburnedGoals {
+                request.predicate = NSPredicate(format: "goal.backburnedGoals == NO")
             }
             request.sortDescriptors = [NSSortDescriptor(key: "prio", ascending: true)]
         }
