@@ -48,10 +48,14 @@ class TaskProgressCalculatorTests: StorageTestCase {
     
         
         self.testDataCreator.createTasks(forGoal: todayGoal, infos: [
-            (name: "Task 1", prio: 1, size: 40.0, commitmentDate: today), // 40 minutes
-            (name: "Task 2", prio: 2, size: 20.0, commitmentDate: yesterday), // 20 minutes
-            (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil)  // 40 minutes
+            (name: "Task 1", prio: 1, size: 20.0, commitmentDate: today) // 40 minutes
             ] )
+        
+        self.testDataCreator.createGoalWithTasks(infos: [
+            (name: "Task 2", prio: 2, size: 20.0, commitmentDate: yesterday), // 20 minutes and yet in the abstract today task
+            (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil)  // 40 minutes
+            ])
+
         
         // fetch the first task in progress and work on it 20 Minutes eg. 30% on the task
         let taskInProgress = todayGoal.allTasks().filter({$0.name == "Task 1" }).first!
@@ -61,7 +65,7 @@ class TaskProgressCalculatorTests: StorageTestCase {
         let percentage = TaskProgressCalculator(manager: self.manager, backburnedGoals: false).calculateProgressOnGoal(taskProgress: progress, forDate: referenceDateCurrent)
         
         // test
-        XCTAssertEqual(0.2, percentage, "the percentage should be 20% which corresponds with 20 out 100 Minutes")
+        XCTAssertEqual(0.5, percentage, "the percentage should be 50% which corresponds to 20.0 minutes from Task 1 and 20.0 minutes from Task 2 against 40.0 minutes from Task3")
     }
     
     
