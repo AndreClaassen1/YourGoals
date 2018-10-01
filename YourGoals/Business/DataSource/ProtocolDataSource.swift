@@ -9,7 +9,7 @@
 import Foundation
 
 /// progress on a goal for a given date
-struct ProtocolGoalInfo {
+struct ProtocolGoalInfo:Hashable {
     let goal:Goal
     let date:Date
     
@@ -121,10 +121,19 @@ struct HabitProgressInfo:ProtocolProgressInfo {
     var timeRange: String
 }
 
-/// a data source for providing a protocol info
-class ProtocolDataSource : StorageManagerWorker {
+protocol ProtocolProgressProvider {
+    func fetchGoalInfos(forDate date:Date) throws -> [ProtocolGoalInfo]
+    func fetchProtocolProgress(forGoalInfno goalInfo:ProtocolGoalInfo) throws -> [ProtocolProgressInfo]
+}
+
+class TaskProgressProvider:ProtocolProgressProvider {
+    let manager:GoalsStorageManager
     
-    func fetchGoalsWithTaskInProgress(forDate date:Date) throws -> [Goal] {
+    init(manager:GoalsStorageManager) {
+        self.manager = manager
+    }
+    
+    func fetchGoalInfos(forDate date:Date) throws -> [ProtocolGoalInfo] {
         let startOfDay = date.startOfDay
         let endOfDay = date.endOfDay
         
@@ -135,10 +144,27 @@ class ProtocolDataSource : StorageManagerWorker {
                 ").@count > 0", startOfDay as NSDate, endOfDay as NSDate)
         })
         
-        return goals
+        return goals.map { ProtocolGoalInfo(goal: $0, date: date) }
+    }
+    
+    func fetchProtocolProgress(forGoalInfno goalInfo:ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
+        let startOfDay = goalInfo.date.startOfDay
+        let endOfDay = goalInfo.date.endOfDay
+        let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format: "task.goal = %@ && start >= %@ AND end <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
+        }).map { TaskProgressInfo(progress: $0) }
+        return progress
+    }
+}
+
+class DoneTaskProvider:ProtocolProgressProvider {
+    let manager:GoalsStorageManager
+    
+    init(manager:GoalsStorageManager) {
+        self.manager = manager
     }
 
-    func fetchGoalsWithTaskIsDone(forDate date:Date) throws -> [Goal] {
+    func fetchGoalInfos(forDate date: Date) throws -> [ProtocolGoalInfo] {
         let startOfDay = date.startOfDay
         let endOfDay = date.endOfDay
         
@@ -147,36 +173,12 @@ class ProtocolDataSource : StorageManagerWorker {
                 "SUBQUERY(tasks, $task, $task.doneDate >= %@ AND $task.doneDate <= %@ ).@count > 0", startOfDay as NSDate, endOfDay as NSDate)
         })
         
-        return goals
-    }
-
-    /// fetch all goal worked on the given day
-    ///
-    /// - Parameter date: the date
-    /// - Returns: array of ProtocolGoalInfo
-    /// - Throws: a core data exception
-    func fetchWorkedGoals(forDate date: Date) throws -> [ProtocolGoalInfo] {
-        var goals = try fetchGoalsWithTaskInProgress(forDate: date)
-        goals.append(contentsOf: try fetchGoalsWithTaskIsDone(forDate: date))
+        let goalInfos = goals.map { ProtocolGoalInfo(goal: $0, date: date)}
         
-        // eliminate duplicates
-        let uniqueGoals = goals.uniqued()
-        let progressGoals = uniqueGoals.map { ProtocolGoalInfo(goal: $0, date: date) }
-        
-        return progressGoals
+        return goalInfos
     }
-
     
-    func fetchTaskProgressOnGoal(goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
-        let startOfDay = goalInfo.date.startOfDay
-        let endOfDay = goalInfo.date.endOfDay
-        let progress = try self.manager.taskProgressStore.fetchItems(qualifyRequest: { request in
-            request.predicate = NSPredicate(format: "task.goal = %@ && start >= %@ AND end <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
-        }).map { TaskProgressInfo(progress: $0) }
-        return progress
-    }
-
-    func fetchDoneTasksForGoal(goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
+    func fetchProtocolProgress(forGoalInfno goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
         let startOfDay = goalInfo.date.startOfDay
         let endOfDay = goalInfo.date.endOfDay
         let progress = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
@@ -184,8 +186,38 @@ class ProtocolDataSource : StorageManagerWorker {
         }).map { DoneTaskInfo(task: $0) }
         return progress
     }
+}
 
+/// a data source for providing a protocol info
+class ProtocolDataSource : StorageManagerWorker {
     
+    let protocolProviders:[ProtocolProgressProvider]
+    
+    override init(manager:GoalsStorageManager) {
+        self.protocolProviders = [
+            TaskProgressProvider(manager: manager),
+            DoneTaskProvider(manager: manager)
+        ]
+        
+        super.init(manager: manager)
+    }
+    
+    /// fetch all goal worked on the given day
+    ///
+    /// - Parameter date: the date
+    /// - Returns: array of ProtocolGoalInfo
+    /// - Throws: a core data exception
+    func fetchWorkedGoals(forDate date: Date) throws -> [ProtocolGoalInfo] {
+        var goalInfos = [ProtocolGoalInfo]()
+        for provider in self.protocolProviders {
+            goalInfos.append(contentsOf: try provider.fetchGoalInfos(forDate: date))
+        }
+        
+        // eliminate duplicates
+        let uniqueGoalInfos = goalInfos.uniqued()
+        return uniqueGoalInfos
+    }
+
     /// fetch progress items for a goal for the given date
     ///
     /// - Parameters
@@ -194,8 +226,9 @@ class ProtocolDataSource : StorageManagerWorker {
     /// - Throws: Core Data Exception
     func fetchProgressOnGoal(goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
         var progress = [ProtocolProgressInfo]()
-        try progress.append(contentsOf: fetchTaskProgressOnGoal(goalInfo: goalInfo))
-        try progress.append(contentsOf: fetchDoneTasksForGoal(goalInfo: goalInfo))
+        for provider in self.protocolProviders {
+            progress.append(contentsOf: try provider.fetchProtocolProgress(forGoalInfno: goalInfo))
+        }
         
         let sortedProgress = progress.sorted(by: {
             $0.sortingDate.compare($1.sortingDate) == .orderedDescending
