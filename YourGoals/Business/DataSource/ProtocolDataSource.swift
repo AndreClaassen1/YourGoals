@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// progress on a goal for a given date
+/// this goal has some progress on a given date.
 struct ProtocolGoalInfo:Hashable {
     let goal:Goal
     let date:Date
@@ -19,7 +19,9 @@ struct ProtocolGoalInfo:Hashable {
     }
 }
 
-/// progress on a task for a given date
+/// abstracted progress for a goal on a given date
+///
+/// The progress could be a checked habit, a done task or some work time for a task
 protocol ProtocolProgressInfo {
     var title:String { get }
     var sortingDate:Date { get }
@@ -31,16 +33,34 @@ protocol ProtocolProgressInfo {
 
 /// a info about worked time on a task for a time range.
 struct TaskProgressInfo:ProtocolProgressInfo {
+    
+    /// the progress on the task
     let progress:TaskProgress
+    
+    /// initialize this info the progress data
+    ///
+    /// - Parameter progress: the task progress data from core data
+    init(progress: TaskProgress) {
+        self.progress = progress
+    }
 
+    /// the date for sorting purposes
     var sortingDate:Date {
         return progress.start ?? Date.minimalDate
     }
     
+    /// a time interval for the work time relative to the given day in the date
+    ///
+    /// - Parameter date: the date as a base for calculating the work tim
+    /// - Returns: an interval with start and end for the given day.
     func workedTime(onDate date: Date) -> TimeInterval {
         return progress.timeInterval(on: date)
     }
     
+    /// a formatted string with represents the time range worked on this task
+    ///
+    /// - Parameter date: the excact date
+    /// - Returns: a time range
     func timeRange(onDate date: Date) -> String {
         let day = date.day()
         let startTime = progress.start ?? day.startOfDay
@@ -49,8 +69,9 @@ struct TaskProgressInfo:ProtocolProgressInfo {
         return "\(startTime.formattedTime()) - \(endTime.formattedTime())"
     }
     
+    /// the title of the task for this work time
     var title: String {
-        return self.progress.task?.name ?? "Kein Task bekannt"
+        return self.progress.task?.name ?? "no valid task name"
     }
     
     /// progress for this goal in percent
@@ -61,14 +82,11 @@ struct TaskProgressInfo:ProtocolProgressInfo {
         let calculator = TaskProgressCalculator()
         return calculator.calculateProgressOnGoal(taskProgress: self.progress, forDate: onDate)
     }
-    
-    init(progress: TaskProgress) {
-        self.progress = progress
-    }
 }
 
 // an information about a done task.
 struct DoneTaskInfo:ProtocolProgressInfo {
+    
     func progress(onDate: Date) -> Double {
         return 0.0
     }
@@ -121,18 +139,42 @@ struct HabitProgressInfo:ProtocolProgressInfo {
     var timeRange: String
 }
 
+/// abstracted protocol vor the various protocol types for the protocol data source
 protocol ProtocolProgressProvider {
+    /// fetch the goals where is work activity for the given date
+    ///
+    /// - Parameter date: the date
+    /// - Returns: an arry of goals workred on this day
+    /// - Throws: core data exception
     func fetchGoalInfos(forDate date:Date) throws -> [ProtocolGoalInfo]
+    
+    /// fetch detailed progress infos for a goal info
+    ///
+    /// - Parameter goalInfo: the goal info
+    /// - Returns: an array of detailed protocol progress infos
+    /// - Throws: core data exception
     func fetchProtocolProgress(forGoalInfno goalInfo:ProtocolGoalInfo) throws -> [ProtocolProgressInfo]
 }
 
+/// a provider for progress based on worked time for on tsks
 class TaskProgressProvider:ProtocolProgressProvider {
+    /// core data storage manager
     let manager:GoalsStorageManager
     
+    /// initialize the task provider
+    ///
+    /// - Parameter manager: core data storage manager
     init(manager:GoalsStorageManager) {
         self.manager = manager
     }
     
+    /// fetch all goals where is progress on a givne date
+    ///
+    /// Technical note: this provider uses a nested subquery statement
+    ///
+    /// - Parameter date: the given date
+    /// - Returns: progress for the given date
+    /// - Throws: core data exception
     func fetchGoalInfos(forDate date:Date) throws -> [ProtocolGoalInfo] {
         let startOfDay = date.startOfDay
         let endOfDay = date.endOfDay
@@ -147,6 +189,11 @@ class TaskProgressProvider:ProtocolProgressProvider {
         return goals.map { ProtocolGoalInfo(goal: $0, date: date) }
     }
     
+    /// fetch the task progress for the given date and goal
+    ///
+    /// - Parameter goalInfo: goal and date
+    /// - Returns: an array of Task progress infos.
+    /// - Throws: core data exception
     func fetchProtocolProgress(forGoalInfno goalInfo:ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
         let startOfDay = goalInfo.date.startOfDay
         let endOfDay = goalInfo.date.endOfDay
@@ -157,13 +204,23 @@ class TaskProgressProvider:ProtocolProgressProvider {
     }
 }
 
+/// a protocol provider for tasks which are marked as done for agiven date
 class DoneTaskProvider:ProtocolProgressProvider {
+    /// the goal storage manager
     let manager:GoalsStorageManager
     
+    /// intiialize with a core data storage manager
+    ///
+    /// - Parameter manager: core data storage manager
     init(manager:GoalsStorageManager) {
         self.manager = manager
     }
 
+    /// fetch all goals, where at least one task was marked as done
+    ///
+    /// - Parameter date: the date
+    /// - Returns: an array of goals, where at least on task was masked at done for date
+    /// - Throws: core data exception
     func fetchGoalInfos(forDate date: Date) throws -> [ProtocolGoalInfo] {
         let startOfDay = date.startOfDay
         let endOfDay = date.endOfDay
@@ -178,6 +235,11 @@ class DoneTaskProvider:ProtocolProgressProvider {
         return goalInfos
     }
     
+    /// fetch progress infos for all tasks which are marked as done for the goal on the given date
+    ///
+    /// - Parameter goalInfo: a goal and a date
+    /// - Returns: an array of done task infos
+    /// - Throws: core data exception
     func fetchProtocolProgress(forGoalInfno goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
         let startOfDay = goalInfo.date.startOfDay
         let endOfDay = goalInfo.date.endOfDay
@@ -188,11 +250,17 @@ class DoneTaskProvider:ProtocolProgressProvider {
     }
 }
 
-/// a data source for providing a protocol info
+/// a data source for providing data on goals which was worked for on a given date.
+/// this data source is used in the ProtocolTableViewController to show a table with goals and
+/// infos about the work which was done for the goals
 class ProtocolDataSource : StorageManagerWorker {
     
+    /// protocol progress providers for work on tasks, marked task as done and habits
     let protocolProviders:[ProtocolProgressProvider]
     
+    /// initialize the protocol data source with a core data storage manager
+    ///
+    /// - Parameter manager: core data storage manager
     override init(manager:GoalsStorageManager) {
         self.protocolProviders = [
             TaskProgressProvider(manager: manager),
