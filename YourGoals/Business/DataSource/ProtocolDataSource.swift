@@ -76,7 +76,7 @@ struct TaskProgressInfo:ProtocolProgressInfo {
     
     /// the title of the task for this work time
     var title: String {
-        return self.progress.task?.name ?? "no valid task name"
+        return "Progress: " + (self.progress.task?.name ?? "undefined")
     }
     
     /// progress for this goal in percent
@@ -91,9 +91,31 @@ struct TaskProgressInfo:ProtocolProgressInfo {
 
 // an information about a done task.
 struct DoneTaskInfo:ProtocolProgressInfo {
+    let manager:GoalsStorageManager
+    let backburnedGoals:Bool
+    let task:Task
+    let title:String
     
-    func progress(onDate: Date) -> Double {
-        return 0.0
+    /// initialize this info the progress data
+    init(manager: GoalsStorageManager, task: Task, backburnedGoals: Bool) {
+        self.manager = manager
+        self.task = task
+        self.title = "Done: " + (task.name ?? "undefined task")
+        self.backburnedGoals = backburnedGoals
+    }
+
+    func progress(onDate date: Date) -> Double {
+        do {
+            let goalProgressCalculator = GoalProgressCalculator(manager: self.manager)
+            let progress = try goalProgressCalculator.calculateProgressOnActionable(forGoal: self.task.goal!,
+                                                                                    actionable: self.task, andDate: date,
+                                                                                    withBackburned: backburnedGoals)
+            return progress
+        }
+        catch let error {
+            NSLog("error calculating progress for a done task: \(task), \(error)")
+            return 0.0
+        }
     }
     
     var sortingDate:Date {
@@ -109,17 +131,11 @@ struct DoneTaskInfo:ProtocolProgressInfo {
         return "undefined"
     }
     
-    var title: String
     var timeRange: String {
         return " ./. "
     }
     
-    var task:Task
-    
-    init(task: Task) {
-        self.title = task.name ?? "undefined task"
-        self.task = task
-    }
+
     
 }
 
@@ -216,14 +232,16 @@ class TaskProgressProvider:ProtocolProgressProvider {
 class DoneTaskProvider:ProtocolProgressProvider {
     /// the goal storage manager
     let manager:GoalsStorageManager
+    let backburnedGoals:Bool
     
-    /// intiialize with a core data storage manager
+    /// initialize the task provider
     ///
     /// - Parameter manager: core data storage manager
-    init(manager:GoalsStorageManager) {
+    init(manager:GoalsStorageManager, backburnedGoals:Bool) {
         self.manager = manager
+        self.backburnedGoals = backburnedGoals
     }
-
+    
     /// fetch all goals, where at least one task was marked as done
     ///
     /// - Parameter date: the date
@@ -252,7 +270,7 @@ class DoneTaskProvider:ProtocolProgressProvider {
         let endOfDay = goalInfo.date.endOfDay
         let progress = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = NSPredicate(format: "goal = %@ && doneDate >= %@ AND doneDate <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
-        }).map { DoneTaskInfo(task: $0) }
+        }).map { DoneTaskInfo(manager: self.manager, task: $0, backburnedGoals: self.backburnedGoals) }
         return progress
     }
 }
@@ -271,7 +289,7 @@ class ProtocolDataSource : StorageManagerWorker {
     init(manager:GoalsStorageManager, backburnedGoals: Bool) {
         self.protocolProviders = [
             TaskProgressProvider(manager: manager, backburnedGoals: backburnedGoals),
-            DoneTaskProvider(manager: manager)
+            DoneTaskProvider(manager: manager, backburnedGoals: backburnedGoals)
         ]
         
         super.init(manager: manager)

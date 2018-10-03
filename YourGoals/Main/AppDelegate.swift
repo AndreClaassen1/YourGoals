@@ -35,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
         self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationHandler.registerNotifications()
-
-
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

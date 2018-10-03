@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ProtocolTableViewController: UITableViewController {
-
+class ProtocolTableViewController: UITableViewController, TaskNotificationProviderProtocol {
     var manager:GoalsStorageManager!
     var protocolGoalInfos = [ProtocolGoalInfo]()
     var protocolHistory = [[ProtocolProgressInfo]]()
@@ -22,6 +21,7 @@ class ProtocolTableViewController: UITableViewController {
                 let protocolProgressInfos = try protocolDataSource.fetchProgressOnGoal(goalInfo: goalInfo)
                 protocolHistory.append(protocolProgressInfos)
             }
+            self.tableView.reloadData()
         }
         catch let error {
             self.showNotification(forError: error)
@@ -34,6 +34,7 @@ class ProtocolTableViewController: UITableViewController {
         self.tableView.registerReusableCell(ProtocolTableViewCell.self)
         let nib = UINib(nibName: "ProtocolSectionView", bundle: nil)
         self.tableView.register(nib, forHeaderFooterViewReuseIdentifier: "ProtocolSectionView")
+        TaskNotificationObserver.defaultObserver.register(provider: self)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -144,4 +145,21 @@ class ProtocolTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - TaskProviderProtocol
+    
+    func progressStarted(forTask task: Task, referenceTime: Date) {
+        self.reloadProtocolHistory()
+    }
+    
+    func progressChanged(forTask task: Task, referenceTime: Date) {
+        self.reloadProtocolHistory()
+    }
+    
+    func progressStopped() {
+        self.reloadProtocolHistory()
+    }
+    
+    func tasksChanged() {
+        self.reloadProtocolHistory()
+    }
 }

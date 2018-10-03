@@ -40,6 +40,12 @@ class GoalProgressCalculator:StorageManagerWorker {
         let progressIndicator = calculateIndicator(progressTasks: progressTasks, progressDate: progressDate)
         return (progressTasks, progressIndicator)
     }
+
+    func getActionables(goal: Goal, date: Date, backburnedGoals: Bool) throws -> [Actionable] {
+        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
+        let actionables = try dataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        return actionables
+    }
     
     /// calculate the progress of tasks done in per
     ///
@@ -48,17 +54,25 @@ class GoalProgressCalculator:StorageManagerWorker {
     ///     - date: the date for the actionables
     /// - Returns: ratio of done tasks and all tasks (between 0.0 and 1.0)
     func calculateProgressOfActionables(forGoal goal: Goal, andDate date: Date, withBackburned backburnedGoals: Bool) throws -> Double {
-        let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
-        
-        let actionables = try dataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
-        if actionables .count == 0 {
+        let actionables = try getActionables(goal: goal, date: date, backburnedGoals: backburnedGoals)
+        let sizeOfAll = actionables.reduce(0.0, { return $0 + $1.size })
+        let sizeOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.reduce(0.0, { return $0 + $1.size })
+        guard sizeOfAll > 0.0 else {
             return 0.0
         }
         
-        let sizeOfAll = actionables.reduce(0.0, { return $0 + $1.size })
-        let sizeOfDone = actionables.filter{ $0.checkedState(forDate: date) == .done}.reduce(0.0, { return $0 + $1.size })
-
         let progress = Double(sizeOfDone / sizeOfAll)
+        return progress
+    }
+ 
+    func calculateProgressOnActionable(forGoal goal: Goal, actionable: Actionable, andDate date: Date, withBackburned backburnedGoals: Bool) throws -> Double {
+        let actionables = try getActionables(goal: goal, date: date, backburnedGoals: backburnedGoals)
+        let sizeOfAll = actionables.reduce(0.0, { return $0 + $1.size })
+        guard sizeOfAll > 0.0 else {
+            return 0.0
+        }
+
+        let progress = Double(actionable.size / sizeOfAll)
         return progress
     }
     

@@ -47,6 +47,7 @@ class TaskStateManager:ActionableSwitchProtocol {
         
         try manager.dataManager.saveContext()
     
+        TaskNotificationObserver.defaultObserver.tasksChanged()
         NotificationCenter.default.post(name: StrategyModelNotification.taskStateChanged.name, object: task)
     }
     
