@@ -8,11 +8,19 @@
 
 import UIKit
 
+/// a structured table view controller for displaying the history of achieved habits, tasks, and goals.
 class ProtocolTableViewController: UITableViewController, TaskNotificationProviderProtocol {
+    
+    /// the core data storage manager
     var manager:GoalsStorageManager!
+    
+    /// the history of goals, where tasks or habits are achieved. the goals are building the section headers
     var protocolGoalInfos = [ProtocolGoalInfo]()
+    
+    /// vor every goal you have a protocol of achieved items
     var protocolHistory = [[ProtocolProgressInfo]]()
     
+    /// reload the protocol state from the storage (inefficient)
     func reloadProtocolHistory() {
         do {
             let protocolDataSource = ProtocolDataSource(manager: self.manager, backburnedGoals: SettingsUserDefault.standard.backburnedGoals )

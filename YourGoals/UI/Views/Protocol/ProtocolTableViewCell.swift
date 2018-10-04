@@ -10,6 +10,7 @@ import UIKit
 
 /// a table view cell for displaying a protocol entry in the done history
 class ProtocolTableViewCell: UITableViewCell {
+    @IBOutlet weak var protocolIcon: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -48,11 +49,34 @@ class ProtocolTableViewCell: UITableViewCell {
         }
     }
     
+    /// retrieve the UIImage for the protocol progress info type
+    ///
+    /// - Parameter type: a doneTask, habitProgress or taskProgress
+    /// - Returns: a correspondending image
+    func iconImageForType(type: ProtocolProgressInfoType) -> UIImage {
+        var name = "unknown"
+        switch type {
+        case .doneTask:
+            name = "TaskChecked"
+        case .habitProgress:
+            name = "HabitBoxChecked"
+        case .taskProgress:
+            name = "TaskProgress"
+        }
+        
+        guard let icon = UIImage(named: name) else {
+            assertionFailure("there is no icon for type: \(type) and name \(name)")
+            return UIImage()
+        }
+        return icon
+    }
+    
     /// confiure the cell with the values of the entry
     func configure(protocolInfo:ProtocolProgressInfo, onDate date:Date) {
-        titleLabel.text = protocolInfo.title
-        durationLabel.text = protocolInfo.timeRange(onDate: date)
-        descriptionLabel.text = progressDescription(from: protocolInfo, onDate: date)
+        self.titleLabel.text = protocolInfo.title
+        self.durationLabel.text = protocolInfo.timeRange(onDate: date)
+        self.descriptionLabel.text = progressDescription(from: protocolInfo, onDate: date)
+        self.protocolIcon.image = iconImageForType(type: protocolInfo.type)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

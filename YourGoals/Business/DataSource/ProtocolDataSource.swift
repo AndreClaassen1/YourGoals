@@ -19,12 +19,19 @@ struct ProtocolGoalInfo:Hashable {
     }
 }
 
+enum ProtocolProgressInfoType {
+    case doneTask
+    case taskProgress
+    case habitProgress
+}
+
 /// abstracted progress for a goal on a given date
 ///
 /// The progress could be a checked habit, a done task or some work time for a task
 protocol ProtocolProgressInfo {
     var title:String { get }
     var sortingDate:Date { get }
+    var type:ProtocolProgressInfoType { get }
     
     func timeRange(onDate: Date) -> String
     func workedTime(onDate: Date) -> TimeInterval
@@ -36,6 +43,7 @@ struct TaskProgressInfo:ProtocolProgressInfo {
     
     let manager:GoalsStorageManager
     let backburnedGoals:Bool
+    let type = ProtocolProgressInfoType.taskProgress
     
     /// the progress on the task
     let progress:TaskProgress
@@ -76,7 +84,7 @@ struct TaskProgressInfo:ProtocolProgressInfo {
     
     /// the title of the task for this work time
     var title: String {
-        return "Progress: " + (self.progress.task?.name ?? "undefined")
+        return (self.progress.task?.name ?? "undefined")
     }
     
     /// progress for this goal in percent
@@ -95,12 +103,13 @@ struct DoneTaskInfo:ProtocolProgressInfo {
     let backburnedGoals:Bool
     let task:Task
     let title:String
-    
+    let type = ProtocolProgressInfoType.doneTask
+
     /// initialize this info the progress data
     init(manager: GoalsStorageManager, task: Task, backburnedGoals: Bool) {
         self.manager = manager
         self.task = task
-        self.title = "Done: " + (task.name ?? "undefined task")
+        self.title = (task.name ?? "undefined task")
         self.backburnedGoals = backburnedGoals
     }
 
@@ -158,6 +167,8 @@ struct HabitProgressInfo:ProtocolProgressInfo {
         
     var title: String
     var timeRange: String
+    let type = ProtocolProgressInfoType.habitProgress
+
 }
 
 /// abstracted protocol vor the various protocol types for the protocol data source
