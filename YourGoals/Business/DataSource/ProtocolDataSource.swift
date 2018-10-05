@@ -19,6 +19,11 @@ struct ProtocolGoalInfo:Hashable {
     }
 }
 
+/// a progress info type for displaying the right icons in the UI
+///
+/// - doneTask: a done task
+/// - taskProgress: a progress on a task
+/// - habitProgress: a habit was checked
 enum ProtocolProgressInfoType {
     case doneTask
     case taskProgress

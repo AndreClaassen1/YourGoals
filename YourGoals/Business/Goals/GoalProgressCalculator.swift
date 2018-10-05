@@ -65,6 +65,17 @@ class GoalProgressCalculator:StorageManagerWorker {
         return progress
     }
  
+    // todo: test
+    
+    /// this function calculates the progress on a single task in relation to the goal
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - actionable: the actionable (which is normally a task)
+    ///   - date: the date as a base for the calculation
+    ///   - backburnedGoals: true, if backburned goals will be included in the calculation
+    /// - Returns: a progress between 0.0 and 1.0
+    /// - Throws: a core data exception
     func calculateProgressOnActionable(forGoal goal: Goal, actionable: Actionable, andDate date: Date, withBackburned backburnedGoals: Bool) throws -> Double {
         let actionables = try getActionables(goal: goal, date: date, backburnedGoals: backburnedGoals)
         let sizeOfAll = actionables.reduce(0.0, { return $0 + $1.size })
