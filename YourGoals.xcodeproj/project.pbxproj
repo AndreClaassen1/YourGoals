@@ -181,6 +181,8 @@
 		7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */; };
 		7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */; };
 		7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC75C81FC5970000113C5F /* ProgressView.storyboard */; };
+		7BB77A312168B4810056FF60 /* TaskWorktimeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */; };
+		7BB77A332168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB77A322168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift */; };
 		7BB9B8211FC573DD00786A86 /* PieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9B8201FC573DD00786A86 /* PieProgressView.swift */; };
 		7BBB30F6207BA83100F637E0 /* PlannableTasksDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */; };
 		7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */; };
@@ -513,6 +515,8 @@
 		7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailsViewController+Animation.swift"; sourceTree = "<group>"; };
 		7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAC75C91FC5970000113C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProgressView.storyboard; sourceTree = "<group>"; };
+		7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorktimeCalculator.swift; sourceTree = "<group>"; };
+		7BB77A322168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorktimeCalculatorTests.swift; sourceTree = "<group>"; };
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
 		7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannableTasksDataSourceTests.swift; sourceTree = "<group>"; };
 		7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditActionableFormController+Eureka.swift"; sourceTree = "<group>"; };
@@ -719,6 +723,7 @@
 				7B3FA9D51FE666BC0052B587 /* Date+DateRange.swift */,
 				7B36F23C2003A0F100095389 /* Date+Timeformat.swift */,
 				7BF9FF92215793AA00CD2C82 /* Date+weekday.swift */,
+				7B6B4BA1215B800300154470 /* Date+startendofday.swift */,
 				7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */,
 				7BF5629F1FD563FD00A4DF6C /* Settings.swift */,
 				7B1BBC3A1FFD65F4003934B1 /* TimeInterval+Format.swift */,
@@ -728,7 +733,6 @@
 				7B97202B20665342007D142E /* String+VisualBasicExtension.swift */,
 				7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */,
 				7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */,
-				7B6B4BA1215B800300154470 /* Date+startendofday.swift */,
 				7B1F94F72160C996001A0717 /* Array+uniqued.swift */,
 			);
 			path = Utility;
@@ -870,6 +874,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5F75DC215CE4710046AA3E /* TaskProgressCalculator.swift */,
+				7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */,
 			);
 			path = Calculations;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 			isa = PBXGroup;
 			children = (
 				7BFC1E031FA35A22003DE484 /* TaskStateManagerTests.swift */,
+				7BB77A322168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift */,
 				7BF9FF952157989C00CD2C82 /* TaskRepetitionManagerTests.swift */,
 				7B5F75DE215CEBF10046AA3E /* TaskProgressCalculatorTests.swift */,
 			);
@@ -1739,6 +1745,7 @@
 				7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */,
 				7BFF8AE02073C6D2007C108D /* TaskNotificationObserver.swift in Sources */,
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
+				7BB77A312168B4810056FF60 /* TaskWorktimeCalculator.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
 				7B3935771FF39B0E009E752F /* EditGoalFormController.swift in Sources */,
@@ -1900,6 +1907,7 @@
 				7B9D513E20A305CD009B608D /* CommittedTasksDataSourceTests.swift in Sources */,
 				7BF9FF962157989C00CD2C82 /* TaskRepetitionManagerTests.swift in Sources */,
 				7B36F23B2003933C00095389 /* TodayWorkloadInfoTests.swift in Sources */,
+				7BB77A332168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift in Sources */,
 				7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */,
 				7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */,
 				7B26EB8820B6CDDA00155158 /* WatchTasksContextProviderTests.swift in Sources */,

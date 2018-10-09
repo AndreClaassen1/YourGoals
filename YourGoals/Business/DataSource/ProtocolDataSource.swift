@@ -10,12 +10,20 @@ import Foundation
 
 /// this goal has some progress on a given date.
 struct ProtocolGoalInfo:Hashable {
+    
     let goal:Goal
     let date:Date
     
     init(goal: Goal, date:Date) {
         self.goal = goal
         self.date = date
+    }
+    
+    func workedOnGoal(manager: GoalsStorageManager, backburnedGoals: Bool) throws -> TimeInterval {
+        let taskProgressProvider = TaskProgressProvider(manager: manager, backburnedGoals: backburnedGoals)
+        let progress = try taskProgressProvider.fetchProtocolProgress(forGoalInfno: self)
+        let workedOnGoal = progress.reduce(TimeInterval(0)) { $0 + $1.workedTime(onDate: self.date) }
+        return workedOnGoal
     }
 }
 
@@ -34,13 +42,13 @@ enum ProtocolProgressInfoType {
 ///
 /// The progress could be a checked habit, a done task or some work time for a task
 protocol ProtocolProgressInfo {
+    var type:ProtocolProgressInfoType { get }
     var title:String { get }
     var sortingDate:Date { get }
-    var type:ProtocolProgressInfoType { get }
     
     func timeRange(onDate: Date) -> String
     func workedTime(onDate: Date) -> TimeInterval
-    func progress(onDate: Date) -> Double
+    func progressDescription(onDate: Date) -> String
 }
 
 /// a info about worked time on a task for a time range.
@@ -100,6 +108,22 @@ struct TaskProgressInfo:ProtocolProgressInfo {
         let calculator = TaskProgressCalculator(manager: self.manager, backburnedGoals: self.backburnedGoals)
         return calculator.calculateProgressOnGoal(taskProgress: self.progress, forDate: onDate)
     }
+    
+    /// create a description string which includes the progress made on the goal so far.
+    ///
+    /// - Parameters:
+    ///   - protocolInfo: the protocol info with the percentage of the progress
+    ///   - date: the date as the foundation for the calculation
+    /// - Returns: a formatted string: "You made 3% progress on your goal!"
+    func progressDescription(onDate date:Date) -> String {
+        let percentage = self.progress(onDate: date)
+        if percentage == 0.0 {
+            return "You made no progress on your goal!"
+        } else {
+            let percentageString = String.localizedStringWithFormat("%.2f", percentage * 100.0)
+            return "You made \(percentageString)% progress on your goal!"
+        }
+    }
 }
 
 // an information about a done task.
@@ -118,6 +142,10 @@ struct DoneTaskInfo:ProtocolProgressInfo {
         self.backburnedGoals = backburnedGoals
     }
 
+    /// calculate the progress of the task relative to the size of all tasks for the goal
+    ///
+    /// - Parameter date: date as a refrence for calculating
+    /// - Returns: the percentage between 0.0 and 1.0
     func progress(onDate date: Date) -> Double {
         do {
             let goalProgressCalculator = GoalProgressCalculator(manager: self.manager)
@@ -137,27 +165,34 @@ struct DoneTaskInfo:ProtocolProgressInfo {
     }
 
     
-    func workedTime(onDate: Date) -> TimeInterval {
-        return 0
+    func workedTime(onDate date: Date) -> TimeInterval {
+        let calculator = TaskWorktimeCalculator()
+        return calculator.calculateWorktime(task: self.task, date: date)
     }
     
     func timeRange(onDate date: Date) -> String {
-        return "undefined"
+        let workedTime = self.workedTime(onDate: date)
+        return "Your worktime \(workedTime.formattedAsString())"
     }
     
-    var timeRange: String {
-        return " ./. "
+    /// create a description string which includes the progress made on the goal so far.
+    ///
+    /// - Parameters:
+    ///   - protocolInfo: the protocol info with the percentage of the progress
+    ///   - date: the date as the foundation for the calculation
+    /// - Returns: a formatted string: "You made 3% progress on your goal!"
+    func progressDescription(onDate date:Date) -> String {
+        let percentage = self.progress(onDate: date)
+        if percentage == 0.0 {
+            return "You made no progress on your goal!"
+        } else {
+            let percentageString = String.localizedStringWithFormat("%.2f", percentage * 100.0)
+            return "You made \(percentageString)% progress on your goal!"
+        }
     }
-    
-
-    
 }
 
 struct HabitProgressInfo:ProtocolProgressInfo {
-    func progress(onDate: Date) -> Double {
-        return 0.0
-    }
-    
     func workedTime(onDate: Date) -> TimeInterval {
         return 0
     }
@@ -171,9 +206,17 @@ struct HabitProgressInfo:ProtocolProgressInfo {
     }
         
     var title: String
-    var timeRange: String
     let type = ProtocolProgressInfoType.habitProgress
-
+    
+    /// create a description string which includes the progress made on the goal so far.
+    ///
+    /// - Parameters:
+    ///   - protocolInfo: the protocol info with the percentage of the progress
+    ///   - date: the date as the foundation for the calculation
+    /// - Returns: a formatted string: "You made 3% progress on your goal!"
+    func progressDescription(onDate date:Date) -> String {
+        return ""
+    }
 }
 
 /// abstracted protocol vor the various protocol types for the protocol data source

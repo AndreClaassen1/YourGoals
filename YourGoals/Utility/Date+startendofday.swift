@@ -17,4 +17,9 @@ extension Date {
     var endOfDay:Date {
         return startOfDay.addDaysToDate(1).addingTimeInterval(-1)
     }
+    
+    /// an interval spanning the whole day from start to end.
+    var dayInterval:DateInterval {
+        return DateInterval(start: self.startOfDay, end: self.endOfDay)
+    }
 }

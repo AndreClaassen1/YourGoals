@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// a table view cell for displaying a protocol entry in the done history
+/// a table view cell for displaying a protocol entry in the protocol history
 class ProtocolTableViewCell: UITableViewCell {
     @IBOutlet weak var protocolIcon: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -31,22 +31,6 @@ class ProtocolTableViewCell: UITableViewCell {
         }
         
         return cell
-    }
-    
-    /// create a description string which includes the progress made on the goal so far.
-    ///
-    /// - Parameters:
-    ///   - protocolInfo: the protocol info with the percentage of the progress
-    ///   - date: the date as the foundation for the calculation
-    /// - Returns: a formatted string: "You made 3% progress on your goal!"
-    func progressDescription(from protocolInfo: ProtocolProgressInfo, onDate date:Date) -> String {
-        let percentage = protocolInfo.progress(onDate: date)
-        if percentage == 0.0 {
-            return "You made no progress on your goal!"
-        } else {
-            let percentageString = String.localizedStringWithFormat("%.2f", percentage * 100.0)
-            return "You made \(percentageString)% progress on your goal!"
-        }
     }
     
     /// retrieve the UIImage for the protocol progress info type
@@ -72,10 +56,14 @@ class ProtocolTableViewCell: UITableViewCell {
     }
     
     /// confiure the cell with the values of the entry
+    ///
+    /// - Parameters:
+    ///   - protocolInfo: a protocol info (task progress, done task, habit)
+    ///   - date: a date for calculating different values
     func configure(protocolInfo:ProtocolProgressInfo, onDate date:Date) {
         self.titleLabel.text = protocolInfo.title
         self.durationLabel.text = protocolInfo.timeRange(onDate: date)
-        self.descriptionLabel.text = progressDescription(from: protocolInfo, onDate: date)
+        self.descriptionLabel.text = protocolInfo.progressDescription(onDate: date)
         self.protocolIcon.image = iconImageForType(type: protocolInfo.type)
     }
     

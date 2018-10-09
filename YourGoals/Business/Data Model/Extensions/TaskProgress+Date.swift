@@ -10,11 +10,27 @@ import Foundation
 
 extension TaskProgress {
     
+    /// retrieves the task progress as an DateInterval
+    var dateInterval:DateInterval {
+        let startDate = self.start ?? Date.minimalDate
+        let endDate = self.end ?? Date.maximalDate
+        
+        return DateInterval(start: startDate, end: endDate)
+    }
+    
+    /// returns true, if there is an intersection between the two intervals
+    ///
+    /// - Parameter withInterval: the interval to compare with the time progress
+    /// - Returns: true, if there is an intersection
+    func intersects(withInterval: DateInterval) -> Bool {
+        return self.dateInterval.intersects(withInterval)
+    }
+
     /// true, if the date lies between start and end of the current progress
     ///
     /// - Parameter date: check this date
     /// - Returns: true, if the date intersects the current progress
-    func isIntersecting(withDate date: Date) -> Bool {
+    func intersects(withDate date: Date) -> Bool {
         
         let startDate = self.start ?? Date.minimalDate
         let endDate = self.end ?? Date.maximalDate

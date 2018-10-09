@@ -85,11 +85,7 @@ class ProtocolTableViewController: UITableViewController, TaskNotificationProvid
         let date = Date()
         let protocolGoalInfo = self.protocolGoalInfos[section]
         do {
-            let workedOnGoal = self.protocolHistory[section].reduce(TimeInterval(0)) {
-                return $0 + $1.workedTime(onDate: date)
-            }
-            
-            try protocolSectionView.configure(manager: self.manager, goalInfo: protocolGoalInfo, workedOnGoal: workedOnGoal)
+            try protocolSectionView.configure(manager: self.manager, backburnedGoals: SettingsUserDefault.standard.backburnedGoals, goalInfo: protocolGoalInfo)
         }
         catch let error {
             self.showNotification(forError: error)

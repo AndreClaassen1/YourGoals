@@ -23,7 +23,7 @@ extension Task {
     /// - Parameter date: date
     /// - Returns: a TaskProgress or nil
     func progressFor(date: Date) -> TaskProgress? {
-        return self.allProgress().first { $0.isIntersecting(withDate: date) }
+        return self.allProgress().first { $0.intersects(withDate: date) }
     }
     
     /// true, if this task is in progress

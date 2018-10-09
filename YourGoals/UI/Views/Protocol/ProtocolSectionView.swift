@@ -25,12 +25,13 @@ class ProtocolSectionView: UITableViewHeaderFooterView {
     */
     
     /// configure this view with values
-    func configure(manager: GoalsStorageManager, goalInfo: ProtocolGoalInfo, workedOnGoal:TimeInterval) throws {
+    func configure(manager: GoalsStorageManager, backburnedGoals: Bool, goalInfo: ProtocolGoalInfo) throws {
         
         try self.goalMiniCell.show(goal: goalInfo.goal, forDate: goalInfo.date, goalIsActive: false, backburnedGoals: false, manager: manager)
         
         dateLabel.text = goalInfo.date.formattedInLocaleFormat()
         goalExplanationLabel.text = goalInfo.goal.reason
+        let workedOnGoal = try goalInfo.workedOnGoal(manager: manager, backburnedGoals: backburnedGoals)
         goalWorkedTimeLabel.text = "Sie haben \(workedOnGoal.formattedAsString()) an diesem Ziel gearbeitet."
     }
 }

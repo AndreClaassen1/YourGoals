@@ -21,7 +21,7 @@ class TaskProgressTests: StorageTestCase {
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
         
-        let isIntersecting = taskProgress.isIntersecting(withDate: Date.dateWithYear(2017, month: 04, day: 01))
+        let isIntersecting = taskProgress.intersects(withDate: Date.dateWithYear(2017, month: 04, day: 01))
         
         XCTAssert(isIntersecting)
     }
@@ -33,7 +33,7 @@ class TaskProgressTests: StorageTestCase {
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
         
-        let isIntersecting = taskProgress.isIntersecting(withDate: Date.dateWithYear(2018, month: 04, day: 01))
+        let isIntersecting = taskProgress.intersects(withDate: Date.dateWithYear(2018, month: 04, day: 01))
         
         XCTAssertFalse(isIntersecting)
     }
@@ -44,7 +44,7 @@ class TaskProgressTests: StorageTestCase {
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
         
-        let isIntersecting = taskProgress.isIntersecting(withDate: Date.dateWithYear(2016, month: 04, day: 01))
+        let isIntersecting = taskProgress.intersects(withDate: Date.dateWithYear(2016, month: 04, day: 01))
         
         XCTAssertFalse(isIntersecting)
     }
