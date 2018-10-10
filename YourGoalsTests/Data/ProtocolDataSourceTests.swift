@@ -87,5 +87,37 @@ class ProtocolDataSourceTests: StorageTestCase {
         XCTAssertEqual(1, progressInfos.count)
     }
     
+    func testDataSourceFetchCheckedHabitsForGoalWithOneHabit() {
+        // setup
+        let referenceDate = Date.dateWithYear(2018, month: 10, day: 10)
+        let goal = self.testDataCreator.createGoal(name: "Goal with habits")
+        let habit1 = self.testDataCreator.createHabit(forGoal: goal, name: "Habit 1")
+        let habit2 = self.testDataCreator.createHabit(forGoal: goal, name: "Habit 2")
+        self.testDataCreator.check(habit: habit1, forDate: referenceDate)
+        self.testDataCreator.check(habit: habit2, forDate: referenceDate.addDaysToDate(-1))
+        
+        // act
+        let goalInfos = try! self.protocolDataSource.fetchWorkedGoals(forDate: referenceDate)
+        let progressInfos = try! self.protocolDataSource.fetchProgressOnGoal(goalInfo: goalInfos.first!)
+        
+        // test
+        XCTAssertEqual(1, progressInfos.count)
+    }
     
+    func testDataSourceFetchCheckedHabitsForGoalWithTwoHabits() {
+        // setup
+        let referenceDate = Date.dateWithYear(2018, month: 10, day: 10)
+        let goal = self.testDataCreator.createGoal(name: "Goal with habits")
+        let habit1 = self.testDataCreator.createHabit(forGoal: goal, name: "Habit 1")
+        let habit2 = self.testDataCreator.createHabit(forGoal: goal, name: "Habit 2")
+        self.testDataCreator.check(habit: habit1, forDate: referenceDate)
+        self.testDataCreator.check(habit: habit2, forDate: referenceDate)
+        
+        // act
+        let goalInfos = try! self.protocolDataSource.fetchWorkedGoals(forDate: referenceDate)
+        let progressInfos = try! self.protocolDataSource.fetchProgressOnGoal(goalInfo: goalInfos.first!)
+        
+        // test
+        XCTAssertEqual(2, progressInfos.count)
+    }
 }

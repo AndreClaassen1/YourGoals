@@ -429,6 +429,55 @@ class DoneTaskProvider:ProtocolProgressProvider {
     }
 }
 
+/// a class which provides goals and progress infos for checked habits for a given date
+class HabitProgressProvider: ProtocolProgressProvider {
+    /// the goal storage manager
+    let manager:GoalsStorageManager
+    let backburnedGoals:Bool
+    
+    /// initialize the task provider
+    ///
+    /// - Parameter manager: core data storage manager
+    init(manager:GoalsStorageManager, backburnedGoals:Bool) {
+        self.manager = manager
+        self.backburnedGoals = backburnedGoals
+    }
+    
+    /// fetch all goals, where habits were checked
+    ///
+    /// - Parameter date: date
+    /// - Returns: an array of goals where habits were checked for the given date
+    /// - Throws: a core data exception
+    func fetchGoalInfos(forDate date: Date) throws -> [ProtocolGoalInfo] {
+        let startOfDay = date.startOfDay
+        let endOfDay = date.endOfDay
+        
+        let goals = try self.manager.goalsStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format:
+                "SUBQUERY(habits, $h, " +
+                    "SUBQUERY($h.checks, $habitcheck, $habitcheck.check >= %@ AND $habitcheck.check <= %@).@count > 0" +
+                ").@count > 0", startOfDay as NSDate, endOfDay as NSDate)
+        })
+        
+        return goals.map { ProtocolGoalInfo(goal: $0, date: date) }
+    }
+    
+    /// fetch all habits, which were checked for the given goal and date
+    ///
+    /// - Parameter goalInfo: the goal info
+    /// - Returns: an array with habit progress infos
+    /// - Throws: a core data exception
+    func fetchProtocolProgress(forGoalInfno goalInfo: ProtocolGoalInfo) throws -> [ProtocolProgressInfo] {
+        let startOfDay = goalInfo.date.startOfDay
+        let endOfDay = goalInfo.date.endOfDay
+        let progress = try self.manager.habitCheckStore.fetchItems(qualifyRequest: { request in
+            request.predicate = NSPredicate(format: "habit.goal = %@ && check >= %@ AND check <= %@", goalInfo.goal, startOfDay as NSDate, endOfDay as NSDate)
+        }).map { HabitProgressInfo(habit: $0.habit!) }
+        return progress
+    }
+}
+
+
 /// a data source for providing data on goals which was worked for on a given date.
 /// this data source is used in the ProtocolTableViewController to show a table with goals and
 /// infos about the work which was done for the goals
@@ -443,7 +492,8 @@ class ProtocolDataSource : StorageManagerWorker {
     init(manager:GoalsStorageManager, backburnedGoals: Bool) {
         self.protocolProviders = [
             TaskProgressProvider(manager: manager, backburnedGoals: backburnedGoals),
-            DoneTaskProvider(manager: manager, backburnedGoals: backburnedGoals)
+            DoneTaskProvider(manager: manager, backburnedGoals: backburnedGoals),
+            HabitProgressProvider(manager: manager, backburnedGoals: backburnedGoals)
         ]
         
         super.init(manager: manager)
