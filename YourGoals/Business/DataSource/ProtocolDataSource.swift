@@ -17,7 +17,7 @@ struct ProtocolGoalInfo:Hashable {
     /// the date for this info
     let date:Date
     
-    /// initialize the goal info with the corresponding goal and daet
+    /// initialize the goal info with the corresponding goal and date
     ///
     /// - Parameters:
     ///   - goal: the goal
@@ -57,20 +57,47 @@ enum ProtocolProgressInfoType {
 ///
 /// The progress could be a checked habit, a done task or some work time for a task
 protocol ProtocolProgressInfo {
+    
+    
+    /// type of the progress: a done task, some work on a task or a checked habit
     var type:ProtocolProgressInfoType { get }
+    
+    /// name or title of the task/habit of the progress
     var title:String { get }
+    
+    /// sorting date to sort a progress
     var sortingDate:Date { get }
     
+    /// description of the time, where you worked on the goal
+    ///
+    /// - Parameter onDate: a reference date for calculations
+    /// - Returns: a representation of progress time as a string
     func timeRange(onDate: Date) -> String
+    
+    /// time interval where you worked on progress. it is needed for calculations
+    ///
+    /// - Parameter onDate: the date
+    /// - Returns: a time interval for this progress
     func workedTime(onDate: Date) -> TimeInterval
+    
+    /// a description of the progress you made. it coulde be a percentage value
+    /// or an indication, how often you checked your habit
+    ///
+    /// - Parameter onDate: the date
+    /// - Returns: a description of the progress you made
     func progressDescription(onDate: Date) -> String
 }
 
 /// a info about worked time on a task for a time range.
 struct TaskProgressInfo:ProtocolProgressInfo {
     
+    /// a goal storage manager
     let manager:GoalsStorageManager
+    
+    /// true, if backburned goals should be included in the calculation
     let backburnedGoals:Bool
+    
+    /// this is a task proress
     let type = ProtocolProgressInfoType.taskProgress
     
     /// the progress on the task
@@ -143,13 +170,27 @@ struct TaskProgressInfo:ProtocolProgressInfo {
 
 // an information about a done task.
 struct DoneTaskInfo:ProtocolProgressInfo {
+    /// a goal storage manager
     let manager:GoalsStorageManager
+    
+    /// true, if backburned goals should be included
     let backburnedGoals:Bool
+    
+    /// the task where the is made
     let task:Task
+    
+    /// the name of the task
     let title:String
+    
+    /// this is a done task progress
     let type = ProtocolProgressInfoType.doneTask
 
     /// initialize this info the progress data
+    ///
+    /// - Parameters:
+    ///   - manager: a goal storage manager
+    ///   - task: the task which was checked as done
+    ///   - backburnedGoals: true, if backburned goals should be included in the calculation
     init(manager: GoalsStorageManager, task: Task, backburnedGoals: Bool) {
         self.manager = manager
         self.task = task
@@ -175,16 +216,24 @@ struct DoneTaskInfo:ProtocolProgressInfo {
         }
     }
     
+    /// a date for sorting the tasks
     var sortingDate:Date {
         return self.task.doneDate ?? Date.minimalDate
     }
 
-    
+    /// time interval with the work of the task for this date
+    ///
+    /// - Parameter date: the date
+    /// - Returns: a time interval for the summed working time for this task
     func workedTime(onDate date: Date) -> TimeInterval {
         let calculator = TaskWorktimeCalculator()
         return calculator.calculateWorktime(task: self.task, date: date)
     }
     
+    /// a description of the amount of work for this task.
+    ///
+    /// - Parameter date: the date
+    /// - Returns: a string representation of the work time
     func timeRange(onDate date: Date) -> String {
         let workedTime = self.workedTime(onDate: date)
         return "Your worktime \(workedTime.formattedAsString())"
@@ -207,20 +256,46 @@ struct DoneTaskInfo:ProtocolProgressInfo {
     }
 }
 
+/// a progress info for a checked habit
 struct HabitProgressInfo:ProtocolProgressInfo {
+    
+    /// the habit
+    let habit: Habit
+    
+    /// initialize this progress with the habit which was checked in
+    ///
+    /// - Parameter habit: the habit
+    init(habit: Habit) {
+        self.habit = habit
+    }
+    
+    /// work time on habits isn't available
+    ///
+    /// - Parameter onDate: the date
+    /// - Returns: 0.0
     func workedTime(onDate: Date) -> TimeInterval {
         return 0
     }
     
+    /// a time range for a habit is not available
+    ///
+    /// - Parameter date: the date
+    /// - Returns: an empty string
     func timeRange(onDate date: Date) -> String {
-        return "undefined"
+        return ""
     }
     
+    /// sorting for habits not available. sort them down.
     var sortingDate: Date {
         return Date.minimalDate
     }
         
-    var title: String
+    /// the title of the habit
+    var title: String {
+        return habit.name ?? "unknown habit"
+    }
+    
+    /// this is a progress on a checked habit
     let type = ProtocolProgressInfoType.habitProgress
     
     /// create a description string which includes the progress made on the goal so far.
@@ -230,7 +305,12 @@ struct HabitProgressInfo:ProtocolProgressInfo {
     ///   - date: the date as the foundation for the calculation
     /// - Returns: a formatted string: "You made 3% progress on your goal!"
     func progressDescription(onDate date:Date) -> String {
-        return ""
+        let strokeCount = HabitStrokeCalculator().calculateStrokeCount(forHabit: self.habit , andDate: date)
+        switch strokeCount {
+        case 0: return "You don't have done this habit today."
+        case 1: return "Congratulation! You've done this habit today."
+        default: return "Great! You've repeated this habit \(strokeCount) times."
+        }
     }
 }
 

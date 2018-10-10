@@ -22,4 +22,8 @@ extension Date {
     var dayInterval:DateInterval {
         return DateInterval(start: self.startOfDay, end: self.endOfDay)
     }
+    
+    func liesInDay(day: Date) -> Bool {
+        return self.day() == day.day()
+    }
 }

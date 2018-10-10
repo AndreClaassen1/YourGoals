@@ -39,6 +39,8 @@
 		7B1F94F82160C996001A0717 /* Array+uniqued.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F94F72160C996001A0717 /* Array+uniqued.swift */; };
 		7B2019152073DD9200B7775B /* PieProgressPainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2019132073DBD000B7775B /* PieProgressPainter.swift */; };
 		7B2234EF216E164C0020FB31 /* ProtocolGoalInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */; };
+		7B2234FB216E23D90020FB31 /* HabitStrokeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234FA216E23D90020FB31 /* HabitStrokeCalculator.swift */; };
+		7B2234FD216E27130020FB31 /* HabitStrokeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234FC216E27130020FB31 /* HabitStrokeCalculatorTests.swift */; };
 		7B2247BE201211870004ACDC /* ActionableTableView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */; };
 		7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */; };
 		7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */; };
@@ -371,6 +373,8 @@
 		7B1F94F72160C996001A0717 /* Array+uniqued.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+uniqued.swift"; sourceTree = "<group>"; };
 		7B2019132073DBD000B7775B /* PieProgressPainter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressPainter.swift; sourceTree = "<group>"; };
 		7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolGoalInfoTests.swift; sourceTree = "<group>"; };
+		7B2234FA216E23D90020FB31 /* HabitStrokeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStrokeCalculator.swift; sourceTree = "<group>"; };
+		7B2234FC216E27130020FB31 /* HabitStrokeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStrokeCalculatorTests.swift; sourceTree = "<group>"; };
 		7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+TableView.swift"; sourceTree = "<group>"; };
 		7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayInterfaceController.swift; sourceTree = "<group>"; };
 		7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchActionSender.swift; sourceTree = "<group>"; };
@@ -875,6 +879,7 @@
 		7B5F75DB215CE4470046AA3E /* Calculations */ = {
 			isa = PBXGroup;
 			children = (
+				7B2234FA216E23D90020FB31 /* HabitStrokeCalculator.swift */,
 				7B5F75DC215CE4710046AA3E /* TaskProgressCalculator.swift */,
 				7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */,
 			);
@@ -1269,6 +1274,7 @@
 				7BF9FF952157989C00CD2C82 /* TaskRepetitionManagerTests.swift */,
 				7B5F75DE215CEBF10046AA3E /* TaskProgressCalculatorTests.swift */,
 				7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */,
+				7B2234FC216E27130020FB31 /* HabitStrokeCalculatorTests.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1748,6 +1754,7 @@
 				7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */,
 				7BFF8AE02073C6D2007C108D /* TaskNotificationObserver.swift in Sources */,
 				7BE4BB561FC80B2700E1BEF9 /* GoalMiniCell.swift in Sources */,
+				7B2234FB216E23D90020FB31 /* HabitStrokeCalculator.swift in Sources */,
 				7BB77A312168B4810056FF60 /* TaskWorktimeCalculator.swift in Sources */,
 				7BAAFEE91F9CA2FA00BB102E /* GoalsViewController.swift in Sources */,
 				7B130B601FB5AD610072F6C8 /* TaskSwitchProtocolProvider.swift in Sources */,
@@ -1922,6 +1929,7 @@
 				7B74BC5A1FFE1DC700D06D48 /* CalculateColorsTests.swift in Sources */,
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */,
+				7B2234FD216E27130020FB31 /* HabitStrokeCalculatorTests.swift in Sources */,
 				7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */,
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
 				7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */,

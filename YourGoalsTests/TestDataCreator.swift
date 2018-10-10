@@ -98,4 +98,28 @@ class TestDataCreator:StorageManagerWorker {
         try! self.manager.saveContext()
         return taskProgress
     }
+
+    // MARK: - Habits
+    
+    /// create a new test habit for a goal
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - name: the name of the habit
+    /// - Returns: the new habit
+    func createHabit(forGoal goal: Goal, name: String) -> Habit {
+        let habit = HabitFactory(manager: self.manager).createHabit(name: name)
+        goal.add(actionable: habit)
+        try! self.manager.saveContext()
+        return habit
+    }
+    
+    /// check a habit for a given date and save it to the core data storage
+    ///
+    /// - Parameters:
+    ///   - habit: the habit
+    ///   - date: date to check in 
+    func check(habit: Habit, forDate date: Date) {
+        try! HabitCheckManager(manager: self.manager).checkHabit(forHabit: habit, state: .checked , atDate: date)
+    }
 }
