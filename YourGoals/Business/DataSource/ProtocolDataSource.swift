@@ -11,14 +11,29 @@ import Foundation
 /// this goal has some progress on a given date.
 struct ProtocolGoalInfo:Hashable {
     
+    /// the goal
     let goal:Goal
+    
+    /// the date for this info
     let date:Date
     
+    /// initialize the goal info with the corresponding goal and daet
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - date: the date for retrieving the protocol for this goal
     init(goal: Goal, date:Date) {
         self.goal = goal
         self.date = date
     }
     
+    /// calculate the whole working time on this goal
+    ///
+    /// - Parameters:
+    ///   - manager: the goal manager
+    ///   - backburnedGoals: the number of backburned goals
+    /// - Returns: the time interval
+    /// - Throws: a core data exception
     func workedOnGoal(manager: GoalsStorageManager, backburnedGoals: Bool) throws -> TimeInterval {
         let taskProgressProvider = TaskProgressProvider(manager: manager, backburnedGoals: backburnedGoals)
         let progress = try taskProgressProvider.fetchProtocolProgress(forGoalInfno: self)
@@ -29,9 +44,9 @@ struct ProtocolGoalInfo:Hashable {
 
 /// a progress info type for displaying the right icons in the UI
 ///
-/// - doneTask: a done task
-/// - taskProgress: a progress on a task
-/// - habitProgress: a habit was checked
+/// - doneTask: a task, which was checked as done
+/// - taskProgress: a progress of work on a task
+/// - habitProgress: a habit that was checked
 enum ProtocolProgressInfoType {
     case doneTask
     case taskProgress

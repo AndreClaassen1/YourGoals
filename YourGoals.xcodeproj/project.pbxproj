@@ -38,6 +38,7 @@
 		7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */; };
 		7B1F94F82160C996001A0717 /* Array+uniqued.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F94F72160C996001A0717 /* Array+uniqued.swift */; };
 		7B2019152073DD9200B7775B /* PieProgressPainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2019132073DBD000B7775B /* PieProgressPainter.swift */; };
+		7B2234EF216E164C0020FB31 /* ProtocolGoalInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */; };
 		7B2247BE201211870004ACDC /* ActionableTableView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */; };
 		7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */; };
 		7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */; };
@@ -369,6 +370,7 @@
 		7B1D60C01FB75BDA00E617ED /* Goal+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+Actionable.swift"; sourceTree = "<group>"; };
 		7B1F94F72160C996001A0717 /* Array+uniqued.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+uniqued.swift"; sourceTree = "<group>"; };
 		7B2019132073DBD000B7775B /* PieProgressPainter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressPainter.swift; sourceTree = "<group>"; };
+		7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolGoalInfoTests.swift; sourceTree = "<group>"; };
 		7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+TableView.swift"; sourceTree = "<group>"; };
 		7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayInterfaceController.swift; sourceTree = "<group>"; };
 		7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchActionSender.swift; sourceTree = "<group>"; };
@@ -1266,6 +1268,7 @@
 				7BB77A322168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift */,
 				7BF9FF952157989C00CD2C82 /* TaskRepetitionManagerTests.swift */,
 				7B5F75DE215CEBF10046AA3E /* TaskProgressCalculatorTests.swift */,
+				7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1928,6 +1931,7 @@
 				7B0A72671FB0485D0000586D /* HabitTests.swift in Sources */,
 				7B1BBC391FFD601C003934B1 /* CalcProgressTests.swift in Sources */,
 				7B4DFD7B20F51FA700F0E575 /* ProtocolDataSourceTests.swift in Sources */,
+				7B2234EF216E164C0020FB31 /* ProtocolGoalInfoTests.swift in Sources */,
 				7BEBBAD01F9F3E2A003D16AE /* StorageManagerExtension.swift in Sources */,
 				7BDC423B20739A0200146730 /* TaskNotificationHandlerTests.swift in Sources */,
 				7B2BAE4D1FADB8EF00441AFD /* TasksRequesterTests.swift in Sources */,
