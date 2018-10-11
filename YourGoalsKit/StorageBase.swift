@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-protocol Storage {
+public protocol Storage {
     func storageId() -> String
     func deleteAllEntries() throws
 }
@@ -123,7 +123,7 @@ public class StorageBase<T:NSManagedObject> : Storage {
         return countItems
     }
     
-    func fetchItems(entity:String? = nil, qualifyRequest:(NSFetchRequest<T>)->Void) throws -> [T] {
+    public func fetchItems(entity:String? = nil, qualifyRequest:(NSFetchRequest<T>)->Void) throws -> [T] {
         let request = createFetchRequestForEntity(entity: entity)
         qualifyRequest(request)
         

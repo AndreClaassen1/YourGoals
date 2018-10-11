@@ -61,6 +61,6 @@ class HabitOrderManager:StorageManagerWorker {
         var reordered = habits
         reordered.rearrange(from: fromPosition, to: toPosition)
         updateOrder(habits: reordered)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
 }

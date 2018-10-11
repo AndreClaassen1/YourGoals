@@ -10,10 +10,18 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
+
+/// a manager class for a core data database
+public class CoreDataManager {
     
+    /// the url of the model
     let modelURL:URL
+    
+    /// name of the database
     let databaseName:String
+    
+    /// fetch the database from the group container, if this name is set
+    let groupName:String?
     
     // true, if write ahead logging (WAL-Mode) on sqllite is enabled (default)
     let journalingEnabled: Bool
@@ -24,14 +32,26 @@ class CoreDataManager {
     ///   - databaseName: name of the database file
     ///   - modelName: name of the data model
     ///   - bundle: the bundle for storing
+    ///   - groupName: optional name of the application group
     ///   - journalingEnabled: true, if write ahead mode is enabled
-    init(databaseName:String, modelName:String, bundle:Bundle, journalingEnabled: Bool) {
+    public init(databaseName:String, modelName:String, bundle:Bundle, groupName:String?, journalingEnabled: Bool) {
         self.databaseName = databaseName
         self.journalingEnabled = journalingEnabled
         self.modelURL = bundle.url(forResource: modelName, withExtension: "momd")!
+        self.groupName = groupName
     }
     
-    lazy var applicationDocumentsDirectory: URL = {
+    lazy var documentDirectory: URL = {
+        
+        if let groupName = self.groupName {
+            guard let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupName) else {
+                fatalError("couldn't locate the URL for the application group: \(groupName)")
+            }
+            
+            return groupURL
+        }
+    
+        
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.andre.claassen.TestMasterDetail" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
@@ -48,7 +68,7 @@ class CoreDataManager {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent(self.databaseName)
+        let url = self.documentDirectory.appendingPathComponent(self.databaseName)
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             var options:[String : Any] = [
@@ -79,7 +99,7 @@ class CoreDataManager {
         return coordinator
     }()
     
-    lazy var managedObjectContext: NSManagedObjectContext = {
+    public lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)

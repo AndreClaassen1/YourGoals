@@ -14,7 +14,7 @@ class TaskStateManagerTests: StorageTestCase {
     func testStateDone() {
         // setup
         let task = TaskFactory(manager: self.manager).create(name: "Active Task", state: .active, prio: 1)
-        try! self.manager.dataManager.saveContext()
+        try! self.manager.saveContext()
         let id = task.objectID
         let stateManager = TaskStateManager(manager: self.manager)
         

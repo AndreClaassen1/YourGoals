@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ImageUpdater:StorageManagerWorker {
-
+    
     func updateImage(forGoal goal:Goal, image: UIImage?) throws {
         
         let oldImageData = goal.imageData
@@ -28,7 +28,7 @@ class ImageUpdater:StorageManagerWorker {
         }
         
         if oldImageData != nil {
-            self.manager.dataManager.managedObjectContext.delete(oldImageData!)
+            self.manager.context.delete(oldImageData!)
         }
     }
 }

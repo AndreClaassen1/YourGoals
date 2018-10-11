@@ -26,6 +26,6 @@ class GoalDeleter:StorageManagerWorker {
         
         self.manager.goalsStore.managedObjectContext.delete(goal)
     
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
 }

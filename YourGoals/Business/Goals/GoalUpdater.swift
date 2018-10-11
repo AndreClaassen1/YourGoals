@@ -35,6 +35,6 @@ class GoalUpdater:StorageManagerWorker {
         goal.backburnedGoals = goalInfo.backburnedGoals
         let imageUpdater = ImageUpdater(manager: self.manager)
         try imageUpdater.updateImage(forGoal: goal, image: goalInfo.image)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }    
 }

@@ -75,6 +75,6 @@ class TaskOrderManager:StorageManagerWorker {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
         updateOrder(actionables: tasksReorderd, type: .task)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
 }

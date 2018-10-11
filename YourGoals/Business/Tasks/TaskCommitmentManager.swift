@@ -21,7 +21,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         task.commitmentDate = date.day()
         task.commitmentPrio = 1
         task.setTaskState(state: .active)
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
         NotificationCenter.default.post(Notification(name: StrategyModelNotification.commitStateChanged.name, object: task, userInfo: nil))
     }
     
@@ -32,7 +32,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     func normalize(task: Task) throws {
         task.commitmentDate = nil
         task.commitmentPrio = 999
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
         NotificationCenter.default.post(Notification(name: StrategyModelNotification.commitStateChanged.name, object: task, userInfo: nil))
     }
     
@@ -173,14 +173,14 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         var tasksReorderd = tasks
         tasksReorderd.rearrange(from: fromPosition, to: toPosition)
         updateTasksOrder(tasks: tasksReorderd)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
 
     func insertTaskAtPosition(task: Task, tasks: [Task], toPosition: Int) throws   {
         var tasksReorderd = tasks
         tasksReorderd.insert(task, at: toPosition)
         updateTasksOrder(tasks: tasksReorderd)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
 
     // MARK: - ActionableSwitchProtocol

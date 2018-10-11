@@ -45,7 +45,7 @@ class TaskStateManager:ActionableSwitchProtocol {
         // set done date only in state done
         task.doneDate = state == .done ? date : nil
         
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
     
         TaskNotificationObserver.defaultObserver.tasksChanged()
         NotificationCenter.default.post(name: StrategyModelNotification.taskStateChanged.name, object: task)

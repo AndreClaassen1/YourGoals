@@ -46,7 +46,7 @@ class GoalComposer:StorageManagerWorker {
         goal.add(actionable: actionable)
         let taskOrderManager = TaskOrderManager(manager: self.manager)
         taskOrderManager.updateOrderByPrio(forGoal: goal, andType: actionableInfo.type)
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
         self.taskNotificationProtocol.tasksChanged()
         return actionable
     }
@@ -70,7 +70,7 @@ class GoalComposer:StorageManagerWorker {
         actionable.size = info.size
         actionable.repetitions = info.repetitions ?? []
  
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
         if actionable.isProgressing(atDate: date), let task = actionable as? Task {
             self.taskNotificationProtocol.progressChanged(forTask: task, referenceTime: date)
         }
@@ -107,7 +107,7 @@ class GoalComposer:StorageManagerWorker {
         case .task:
              try delete(task: actionable as! Task, fromGoal: goal)
         }
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
         self.taskNotificationProtocol.tasksChanged()
         return goal
     }

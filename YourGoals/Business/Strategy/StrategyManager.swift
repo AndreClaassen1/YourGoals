@@ -32,7 +32,7 @@ class StrategyManager:StorageManagerWorker {
         let strategy = try retrieveActiveStrategy()
         if strategy == nil {
             let newStrategy = try GoalFactory(manager: self.manager).create(name: "Strategy", prio: 0, reason: "Master Plan", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: nil, type: .strategyGoal, backburnedGoals: false)
-            try self.manager.dataManager.saveContext()
+            try self.manager.saveContext()
             return newStrategy
         }
         
@@ -54,7 +54,7 @@ class StrategyManager:StorageManagerWorker {
         let todayGoal = try GoalFactory(manager: self.manager).create(name: "Today", prio: 0, reason: "Your tasks for today. You have committed them all", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: UIImage(named: "YourToday"), type: .todayGoal, backburnedGoals: false)
         
         strategy.addToSubGoals(todayGoal)
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
         return todayGoal
     }
 
@@ -85,7 +85,7 @@ class StrategyManager:StorageManagerWorker {
         assert(goal.parentGoal == nil, "this goal shouldn't be part of a strategy")
         
         strategy.addToSubGoals(goal)
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
     }
     
     

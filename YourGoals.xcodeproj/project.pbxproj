@@ -41,6 +41,9 @@
 		7B2234EF216E164C0020FB31 /* ProtocolGoalInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */; };
 		7B2234FB216E23D90020FB31 /* HabitStrokeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234FA216E23D90020FB31 /* HabitStrokeCalculator.swift */; };
 		7B2234FD216E27130020FB31 /* HabitStrokeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2234FC216E27130020FB31 /* HabitStrokeCalculatorTests.swift */; };
+		7B223506216E39D70020FB31 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B223505216E39D70020FB31 /* ShareViewController.swift */; };
+		7B223509216E39D70020FB31 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B223507216E39D70020FB31 /* MainInterface.storyboard */; };
+		7B22350D216E39D70020FB31 /* YourGoals Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7B223503216E39D70020FB31 /* YourGoals Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7B2247BE201211870004ACDC /* ActionableTableView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */; };
 		7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */; };
 		7B26EB7F20B6B8E200155158 /* WatchActionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */; };
@@ -150,6 +153,19 @@
 		7B994E111FA22E4E00B704E1 /* GoalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994E101FA22E4E00B704E1 /* GoalFactory.swift */; };
 		7B9A19641FA7199B002CA72B /* UITextView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19631FA7199B002CA72B /* UITextView+Border.swift */; };
 		7B9A19661FA71C75002CA72B /* GoalDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A19651FA71C75002CA72B /* GoalDeleter.swift */; };
+		7B9A273D216FCEA500A755FF /* YourGoalsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */; };
+		7B9A2744216FCEA500A755FF /* ShareExtensionTasksProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2743216FCEA500A755FF /* ShareExtensionTasksProviderTests.swift */; };
+		7B9A2746216FCEA500A755FF /* YourGoalsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B9A2736216FCEA400A755FF /* YourGoalsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B9A2749216FCEA500A755FF /* YourGoalsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */; };
+		7B9A274A216FCEA500A755FF /* YourGoalsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B9A2753216FCFA900A755FF /* GoalsShareModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2751216FCFA900A755FF /* GoalsShareModel.xcdatamodeld */; };
+		7B9A2754216FD19300A755FF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */; };
+		7B9A2755216FD19C00A755FF /* StorageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */; };
+		7B9A2756216FD29B00A755FF /* YourGoalsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */; };
+		7B9A2758216FD2F200A755FF /* ShareExtensionTasksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2757216FD2F200A755FF /* ShareExtensionTasksProvider.swift */; };
+		7B9A275A216FD42400A755FF /* ShareStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2759216FD42400A755FF /* ShareStorageManager.swift */; };
+		7B9A275D216FE6A000A755FF /* StorageManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */; };
+		7B9A275F216FF24700A755FF /* ExtensionItemExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */; };
 		7B9D513C20A2F74E009B608D /* UIImage+Grayscale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */; };
 		7B9D513E20A305CD009B608D /* CommittedTasksDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */; };
 		7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */; };
@@ -221,8 +237,6 @@
 		7BEA4ED320D2D6AE00DEE71A /* ProtocolSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BEA4ED220D2D6AE00DEE71A /* ProtocolSectionView.xib */; };
 		7BEBBAAB1F9F175F003D16AE /* GoalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */; };
 		7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC61F9F1CB3003D16AE /* GoalsStorageManager.swift */; };
-		7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */; };
-		7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */; };
 		7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACD1F9F3DD2003D16AE /* StorageTestCase.swift */; };
 		7BEBBAD01F9F3E2A003D16AE /* StorageManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBACF1F9F3E29003D16AE /* StorageManagerExtension.swift */; };
 		7BEBBAD31F9F4087003D16AE /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBBAD11F9F4087003D16AE /* Generator.swift */; };
@@ -249,6 +263,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7B22350B216E39D70020FB31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B223502216E39D70020FB31;
+			remoteInfo = "YourGoals Share Extension";
+		};
+		7B9A273E216FCEA500A755FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B9A2733216FCEA400A755FF;
+			remoteInfo = YourGoalsKit;
+		};
+		7B9A2740216FCEA500A755FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BAAFEE21F9CA2FA00BB102E;
+			remoteInfo = YourGoals;
+		};
+		7B9A2747216FCEA500A755FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B9A2733216FCEA400A755FF;
+			remoteInfo = YourGoalsKit;
+		};
 		7BAAFEF81F9CA2FA00BB102E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7BAAFEDB1F9CA2FA00BB102E /* Project object */;
@@ -301,6 +343,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7B223511216E39D80020FB31 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7B22350D216E39D70020FB31 /* YourGoals Share Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BAAFF301F9CA2FB00BB102E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +383,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7BDAF7711FC56CF8004C7E46 /* YourGoals_Views.framework in Embed Frameworks */,
+				7B9A274A216FCEA500A755FF /* YourGoalsKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +429,11 @@
 		7B2234EE216E164C0020FB31 /* ProtocolGoalInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolGoalInfoTests.swift; sourceTree = "<group>"; };
 		7B2234FA216E23D90020FB31 /* HabitStrokeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStrokeCalculator.swift; sourceTree = "<group>"; };
 		7B2234FC216E27130020FB31 /* HabitStrokeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStrokeCalculatorTests.swift; sourceTree = "<group>"; };
+		7B223503216E39D70020FB31 /* YourGoals Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "YourGoals Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B223505216E39D70020FB31 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		7B223508216E39D70020FB31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7B22350A216E39D70020FB31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B223512216E3B190020FB31 /* YourGoals Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "YourGoals Share Extension.entitlements"; sourceTree = "<group>"; };
 		7B2247BD201211870004ACDC /* ActionableTableView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+TableView.swift"; sourceTree = "<group>"; };
 		7B26EB7B20B6ADF900155158 /* TodayInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayInterfaceController.swift; sourceTree = "<group>"; };
 		7B26EB7E20B6B8E200155158 /* WatchActionSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchActionSender.swift; sourceTree = "<group>"; };
@@ -480,6 +539,18 @@
 		7B994E101FA22E4E00B704E1 /* GoalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFactory.swift; sourceTree = "<group>"; };
 		7B9A19631FA7199B002CA72B /* UITextView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Border.swift"; sourceTree = "<group>"; };
 		7B9A19651FA71C75002CA72B /* GoalDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleter.swift; sourceTree = "<group>"; };
+		7B9A272E216FCAF200A755FF /* YourGoals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourGoals.entitlements; sourceTree = "<group>"; };
+		7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YourGoalsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9A2736216FCEA400A755FF /* YourGoalsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YourGoalsKit.h; sourceTree = "<group>"; };
+		7B9A2737216FCEA400A755FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9A273C216FCEA400A755FF /* YourGoalsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourGoalsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9A2743216FCEA500A755FF /* ShareExtensionTasksProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionTasksProviderTests.swift; sourceTree = "<group>"; };
+		7B9A2745216FCEA500A755FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9A2752216FCFA900A755FF /* GoalsShareModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsShareModel.xcdatamodel; sourceTree = "<group>"; };
+		7B9A2757216FD2F200A755FF /* ShareExtensionTasksProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionTasksProvider.swift; sourceTree = "<group>"; };
+		7B9A2759216FD42400A755FF /* ShareStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareStorageManager.swift; sourceTree = "<group>"; };
+		7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerBase.swift; sourceTree = "<group>"; };
+		7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionItemExtractor.swift; sourceTree = "<group>"; };
 		7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscale.swift"; sourceTree = "<group>"; };
 		7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommittedTasksDataSourceTests.swift; sourceTree = "<group>"; };
 		7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManager.swift; sourceTree = "<group>"; };
@@ -589,11 +660,35 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7B223500216E39D70020FB31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9A2756216FD29B00A755FF /* YourGoalsKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A2731216FCEA400A755FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A2739216FCEA400A755FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9A273D216FCEA500A755FF /* YourGoalsKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BAAFEE01F9CA2FA00BB102E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				262C7DD718E1DCF833988CC4 /* Pods_YourGoals.framework in Frameworks */,
+				7B9A2749216FCEA500A755FF /* YourGoalsKit.framework in Frameworks */,
 				7BDAF7701FC56CF8004C7E46 /* YourGoals_Views.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +860,18 @@
 				7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */,
 			);
 			path = "Transition Animation";
+			sourceTree = "<group>";
+		};
+		7B223504216E39D70020FB31 /* YourGoals Share Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7B22350A216E39D70020FB31 /* Info.plist */,
+				7B223512216E3B190020FB31 /* YourGoals Share Extension.entitlements */,
+				7B223507216E39D70020FB31 /* MainInterface.storyboard */,
+				7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */,
+				7B223505216E39D70020FB31 /* ShareViewController.swift */,
+			);
+			path = "YourGoals Share Extension";
 			sourceTree = "<group>";
 		};
 		7B26EB7A20B6ADDD00155158 /* Controller */ = {
@@ -961,6 +1068,30 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		7B9A2735216FCEA400A755FF /* YourGoalsKit */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A2736216FCEA400A755FF /* YourGoalsKit.h */,
+				7B9A2737216FCEA400A755FF /* Info.plist */,
+				7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */,
+				7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */,
+				7B9A2751216FCFA900A755FF /* GoalsShareModel.xcdatamodeld */,
+				7B9A2757216FD2F200A755FF /* ShareExtensionTasksProvider.swift */,
+				7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */,
+				7B9A2759216FD42400A755FF /* ShareStorageManager.swift */,
+			);
+			path = YourGoalsKit;
+			sourceTree = "<group>";
+		};
+		7B9A2742216FCEA500A755FF /* YourGoalsKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A2743216FCEA500A755FF /* ShareExtensionTasksProviderTests.swift */,
+				7B9A2745216FCEA500A755FF /* Info.plist */,
+			);
+			path = YourGoalsKitTests;
+			sourceTree = "<group>";
+		};
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1104,9 @@
 				7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */,
 				7BAAFF051F9CA2FA00BB102E /* YourGoalsUITests */,
 				7BDAF7691FC56CF8004C7E46 /* YourGoals ViewsTests */,
+				7B223504216E39D70020FB31 /* YourGoals Share Extension */,
+				7B9A2735216FCEA400A755FF /* YourGoalsKit */,
+				7B9A2742216FCEA500A755FF /* YourGoalsKitTests */,
 				7BAAFEE41F9CA2FA00BB102E /* Products */,
 				3EB2B9A2F895276EDDB00DBF /* Pods */,
 				C6D9E49C1DF9C5AF8B193B54 /* Frameworks */,
@@ -989,6 +1123,9 @@
 				7BAAFF1A1F9CA2FB00BB102E /* YourGoals WatchKit Extension.appex */,
 				7BDAF75B1FC56CF7004C7E46 /* YourGoals_Views.framework */,
 				7BDAF7631FC56CF7004C7E46 /* YourGoals ViewsTests.xctest */,
+				7B223503216E39D70020FB31 /* YourGoals Share Extension.appex */,
+				7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */,
+				7B9A273C216FCEA400A755FF /* YourGoalsKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -996,6 +1133,7 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B9A272E216FCAF200A755FF /* YourGoals.entitlements */,
 				7BE4BB571FC80D1500E1BEF9 /* Main */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
 				7BE4BB501FC80A3200E1BEF9 /* UI */,
@@ -1219,8 +1357,6 @@
 		7BEBBAC91F9F3CCA003D16AE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				7BEBBAC41F9F1CA6003D16AE /* StorageBase.swift */,
-				7BEBBACA1F9F3CE4003D16AE /* CoreDataManager.swift */,
 				7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */,
 			);
 			path = Shared;
@@ -1335,6 +1471,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		7B9A272F216FCEA400A755FF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9A2746216FCEA500A755FF /* YourGoalsKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BDAF7581FC56CF7004C7E46 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1346,6 +1490,60 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7B223502216E39D70020FB31 /* YourGoals Share Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B22350E216E39D80020FB31 /* Build configuration list for PBXNativeTarget "YourGoals Share Extension" */;
+			buildPhases = (
+				7B2234FF216E39D70020FB31 /* Sources */,
+				7B223500216E39D70020FB31 /* Frameworks */,
+				7B223501216E39D70020FB31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YourGoals Share Extension";
+			productName = "YourGoals Share Extension";
+			productReference = 7B223503216E39D70020FB31 /* YourGoals Share Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		7B9A2733216FCEA400A755FF /* YourGoalsKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B9A274B216FCEA500A755FF /* Build configuration list for PBXNativeTarget "YourGoalsKit" */;
+			buildPhases = (
+				7B9A272F216FCEA400A755FF /* Headers */,
+				7B9A2730216FCEA400A755FF /* Sources */,
+				7B9A2731216FCEA400A755FF /* Frameworks */,
+				7B9A2732216FCEA400A755FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YourGoalsKit;
+			productName = YourGoalsKit;
+			productReference = 7B9A2734216FCEA400A755FF /* YourGoalsKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7B9A273B216FCEA400A755FF /* YourGoalsKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B9A274E216FCEA500A755FF /* Build configuration list for PBXNativeTarget "YourGoalsKitTests" */;
+			buildPhases = (
+				7B9A2738216FCEA400A755FF /* Sources */,
+				7B9A2739216FCEA400A755FF /* Frameworks */,
+				7B9A273A216FCEA400A755FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B9A273F216FCEA500A755FF /* PBXTargetDependency */,
+				7B9A2741216FCEA500A755FF /* PBXTargetDependency */,
+			);
+			name = YourGoalsKitTests;
+			productName = YourGoalsKitTests;
+			productReference = 7B9A273C216FCEA400A755FF /* YourGoalsKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7BAAFEE21F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BAAFF351F9CA2FB00BB102E /* Build configuration list for PBXNativeTarget "YourGoals" */;
@@ -1358,12 +1556,15 @@
 				92230F68651867F15292FD25 /* [CP] Embed Pods Frameworks */,
 				1ABDE5A52BDE63792C4C2BE9 /* [CP] Copy Pods Resources */,
 				7BDAF7771FC56CF8004C7E46 /* Embed Frameworks */,
+				7B223511216E39D80020FB31 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				7BAAFF0E1F9CA2FB00BB102E /* PBXTargetDependency */,
 				7BDAF76F1FC56CF8004C7E46 /* PBXTargetDependency */,
+				7B22350C216E39D70020FB31 /* PBXTargetDependency */,
+				7B9A2748216FCEA500A755FF /* PBXTargetDependency */,
 			);
 			name = YourGoals;
 			productName = YourGoals;
@@ -1487,13 +1688,36 @@
 		7BAAFEDB1F9CA2FA00BB102E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "André Claaßen";
 				TargetAttributes = {
+					7B223502216E39D70020FB31 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					7B9A2733216FCEA400A755FF = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
+					7B9A273B216FCEA400A755FF = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7BAAFEE21F9CA2FA00BB102E;
+					};
 					7BAAFEE21F9CA2FA00BB102E = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					7BAAFEF61F9CA2FA00BB102E = {
 						CreatedOnToolsVersion = 9.0;
@@ -1545,11 +1769,36 @@
 				7BAAFF191F9CA2FB00BB102E /* YourGoals WatchKit Extension */,
 				7BDAF75A1FC56CF7004C7E46 /* YourGoals Views */,
 				7BDAF7621FC56CF7004C7E46 /* YourGoals ViewsTests */,
+				7B223502216E39D70020FB31 /* YourGoals Share Extension */,
+				7B9A2733216FCEA400A755FF /* YourGoalsKit */,
+				7B9A273B216FCEA400A755FF /* YourGoalsKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7B223501216E39D70020FB31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B223509216E39D70020FB31 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A2732216FCEA400A755FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A273A216FCEA400A755FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BAAFEE11F9CA2FA00BB102E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1740,6 +1989,36 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7B2234FF216E39D70020FB31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B223506216E39D70020FB31 /* ShareViewController.swift in Sources */,
+				7B9A275F216FF24700A755FF /* ExtensionItemExtractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A2730216FCEA400A755FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9A2754216FD19300A755FF /* CoreDataManager.swift in Sources */,
+				7B9A2755216FD19C00A755FF /* StorageBase.swift in Sources */,
+				7B9A2753216FCFA900A755FF /* GoalsShareModel.xcdatamodeld in Sources */,
+				7B9A2758216FD2F200A755FF /* ShareExtensionTasksProvider.swift in Sources */,
+				7B9A275D216FE6A000A755FF /* StorageManagerBase.swift in Sources */,
+				7B9A275A216FD42400A755FF /* ShareStorageManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B9A2738216FCEA400A755FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9A2744216FCEA500A755FF /* ShareExtensionTasksProviderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BAAFEDF1F9CA2FA00BB102E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1822,7 +2101,6 @@
 				7B3DA175206D771000C0ED0F /* UNCalendarNotificationTrigger+Date.swift in Sources */,
 				7B4E0BE61FAF0CE500602FD1 /* HabitTableViewCell.swift in Sources */,
 				7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */,
-				7BEBBACC1F9F3D53003D16AE /* StorageBase.swift in Sources */,
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
 				7B9145A5207D416700B2C5F8 /* ActiveTaskResponder.swift in Sources */,
 				7B3DA177206E4B5500C0ED0F /* UNNotificationCenterProtocol.swift in Sources */,
@@ -1887,7 +2165,6 @@
 				7B74BC5C1FFE981E00D06D48 /* UIColor+Brightness.swift in Sources */,
 				7B6AE97A1FAC905F00E15A9D /* StrategyModelNotification.swift in Sources */,
 				7B4B579D1FA6F4C10099FF62 /* GoalContentView.swift in Sources */,
-				7BEBBACB1F9F3CEC003D16AE /* CoreDataManager.swift in Sources */,
 				7B6E11242078BC43004605B1 /* PlannableTasksDataSource.swift in Sources */,
 				7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */,
 				7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */,
@@ -1997,6 +2274,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7B22350C216E39D70020FB31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B223502216E39D70020FB31 /* YourGoals Share Extension */;
+			targetProxy = 7B22350B216E39D70020FB31 /* PBXContainerItemProxy */;
+		};
+		7B9A273F216FCEA500A755FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B9A2733216FCEA400A755FF /* YourGoalsKit */;
+			targetProxy = 7B9A273E216FCEA500A755FF /* PBXContainerItemProxy */;
+		};
+		7B9A2741216FCEA500A755FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BAAFEE21F9CA2FA00BB102E /* YourGoals */;
+			targetProxy = 7B9A2740216FCEA500A755FF /* PBXContainerItemProxy */;
+		};
+		7B9A2748216FCEA500A755FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B9A2733216FCEA400A755FF /* YourGoalsKit */;
+			targetProxy = 7B9A2747216FCEA500A755FF /* PBXContainerItemProxy */;
+		};
 		7BAAFEF91F9CA2FA00BB102E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7BAAFEE21F9CA2FA00BB102E /* YourGoals */;
@@ -2035,6 +2332,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7B223507216E39D70020FB31 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B223508216E39D70020FB31 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2070,6 +2375,137 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7B22350F216E39D80020FB31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				INFOPLIST_FILE = "YourGoals Share Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andre.claassen.YourGoals.YourGoals-Share-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B223510216E39D80020FB31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				INFOPLIST_FILE = "YourGoals Share Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andre.claassen.YourGoals.YourGoals-Share-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7B9A274C216FCEA500A755FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YourGoalsKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andre.claassen.YourGoalsKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7B9A274D216FCEA500A755FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YourGoalsKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andre.claassen.YourGoalsKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7B9A274F216FCEA500A755FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				INFOPLIST_FILE = YourGoalsKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andre.claassen.YourGoalsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourGoals.app/YourGoals";
+			};
+			name = Debug;
+		};
+		7B9A2750216FCEA500A755FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV66WEKNLF;
+				INFOPLIST_FILE = YourGoalsKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andre.claassen.YourGoalsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourGoals.app/YourGoals";
+			};
+			name = Release;
+		};
 		7BAAFF2B1F9CA2FB00BB102E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2261,6 +2697,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YourGoals/YourGoals.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;
 				INFOPLIST_FILE = YourGoals/Info.plist;
@@ -2278,6 +2715,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YourGoals/YourGoals.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;
 				INFOPLIST_FILE = YourGoals/Info.plist;
@@ -2371,7 +2809,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "YourGoals Views/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andre.claassen.YourGoals-Views";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2398,7 +2836,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "YourGoals Views/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andre.claassen.YourGoals-Views";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2447,6 +2885,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7B22350E216E39D80020FB31 /* Build configuration list for PBXNativeTarget "YourGoals Share Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B22350F216E39D80020FB31 /* Debug */,
+				7B223510216E39D80020FB31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B9A274B216FCEA500A755FF /* Build configuration list for PBXNativeTarget "YourGoalsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9A274C216FCEA500A755FF /* Debug */,
+				7B9A274D216FCEA500A755FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B9A274E216FCEA500A755FF /* Build configuration list for PBXNativeTarget "YourGoalsKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9A274F216FCEA500A755FF /* Debug */,
+				7B9A2750216FCEA500A755FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7BAAFEDE1F9CA2FA00BB102E /* Build configuration list for PBXProject "YourGoals" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2522,6 +2987,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		7B9A2751216FCFA900A755FF /* GoalsShareModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7B9A2752216FCFA900A755FF /* GoalsShareModel.xcdatamodel */,
+			);
+			currentVersion = 7B9A2752216FCFA900A755FF /* GoalsShareModel.xcdatamodel */;
+			path = GoalsShareModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		7BEBBAA91F9F175F003D16AE /* GoalsModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

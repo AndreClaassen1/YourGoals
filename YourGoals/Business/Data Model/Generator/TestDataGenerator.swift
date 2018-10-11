@@ -26,7 +26,7 @@ class TestDataGenerator {
     func generate() throws {
         try manager.deleteRepository()
         try generators.forEach{ try $0.generate() }
-        try manager.dataManager.saveContext()
+        try manager.saveContext()
     }
 }
 

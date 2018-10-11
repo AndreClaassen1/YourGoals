@@ -81,7 +81,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         // inform all objects interested in the start of the progress
         self.taskNotificationProtocol.progressStarted(forTask: task, referenceTime: date)
 
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
     }
     
     /// stop working and making progress on a task
@@ -96,7 +96,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         }
         
         activeProgress.end = date
-        try self.manager.dataManager.saveContext()
+        try self.manager.saveContext()
         self.taskNotificationProtocol.progressStopped()
     }
    

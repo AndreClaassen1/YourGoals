@@ -34,7 +34,7 @@ class GoalProgressCalculatorTests: StorageTestCase {
         goal.addToTasks(activeTasks)
         let doneTasks = taskFactory.createTasks(numberOfTasks: numberOfDoneTasks, state: .done  )
         goal.addToTasks(doneTasks)
-        try! self.manager.dataManager.saveContext()
+        try! self.manager.saveContext()
         return goal
     }
     

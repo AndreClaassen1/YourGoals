@@ -31,7 +31,7 @@ class GoalInfoManagerTests: StorageTestCase {
         
         let taskProgressManager = TaskProgressManager(manager: self.manager)
         try! taskProgressManager.startProgress(forTask: task, atDate: Date.dateWithYear(2017, month: 10, day: 31))
-        try! self.manager.dataManager.saveContext()
+        try! self.manager.saveContext()
         
         // act
         let goalInfoManager = GoalInfoManager(manager: self.manager)
