@@ -166,6 +166,7 @@
 		7B9A275A216FD42400A755FF /* ShareStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2759216FD42400A755FF /* ShareStorageManager.swift */; };
 		7B9A275D216FE6A000A755FF /* StorageManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */; };
 		7B9A275F216FF24700A755FF /* ExtensionItemExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */; };
+		7B9A2761216FFA5900A755FF /* ShareTasksConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2760216FFA5900A755FF /* ShareTasksConsumer.swift */; };
 		7B9D513C20A2F74E009B608D /* UIImage+Grayscale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */; };
 		7B9D513E20A305CD009B608D /* CommittedTasksDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */; };
 		7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */; };
@@ -393,6 +394,7 @@
 /* Begin PBXFileReference section */
 		0F3EA82C85128DCC73528467 /* Pods-YourGoalsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoalsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7686E12014F4B57E082E1A53 /* Pods_YourGoals_Share_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals_Share_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Reorder.swift"; sourceTree = "<group>"; };
@@ -551,6 +553,8 @@
 		7B9A2759216FD42400A755FF /* ShareStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareStorageManager.swift; sourceTree = "<group>"; };
 		7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerBase.swift; sourceTree = "<group>"; };
 		7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionItemExtractor.swift; sourceTree = "<group>"; };
+		7B9A2760216FFA5900A755FF /* ShareTasksConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTasksConsumer.swift; sourceTree = "<group>"; };
+		7B9A27632171FA2400A755FF /* CSNotificationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CSNotificationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscale.swift"; sourceTree = "<group>"; };
 		7B9D513D20A305CD009B608D /* CommittedTasksDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommittedTasksDataSourceTests.swift; sourceTree = "<group>"; };
 		7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOrderManager.swift; sourceTree = "<group>"; };
@@ -972,6 +976,7 @@
 				7B9E28EC1FA6550D00BB6003 /* TaskOrderManager.swift */,
 				7B303B891FA9F93500BA2FB6 /* TaskCommitmentManager.swift */,
 				7BF9FF9021576E9900CD2C82 /* TaskRepetitionManager.swift */,
+				7B9A2760216FFA5900A755FF /* ShareTasksConsumer.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1462,8 +1467,10 @@
 		C6D9E49C1DF9C5AF8B193B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B9A27632171FA2400A755FF /* CSNotificationView.framework */,
 				79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */,
 				224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */,
+				7686E12014F4B57E082E1A53 /* Pods_YourGoals_Share_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1554,7 +1561,6 @@
 				7BAAFEE11F9CA2FA00BB102E /* Resources */,
 				7BAAFF341F9CA2FB00BB102E /* Embed Watch Content */,
 				92230F68651867F15292FD25 /* [CP] Embed Pods Frameworks */,
-				1ABDE5A52BDE63792C4C2BE9 /* [CP] Copy Pods Resources */,
 				7BDAF7771FC56CF8004C7E46 /* Embed Frameworks */,
 				7B223511216E39D80020FB31 /* Embed App Extensions */,
 			);
@@ -1580,7 +1586,6 @@
 				7BAAFEF41F9CA2FA00BB102E /* Frameworks */,
 				7BAAFEF51F9CA2FA00BB102E /* Resources */,
 				AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */,
-				AF1013E68AE28E20420FD7BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1697,7 +1702,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1870,21 +1875,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1ABDE5A52BDE63792C4C2BE9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		642D4D8DA58F1B30314E8605 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1933,21 +1923,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF1013E68AE28E20420FD7BA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */ = {
@@ -2054,6 +2029,7 @@
 				7B58CE001FACC00D00628C65 /* TodayViewController+CollectionView.swift in Sources */,
 				7BEBBAD91F9F43C0003D16AE /* TestDataGenerator.swift in Sources */,
 				7B30FE5D2068D8CB002BFF40 /* TaskNotificationScheduler.swift in Sources */,
+				7B9A2761216FFA5900A755FF /* ShareTasksConsumer.swift in Sources */,
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
@@ -2379,6 +2355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "YourGoals Share Extension/YourGoals Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;
 				INFOPLIST_FILE = "YourGoals Share Extension/Info.plist";
@@ -2398,6 +2375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "YourGoals Share Extension/YourGoals Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV66WEKNLF;
 				INFOPLIST_FILE = "YourGoals Share Extension/Info.plist";

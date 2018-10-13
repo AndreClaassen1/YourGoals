@@ -18,6 +18,17 @@ DEPENDENCIES:
   - PNChart
   - TEAChart
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - BEMSimpleLineGraph
+    - CSNotificationView
+    - Eureka
+    - LongPressReorder
+    - MGSwipeTableCell
+    - PNChart
+    - TEAChart
+    - UICountingLabel
+
 SPEC CHECKSUMS:
   BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
@@ -30,4 +41,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f3437a1717696d1356ef3792aeef10e7a939b9e2
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

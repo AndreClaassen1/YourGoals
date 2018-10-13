@@ -67,7 +67,7 @@ class ActiveTaskResponder {
         do {
             switch action {
             case .addTask:
-                try self.todayGoalComposer.addTask(withDescription: description, forDate: date)
+                try self.todayGoalComposer.createTask(name: description, forDate: date)
             default:
                 assertionFailure("performAction taskUri: action not allowed")
             }

@@ -10,6 +10,7 @@ import UIKit
 import Social
 import YourGoalsKit
 
+/// the default share view controller for easy creating a new task
 class ShareViewController: SLComposeServiceViewController {
     var attachedImage: UIImage?
     var attachedUrl: String?
@@ -41,8 +42,31 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Your Goals", message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,
+                                                handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     /// post the selected content to the journal infio store
     override func didSelectPost() {
+        do {
+            guard !self.contentText.isEmpty else {
+                showAlert(message: "I need some text for a new task")
+                return
+            }
+            
+            let manager = ShareStorageManager.defaultStorageManager
+            let provider = ShareExtensionTasksProvider(manager: manager)
+            try provider.saveNewTaskFromExtension(name: self.contentText, url: self.attachedUrl, image: self.attachedImage )
+        } catch let error {
+            self.showAlert(message: error.localizedDescription)
+        }
+        
+        
         
 //        do {
 //            let manager = ShareStore

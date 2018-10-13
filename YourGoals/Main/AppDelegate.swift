@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import YourGoalsKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,26 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var taskNotificationHandler:TaskNotificationHandler!
     
     var window: UIWindow?
-    let initializers:[Initializer] = [
-        TestDataInitializer(),
-        AppBadgeActualizerInitializer()
-    ]
     
-    func initAll() {
-        let context = InitializerContext(defaultStorageManager: GoalsStorageManager.defaultStorageManager)
-        
-        
-        
-        for initializer in self.initializers {
-            initializer.initialize(context: context)
-        }
-         
-        self.watchConnectivityHandler = WatchConnectivityHandlerForApp(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
-        self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
-        self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
-        self.taskNotificationHandler.registerNotifications()
-    }
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         initAll()
@@ -55,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        consumeTasksFromShareExtension()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -68,6 +51,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: my own logic
     
+    /// consume the tasks from the data store of the share extensions
+    func consumeTasksFromShareExtension() {
+        let shareTasksConsumer = ShareTasksConsumer(
+            goalsStorageManager: GoalsStorageManager.defaultStorageManager,
+            shareStorageManager: ShareStorageManager.defaultStorageManager)
+        
+        shareTasksConsumer.consumeTasksFromShare(forDate: Date())
+    }
+    
+    func initAll() {
+        let context = InitializerContext(defaultStorageManager: GoalsStorageManager.defaultStorageManager)
+        
+        let initializers:[Initializer] = [
+            TestDataInitializer(),
+            AppBadgeActualizerInitializer()
+        ]
 
+        for initializer in initializers {
+            initializer.initialize(context: context)
+        }
+        
+        self.watchConnectivityHandler = WatchConnectivityHandlerForApp(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
+        self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
+        self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
+        self.taskNotificationHandler.registerNotifications()
+        consumeTasksFromShareExtension()
+    }
 }
 

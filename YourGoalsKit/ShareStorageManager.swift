@@ -14,7 +14,7 @@ import CoreData
 public class ShareStorageManager : StorageManagerBase  {
     static let applicationGroupName = "group.com.yourgoals.app"
     static let modelName = "GoalsShareModel"
-    static let defaultStorageManager = ShareStorageManager(databaseName: "GoalsShareModel.sqlite")
+    public static let defaultStorageManager = ShareStorageManager(databaseName: "GoalsShareModel.sqlite")
     
     /// inititlaize the class for supporting basic core data operations
     ///
@@ -29,14 +29,14 @@ public class ShareStorageManager : StorageManagerBase  {
     /// - Parameters:
     ///   - databaseName: database file name
     ///   - journalingEnabled: true, if journaling is enabled (default)
-    convenience init(databaseName: String, journalingEnabled: Bool = true) {
+    convenience init(databaseName: String, journalingEnabled: Bool = false) {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: ShareStorageManager.modelName, bundle: Bundle(for: ShareStorageManager.self),
                                                groupName: ShareStorageManager.applicationGroupName,
                                                journalingEnabled: journalingEnabled))
     }
     
     /// access the share new task store
-    var shareNewTaskStore:StorageBase<ShareNewTask>  {
+    public var shareNewTaskStore:StorageBase<ShareNewTask>  {
         return try! store(id: "ShareNewTask") as! StorageBase<ShareNewTask>
     }
 }

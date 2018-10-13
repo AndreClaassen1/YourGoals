@@ -33,11 +33,13 @@
         <attribute name="commitmentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="commitmentPrio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="repetitionValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal" syncable="YES"/>
         <relationship name="progress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskProgress" inverseName="task" inverseEntity="TaskProgress" syncable="YES"/>
     </entity>
@@ -47,11 +49,11 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="progress" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Habit" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HabitCheck" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ImageData" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TaskProgress" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Goal" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Habit" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="HabitCheck" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="ImageData" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="TaskProgress" positionX="0" positionY="0" width="128" height="90"/>
     </elements>
 </model>

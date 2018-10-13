@@ -22,13 +22,13 @@ class TodayGoalComposer:StorageManagerWorker {
     /// create a task with the given description for the today goal
     ///
     /// - Parameters:
-    ///   - description: description of the task
+    ///   - name: the name or content of the task
     ///   - date: date to commit
     /// - Throws: core data exception
-    func addTask(withDescription description: String, forDate date: Date) throws {
+    func createTask(name: String, forDate date: Date) throws {
         let strategy = try self.strategyManager.assertValidActiveStrategy()
         let todayGoal = try self.strategyManager.assertTodayGoal(strategy: strategy)
-        let actionableInfo = ActionableInfo(type: .task, name: description, commitDate: date, parentGoal: todayGoal)
+        let actionableInfo = ActionableInfo(type: .task, name: name, commitDate: date, parentGoal: todayGoal)
         let _ = try self.goalComposer.create(actionableInfo: actionableInfo, toGoal: todayGoal)
     }
 }
