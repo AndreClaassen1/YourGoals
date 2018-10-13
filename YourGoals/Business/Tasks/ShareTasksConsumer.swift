@@ -44,7 +44,14 @@ class ShareTasksConsumer:StorageManagerWorker {
                     return
                 }
                 
-                try self.todayGoalComposer.createTask(name: taskName, forDate: date)
+                let actionableInfo = ActionableInfo(
+                    type: .task,
+                    name: taskName,
+                    commitDate: date,
+                    url: shareNewTask.url,
+                    imageData: shareNewTask.image)
+                
+                try self.todayGoalComposer.create(actionableInfo: actionableInfo)
             }
         }
         catch let error {

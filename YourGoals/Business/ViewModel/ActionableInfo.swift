@@ -27,6 +27,12 @@ struct ActionableInfo {
     /// a set of repetitions
     let repetitions:Set<ActionableRepetition>?
     
+    /// the url of the share task
+    let url:String?
+    
+    /// an image of the share task
+    let imageData:Data?
+    
     /// initialize the actionable with the needed values
     /// - Parameters:
     ///   - type: type of the actionable: task or hapti
@@ -35,12 +41,16 @@ struct ActionableInfo {
     ///   - parentGoal: parentGoal
     ///   - size: size of the task (only for tasks). nil makes a default size of 30 Minutes
     ///   - repetetions: a set of repetitions like sunday, weekday, monday, etc.
-    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil, repetitions:Set<ActionableRepetition>? = nil) {
+    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil,
+         url: String? = nil, imageData: Data? = nil,
+         repetitions:Set<ActionableRepetition>? = nil) {
         self.type = type
         self.name = name
         self.commitDate = commitDate?.day()
         self.parentGoal = parentGoal
         self.size = size ?? 30.0
+        self.url = url
+        self.imageData = imageData
         self.repetitions = repetitions
     }
     
@@ -53,6 +63,8 @@ struct ActionableInfo {
         self.commitDate = actionable.commitmentDate
         self.parentGoal = actionable.goal
         self.size = actionable.size
+        self.imageData = actionable.imageData
+        self.url = actionable.url
         self.repetitions = actionable.repetitions
     }
 }

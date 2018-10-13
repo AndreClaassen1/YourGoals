@@ -9,7 +9,7 @@
 import Foundation
 
 extension Task:Actionable {
-
+    
     /// encode and decode actionable repetitions to the internal representation
     var repetitions: Set<ActionableRepetition> {
         get {

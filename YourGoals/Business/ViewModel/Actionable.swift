@@ -104,6 +104,10 @@ protocol Actionable {
     
     var prio:Int16 { set get }
     
+    var url:String? { set get }
+    
+    var imageData:Data? { set get }
+    
     var repetitions:Set<ActionableRepetition> { set get }
     
     /// obtain the checked state for agiven state
