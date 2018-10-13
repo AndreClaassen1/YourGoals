@@ -63,7 +63,7 @@ class GoalsStorageManager:StorageManagerBase {
     ///   - databaseName: database file name
     ///   - groupName: groupName, if the database lies in an application group
     ///   - journalingEnabled: true, if journaling is enabled (default)
-    convenience init(databaseName: String, groupName: String? = nil, journalingEnabled: Bool = true) {
+    convenience init(databaseName: String, groupName: String? = nil, journalingEnabled: Bool = false) {
         self.init(dataManager: CoreDataManager(databaseName: databaseName, modelName: GoalsStorageManager.modelName, bundle: Bundle(for: GoalsStorageManager.self), groupName: groupName, journalingEnabled: journalingEnabled))
     }
 }

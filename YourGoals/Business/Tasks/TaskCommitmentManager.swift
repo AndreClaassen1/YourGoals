@@ -50,6 +50,10 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
             ]
         })
         
+        for t in tasks {
+            NSLog("fetched: \(String(describing: t.name)) \(String(describing: t.imageData))")
+        }
+        
         return tasks
     }
     

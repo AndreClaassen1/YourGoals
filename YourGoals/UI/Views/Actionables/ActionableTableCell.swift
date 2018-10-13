@@ -32,6 +32,8 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var pieProgressView: PieProgressView!
     @IBOutlet weak var progressViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var urlButton: UIButton!
+    @IBOutlet weak var attachedImageView: UIImageView!
     
     var actionable:Actionable!
     var delegateTaskCell: ActionableTableCellDelegate!
@@ -68,6 +70,19 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         delegateTaskCell.actionableStateChangeDesired(actionable: self.actionable)
     }
     
+    @IBAction func clickOnURL(_ sender: Any) {
+        guard let urlString = actionable.url else {
+            NSLog("clickOnURL failed. no URL is set")
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            NSLog("clickOnURL failed: string is not an url")
+            return
+        }
+        
+        UIApplication.shared.open(url)
+    }
     // MARK: - Content
     
     func show(state: ActionableState) {
@@ -83,13 +98,19 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///
     /// - Parameter date: show progress for date
     func showTaskProgress(forDate date: Date) {
-        let isProgressing = actionable.isProgressing(atDate: date)
+        let isProgressing = self.actionable.isProgressing(atDate: date)
         self.progressView.isHidden = !isProgressing
         self.progressViewHeightConstraint.constant = isProgressing ? defaultProgressViewHeight : 0.0
         if isProgressing {
             let remainingPercentage = CGFloat(actionable.calcRemainingPercentage(atDate: date))
             let progressColor = self.colorCalculator.calculateColor(percent: remainingPercentage)
-            self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
+            if let imageData = self.actionable.imageData {
+                self.contentView.backgroundColor = UIColor.white
+                self.attachedImageView.image = UIImage(data: imageData)
+            } else {
+                self.attachedImageView.image = nil
+                self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
+            }
             self.remainingTimeLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
             self.pieProgressView.progress = 1.0 - remainingPercentage
             self.pieProgressView.progressTintColor = progressColor.darker()
@@ -198,6 +219,31 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         }
     }
     
+    /// show the attached url as a clickable button
+    ///
+    /// - Parameter url: url
+    func showAttachedURL(url: String?) {
+        guard let url = url else {
+            self.urlButton.isHidden = true
+            return
+        }
+        
+        self.urlButton.isHidden = false
+        self.urlButton.setTitle(url, for: .normal)
+    }
+    
+    /// show the attached image as a transparent image background
+    ///
+    /// - Parameter data: image data
+    func showAttachedImage(imageData data: Data?) {
+        guard let data = data else {
+            self.attachedImageView.image = nil
+            return
+        }
+        
+        self.attachedImageView.image = UIImage(data: data)
+    }
+    
     /// show the content of the task in this cell
     ///
     /// - Parameters:
@@ -216,6 +262,8 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         showTaskProgress(forDate: date)
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
         showWorkingTime(actionable: actionable, forDate: date, estimatedStartingTime: time)
+        showAttachedURL(url: actionable.url)
+        showAttachedImage(imageData: actionable.imageData)
         taskDescriptionLabel.text = actionable.name
         
         if let goalName = actionable.goal?.name {

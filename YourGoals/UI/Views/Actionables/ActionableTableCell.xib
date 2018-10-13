@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="321" height="193.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="50" verticalCompressionResistancePriority="50" image="planning_icon" translatesAutoresizingMaskIntoConstraints="NO" id="3P2-XV-gfq" userLabel="Attached Image View">
+                        <rect key="frame" x="0.0" y="0.0" width="321" height="193.5"/>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-fX-ZWa" userLabel="Task Check Box">
                         <rect key="frame" x="6" y="15" width="30" height="30"/>
                         <constraints>
@@ -52,27 +55,27 @@
                         <rect key="frame" x="0.0" y="79" width="321" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXP-sf-YMW">
-                                <rect key="frame" x="139" y="13" width="174" height="21"/>
+                                <rect key="frame" x="139" y="12.5" width="174" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqi-08-FI4">
-                                <rect key="frame" x="139" y="34" width="174" height="48"/>
+                                <rect key="frame" x="139" y="33.5" width="174" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmL-Q4-Njf">
-                                <rect key="frame" x="139" y="73" width="174" height="30"/>
+                                <rect key="frame" x="139" y="72.5" width="174" height="30"/>
                                 <state key="normal" title="I need more time"/>
                                 <connections>
                                     <action selector="timerPlusTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IYH-8v-uEr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrB-uA-dVq" userLabel="Pie VIew" customClass="PieProgressView" customModule="YourGoals" customModuleProvider="target">
-                                <rect key="frame" x="42" y="13" width="90" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="42" y="12.5" width="90" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="aGp-bE-f17"/>
                                     <constraint firstAttribute="height" priority="500" constant="90" id="aSf-IY-m2I"/>
@@ -136,6 +139,17 @@
                             <constraint firstItem="uqW-a5-H7u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Rk-Az-dQl" secondAttribute="trailing" constant="10" id="yhx-hF-9tM"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="100" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tte-RK-sFm" userLabel="urlButton">
+                        <rect key="frame" x="193" y="59" width="120" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="jDM-YJ-7uh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="https://andreclaassen.de"/>
+                        <connections>
+                            <action selector="clickOnURL:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0gg-6a-BwF"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.80580713299999995" green="0.88512374650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -145,34 +159,46 @@
                     <constraint firstItem="LSh-YD-Kzj" firstAttribute="top" secondItem="2YQ-gU-ik5" secondAttribute="bottom" constant="8" id="6V8-OQ-GCK"/>
                     <constraint firstItem="2YQ-gU-ik5" firstAttribute="top" secondItem="mSh-BQ-mXO" secondAttribute="bottom" constant="2" id="8oe-X2-fl8"/>
                     <constraint firstItem="y8g-Up-XwH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="KsD-J2-VaF"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="OCo-La-kSb"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VAF-gX-euD"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XZ4-NV-j1o"/>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="Xxj-o8-G2P"/>
                     <constraint firstItem="LSh-YD-Kzj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZnA-Wa-uY7"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="6" id="dEt-Ui-Q1S"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2YQ-gU-ik5" secondAttribute="trailing" constant="16" id="fVK-xt-Zdj"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="hyZ-zB-OrV"/>
                     <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="leading" id="oEr-7t-1Wm"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="trailing" secondItem="uqW-a5-H7u" secondAttribute="trailing" id="plY-LR-x2K"/>
                     <constraint firstItem="y8g-Up-XwH" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" constant="10" id="qOd-fQ-xVf"/>
                     <constraint firstItem="mSh-BQ-mXO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="quw-3t-7Im"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y8g-Up-XwH" secondAttribute="bottom" constant="5" id="so8-BD-glE"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="firstBaseline" secondItem="2YQ-gU-ik5" secondAttribute="firstBaseline" id="tE3-YN-epO"/>
                     <constraint firstItem="Bbs-fX-ZWa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="uMB-4z-r4E"/>
                     <constraint firstAttribute="trailing" secondItem="LSh-YD-Kzj" secondAttribute="trailing" id="vai-8W-plF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="attachedImageView" destination="3P2-XV-gfq" id="a4i-8s-iby"/>
                 <outlet property="checkBoxButton" destination="Bbs-fX-ZWa" id="JnZ-Yf-02x"/>
                 <outlet property="commmittingDateLabel" destination="uqW-a5-H7u" id="DXz-xT-5hZ"/>
                 <outlet property="contentView" destination="H2p-sc-9uM" id="8ji-ra-ljU"/>
                 <outlet property="goalDescriptionLabel" destination="2YQ-gU-ik5" id="Rwh-hV-xrJ"/>
+                <outlet property="imageView" destination="3P2-XV-gfq" id="tfu-YS-fng"/>
                 <outlet property="pieProgressView" destination="lrB-uA-dVq" id="9sN-0Z-txO"/>
                 <outlet property="progressView" destination="LSh-YD-Kzj" id="idm-78-Oai"/>
                 <outlet property="progressViewHeightConstraint" destination="p7y-4t-v8z" id="UJJ-Ln-bgQ"/>
                 <outlet property="remainingTimeLabel" destination="Qqi-08-FI4" id="zcj-gr-VmS"/>
                 <outlet property="taskDescriptionLabel" destination="mSh-BQ-mXO" id="2Jd-GZ-vjH"/>
                 <outlet property="totalWorkingTimeLabel" destination="1Rk-Az-dQl" id="n08-IV-zY9"/>
+                <outlet property="urlButton" destination="Tte-RK-sFm" id="VnZ-YQ-fvy"/>
                 <outlet property="workingTimeLabel" destination="nNt-78-XXy" id="hog-Ab-POB"/>
             </connections>
-            <point key="canvasLocation" x="31.5" y="148"/>
+            <point key="canvasLocation" x="194" y="133"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="TaskCircle" width="44" height="44"/>
+        <image name="planning_icon" width="25" height="25"/>
     </resources>
 </document>

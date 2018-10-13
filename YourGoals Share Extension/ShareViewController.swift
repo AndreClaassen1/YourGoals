@@ -65,24 +65,6 @@ class ShareViewController: SLComposeServiceViewController {
         } catch let error {
             self.showAlert(message: error.localizedDescription)
         }
-        
-        
-        
-//        do {
-//            let manager = ShareStore
-//            
-//            
-//            let journalEntryStorage = JournalEntryStorage(storeManager: storeManager, concurrencyType: .mainQueueConcurrencyType)
-//            let images:[UIImage] = attachedImage == nil ? [] : [attachedImage!]
-//            
-//            let info = JournalInfo(text: contentText, images: images, time: nil, location: nil, url: attachedUrl, question: nil)
-//            let _ = try journalEntryStorage.createJournalEntry(info)
-//            // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-//            extensionContext?.completeRequest(returningItems: [AnyObject](), completionHandler: nil)
-//        }
-//        catch let error {
-//            ErrorAlert.show(self, context: NSLocalizedString("Couldn't post entry", comment: "error in shareview controller"), error: error)
-//        }
     }
 
 }
