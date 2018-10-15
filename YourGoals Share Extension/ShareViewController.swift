@@ -61,7 +61,7 @@ class ShareViewController: SLComposeServiceViewController {
             
             let manager = ShareStorageManager.defaultStorageManager
             let provider = ShareExtensionTasksProvider(manager: manager)
-            try provider.saveNewTaskFromExtension(name: self.contentText, url: self.attachedUrl, image: self.attachedImage )
+            try provider.saveNewTaskFromExtension(name: self.contentText, urlString: self.attachedUrl, image: self.attachedImage )
         } catch let error {
             self.showAlert(message: error.localizedDescription)
         }

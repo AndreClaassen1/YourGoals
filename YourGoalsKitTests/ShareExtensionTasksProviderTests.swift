@@ -27,7 +27,7 @@ class YourGoalsKitTests: XCTestCase {
     
     func createNewExtensionTasks(numberOfTasks: Int) {
         for i in 0..<3 {
-            try! self.extensionTasksProvider.saveNewTaskFromExtension(name: "New Task from Extension \(i)", url: nil, image: nil)
+            try! self.extensionTasksProvider.saveNewTaskFromExtension(name: "New Task from Extension \(i)", urlString: nil, image: nil)
         }
     }
     

@@ -6,6 +6,7 @@
 //  Copyright © 2017 André Claaßen. All rights reserved.
 //
 import Foundation
+import UIKit
 
 /// a view model representation an actionable (task or habit)
 struct ActionableInfo {
@@ -28,10 +29,26 @@ struct ActionableInfo {
     let repetitions:Set<ActionableRepetition>?
     
     /// the url of the share task
-    let url:String?
+    let urlString:String?
     
     /// an image of the share task
     let imageData:Data?
+    
+    var url:URL? {
+        if let urlString = self.urlString {
+            return URL(string: urlString)
+        }
+        
+        return nil
+    }
+    
+    var image:UIImage? {
+        if let imageData = self.imageData {
+            return UIImage(data: imageData)
+        }
+        
+        return nil
+    }
     
     /// initialize the actionable with the needed values
     /// - Parameters:
@@ -42,14 +59,14 @@ struct ActionableInfo {
     ///   - size: size of the task (only for tasks). nil makes a default size of 30 Minutes
     ///   - repetetions: a set of repetitions like sunday, weekday, monday, etc.
     init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil,
-         url: String? = nil, imageData: Data? = nil,
+         urlString: String? = nil, imageData: Data? = nil,
          repetitions:Set<ActionableRepetition>? = nil) {
         self.type = type
         self.name = name
         self.commitDate = commitDate?.day()
         self.parentGoal = parentGoal
         self.size = size ?? 30.0
-        self.url = url
+        self.urlString = urlString
         self.imageData = imageData
         self.repetitions = repetitions
     }
@@ -64,7 +81,7 @@ struct ActionableInfo {
         self.parentGoal = actionable.goal
         self.size = actionable.size
         self.imageData = actionable.imageData
-        self.url = actionable.url
+        self.urlString = actionable.urlString
         self.repetitions = actionable.repetitions
     }
 }

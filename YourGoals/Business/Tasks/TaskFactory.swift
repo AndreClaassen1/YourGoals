@@ -57,7 +57,7 @@ class TaskFactory:StorageManagerWorker, ActionableFactory {
         task.commitmentDate = actionableInfo.commitDate
         task.goal = actionableInfo.parentGoal
         task.repetitions = actionableInfo.repetitions ?? []
-        task.url = actionableInfo.url
+        task.urlString = actionableInfo.urlString
         task.imageData = actionableInfo.imageData
         return task
     }

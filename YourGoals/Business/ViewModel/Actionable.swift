@@ -104,7 +104,7 @@ protocol Actionable {
     
     var prio:Int16 { set get }
     
-    var url:String? { set get }
+    var urlString:String? { set get }
     
     var imageData:Data? { set get }
     

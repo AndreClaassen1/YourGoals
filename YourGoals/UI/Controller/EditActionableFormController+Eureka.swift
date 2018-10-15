@@ -19,6 +19,8 @@ import Eureka
 struct TaskFormTag  {
     static let task = "Task"
     static let goal = "Goal"
+    static let url = "Url"
+    static let image = "Image"
     static let duration = "Duration"
     static let commitDate = "CommitDate"
     static let repetitions = "Repetitions"
@@ -60,6 +62,12 @@ extension EditActionableFormController {
                 $0.title = "Timebox your task"
             }
             
+            <<< URLRow(TaskFormTag.url)
+            <<< ImageRow(TaskFormTag.image) {
+                $0.sourceTypes = .PhotoLibrary
+                $0.title = "Additional Image for your task"
+            }
+
             <<< commitDateRow()
             <<< repetitionRow()
             +++ Section()
@@ -88,6 +96,8 @@ extension EditActionableFormController {
         var values = [String: Any?]()
         values[TaskFormTag.task] = actionableInfo.name
         values[TaskFormTag.goal] = actionableInfo.parentGoal
+        values[TaskFormTag.url] = actionableInfo.url
+        values[TaskFormTag.image] = actionableInfo.image
         values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
         values[TaskFormTag.duration] = Date.timeFromMinutes(Double(actionableInfo.size))
         
@@ -113,7 +123,14 @@ extension EditActionableFormController {
         let size = Float((values [TaskFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
         let repetitions = values[TaskFormTag.repetitions] as? Set<ActionableRepetition>
         
-        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size, repetitions: repetitions)
+        let url = values[TaskFormTag.url] as? URL
+        let urlString = url?.absoluteString
+        
+        let image = values[TaskFormTag.image] as? UIImage
+        let imageData = image == nil ? nil :  UIImageJPEGRepresentation(image!, 0.6)
+
+        
+        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size, urlString: urlString, imageData: imageData, repetitions: repetitions)
     }
     
     // MARK: - Row creating helper functions

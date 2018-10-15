@@ -33,7 +33,7 @@ public class ShareExtensionTasksProvider {
     ///   - url: an optional url
     ///   - image: an optional image
     /// - Throws: core data exception
-    public func saveNewTaskFromExtension(name: String, url: String?, image:UIImage?) throws {
+    public func saveNewTaskFromExtension(name: String, urlString: String?, image:UIImage?) throws {
         let shareNewTask = manager.shareNewTaskStore.createPersistentObject()
         
         guard !name.isEmpty else {
@@ -41,8 +41,8 @@ public class ShareExtensionTasksProvider {
         }
         
         shareNewTask.taskname = name
-        shareNewTask.image = image?.jpegData(compressionQuality: 0.7)
-        shareNewTask.url = url
+        shareNewTask.imageData = image?.jpegData(compressionQuality: 0.7)
+        shareNewTask.urlString = urlString
         try manager.saveContext()
     }
     

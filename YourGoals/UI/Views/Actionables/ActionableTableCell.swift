@@ -71,7 +71,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     }
     
     @IBAction func clickOnURL(_ sender: Any) {
-        guard let urlString = actionable.url else {
+        guard let urlString = actionable.urlString else {
             NSLog("clickOnURL failed. no URL is set")
             return
         }
@@ -262,7 +262,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         showTaskProgress(forDate: date)
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
         showWorkingTime(actionable: actionable, forDate: date, estimatedStartingTime: time)
-        showAttachedURL(url: actionable.url)
+        showAttachedURL(url: actionable.urlString)
         showAttachedImage(imageData: actionable.imageData)
         taskDescriptionLabel.text = actionable.name
         

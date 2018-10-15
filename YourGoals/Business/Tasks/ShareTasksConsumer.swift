@@ -48,8 +48,8 @@ class ShareTasksConsumer:StorageManagerWorker {
                     type: .task,
                     name: taskName,
                     commitDate: date,
-                    url: shareNewTask.url,
-                    imageData: shareNewTask.image)
+                    urlString: shareNewTask.urlString,
+                    imageData: shareNewTask.imageData)
                 
                 try self.todayGoalComposer.create(actionableInfo: actionableInfo)
             }
