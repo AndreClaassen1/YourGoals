@@ -69,7 +69,9 @@ class GoalComposer:StorageManagerWorker {
         actionable.goal = info.parentGoal
         actionable.size = info.size
         actionable.repetitions = info.repetitions ?? []
- 
+        actionable.imageData = info.imageData
+        actionable.urlString = info.urlString
+        
         try self.manager.saveContext()
         if actionable.isProgressing(atDate: date), let task = actionable as? Task {
             self.taskNotificationProtocol.progressChanged(forTask: task, referenceTime: date)

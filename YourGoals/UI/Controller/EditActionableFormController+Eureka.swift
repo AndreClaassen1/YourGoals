@@ -26,9 +26,6 @@ struct TaskFormTag  {
     static let repetitions = "Repetitions"
 }
 
-typealias Emoji = String
-let 👦🏼 = "👦🏼", 🍐 = "🍐", 💁🏻 = "💁🏻", 🐗 = "🐗", 🐼 = "🐼", 🐻 = "🐻", 🐖 = "🐖", 🐡 = "🐡"
-
 // MARK: - Extension for creating and handling the Eureka Form
 extension EditActionableFormController {
     
@@ -62,10 +59,12 @@ extension EditActionableFormController {
                 $0.title = "Timebox your task"
             }
             
-            <<< URLRow(TaskFormTag.url)
+            <<< URLRow(TaskFormTag.url) {
+                $0.title = "Additional URL"
+            }
             <<< ImageRow(TaskFormTag.image) {
                 $0.sourceTypes = .PhotoLibrary
-                $0.title = "Additional Image for your task"
+                $0.title = "Additional Image"
             }
 
             <<< commitDateRow()

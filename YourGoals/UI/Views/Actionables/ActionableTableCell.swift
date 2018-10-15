@@ -242,6 +242,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         }
         
         self.attachedImageView.image = UIImage(data: data)
+        self.clipsToBounds = true
     }
     
     /// show the content of the task in this cell
