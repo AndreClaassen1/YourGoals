@@ -238,11 +238,19 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     func showAttachedImage(imageData data: Data?) {
         guard let data = data else {
             self.attachedImageView.image = nil
+            self.attachedImageView.isHidden = true
             return
         }
         
         self.attachedImageView.image = UIImage(data: data)
+        self.attachedImageView.isHidden = false
+        self.attachedImageView.contentMode = .scaleAspectFill
         self.clipsToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.attachedImageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
     
     /// show the content of the task in this cell
