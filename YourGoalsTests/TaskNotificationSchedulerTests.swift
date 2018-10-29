@@ -45,8 +45,9 @@ class TaskNotificationSchedulerTests: StorageTestCase {
             let nextTriggerDates = requests.map { ($0.trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!  }
             XCTAssertEqual ( [
                     Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 00, second: 10), // start notification your task is started
-                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 20, second: 00), // first notification 10 minutes before task end
-                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 25, second: 00), // seconod notification 5 minutes before the tasks end
+                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 15, second: 00), // first notification 50%  of the task time is reached
+                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 20, second: 00), // second notification 10 minutes before task end
+                    Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 25, second: 00), // third notification 5 minutes before the tasks end
                     Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 30, second: 00)  // last notification at end of the task
                 ], nextTriggerDates)
             }
@@ -74,6 +75,7 @@ class TaskNotificationSchedulerTests: StorageTestCase {
             self.expectation.fulfill()
             let nextTriggerDates = requests.map { ($0.trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!  }
             XCTAssertEqual ( [
+                Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 30, second: 00), // notification 50% of the task is done
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 50, second: 00), // first notification 10 minutes before task end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 12, minute: 55, second: 00), // seconod notification 5 minutes before the tasks end
                 Date.dateTimeWithYear(2040, month: 04, day: 01, hour: 13, minute: 00, second: 00)  // last notification at end of the task

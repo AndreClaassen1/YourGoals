@@ -23,7 +23,7 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         observer.register(provider: self)
     }
     
-    /// schedule a local notification for the task to informa about remaining time
+    /// schedule a local notification for the task to inform the user about the remaining time
     ///
     /// - Parameters:
     ///   - task: the task
@@ -94,8 +94,19 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         }
     }
  
+    /// create a series of local push notifications for the task.
+    ///
+    /// Push notifications for 50% of the task size, 10 and 5 minutes remaining time.
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - referenceTime: the reference time for calculations
     func scheduleRemainingTimeNotifications(forTask task: Task, referenceTime:Date) {
         let remainingTime = task.calcRemainingTimeInterval(atDate: referenceTime)
+        if task.size >= 30.0 {
+            scheduleLocalNotification(forTask: task, withText: "You have reached 50% of your timebox", referenceTime: referenceTime, remainingTime: remainingTime - Double(task.size / 2.0 * 60.0))
+        }
+        
         scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceTime: referenceTime, remainingTime: remainingTime)
