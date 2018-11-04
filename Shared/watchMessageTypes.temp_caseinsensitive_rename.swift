@@ -1,5 +1,5 @@
 //
-//  watchMessageTypes.swift
+//  WatchMessageTypes.swift
 //  YourGoals
 //
 //  Created by André Claaßen on 10.04.18.

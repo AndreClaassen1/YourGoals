@@ -1,9 +1,9 @@
 PODS:
   - BEMSimpleLineGraph (4.1)
   - CSNotificationView (0.5.4)
-  - Eureka (4.1.1)
-  - LongPressReorder (1.1.0)
-  - MGSwipeTableCell (1.6.6)
+  - Eureka (4.3.0)
+  - LongPressReorder (1.2.1)
+  - MGSwipeTableCell (1.6.7)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - TEAChart (1.0.0)
@@ -32,9 +32,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
-  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  LongPressReorder: 1f652eb6572dbd37fb3e10d0af459ac76351b84d
-  MGSwipeTableCell: c3bc6e261e7bc06c112909fe3fb8205de286082c
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
+  LongPressReorder: 71b132d61786d45a1241dd0ff356a2bec1deff63
+  MGSwipeTableCell: fb20e983988bde2b8d0df29c2d9e1d8ffd10b74a
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   TEAChart: 4bfb34461d9da2672d3e63ccf1a486e5bb4bceb7
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa

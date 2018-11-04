@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
     </dependencies>
     <scenes>
         <!--Actionable Interface Controller-->
@@ -35,7 +35,7 @@
                                     <action selector="menuAddItem" destination="AgC-eL-Hgc" id="ozl-LI-c0s"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Need more time" icon="more" id="tye-C0-ZzG">
+                            <menuItem title="Need more time" icon="speaker" id="tye-C0-ZzG">
                                 <connections>
                                     <action selector="menuNeedMoreTime" destination="AgC-eL-Hgc" id="phg-1r-v1c"/>
                                 </connections>
@@ -43,6 +43,11 @@
                             <menuItem title="I am done" icon="accept" id="IYO-a0-iH7">
                                 <connections>
                                     <action selector="menuDone" destination="AgC-eL-Hgc" id="e80-N6-BtA"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pause" icon="pause" id="Q3y-Hu-jEf">
+                                <connections>
+                                    <action selector="menuPauseTask" destination="AgC-eL-Hgc" id="qh4-5y-SUW"/>
                                 </connections>
                             </menuItem>
                         </items>

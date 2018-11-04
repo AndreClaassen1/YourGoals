@@ -82,6 +82,9 @@ class WatchConnectivityHandlerForApp: NSObject, WCSessionDelegate, TaskNotificat
         case .actionStartTask:
             let taskUri = message["taskUri"] as! String
             taskResponder.performAction(action: .startTask, taskUri: taskUri, forDate: date)
+        case .actionStopTask:
+            let taskUri = message["taskUri"] as! String
+            taskResponder.performAction(action: .stopTask, taskUri: taskUri, forDate: date)
         case .actionAddTask:
             guard let taskDescription = message["description"] as? String else {
                 NSLog("couldn't receive a task description \(message)")

@@ -156,6 +156,10 @@ class WatchProgressInterfaceController: WKInterfaceController, WatchContextNotif
         self.watchActionSender.send(action: .actionDone, taskUri: self.progressingInfo.taskUri)
     }
     
+    @IBAction func menuPauseTask() {
+        self.watchActionSender.send(action: .actionStopTask, taskUri: self.progressingInfo.taskUri)
+    }
+    
     // MARK: WatchContextNotification
     
     func progressContextReceived(progressContext: [String: Any]) {

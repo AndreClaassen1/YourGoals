@@ -12,11 +12,15 @@ import Foundation
 ///
 /// - done: the user wants to stop the task
 /// - needMoreTime: the user needs more time
+/// - addTask: the user wants to add a new task
+/// - startTask: the user wants to start a task
+/// - stopTask: the user wants to stop the work on a task
 enum ActiveTaskResponderAction {
     case done
     case needMoreTime
     case addTask
     case startTask
+    case stopTask
 }
 
 /// the user clicks on a button on a notification or on the watch to perform a certain action for the active progressing task
@@ -54,6 +58,9 @@ class ActiveTaskResponder {
                 try progressManager.changeTaskSize(forTask: task, delta: 15.0, forDate: date)
             case .startTask:
                 try progressManager.startProgress(forTask: task, atDate: date)
+            case .stopTask:
+                try progressManager.stopProgress(forTask: task, atDate: date)
+                
             default:
                 assertionFailure("performAction taskUri: action not allowed")
             }

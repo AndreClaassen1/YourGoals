@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
+		<key>YourGoals Share Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>YourGoals Views.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>15</integer>
+		</dict>
+		<key>YourGoals Views.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>YourGoals WatchKit App (Complication).xcscheme</key>
 		<dict>
@@ -35,6 +45,11 @@
 			<integer>0</integer>
 		</dict>
 		<key>YourGoalsKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>YourGoalsKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>17</integer>
