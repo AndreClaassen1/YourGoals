@@ -96,10 +96,10 @@ public class WeekDayCell : Cell<Set<WeekDay>>, CellType {
         
         guard let imageSize = button.imageView?.image?.size else { return }
         let spacing : CGFloat = 3.0
-        button.titleEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, -(imageSize.height + spacing), 0.0)
+        button.titleEdgeInsets = UIEdgeInsets.init(top: 0.0, left: -imageSize.width, bottom: -(imageSize.height + spacing), right: 0.0)
         guard let titleLabel = button.titleLabel, let title = titleLabel.text else { return }
-        let titleSize = title.size(withAttributes: [NSAttributedStringKey.font: titleLabel.font])
-        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width)
+        let titleSize = title.size(withAttributes: [NSAttributedString.Key.font: titleLabel.font])
+        button.imageEdgeInsets = UIEdgeInsets.init(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
     }
 }
 

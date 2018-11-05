@@ -11,7 +11,7 @@ import UIKit
 
 extension ImageData {
     func setImage(image: UIImage) {
-        guard let data = UIImageJPEGRepresentation(image, 0.6) else {
+        guard let data = image.jpegData(compressionQuality: 0.6) else {
             assertionFailure("couldn't convert image \(image) to jpeg")
             return
         }

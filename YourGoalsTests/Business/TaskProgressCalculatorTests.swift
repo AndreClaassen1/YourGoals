@@ -51,7 +51,7 @@ class TaskProgressCalculatorTests: StorageTestCase {
             (name: "Task 1", prio: 1, size: 20.0, commitmentDate: today) // 40 minutes
             ] )
         
-        self.testDataCreator.createGoalWithTasks(infos: [
+        let _ = self.testDataCreator.createGoalWithTasks(infos: [
             (name: "Task 2", prio: 2, size: 20.0, commitmentDate: yesterday), // 20 minutes and yet in the abstract today task
             (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil)  // 40 minutes
             ])

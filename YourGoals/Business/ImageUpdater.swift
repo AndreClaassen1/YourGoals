@@ -16,7 +16,7 @@ class ImageUpdater:StorageManagerWorker {
         let oldImageData = goal.imageData
         
         if let image = image {
-            guard let data = UIImageJPEGRepresentation(image, 0.6) else {
+            guard let data = image.jpegData(compressionQuality: 0.6) else {
                 throw GoalError.imageNotJPegError
             }
             

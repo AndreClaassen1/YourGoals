@@ -15,7 +15,7 @@ extension ActionableTableView {
     func configureTaskTableView(_ tableView: UITableView) {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "emptyCell")
         tableView.registerReusableCell(ActionableTableCell.self)
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 48.0
         tableView.delegate = self
         tableView.dataSource = self

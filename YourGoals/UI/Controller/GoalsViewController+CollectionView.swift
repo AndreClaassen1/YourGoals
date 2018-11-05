@@ -17,7 +17,7 @@ extension GoalsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         self.manager = GoalsStorageManager.defaultStorageManager
         collectionView.registerReusableCell(GoalCell2.self)
         collectionView.registerReusableCell(NewGoalCell.self)
-        collectionView.registerSupplementaryView(GoalsSectionHeader.self, kind: UICollectionElementKindSectionHeader)
+        collectionView.registerSupplementaryView(GoalsSectionHeader.self, kind: UICollectionView.elementKindSectionHeader)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)

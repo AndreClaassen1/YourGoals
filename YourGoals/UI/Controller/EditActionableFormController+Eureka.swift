@@ -126,7 +126,7 @@ extension EditActionableFormController {
         let urlString = url?.absoluteString
         
         let image = values[TaskFormTag.image] as? UIImage
-        let imageData = image == nil ? nil :  UIImageJPEGRepresentation(image!, 0.6)
+        let imageData = image == nil ? nil :  image!.jpegData(compressionQuality: 0.6)
 
         
         return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size, urlString: urlString, imageData: imageData, repetitions: repetitions)

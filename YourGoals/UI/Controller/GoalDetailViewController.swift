@@ -99,7 +99,7 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.down {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.down {
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -45,7 +45,7 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         content.categoryIdentifier = TaskNotificationCategory.taskNotificationCategory
         content.body = taskName
         content.title = text
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         content.userInfo = [
             "taskUri": task.objectID.uriRepresentation().absoluteString
         ]
