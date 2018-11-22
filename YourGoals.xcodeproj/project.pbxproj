@@ -596,6 +596,7 @@
 		7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalDetailsViewController+Animation.swift"; sourceTree = "<group>"; };
 		7BAB77511FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+TransitionDelegate.swift"; sourceTree = "<group>"; };
 		7BAC75C91FC5970000113C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProgressView.storyboard; sourceTree = "<group>"; };
+		7BAE0F2521A46E6D00E71937 /* log.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = log.md; sourceTree = "<group>"; };
 		7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorktimeCalculator.swift; sourceTree = "<group>"; };
 		7BB77A322168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorktimeCalculatorTests.swift; sourceTree = "<group>"; };
 		7BB9B8201FC573DD00786A86 /* PieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieProgressView.swift; sourceTree = "<group>"; };
@@ -1100,6 +1101,7 @@
 		7BAAFEDA1F9CA2FA00BB102E = {
 			isa = PBXGroup;
 			children = (
+				7BAE0F2421A46E4C00E71937 /* Docs */,
 				7B83346D1FA3C2CC002FB5BC /* .gitignore */,
 				7BEBBAC91F9F3CCA003D16AE /* Shared */,
 				7BAAFEE51F9CA2FA00BB102E /* YourGoals */,
@@ -1221,6 +1223,14 @@
 				7BAAFF2A1F9CA2FB00BB102E /* PushNotificationPayload.apns */,
 			);
 			path = "YourGoals WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		7BAE0F2421A46E4C00E71937 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				7BAE0F2521A46E6D00E71937 /* log.md */,
+			);
+			path = Docs;
 			sourceTree = "<group>";
 		};
 		7BBB30F7207BA83C00F637E0 /* Data */ = {
@@ -1904,7 +1914,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMSimpleLineGraph/BEMSimpleLineGraph.framework",
 				"${BUILT_PRODUCTS_DIR}/CSNotificationView/CSNotificationView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -1927,7 +1937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */ = {
@@ -1936,7 +1946,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1945,7 +1955,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF22F3C4AA7474E568C2C3CB /* [CP] Check Pods Manifest.lock */ = {

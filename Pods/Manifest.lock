@@ -19,7 +19,7 @@ DEPENDENCIES:
   - TEAChart
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BEMSimpleLineGraph
     - CSNotificationView
     - Eureka
@@ -39,6 +39,6 @@ SPEC CHECKSUMS:
   TEAChart: 4bfb34461d9da2672d3e63ccf1a486e5bb4bceb7
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 53c984d35be93def150b781ec8e532953f4a1b8d
+PODFILE CHECKSUM: b961d74c62a9d83b33ae01d3a821bab6d2b6151d
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0.beta.2
