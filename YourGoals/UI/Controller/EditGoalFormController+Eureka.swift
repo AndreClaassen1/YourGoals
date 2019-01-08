@@ -131,7 +131,7 @@ extension EditGoalFormController {
         if let image = goalInfo.image {
             values[GoalFormTag.visionImage] = image
         } else {
-            values[GoalFormTag.visionImage] = UIImage(named: "Success")
+            values[GoalFormTag.visionImage] = Asset.success.image
         }
         values[GoalFormTag.backburnedGoals] = goalInfo.backburnedGoals
 

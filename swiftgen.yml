@@ -4,3 +4,9 @@ strings:
         - templateName: structured-swift4
           output: YourGoals/Generated/strings.swift
 
+xcassets:
+    inputs:
+        - YourGoals/UI/Ressources/Assets.xcassets
+    outputs:
+        - templateName: swift4
+          output: YourGoals/Generated/assets-images.swift

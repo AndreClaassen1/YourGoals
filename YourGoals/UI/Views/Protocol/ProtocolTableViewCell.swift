@@ -38,21 +38,14 @@ class ProtocolTableViewCell: UITableViewCell {
     /// - Parameter type: a doneTask, habitProgress or taskProgress
     /// - Returns: a correspondending image
     func iconImageForType(type: ProtocolProgressInfoType) -> UIImage {
-        var name = "unknown"
         switch type {
         case .doneTask:
-            name = "TaskChecked"
+            return Asset.taskChecked.image
         case .habitProgress:
-            name = "HabitBoxChecked"
+            return Asset.habitBoxChecked.image
         case .taskProgress:
-            name = "TaskProgress"
+            return Asset.taskProgress.image
         }
-        
-        guard let icon = UIImage(named: name) else {
-            assertionFailure("there is no icon for type: \(type) and name \(name)")
-            return UIImage()
-        }
-        return icon
     }
     
     /// confiure the cell with the values of the entry

@@ -51,7 +51,7 @@ class StrategyManager:StorageManagerWorker {
             return todayGoal
         }
         
-        let todayGoal = try GoalFactory(manager: self.manager).create(name: "Today", prio: 0, reason: "Your tasks for today. You have committed them all", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: UIImage(named: "YourToday"), type: .todayGoal, backburnedGoals: false)
+        let todayGoal = try GoalFactory(manager: self.manager).create(name: "Today", prio: 0, reason: "Your tasks for today. You have committed them all", startDate: Date.minimalDate, targetDate: Date.maximalDate, image: Asset.yourToday.image, type: .todayGoal, backburnedGoals: false)
         
         strategy.addToSubGoals(todayGoal)
         try manager.saveContext()

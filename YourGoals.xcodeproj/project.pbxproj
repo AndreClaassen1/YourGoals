@@ -127,6 +127,7 @@
 		7B8168B621E491A300C5624C /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168B521E491A300C5624C /* strings.swift */; };
 		7B8168B721E4937700C5624C /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168B521E491A300C5624C /* strings.swift */; };
 		7B8168B921E49F4600C5624C /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7B8168B221E48F9300C5624C /* swiftgen.yml */; };
+		7B8168BB21E4A8E400C5624C /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168BA21E4A8E400C5624C /* assets-images.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
@@ -529,6 +530,7 @@
 		7B8168B121E48CF000C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B8168B221E48F9300C5624C /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftgen.yml; sourceTree = "<group>"; };
 		7B8168B521E491A300C5624C /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
+		7B8168BA21E4A8E400C5624C /* assets-images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "assets-images.swift"; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
@@ -1033,6 +1035,7 @@
 		7B8168B421E4908700C5624C /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				7B8168BA21E4A8E400C5624C /* assets-images.swift */,
 				7B8168B521E491A300C5624C /* strings.swift */,
 			);
 			path = Generated;
@@ -2114,6 +2117,7 @@
 				7B9E28EF1FA65C9400BB6003 /* Array+Rearrange.swift in Sources */,
 				7BAA7A7E1FA0C13D005B16EE /* GoalCell2.swift in Sources */,
 				7B994DFE1FA2176B00B704E1 /* NewGoalCell.swift in Sources */,
+				7B8168BB21E4A8E400C5624C /* assets-images.swift in Sources */,
 				7B3935791FF39B5A009E752F /* EditGoalFormController+Eureka.swift in Sources */,
 				7B994E0A1FA2288D00B704E1 /* GoalInfo.swift in Sources */,
 				7BFF8AE22073C70C007C108D /* TaskNotificationProviderProtocol.swift in Sources */,

@@ -46,8 +46,8 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         // Initialization code
         
         defaultProgressViewHeight = progressViewHeightConstraint.constant
-        checkBoxButton.setImage(UIImage(named: "TaskCircle"), for: .normal)
-        checkBoxButton.setImage(UIImage(named: "TaskChecked"), for: .selected)
+        checkBoxButton.setImage(Asset.taskCircle.image, for: .normal)
+        checkBoxButton.setImage(Asset.taskChecked.image, for: .selected)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -211,11 +211,11 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     func adaptUI(forActionableType type: ActionableType) {
         switch type {
         case .habit:
-            checkBoxButton.setImage(UIImage(named: "HabitBox"), for: .normal)
-            checkBoxButton.setImage(UIImage(named: "HabitBoxChecked"), for: .selected)
+            checkBoxButton.setImage(Asset.habitBox.image, for: .normal)
+            checkBoxButton.setImage(Asset.habitBoxChecked.image, for: .selected)
         case .task:
-            checkBoxButton.setImage(UIImage(named: "TaskCircle"), for: .normal)
-            checkBoxButton.setImage(UIImage(named: "TaskChecked"), for: .selected)
+            checkBoxButton.setImage(Asset.taskCircle.image, for: .normal)
+            checkBoxButton.setImage(Asset.taskChecked.image, for: .selected)
         }
     }
     

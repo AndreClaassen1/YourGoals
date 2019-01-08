@@ -47,11 +47,11 @@ class EditGoalViewController: UIViewController, EditGoalSegueParameter {
                 self.goalImageButton.setImage(UIImage(data: data), for: .normal)
             }
             else {
-                self.goalImageButton.setImage(UIImage(named: "Success"), for: .normal)
+                self.goalImageButton.setImage(Asset.success.image, for: .normal)
             }
         
         } else {
-            self.goalImageButton.setImage(UIImage(named: "Success"), for: .normal)
+            self.goalImageButton.setImage(Asset.success.image, for: .normal)
             self.titleLabel.text = "New Goal"
             self.goalNameField.text = ""
             self.reasonField.text = ""
