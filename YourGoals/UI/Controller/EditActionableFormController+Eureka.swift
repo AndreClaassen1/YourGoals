@@ -56,15 +56,15 @@ extension EditActionableFormController {
             <<< taskNameRow()
             +++ Section() { $0.hidden = Condition.function([], { _ in type == .habit }) }
             <<< CountDownRow(TaskFormTag.duration) {
-                $0.title = "Timebox your task"
+                $0.title = L10n.timeboxYourTask
             }
             
             <<< URLRow(TaskFormTag.url) {
-                $0.title = "Additional URL"
+                $0.title = L10n.additionalURL
             }
             <<< ImageRow(TaskFormTag.image) {
                 $0.sourceTypes = .PhotoLibrary
-                $0.title = "Additional Image"
+                $0.title = L10n.additionalImage
             }
 
             <<< commitDateRow()
@@ -74,7 +74,7 @@ extension EditActionableFormController {
             <<< remarksRow(remarks: nil)
             +++ Section()
             <<< ButtonRow() {
-                $0.title = "Delete \(type.asString())"
+                $0.title = L10n.delete + " " + type.asString()
                 $0.hidden = Condition.function([], { _ in newEntry })
                 }.cellSetup({ (cell, row) in
                     cell.backgroundColor = UIColor.red
@@ -141,7 +141,7 @@ extension EditActionableFormController {
     /// create a row with all repetitions base
     func repetitionRow() -> BaseRow {
         let row = MultipleSelectorRow<ActionableRepetition>() {
-            $0.title = "Repetition"
+            $0.title = L10n.repetition
             $0.tag = TaskFormTag.repetitions
             $0.options = ActionableRepetition.values()
             $0.value = self.editActionable?.repetitions ?? []
@@ -163,7 +163,7 @@ extension EditActionableFormController {
     /// - Returns: a base row
     func taskNameRow() -> BaseRow {
         let row = TextRow(tag: TaskFormTag.task).cellSetup { cell, row in
-            cell.textField.placeholder = "Please enter your task"
+            cell.textField.placeholder = L10n.pleaseEnterYourTask
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesAlways
         }
@@ -176,14 +176,14 @@ extension EditActionableFormController {
     /// - Returns: the row
     func parentGoalRow() -> BaseRow {
         return PushRow<Goal>(TaskFormTag.goal) { row in
-            row.title = "Select a Goal"
+            row.title = L10n.selectAGoal
             row.options = selectableGoals()
             }.onPresent{ (_, to) in
                 to.selectableRowCellUpdate = { cell, row in
                     cell.textLabel?.text = row.selectableValue?.name
                 }
             }.cellUpdate{ (cell, row) in
-                cell.textLabel?.text = "Goal"
+                cell.textLabel?.text = L10n.goal
                 cell.detailTextLabel?.text = row.value?.name
         }
     }
@@ -200,19 +200,18 @@ extension EditActionableFormController {
         
         return PushRow<CommitDateTuple>() { row in
             row.tag = TaskFormTag.commitDate
-            row.title = "Select a commit date"
+            row.title = L10n.selectACommitDate
             row.options = []
             }.onPresent { (_, to) in
                 to.selectableRowCellUpdate = { cell, row in
                     cell.textLabel?.text = row.selectableValue?.text
                 }
             }.cellUpdate { (cell,row) in
-                cell.textLabel?.text = "Commit Date"
+                cell.textLabel?.text = L10n.commitDate
                 cell.detailTextLabel?.text = row.value?.text
             }.onChange{ (row) in
                 if row.value?.type == .userDefinedCommitDate {
                     self.showPopOverForCommitDate(row: row)
-                
             }
         }
     }
@@ -234,7 +233,7 @@ extension EditActionableFormController {
     /// - Returns: a row with remarks for a date
     func remarksRow(remarks:String?) -> BaseRow {
         return TextAreaRow() {
-            $0.placeholder = "Remarks on your task"
+            $0.placeholder = L10n.remarksOnYourTask
             $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
         }
     }

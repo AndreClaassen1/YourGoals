@@ -130,7 +130,7 @@ class EditActionableFormController : FormViewController, EditActionableViewContr
     ///
     /// - Returns: the title string
     func getTitle() -> String {
-        let keyWord = editActionable == nil ? "New" : "Edit"
+        let keyWord = editActionable == nil ? L10n.new : L10n.edit
         
         return "\(keyWord) \(editActionableType.asString())"
     }

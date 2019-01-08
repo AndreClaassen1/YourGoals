@@ -1,0 +1,102 @@
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "0md-nD-VCs"; */
+"0md-nD-VCs.title" = "Abbruch";
+
+/* Class = "UITableViewSection"; headerTitle = "Goals"; ObjectID = "2oV-51-FUf"; */
+"2oV-51-FUf.headerTitle" = "Ziele";
+
+/* Class = "UILabel"; text = "Reason"; ObjectID = "6D2-j5-4pT"; */
+"6D2-j5-4pT.text" = "Begründung";
+
+/* Class = "UILabel"; text = "Goal"; ObjectID = "8y6-K5-Nu0"; */
+"8y6-K5-Nu0.text" = "Ziel";
+
+/* Class = "UILabel"; text = "Show backburnedGoals: goals"; ObjectID = "AK3-HW-zwL"; */
+"AK3-HW-zwL.text" = "Zeige zurückgestellte Ziele";
+
+/* Class = "UILabel"; text = "Target Date"; ObjectID = "DBK-Kw-U4O"; */
+"DBK-Kw-U4O.text" = "Zieldatum";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "Dwd-J0-v0V"; */
+"Dwd-J0-v0V.title" = "Überschrift";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "Hfd-br-4VH"; */
+"Hfd-br-4VH.title" = "Speicher";
+
+/* Class = "UIBarButtonItem"; title = "Montag, 23. Oktober"; ObjectID = "JI4-4q-2PF"; */
+"JI4-4q-2PF.title" = "Montag, 23. Oktober";
+
+/* Class = "UIButton"; normalTitle = "Select a new Image"; ObjectID = "JcY-3k-Dsr"; */
+"JcY-3k-Dsr.normalTitle" = "Wähle ein Bild";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "LPL-eP-lGi"; */
+"LPL-eP-lGi.title" = "Speichern";
+
+/* Class = "UIButton"; normalTitle = "Add this goal"; ObjectID = "QfQ-PG-Rky"; */
+"QfQ-PG-Rky.normalTitle" = "Füge Ziel hinzu";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "Qsk-oN-uiW"; */
+"Qsk-oN-uiW.title" = "Abbruch";
+
+/* Class = "UILabel"; text = "New Goal"; ObjectID = "RTV-M3-54x"; */
+"RTV-M3-54x.text" = "Neues Ziel";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "bk4-MF-juE"; */
+"bk4-MF-juE.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITabBarItem"; title = "Goals"; ObjectID = "cBk-4O-gkX"; */
+"cBk-4O-gkX.title" = "Ziele";
+
+/* Class = "UILabel"; text = "Your active Work"; ObjectID = "cRF-tr-sKF"; */
+"cRF-tr-sKF.text" = "Deine aktuelle Arbeit";
+
+/* Class = "UINavigationItem"; title = "Your Goals"; ObjectID = "cke-61-Lwf"; */
+"cke-61-Lwf.title" = "Deine Ziele";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "eVl-Wz-Ywd"; */
+"eVl-Wz-Ywd.title" = "Eintrag";
+
+/* Class = "UITabBarItem"; title = "Protocol"; ObjectID = "gSc-sn-e5i"; */
+"gSc-sn-e5i.title" = "Protokoll";
+
+/* Class = "UILabel"; text = "Your Habits"; ObjectID = "hsk-9c-jXu"; */
+"hsk-9c-jXu.text" = "Deine Gewohnheiten";
+
+/* Class = "UINavigationItem"; title = "Edit Goal"; ObjectID = "kf5-LP-2tK"; */
+"kf5-LP-2tK.title" = "Bearbeite dein Ziel";
+
+/* Class = "UILabel"; text = "Your Goals"; ObjectID = "mze-Uy-ayv"; */
+"mze-Uy-ayv.text" = "Deine Ziele";
+
+/* Class = "UIButton"; normalTitle = "Add new Task"; ObjectID = "nFg-Vd-Eym"; */
+"nFg-Vd-Eym.normalTitle" = "Füge Aufgabe hinzu";
+
+/* Class = "UITabBarItem"; title = "Planning"; ObjectID = "nVW-1p-Vfr"; */
+"nVW-1p-Vfr.title" = "Planung";
+
+/* Class = "UILabel"; text = "New Goal Editor"; ObjectID = "p9J-9O-PF3"; */
+"p9J-9O-PF3.text" = "Neuer Ziel Editor";
+
+/* Class = "UILabel"; text = "Your Workload Today"; ObjectID = "pf6-5a-U4j"; */
+"pf6-5a-U4j.text" = "Deine Arbeitslast heute";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "sH3-Y0-iqu"; */
+"sH3-Y0-iqu.title" = "Einstellungen";
+
+/* Class = "UIButton"; normalTitle = "Edit Goal"; ObjectID = "vGA-R2-NME"; */
+"vGA-R2-NME.normalTitle" = "Bearbeite Ziele";
+
+/* Class = "UIButton"; normalTitle = "Delete this goal"; ObjectID = "vsP-2b-fHy"; */
+"vsP-2b-fHy.normalTitle" = "Lösche dieses Ziel";
+
+/* Class = "UIButton"; normalTitle = "Show Habits"; ObjectID = "waP-mC-s99"; */
+"waP-mC-s99.normalTitle" = "Zeige deine Gewohnheiten";
+
+/* Class = "UITableViewSection"; headerTitle = "Features"; ObjectID = "wgn-Mc-3nW"; */
+"wgn-Mc-3nW.headerTitle" = "Features";
+
+/* Class = "UILabel"; text = "Your Tasks for Today"; ObjectID = "xEi-dq-uEg"; */
+"xEi-dq-uEg.text" = "Deine Aufgaben heute";
+
+/* Class = "UITabBarItem"; title = "Today"; ObjectID = "yZY-dX-zMq"; */
+"yZY-dX-zMq.title" = "Heute";

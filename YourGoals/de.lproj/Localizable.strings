@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  YourGoals
+
+  Created by André Claaßen on 08.01.19.
+  Copyright © 2019 André Claaßen. All rights reserved.
+*/
+
+"no task name" = "Kein Taskname";
+"no goal" = "Undefiniertes Ziel";
+"You have reached 50% of your timebox" = "Du hast 50% deiner Zeit erreicht";
+"You have only 10 Minutes left for your task!" = "Du hast noch 10 Minuten für deine Aufgabe!";
+"You have only 5 Minutes left for your task!" = "Du hast noch 5 Minuten für deine Aufgabe!";
+"Your time is up!" = "Deine Zeit ist abgelaufen!";
+"Your Task is startet. Do your work!" = "Deine Aufgeabe startet. An die Arbeit!";
+"New" = "Neu";
+"Edit" = "Bearbeiten";
+"Timebox your task" = "Timebox für die Aufgabe";
+"Additional URL" = "Angefügte URL";
+"Additional Image" = "Angefügtes Image";
+"Goal" = "Ziel";
+"Task" = "Aufgabe";
+"Habit" = "Gewohnheit";
+"Delete" = "Löschen";
+"Repetition" = "Wiederholung";
+"Please enter your task" = "Beschreibe die Aufgabe";
+"Select a Goal" = "Wähle ein Ziel";
+"Select a commit date" = "Wähle ein Zieldatum";
+"Commit Date" = "Zieldatum";
+"Remarks on your task" = "Bemerkungen für die Aufgabe";
+"Enter your goal" = "Beschreibe dein Ziel";
+"Image for your goal" = "Visualisierung für dein Ziel";
+"The real reason for your goal" = "Die Begründung für dein Ziel";
+"Starting Date" = "Startdatum";
+"Target Date" = "Zieldatum";
+"the target date must be greater than the start date" = "Das Zieldatum muss größer als dein Startdatum sein";
+"Backburn Goal?" = "Ziel zurückstellen?";
+"Delete Goal" = "Lösche Ziel";
+

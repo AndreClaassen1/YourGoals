@@ -6,6 +6,7 @@ PODS:
   - MGSwipeTableCell (1.6.7)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
+  - SwiftGen (6.0.2)
   - TEAChart (1.0.0)
   - UICountingLabel (1.2.0)
 
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - LongPressReorder
   - MGSwipeTableCell
   - PNChart
+  - SwiftGen
   - TEAChart
 
 SPEC REPOS:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - LongPressReorder
     - MGSwipeTableCell
     - PNChart
+    - SwiftGen
     - TEAChart
     - UICountingLabel
 
@@ -36,9 +39,10 @@ SPEC CHECKSUMS:
   LongPressReorder: 71b132d61786d45a1241dd0ff356a2bec1deff63
   MGSwipeTableCell: fb20e983988bde2b8d0df29c2d9e1d8ffd10b74a
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
+  SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
   TEAChart: 4bfb34461d9da2672d3e63ccf1a486e5bb4bceb7
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: b961d74c62a9d83b33ae01d3a821bab6d2b6151d
+PODFILE CHECKSUM: 412d2cce0a011a26bf13d98290c87f82f6c14482
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3

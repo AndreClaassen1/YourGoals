@@ -1,0 +1,36 @@
+
+/* Class = "WKInterfaceLabel"; text = "Time is over!"; ObjectID = "4od-Ay-a8S"; */
+"4od-Ay-a8S.text" = "Time is over!";
+
+/* Class = "WKInterfaceLabel"; text = "Task"; ObjectID = "7TD-SG-aeV"; */
+"7TD-SG-aeV.text" = "Task";
+
+/* Class = "WKInterfaceLabel"; text = "Text mit mehreren Zeilen"; ObjectID = "E2u-OW-tKp"; */
+"E2u-OW-tKp.text" = "Text mit mehreren Zeilen";
+
+/* Class = "WKInterfaceMenuItem"; title = "I am done"; ObjectID = "IYO-a0-iH7"; */
+"IYO-a0-iH7.title" = "I am done";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "Label"; ObjectID = "Nhr-fE-lFb"; */
+"Nhr-fE-lFb.text" = "Label";
+
+/* Class = "WKInterfaceLabel"; text = "New Task"; ObjectID = "OkC-FJ-J7Y"; */
+"OkC-FJ-J7Y.text" = "New Task";
+
+/* Class = "WKInterfaceMenuItem"; title = "Pause"; ObjectID = "Q3y-Hu-jEf"; */
+"Q3y-Hu-jEf.title" = "Pause";
+
+/* Class = "WKInterfaceMenuItem"; title = "Add Item"; ObjectID = "Ta2-zh-zE3"; */
+"Ta2-zh-zE3.title" = "Add Item";
+
+/* Class = "WKInterfaceLabel"; text = "Zielbeschreibung"; ObjectID = "V8j-oc-bOw"; */
+"V8j-oc-bOw.text" = "Zielbeschreibung";
+
+/* Class = "WKInterfaceButton"; title = "Add"; ObjectID = "a32-Xh-2dA"; */
+"a32-Xh-2dA.title" = "Add";
+
+/* Class = "WKInterfaceMenuItem"; title = "Need more time"; ObjectID = "tye-C0-ZzG"; */
+"tye-C0-ZzG.title" = "Need more time";

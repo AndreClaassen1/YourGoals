@@ -104,12 +104,12 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     func scheduleRemainingTimeNotifications(forTask task: Task, referenceTime:Date) {
         let remainingTime = task.calcRemainingTimeInterval(atDate: referenceTime)
         if task.size >= 30.0 {
-            scheduleLocalNotification(forTask: task, withText: "You have reached 50% of your timebox", referenceTime: referenceTime, remainingTime: remainingTime - Double(task.size / 2.0 * 60.0))
+            scheduleLocalNotification(forTask: task, withText: L10n.youHaveReached50OfYourTimebox(50), referenceTime: referenceTime, remainingTime: remainingTime - Double(task.size / 2.0 * 60.0))
         }
         
-        scheduleLocalNotification(forTask: task, withText: "You have only 10 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
-        scheduleLocalNotification(forTask: task, withText: "You have only 5 Minutes left for your task!", referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
-        scheduleLocalNotification(forTask: task, withText: "Your time is up!", referenceTime: referenceTime, remainingTime: remainingTime)
+        scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly10MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
+        scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly5MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
+        scheduleLocalNotification(forTask: task, withText: L10n.yourTimeIsUp, referenceTime: referenceTime, remainingTime: remainingTime)
     }
     
     
@@ -122,7 +122,7 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     ///   - referenceTime: the reference date for calculation
     ///   - remainingTime: remaining time for the task. this is important for calculate the calendar trigger time
     func progressStarted(forTask task: Task, referenceTime: Date) {
-        scheduleLocalNotification(forTask: task, withText: "Your Task is startet. Do your work!", referenceTime: referenceTime.addingTimeInterval(10.0), remainingTime: 0.0)
+        scheduleLocalNotification(forTask: task, withText: L10n.YourTaskIsStartet.doYourWork, referenceTime: referenceTime.addingTimeInterval(10.0), remainingTime: 0.0)
         scheduleRemainingTimeNotifications(forTask: task, referenceTime: referenceTime)
     }
     

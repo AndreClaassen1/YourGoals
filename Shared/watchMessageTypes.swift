@@ -38,8 +38,8 @@ struct WatchTaskInfo {
     init(task: Task, date: Date) {
         self.percentage = task.calcRemainingPercentage(atDate: date)
         self.remainingTime = task.calcRemainingTimeInterval(atDate: date)
-        self.taskName = task.name ?? "no task name"
-        self.goalName = task.goal?.name ?? "no goal"
+        self.taskName = task.name ?? L10n.noTaskName
+        self.goalName = task.goal?.name ?? L10n.noGoal
         self.isProgressing = task.isProgressing(atDate: date)
         self.taskUri = task.uri
     }

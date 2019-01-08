@@ -13,6 +13,7 @@ target 'YourGoals' do
     pod 'PNChart'
     pod 'LongPressReorder'
     pod 'Eureka'
+    pod 'SwiftGen'
     #    pod 'ACTabScrollView'
 end
 

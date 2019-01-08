@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  YourGoals
+
+  Created by André Claaßen on 08.01.19.
+  Copyright © 2019 André Claaßen. All rights reserved.
+*/
+
+"no task name" = "no task name";
+"no goal" = "no goal";
+"You have reached 50% of your timebox" = "You have reached 50% of your timebox";
+"You have only 10 Minutes left for your task!" = "You have only 10 Minutes left for your task!";
+"You have only 5 Minutes left for your task!" = "You have only 5 Minutes left for your task!";
+"Your time is up!" = "Your time is up!";
+"Your Task is startet. Do your work!" = "Your Task is startet. Do your work!";
+"New" = "New";
+"Edit" = "Edit";
+"Timebox your task" = "Timebox your task";
+"Additional URL" = "Additional URL";
+"Additional Image" = "Additional Image";
+"Goal" = "Goal";
+"Task" = "Task";
+"Habit" = "Habit";
+"Delete" = "Delete";
+"Repetition" = "Repetition";
+"Please enter your task" = "Please enter your task";
+"Select a Goal" = "Select a Goal";
+"Select a commit date" = "Select a commit date";
+"Commit Date" = "Commit Date";
+"Remarks on your task" = "Remarks on your task";
+"Enter your goal" = "Enter your goal";
+"Image for your goal" = "Image for your goal";
+"The real reason for your goal" = "The real reason for your goal";
+"Starting Date" = "Starting Date";
+"Target Date" = "Target Date";
+"the target date must be greater than the start date" = "the target date must be greater than the start date";
+"Backburn Goal?" = "Backburn Goal?";
+"Delete Goal" = "Delete Goal";

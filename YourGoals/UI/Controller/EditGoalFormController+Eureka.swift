@@ -62,31 +62,31 @@ extension EditGoalFormController {
             <<< ImageRow(GoalFormTag.visionImage) {
                 $0.sourceTypes = .PhotoLibrary
                 $0.add(rule: RuleRequired())
-                $0.title = "Image for your goal"
+                $0.title = L10n.imageForYourGoal
             }
             
             <<< TextAreaRow(GoalFormTag.reason) {
-                $0.placeholder = "The real reason for your goal"
+                $0.placeholder = L10n.theRealReasonForYourGoal
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
             }
             
             +++ Section()
             
             <<< DateRow(GoalFormTag.startDate) {
-                $0.title = "Starting Date"
+                $0.title = L10n.startingDate
                 $0.hidden = Condition.init(booleanLiteral: todayGoal)
                 $0.add(rule: RuleRequired())
             }
             
             <<< DateRow(GoalFormTag.targetDate) { row in
-                row.title = "Target Date"
+                row.title = L10n.targetDate
                 row.hidden = Condition.init(booleanLiteral: todayGoal)
                 row.add(rule: RuleClosure<Date> { targetDate in
                     guard let startDate = (form.rowBy(tag: GoalFormTag.startDate) as! DateRow).value else { return nil }
                     guard let targetDate = targetDate else { return nil }
                     
                     if startDate.compare(targetDate) == .orderedDescending {
-                        return ValidationError(msg: "the target date must be greater than the start date")
+                        return ValidationError(msg: L10n.theTargetDateMustBeGreaterThanTheStartDate)
                     }
                     
                     return nil
@@ -103,11 +103,11 @@ extension EditGoalFormController {
             
             +++ Section()
             <<< SwitchRow(GoalFormTag.backburnedGoals) {
-                $0.title = "Backburn Goal?"
+                $0.title = L10n.backburnGoal
             }
             
             <<< ButtonRow(GoalFormTag.deleteButton) {
-                $0.title = "Delete Goal"
+                $0.title = L10n.deleteGoal
                 $0.hidden = Condition.init(booleanLiteral: newEntry || todayGoal)
                 }.cellSetup({ (cell, row) in
                     cell.backgroundColor = UIColor.red
@@ -131,7 +131,7 @@ extension EditGoalFormController {
         if let image = goalInfo.image {
             values[GoalFormTag.visionImage] = image
         } else {
-            values[GoalFormTag.visionImage] = #imageLiteral(resourceName: "Success")
+            values[GoalFormTag.visionImage] = UIImage(named: "Success")
         }
         values[GoalFormTag.backburnedGoals] = goalInfo.backburnedGoals
 

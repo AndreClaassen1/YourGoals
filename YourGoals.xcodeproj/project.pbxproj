@@ -123,6 +123,10 @@
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
 		7B8168A321E47FB700C5624C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168A221E47FB700C5624C /* SnapshotHelper.swift */; };
 		7B8168A521E480FD00C5624C /* AppParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168A421E480FD00C5624C /* AppParam.swift */; };
+		7B8168AE21E48CEB00C5624C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8168B021E48CEB00C5624C /* Localizable.strings */; };
+		7B8168B621E491A300C5624C /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168B521E491A300C5624C /* strings.swift */; };
+		7B8168B721E4937700C5624C /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168B521E491A300C5624C /* strings.swift */; };
+		7B8168B921E49F4600C5624C /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7B8168B221E48F9300C5624C /* swiftgen.yml */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
@@ -516,6 +520,15 @@
 		7B81689F21E47AE800C5624C /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		7B8168A221E47FB700C5624C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		7B8168A421E480FD00C5624C /* AppParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppParam.swift; sourceTree = "<group>"; };
+		7B8168A621E48C4A00C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		7B8168A721E48C4B00C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ProgressView.strings; sourceTree = "<group>"; };
+		7B8168A821E48C4B00C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7B8168A921E48C4B00C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		7B8168AA21E48C4C00C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		7B8168AF21E48CEB00C5624C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B8168B121E48CF000C5624C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B8168B221E48F9300C5624C /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftgen.yml; sourceTree = "<group>"; };
+		7B8168B521E491A300C5624C /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
@@ -1017,6 +1030,14 @@
 			path = Eureka;
 			sourceTree = "<group>";
 		};
+		7B8168B421E4908700C5624C /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				7B8168B521E491A300C5624C /* strings.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		7B8C942B206FD067004699C3 /* WatchConnectivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1109,6 +1130,7 @@
 			children = (
 				7BAE0F2421A46E4C00E71937 /* Docs */,
 				7B83346D1FA3C2CC002FB5BC /* .gitignore */,
+				7B8168B221E48F9300C5624C /* swiftgen.yml */,
 				7B81689F21E47AE800C5624C /* fastlane */,
 				7BEBBAC91F9F3CCA003D16AE /* Shared */,
 				7BAAFEE51F9CA2FA00BB102E /* YourGoals */,
@@ -1147,6 +1169,8 @@
 		7BAAFEE51F9CA2FA00BB102E /* YourGoals */ = {
 			isa = PBXGroup;
 			children = (
+				7B8168B021E48CEB00C5624C /* Localizable.strings */,
+				7B8168B421E4908700C5624C /* Generated */,
 				7B9A272E216FCAF200A755FF /* YourGoals.entitlements */,
 				7BE4BB571FC80D1500E1BEF9 /* Main */,
 				7BEBBADB1F9F550C003D16AE /* Business */,
@@ -1584,6 +1608,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BAAFF351F9CA2FB00BB102E /* Build configuration list for PBXNativeTarget "YourGoals" */;
 			buildPhases = (
+				7B8168B821E49C6300C5624C /* Generate strings.swift file */,
 				642D4D8DA58F1B30314E8605 /* [CP] Check Pods Manifest.lock */,
 				7BAAFEDF1F9CA2FA00BB102E /* Sources */,
 				7BAAFEE01F9CA2FA00BB102E /* Frameworks */,
@@ -1795,6 +1820,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 7BAAFEDA1F9CA2FA00BB102E;
 			productRefGroup = 7BAAFEE41F9CA2FA00BB102E /* Products */;
@@ -1842,6 +1868,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8168AE21E48CEB00C5624C /* Localizable.strings in Resources */,
 				7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */,
 				7BAAFEF11F9CA2FA00BB102E /* LaunchScreen.storyboard in Resources */,
 				7BAC75CA1FC5970000113C5F /* ProgressView.storyboard in Resources */,
@@ -1858,6 +1885,7 @@
 				7BEA4ED120D2D69200DEE71A /* ProtocolTableViewCell.xib in Resources */,
 				7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */,
 				7B36F236200381F400095389 /* WorkloadView.xib in Resources */,
+				7B8168B921E49F4600C5624C /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1927,13 +1955,31 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7B8168B821E49C6300C5624C /* Generate strings.swift file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate strings.swift file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen config run\n";
+		};
 		92230F68651867F15292FD25 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMSimpleLineGraph/BEMSimpleLineGraph.framework",
 				"${BUILT_PRODUCTS_DIR}/CSNotificationView/CSNotificationView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -1956,7 +2002,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoals/Pods-YourGoals-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF18A9A69340E67324B05755 /* [CP] Embed Pods Frameworks */ = {
@@ -1965,7 +2011,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1974,7 +2020,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF22F3C4AA7474E568C2C3CB /* [CP] Check Pods Manifest.lock */ = {
@@ -2094,6 +2140,7 @@
 				7B055CFA210E1BFE00321AC8 /* RepetitionValueEncoding.swift in Sources */,
 				7BAB77501FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift in Sources */,
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
+				7B8168B621E491A300C5624C /* strings.swift in Sources */,
 				7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */,
 				7B74BC581FFE191900D06D48 /* UIColor+rgb.swift in Sources */,
 				7B6E11222078A9C8004605B1 /* PlanningViewController.swift in Sources */,
@@ -2252,6 +2299,7 @@
 			files = (
 				7BAAFF241F9CA2FB00BB102E /* NotificationController.swift in Sources */,
 				7B26EB8A20B6D37C00155158 /* WatchConnectivityHandlerForWatch.swift in Sources */,
+				7B8168B721E4937700C5624C /* strings.swift in Sources */,
 				7B26EB7C20B6ADF900155158 /* TodayInterfaceController.swift in Sources */,
 				7B85F31920B6DB390034B437 /* WatchTaskRowController.swift in Sources */,
 				7B7E58DB207605DB00B5511C /* ColorCalculator.swift in Sources */,
@@ -2349,14 +2397,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				7B223508216E39D70020FB31 /* Base */,
+				7B8168AA21E48C4C00C5624C /* de */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		7B8168B021E48CEB00C5624C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B8168AF21E48CEB00C5624C /* en */,
+				7B8168B121E48CF000C5624C /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		7BAAFEEA1F9CA2FA00BB102E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7BAAFEEB1F9CA2FA00BB102E /* Base */,
+				7B8168A621E48C4A00C5624C /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2365,6 +2424,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7BAAFEF01F9CA2FA00BB102E /* Base */,
+				7B8168A821E48C4B00C5624C /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2373,6 +2433,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7BAAFF111F9CA2FB00BB102E /* Base */,
+				7B8168A921E48C4B00C5624C /* de */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -2381,6 +2442,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7BAC75C91FC5970000113C5F /* Base */,
+				7B8168A721E48C4B00C5624C /* de */,
 			);
 			name = ProgressView.storyboard;
 			sourceTree = "<group>";
@@ -2527,6 +2589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2587,6 +2650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
