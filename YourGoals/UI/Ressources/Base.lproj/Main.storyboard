@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDg-Ul-gBJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,11 +31,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GoalsViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J5G-ap-cze">
-                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q4U-RJ-KfY">
                                     <size key="itemSize" width="50" height="50"/>
@@ -71,17 +75,17 @@
             <objects>
                 <viewController id="Xvn-3I-lOM" customClass="EditGoalViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jk-b5-yX3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2t-Uc-uaF">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDu-4G-uav">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogt-1c-2cN" userLabel="Closer">
-                                                <rect key="frame" x="562" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="337" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ODj-0l-V76"/>
                                                     <constraint firstAttribute="width" constant="30" id="olA-ca-tJf"/>
@@ -144,7 +148,7 @@
                                                 </connections>
                                             </button>
                                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-cR-BOL">
-                                                <rect key="frame" x="71" y="283" width="517" height="162"/>
+                                                <rect key="frame" x="71" y="283" width="292" height="162"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="530718789.344769">
                                                     <!--2017-10-26 13:53:09 +0000-->
@@ -229,7 +233,7 @@
             <objects>
                 <viewController id="XS4-gN-Bmt" userLabel="Edit Actionable Form  Controller" customClass="EditActionableFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Nu-8t-oPO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NNz-BB-BdQ"/>
@@ -241,24 +245,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87w-FM-P24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="1175"/>
+            <point key="canvasLocation" x="1023" y="1200"/>
+        </scene>
+        <!--Commit Date View Controller-->
+        <scene sceneID="KVI-oT-7j2">
+            <objects>
+                <viewController id="93T-aT-pt5" userLabel="Commit Date View Controller" customClass="CommitDateFormController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J3i-RU-O1l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="yaL-NP-RKz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggI-60-tPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="1199.5502248875564"/>
         </scene>
         <!--Today-->
         <scene sceneID="lHh-c6-cQF">
             <objects>
                 <viewController id="IgL-zS-0MF" customClass="TodayViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wfr-m1-fuQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ww-mo-KvS">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXc-AY-4jx" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZn-VI-Ygl" userLabel="GoalsView">
-                                                <rect key="frame" x="0.0" y="20" width="600" height="223"/>
+                                                <rect key="frame" x="0.0" y="20" width="375" height="223"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mze-Uy-ayv">
                                                         <rect key="frame" x="8" y="8" width="119" height="24"/>
@@ -270,7 +289,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-Wn-cjM" userLabel="GoalsCollectionView">
-                                                        <rect key="frame" x="0.0" y="40" width="600" height="200"/>
+                                                        <rect key="frame" x="0.0" y="40" width="375" height="200"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="yIk-T7-V6G"/>
@@ -296,7 +315,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-uc-2ee" userLabel="Active Task">
-                                                <rect key="frame" x="0.0" y="243" width="600" height="80"/>
+                                                <rect key="frame" x="0.0" y="243" width="375" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your active Work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-tr-sKF" userLabel="Your active Task">
                                                         <rect key="frame" x="8" y="16" width="158" height="24"/>
@@ -306,7 +325,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hd0-5Q-p8B" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="45" width="600" height="27"/>
+                                                        <rect key="frame" x="0.0" y="45" width="375" height="27"/>
                                                         <color key="backgroundColor" red="0.1618596118" green="0.9992641807" blue="0.018462520780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
                                                 </subviews>
@@ -320,17 +339,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-lf-8kj" userLabel="Commitment View">
-                                                <rect key="frame" x="0.0" y="323" width="600" height="45"/>
+                                                <rect key="frame" x="0.0" y="323" width="375" height="45"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7z-pV-BBO" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="45" width="600" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="45" width="375" height="0.0"/>
                                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" id="mo5-uO-mNF"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Tasks for Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEi-dq-uEg">
-                                                        <rect key="frame" x="8" y="8" width="406" height="24"/>
+                                                        <rect key="frame" x="8" y="8" width="181" height="24"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -349,7 +368,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZ9-MV-BG1" userLabel="Habits View">
-                                                <rect key="frame" x="0.0" y="368" width="600" height="48"/>
+                                                <rect key="frame" x="0.0" y="368" width="375" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsk-9c-jXu">
                                                         <rect key="frame" x="8" y="16" width="109" height="24"/>
@@ -361,7 +380,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-QO-7ea" userLabel="Habits Table View" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="48" width="600" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="48" width="375" height="0.0"/>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" id="XvF-0a-Ony"/>
@@ -380,10 +399,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-C0-d6l" userLabel="Workload View">
-                                                <rect key="frame" x="0.0" y="416" width="600" height="128"/>
+                                                <rect key="frame" x="0.0" y="416" width="375" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Workload Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-5a-U4j">
-                                                        <rect key="frame" x="8" y="16" width="584" height="24"/>
+                                                        <rect key="frame" x="8" y="16" width="359" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="03z-X6-QGJ"/>
                                                         </constraints>
@@ -392,7 +411,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBy-fP-XtK" customClass="WorkloadView" customModule="YourGoals" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="55" width="600" height="73"/>
+                                                        <rect key="frame" x="0.0" y="55" width="375" height="73"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
@@ -471,11 +490,11 @@
             <objects>
                 <viewController id="iWG-d2-4VV" customClass="PlanningViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BV3-bF-CCI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-uV-guY" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -525,7 +544,7 @@
             <objects>
                 <tableViewController id="L7T-QD-U0t" customClass="ProtocolTableViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0rK-Zk-mU1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -544,24 +563,24 @@
             <objects>
                 <viewController id="0GV-ni-XMq" customClass="GoalDetailViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q0e-bU-uXw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-1u-3Q8">
-                                <rect key="frame" x="20" y="40" width="560" height="560"/>
+                                <rect key="frame" x="20" y="40" width="335" height="627"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-To-7pk" userLabel="Goals Detail View">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="325"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-zJ-BPD" customClass="GoalContentView" customModule="YourGoals" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="290"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="290"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="290" id="qqG-LW-9io"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-2f-nmG" userLabel="Closer">
-                                                <rect key="frame" x="510" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="285" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="hfN-q1-lqL"/>
                                                     <constraint firstAttribute="height" constant="40" id="xgq-ek-IMc"/>
@@ -572,24 +591,24 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D47-xr-2df" userLabel="button view">
-                                                <rect key="frame" x="0.0" y="290" width="560" height="36"/>
+                                                <rect key="frame" x="0.0" y="290" width="335" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-R2-NME">
-                                                        <rect key="frame" x="0.0" y="3" width="174.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="3" width="62" height="30"/>
                                                         <state key="normal" title="Edit Goal"/>
                                                         <connections>
                                                             <action selector="editButtonTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="dmA-at-WoI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waP-mC-s99">
-                                                        <rect key="frame" x="237" y="3" width="86" height="30"/>
+                                                        <rect key="frame" x="124.5" y="3" width="86" height="30"/>
                                                         <state key="normal" title="Show Habits"/>
                                                         <connections>
                                                             <action selector="toggleHabitsAction:" destination="0GV-ni-XMq" eventType="touchUpInside" id="rLb-7h-FrW"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Vd-Eym">
-                                                        <rect key="frame" x="465" y="3" width="95" height="30"/>
+                                                        <rect key="frame" x="240" y="3" width="95" height="30"/>
                                                         <state key="normal" title="Add new Task"/>
                                                         <connections>
                                                             <action selector="addNewActionableTouched:" destination="0GV-ni-XMq" eventType="touchUpInside" id="uKe-C8-BpG"/>
@@ -623,7 +642,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-Eb-2ha" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324" width="560" height="236"/>
+                                        <rect key="frame" x="0.0" y="324" width="335" height="303"/>
                                         <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -714,17 +733,17 @@
             <objects>
                 <tableViewController id="Q4F-TG-JGR" customClass="SettingsViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MlC-ho-9jp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection headerTitle="Goals" id="2oV-51-FUf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2O6-KV-UM4">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2O6-KV-UM4" id="mjL-1N-oLR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show backburnedGoals: goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK3-HW-zwL">
@@ -734,7 +753,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW2-Zb-hhj" userLabel="Backburned Goals Switch">
-                                                    <rect key="frame" x="541" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="316" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -751,10 +770,10 @@
                             <tableViewSection headerTitle="Features" id="wgn-Mc-3nW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hf0-Ha-ZNo">
-                                        <rect key="frame" x="0.0" y="100" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hf0-Ha-ZNo" id="pig-4n-5go">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Goal Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-9O-PF3">
@@ -764,7 +783,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-Lf-f8r">
-                                                    <rect key="frame" x="541" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="316" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -805,9 +824,9 @@
         <image name="today_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qB2-Uh-IRL"/>
+        <segue reference="vWh-25-qmt"/>
         <segue reference="6eA-8s-RYt"/>
-        <segue reference="Scr-6R-YkR"/>
-        <segue reference="cjO-Ie-qW9"/>
+        <segue reference="kJV-AZ-9qx"/>
+        <segue reference="UMp-cE-4SY"/>
     </inferredMetricsTieBreakers>
 </document>

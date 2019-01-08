@@ -75,7 +75,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.watchConnectivityHandler = WatchConnectivityHandlerForApp(observer: TaskNotificationObserver.defaultObserver, manager: GoalsStorageManager.defaultStorageManager)
         self.taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: UNUserNotificationCenter.current(), observer: TaskNotificationObserver.defaultObserver)
         self.taskNotificationHandler = TaskNotificationHandler(manager: GoalsStorageManager.defaultStorageManager)
-        self.taskNotificationHandler.registerNotifications()
+        
+        if !AppParam.defaultParam.inUiTest {
+            self.taskNotificationHandler.registerNotifications()
+        }
         consumeTasksFromShareExtension()
     }
 }

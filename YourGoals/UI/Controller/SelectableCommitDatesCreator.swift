@@ -8,14 +8,21 @@
 
 import Foundation
 
+enum CommitDateType {
+    case noCommitDate
+    case explicitCommitDate
+    case userDefinedCommitDate
+}
+
 /// a tuple representing a commit date in the future and a string representation
 struct CommitDateTuple:Equatable {
     static func ==(lhs: CommitDateTuple, rhs: CommitDateTuple) -> Bool {
-        return lhs.date == rhs.date
+        return lhs.date == rhs.date && lhs.type == rhs.type
     }
     
     let text:String
     let date:Date?
+    let type:CommitDateType
 }
 
 /// utility class for creating a list of commit dates
@@ -25,9 +32,15 @@ class SelectableCommitDatesCreator {
     ///
     /// - Parameter date: the date
     /// - Returns: the tuple
-    func dateAsTuple(date:Date?) -> CommitDateTuple {
-        let text = date == nil ? "No commit date" : date!.formattedWithTodayTommorrowYesterday()
-        return CommitDateTuple(text: text, date: date)
+    func dateAsTuple(date:Date?, type: CommitDateType) -> CommitDateTuple {
+        switch type {
+        case .noCommitDate:
+            return CommitDateTuple(text: "No commit date", date: nil, type: type)
+        case .userDefinedCommitDate:
+            return CommitDateTuple(text: "Select date", date: nil, type: type)
+        default:
+            return CommitDateTuple(text: date!.formattedWithTodayTommorrowYesterday(), date: date, type: type)
+        }
     }
     
     /// create a list of commit dates for the next 7 days with a string
@@ -52,13 +65,16 @@ class SelectableCommitDatesCreator {
             return []
         }
         
-        let dates = Array(range)
-        var tuples = dates.map(dateAsTuple)
-        tuples.insert(dateAsTuple(date: nil), at: 0)
+        var tuples = [CommitDateTuple]()
+        
+        tuples.append(dateAsTuple(date: nil, type: .noCommitDate))
+        tuples.append(contentsOf: range.map { dateAsTuple(date: $0, type: .explicitCommitDate) })
+        tuples.append(dateAsTuple(date: nil, type: .userDefinedCommitDate))
+        
         if let includingDate = includingDate {
             let tuple = tuples.first { $0.date?.compare(includingDate.day()) == .orderedSame }
             if tuple == nil {
-                tuples.insert(dateAsTuple(date: includingDate.day()), at: 1)
+                tuples.insert(dateAsTuple(date: includingDate.day(), type: .explicitCommitDate), at: 1)
             }
         }
      

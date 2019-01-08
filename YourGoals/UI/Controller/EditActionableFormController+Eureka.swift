@@ -97,7 +97,11 @@ extension EditActionableFormController {
         values[TaskFormTag.goal] = actionableInfo.parentGoal
         values[TaskFormTag.url] = actionableInfo.url
         values[TaskFormTag.image] = actionableInfo.image
-        values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate)
+        if actionableInfo.commitDate == nil {
+            values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: nil, type: .noCommitDate)
+        } else {
+            values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate, type: .explicitCommitDate)
+        }
         values[TaskFormTag.duration] = Date.timeFromMinutes(Double(actionableInfo.size))
         
         let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: TaskFormTag.commitDate)!
@@ -186,6 +190,8 @@ extension EditActionableFormController {
     
     /// create a row for selecting a commit date
     ///
+    /// info about coding popup is from http://www.thomashanning.com/uipopoverpresentationcontroller/
+    ///
     /// - Parameters:
     ///   - date: starting date for create meaningful texts
     ///
@@ -203,9 +209,25 @@ extension EditActionableFormController {
             }.cellUpdate { (cell,row) in
                 cell.textLabel?.text = "Commit Date"
                 cell.detailTextLabel?.text = row.value?.text
+            }.onChange{ (row) in
+                if row.value?.type == .userDefinedCommitDate {
+                    self.showPopOverForCommitDate(row: row)
+                
+            }
         }
     }
     
+    func showPopOverForCommitDate(row: PushRow<CommitDateTuple>) {
+        let view = row.cell.contentView
+        let commitDateController = CommitDateFormController()
+        commitDateController.modalPresentationStyle = UIModalPresentationStyle.popover
+        commitDateController.preferredContentSize = CGSize(width: 350, height: 350)
+        self.present(commitDateController, animated: true, completion: nil)
+        let popoverPresentationController = commitDateController.popoverPresentationController
+        popoverPresentationController?.sourceView = view
+//        popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+    }
+        
     /// create a row with remarks for the tasks
     ///
     /// - Parameter remarks: the remakrs
