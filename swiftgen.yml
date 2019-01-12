@@ -10,3 +10,11 @@ xcassets:
     outputs:
         - templateName: swift4
           output: YourGoals/Generated/assets-images.swift
+
+ib:
+    inputs:
+        - YourGoals/UI/Ressources/Base.lproj/Main.storyboard
+        - YourGoals/UI/Ressources/Base.lproj/ProgressView.storyboard
+    outputs:
+        - templateName: segues-swift4
+          output: YourGoals/Generated/storyboards.swift

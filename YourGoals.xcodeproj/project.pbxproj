@@ -128,6 +128,7 @@
 		7B8168B721E4937700C5624C /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168B521E491A300C5624C /* strings.swift */; };
 		7B8168B921E49F4600C5624C /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7B8168B221E48F9300C5624C /* swiftgen.yml */; };
 		7B8168BB21E4A8E400C5624C /* assets-images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168BA21E4A8E400C5624C /* assets-images.swift */; };
+		7B8168BD21E4C0E000C5624C /* storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168BC21E4C0DF00C5624C /* storyboards.swift */; };
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
@@ -531,6 +532,7 @@
 		7B8168B221E48F9300C5624C /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftgen.yml; sourceTree = "<group>"; };
 		7B8168B521E491A300C5624C /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		7B8168BA21E4A8E400C5624C /* assets-images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "assets-images.swift"; sourceTree = "<group>"; };
+		7B8168BC21E4C0DF00C5624C /* storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storyboards.swift; sourceTree = "<group>"; };
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
@@ -1035,6 +1037,7 @@
 		7B8168B421E4908700C5624C /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				7B8168BC21E4C0DF00C5624C /* storyboards.swift */,
 				7B8168BA21E4A8E400C5624C /* assets-images.swift */,
 				7B8168B521E491A300C5624C /* strings.swift */,
 			);
@@ -2159,6 +2162,7 @@
 				7B4E0BE91FAF10BD00602FD1 /* Actionable.swift in Sources */,
 				7B36F23D2003A0F100095389 /* Date+Timeformat.swift in Sources */,
 				7BAA7A831FA0C60A005B16EE /* Task+State.swift in Sources */,
+				7B8168BD21E4C0E000C5624C /* storyboards.swift in Sources */,
 				7B36F234200381BE00095389 /* WorkloadView.swift in Sources */,
 				7B994E071FA2261A00B704E1 /* EditGoalViewController+ImagePicker.swift in Sources */,
 				7B3DA175206D771000C0ED0F /* UNCalendarNotificationTrigger+Date.swift in Sources */,
