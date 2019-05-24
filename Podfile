@@ -11,7 +11,6 @@ target 'YourGoals' do
     pod 'BEMSimpleLineGraph'
     pod 'TEAChart'
     pod 'PNChart'
-    pod 'LongPressReorder'
     pod 'Eureka'
     pod 'SwiftGen'
     #    pod 'ACTabScrollView'
@@ -23,7 +22,7 @@ end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if ['LongPressReorder'].include? target.name
+        if ['ChaosProjekt'].include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.2'
             end

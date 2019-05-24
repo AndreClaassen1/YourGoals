@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LongPressReorder
 import MGSwipeTableCell
 
 protocol ActionableTableViewDelegate {

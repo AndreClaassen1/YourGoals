@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A80D298BDD71691CC7000D27C292211"
+               BlueprintIdentifier = "15F265CBC211409C449F6268F7C6EAE5"
+               BuildableName = "TEAChart.framework"
                BlueprintName = "TEAChart"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TEAChart.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

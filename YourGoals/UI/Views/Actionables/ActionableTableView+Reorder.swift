@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import LongPressReorder
 
 struct ReorderInfo {
  

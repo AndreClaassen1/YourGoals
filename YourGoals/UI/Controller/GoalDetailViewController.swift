@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import LongPressReorder
 
 enum GoalDetailViewControllerMode {
     case tasksMode

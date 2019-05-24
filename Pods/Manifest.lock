@@ -1,12 +1,11 @@
 PODS:
   - BEMSimpleLineGraph (4.1)
   - CSNotificationView (0.5.4)
-  - Eureka (4.3.0)
-  - LongPressReorder (1.2.1)
-  - MGSwipeTableCell (1.6.7)
+  - Eureka (5.0.0)
+  - MGSwipeTableCell (1.6.8)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
-  - SwiftGen (6.0.2)
+  - SwiftGen (6.1.0)
   - TEAChart (1.0.0)
   - UICountingLabel (1.2.0)
 
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - BEMSimpleLineGraph
   - CSNotificationView
   - Eureka
-  - LongPressReorder
   - MGSwipeTableCell
   - PNChart
   - SwiftGen
@@ -25,7 +23,6 @@ SPEC REPOS:
     - BEMSimpleLineGraph
     - CSNotificationView
     - Eureka
-    - LongPressReorder
     - MGSwipeTableCell
     - PNChart
     - SwiftGen
@@ -35,14 +32,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
-  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
-  LongPressReorder: 71b132d61786d45a1241dd0ff356a2bec1deff63
-  MGSwipeTableCell: fb20e983988bde2b8d0df29c2d9e1d8ffd10b74a
+  Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
+  MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
-  SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
+  SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   TEAChart: 4bfb34461d9da2672d3e63ccf1a486e5bb4bceb7
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 412d2cce0a011a26bf13d98290c87f82f6c14482
+PODFILE CHECKSUM: c4916150b021a635d061c4e55652b6a047427f77
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85E1FDB90B256D0017E2974FAABE63FA"
+               BlueprintIdentifier = "8F50A36B0033BB108257D95E35C72C70"
                BuildableName = "CSNotificationView.bundle"
                BlueprintName = "CSNotificationView-CSNotificationView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "85E1FDB90B256D0017E2974FAABE63FA"
+            BlueprintIdentifier = "8F50A36B0033BB108257D95E35C72C70"
             BuildableName = "CSNotificationView.bundle"
             BlueprintName = "CSNotificationView-CSNotificationView"
             ReferencedContainer = "container:Pods.xcodeproj">
