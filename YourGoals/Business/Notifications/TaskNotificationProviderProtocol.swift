@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-/// a protocol for triggering the create of local user notifications
+/// a protocol for triggering the creation of local user notifications
 protocol TaskNotificationProviderProtocol {
     func progressStarted(forTask task:Task, referenceTime:Date)
     func progressChanged(forTask task:Task, referenceTime:Date)

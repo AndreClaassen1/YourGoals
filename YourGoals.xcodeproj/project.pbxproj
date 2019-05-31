@@ -97,6 +97,7 @@
 		7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */; };
 		7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */; };
 		7B5FA3DB1FA349E6004556C1 /* GoalProgressCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */; };
+		7B60D3EC22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60D3EB22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift */; };
 		7B6AE97A1FAC905F00E15A9D /* StrategyModelNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9791FAC905F00E15A9D /* StrategyModelNotification.swift */; };
 		7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */; };
 		7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */; };
@@ -499,6 +500,7 @@
 		7B5FA3D61FA33D4D004556C1 /* TaskProgress+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskProgress+Date.swift"; sourceTree = "<group>"; };
 		7B5FA3D81FA34443004556C1 /* TaskStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateManager.swift; sourceTree = "<group>"; };
 		7B5FA3DA1FA349E6004556C1 /* GoalProgressCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCalculator.swift; sourceTree = "<group>"; };
+		7B60D3EB22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNMutableNotificationContent+Task.swift"; sourceTree = "<group>"; };
 		7B6AE9791FAC905F00E15A9D /* StrategyModelNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyModelNotification.swift; sourceTree = "<group>"; };
 		7B6AE97D1FACA4F200E15A9D /* GoalComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposerTests.swift; sourceTree = "<group>"; };
 		7B6AE9811FACA66100E15A9D /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 				7BDC42382072696F00146730 /* TaskNotificationStructs.swift */,
 				7B30FE5C2068D8CB002BFF40 /* TaskNotificationScheduler.swift */,
 				7B3DA174206D771000C0ED0F /* UNCalendarNotificationTrigger+Date.swift */,
+				7B60D3EB22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift */,
 				7B3DA176206E4B5500C0ED0F /* UNNotificationCenterProtocol.swift */,
 				7BDC42362072415F00146730 /* TaskNotificationHandler.swift */,
 				7BFF8ADF2073C6D2007C108D /* TaskNotificationObserver.swift */,
@@ -1022,6 +1025,15 @@
 				7BB77A302168B4810056FF60 /* TaskWorktimeCalculator.swift */,
 			);
 			path = Calculations;
+			sourceTree = "<group>";
+		};
+		7B60D3EA22A1014600096FDE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7B30FE5E2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift */,
+				7BDC423A20739A0200146730 /* TaskNotificationHandlerTests.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		7B7AECD41FF5989E0096EE5D /* Eureka */ = {
@@ -1193,6 +1205,7 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B60D3EA22A1014600096FDE /* Notifications */,
 				7BF9FF942157985200CD2C82 /* Business */,
 				7B26EB8620B6CDB500155158 /* Watch */,
 				7BBB30F7207BA83C00F637E0 /* Data */,
@@ -1204,8 +1217,6 @@
 				7BAAFEFB1F9CA2FA00BB102E /* GoalsGeneratorTests.swift */,
 				7BFC1E011FA35A13003DE484 /* TaskProgressManagerTests.swift */,
 				7BFC1E051FA35A2E003DE484 /* TaskProgressTests.swift */,
-				7B30FE5E2068D8ED002BFF40 /* TaskNotificationSchedulerTests.swift */,
-				7BDC423A20739A0200146730 /* TaskNotificationHandlerTests.swift */,
 				7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */,
 				7B9E28F01FA65DB000BB6003 /* TaskOrderManagerTests.swift */,
 				7B9E28F41FA67C0C00BB6003 /* GoalInfoManagerTests.swift */,
@@ -2204,6 +2215,7 @@
 				7B6E35AF1FC6072300F55089 /* TodayAllActionablesDataSource.swift in Sources */,
 				7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */,
 				7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */,
+				7B60D3EC22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift in Sources */,
 				7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */,

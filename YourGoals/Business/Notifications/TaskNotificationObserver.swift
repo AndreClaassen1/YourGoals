@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-
+/// an observer for task notifiction events and to inform all observers about that evetns
 class TaskNotificationObserver: TaskNotificationProviderProtocol {
     
     static let defaultObserver = TaskNotificationObserver()

@@ -13,6 +13,8 @@ import UserNotifications
 class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     /// the user notification center
     let center:UNNotificationCenterProtocol
+    var overdueTimer:Timer? = nil
+    let overdueIntervalInMinutes = 15.0
 
     /// initialize the task notification maanger with the user notification cente
     ///
@@ -31,25 +33,13 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     ///   - referenceTime: the reference date to calculate the notification time
     ///   - remainingTime: the remaining time for the task
     func scheduleLocalNotification(forTask task:Task, withText text:String, referenceTime: Date, remainingTime: TimeInterval) {
-        guard let taskName = task.name else {
-            NSLog("Task with no name")
-            return
-        }
         
         guard remainingTime >= 0.0 else {
-            NSLog("there is no time left for task \(taskName) to schedule a notification!")
+            NSLog("there is no time left for task \(task) to schedule a notification!")
             return
         }
 
-        let content = UNMutableNotificationContent()
-        content.categoryIdentifier = TaskNotificationCategory.taskNotificationCategory
-        content.body = taskName
-        content.title = text
-        content.sound = UNNotificationSound.default
-        content.userInfo = [
-            "taskUri": task.objectID.uriRepresentation().absoluteString
-        ]
-        
+        let content = UNMutableNotificationContent(task: task, text: text)
         let scheduleTime = referenceTime.addingTimeInterval(remainingTime);
         let trigger = UNCalendarNotificationTrigger(fireDate: scheduleTime)
         let request = UNNotificationRequest(identifier: text , content: content, trigger: trigger)
@@ -57,10 +47,31 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         self.center.add(request, withCompletionHandler: nil)
     }
     
+    /// schedule an overdue notification timer which repeats every 15 MInutes to inform you about an overdue of a task
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - text: the overdue message
+    ///   - remainingTime: the remaining time interval for the task
+    func scheduleOverdueNotification(forTask task: Task, withText text:String, remainingTime: TimeInterval) {
+        let remaining = max(0, remainingTime)
+        self.overdueTimer = Timer(timeInterval: remaining, repeats: false) { _ in
+            let content = UNMutableNotificationContent(task: task, text: text)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.overdueIntervalInMinutes * 60.0, repeats: true)
+            let request = UNNotificationRequest(identifier: text , content: content, trigger: trigger)
+            
+            self.center.add(request, withCompletionHandler: nil)
+        }
+    }
+    
     /// eliminate all notifications
     func resetNotifications() {
         self.center.removeAllPendingNotificationRequests()
         self.center.removeAllDeliveredNotifications()
+        if let timer = self.overdueTimer {
+            timer.invalidate()
+        }
+        self.overdueTimer = nil
     }
     
     /// setup the custom actions for all motivation card notifications
@@ -93,7 +104,7 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
             NSLog("+++ ready")
         }
     }
- 
+
     /// create a series of local push notifications for the task.
     ///
     /// Push notifications for 50% of the task size, 10 and 5 minutes remaining time.
@@ -110,8 +121,8 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly10MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly5MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: L10n.yourTimeIsUp, referenceTime: referenceTime, remainingTime: remainingTime)
+        scheduleOverdueNotification(forTask: task, withText: L10n.theTimeForYourTaskIsOverrunning, remainingTime: remainingTime)
     }
-    
     
     // mark: - TaskNotificationProviderProtocol
     

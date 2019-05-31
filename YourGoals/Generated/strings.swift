@@ -59,6 +59,8 @@ internal enum L10n {
   internal static let theRealReasonForYourGoal = L10n.tr("Localizable", "The real reason for your goal")
   /// the target date must be greater than the start date
   internal static let theTargetDateMustBeGreaterThanTheStartDate = L10n.tr("Localizable", "the target date must be greater than the start date")
+  /// The time for your task is overrunning!
+  internal static let theTimeForYourTaskIsOverrunning = L10n.tr("Localizable", "The time for your task is overrunning")
   /// Timebox your task
   internal static let timeboxYourTask = L10n.tr("Localizable", "Timebox your task")
   /// You have only 10 Minutes left for your task!
