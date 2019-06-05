@@ -83,4 +83,25 @@ class TaskNotificationSchedulerTests: StorageTestCase {
         }
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+
+    func testOverdueUserNotifications() {
+        // Given an task action which progress is overdue
+        let task = TaskFactory(manager: self.manager).create(name: "Task with started progress", state: .active, prio: 1, sizeInMinutes: 30.0)
+        
+        // when I register the overdue task in the notification scheduler
+        let taskNotificationScheduler = TaskNotificationScheduler(notificationCenter: self.mockUserNotificationCenter, observer: TaskNotificationObserver())
+        
+        taskNotificationScheduler.scheduleOverdueNotification(forTask: task, withText: "Overdue", remainingTime: 0.0)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.mockUserNotificationCenter.getPendingNotificationRequests { (requests) in
+                XCTAssertEqual(1, requests.count)
+                let trigger = requests.first!.trigger as! UNTimeIntervalNotificationTrigger
+                XCTAssertEqual(15.0 * 60.0, trigger.timeInterval)
+                self.expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
 }

@@ -39,12 +39,11 @@ class MockUserNotificationCenter : UNNotificationCenterProtocol {
         /// remove all pending requests with the same identifier
         pendingRequests = pendingRequests.filter({ $0.identifier != request.identifier })
     
-        let calendarTrigger = request.trigger as! UNCalendarNotificationTrigger
+        let calendarTrigger = request.trigger as! UNNotificationTriggerDate
         if let _ = calendarTrigger.nextTriggerDate() {
             self.pendingRequests.append(request)
         } else {
-            let calendar = Calendar.current
-            let date = calendar.date(from: calendarTrigger.dateComponents)!
+            let date = calendarTrigger.plannedTriggerDate()
             self.deliverdRequests.append(MockNotification(date: date, request: request))
         }
         completionHandler?(nil)

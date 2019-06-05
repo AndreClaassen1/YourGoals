@@ -54,17 +54,16 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     ///   - text: the overdue message
     ///   - remainingTime: the remaining time interval for the task
     func scheduleOverdueNotification(forTask task: Task, withText text:String, remainingTime: TimeInterval) {
-        let remaining = max(0, remainingTime)
-        self.overdueTimer = Timer(timeInterval: remaining, repeats: false) { _ in
+        self.overdueTimer = Timer.scheduledTimer(withTimeInterval: remainingTime, repeats: false, block: { _ in
             let content = UNMutableNotificationContent(task: task, text: text)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.overdueIntervalInMinutes * 60.0, repeats: true)
             let request = UNNotificationRequest(identifier: text , content: content, trigger: trigger)
             
             self.center.add(request, withCompletionHandler: nil)
-        }
+        })
     }
     
-    /// eliminate all notifications
+    /// eliminate all notifications and stop overdue notifications
     func resetNotifications() {
         self.center.removeAllPendingNotificationRequests()
         self.center.removeAllDeliveredNotifications()
