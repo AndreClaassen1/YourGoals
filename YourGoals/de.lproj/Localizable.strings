@@ -12,7 +12,8 @@
 "You have only 10 Minutes left for your task!" = "Du hast noch 10 Minuten für deine Aufgabe!";
 "You have only 5 Minutes left for your task!" = "Du hast noch 5 Minuten für deine Aufgabe!";
 "Your time is up!" = "Deine Zeit ist abgelaufen!";
-"The time for your task is overrunning" = "Die Zeit für deinen Task ist überzogen!";
+"The time for your task is overrunning" = "Du hast die Zeit deiner Aufgabe um %d Minuten überzogen!";
+"The time for your task is overrunning in hours" = "Du hast die Zeit deiner Aufgabe um %d Stunden überzogen!";
 "Your Task is startet. Do your work!" = "Deine Aufgabe startet. An die Arbeit!";
 "New" = "Neu";
 "Edit" = "Bearbeiten";

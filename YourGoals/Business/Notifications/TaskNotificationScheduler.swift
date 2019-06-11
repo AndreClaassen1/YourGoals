@@ -9,6 +9,19 @@
 import Foundation
 import UserNotifications
 
+struct TaskNotificationOverdueText {
+    /// creates a localized text for task overrunning with hours and minutes
+    ///
+    /// - Parameters:
+    ///   - hours: overdue in hours
+    ///   - minutes: overdue in minutes
+    /// - Returns: a localized text strijng
+    static func textForTaskOverrunning(hours: Int, minutes: Int) -> String {
+        let text = hours == 0 ? L10n.theTimeForYourTaskIsOverrunning(minutes) : L10n.theTimeForYourTaskIsOverrunningInHours(hours)
+        return text
+    }
+}
+
 /// this class creates notification on started or stopped tasks
 class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     /// the user notification center
@@ -34,11 +47,6 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
     ///   - remainingTime: the remaining time for the task
     func scheduleLocalNotification(forTask task:Task, withText text:String, referenceTime: Date, remainingTime: TimeInterval) {
         
-        guard remainingTime >= 0.0 else {
-            NSLog("there is no time left for task \(task) to schedule a notification!")
-            return
-        }
-
         let content = UNMutableNotificationContent(task: task, text: text)
         let scheduleTime = referenceTime.addingTimeInterval(remainingTime);
         let trigger = UNCalendarNotificationTrigger(fireDate: scheduleTime)
@@ -47,20 +55,18 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         self.center.add(request, withCompletionHandler: nil)
     }
     
-    /// schedule an overdue notification timer which repeats every 15 MInutes to inform you about an overdue of a task
+    /// schedule a local notification for a timer overrun
     ///
     /// - Parameters:
-    ///   - task: the task
-    ///   - text: the overdue message
-    ///   - remainingTime: the remaining time interval for the task
-    func scheduleOverdueNotification(forTask task: Task, withText text:String, remainingTime: TimeInterval) {
-        self.overdueTimer = Timer.scheduledTimer(withTimeInterval: remainingTime, repeats: false, block: { _ in
-            let content = UNMutableNotificationContent(task: task, text: text)
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.overdueIntervalInMinutes * 60.0, repeats: true)
-            let request = UNNotificationRequest(identifier: text , content: content, trigger: trigger)
-            
-            self.center.add(request, withCompletionHandler: nil)
-        })
+    ///   - forTask: the task
+    ///   - referenceTime: the reference datetime for calculating the notification time
+    ///   - remainingTime: the remaining time of the task
+    ///   - overdueInMinutes: the needed overdue reminder in Minutes
+    func scheduleTimerOverrunNotification(forTask task: Task, referenceTime: Date, remainingTime: TimeInterval, overdueInMinutes: Int) {
+        let hours = overdueInMinutes / 60
+        let minutes = overdueInMinutes % 60
+        let text = TaskNotificationOverdueText.textForTaskOverrunning(hours: hours, minutes: minutes)
+        scheduleLocalNotification(forTask: task, withText: text, referenceTime: referenceTime, remainingTime: remainingTime + Double(overdueInMinutes) * 60.0)
     }
     
     /// eliminate all notifications and stop overdue notifications
@@ -120,7 +126,16 @@ class TaskNotificationScheduler:TaskNotificationProviderProtocol {
         scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly10MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (10.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: L10n.youHaveOnly5MinutesLeftForYourTask, referenceTime: referenceTime, remainingTime: remainingTime - (5.0 * 60.0))
         scheduleLocalNotification(forTask: task, withText: L10n.yourTimeIsUp, referenceTime: referenceTime, remainingTime: remainingTime)
-        scheduleOverdueNotification(forTask: task, withText: L10n.theTimeForYourTaskIsOverrunning, remainingTime: remainingTime)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 5)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 10)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 15)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 30)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 45)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 60)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 120)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 180)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 240)
+        scheduleTimerOverrunNotification(forTask: task, referenceTime: referenceTime, remainingTime: remainingTime, overdueInMinutes: 360)
     }
     
     // mark: - TaskNotificationProviderProtocol
