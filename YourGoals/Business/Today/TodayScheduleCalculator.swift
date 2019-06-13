@@ -10,7 +10,12 @@ import Foundation
 
 struct StartingTimeInfo {
     let startingTime:Date
-    let startingTimeInDanger:Bool
+    let inDanger: Bool
+    
+    init(time:Date, inDanger: Bool) {
+        self.startingTime = time.extractTime()
+        self.inDanger = inDanger
+    }
 }
 
 /// class for calculating starting times
@@ -33,17 +38,17 @@ class TodayScheduleCalculator:StorageManagerWorker {
         for actionable in actionables {
             if actionable.isProgressing(atDate: time) {
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(StartingTimeInfo(startingTime: start, startingTimeInDanger: false))
+                    startingTimes.append(StartingTimeInfo(time: start, inDanger: false))
                 } else {
-                    startingTimes.append(StartingTimeInfo(startingTime: time, startingTimeInDanger: false))
+                    startingTimes.append(StartingTimeInfo(time: time, inDanger: false))
                 }
             } else {
-                var startingTimeInDanger = false
+                var inDanger = false
                 if let beginTime = actionable.beginTime {
-                    startingTimeInDanger = startTime.compare(beginTime) == .orderedDescending
+                    inDanger = startTime.compare(beginTime) == .orderedDescending
                     startTime = beginTime
                 }
-                startingTimes.append(StartingTimeInfo(startingTime: startTime, startingTimeInDanger: startingTimeInDanger))
+                startingTimes.append(StartingTimeInfo(time: startTime, inDanger: inDanger))
                 startTime.addTimeInterval(actionable.calcRemainingTimeInterval(atDate: startTime))
             }
         }
