@@ -132,6 +132,10 @@ protocol Actionable {
     /// commitet day of the work
     var commitmentDate:Date? { set get }
     
+    /// optional start time of a task
+    var beginTime:Date? { set get }
+    
+    
     /// estimated size of the work in minute
     var size:Float { set get }
     

@@ -19,6 +19,9 @@ struct ActionableInfo {
     /// commit date for tasks
     let commitDate:Date?
     
+    /// optional start time, if commitdate is set
+    let beginTime:Date?
+    
     /// size of the Actionable in Minutes
     let size:Float
     
@@ -58,12 +61,13 @@ struct ActionableInfo {
     ///   - parentGoal: parentGoal
     ///   - size: size of the task (only for tasks). nil makes a default size of 30 Minutes
     ///   - repetetions: a set of repetitions like sunday, weekday, monday, etc.
-    init(type: ActionableType, name:String?, commitDate:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil,
+    init(type: ActionableType, name:String?, commitDate:Date? = nil, beginTime:Date? = nil, parentGoal:Goal? = nil, size:Float? = nil,
          urlString: String? = nil, imageData: Data? = nil,
          repetitions:Set<ActionableRepetition>? = nil) {
         self.type = type
         self.name = name
         self.commitDate = commitDate?.day()
+        self.beginTime = beginTime?.extractTime()
         self.parentGoal = parentGoal
         self.size = size ?? 30.0
         self.urlString = urlString
@@ -78,6 +82,7 @@ struct ActionableInfo {
         self.type = actionable.type
         self.name = actionable.name
         self.commitDate = actionable.commitmentDate
+        self.beginTime = actionable.beginTime
         self.parentGoal = actionable.goal
         self.size = actionable.size
         self.imageData = actionable.imageData

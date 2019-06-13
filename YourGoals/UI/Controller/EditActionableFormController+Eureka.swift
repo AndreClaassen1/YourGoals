@@ -21,6 +21,8 @@ struct TaskFormTag  {
     static let goal = "Goal"
     static let url = "Url"
     static let image = "Image"
+    static let beginTimeSwitch = "BeginTimeSwitch"
+    static let beginTime = "BeginTime"
     static let duration = "Duration"
     static let commitDate = "CommitDate"
     static let repetitions = "Repetitions"
@@ -40,7 +42,17 @@ extension EditActionableFormController {
         createForm(form: form, forType: actionableInfo.type, newEntry: newEntry)
         setValues(form: form, forInfo: actionableInfo, forDate: date)
     }
-    
+
+    //    <<< SwitchRow("Show Next Row"){
+//    $0.title = $0.tag
+//    }
+//    <<< SwitchRow("Show Next Section"){
+//    $0.title = $0.tag
+//    $0.hidden = .function(["Show Next Row"], { form -> Bool in
+//    let row: RowOf<Bool>! = form.rowBy(tag: "Show Next Row")
+//    return row.value ?? false == false
+//    })
+//    }
     /// create the eureka form based on the actionable info for the specific date
     ///
     /// ** Hint **: The date is needed to create a range of selectable commit date
@@ -68,6 +80,10 @@ extension EditActionableFormController {
             }
 
             <<< commitDateRow()
+            <<< SwitchRow(TaskFormTag.beginTimeSwitch){
+                $0.title = L10n.doYouWantAFixedBeginTime
+            }
+            <<< beginTimeRow()
             <<< repetitionRow()
             +++ Section()
             <<< parentGoalRow()
@@ -97,6 +113,14 @@ extension EditActionableFormController {
         values[TaskFormTag.goal] = actionableInfo.parentGoal
         values[TaskFormTag.url] = actionableInfo.url
         values[TaskFormTag.image] = actionableInfo.image
+        if let beginTime = actionableInfo.beginTime {
+            values[TaskFormTag.beginTimeSwitch] = true
+            values[TaskFormTag.beginTime] = beginTime
+        } else {
+            values[TaskFormTag.beginTimeSwitch] = false
+            values[TaskFormTag.beginTime] = nil
+        }
+        
         if actionableInfo.commitDate == nil {
             values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: nil, type: .noCommitDate)
         } else {
@@ -123,6 +147,9 @@ extension EditActionableFormController {
         
         let goal = values[TaskFormTag.goal] as? Goal
         let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
+        let beginTimeSwitched = (values[TaskFormTag.beginTimeSwitch] as? Bool) ?? false
+        let beginTime:Date? = beginTimeSwitched ? values[TaskFormTag.beginTime] as? Date : nil
+        
         let size = Float((values [TaskFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
         let repetitions = values[TaskFormTag.repetitions] as? Set<ActionableRepetition>
         
@@ -133,7 +160,10 @@ extension EditActionableFormController {
         let imageData = image == nil ? nil :  image!.jpegData(compressionQuality: 0.6)
 
         
-        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date, parentGoal: goal, size: size, urlString: urlString, imageData: imageData, repetitions: repetitions)
+        return ActionableInfo(type: self.editActionableType, name: name, commitDate: commitDateTuple?.date,
+                              beginTime: beginTime,
+                              parentGoal: goal, size: size, urlString: urlString,
+                              imageData: imageData, repetitions: repetitions)
     }
     
     // MARK: - Row creating helper functions
@@ -213,6 +243,21 @@ extension EditActionableFormController {
                 if row.value?.type == .userDefinedCommitDate {
                     self.showPopOverForCommitDate(row: row)
             }
+        }
+    }
+    
+    /// show the time row for an explicit begin time only when the switch for the row is on.
+    ///
+    /// - Returns: a row for the begin time
+    func beginTimeRow() -> BaseRow {
+        return TimeRow() {
+            row in
+            row.tag = TaskFormTag.beginTime
+            row.hidden = .function([TaskFormTag.beginTimeSwitch], { form -> Bool in
+                let row: RowOf<Bool>! = form.rowBy(tag: TaskFormTag.beginTimeSwitch)
+                return !(row.value ?? false)
+            })
+            row.title = L10n.selectABeginTime
         }
     }
     

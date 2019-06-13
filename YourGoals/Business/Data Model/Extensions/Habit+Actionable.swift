@@ -58,6 +58,16 @@ extension Habit:Actionable {
         }
     }
     
+    /// ignore begin time for a habit.
+    var beginTime: Date? {
+        get {
+            return nil
+        }
+        set {
+        
+        }
+    }
+    
     /// this is a habit
     var type:ActionableType {
         return .habit

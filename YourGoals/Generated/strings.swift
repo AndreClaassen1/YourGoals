@@ -23,6 +23,8 @@ internal enum L10n {
   internal static let delete = L10n.tr("Localizable", "Delete")
   /// Delete Goal
   internal static let deleteGoal = L10n.tr("Localizable", "Delete Goal")
+  /// Do you want a fixed begin time?
+  internal static let doYouWantAFixedBeginTime = L10n.tr("Localizable", "Do you want a fixed begin time")
   /// Edit
   internal static let edit = L10n.tr("Localizable", "Edit")
   /// Enter your goal
@@ -45,6 +47,8 @@ internal enum L10n {
   internal static let remarksOnYourTask = L10n.tr("Localizable", "Remarks on your task")
   /// Repetition
   internal static let repetition = L10n.tr("Localizable", "Repetition")
+  /// Set fixed starting time
+  internal static let selectABeginTime = L10n.tr("Localizable", "Select a begin time")
   /// Select a commit date
   internal static let selectACommitDate = L10n.tr("Localizable", "Select a commit date")
   /// Select a Goal

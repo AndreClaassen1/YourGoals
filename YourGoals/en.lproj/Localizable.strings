@@ -28,6 +28,8 @@
 "Please enter your task" = "Please enter your task";
 "Select a Goal" = "Select a Goal";
 "Select a commit date" = "Select a commit date";
+"Select a begin time" = "Set fixed starting time";
+"Do you want a fixed begin time" = "Do you want a fixed begin time?";
 "Commit Date" = "Commit Date";
 "Remarks on your task" = "Remarks on your task";
 "Enter your goal" = "Enter your goal";

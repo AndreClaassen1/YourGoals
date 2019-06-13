@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="GoalsModel">
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="backburnedGoals" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,6 +30,7 @@
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="imageData" inverseEntity="Goal" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+        <attribute name="beginTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="commitmentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="commitmentPrio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -53,7 +54,7 @@
         <element name="Habit" positionX="0" positionY="0" width="128" height="120"/>
         <element name="HabitCheck" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ImageData" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="240"/>
         <element name="TaskProgress" positionX="0" positionY="0" width="128" height="90"/>
     </elements>
 </model>

@@ -66,6 +66,7 @@ class GoalComposer:StorageManagerWorker {
         var actionable = actionable // make the actionable writeable.
         actionable.name = info.name
         actionable.commitmentDate  = info.commitDate
+        actionable.beginTime = info.beginTime?.extractTime()
         actionable.goal = info.parentGoal
         actionable.size = info.size
         actionable.repetitions = info.repetitions ?? []
