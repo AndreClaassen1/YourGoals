@@ -52,9 +52,9 @@ class TestDataCreator:StorageManagerWorker {
     ///   - goal: the goal, for which the task is created for
     /// - Returns: the task
     @discardableResult
-    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, forGoal goal: Goal) -> Task {
+    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, beginTime: Date? = nil, forGoal goal: Goal) -> Task {
         let composer = GoalComposer(manager: self.manager)
-        let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, commitDate: commitmentDate, size: size), toGoal: goal) as! Task
+        let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, commitDate: commitmentDate, beginTime: beginTime, size: size), toGoal: goal) as! Task
         if let prio = prio {
             task.prio = Int16(prio)
         }
@@ -70,7 +70,7 @@ class TestDataCreator:StorageManagerWorker {
     ///   - infos: infos for the tasks
     func createTasks(forGoal goal: Goal, infos: [TaskInfoTuple] ) {
         for info in infos {
-            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, forGoal: goal)
+            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, beginTime: info.beginTime, forGoal: goal)
         }
     }
     

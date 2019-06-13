@@ -26,6 +26,7 @@ class TodayScheduleCalculator:StorageManagerWorker {
     func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [StartingTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
+        let time = time.extractTime()
         var startingTimes = [StartingTimeInfo]()
         var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time)
         
@@ -37,7 +38,12 @@ class TodayScheduleCalculator:StorageManagerWorker {
                     startingTimes.append(StartingTimeInfo(startingTime: time, startingTimeInDanger: false))
                 }
             } else {
-                startingTimes.append(StartingTimeInfo(startingTime: startTime, startingTimeInDanger: false))
+                var startingTimeInDanger = false
+                if let beginTime = actionable.beginTime {
+                    startingTimeInDanger = startTime.compare(beginTime) == .orderedDescending
+                    startTime = beginTime
+                }
+                startingTimes.append(StartingTimeInfo(startingTime: startTime, startingTimeInDanger: startingTimeInDanger))
                 startTime.addTimeInterval(actionable.calcRemainingTimeInterval(atDate: startTime))
             }
         }
