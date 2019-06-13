@@ -82,7 +82,25 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(Date.timeWith(hour: 13, minute: 00, second: 00), times[0].startingTime)
-        XCTAssertEqual(Date.timeWith(hour: 14, minute: 00, second: 00), times[1].startingTime)
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, inDanger: false), times[1])
+    }
+    
+    /// calculate a list of starting times with a fixed time in betwee
+    func testCalulateStartingTimesWithFixedBeginTimeInDanger() {
+        // setup
+        let actionables = self.createTasks(infos:[
+            ("Task 30 Minutes", 1, 90.0, self.commitmentDate, nil), // going from 13:00 til 14:30
+            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, Date.timeWith(hour: 14, minute: 00, second: 00))
+            ])
+        
+        // act
+        let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
+        let times = try! scheduleCalculator.calculateStartingTimes(forTime: self.testDateTime, actionables: actionables)
+        
+        // test
+        XCTAssertEqual(2, times.count)
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, inDanger: true), times[1])
     }
 }

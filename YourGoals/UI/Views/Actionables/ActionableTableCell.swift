@@ -14,6 +14,7 @@ protocol ActionableTableCellDelegate {
     func actionableStateChangeDesired(actionable:Actionable)
 }
 
+/// protocol for the configuration of the actionable for the table view
 protocol ActionableCell {
     func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: StartingTimeInfo?,  delegate: ActionableTableCellDelegate)
     var actionable:Actionable! { get }
@@ -83,6 +84,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         
         UIApplication.shared.open(url)
     }
+    
     // MARK: - Content
     
     func show(state: ActionableState) {
@@ -164,50 +166,20 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         showTaskProgress(forDate: progressingDate)
     }
     
-    /// calculate several textes for the working time and progress
-    /// of the actionables
-    ///
-    /// - Parameters:
-    ///   - actionable: the task or habit
-    ///   - date: calculate values for this date
-    ///   - estimatedStartingTime: estimated starting time of the task
-    /// - Returns: a tuple consisting of formatted strings of
-    //             workingTimeRange, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
-        guard actionable.type == .task else {
-            return (nil, nil, nil)
-        }
-        
-        let totalWorkingTime = actionable.calcProgressDuration(atDate: date)?.formattedAsString()
-        
-        guard actionable.checkedState(forDate: date) == .active else {
-            return (nil, nil, totalWorkingTime)
-        }
-
-        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
-        let remainingTimeText = remainingTime.formattedAsString()
-        
-        if let startingTime = estimatedStartingTime {
-            
-            let endingTime = date.compare(startingTime) == .orderedDescending ?  date.addingTimeInterval(remainingTime) : startingTime.addingTimeInterval(remainingTime)
-            
-            let workingTimeText = "\(startingTime.formattedTime()) - \(endingTime.formattedTime()) (\(remainingTime.formattedInMinutesAsString()))"
-            return (workingTimeText, remainingTimeText, totalWorkingTime)
-        } else {
-            return (nil, remainingTimeText, totalWorkingTime)
-        }
-    }
-    
     /// show the working time on this task.
     ///
     /// - Parameter task: task
     func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: StartingTimeInfo?) {
-        let tuple = getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo?.startingTime )
+        let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo?.startingTime )
         self.workingTimeLabel.text = tuple.workingTime
+        self.workingTimeLabel.textColor = (timeInfo?.inDanger ?? false) ? UIColor.red : UIColor.black
         self.remainingTimeLabel.text = tuple.remainingTime
         self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
     }
     
+    /// adapt cell ui for a habit or a task
+    ///
+    /// - Parameter type: the type of the actionable
     func adaptUI(forActionableType type: ActionableType) {
         switch type {
         case .habit:
@@ -261,7 +233,9 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///   - date: for this date
     ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: StartingTimeInfo?, delegate: ActionableTableCellDelegate) {
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date,
+                   estimatedStartingTime time: StartingTimeInfo?,
+                   delegate: ActionableTableCellDelegate) {
         self.taskProgressManager = TaskProgressManager(manager: manager)
         self.actionable = actionable
         self.delegateTaskCell = delegate

@@ -123,6 +123,8 @@
 		7B7E58DC2076070500B5511C /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74BC5B1FFE981E00D06D48 /* UIColor+Brightness.swift */; };
 		7B7F0A771FAA06FE001BBB17 /* ActionableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A761FAA06FE001BBB17 /* ActionableDataSource.swift */; };
 		7B7F0A791FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */; };
+		7B81353E22B28DF600AD3060 /* StartingTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B81353D22B28DF600AD3060 /* StartingTimeHelper.swift */; };
+		7B81354022B2913200AD3060 /* TaskWorkingTimeTextCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B81353F22B2913200AD3060 /* TaskWorkingTimeTextCreator.swift */; };
 		7B8168A321E47FB700C5624C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168A221E47FB700C5624C /* SnapshotHelper.swift */; };
 		7B8168A521E480FD00C5624C /* AppParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8168A421E480FD00C5624C /* AppParam.swift */; };
 		7B8168AE21E48CEB00C5624C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8168B021E48CEB00C5624C /* Localizable.strings */; };
@@ -524,6 +526,8 @@
 		7B7D60AB20AF3C070049F331 /* AddEntryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryInterfaceController.swift; sourceTree = "<group>"; };
 		7B7F0A761FAA06FE001BBB17 /* ActionableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableDataSource.swift; sourceTree = "<group>"; };
 		7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+SwipeableCell.swift"; sourceTree = "<group>"; };
+		7B81353D22B28DF600AD3060 /* StartingTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingTimeHelper.swift; sourceTree = "<group>"; };
+		7B81353F22B2913200AD3060 /* TaskWorkingTimeTextCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorkingTimeTextCreator.swift; sourceTree = "<group>"; };
 		7B81689F21E47AE800C5624C /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		7B8168A221E47FB700C5624C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		7B8168A421E480FD00C5624C /* AppParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppParam.swift; sourceTree = "<group>"; };
@@ -1051,6 +1055,14 @@
 			path = Eureka;
 			sourceTree = "<group>";
 		};
+		7B81353C22B28DE400AD3060 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7B81353D22B28DF600AD3060 /* StartingTimeHelper.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7B8168B421E4908700C5624C /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -1208,6 +1220,7 @@
 		7BAAFEFA1F9CA2FA00BB102E /* YourGoalsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B81353C22B28DE400AD3060 /* Extensions */,
 				7B60D3EA22A1014600096FDE /* Notifications */,
 				7BF9FF942157985200CD2C82 /* Business */,
 				7B26EB8620B6CDB500155158 /* Watch */,
@@ -1525,6 +1538,7 @@
 		7BFD35C120076A3600602FC8 /* Actionables */ = {
 			isa = PBXGroup;
 			children = (
+				7B81353F22B2913200AD3060 /* TaskWorkingTimeTextCreator.swift */,
 				7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */,
 				7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */,
 				7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */,
@@ -2227,6 +2241,7 @@
 				7BE11B7A1F9F80220023844E /* GoalDetailViewController.swift in Sources */,
 				7BF9FF93215793AA00CD2C82 /* Date+weekday.swift in Sources */,
 				7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */,
+				7B81354022B2913200AD3060 /* TaskWorkingTimeTextCreator.swift in Sources */,
 				7B9E28ED1FA6550D00BB6003 /* TaskOrderManager.swift in Sources */,
 				7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */,
 				7BAA7A781F9F9EC8005B16EE /* DismissStoryViewAnimationController.swift in Sources */,
@@ -2300,6 +2315,7 @@
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */,
 				7B2234FD216E27130020FB31 /* HabitStrokeCalculatorTests.swift in Sources */,
+				7B81353E22B28DF600AD3060 /* StartingTimeHelper.swift in Sources */,
 				7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */,
 				7BEBBACE1F9F3DD2003D16AE /* StorageTestCase.swift in Sources */,
 				7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */,

@@ -8,12 +8,15 @@
 
 import Foundation
 
-struct StartingTimeInfo {
+/// a calculated starting time with an indicator when the starting time is in danger
+struct StartingTimeInfo:Equatable {
     let startingTime:Date
+    let remainingTimeInterval:TimeInterval
     let inDanger: Bool
     
-    init(time:Date, inDanger: Bool) {
-        self.startingTime = time.extractTime()
+    init(start:Date, remainingTimeInterval:TimeInterval, inDanger: Bool) {
+        self.startingTime = start.extractTime()
+        self.remainingTimeInterval = remainingTimeInterval
         self.inDanger = inDanger
     }
 }
@@ -38,9 +41,9 @@ class TodayScheduleCalculator:StorageManagerWorker {
         for actionable in actionables {
             if actionable.isProgressing(atDate: time) {
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(StartingTimeInfo(time: start, inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: 0,inDanger: false))
                 } else {
-                    startingTimes.append(StartingTimeInfo(time: time, inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: 0, inDanger: false))
                 }
             } else {
                 var inDanger = false
@@ -48,7 +51,7 @@ class TodayScheduleCalculator:StorageManagerWorker {
                     inDanger = startTime.compare(beginTime) == .orderedDescending
                     startTime = beginTime
                 }
-                startingTimes.append(StartingTimeInfo(time: startTime, inDanger: inDanger))
+                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: 0, inDanger: inDanger))
                 startTime.addTimeInterval(actionable.calcRemainingTimeInterval(atDate: startTime))
             }
         }
