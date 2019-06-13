@@ -15,7 +15,7 @@ protocol ActionableTableCellDelegate {
 }
 
 protocol ActionableCell {
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?,  delegate: ActionableTableCellDelegate)
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: StartingTimeInfo?,  delegate: ActionableTableCellDelegate)
     var actionable:Actionable! { get }
 }
 
@@ -201,8 +201,8 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     /// show the working time on this task.
     ///
     /// - Parameter task: task
-    func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?) {
-        let tuple = getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: time)
+    func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: StartingTimeInfo?) {
+        let tuple = getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo?.startingTime )
         self.workingTimeLabel.text = tuple.workingTime
         self.remainingTimeLabel.text = tuple.remainingTime
         self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
@@ -261,7 +261,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///   - date: for this date
     ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: Date?, delegate: ActionableTableCellDelegate) {
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: StartingTimeInfo?, delegate: ActionableTableCellDelegate) {
         self.taskProgressManager = TaskProgressManager(manager: manager)
         self.actionable = actionable
         self.delegateTaskCell = delegate

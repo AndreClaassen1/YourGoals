@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct StartingTimeInfo {
+    let startingTime:Date
+    let startingTimeInDanger:Bool
+}
+
+/// class for calculating starting times
 class TodayScheduleCalculator:StorageManagerWorker {
     
     /// calculate the starting times relative to the given time for the actionables.
@@ -17,21 +23,21 @@ class TodayScheduleCalculator:StorageManagerWorker {
     ///   - actionables: the actinalbes
     /// - Returns: array with associated starting ties
     /// - Throws: core data exception
-    func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [Date] {
+    func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [StartingTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
-        var startingTimes = [Date]()
+        var startingTimes = [StartingTimeInfo]()
         var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time)
         
         for actionable in actionables {
             if actionable.isProgressing(atDate: time) {
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(start)
+                    startingTimes.append(StartingTimeInfo(startingTime: start, startingTimeInDanger: false))
                 } else {
-                    startingTimes.append(time)
+                    startingTimes.append(StartingTimeInfo(startingTime: time, startingTimeInDanger: false))
                 }
             } else {
-                startingTimes.append(startTime)
+                startingTimes.append(StartingTimeInfo(startingTime: startTime, startingTimeInDanger: false))
                 startTime.addTimeInterval(actionable.calcRemainingTimeInterval(atDate: startTime))
             }
         }

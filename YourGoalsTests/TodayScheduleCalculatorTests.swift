@@ -39,8 +39,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 00, second: 00), times[0])
-        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 30, second: 00), times[1])
+        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 00, second: 00), times[0].startingTime)
+        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 30, second: 00), times[1].startingTime)
     }
     
     /// calculate a list of starti3ng times
@@ -59,7 +59,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 00, second: 00), times[0])
-        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 30, second: 00), times[1])
+        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 00, second: 00), times[0].startingTime)
+        XCTAssertEqual(Date.dateTimeWithYear(2018, month: 01, day: 11, hour: 13, minute: 30, second: 00), times[1].startingTime)
     }
 }
