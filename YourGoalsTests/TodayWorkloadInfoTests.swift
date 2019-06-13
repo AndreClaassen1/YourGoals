@@ -17,9 +17,9 @@ class TodayWorkloadInfoTests: StorageTestCase {
         let commitmentDate = Date.dateWithYear(2018, month: 01, day: 08)
         let workloadDate = Date.dateTimeWithYear(2018, month: 01, day: 08, hour: 13, minute: 00, second: 00)
         let _ = super.testDataCreator.createGoalWithTasks(infos: [
-                ("Task 30 Minutes", 1, 30.0, commitmentDate),
-                ("Task 90 Minutes", 2, 90.0, commitmentDate),
-                ("Task not committed", 2, 90.0, nil)
+                ("Task 30 Minutes", 1, 30.0, commitmentDate, nil),
+                ("Task 90 Minutes", 2, 90.0, commitmentDate, nil),
+                ("Task not committed", 2, 90.0, nil, nil)
             ])
         
         // act
