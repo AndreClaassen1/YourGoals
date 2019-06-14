@@ -24,7 +24,7 @@ struct StartingTimeInfo:Equatable {
 /// class for calculating starting times
 class TodayScheduleCalculator:StorageManagerWorker {
     
-    /// calculate the starting times relative to the given time for the actionables.
+    /// calculate the starting times drelative to the given time for the actionables.
     ///
     /// - Parameters:
     ///   - time: start time for all actionalbes
@@ -34,16 +34,17 @@ class TodayScheduleCalculator:StorageManagerWorker {
     func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [StartingTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
-        let time = time.extractTime()
         var startingTimes = [StartingTimeInfo]()
         var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time)
         
         for actionable in actionables {
+            
             if actionable.isProgressing(atDate: time) {
+                let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: 0,inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: remainingTime, inDanger: false))
                 } else {
-                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: 0, inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: remainingTime, inDanger: false))
                 }
             } else {
                 var inDanger = false
@@ -51,8 +52,9 @@ class TodayScheduleCalculator:StorageManagerWorker {
                     inDanger = startTime.compare(beginTime) == .orderedDescending
                     startTime = beginTime
                 }
-                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: 0, inDanger: inDanger))
-                startTime.addTimeInterval(actionable.calcRemainingTimeInterval(atDate: startTime))
+                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startTime)
+                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: remainingTime, inDanger: inDanger))
+                startTime.addTimeInterval(remainingTime)
             }
         }
         

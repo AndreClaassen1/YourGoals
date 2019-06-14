@@ -21,12 +21,6 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         return try! orderManager.tasksByOrder(forGoal: goal)
     }
     
-    override func setUp() {
-        super.setUp()
-        
-    }
-    
-    
     /// calculate a list of starting times
     func testCalulateStartingTimesWithoutActiveTask() {
         // setup
@@ -41,8 +35,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(Date.timeWith(hour: 13, minute: 00, second: 00), times[0].startingTime)
-        XCTAssertEqual(Date.timeWith(hour: 13, minute: 30, second: 00), times[1].startingTime)
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 30, second: 00, remainingMinutes: 90.0, inDanger: false), times[1])
     }
     
     /// calculate a list of starti3ng times
@@ -56,7 +50,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         let activeTask = actionables.first!
         
         // task is progressing since 15 Minutes
-        try! TaskProgressManager(manager: self.manager).startProgress(forTask: activeTask, atDate: self.testDateTime.addingTimeInterval(60.0 * 15.0))
+        try! TaskProgressManager(manager: self.manager).startProgress(forTask: activeTask, atDate: self.testDateTime.addingTimeInterval(60.0 * 15.0 * -1.0))
         
         // act
         let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
@@ -64,8 +58,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(Date.timeWith(hour: 13, minute: 00, second: 00), times[0].startingTime)
-        XCTAssertEqual(Date.timeWith(hour: 13, minute: 30, second: 00), times[1].startingTime)
+        XCTAssertEqual(StartingTimeInfo(hour: 12, minute: 45, second: 00, remainingMinutes: 15.0, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 15, second: 00, remainingMinutes: 90.0, inDanger: false), times[1])
     }
     
     /// calculate a list of starting times with a fixed time in betwee
@@ -82,8 +76,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, inDanger: false), times[0])
-        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, inDanger: false), times[1])
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, inDanger: false), times[1])
     }
     
     /// calculate a list of starting times with a fixed time in betwee
@@ -100,7 +94,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, inDanger: false), times[0])
-        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, inDanger: true), times[1])
+        XCTAssertEqual(StartingTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 90.0, inDanger: false), times[0])
+        XCTAssertEqual(StartingTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, inDanger: true), times[1])
     }
 }

@@ -10,10 +10,10 @@ import Foundation
 @testable import YourGoals
 
 extension StartingTimeInfo {
-    init(hour:Int, minute: Int, second: Int, inDanger: Bool) {
+    init(hour:Int, minute: Int, second: Int, remainingMinutes: Double, inDanger: Bool) {
         let time = Date.timeWith(hour: hour, minute: minute, second: second)
         let inDanger = inDanger
-        self.init(start: time, remainingTimeInterval: 0, inDanger: inDanger)
+        self.init(start: time, remainingTimeInterval: remainingMinutes * 60.0, inDanger: inDanger)
     }
 }
 
