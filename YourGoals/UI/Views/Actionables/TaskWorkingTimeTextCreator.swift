@@ -20,7 +20,7 @@ struct TaskWorkingTimeTextCreator {
     ///   - estimatedStartingTime: estimated starting time of the task
     /// - Returns: a tuple consisting of formatted strings of
     ///            workingTimeRange, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime: Date?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
+    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: StartingTimeInfo?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
         guard actionable.type == .task else {
             return (nil, nil, nil)
         }
@@ -31,17 +31,14 @@ struct TaskWorkingTimeTextCreator {
             return (nil, nil, totalWorkingTime)
         }
         
-        let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
-        let remainingTimeText = remainingTime.formattedAsString()
-        
-        if let startingTime = estimatedStartingTime {
+        if let timeInfo = timeInfo {
+            let fixedIndicator = timeInfo.fixedStartingTime ? "*" : ""
             
-            let endingTime = date.compare(startingTime) == .orderedDescending ?  date.addingTimeInterval(remainingTime) : startingTime.addingTimeInterval(remainingTime)
-            
-            let workingTimeText = "\(startingTime.formattedTime()) - \(endingTime.formattedTime()) (\(remainingTime.formattedInMinutesAsString()))"
-            return (workingTimeText, remainingTimeText, totalWorkingTime)
+            let workingTimeText = "\(fixedIndicator)\(timeInfo.startingTime.formattedTime()) - \(timeInfo.endingTime.formattedTime()) (\(timeInfo.remainingTimeInterval.formattedInMinutesAsString()))"
+            return (workingTimeText, timeInfo.remainingTimeInterval.formattedAsString(), totalWorkingTime)
         } else {
-            return (nil, remainingTimeText, totalWorkingTime)
+            let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
+            return (nil, remainingTime.formattedAsString(), totalWorkingTime)
         }
     }
 }

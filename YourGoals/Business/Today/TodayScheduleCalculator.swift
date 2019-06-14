@@ -10,14 +10,36 @@ import Foundation
 
 /// a calculated starting time with an indicator when the starting time is in danger
 struct StartingTimeInfo:Equatable {
+    
+    /// the estimated starting time (not date) of an actionable
     let startingTime:Date
+    
+    /// the remaining time left for the task as a timeinterval
     let remainingTimeInterval:TimeInterval
+    
+    /// the start of this time is in danger cause of the previous task is being late
     let inDanger: Bool
     
-    init(start:Date, remainingTimeInterval:TimeInterval, inDanger: Bool) {
+    /// indicator, if the starting time is fixed
+    let fixedStartingTime: Bool
+    
+    /// initalize this time info
+    ///
+    /// - Parameters:
+    ///   - start: starting time
+    ///   - remainingTimeInterval: remaining time
+    ///   - inDanger: in danger
+    ///   - fixed: indicator if starting time is fixed
+    init(start:Date, remainingTimeInterval:TimeInterval, inDanger: Bool, fixed: Bool) {
         self.startingTime = start.extractTime()
         self.remainingTimeInterval = remainingTimeInterval
         self.inDanger = inDanger
+        self.fixedStartingTime = fixed
+    }
+    
+    /// the calculated estimated ending time of the task
+    var endingTime:Date {
+        return startingTime.addingTimeInterval(remainingTimeInterval)
     }
 }
 
@@ -35,25 +57,27 @@ class TodayScheduleCalculator:StorageManagerWorker {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
         var startingTimes = [StartingTimeInfo]()
-        var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time)
+        var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time).extractTime()
         
         for actionable in actionables {
             
             if actionable.isProgressing(atDate: time) {
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: remainingTime, inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: remainingTime, inDanger: false, fixed: false))
                 } else {
-                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: remainingTime, inDanger: false))
+                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: remainingTime, inDanger: false, fixed: false))
                 }
             } else {
                 var inDanger = false
+                var fixed = false
                 if let beginTime = actionable.beginTime {
                     inDanger = startTime.compare(beginTime) == .orderedDescending
                     startTime = beginTime
+                    fixed = true
                 }
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: startTime)
-                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: remainingTime, inDanger: inDanger))
+                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: remainingTime, inDanger: inDanger, fixed: fixed))
                 startTime.addTimeInterval(remainingTime)
             }
         }
