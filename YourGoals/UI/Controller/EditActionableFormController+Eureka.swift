@@ -16,7 +16,7 @@ import Eureka
 /// - task: the tag id of the task
 /// - goal: the tag id of the selectable goal
 /// - commitDate: the task id of the commit date
-struct TaskFormTag  {
+struct ActionableFormTag  {
     static let task = "Task"
     static let goal = "Goal"
     static let url = "Url"
@@ -43,16 +43,6 @@ extension EditActionableFormController {
         setValues(form: form, forInfo: actionableInfo, forDate: date)
     }
 
-    //    <<< SwitchRow("Show Next Row"){
-//    $0.title = $0.tag
-//    }
-//    <<< SwitchRow("Show Next Section"){
-//    $0.title = $0.tag
-//    $0.hidden = .function(["Show Next Row"], { form -> Bool in
-//    let row: RowOf<Bool>! = form.rowBy(tag: "Show Next Row")
-//    return row.value ?? false == false
-//    })
-//    }
     /// create the eureka form based on the actionable info for the specific date
     ///
     /// ** Hint **: The date is needed to create a range of selectable commit date
@@ -67,20 +57,20 @@ extension EditActionableFormController {
             +++ Section()
             <<< taskNameRow()
             +++ Section() { $0.hidden = Condition.function([], { _ in type == .habit }) }
-            <<< CountDownRow(TaskFormTag.duration) {
+            <<< CountDownRow(ActionableFormTag.duration) {
                 $0.title = L10n.timeboxYourTask
             }
             
-            <<< URLRow(TaskFormTag.url) {
+            <<< URLRow(ActionableFormTag.url) {
                 $0.title = L10n.additionalURL
             }
-            <<< ImageRow(TaskFormTag.image) {
+            <<< ImageRow(ActionableFormTag.image) {
                 $0.sourceTypes = .PhotoLibrary
                 $0.title = L10n.additionalImage
             }
 
             <<< commitDateRow()
-            <<< SwitchRow(TaskFormTag.beginTimeSwitch){
+            <<< SwitchRow(ActionableFormTag.beginTimeSwitch){
                 $0.title = L10n.doYouWantAFixedBeginTime
             }
             <<< beginTimeRow()
@@ -100,35 +90,36 @@ extension EditActionableFormController {
         }
     }
     
+    func commitDateTuple(fromDate date: Date?) -> CommitDateTuple {
+        let commitDateCreator = SelectableCommitDatesCreator()
+        return date == nil ? commitDateCreator.dateAsTuple(date: nil, type: .noCommitDate) : commitDateCreator.dateAsTuple(date: date, type: .explicitCommitDate)
+    }
+    
     /// set the values of the form based on the actionableInfo for the specific date
     ///
     /// - Parameters:
     ///   - actionableInfo: the actionable info
     ///   - date: the date for the row options for the commit date
     func setValues(form: Form, forInfo actionableInfo: ActionableInfo, forDate date: Date) {
-        let commitDateCreator = SelectableCommitDatesCreator()
         
         var values = [String: Any?]()
-        values[TaskFormTag.task] = actionableInfo.name
-        values[TaskFormTag.goal] = actionableInfo.parentGoal
-        values[TaskFormTag.url] = actionableInfo.url
-        values[TaskFormTag.image] = actionableInfo.image
+        values[ActionableFormTag.task] = actionableInfo.name
+        values[ActionableFormTag.goal] = actionableInfo.parentGoal
+        values[ActionableFormTag.url] = actionableInfo.url
+        values[ActionableFormTag.image] = actionableInfo.image
         if let beginTime = actionableInfo.beginTime {
-            values[TaskFormTag.beginTimeSwitch] = true
-            values[TaskFormTag.beginTime] = beginTime
+            values[ActionableFormTag.beginTimeSwitch] = true
+            values[ActionableFormTag.beginTime] = beginTime
         } else {
-            values[TaskFormTag.beginTimeSwitch] = false
-            values[TaskFormTag.beginTime] = nil
+            values[ActionableFormTag.beginTimeSwitch] = false
+            values[ActionableFormTag.beginTime] = nil
         }
         
-        if actionableInfo.commitDate == nil {
-            values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: nil, type: .noCommitDate)
-        } else {
-            values[TaskFormTag.commitDate] = commitDateCreator.dateAsTuple(date: actionableInfo.commitDate, type: .explicitCommitDate)
-        }
-        values[TaskFormTag.duration] = Date.timeFromMinutes(Double(actionableInfo.size))
+        values[ActionableFormTag.commitDate] = commitDateTuple(fromDate: actionableInfo.commitDate)
+        values[ActionableFormTag.duration] = Date.timeFromMinutes(Double(actionableInfo.size))
         
-        let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: TaskFormTag.commitDate)!
+        let commitDateCreator = SelectableCommitDatesCreator()
+        let pushRow:PushRow<CommitDateTuple> = form.rowBy(tag: ActionableFormTag.commitDate)!
         let tuples = commitDateCreator.selectableCommitDates(startingWith: date, numberOfDays: 7, includingDate: actionableInfo.commitDate)
         pushRow.options = tuples
         
@@ -141,22 +132,22 @@ extension EditActionableFormController {
     func getActionableInfoFromValues(form: Form) -> ActionableInfo {
         let values = form.values()
 
-        guard let name = values[TaskFormTag.task] as? String? else {
+        guard let name = values[ActionableFormTag.task] as? String? else {
             fatalError("There should be a name value")
         }
         
-        let goal = values[TaskFormTag.goal] as? Goal
-        let commitDateTuple = values[TaskFormTag.commitDate] as? CommitDateTuple
-        let beginTimeSwitched = (values[TaskFormTag.beginTimeSwitch] as? Bool) ?? false
-        let beginTime:Date? = beginTimeSwitched ? values[TaskFormTag.beginTime] as? Date : nil
+        let goal = values[ActionableFormTag.goal] as? Goal
+        let commitDateTuple = values[ActionableFormTag.commitDate] as? CommitDateTuple
+        let beginTimeSwitched = (values[ActionableFormTag.beginTimeSwitch] as? Bool) ?? false
+        let beginTime:Date? = beginTimeSwitched ? values[ActionableFormTag.beginTime] as? Date : nil
         
-        let size = Float((values [TaskFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
-        let repetitions = values[TaskFormTag.repetitions] as? Set<ActionableRepetition>
+        let size = Float((values [ActionableFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
+        let repetitions = values[ActionableFormTag.repetitions] as? Set<ActionableRepetition>
         
-        let url = values[TaskFormTag.url] as? URL
+        let url = values[ActionableFormTag.url] as? URL
         let urlString = url?.absoluteString
         
-        let image = values[TaskFormTag.image] as? UIImage
+        let image = values[ActionableFormTag.image] as? UIImage
         let imageData = image == nil ? nil :  image!.jpegData(compressionQuality: 0.6)
 
         
@@ -172,7 +163,7 @@ extension EditActionableFormController {
     func repetitionRow() -> BaseRow {
         let row = MultipleSelectorRow<ActionableRepetition>() {
             $0.title = L10n.repetition
-            $0.tag = TaskFormTag.repetitions
+            $0.tag = ActionableFormTag.repetitions
             $0.options = ActionableRepetition.values()
             $0.value = self.editActionable?.repetitions ?? []
             }
@@ -192,7 +183,7 @@ extension EditActionableFormController {
     ///
     /// - Returns: a base row
     func taskNameRow() -> BaseRow {
-        let row = TextRow(tag: TaskFormTag.task).cellSetup { cell, row in
+        let row = TextRow(tag: ActionableFormTag.task).cellSetup { cell, row in
             cell.textField.placeholder = L10n.pleaseEnterYourTask
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesAlways
@@ -205,7 +196,7 @@ extension EditActionableFormController {
     ///
     /// - Returns: the row
     func parentGoalRow() -> BaseRow {
-        return PushRow<Goal>(TaskFormTag.goal) { row in
+        return PushRow<Goal>(ActionableFormTag.goal) { row in
             row.title = L10n.selectAGoal
             row.options = selectableGoals()
             }.onPresent{ (_, to) in
@@ -229,7 +220,7 @@ extension EditActionableFormController {
     func commitDateRow() -> BaseRow {
         
         return PushRow<CommitDateTuple>() { row in
-            row.tag = TaskFormTag.commitDate
+            row.tag = ActionableFormTag.commitDate
             row.title = L10n.selectACommitDate
             row.options = []
             }.onPresent { (_, to) in
@@ -252,9 +243,9 @@ extension EditActionableFormController {
     func beginTimeRow() -> BaseRow {
         return TimeRow() {
             row in
-            row.tag = TaskFormTag.beginTime
-            row.hidden = .function([TaskFormTag.beginTimeSwitch], { form -> Bool in
-                let row: RowOf<Bool>! = form.rowBy(tag: TaskFormTag.beginTimeSwitch)
+            row.tag = ActionableFormTag.beginTime
+            row.hidden = .function([ActionableFormTag.beginTimeSwitch], { form -> Bool in
+                let row: RowOf<Bool>! = form.rowBy(tag: ActionableFormTag.beginTimeSwitch)
                 return !(row.value ?? false)
             })
             row.title = L10n.selectABeginTime
@@ -265,11 +256,10 @@ extension EditActionableFormController {
         let view = row.cell.contentView
         let commitDateController = CommitDateFormController()
         commitDateController.modalPresentationStyle = UIModalPresentationStyle.popover
-        commitDateController.preferredContentSize = CGSize(width: 350, height: 350)
+        commitDateController.delegate = self
         self.present(commitDateController, animated: true, completion: nil)
         let popoverPresentationController = commitDateController.popoverPresentationController
         popoverPresentationController?.sourceView = view
-//        popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
     }
         
     /// create a row with remarks for the tasks
@@ -300,5 +290,12 @@ extension EditActionableFormController {
             NSLog("couldn't fetch the selectable goals: \(error)")
             return []
         }
+    }
+}
+
+extension EditActionableFormController : CommitDateFormControllerDelegate {
+    func saveCommitDate(commitDate: Date?) {
+        let row = self.form.rowBy(tag: ActionableFormTag.commitDate) as! PushRow<CommitDateTuple>
+        row.value = commitDateTuple(fromDate: commitDate)
     }
 }

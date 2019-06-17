@@ -87,6 +87,9 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     
     // MARK: - Content
     
+    /// show the action state as a marked checkbox
+    ///
+    /// - Parameter state: .active or .done
     func show(state: ActionableState) {
         switch state {
         case .active:
@@ -174,7 +177,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         self.workingTimeLabel.text = tuple.workingTime
         var workingTimeTextColor = UIColor.black
         if let timeInfo = timeInfo {
-            workingTimeTextColor = timeInfo.inDanger ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
+            workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
         }
         
         self.workingTimeLabel.textColor = workingTimeTextColor

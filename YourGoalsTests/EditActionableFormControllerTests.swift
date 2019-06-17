@@ -106,7 +106,7 @@ class EditActionableFormControllerTests: StorageTestCase, EditActionableViewCont
         self.loadController(with: task)
         
         // test
-        let rowGoal:PushRow<Goal> = self.form.rowBy(tag: TaskFormTag.goal)!
+        let rowGoal:PushRow<Goal> = self.form.rowBy(tag: ActionableFormTag.goal)!
         let options = rowGoal.options!
         XCTAssertEqual(["Goal for the Edit Form", "Goal 2", "Goal 3"], options.map{ $0.name! })
     }

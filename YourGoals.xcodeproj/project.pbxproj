@@ -817,7 +817,8 @@
 		7B17DD781F9E6E3C008E90A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7BE1CE6821A7D67D00606A20 /* EditActionableFormController */,
+				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
+				7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */,
 				7BEA4EC720D2C2B500DEE71A /* ProtocolTableViewController.swift */,
 				7BAAFEE81F9CA2FA00BB102E /* GoalsViewController.swift */,
 				7B994E021FA21CEC00B704E1 /* EditGoalViewController.swift */,
@@ -825,6 +826,7 @@
 				7BAA7A7A1FA0726E005B16EE /* GoalsViewController+TransitionDelegate.swift */,
 				7BE11B791F9F80220023844E /* GoalDetailViewController.swift */,
 				7BAB774F1FCEA798001E07A7 /* GoalDetailsViewController+Animation.swift */,
+				7BE1CE6921A7D6D000606A20 /* CommitDateFormController.swift */,
 				7B3FA9D91FE670290052B587 /* SelectableCommitDatesCreator.swift */,
 				7B39357A1FF3A102009E752F /* EditGoalSegueParameter.swift */,
 				7B3935761FF39B0E009E752F /* EditGoalFormController.swift */,
@@ -1358,16 +1360,6 @@
 				7B26EB8220B6CB5100155158 /* Task+Uri.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		7BE1CE6821A7D67D00606A20 /* EditActionableFormController */ = {
-			isa = PBXGroup;
-			children = (
-				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
-				7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */,
-				7BE1CE6921A7D6D000606A20 /* CommitDateFormController.swift */,
-			);
-			name = EditActionableFormController;
 			sourceTree = "<group>";
 		};
 		7BE4BB4D1FC8073C00E1BEF9 /* Habits */ = {

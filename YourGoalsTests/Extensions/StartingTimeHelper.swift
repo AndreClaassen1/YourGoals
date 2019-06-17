@@ -17,12 +17,13 @@ extension StartingTimeInfo {
     ///   - minute: starting time minute
     ///   - second: starting time second
     ///   - remainingMinutes: estimated remaining time of action in minutes
-    ///   - inDanger: true, if starting time is in danger
+    ///   - conflicting: true, if starting time is in danger
     ///   - fixed: true, if it is a fixed actionable
-    init(hour:Int, minute: Int, second: Int, remainingMinutes: Double, inDanger: Bool, fixed: Bool) {
+    init(hour:Int, minute: Int, second: Int,
+         end: Date? = nil, remainingMinutes: Double, conflicting: Bool, fixed: Bool) {
         let time = Date.timeWith(hour: hour, minute: minute, second: second)
-        let inDanger = inDanger
-        self.init(start: time, remainingTimeInterval: remainingMinutes * 60.0, inDanger: inDanger, fixed: fixed)
+        let end = end ?? time.addingTimeInterval(remainingMinutes * 60.0)
+        self.init(start: time, end: end, remainingTimeInterval: remainingMinutes * 60.0, conflicting: conflicting, fixed: fixed)
     }
 }
 

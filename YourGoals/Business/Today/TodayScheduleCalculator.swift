@@ -14,11 +14,14 @@ struct StartingTimeInfo:Equatable {
     /// the estimated starting time (not date) of an actionable
     let startingTime:Date
     
+    /// the estimated ending time
+    let endingTime:Date
+    
     /// the remaining time left for the task as a timeinterval
     let remainingTimeInterval:TimeInterval
     
     /// the start of this time is in danger cause of the previous task is being late
-    let inDanger: Bool
+    let conflicting: Bool
     
     /// indicator, if the starting time is fixed
     let fixedStartingTime: Bool
@@ -28,18 +31,14 @@ struct StartingTimeInfo:Equatable {
     /// - Parameters:
     ///   - start: starting time
     ///   - remainingTimeInterval: remaining time
-    ///   - inDanger: in danger
+    ///   - conflicting: actionable is conflicting with another actionable
     ///   - fixed: indicator if starting time is fixed
-    init(start:Date, remainingTimeInterval:TimeInterval, inDanger: Bool, fixed: Bool) {
+    init(start:Date, end:Date, remainingTimeInterval:TimeInterval, conflicting: Bool, fixed: Bool) {
         self.startingTime = start.extractTime()
+        self.endingTime = end.extractTime()
         self.remainingTimeInterval = remainingTimeInterval
-        self.inDanger = inDanger
+        self.conflicting = conflicting
         self.fixedStartingTime = fixed
-    }
-    
-    /// the calculated estimated ending time of the task
-    var endingTime:Date {
-        return startingTime.addingTimeInterval(remainingTimeInterval)
     }
 }
 
@@ -64,20 +63,20 @@ class TodayScheduleCalculator:StorageManagerWorker {
             if actionable.isProgressing(atDate: time) {
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
                 if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-                    startingTimes.append(StartingTimeInfo(start: start, remainingTimeInterval: remainingTime, inDanger: false, fixed: false))
+                    startingTimes.append(StartingTimeInfo(start: start, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false))
                 } else {
-                    startingTimes.append(StartingTimeInfo(start: time, remainingTimeInterval: remainingTime, inDanger: false, fixed: false))
+                    startingTimes.append(StartingTimeInfo(start: time, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false))
                 }
             } else {
-                var inDanger = false
+                var conflicting = false
                 var fixed = false
                 if let beginTime = actionable.beginTime {
-                    inDanger = startTime.compare(beginTime) == .orderedDescending
+                    conflicting = startTime.compare(beginTime) == .orderedDescending
                     startTime = beginTime
                     fixed = true
                 }
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: startTime)
-                startingTimes.append(StartingTimeInfo(start: startTime, remainingTimeInterval: remainingTime, inDanger: inDanger, fixed: fixed))
+                startingTimes.append(StartingTimeInfo(start: startTime, end: startTime.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: conflicting, fixed: fixed))
                 startTime.addTimeInterval(remainingTime)
             }
         }

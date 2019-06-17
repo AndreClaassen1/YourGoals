@@ -9,39 +9,39 @@
 import UIKit
 import Eureka
 
-class CommitDateFormController: UITableViewController {
-//FormViewController {
+protocol CommitDateFormControllerDelegate {
+    func saveCommitDate(commitDate: Date?)
+}
 
-// @IBOutlet var popupLayer: UIView!
+class CommitDateFormController: FormViewController {
+    
+    var delegate:CommitDateFormControllerDelegate?
     
     override func viewDidLoad() {
-        
-//        super.tableView = UITableView(frame: popupLayer.bounds, style: .grouped)
-//        super.tableView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth.union(.flexibleHeight)
-//        super.tableView.cellLayoutMarginsFollowReadableWidth = false
-//        self.popupLayer.addSubview(super.tableView)
-//        self.popupLayer.layer.cornerRadius = 10
-//        self.popupLayer.layer.masksToBounds = true
-
         super.viewDidLoad()
         
-//        form +++
-//            Section()
-//            <<< DateRow() {
-//                $0.value = Date();
-//                $0.title = "Commit Date"
-//        }
+        form +++
+            Section("Select your explicit commit date")
+            <<< DateRow("commitDateRow") {
+                $0.value = Date();
+                $0.title = "Commit Date"
+            }
+            <<< ButtonRow() {
+                $0.title = "Save"
+                }.onCellSelection({ _ , _ in
+                    self.saveCommitDate()
+                })
+            <<< ButtonRow() {
+                $0.title = "Cancel"
+                }.onCellSelection({ _, _ in
+                    self.delegate?.saveCommitDate(commitDate: nil)
+                    self.dismiss(animated: true)
+                })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func saveCommitDate() {
+        let date = self.form.values()["commitDateRow"] as? Date
+        self.delegate?.saveCommitDate(commitDate: date)
+        self.dismiss(animated: true)
     }
-    */
-
 }
