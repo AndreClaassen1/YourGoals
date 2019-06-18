@@ -84,6 +84,7 @@
 		7B4E0BE61FAF0CE500602FD1 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */; };
 		7B4E0BE71FAF0CE500602FD1 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */; };
 		7B4E0BE91FAF10BD00602FD1 /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */; };
+		7B4EA60222B7C68500F3DFFE /* ActiveLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4EA60122B7C68500F3DFFE /* ActiveLifeViewController.swift */; };
 		7B50F86D1FA388C100A6EF61 /* TaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */; };
 		7B50F86F1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */; };
 		7B50F8751FA39CEB00A6EF61 /* ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */; };
@@ -490,6 +491,7 @@
 		7B4E0BE41FAF0CE500602FD1 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		7B4E0BE51FAF0CE500602FD1 /* HabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitTableViewCell.xib; sourceTree = "<group>"; };
 		7B4E0BE81FAF10BD00602FD1 /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
+		7B4EA60122B7C68500F3DFFE /* ActiveLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeViewController.swift; sourceTree = "<group>"; };
 		7B50F86C1FA388C100A6EF61 /* TaskFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFactory.swift; sourceTree = "<group>"; };
 		7B50F86E1FA38F3900A6EF61 /* GoalProgressCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressCalculatorTests.swift; sourceTree = "<group>"; };
 		7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorView.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 		7B17DD781F9E6E3C008E90A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7B4EA60122B7C68500F3DFFE /* ActiveLifeViewController.swift */,
 				7BF5629B1FD560E100A4DF6C /* EditActionableFormController.swift */,
 				7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */,
 				7BEA4EC720D2C2B500DEE71A /* ProtocolTableViewController.swift */,
@@ -2113,6 +2116,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4EA60222B7C68500F3DFFE /* ActiveLifeViewController.swift in Sources */,
 				7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */,
 				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
