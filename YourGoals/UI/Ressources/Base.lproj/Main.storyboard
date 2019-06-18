@@ -61,155 +61,12 @@
                     <connections>
                         <outlet property="collectionView" destination="J5G-ap-cze" id="J6f-sX-Mxv"/>
                         <segue destination="0GV-ni-XMq" kind="presentation" identifier="presentShowGoal" id="6eA-8s-RYt"/>
-                        <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="cjO-Ie-qW9"/>
                         <segue destination="DPx-KP-TuC" kind="presentation" identifier="presentEditGoal" id="qB2-Uh-IRL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-287" y="343"/>
-        </scene>
-        <!--Edit Goal View Controller-->
-        <scene sceneID="Ei3-Cp-Nxb">
-            <objects>
-                <viewController id="Xvn-3I-lOM" customClass="EditGoalViewController" customModule="YourGoals" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Jk-b5-yX3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2t-Uc-uaF">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDu-4G-uav">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogt-1c-2cN" userLabel="Closer">
-                                                <rect key="frame" x="337" y="0.0" width="30" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="ODj-0l-V76"/>
-                                                    <constraint firstAttribute="width" constant="30" id="olA-ca-tJf"/>
-                                                </constraints>
-                                                <state key="normal" image="light-close-button"/>
-                                                <connections>
-                                                    <action selector="closeButtonDidPress:" destination="0GV-ni-XMq" eventType="touchUpInside" id="XoR-tF-sl9"/>
-                                                    <action selector="closerAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="pc9-9v-jD8"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTV-M3-54x">
-                                                <rect key="frame" x="20" y="20" width="343" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8y6-K5-Nu0">
-                                                <rect key="frame" x="20" y="82" width="35" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nxq-aU-K1Y">
-                                                <rect key="frame" x="96" y="78" width="267" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reason" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D2-j5-4pT">
-                                                <rect key="frame" x="20" y="128" width="57" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bk4-MF-juE">
-                                                <rect key="frame" x="96" y="122" width="131" height="99"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBK-Kw-U4O">
-                                                <rect key="frame" x="20" y="269" width="89" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfQ-PG-Rky">
-                                                <rect key="frame" x="173" y="40" width="190" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Add this goal"/>
-                                                <connections>
-                                                    <action selector="saveGoalAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="Dvg-fl-wZv"/>
-                                                </connections>
-                                            </button>
-                                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-cR-BOL">
-                                                <rect key="frame" x="71" y="283" width="292" height="162"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <date key="date" timeIntervalSinceReferenceDate="530718789.344769">
-                                                    <!--2017-10-26 13:53:09 +0000-->
-                                                </date>
-                                            </datePicker>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsP-2b-fHy">
-                                                <rect key="frame" x="122" y="437" width="138" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Delete this goal"/>
-                                                <connections>
-                                                    <action selector="deleteGoalAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="TAP-Fh-WaJ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcY-3k-Dsr">
-                                                <rect key="frame" x="235" y="131" width="128" height="90"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Select a new Image" image="YourGoals"/>
-                                                <connections>
-                                                    <action selector="selectNewImageAction:" destination="Xvn-3I-lOM" eventType="touchUpInside" id="Fzi-6Q-zsI"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="Ogt-1c-2cN" firstAttribute="top" secondItem="hDu-4G-uav" secondAttribute="top" id="IVg-4H-j0N"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ogt-1c-2cN" secondAttribute="trailing" constant="8" id="LVp-dl-clx"/>
-                                            <constraint firstAttribute="height" constant="672" id="XWq-RR-wVF"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="hDu-4G-uav" firstAttribute="top" secondItem="g2t-Uc-uaF" secondAttribute="top" id="2sq-rL-9Mx"/>
-                                    <constraint firstItem="hDu-4G-uav" firstAttribute="width" secondItem="g2t-Uc-uaF" secondAttribute="width" id="9di-Zz-jUx"/>
-                                    <constraint firstAttribute="trailing" secondItem="hDu-4G-uav" secondAttribute="trailing" constant="-8" id="TVp-dh-GUk"/>
-                                    <constraint firstAttribute="bottom" secondItem="hDu-4G-uav" secondAttribute="bottom" constant="-25" id="l2q-0q-Srs"/>
-                                    <constraint firstItem="hDu-4G-uav" firstAttribute="leading" secondItem="g2t-Uc-uaF" secondAttribute="leading" id="pih-IG-mCY"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="g2t-Uc-uaF" firstAttribute="height" secondItem="e27-2z-bZj" secondAttribute="height" id="8uK-gB-OWN"/>
-                            <constraint firstItem="g2t-Uc-uaF" firstAttribute="leading" secondItem="e27-2z-bZj" secondAttribute="leading" id="XEH-aD-BuK"/>
-                            <constraint firstItem="e27-2z-bZj" firstAttribute="top" secondItem="g2t-Uc-uaF" secondAttribute="top" id="dhH-vH-xtH"/>
-                            <constraint firstItem="g2t-Uc-uaF" firstAttribute="width" secondItem="e27-2z-bZj" secondAttribute="width" id="oDF-jE-e4p"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="e27-2z-bZj"/>
-                    </view>
-                    <connections>
-                        <outlet property="deleteGoalButton" destination="vsP-2b-fHy" id="Kaj-vJ-VIK"/>
-                        <outlet property="goalImageButton" destination="JcY-3k-Dsr" id="85f-qr-VOZ"/>
-                        <outlet property="goalNameField" destination="Nxq-aU-K1Y" id="Mdx-au-c7X"/>
-                        <outlet property="reasonField" destination="bk4-MF-juE" id="9xs-vM-GU8"/>
-                        <outlet property="targetDatePicker" destination="SZv-cR-BOL" id="jiQ-71-7Rn"/>
-                        <outlet property="titleLabel" destination="RTV-M3-54x" id="0zo-b2-fZ1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UNS-aK-PJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="262" y="1263"/>
         </scene>
         <!--Navigation Controller Edit Actionable-->
         <scene sceneID="bau-wx-G6L">
@@ -693,7 +550,6 @@
                         <outlet property="toggleHabitsButton" destination="waP-mC-s99" id="qvM-MH-jat"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="kJV-AZ-9qx"/>
                         <segue destination="DPx-KP-TuC" kind="presentation" identifier="presentEditGoal" id="vWh-25-qmt"/>
-                        <segue destination="Xvn-3I-lOM" kind="presentation" identifier="presentEditGoalOld" id="UMp-cE-4SY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fB5-Y3-a37" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,8 +643,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Goal Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-9O-PF3">
-                                                    <rect key="frame" x="7" y="11.5" width="123" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Features (no new features yet)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-9O-PF3">
+                                                    <rect key="frame" x="7" y="11.5" width="272.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -826,7 +682,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="YourGoals" width="1115" height="1115"/>
         <image name="goals_icon" width="25" height="25"/>
         <image name="light-close-button" width="40" height="40"/>
         <image name="planning_icon" width="25" height="25"/>
@@ -839,6 +694,5 @@
         <segue reference="vWh-25-qmt"/>
         <segue reference="8yY-7N-175"/>
         <segue reference="kJV-AZ-9qx"/>
-        <segue reference="UMp-cE-4SY"/>
     </inferredMetricsTieBreakers>
 </document>

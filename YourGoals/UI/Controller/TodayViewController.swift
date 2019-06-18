@@ -105,7 +105,7 @@ class TodayViewController: UIViewController, ActionableTableViewDelegate, GoalDe
             
         case "presentShowGoal":
             guard let detailController = destinationViewController as? GoalDetailViewController else {
-                fatalError("couldn't extract goal view controller for segue presentEditGoalOld")
+                fatalError("couldn't extract goal view controller for segue presentShowGoal")
             }
             detailController.transitioningDelegate = self
             detailController.goal = self.selectedGoal

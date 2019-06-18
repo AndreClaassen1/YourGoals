@@ -54,11 +54,6 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalFormCo
             detailController.goal = self.selectedGoal
             detailController.delegate = self
             
-        case "presentEditGoalOld":
-            var parameter = segue.destination as! EditGoalSegueParameter
-            parameter.delegate = self
-            parameter.commit()
-            
         case "presentEditGoal":
             var parameter = (segue.destination as! UINavigationController).topViewController as! EditGoalSegueParameter
             parameter.delegate = self
@@ -72,12 +67,7 @@ class GoalsViewController: UIViewController, NewGoalCellDelegate, EditGoalFormCo
     // MARK: - NewGoalCellDelegate
     
     func newGoalClicked() {
-        if SettingsUserDefault.standard.newFunctions {
-            performSegue(withIdentifier: "presentEditGoal", sender: self)
-        }
-        else {
-            performSegue(withIdentifier: "presentEditGoalOld", sender: self)
-        }
+        performSegue(withIdentifier: "presentEditGoal", sender: self)
     }
     
     // MARK: - EditGoalFormControllerDelegate

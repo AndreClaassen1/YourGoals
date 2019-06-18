@@ -150,12 +150,6 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
             let parameter = (segue.destination as! UINavigationController).topViewController! as! EditActionableViewControllerParameter
             setEditActionableViewControllerParameter(parameter: parameter)
             return
-        case "presentEditGoalOld":
-            var editGoalController = segue.destination as! EditGoalSegueParameter
-            editGoalController.delegate = self
-            editGoalController.editGoal = self.goal
-            editGoalController.commit()
-            return
         case "presentEditGoal":
             var parameter = (segue.destination as! UINavigationController).topViewController! as! EditGoalSegueParameter
             parameter.delegate = self
@@ -281,16 +275,11 @@ class GoalDetailViewController: UIViewController, EditActionableViewControllerDe
     // MARK: - UI Events
     
     @IBAction func addNewActionableTouched(_ sender: Any) {
-        
         self.editActionable = nil
         performSegue(withIdentifier: "presentEditActionable", sender: self)
     }
     
     @IBAction func editButtonTouched(_ sender: Any) {
-        if SettingsUserDefault.standard.newFunctions {
-            performSegue(withIdentifier: "presentEditGoal", sender: self)
-        } else {
-            performSegue(withIdentifier: "presentEditGoalOld", sender: self)
-        }
+        performSegue(withIdentifier: "presentEditGoal", sender: self)
     }
 }

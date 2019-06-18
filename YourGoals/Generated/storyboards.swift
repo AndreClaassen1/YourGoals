@@ -15,7 +15,6 @@ internal enum StoryboardSegue {
   internal enum Main: String, SegueType {
     case presentEditActionable
     case presentEditGoal
-    case presentEditGoalOld
     case presentShowGoal
   }
 }
