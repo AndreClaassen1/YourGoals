@@ -346,6 +346,7 @@
                     <tabBarItem key="tabBarItem" title="Active Life" image="tabbar_active_life_icon" id="EQW-jm-LNG"/>
                     <connections>
                         <outlet property="todayTableView" destination="iWr-2V-Y7p" id="YhH-AS-duq"/>
+                        <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="YCn-b9-L93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHq-kw-Cym" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -693,6 +694,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="vWh-25-qmt"/>
         <segue reference="8yY-7N-175"/>
-        <segue reference="kJV-AZ-9qx"/>
+        <segue reference="YCn-b9-L93"/>
     </inferredMetricsTieBreakers>
 </document>
