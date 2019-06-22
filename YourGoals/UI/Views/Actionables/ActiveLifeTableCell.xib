@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActiveLifeTableCell" rowHeight="139" id="KGk-i7-Jjw" customClass="ActiveLifeTableCell" customModule="YourGoals" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="139"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="329" height="138.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNt-78-XXy" userLabel="Time">
+                        <rect key="frame" x="4" y="0.0" width="42" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="WyT-4P-2ak"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Task Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-BQ-mXO" userLabel="Task">
+                        <rect key="frame" x="54" y="0.0" width="118" height="18.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="50" verticalCompressionResistancePriority="50" image="today_icon" translatesAutoresizingMaskIntoConstraints="NO" id="3P2-XV-gfq" userLabel="Image">
+                        <rect key="frame" x="210" y="0.0" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="Kvx-gQ-vvj"/>
+                            <constraint firstAttribute="height" constant="32" id="VGZ-5L-1YM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(999m)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-uC-qxm" userLabel="Remaining">
+                        <rect key="frame" x="246" y="0.0" width="57" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="8tr-bx-bPM"/>
+                            <constraint firstAttribute="width" constant="57" id="xSa-wT-IcB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-fX-ZWa" userLabel="Check">
+                        <rect key="frame" x="308" y="3" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="NQe-5K-a1c"/>
+                            <constraint firstAttribute="width" constant="16" id="lFt-bv-wUN"/>
+                        </constraints>
+                        <state key="normal" image="TaskCircle"/>
+                        <connections>
+                            <action selector="checkBoxAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6td-Di-S2a"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Goal: Goal Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-gU-ik5" userLabel="Goal">
+                        <rect key="frame" x="54" y="20.5" width="108.5" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="Ama-4p-Y9o"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.032024998220000003" green="0.50991278890000002" blue="0.98473805189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="100" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tte-RK-sFm" userLabel="link">
+                        <rect key="frame" x="253" y="20" width="50" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="7je-yV-Cl2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="https://andreclaassen.de"/>
+                        <connections>
+                            <action selector="clickOnURL:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0gg-6a-BwF"/>
+                        </connections>
+                    </button>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="LSh-YD-Kzj" userLabel="ProgressView">
+                        <rect key="frame" x="0.0" y="34.5" width="321" height="104"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrB-uA-dVq" userLabel="Pie" customClass="PieProgressView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="54" y="5" width="90" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="4pL-Hw-0q8"/>
+                                    <constraint firstAttribute="height" constant="90" id="xgL-Gr-VVK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fIC-I1-KYL" userLabel="Remaining">
+                                <rect key="frame" x="195" y="5" width="123" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXP-sf-YMW">
+                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmL-Q4-Njf">
+                                        <rect key="frame" x="0.0" y="60" width="117.5" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="I need more time"/>
+                                        <connections>
+                                            <action selector="timerPlusTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IYH-8v-uEr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3:24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqi-08-FI4">
+                                        <rect key="frame" x="0.0" y="21" width="117.5" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="104" id="eUp-Fm-1MG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.80580713299999995" green="0.88512374650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="leading" id="5DV-Ai-8eB"/>
+                    <constraint firstItem="lrB-uA-dVq" firstAttribute="top" secondItem="2YQ-gU-ik5" secondAttribute="bottom" constant="7" id="DEH-Aa-i8t"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="top" secondItem="OT0-uC-qxm" secondAttribute="bottom" constant="2" id="Hm5-21-Lvy"/>
+                    <constraint firstItem="LSh-YD-Kzj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NQX-Yb-13n"/>
+                    <constraint firstItem="LSh-YD-Kzj" firstAttribute="top" secondItem="2YQ-gU-ik5" secondAttribute="bottom" constant="2" id="Naa-zN-PSd"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="width" secondItem="OT0-uC-qxm" secondAttribute="width" constant="-7" id="O7Y-VE-7Wk"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RT4-2h-4oe"/>
+                    <constraint firstAttribute="trailing" secondItem="LSh-YD-Kzj" secondAttribute="trailing" constant="8" id="RdW-0D-juF"/>
+                    <constraint firstItem="OT0-uC-qxm" firstAttribute="leading" secondItem="3P2-XV-gfq" secondAttribute="trailing" constant="4" id="S0M-sN-bLK"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="leading" secondItem="lrB-uA-dVq" secondAttribute="leading" id="UWV-X6-whh"/>
+                    <constraint firstItem="Bbs-fX-ZWa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="VYx-WP-8rw"/>
+                    <constraint firstItem="OT0-uC-qxm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XAv-33-SXo"/>
+                    <constraint firstItem="nNt-78-XXy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="ZIJ-h7-Qi7"/>
+                    <constraint firstItem="nNt-78-XXy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZTc-2G-hRp"/>
+                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="leading" secondItem="nNt-78-XXy" secondAttribute="trailing" constant="8" id="amC-W3-dxz"/>
+                    <constraint firstItem="3P2-XV-gfq" firstAttribute="leading" secondItem="mSh-BQ-mXO" secondAttribute="trailing" constant="38" id="b9U-UP-PQI"/>
+                    <constraint firstItem="mSh-BQ-mXO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bBO-su-IT4"/>
+                    <constraint firstAttribute="bottom" secondItem="LSh-YD-Kzj" secondAttribute="bottom" id="cZj-uc-smj"/>
+                    <constraint firstItem="Bbs-fX-ZWa" firstAttribute="leading" secondItem="OT0-uC-qxm" secondAttribute="trailing" constant="5" id="dwU-IL-vxb"/>
+                    <constraint firstAttribute="trailing" secondItem="Bbs-fX-ZWa" secondAttribute="trailing" constant="5" id="iql-hR-loT"/>
+                    <constraint firstItem="2YQ-gU-ik5" firstAttribute="top" secondItem="mSh-BQ-mXO" secondAttribute="bottom" constant="2" id="qnf-c1-Ej0"/>
+                    <constraint firstItem="Tte-RK-sFm" firstAttribute="trailing" secondItem="OT0-uC-qxm" secondAttribute="trailing" id="thT-Ir-6J3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="attachedImageView" destination="3P2-XV-gfq" id="a4i-8s-iby"/>
+                <outlet property="checkBoxButton" destination="Bbs-fX-ZWa" id="JnZ-Yf-02x"/>
+                <outlet property="contentView" destination="H2p-sc-9uM" id="8ji-ra-ljU"/>
+                <outlet property="goalDescriptionLabel" destination="2YQ-gU-ik5" id="Rwh-hV-xrJ"/>
+                <outlet property="imageView" destination="3P2-XV-gfq" id="tfu-YS-fng"/>
+                <outlet property="pieProgressView" destination="lrB-uA-dVq" id="9sN-0Z-txO"/>
+                <outlet property="progressView" destination="LSh-YD-Kzj" id="idm-78-Oai"/>
+                <outlet property="progressViewHeightConstraint" destination="eUp-Fm-1MG" id="tYA-45-PjB"/>
+                <outlet property="remainingTimeLabel" destination="Qqi-08-FI4" id="zcj-gr-VmS"/>
+                <outlet property="taskDescriptionLabel" destination="mSh-BQ-mXO" id="2Jd-GZ-vjH"/>
+                <outlet property="urlButton" destination="Tte-RK-sFm" id="VnZ-YQ-fvy"/>
+                <outlet property="workingTimeLabel" destination="nNt-78-XXy" id="hog-Ab-POB"/>
+            </connections>
+            <point key="canvasLocation" x="205.59999999999999" y="87.706146926536732"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="TaskCircle" width="44" height="44"/>
+        <image name="today_icon" width="25" height="25"/>
+    </resources>
+</document>

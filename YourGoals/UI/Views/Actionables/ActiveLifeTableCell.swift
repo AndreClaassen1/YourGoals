@@ -10,7 +10,7 @@ import UIKit
 import MGSwipeTableCell
 
 /// a table cell for displaying habits or tasks. experimental
-class ActionableTableCell: MGSwipeTableCell, ActionableCell {
+class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var totalWorkingTimeLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
