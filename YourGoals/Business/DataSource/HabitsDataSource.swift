@@ -29,8 +29,8 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        return try habitOrderManager.habitsByOrder(forGoal: self.goal, backburnedGoals: backburnedGoals)
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
+        return try habitOrderManager.habitsByOrder(forGoal: self.goal, backburnedGoals: backburnedGoals).map { ($0, nil) }
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

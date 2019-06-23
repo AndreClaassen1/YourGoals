@@ -51,7 +51,7 @@ protocol ActionableDataSource {
     ///
     /// - Returns: an ordered array of actionables
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable]
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)]
     
     /// retrieve the reordering protocol, if the datasource allows task reordering
     ///

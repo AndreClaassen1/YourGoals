@@ -1,29 +1,21 @@
 //
-//  CommittedTasksDataSource.swift
+//  ActiveLifeDataSource.swift
 //  YourGoals
 //
-//  Created by André Claaßen on 09.11.17.
-//  Copyright © 2017 André Claaßen. All rights reserved.
+//  Created by André Claaßen on 22.06.19.
+//  Copyright © 2019 André Claaßen. All rights reserved.
 //
 
 import Foundation
 
-/// data source for the classical today view about all committed tasks for a day.
-/// this includes tasks of the day before
-class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
- 
-    enum Mode {
-        case activeTasksIncluded
-        case activeTasksNotIncluded
-        case doneTasksNotIncluced
-    }
+
+/// a data source, which simulates the active life view
+class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
-    let mode: Mode
     
-    init(manager: GoalsStorageManager, mode: Mode = .activeTasksIncluded) {
-        self.mode = mode
+    init(manager: GoalsStorageManager) {
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
@@ -35,15 +27,8 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     }
     
     func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
-        let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburnedGoals: backburnedGoals)
-        switch mode {
-        case .activeTasksIncluded:
-            return committedTasks.map { ($0, nil) }
-        case .activeTasksNotIncluded:
-            return committedTasks.filter { !$0.isProgressing(atDate: date) }.map { ($0, nil) }
-        case .doneTasksNotIncluced:
-            return committedTasks.filter { $0.getTaskState() != .done  }.map { ($0, nil) }
-        }
+        let committedTasks = try taskManager.allCommittedTasks(forDate: date)
+        return committedTasks.map { ($0, nil) }
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -63,5 +48,4 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
-    
 }

@@ -24,8 +24,8 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        return try taskManager.activeTasks(forDate: date)
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
+        return try taskManager.activeTasks(forDate: date).map { ($0, nil) }
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

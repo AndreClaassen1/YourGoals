@@ -22,7 +22,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
-    var actionables = [[Actionable]]()
+    var actionables = [[(Actionable, StartingTimeInfo?)]]()
     var startingTimes:[[StartingTimeInfo]]?
     var timer = Timer()
     var timerPaused = false
@@ -104,11 +104,13 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
                 self.startingTimes = [[StartingTimeInfo]]()
                 if self.sections.count == 0 {
-                    self.startingTimes = [try scheduleCalculator.calculateStartingTimes(forTime: date, actionables: self.actionables[0])]
+                    let actionables = self.actionables[0].map { $0.0 }
+                    self.startingTimes = [try scheduleCalculator.calculateStartingTimes(forTime: date, actionables: actionables)]
                 } else {
                     for tuple in self.sections.enumerated()  {
+                        let actionables = self.actionables[tuple.offset].map { $0.0 }
                         if let startingTimeForSection = tuple.element.calculateStartingTime(forDate: date) {
-                            self.startingTimes?.append(try scheduleCalculator.calculateStartingTimes(forTime: startingTimeForSection, actionables: self.actionables[tuple.offset]))
+                            self.startingTimes?.append(try scheduleCalculator.calculateStartingTimes(forTime: startingTimeForSection, actionables: actionables))
                         }
                         else {
                             self.startingTimes?.append([])
@@ -157,7 +159,8 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     /// - Parameter path: the path with section and row
     /// - Returns: index actionable
     func actionableForIndexPath(path: IndexPath) -> Actionable {
-        return self.actionables[path.section][path.row]
+        let tuple = self.actionables[path.section][path.row]
+        return tuple.0
     }
     
     /// retrieve the estimated starting time for a path
@@ -181,7 +184,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         
         for sectionTuple in self.actionables.enumerated() {
             for actionableTuple in sectionTuple.element.enumerated() {
-                let actionable = actionableTuple.element
+                let actionable = actionableTuple.element.0
                 if actionable.isProgressing(atDate: date) {
                     indexPaths.append(IndexPath(row: actionableTuple.offset, section: sectionTuple.offset))
                 }

@@ -22,7 +22,7 @@ class AppBadgeCalculator {
     /// - Returns: number of active actionables. unchecked tasks plus unchecked habits
     /// - Throws: a core data exception
     func numberOfActiveActionables(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> NSNumber {
-        let actionables = try self.todayActionablesDataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        let actionables = try self.todayActionablesDataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil).map { $0.0 }
         let numberOfActiveActionables = actionables.reduce(0) {
             $0 + (($1.checkedState(forDate: date) == .active) ? 1 : 0)
         }
