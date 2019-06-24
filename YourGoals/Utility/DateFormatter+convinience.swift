@@ -20,10 +20,26 @@ extension DateFormatter {
         return dateFormatter
     }
     
+    /// create a formattter for a time without a date
+    ///
+    /// - Returns: a date formatter for producing or consuming a time string
     static func createShortTimeFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.none
         dateFormatter.timeStyle = DateFormatter.Style.short
         return dateFormatter
+    }
+    
+    /// create a time from a standard formatted time string
+    ///
+    /// - Parameter timeStr: the time string
+    /// - Returns: a date with a time if a time str was available
+    static func timeFromShortTimeFormatted(timeStr: String, locale: Locale?) -> Date? {
+        let dateFormatter = createShortTimeFormatter()
+        if let locale = locale {
+            dateFormatter.locale = locale
+        }
+        let time = dateFormatter.date(from: timeStr)
+        return time
     }
 }
