@@ -21,8 +21,8 @@ class ProtocolGoalInfoTests: StorageTestCase {
         // setup
         let referenceDate = Date.dateWithYear(2018, month: 10, day: 10)
         let goal = self.testDataCreator.createGoalWithTasks(infos: [
-            (name: "Task 1", prio: 1, size: 20.0, commitmentDate: referenceDate, beginTime: nil), // 20 minutes and yet in the abstract today task
-            (name: "Task 2", prio: 2, size: 40.0, commitmentDate: referenceDate, beginTime: nil)  // 40 minutes
+            (name: "Task 1", prio: 1, size: 20.0, commitmentDate: referenceDate, beginTime: nil, state: nil), // 20 minutes and yet in the abstract today task
+            (name: "Task 2", prio: 2, size: 40.0, commitmentDate: referenceDate, beginTime: nil, state: nil)  // 40 minutes
             ])
         
         // create progress with exact 2 hours

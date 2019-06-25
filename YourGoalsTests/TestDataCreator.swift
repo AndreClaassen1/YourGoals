@@ -9,7 +9,7 @@
 import Foundation
 @testable import YourGoals
 
-typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?)
+typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?, state: ActionableState?)
 
 /// this class makes the creation of goals and tasks a little bit easier
 class TestDataCreator:StorageManagerWorker {

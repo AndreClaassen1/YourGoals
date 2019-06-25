@@ -15,6 +15,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     let testDate = Date.dateWithYear(2019, month: 06, day: 23)
     
     typealias TestTaskEntry = (task:String, size:String, taskState:String, beginTime:String?)
+    typealias TestResultTuple = (begin: String, task:String, remaining:String, taskState: String)
     
     // typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?)
 
@@ -43,7 +44,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let time:Date? = entry.beginTime == nil ? nil : DateFormatter.timeFromShortTimeFormatted(timeStr: entry.beginTime!, locale: Locale(identifier: "de-DE"))
         let state:ActionableState = entry.taskState == "Active" ? .active : .done
     
-        return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time)
+        return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time, state: nil)
     }
     
     /// create the test data out of the array of test task etnries
@@ -57,8 +58,18 @@ class ActiveLifeDataSourceTests: StorageTestCase {
             tuples.append(taskInfoTuple(from: entry, withCommitDate: self.testDate, prio: prio))
             prio += 1
         }
+        self.testDataCreator.createTasks(forGoal: goal, infos: tuples)
     }
     
+    /// checks the result from the ActionableDataSource against an expected result. If there are any difference
+    /// a test exception will be raised
+    ///
+    /// - Parameters:
+    ///   - expected: expected test results
+    ///   - actual: actual native results from the actionable data source
+    func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo?)]) {
+        
+    }
 
     /// given a day with following tasks
     ///
@@ -95,8 +106,16 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
+        let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
+        let result = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil)
         
         // test
+        let expectedResult = [
+            ("08:00", "This is the third Task", "0m", "Done"),
+            ("08:30", "This is the first Task", "30m", "Active"),
+            ("08:45", "This is the seond Task", "15m", "Done")
+        ]
         
+        checkResult(expected: expectedResult, actual: result)
     }
 }

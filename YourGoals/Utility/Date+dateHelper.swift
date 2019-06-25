@@ -63,6 +63,10 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    /// add a number of dates to the date
+    ///
+    /// - Parameter numberOfDays: number of days
+    /// - Returns: a new date with the added number of days
     public func addDaysToDate(_ numberOfDays: Int) -> Date {
         let addedDate = Calendar.current.date(byAdding: Calendar.Component.day, value: numberOfDays, to: self)
         return addedDate!
@@ -74,6 +78,21 @@ extension Date {
     /// - Returns: the new date
     public func addMinutesToDate(_ numberOfMinutes: Int) -> Date {
         return Calendar.current.date(byAdding: Calendar.Component.minute , value: numberOfMinutes, to: self)!
+    }
+    
+    /// add hours, minutes and optional seconds to a date
+    ///
+    /// - Parameters:
+    ///   - hours: hours
+    ///   - minutes: minutes
+    ///   - seconds: optional seconds or 0
+    /// - Returns: the new date
+    public func add(hours: Int, minutes: Int, seconds: Int = 0) -> Date {
+        var components = DateComponents()
+        components.hour = hours
+        components.minute = minutes
+        components.second = seconds
+        return Calendar.current.date(byAdding: components, to: self)!
     }
     
     /// extract only the day for the datetime
@@ -90,6 +109,9 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    /// convert the time since midnight in minutes
+    ///
+    /// - Returns: a time in minutes since midnight
     public func convertToMinutes() -> Double {
         let minutes = self.timeIntervalSince(Date.timeWith(hour: 0, minute: 0, second: 0)) / 60.0
         return minutes

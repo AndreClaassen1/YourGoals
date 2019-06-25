@@ -25,8 +25,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
     func testCalulateStartingTimesWithoutActiveTask() {
         // setup
         let actionables = self.createTasks(infos:[
-            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil),
-            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, nil)
+            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil, nil),
+            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, nil, nil)
             ])
         
         // act
@@ -44,8 +44,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         // setup
         
         let actionables = self.createTasks(infos:[
-            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil),
-            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, nil)
+            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil, nil),
+            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, nil, nil)
             ])
         let activeTask = actionables.first!
         
@@ -67,8 +67,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
     func testCalulateStartingTimesWithFixedBeginTime() {
         // setup
         let actionables = self.createTasks(infos:[
-            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil),
-            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, Date.timeWith(hour: 14, minute: 00, second: 00))
+            ("Task 30 Minutes", 1, 30.0, self.commitmentDate, nil,nil),
+            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, Date.timeWith(hour: 14, minute: 00, second: 00), nil)
             ])
         
         // act
@@ -85,8 +85,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
     func testCalulateStartingTimesWithFixedBeginTimeInDanger() {
         // setup
         let actionables = self.createTasks(infos:[
-            ("Task 30 Minutes", 1, 90.0, self.commitmentDate, nil), // going from 13:00 til 14:30
-            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, Date.timeWith(hour: 14, minute: 00, second: 00))
+            ("Task 30 Minutes", 1, 90.0, self.commitmentDate, nil, nil), // going from 13:00 til 14:30
+            ("Task 90 Minutes", 2, 90.0, self.commitmentDate, Date.timeWith(hour: 14, minute: 00, second: 00), nil)
             ])
         
         // act
