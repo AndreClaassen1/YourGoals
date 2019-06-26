@@ -67,7 +67,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo?)]) {
+    func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo)]) {
         
     }
 
@@ -107,7 +107,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let result = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil)
+        let actionables = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil).map { $0.0 }
+        let calculator = TodayScheduleCalculator(manager: self.manager)
+        let calculatedStartingTuples = try! calculator.calculateStartingTimesForActiveLife(forTime: testTime, actionables:actionables)
         
         // test
         let expectedResult = [
@@ -116,6 +118,6 @@ class ActiveLifeDataSourceTests: StorageTestCase {
             ("08:45", "This is the seond Task", "15m", "Done")
         ]
         
-        checkResult(expected: expectedResult, actual: result)
+        checkResult(expected: expectedResult, actual: calculatedStartingTuples)
     }
 }

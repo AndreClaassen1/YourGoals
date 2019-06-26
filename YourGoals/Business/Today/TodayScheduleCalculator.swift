@@ -54,7 +54,6 @@ class TodayScheduleCalculator:StorageManagerWorker {
         var startingTimes = [(Actionable, StartingTimeInfo)]()
         var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time).extractTime()
         
-        
         for actionable in actionables {
             var startingTimeInfo:StartingTimeInfo!
             
@@ -69,6 +68,39 @@ class TodayScheduleCalculator:StorageManagerWorker {
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: startTime)
                 startingTimeInfo = StartingTimeInfo(start: startTime, end: startTime.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed)
                 startTime.addTimeInterval(remainingTime)
+            }
+            startingTimes.append((actionable, startingTimeInfo))
+        }
+        
+        return startingTimes
+    }
+    
+    /// calculate the starting times relative to the given time for the actionables in a way similar to active life
+    ///
+    /// - Parameters:
+    ///   - time: start time for all actionalbes
+    ///   - actionables: the actinalbes
+    /// - Returns: array with associated starting ties
+    /// - Throws: core data exception
+    func calculateStartingTimesForActiveLife(forTime time: Date, actionables:[Actionable]) throws -> [(Actionable, StartingTimeInfo)] {
+        assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
+        
+        var startingTimes = [(Actionable, StartingTimeInfo)]()
+        var startingTimeOfTask = time
+
+        for actionable in actionables {
+            var startingTimeInfo:StartingTimeInfo!
+            if actionable.isProgressing(atDate: time) {
+                let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
+                let progressingStartingTime = calculateProgressStartingTime(forTime: time, actionable: actionable)
+                startingTimeInfo = StartingTimeInfo(start: progressingStartingTime, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false)
+                startingTimeOfTask = time.addingTimeInterval(remainingTime)
+            } else {
+                let tuple = calculateConflicting(forTime: startingTimeOfTask, actionable: actionable)
+                startingTimeOfTask = tuple.startTime
+                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
+                startingTimeInfo = StartingTimeInfo(start: startingTimeOfTask, end: startingTimeOfTask.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed)
+                startingTimeOfTask.addTimeInterval(remainingTime)
             }
             startingTimes.append((actionable, startingTimeInfo))
         }
