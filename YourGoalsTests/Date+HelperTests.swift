@@ -16,7 +16,7 @@ class Date_HelperTests: XCTestCase {
         let date = Date.timeFromMinutes(145)
         
         // act
-        let minutes = date.convertToMinutes()
+        let minutes = date.timeInMinutes()
         
         // test
         XCTAssertEqual(145, minutes)

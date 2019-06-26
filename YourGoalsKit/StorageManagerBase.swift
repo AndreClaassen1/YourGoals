@@ -54,6 +54,7 @@ open class StorageManagerBase {
     ///
     /// - Throws: core data exception
     public func deleteRepository() throws {
+        try self.dataManager.saveContext()
         try self.stores.forEach{ try $0.deleteAllEntries() }
         try self.dataManager.saveContext()
     }

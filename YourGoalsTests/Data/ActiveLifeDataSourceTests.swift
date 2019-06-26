@@ -44,7 +44,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let time:Date? = entry.beginTime == nil ? nil : DateFormatter.timeFromShortTimeFormatted(timeStr: entry.beginTime!, locale: Locale(identifier: "de-DE"))
         let state:ActionableState = entry.taskState == "Active" ? .active : .done
     
-        return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time, state: nil)
+        return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time, state: state)
     }
     
     /// create the test data out of the array of test task etnries

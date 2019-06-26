@@ -41,6 +41,21 @@ class TestDataCreator:StorageManagerWorker {
         try! self.manager.saveContext()
     }
     
+    /// hack to set a done state for a task, which beginns at a given time and ends after the size of the task
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - size: size of the task in minutes
+    ///   - commitmentDate: committed date (not time)
+    ///   - beginTime: start time (without date)
+    func setDoneState(forTask task: Task, size:Float, commitmentDate: Date, beginTime: Date) {
+        let progressManager = TaskProgressManager(manager: self.manager)
+        task.setTaskState(state: .done)
+        let startTime = commitmentDate.addingTimeInterval(beginTime.timeAsInterval())
+        let endTime = startTime.addingTimeInterval(TimeInterval(size) * 60.0)
+        progressManager.createProgressRecord(task: task, start: startTime, end: endTime)
+    }
+    
     /// create a task for unit testing for the given goal with the name. the date is already saved in the
     /// core data storage
     ///
@@ -52,12 +67,16 @@ class TestDataCreator:StorageManagerWorker {
     ///   - goal: the goal, for which the task is created for
     /// - Returns: the task
     @discardableResult
-    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, beginTime: Date? = nil, forGoal goal: Goal) -> Task {
+    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, beginTime: Date? = nil, state: ActionableState? = nil, forGoal goal: Goal) -> Task {
         let composer = GoalComposer(manager: self.manager)
         let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, commitDate: commitmentDate, beginTime: beginTime, size: size), toGoal: goal) as! Task
         if let prio = prio {
             task.prio = Int16(prio)
         }
+        if state == .done {
+            setDoneState(forTask: task, size: size, commitmentDate: commitmentDate!, beginTime: beginTime!)
+        }
+        
         try! self.manager.saveContext()
         
         return task

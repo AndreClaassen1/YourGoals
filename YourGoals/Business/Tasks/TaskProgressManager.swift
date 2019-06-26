@@ -48,6 +48,21 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         super.init(manager: manager)
     }
     
+    /// creates and set a new progress record for the given task with start
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - start: start date
+    ///   - end: optional end date
+    func createProgressRecord(task: Task, start: Date, end: Date?) {
+        // create new progress
+        let newProgress = manager.taskProgressStore.createPersistentObject()
+        newProgress.start = start
+        newProgress.end = end
+        task.addToProgress(newProgress)
+        task.commitmentDate = start.day()
+    }
+    
     /// start working and making progress on a task
     ///
     /// **Important:**
@@ -71,12 +86,7 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
             oldProgress.end = date // stop it at date
         }
         
-        // create new progress
-        let newProgress = manager.taskProgressStore.createPersistentObject()
-        newProgress.start = date
-        newProgress.end = nil
-        task.addToProgress(newProgress)
-        task.commitmentDate = date.day()
+        createProgressRecord(task: task, start: date, end: nil)
 
         // inform all objects interested in the start of the progress
         self.taskNotificationProtocol.progressStarted(forTask: task, referenceTime: date)

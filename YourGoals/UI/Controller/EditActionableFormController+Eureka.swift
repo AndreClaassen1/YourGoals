@@ -141,7 +141,7 @@ extension EditActionableFormController {
         let beginTimeSwitched = (values[ActionableFormTag.beginTimeSwitch] as? Bool) ?? false
         let beginTime:Date? = beginTimeSwitched ? values[ActionableFormTag.beginTime] as? Date : nil
         
-        let size = Float((values [ActionableFormTag.duration] as? Date)?.convertToMinutes() ?? 0.0)
+        let size = Float((values [ActionableFormTag.duration] as? Date)?.timeInMinutes() ?? 0.0)
         let repetitions = values[ActionableFormTag.repetitions] as? Set<ActionableRepetition>
         
         let url = values[ActionableFormTag.url] as? URL

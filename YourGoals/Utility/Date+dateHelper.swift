@@ -109,11 +109,16 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    /// time as a time interval
+    public func timeAsInterval() -> TimeInterval {
+        return self.timeIntervalSince(Date.timeWith(hour: 0, minute: 0, second: 0))
+    }
+    
     /// convert the time since midnight in minutes
     ///
     /// - Returns: a time in minutes since midnight
-    public func convertToMinutes() -> Double {
-        let minutes = self.timeIntervalSince(Date.timeWith(hour: 0, minute: 0, second: 0)) / 60.0
+    public func timeInMinutes() -> Double {
+        let minutes = self.timeAsInterval() / 60.0
         return minutes
     }
 }
