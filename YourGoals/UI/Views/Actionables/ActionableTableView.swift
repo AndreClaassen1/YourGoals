@@ -23,7 +23,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
     var actionables = [[(Actionable, StartingTimeInfo?)]]()
-    var startingTimes:[[StartingTimeInfo]]?
+    var startingTimes:[[(Actionable, StartingTimeInfo)]]?
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
@@ -102,7 +102,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             self.startingTimes = nil
             if calculatestartingTimes {
                 let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-                self.startingTimes = [[StartingTimeInfo]]()
+                self.startingTimes = [[(Actionable, StartingTimeInfo)]]()
                 if self.sections.count == 0 {
                     let actionables = self.actionables[0].map { $0.0 }
                     self.startingTimes = [try scheduleCalculator.calculateStartingTimes(forTime: date, actionables: actionables)]
@@ -172,7 +172,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             return nil
         }
         
-        return startingTimes[path.section][path.row]
+        return startingTimes[path.section][path.row].1
     }
     
     /// retrieve the index path of all task cells, which are in progess
