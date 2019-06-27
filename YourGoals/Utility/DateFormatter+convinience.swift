@@ -23,8 +23,11 @@ extension DateFormatter {
     /// create a formattter for a time without a date
     ///
     /// - Returns: a date formatter for producing or consuming a time string
-    static func createShortTimeFormatter() -> DateFormatter {
+    static func createShortTimeFormatter(locale: Locale? = nil) -> DateFormatter {
         let dateFormatter = DateFormatter()
+        if let locale = locale {
+            dateFormatter.locale = locale
+        }
         dateFormatter.dateStyle = DateFormatter.Style.none
         dateFormatter.timeStyle = DateFormatter.Style.short
         return dateFormatter

@@ -10,8 +10,11 @@ import Foundation
 
 extension Date {
     
-    /// - Returns: a string representation of the time without the date
-    public func formattedTime() -> String {
-        return DateFormatter.createShortTimeFormatter().string(from: self)
+    /// a string representation of the time without the date
+    ///
+    /// - Parameter locale: an optional locale
+    /// - Returns: the formatted time as a string
+    public func formattedTime(locale: Locale? = nil) -> String {
+        return DateFormatter.createShortTimeFormatter(locale: locale).string(from: self)
     }
 }

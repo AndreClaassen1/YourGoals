@@ -14,6 +14,33 @@ import Foundation
 enum ActionableState:Int {
     case active = 0
     case done = 1
+    
+    /// returns the action state as a string representation
+    ///
+    /// - Returns: a string representation
+    func asString() -> String {
+        switch self {
+        case .active:
+            return "Active"
+        case .done:
+            return "Done"
+        }
+    }
+    
+    /// creata a actionable state from a string representation
+    ///
+    /// - Parameter string: "Active" or "Done"
+    init(string: String) {
+        switch string {
+        case "Active":
+            self = .active
+        case "Done":
+            self = .done
+        default:
+            assertionFailure("illegal state \(string)")
+            self = .done
+        }
+    }
 }
 
 /// this is the type of the actionable

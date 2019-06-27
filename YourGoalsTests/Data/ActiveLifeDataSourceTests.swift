@@ -10,21 +10,29 @@ import Foundation
 import XCTest
 @testable import YourGoals
 
+fileprivate typealias TestTaskEntry = (task:String, size:String, taskState:String, beginTime:String?)
+fileprivate typealias TestResultTuple = (begin: String, task:String, remaining:String, taskState: String)
+
+func == <TestResultTuple:Equatable>(lhs: TestResultTuple, rhs: TestResultTuple) -> Bool {
+    return lhs == rhs
+}
+
 class ActiveLifeDataSourceTests: StorageTestCase {
     
     let testDate = Date.dateWithYear(2019, month: 06, day: 23)
     
-    typealias TestTaskEntry = (task:String, size:String, taskState:String, beginTime:String?)
-    typealias TestResultTuple = (begin: String, task:String, remaining:String, taskState: String)
+    
+    
+    
     
     // typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?)
-
+    
     /// helper function to extract a size based on a string formatted like "30m"
     ///
     /// - Parameter size: a string
     /// - Returns: size in minutes
     func extractSizeInMinutes(_ size:String) -> Float {
-        let re = try! NSRegularExpression(pattern: #"(\d*)m"#, options: NSRegularExpression.Options.init())
+        let re = try! NSRegularExpression(pattern: #"(\d*) *m"#, options: NSRegularExpression.Options.init())
         let match = re.firstMatch(in: size, options: [], range: NSRange(location: 0, length: size.utf16.count))!
         let range = match.range(at:1)
         let sizeNumberStr = size[Range(range, in: size)!]
@@ -39,18 +47,18 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///   - commitDate: the commit date for the tasks
     ///   - prio: a prio for this entry
     /// - Returns: a perfectly TaskInfoTuple
-    func taskInfoTuple(from entry: TestTaskEntry, withCommitDate commitDate: Date, prio: Int) -> TaskInfoTuple {
+    fileprivate func taskInfoTuple(from entry: TestTaskEntry, withCommitDate commitDate: Date, prio: Int) -> TaskInfoTuple {
         let size = extractSizeInMinutes(entry.size)
         let time:Date? = entry.beginTime == nil ? nil : DateFormatter.timeFromShortTimeFormatted(timeStr: entry.beginTime!, locale: Locale(identifier: "de-DE"))
         let state:ActionableState = entry.taskState == "Active" ? .active : .done
-    
+        
         return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time, state: state)
     }
     
     /// create the test data out of the array of test task etnries
     ///
     /// - Parameter testData: the test task entries
-    func createTestData(testData:[TestTaskEntry]) {
+    fileprivate func createTestData(testData:[TestTaskEntry]) {
         let goal = self.testDataCreator.createGoal(name: "Test Goal for Active Life Data Source Tests")
         var tuples = [TaskInfoTuple]()
         var prio = 0
@@ -61,25 +69,62 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         self.testDataCreator.createTasks(forGoal: goal, infos: tuples)
     }
     
+    /// creates a test result tuple from the starting time tuple
+    ///
+    /// - Parameter tuple: a actionable and a calculated starting time info for the actionable
+    /// - Returns: a test result tuple
+    fileprivate func testResultTuple(from tuple: (Actionable, StartingTimeInfo)) -> TestResultTuple {
+        let begin = tuple.1.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
+        let task = tuple.0.name ?? "no task name available"
+        let remaining = "\(tuple.1.remainingTimeInterval.formattedInMinutesAsString())"
+        let state = tuple.0.checkedState(forDate: tuple.1.endingTime).asString()
+        
+        return (begin, task, remaining, state)
+    }
+    
+    /// generates a string with the information about the tuple
+    ///
+    /// - Parameters:
+    ///   - index: number of test result
+    ///   - expected: expected value
+    ///   - actual: actual value
+    /// - Returns: a string for the error output
+    fileprivate func dumpResult(index:Int, expected: TestResultTuple, actual: TestResultTuple) -> String {
+        
+        func dumpResultTuple(_ tuple: TestResultTuple) -> String {
+            return "\(tuple)"
+        }
+
+        let result =
+            "Result \(index) is not as expected\n" +
+            "expected: \(dumpResultTuple(expected)) \n" +
+            "actual  : \(dumpResultTuple(actual))"
+        return result
+    }
+    
     /// checks the result from the ActionableDataSource against an expected result. If there are any difference
     /// a test exception will be raised
     ///
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo)]) {
-        
+    fileprivate func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo)]) {
+        let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0) }
+        XCTAssertEqual(actualResults.count, expected.count)
+        for i in 0..<actualResults.count {
+            XCTAssert(expected[i] == actualResults[i], dumpResult(index: i, expected: expected[i], actual: actualResults[i]))
+        }
     }
-
+    
     /// given a day with following tasks
     ///
     /// Example:
     ///
-    ///     # | Task                     | Size | State  | Begin  |
-    ///     --+--------------------------+------+--------+--------+
-    ///     1 | This is the first Task   | 30m  | Active |        |
-    ///     2 | This is the second Task  | 15m  | Active |        |
-    ///     3 | This is the third  Task  | 30m  | Done   | 08:00  |
+    ///     # | Task                     | Size  | State  | Begin  |
+    ///     --+--------------------------+-------+--------+--------+
+    ///     1 | This is the first Task   | 30 m  | Active |        |
+    ///     2 | This is the second Task  | 15 m  | Active |        |
+    ///     3 | This is the third Task   | 30 m  | Active |        |
     ///
     /// when
     ///     I calc this like active life from 08:00 the day
@@ -87,20 +132,18 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// then I expect
     ///     the following time table
     ///
-    ///     Begin  | Task                     | Remaining | State  |
-    ///     -------+--------------------------+-----------+--------+
-    ///      08:00 | This is the third  Task  |       0m  | Done   |
-    ///      08:30 | This is the first Task   |      30m  | Active |
-    ///      08:45 | This is the second Task  |      15m  | Active |
-
-    func testGiven3SimpleTasksWithOneDone() {
-    
-        // setup
+    ///     Begin  | Task                     | Remaining  | State  |
+    ///     -------+--------------------------+------------+--------+
+    ///      08:00 | This is the first Task   |      30 m  | Active |
+    ///      08:30 | This is the second Task  |      15 m  | Active |
+    ///      08:45 | This is the third Task   |      30 m  | Active |
+    func testGiven3SimpleActiveTasks() {
         
+        // setup
         let testData:[TestTaskEntry] = [
-            ("This is the first Task", "30m", "Active", nil),
-            ("This is the second Task", "15m", "Active", nil),
-            ("This is the third Task", "30m", "Done", "08:00")
+            ("This is the first Task", "30 m", "Active", nil),
+            ("This is the second Task", "15 m", "Active", nil),
+            ("This is the third Task", "30 m", "Active", nil)
         ]
         self.createTestData(testData: testData)
         
@@ -113,9 +156,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "This is the third Task", "0m", "Done"),
-            ("08:30", "This is the first Task", "30m", "Active"),
-            ("08:45", "This is the seond Task", "15m", "Done")
+            ("08:00", "This is the first Task", "30 m", "Active"),
+            ("08:30", "This is the second Task", "15 m", "Active"),
+            ("08:45", "This is the third Task", "30 m", "Active")
         ]
         
         checkResult(expected: expectedResult, actual: calculatedStartingTuples)
