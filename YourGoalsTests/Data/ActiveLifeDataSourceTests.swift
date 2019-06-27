@@ -73,11 +73,13 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     /// - Parameter tuple: a actionable and a calculated starting time info for the actionable
     /// - Returns: a test result tuple
-    fileprivate func testResultTuple(from tuple: (Actionable, StartingTimeInfo)) -> TestResultTuple {
-        let begin = tuple.1.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
-        let task = tuple.0.name ?? "no task name available"
-        let remaining = "\(tuple.1.remainingTimeInterval.formattedInMinutesAsString())"
-        let state = tuple.0.checkedState(forDate: tuple.1.endingTime).asString()
+    fileprivate func testResultTuple(from tuple: (Actionable, StartingTimeInfo?)) -> TestResultTuple {
+        let actionable = tuple.0
+        let info = tuple.1!
+        let begin = info.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
+        let task = actionable.name ?? "no task name available"
+        let remaining = "\(info.remainingTimeInterval.formattedInMinutesAsString())"
+        let state = actionable.checkedState(forDate: info.endingTime).asString()
         
         return (begin, task, remaining, state)
     }
@@ -108,7 +110,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    fileprivate func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo)]) {
+    fileprivate func checkResult(expected: [TestResultTuple], actual:[(Actionable, StartingTimeInfo?)]) {
         let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0) }
         XCTAssertEqual(actualResults.count, expected.count)
         for i in 0..<actualResults.count {
@@ -150,9 +152,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let actionables = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil).map { $0.0 }
-        let calculator = TodayScheduleCalculator(manager: self.manager)
-        let calculatedStartingTuples = try! calculator.calculateStartingTimesForActiveLife(forTime: testTime, actionables:actionables)
+        let calculatedStartingTuples = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil)
         
         // test
         let expectedResult = [

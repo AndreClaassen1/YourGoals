@@ -12,10 +12,12 @@ import Foundation
 /// a data source, which simulates the active life view
 class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
+    let manager:GoalsStorageManager
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
     
     init(manager: GoalsStorageManager) {
+        self.manager = manager
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
@@ -28,7 +30,9 @@ class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol 
     
     func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
-        return committedTasks.map { ($0, nil) }
+        let calculator = TodayScheduleCalculator(manager: self.manager)
+        let tuples = try! calculator.calculateStartingTimesForActiveLife(forTime: date, actionables: committedTasks).map {($0.0, Optional($0.1))}
+        return tuples
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
