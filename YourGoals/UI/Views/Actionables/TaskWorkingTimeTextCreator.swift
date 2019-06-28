@@ -20,7 +20,7 @@ struct TaskWorkingTimeTextCreator {
     ///   - estimatedStartingTime: estimated starting time of the task
     /// - Returns: a tuple consisting of formatted strings of
     ///            workingTimeRange, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: StartingTimeInfo?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
+    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
         guard actionable.type == .task else {
             return (nil, nil, nil)
         }

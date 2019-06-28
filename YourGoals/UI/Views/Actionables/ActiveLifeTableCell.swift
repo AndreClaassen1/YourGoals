@@ -161,7 +161,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     /// show the working time on this task.
     ///
     /// - Parameter task: task
-    func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: StartingTimeInfo?) {
+    func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) {
         let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo )
         self.workingTimeLabel.text = tuple.workingTime
         var workingTimeTextColor = UIColor.black
@@ -231,7 +231,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
     func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date,
-                   estimatedStartingTime time: StartingTimeInfo?,
+                   estimatedStartingTime time: ActionableTimeInfo?,
                    delegate: ActionableTableCellDelegate) {
         self.taskProgressManager = TaskProgressManager(manager: manager)
         self.actionable = actionable

@@ -63,13 +63,13 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     ///   - section: a section which has the date for fetching actionables
     /// - Returns: committed tasks for the section
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [(Actionable, ActionableTimeInfo?)] {
         guard let plannableSection = section as? PlannableActionableSection else {
             NSLog("illegal section type: \(String(describing: section))")
             return []
         }
         
-        var tasks = [(Actionable, StartingTimeInfo?)]()
+        var tasks = [(Actionable, ActionableTimeInfo?)]()
         
         if date.day().compare(plannableSection.date.day()) == .orderedSame {
             tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, withBackburned: backburnedGoals, andSection: nil)

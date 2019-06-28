@@ -16,6 +16,6 @@ protocol ActionableTableCellDelegate {
 
 /// protocol for the configuration of the actionable for the table view
 protocol ActionableCell {
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: StartingTimeInfo?,  delegate: ActionableTableCellDelegate)
+    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: ActionableTimeInfo?,  delegate: ActionableTableCellDelegate)
     var actionable:Actionable! { get }
 }

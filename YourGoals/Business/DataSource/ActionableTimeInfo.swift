@@ -8,9 +8,19 @@
 
 import Foundation
 
-/// a calculated starting time with an indicator when the starting time is in danger
-struct StartingTimeInfo:Equatable {
-    
+/// a calculated time info with starting, end time and an indicator if this time is in a conflicting state
+struct ActionableTimeInfo:Equatable {
+    /// state of this item
+    ///
+    /// - active: active state
+    /// - done: done state
+    /// - progress: progress state
+    enum State {
+        case active
+        case done
+        case progress
+    }
+
     /// the estimated starting time (not date) of an actionable
     let startingTime:Date
     
@@ -26,6 +36,17 @@ struct StartingTimeInfo:Equatable {
     /// indicator, if the starting time is fixed
     let fixedStartingTime: Bool
     
+    let actionable:Actionable
+    
+    let progress:TaskProgress?
+    
+    static func == (lhs: ActionableTimeInfo, rhs: ActionableTimeInfo) -> Bool {
+        return
+            lhs.startingTime == rhs.startingTime &&
+            lhs.remainingTimeInterval == rhs.remainingTimeInterval &&
+            lhs.actionable.name == rhs.actionable.name
+    }
+
     /// initalize this time info
     ///
     /// - Parameters:
@@ -33,11 +54,13 @@ struct StartingTimeInfo:Equatable {
     ///   - remainingTimeInterval: remaining time
     ///   - conflicting: actionable is conflicting with another actionable
     ///   - fixed: indicator if starting time is fixed
-    init(start:Date, end:Date, remainingTimeInterval:TimeInterval, conflicting: Bool, fixed: Bool) {
+    init(start:Date, end:Date, remainingTimeInterval:TimeInterval, conflicting: Bool, fixed: Bool, actionable: Actionable, progress: TaskProgress? = nil) {
         self.startingTime = start.extractTime()
         self.endingTime = end.extractTime()
         self.remainingTimeInterval = remainingTimeInterval
         self.conflicting = conflicting
         self.fixedStartingTime = fixed
+        self.actionable = actionable
+        self.progress = progress
     }
 }

@@ -22,8 +22,8 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
-    var actionables = [[(Actionable, StartingTimeInfo?)]]()
-    var startingTimes:[[(Actionable, StartingTimeInfo)]]?
+    var actionables = [[(Actionable, ActionableTimeInfo?)]]()
+    var startingTimes:[[(Actionable, ActionableTimeInfo)]]?
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
@@ -102,7 +102,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
             self.startingTimes = nil
             if calculatestartingTimes {
                 let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-                self.startingTimes = [[(Actionable, StartingTimeInfo)]]()
+                self.startingTimes = [[(Actionable, ActionableTimeInfo)]]()
                 if self.sections.count == 0 {
                     let actionables = self.actionables[0].map { $0.0 }
                     self.startingTimes = [try scheduleCalculator.calculateStartingTimes(forTime: date, actionables: actionables)]
@@ -167,7 +167,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     ///
     /// - Parameter path: the path
     /// - Returns: the starting time for the cell
-    func estimatedStartingTime(forPath path: IndexPath) -> StartingTimeInfo? {
+    func estimatedStartingTime(forPath path: IndexPath) -> ActionableTimeInfo? {
         guard let startingTimes = self.startingTimes else {
             return nil
         }

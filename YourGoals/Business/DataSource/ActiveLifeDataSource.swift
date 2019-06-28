@@ -28,7 +28,7 @@ class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol 
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, StartingTimeInfo?)] {
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, ActionableTimeInfo?)] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
         let calculator = TodayScheduleCalculator(manager: self.manager)
         let tuples = try! calculator.calculateStartingTimesForActiveLife(forTime: date, actionables: committedTasks).map {($0.0, Optional($0.1))}
