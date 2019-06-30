@@ -89,7 +89,8 @@ class TestDataCreator:StorageManagerWorker {
     ///   - infos: infos for the tasks
     func createTasks(forGoal goal: Goal, infos: [TaskInfoTuple] ) {
         for info in infos {
-            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate, beginTime: info.beginTime, forGoal: goal)
+            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate,
+                       beginTime: info.beginTime, state: info.state, forGoal: goal)
         }
     }
     

@@ -14,9 +14,9 @@ extension TimeInterval {
     /// If the remaining time is 0 you've got an empty string
     ///
     /// - Returns: remaining time in minutes
-    func formattedInMinutesAsString() -> String {
+    func formattedInMinutesAsString(supressNullValue:Bool = true) -> String {
         let minutes = Int(self / 60.0)
-        if minutes == 0 {
+        if minutes == 0 && supressNullValue {
             return ""
         }
         

@@ -228,6 +228,7 @@
 		7BCC3D7B1FA5251300FE2468 /* GoalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7A1FA5251300FE2468 /* GoalError.swift */; };
 		7BCC3D7D1FA5258B00FE2468 /* ImageUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */; };
 		7BCC3D7F1FA525C900FE2468 /* StorageManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */; };
+		7BCE811122C754B300ABB8F8 /* ActiveLifeScheduleCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCE811022C754B300ABB8F8 /* ActiveLifeScheduleCalculator.swift */; };
 		7BDAF7641FC56CF8004C7E46 /* YourGoals_Views.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDAF75B1FC56CF7004C7E46 /* YourGoals_Views.framework */; };
 		7BDAF76B1FC56CF8004C7E46 /* YourGoals_ViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDAF76A1FC56CF8004C7E46 /* YourGoals_ViewsTests.swift */; };
 		7BDAF76D1FC56CF8004C7E46 /* YourGoals_Views.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BDAF75D1FC56CF7004C7E46 /* YourGoals_Views.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -651,6 +652,7 @@
 		7BCC3D7A1FA5251300FE2468 /* GoalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalError.swift; sourceTree = "<group>"; };
 		7BCC3D7C1FA5258B00FE2468 /* ImageUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdater.swift; sourceTree = "<group>"; };
 		7BCC3D7E1FA525C900FE2468 /* StorageManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerWorker.swift; sourceTree = "<group>"; };
+		7BCE811022C754B300ABB8F8 /* ActiveLifeScheduleCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeScheduleCalculator.swift; sourceTree = "<group>"; };
 		7BDAF75B1FC56CF7004C7E46 /* YourGoals_Views.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YourGoals_Views.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDAF75D1FC56CF7004C7E46 /* YourGoals_Views.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YourGoals_Views.h; sourceTree = "<group>"; };
 		7BDAF75E1FC56CF7004C7E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 				7B36F2382003931500095389 /* TodayWorkloadCalculator.swift */,
 				7BFD35C320076FCE00602FC8 /* TodayScheduleCalculator.swift */,
 				7B26EB8020B6C12200155158 /* TodayGoalComposer.swift */,
+				7BCE811022C754B300ABB8F8 /* ActiveLifeScheduleCalculator.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -2267,6 +2270,7 @@
 				7B6E35AB1FC5F5AE00F55089 /* Goal+Type.swift in Sources */,
 				7B60D3EC22A19A0F00096FDE /* UNMutableNotificationContent+Task.swift in Sources */,
 				7B7AECDC1FF81E900096EE5D /* showValidationErrors.swift in Sources */,
+				7BCE811122C754B300ABB8F8 /* ActiveLifeScheduleCalculator.swift in Sources */,
 				7BE11B7F1F9F85070023844E /* ImageData+Image.swift in Sources */,
 				7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */,
 				7BAA7A811FA0C5CB005B16EE /* TasksGenerator.swift in Sources */,

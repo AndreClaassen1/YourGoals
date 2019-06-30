@@ -73,13 +73,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     /// - Parameter tuple: a actionable and a calculated starting time info for the actionable
     /// - Returns: a test result tuple
-    fileprivate func testResultTuple(from tuple: (Actionable, ActionableTimeInfo?)) -> TestResultTuple {
-        let actionable = tuple.0
-        let info = tuple.1!
-        let begin = info.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
+    fileprivate func testResultTuple(from timeInfo: ActionableTimeInfo) -> TestResultTuple {
+        let actionable = timeInfo.actionable
+        let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
-        let remaining = "\(info.remainingTimeInterval.formattedInMinutesAsString())"
-        let state = actionable.checkedState(forDate: info.endingTime).asString()
+        let remaining = "\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false))"
+        let state = actionable.checkedState(forDate: timeInfo.endingTime).asString()
         
         return (begin, task, remaining, state)
     }
@@ -110,7 +109,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    fileprivate func checkResult(expected: [TestResultTuple], actual:[(Actionable, ActionableTimeInfo?)]) {
+    fileprivate func checkResult(expected: [TestResultTuple], actual:[ActionableTimeInfo]) {
         let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0) }
         XCTAssertEqual(actualResults.count, expected.count)
         for i in 0..<actualResults.count {
@@ -136,7 +135,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     ///     Begin  | Task                     | Remaining  | State  |
     ///     -------+--------------------------+------------+--------+
-    ///      08:00 | This is the first Task   |      30 m  | Active |
+    ///      08:00 | This is the first Task   |       0 m  | Active |
     ///      08:30 | This is the second Task  |      15 m  | Active |
     ///      08:45 | This is the third Task   |      30 m  | Active |
     func testGiven3SimpleActiveTasks() {
@@ -152,7 +151,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let calculatedStartingTuples = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil)
+        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: false)
         
         // test
         let expectedResult = [
@@ -161,7 +160,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
             ("08:45", "This is the third Task", "30 m", "Active")
         ]
         
-        checkResult(expected: expectedResult, actual: calculatedStartingTuples)
+        checkResult(expected: expectedResult, actual: timeInfos)
     }
     
     /// given a day with following tasks
@@ -185,11 +184,11 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///      08:00 | This is the first Task   |      30 m  | Done   |
     ///      08:30 | This is the second Task  |      15 m  | Active |
     ///      08:45 | This is the third Task   |      30 m  | Active |
-    func testGiven2ActiveAnd1DoneTasks() {
+    func xtestGiven2ActiveAnd1DoneTasks() {
         
         // setup
         let testData:[TestTaskEntry] = [
-            ("This is the first Task", "30 m", "Active", nil),
+            ("This is the first Task", "30 m", "Done", "08:00"),
             ("This is the second Task", "15 m", "Active", nil),
             ("This is the third Task", "30 m", "Active", nil)
         ]
@@ -198,15 +197,15 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let calculatedStartingTuples = try! activeLifeDataSource.fetchActionables(forDate: testTime, withBackburned: true, andSection: nil)
+        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
         
         // test
         let expectedResult = [
-            ("08:00", "This is the first Task", "30 m", "Active"),
+            ("08:00", "This is the first Task", "0 m", "Done"),
             ("08:30", "This is the second Task", "15 m", "Active"),
             ("08:45", "This is the third Task", "30 m", "Active")
         ]
         
-        checkResult(expected: expectedResult, actual: calculatedStartingTuples)
+        checkResult(expected: expectedResult, actual: timeInfos)
     }
 }

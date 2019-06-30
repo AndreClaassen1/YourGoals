@@ -9,8 +9,31 @@
 import Foundation
 
 
+/// protocol for fetching actionables (tasks or habits) in various controllers
+protocol ActionableLifeDataSource {
+    
+    /// fetch a ordered array of items for an active life view from the data source
+    ///
+    /// - Parameter
+    ///   - date: fetch items for this date
+    ///
+    /// - Returns: an ordered array of time infos
+    /// - Throws: core data exception
+    func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo]
+    
+    /// retrieve the reordering protocol, if the datasource allows task reordering
+    ///
+    /// - Returns: a protocol for exchange items
+    func positioningProtocol() -> ActionablePositioningProtocol?
+    
+    /// get a switch protocol for a specific behavior if available for this actionable data source
+    ///
+    /// - Returns: a switch protol
+    func switchProtocol(forBehavior behavior: ActionableBehavior) -> ActionableSwitchProtocol?
+}
+
 /// a data source, which simulates the active life view
-class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol {
+class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProtocol {
     
     let manager:GoalsStorageManager
     let taskManager:TaskCommitmentManager
@@ -22,17 +45,13 @@ class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol 
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
     
-    // MARK: ActionableTableViewDataSource
+    // MARK: ActionableLifeDataSource
     
-    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
-        return []
-    }
-    
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, ActionableTimeInfo?)] {
+    func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
         let calculator = TodayScheduleCalculator(manager: self.manager)
-        let tuples = try! calculator.calculateStartingTimesForActiveLife(forTime: date, actionables: committedTasks).map {($0.0, Optional($0.1))}
-        return tuples
+        let timeInfos = try! calculator.calculateStartingTimesForActiveLife(forTime: date, actionables: committedTasks)
+        return timeInfos
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
