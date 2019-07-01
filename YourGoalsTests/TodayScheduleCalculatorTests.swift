@@ -35,8 +35,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0].1)
-        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 30, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[1]), times[1].1)
+        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0])
+        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 30, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[1]), times[1])
     }
     
     /// calculate a list of starti3ng times
@@ -59,8 +59,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         // test
         XCTAssertEqual(2, times.count)
         XCTAssertEqual(ActionableTimeInfo(hour: 12, minute: 45, second: 00, end: Date.timeWith(hour: 13, minute: 15, second: 00),
-                                        remainingMinutes: 15.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0].1)
-        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 15, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[1]), times[1].1)
+                                        remainingMinutes: 15.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0])
+        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 15, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[1]), times[1])
     }
     
     /// calculate a list of starting times with a fixed time in betwee
@@ -77,8 +77,8 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0].1)
-        XCTAssertEqual(ActionableTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: true, actionable: actionables[1]), times[1].1)
+        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 30.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0])
+        XCTAssertEqual(ActionableTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: true, actionable: actionables[1]), times[1])
     }
     
     /// calculate a list of starting times with a fixed time in betwee
@@ -95,7 +95,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // test
         XCTAssertEqual(2, times.count)
-        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0].1)
-        XCTAssertEqual(ActionableTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: true, fixed: true, actionable: actionables[1]), times[1].1)
+        XCTAssertEqual(ActionableTimeInfo(hour: 13, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: false, fixed: false, actionable: actionables[0]), times[0])
+        XCTAssertEqual(ActionableTimeInfo(hour: 14, minute: 00, second: 00, remainingMinutes: 90.0, conflicting: true, fixed: true, actionable: actionables[1]), times[1])
     }
 }

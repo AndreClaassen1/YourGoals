@@ -34,15 +34,15 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [(Actionable, ActionableTimeInfo?)] {
+    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
         let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburnedGoals: backburnedGoals)
         switch mode {
         case .activeTasksIncluded:
-            return committedTasks.map { ($0, nil) }
+            return committedTasks
         case .activeTasksNotIncluded:
-            return committedTasks.filter { !$0.isProgressing(atDate: date) }.map { ($0, nil) }
+            return committedTasks.filter { !$0.isProgressing(atDate: date) }
         case .doneTasksNotIncluced:
-            return committedTasks.filter { $0.getTaskState() != .done  }.map { ($0, nil) }
+            return committedTasks.filter { $0.getTaskState() != .done  }
         }
     }
     

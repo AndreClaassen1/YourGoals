@@ -33,7 +33,7 @@ class WatchTasksContextProvider:StorageManagerWorker {
         let allTasks = activeTasks + todayTasks
         
         let watchTasks = allTasks.map { actionable -> WatchTaskInfo in
-            let task = actionable.0 as! Task
+            let task = actionable as! Task
             let watchTaskInfo = WatchTaskInfo(task: task, date: Date())
             return watchTaskInfo
         }

@@ -48,10 +48,10 @@ class TodayScheduleCalculator:StorageManagerWorker {
     ///   - actionables: the actinalbes
     /// - Returns: array with associated starting ties
     /// - Throws: core data exception
-    func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [(Actionable, ActionableTimeInfo)] {
+    func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
-        var startingTimes = [(Actionable, ActionableTimeInfo)]()
+        var startingTimes = [ActionableTimeInfo]()
         var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time).extractTime()
         
         for actionable in actionables {
@@ -69,7 +69,7 @@ class TodayScheduleCalculator:StorageManagerWorker {
                 startingTimeInfo = ActionableTimeInfo(start: startTime, end: startTime.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed, actionable: actionable)
                 startTime.addTimeInterval(remainingTime)
             }
-            startingTimes.append((actionable, startingTimeInfo))
+            startingTimes.append(startingTimeInfo)
         }
         
         return startingTimes

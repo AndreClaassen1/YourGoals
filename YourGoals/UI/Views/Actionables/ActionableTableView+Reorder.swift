@@ -57,7 +57,7 @@ extension ActionableTableView: LongPressReorder {
         
         
         if initialIndex.section == finalIndex.section {
-            let actionables = self.actionables[initialIndex.section].map { $0.0 }
+            let actionables = self.actionables[initialIndex.section]
             try positioning.updatePosition(actionables: actionables, fromPosition: initialIndex.row, toPosition: finalIndex.row)
         } else {
             // handling for empty cells
