@@ -50,7 +50,7 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
         let calculator = TodayScheduleCalculator(manager: self.manager)
-        let timeInfos = try! calculator.calculateStartingTimesForActiveLife(forTime: date, actionables: committedTasks)
+        let timeInfos = try! calculator.calculateTimeInfoForActiveLife(forTime: date, actionables: committedTasks)
         return timeInfos
     }
     

@@ -1,15 +1,34 @@
 //
-//  TodayTableCellCalculator.swift
+//  ActiveLifeScheduleCalculator.swift
 //  YourGoals
 //
-//  Created by André Claaßen on 11.01.18.
-//  Copyright © 2018 André Claaßen. All rights reserved.
+//  Created by André Claaßen on 29.06.19.
+//  Copyright © 2019 André Claaßen. All rights reserved.
 //
 
 import Foundation
 
-/// class for calculating starting times
-class TodayScheduleCalculator:StorageManagerWorker {
+extension ActionableTimeInfo {
+    /// create a actionable time info from a task progress record
+    ///
+    /// - Parameters:
+    ///   - day: calculate the values for this day
+    ///   - actionable: the actionable
+    ///   - progress: the progress of the actionable
+    init(day: Date, actionable: Actionable, progress: TaskProgress ) {
+        self.startingTime = progress.startOfDay(day: day)
+        self.endingTime = progress.endOfDay(day: day)
+        self.remainingTimeInterval = TimeInterval(0)
+        self.conflicting = false
+        self.fixedStartingTime = true
+        self.actionable = actionable
+        self.progress = progress
+    }
+}
+
+
+/// class for calculating starting times for the active life view
+class ActiveLifeScheduleCalculator:StorageManagerWorker {
     
     /// calculate the correct starting time for a progressing item
     ///
@@ -21,7 +40,7 @@ class TodayScheduleCalculator:StorageManagerWorker {
         if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
             return start
         } else {
-          return time
+            return time
         }
     }
     
@@ -41,40 +60,25 @@ class TodayScheduleCalculator:StorageManagerWorker {
                 beginTime)
     }
     
-    /// calculate the starting times drelative to the given time for the actionables.
+    /// fetch all done progress items fromt the task and create time infos out of them
     ///
     /// - Parameters:
-    ///   - time: start time for all actionalbes
-    ///   - actionables: the actinalbes
-    /// - Returns: array with associated starting ties
-    /// - Throws: core data exception
-    func calculateStartingTimes(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
-        assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
-
-        var startingTimes = [ActionableTimeInfo]()
-        var startTime = try calcStartTimeRelativeToActiveTasks(forTime: time).extractTime()
-        
-        for actionable in actionables {
-            var startingTimeInfo:ActionableTimeInfo!
-            
-            if actionable.isProgressing(atDate: time) {
-                let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
-                let start = calculateProgressStartingTime(forTime: time, actionable: actionable)
-                startingTimeInfo = ActionableTimeInfo(start: start, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false, actionable: actionable)
-                
-            } else {
-                let tuple = calculateConflicting(forTime: startTime, actionable: actionable)
-                startTime = tuple.startTime
-                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startTime)
-                startingTimeInfo = ActionableTimeInfo(start: startTime, end: startTime.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed, actionable: actionable)
-                startTime.addTimeInterval(remainingTime)
-            }
-            startingTimes.append(startingTimeInfo)
+    ///   - actionable: the task
+    ///   - day: the day
+    /// - Returns: an array of time infos from the done task progress records
+    func timeInfosFromDoneProgress(fromActionable actionable: Actionable, andDay day:Date) -> [ActionableTimeInfo] {
+        guard let task = actionable as? Task else {
+            return []
         }
         
-        return startingTimes
+        let timeInfos = task
+            .progressFor(day: day)
+            .filter{ $0.state == .done }
+            .map{ ActionableTimeInfo(day: day, actionable: actionable, progress: $0) }
+            .sorted { $0.startingTime.compare($1.startingTime) == .orderedAscending  }
+        return timeInfos
     }
-    
+
     /// calculate the starting times relative to the given time for the actionables in a way similar to active life
     ///
     /// - Parameters:
@@ -82,13 +86,15 @@ class TodayScheduleCalculator:StorageManagerWorker {
     ///   - actionables: the actinalbes
     /// - Returns: array with associated starting ties
     /// - Throws: core data exception
-    func calculateStartingTimesForActiveLife(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
+    func calculateTimeInfoForActiveLife(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
         
-        var startingTimes = [ActionableTimeInfo]()
+        var timeInfos = [ActionableTimeInfo]()
         var startingTimeOfTask = time
-
+        
         for actionable in actionables {
+            timeInfos.append(contentsOf: timeInfosFromDoneProgress(fromActionable: actionable, andDay: time.day()))
+            
             var startingTimeInfo:ActionableTimeInfo!
             if actionable.isProgressing(atDate: time) {
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
@@ -102,9 +108,9 @@ class TodayScheduleCalculator:StorageManagerWorker {
                 startingTimeInfo = ActionableTimeInfo(start: startingTimeOfTask, end: startingTimeOfTask.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed, actionable: actionable)
                 startingTimeOfTask.addTimeInterval(remainingTime)
             }
-            startingTimes.append(startingTimeInfo)
+            timeInfos.append(startingTimeInfo)
         }
-        return startingTimes
+        return timeInfos
     }
     
     /// calculate the start time for the longest active task

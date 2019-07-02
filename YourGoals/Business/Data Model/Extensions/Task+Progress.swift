@@ -18,12 +18,20 @@ extension Task {
         return self.progress?.allObjects as? [TaskProgress] ?? []
     }
     
-    /// get progress for the date/time if available
+    /// get progress for the exact date/time if available
     ///
     /// - Parameter date: date
     /// - Returns: a TaskProgress or nil
     func progressFor(date: Date) -> TaskProgress? {
         return self.allProgress().first { $0.intersects(withDate: date) }
+    }
+    
+    /// get progress for the whole day
+    ///
+    /// - Parameter day: the day
+    /// - Returns: the progress for this day
+    func progressFor(day: Date) -> [TaskProgress]  {
+        return self.allProgress().filter({ $0.intersects(withInterval: day.dayInterval)})
     }
     
     /// true, if this task is in progress

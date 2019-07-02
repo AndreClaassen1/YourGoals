@@ -31,7 +31,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // act
         let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-        let times = try! scheduleCalculator.calculateStartingTimes(forTime: self.testDateTime, actionables: actionables)
+        let times = try! scheduleCalculator.calculateTimeInfo(forTime: self.testDateTime, actionables: actionables)
         
         // test
         XCTAssertEqual(2, times.count)
@@ -54,7 +54,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // act
         let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-        let times = try! scheduleCalculator.calculateStartingTimes(forTime: self.testDateTime, actionables: actionables)
+        let times = try! scheduleCalculator.calculateTimeInfo(forTime: self.testDateTime, actionables: actionables)
         
         // test
         XCTAssertEqual(2, times.count)
@@ -73,7 +73,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // act
         let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-        let times = try! scheduleCalculator.calculateStartingTimes(forTime: self.testDateTime, actionables: actionables)
+        let times = try! scheduleCalculator.calculateTimeInfo(forTime: self.testDateTime, actionables: actionables)
         
         // test
         XCTAssertEqual(2, times.count)
@@ -91,7 +91,7 @@ class TodayScheduleCalculatorTests: StorageTestCase {
         
         // act
         let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-        let times = try! scheduleCalculator.calculateStartingTimes(forTime: self.testDateTime, actionables: actionables)
+        let times = try! scheduleCalculator.calculateTimeInfo(forTime: self.testDateTime, actionables: actionables)
         
         // test
         XCTAssertEqual(2, times.count)
