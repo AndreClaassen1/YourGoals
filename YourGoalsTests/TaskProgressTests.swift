@@ -14,9 +14,13 @@ import XCTest
 class TaskProgressTests: StorageTestCase {
     
     
+    func createTaskProgress() -> TaskProgress {
+        return self.manager.taskProgressStore.createPersistentObject()
+    }
+    
     /// test if the algorithm for detecting intersection is working
     func testIsIntersecting() {
-        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        let taskProgress = createTaskProgress()
         
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
@@ -28,7 +32,7 @@ class TaskProgressTests: StorageTestCase {
     
     /// test if intersection returns false for a date/time after the timespan of the progress
     func testIsNotIntersectingAfter() {
-        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        let taskProgress = createTaskProgress()
         
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
@@ -39,7 +43,7 @@ class TaskProgressTests: StorageTestCase {
     }
 
     func testIsNotIntersectingBefore() {
-        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        let taskProgress = createTaskProgress()
         
         taskProgress.start = Date.dateWithYear(2017, month: 01, day: 01)
         taskProgress.end = Date.dateWithYear(2017, month: 05, day: 19)
@@ -52,7 +56,7 @@ class TaskProgressTests: StorageTestCase {
     func testTimeIntervalWithFixedEndTime() {
         // setup
         let testDate = Date.dateTimeWithYear(2017, month: 10, day: 30, hour: 14, minute: 00, second: 00)
-        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        let taskProgress = createTaskProgress()
         taskProgress.start = Date.dateTimeWithYear(2017, month: 10, day: 30, hour: 12, minute: 00, second: 00)
         taskProgress.end = Date.dateTimeWithYear(2017, month: 10, day: 30, hour: 13, minute: 00, second: 00)
         
@@ -66,7 +70,7 @@ class TaskProgressTests: StorageTestCase {
     func testTimeIntervalWithOpenEndTime() {
         // setup
         let testDate = Date.dateTimeWithYear(2017, month: 10, day: 30, hour: 14, minute: 00, second: 00)
-        let taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        let taskProgress = createTaskProgress()
         taskProgress.start = Date.dateTimeWithYear(2017, month: 10, day: 30, hour: 12, minute: 00, second: 00)
         taskProgress.end = nil
         
@@ -76,4 +80,33 @@ class TaskProgressTests: StorageTestCase {
         // test
         XCTAssertEqual(2 * 60 * 60, progress, "progress should be excat 2 hours")
     }
+    
+    func testStartOfDayWithStartingDayOnDayBefore() {
+        // setup
+        let testDate = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 09, minute: 00, second: 00)
+        let taskProgress = createTaskProgress()
+        taskProgress.start = Date.dateTimeWithYear(2019, month: 06, day: 30, hour: 13, minute: 00, second: 00) // task progress started the day before
+        
+        // act
+        let startOfDay = taskProgress.startOfDay(day: testDate)
+        
+        // test
+        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 00, minute: 00, second: 00), startOfDay)
+    }
+
+    func testStartOfDayInDay() {
+        // setup
+        let testDate = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 09, minute: 00, second: 00)
+        let taskProgress = createTaskProgress()
+        taskProgress.start = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 13, minute: 00, second: 00) // task progress started one day after
+        
+        // act
+        let startOfDay = taskProgress.startOfDay(day: testDate)
+        
+        // test
+        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 13, minute: 00, second: 00), startOfDay)
+    }
+
+    
+    
 }
