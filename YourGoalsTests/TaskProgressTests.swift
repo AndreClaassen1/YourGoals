@@ -107,6 +107,29 @@ class TaskProgressTests: StorageTestCase {
         XCTAssertEqual(Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 13, minute: 00, second: 00), startOfDay)
     }
 
+    func testEndOfDayWithStartingDayOnDayAfter() {
+        // setup
+        let testDate = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 09, minute: 00, second: 00)
+        let taskProgress = createTaskProgress()
+        taskProgress.end = Date.dateTimeWithYear(2019, month: 07, day: 02, hour: 13, minute: 00, second: 00) // task progress ending one day after
+        
+        // act
+        let endOfDay = taskProgress.endOfDay(day: testDate)
+        
+        // test
+        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 23, minute: 59, second: 59), endOfDay)
+    }
     
-    
+    func testEndOfDayInDay() {
+        // setup
+        let testDate = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 09, minute: 00, second: 00)
+        let taskProgress = createTaskProgress()
+        taskProgress.end = Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 07, minute: 00, second: 00) // task progress started one day after
+        
+        // act
+        let endOfDay = taskProgress.endOfDay(day: testDate)
+        
+        // test
+        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 07, day: 01, hour: 07, minute: 00, second: 00), endOfDay)
+    }
 }
