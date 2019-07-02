@@ -36,13 +36,16 @@ struct ActionableTimeInfo:Equatable {
     /// indicator, if the starting time is fixed
     let fixedStartingTime: Bool
     
+    /// the actionable for this time info
     let actionable:Actionable
     
+    /// an optional progress, if this time info is corresponding with a done task progress
     let progress:TaskProgress?
     
     static func == (lhs: ActionableTimeInfo, rhs: ActionableTimeInfo) -> Bool {
         return
             lhs.startingTime == rhs.startingTime &&
+            lhs.endingTime == rhs.endingTime &&
             lhs.remainingTimeInterval == rhs.remainingTimeInterval &&
             lhs.actionable.name == rhs.actionable.name
     }

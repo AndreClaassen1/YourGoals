@@ -13,9 +13,18 @@ import XCTest
 /// tests of the task progress core data class
 class TaskProgressTests: StorageTestCase {
     
+    var taskProgress:TaskProgress? = nil
     
     func createTaskProgress() -> TaskProgress {
-        return self.manager.taskProgressStore.createPersistentObject()
+        self.taskProgress = self.manager.taskProgressStore.createPersistentObject()
+        return taskProgress!
+    }
+    
+    override func tearDown() {
+        if let taskProgress = self.taskProgress {
+            self.manager.taskProgressStore.managedObjectContext.delete(taskProgress)
+            try! self.manager.saveContext()
+        }
     }
     
     /// test if the algorithm for detecting intersection is working
