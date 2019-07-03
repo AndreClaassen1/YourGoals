@@ -98,6 +98,13 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
         
         for actionable in actionables {
             timeInfos.append(contentsOf: actionable.timeInfosFromDoneProgress(forDay: time))
+            
+            // calculate next starting time of done items
+            startingTimeOfTask = timeInfos.reduce(startingTimeOfTask) {
+                $0.compare($1.endingTime) == .orderedAscending ? $1.endingTime: $0
+            }
+            
+            // if this actionable is done, leave the loop
             if actionable.checkedState(forDate: time) == .done {
                 continue
             }
