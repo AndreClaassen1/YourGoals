@@ -145,6 +145,8 @@
 		7B8847921FD6AB77009C01F9 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8847911FD6AB77009C01F9 /* GoalTests.swift */; };
 		7B8C942D206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C942C206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift */; };
 		7B8C9430206FD1E7004699C3 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C942F206FD1E7004699C3 /* NotificationProvider.swift */; };
+		7B913D5022CC7DB000BB9551 /* ActiveLifeDataSourceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B913D4F22CC7DB000BB9551 /* ActiveLifeDataSourceCalculatorTests.swift */; };
+		7B913D5222CC87CD00BB9551 /* Date+time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B913D5122CC87CD00BB9551 /* Date+time.swift */; };
 		7B9145A2207D3EDA00B2C5F8 /* watchMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */; };
 		7B9145A3207D3EDF00B2C5F8 /* watchMessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */; };
 		7B9145A5207D416700B2C5F8 /* ActiveTaskResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145A4207D416700B2C5F8 /* ActiveTaskResponder.swift */; };
@@ -563,6 +565,8 @@
 		7B8847911FD6AB77009C01F9 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
 		7B8C942C206FD08B004699C3 /* WatchConnectivityHandlerForApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandlerForApp.swift; sourceTree = "<group>"; };
 		7B8C942F206FD1E7004699C3 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
+		7B913D4F22CC7DB000BB9551 /* ActiveLifeDataSourceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeDataSourceCalculatorTests.swift; sourceTree = "<group>"; };
+		7B913D5122CC87CD00BB9551 /* Date+time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+time.swift"; sourceTree = "<group>"; };
 		7B9145A1207D3EDA00B2C5F8 /* watchMessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchMessageTypes.swift; sourceTree = "<group>"; };
 		7B9145A4207D416700B2C5F8 /* ActiveTaskResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTaskResponder.swift; sourceTree = "<group>"; };
 		7B97202920665246007D142E /* XCTestCast+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCast+Localization.swift"; sourceTree = "<group>"; };
@@ -1124,6 +1128,7 @@
 			isa = PBXGroup;
 			children = (
 				7B97202920665246007D142E /* XCTestCast+Localization.swift */,
+				7B913D5122CC87CD00BB9551 /* Date+time.swift */,
 			);
 			path = "Test Helper";
 			sourceTree = "<group>";
@@ -1339,6 +1344,7 @@
 				7B4DFD7A20F51FA700F0E575 /* ProtocolDataSourceTests.swift */,
 				7B055CF7210E17B100321AC8 /* RepetitionTests.swift */,
 				7B9AEF9A22BE2234002FC5B4 /* ActiveLifeDataSourceTests.swift */,
+				7B913D4F22CC7DB000BB9551 /* ActiveLifeDataSourceCalculatorTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -2341,6 +2347,7 @@
 			files = (
 				7BFC1E041FA35A22003DE484 /* TaskStateManagerTests.swift in Sources */,
 				7B6AE9821FACA66100E15A9D /* TestDataCreator.swift in Sources */,
+				7B913D5022CC7DB000BB9551 /* ActiveLifeDataSourceCalculatorTests.swift in Sources */,
 				7BFC1E061FA35A2E003DE484 /* TaskProgressTests.swift in Sources */,
 				7B055CF8210E17B100321AC8 /* RepetitionTests.swift in Sources */,
 				7BBB30F6207BA83100F637E0 /* PlannableTasksDataSourceTests.swift in Sources */,
@@ -2364,6 +2371,7 @@
 				7B74BC5A1FFE1DC700D06D48 /* CalculateColorsTests.swift in Sources */,
 				7B9E28F11FA65DB000BB6003 /* TaskOrderManagerTests.swift in Sources */,
 				7BFD419522BFE95300367BFA /* DateFormatterTests.swift in Sources */,
+				7B913D5222CC87CD00BB9551 /* Date+time.swift in Sources */,
 				7B303B881FA9F77E00BA2FB6 /* TaskCommitmentTests.swift in Sources */,
 				7B2234FD216E27130020FB31 /* HabitStrokeCalculatorTests.swift in Sources */,
 				7B81353E22B28DF600AD3060 /* StartingTimeHelper.swift in Sources */,

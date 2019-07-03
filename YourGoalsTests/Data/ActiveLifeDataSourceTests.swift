@@ -184,7 +184,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///      08:00 | This is the first Task   |       0 m  | Done   |
     ///      08:30 | This is the second Task  |      15 m  | Active |
     ///      08:45 | This is the third Task   |      30 m  | Active |
-    func xtestGiven2ActiveAnd1DoneTasks() {
+    func testGiven2ActiveAnd1DoneTasks() {
         
         // setup
         let testData:[TestTaskEntry] = [

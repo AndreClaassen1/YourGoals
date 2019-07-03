@@ -118,6 +118,32 @@ class TestDataCreator:StorageManagerWorker {
         try! self.manager.saveContext()
         return taskProgress
     }
+    
+    /// helper function to add a time in a string representation to a date
+    ///
+    /// - Parameters:
+    ///   - day: the day
+    ///   - startTime: the start time
+    /// - Returns: the computed date time
+    fileprivate func computeDateTime(_ day: Date, _ startTime: String) -> Date {
+        return day.day().addingTimeInterval(Date.time(fromString: startTime).timeAsInterval())
+    }
+    
+    @discardableResult
+    /// create quick a progress for a day with start and end time as strings
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - day: the day
+    ///   - startTime: start time as string. eg. 18:00
+    ///   - endTime: end time as string. eg. 20:00
+    /// - Returns: a progress
+    func createProgress(forTask task: Task, forDay day:Date? = nil, startTime: String, endTime: String) -> TaskProgress {
+        let day = day ?? Date.dateWithYear(2019, month: 07, day: 01)
+        let start = computeDateTime(day, startTime)
+        let end = computeDateTime(day, endTime)
+        return createProgress(forTask: task, start: start, end: end  )
+    }
 
     // MARK: - Habits
     

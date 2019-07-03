@@ -26,6 +26,29 @@ extension ActionableTimeInfo {
     }
 }
 
+extension Actionable {
+    
+    /// fetch all done progress items fromt the task and create time infos out of them
+    ///
+    /// - Parameters:
+    ///   - actionable: the task
+    ///   - day: the day
+    /// - Returns: an array of time infos from the done task progress records
+    func timeInfosFromDoneProgress(forDay day:Date) -> [ActionableTimeInfo] {
+        guard let task = self as? Task else {
+            return []
+        }
+        
+        let day = day.day()
+        
+        let timeInfos = task
+            .progressFor(day: day)
+            .filter{ $0.state == .done }
+            .map{ ActionableTimeInfo(day: day, actionable: self, progress: $0) }
+            .sorted { $0.startingTime.compare($1.startingTime) == .orderedAscending  }
+        return timeInfos
+    }
+}
 
 /// class for calculating starting times for the active life view
 class ActiveLifeScheduleCalculator:StorageManagerWorker {
@@ -60,25 +83,6 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
                 beginTime)
     }
     
-    /// fetch all done progress items fromt the task and create time infos out of them
-    ///
-    /// - Parameters:
-    ///   - actionable: the task
-    ///   - day: the day
-    /// - Returns: an array of time infos from the done task progress records
-    func timeInfosFromDoneProgress(fromActionable actionable: Actionable, andDay day:Date) -> [ActionableTimeInfo] {
-        guard let task = actionable as? Task else {
-            return []
-        }
-        
-        let timeInfos = task
-            .progressFor(day: day)
-            .filter{ $0.state == .done }
-            .map{ ActionableTimeInfo(day: day, actionable: actionable, progress: $0) }
-            .sorted { $0.startingTime.compare($1.startingTime) == .orderedAscending  }
-        return timeInfos
-    }
-
     /// calculate the starting times relative to the given time for the actionables in a way similar to active life
     ///
     /// - Parameters:
@@ -93,8 +97,10 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
         var startingTimeOfTask = time
         
         for actionable in actionables {
-            timeInfos.append(contentsOf: timeInfosFromDoneProgress(fromActionable: actionable, andDay: time.day()))
-            
+            timeInfos.append(contentsOf: actionable.timeInfosFromDoneProgress(forDay: time))
+            if actionable.checkedState(forDate: time) == .done {
+                continue
+            }
             var startingTimeInfo:ActionableTimeInfo!
             if actionable.isProgressing(atDate: time) {
                 let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
