@@ -47,6 +47,13 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     
     // MARK: ActionableLifeDataSource
     
+    /// fetch the time infos needed for the active life data source
+    ///
+    /// - Parameters:
+    ///   - date: date/time to calculate the items
+    ///   - backburnedGoals: true, if backburned tasks should be considered
+    /// - Returns: time infos which represent the active life data view
+    /// - Throws: core data exceptions
     func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
         let calculator = ActiveLifeScheduleCalculator(manager: self.manager)

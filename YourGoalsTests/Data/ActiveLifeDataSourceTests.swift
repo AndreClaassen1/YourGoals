@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import YourGoals
 
-fileprivate typealias TestTaskEntry = (task:String, size:String, taskState:String, beginTime:String?)
+fileprivate typealias TestTaskEntry = (task:String, size:String, progress:String, taskState:String, beginTime:String?)
 fileprivate typealias TestResultTuple = (begin: String, timeState:String, task:String, remaining:String, taskState: String)
 
 func == <TestResultTuple:Equatable>(lhs: TestResultTuple, rhs: TestResultTuple) -> Bool {
@@ -27,12 +27,21 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     /// - Parameter size: a string
     /// - Returns: size in minutes
-    func extractSizeInMinutes(_ size:String) -> Float {
+    func extractSizeInMinutes(_ size:String) -> Float? {
         let re = try! NSRegularExpression(pattern: #"(\d*) *m"#, options: NSRegularExpression.Options.init())
-        let match = re.firstMatch(in: size, options: [], range: NSRange(location: 0, length: size.utf16.count))!
-        let range = match.range(at:1)
-        let sizeNumberStr = size[Range(range, in: size)!]
-        let sizeNumber = Float(sizeNumberStr)!
+        guard let match = re.firstMatch(in: size, options: [], range: NSRange(location: 0, length: size.utf16.count)) else {
+            return nil
+        }
+        
+        let nsrange = match.range(at:1)
+        guard let range = Range(nsrange, in: size) else {
+            return nil
+        }
+        
+        let sizeNumberStr = size[range]
+        guard let sizeNumber = Float(sizeNumberStr) else {
+            return nil
+        }
         return sizeNumber
     }
     
@@ -44,11 +53,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///   - prio: a prio for this entry
     /// - Returns: a perfectly TaskInfoTuple
     fileprivate func taskInfoTuple(from entry: TestTaskEntry, withCommitDate commitDate: Date, prio: Int) -> TaskInfoTuple {
-        let size = extractSizeInMinutes(entry.size)
+        let size = extractSizeInMinutes(entry.size)!
+        let progress = extractSizeInMinutes(entry.progress)
         let time:Date? = entry.beginTime == nil ? nil : DateFormatter.timeFromShortTimeFormatted(timeStr: entry.beginTime!, locale: Locale(identifier: "de-DE"))
         let state:ActionableState = entry.taskState == "Active" ? .active : .done
         
-        return (name: entry.task, prio: prio, size: size, commitmentDate: commitDate, beginTime: time, state: state)
+        return (name: entry.task, prio: prio, size: size, progress: progress, commitmentDate: commitDate, beginTime: time, state: state)
     }
     
     /// create the test data out of the array of test task etnries
@@ -74,7 +84,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
         let remaining = "\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false))"
-        let state = actionable.checkedState(forDate: timeInfo.endingTime).asString()
+        let state = timeInfo.state.asString()
         let timeState = timeInfo.conflicting ? "Conflicting" : ""
         return (begin, timeState, task, remaining, state)
     }
@@ -138,9 +148,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // setup
         let testData:[TestTaskEntry] = [
-            ("This is the first Task", "30 m", "Active", nil),
-            ("This is the second Task", "15 m", "Active", nil),
-            ("This is the third Task", "30 m", "Active", nil)
+            ("This is the first Task", "30 m", "", "Active", nil),
+            ("This is the second Task", "15 m", "", "Active", nil),
+            ("This is the third Task", "30 m", "", "Active", nil)
         ]
         self.createTestData(testData: testData)
         
@@ -184,9 +194,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // setup
         let testData:[TestTaskEntry] = [
-            ("This is the first Task", "30 m", "Done", "08:00"),
-            ("This is the second Task", "15 m", "Active", nil),
-            ("This is the third Task", "30 m", "Active", nil)
+            ("This is the first Task", "30 m", "", "Done", "08:00"),
+            ("This is the second Task", "15 m", "", "Active", nil),
+            ("This is the third Task", "30 m", "", "Active", nil)
         ]
         self.createTestData(testData: testData)
         
@@ -230,9 +240,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // setup
         let testData:[TestTaskEntry] = [
-            ("This is the first Task", "30 m", "Active", nil),
-            ("This is the second Task", "15 m", "Active", "08:15"),
-            ("This is the third Task", "30 m", "Active", nil)
+            ("This is the first Task", "30 m", "", "Active", nil),
+            ("This is the second Task", "15 m", "", "Active", "08:15"),
+            ("This is the third Task", "30 m", "", "Active", nil)
         ]
         self.createTestData(testData: testData)
         
@@ -246,6 +256,51 @@ class ActiveLifeDataSourceTests: StorageTestCase {
             ("08:00", "", "This is the first Task", "30 m", "Active"),
             ("08:15", "Conflicting", "This is the second Task", "15 m", "Active"),
             ("08:30", "", "This is the third Task", "30 m", "Active")
+        ]
+        
+        checkResult(expected: expectedResult, actual: timeInfos)
+    }
+    
+    /// given a day with following tasks
+    ///
+    /// Example:
+    ///
+    ///     # | Task                     | Size  | Progress| State  | Begin  |
+    ///     --+--------------------------+-------+---------+--------+--------+
+    ///     1 | This is the first Task   | 30 m  |   15m   | Active |        |
+    ///     2 | This is the second Task  | 30 m  |         | Active |        |
+    ///
+    /// when
+    ///     I calc this like active life from 08:00 the day
+    ///
+    /// then I expect
+    ///
+    ///     the following time table
+    ///
+    ///     Begin  | C | Task                     | Remaining  | State  |
+    ///     -------+------------------------------+------------+--------+
+    ///      08:00 |   | This is the first Task   |       0 m  | Done   |
+    ///      08:15 |   | This is the first Task   |      15 m  | Active |
+    ///      08:30 |   | This is the second Task  |      30 m  | Active |
+    func testGivenPartialDoneTask() {
+        
+        // setup
+        let testData:[TestTaskEntry] = [
+            ("This is the first Task", "30 m", "15 m", "Active", "08:00"),
+            ("This is the second Task", "15 m", "", "Active", "08:15"),
+        ]
+        self.createTestData(testData: testData)
+        
+        // act
+        let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
+        let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
+        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
+        
+        // test
+        let expectedResult = [
+            ("08:00", "", "This is the first Task", "0 m", "Done"),
+            ("08:15", "", "This is the first Task", "15 m", "Active"),
+            ("08:30", "", "This is the second Task", "30 m", "Active")
         ]
         
         checkResult(expected: expectedResult, actual: timeInfos)

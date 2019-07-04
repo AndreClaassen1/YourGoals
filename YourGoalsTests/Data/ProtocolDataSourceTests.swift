@@ -69,9 +69,9 @@ class ProtocolDataSourceTests: StorageTestCase {
         // setup
         let referenceDate = Date.dateWithYear(2018, month: 09, day: 29)
         let goal = self.testDataCreator.createGoalWithTasks(infos: [
-            (name: "Task 1", prio: 1, size: 40.0, commitmentDate: nil, beginTime: nil, state: nil), // 40 minutes
-            (name: "Task 2", prio: 2, size: 20.0, commitmentDate: nil, beginTime: nil, state: nil), // 20 minutes
-            (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
+            (name: "Task 1", prio: 1, size: 40.0, nil, commitmentDate: nil, beginTime: nil, state: nil), // 40 minutes
+            (name: "Task 2", prio: 2, size: 20.0, nil, commitmentDate: nil, beginTime: nil, state: nil), // 20 minutes
+            (name: "Task 3", prio: 3, size: 40.0, nil, commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
         ])
         
         // set the first task in a done state

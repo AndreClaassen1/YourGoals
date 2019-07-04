@@ -18,7 +18,13 @@ struct ActionableTimeInfo:Equatable {
     enum State {
         case active
         case done
-        case progress
+        
+        func asString() -> String {
+            switch self {
+            case .active: return "Active"
+            case .done: return "Done"
+            }
+        }
     }
 
     /// the estimated starting time (not date) of an actionable
@@ -41,6 +47,21 @@ struct ActionableTimeInfo:Equatable {
     
     /// an optional progress, if this time info is corresponding with a done task progress
     let progress:TaskProgress?
+    
+    /// state for the time info
+    var state:State {
+        if progress != nil {
+            return .done
+        }
+        
+        let actionableState = actionable.checkedState(forDate: endingTime)
+        switch actionableState {
+        case .active:
+            return State.active
+        case .done:
+            return State.done
+        }
+    }
     
     static func == (lhs: ActionableTimeInfo, rhs: ActionableTimeInfo) -> Bool {
         return

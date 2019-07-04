@@ -18,9 +18,9 @@ class TaskProgressCalculatorTests: StorageTestCase {
         
         // setup 3 tasks with 100 Minutes total size
         let goal = self.testDataCreator.createGoalWithTasks(infos: [
-            (name: "Task 1", prio: 1, size: 40.0, commitmentDate: nil, beginTime: nil, state: nil), // 40 minutes
-            (name: "Task 2", prio: 2, size: 20.0, commitmentDate: nil, beginTime: nil, state: nil), // 20 minutes
-            (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
+            (name: "Task 1", prio: 1, size: 40.0, nil ,commitmentDate: nil, beginTime: nil, state: nil), // 40 minutes
+            (name: "Task 2", prio: 2, size: 20.0, nil ,commitmentDate: nil, beginTime: nil, state: nil), // 20 minutes
+            (name: "Task 3", prio: 3, size: 40.0, nil ,commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
             ] )
         
         // fetch the first task in progress and work on it 20 Minutes eg. 30% on the task
@@ -48,12 +48,12 @@ class TaskProgressCalculatorTests: StorageTestCase {
     
         
         self.testDataCreator.createTasks(forGoal: todayGoal, infos: [
-            (name: "Task 1", prio: 1, size: 20.0, commitmentDate: today, beginTime: nil, state: nil) // 40 minutes
+            (name: "Task 1", prio: 1, size: 20.0, nil ,commitmentDate: today, beginTime: nil, state: nil) // 40 minutes
             ] )
         
         let _ = self.testDataCreator.createGoalWithTasks(infos: [
-            (name: "Task 2", prio: 2, size: 20.0, commitmentDate: yesterday, beginTime: nil, state: nil), // 20 minutes and yet in the abstract today task
-            (name: "Task 3", prio: 3, size: 40.0, commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
+            (name: "Task 2", prio: 2, size: 20.0, nil ,commitmentDate: yesterday, beginTime: nil, state: nil), // 20 minutes and yet in the abstract today task
+            (name: "Task 3", prio: 3, size: 40.0, nil ,commitmentDate: nil, beginTime: nil, state: nil)  // 40 minutes
             ])
 
         

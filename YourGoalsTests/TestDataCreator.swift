@@ -8,8 +8,9 @@
 
 import Foundation
 @testable import YourGoals
+import XCTest
 
-typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?, state: ActionableState?)
+typealias TaskInfoTuple = (name: String, prio:Int, size:Float,  progress: Float?, commitmentDate: Date?, beginTime: Date?, state: ActionableState?)
 
 /// this class makes the creation of goals and tasks a little bit easier
 class TestDataCreator:StorageManagerWorker {
@@ -40,8 +41,28 @@ class TestDataCreator:StorageManagerWorker {
         
         try! self.manager.saveContext()
     }
+
+    /// hack to set a task progress,
+    /// which starts at the begin time and ends after the number of minutes
+    /// specified with the progres
+    ///
+    /// Example: You have 08:00 beginn time and a progress of size 15 Minutes
+    ///          Result: 08:00:00 - 08:14:59
+    ///
+    /// - Parameters:
+    ///   - task: the task
+    ///   - progress: size of the task progress in minutes
+    ///   - commitmentDate: committed date (not time)
+    ///   - beginTime: start time (without date)
+    func setProgress(forTask task: Task, progress:Float, commitmentDate: Date, beginTime: Date) {
+        let progressManager = TaskProgressManager(manager: self.manager)
+        let startTime = commitmentDate.addingTimeInterval(beginTime.timeAsInterval())
+        let endTime = startTime.addingTimeInterval(TimeInterval(progress * 60.0 - 1.0))
+        progressManager.createProgressRecord(task: task, start: startTime, end: endTime)
+    }
     
-    /// hack to set a done state for a task, which beginns at a given time and ends after the size of the task
+    /// hack to set a done state for a task and a task progress,
+    /// which starts at the begin time and ends after the size of the task
     ///
     /// - Parameters:
     ///   - task: the task
@@ -49,11 +70,8 @@ class TestDataCreator:StorageManagerWorker {
     ///   - commitmentDate: committed date (not time)
     ///   - beginTime: start time (without date)
     func setDoneState(forTask task: Task, size:Float, commitmentDate: Date, beginTime: Date) {
-        let progressManager = TaskProgressManager(manager: self.manager)
         task.setTaskState(state: .done)
-        let startTime = commitmentDate.addingTimeInterval(beginTime.timeAsInterval())
-        let endTime = startTime.addingTimeInterval(TimeInterval(size) * 60.0)
-        progressManager.createProgressRecord(task: task, start: startTime, end: endTime)
+        setProgress(forTask: task, progress: size, commitmentDate: commitmentDate, beginTime: beginTime)
     }
     
     /// create a task for unit testing for the given goal with the name. the date is already saved in the
@@ -62,19 +80,30 @@ class TestDataCreator:StorageManagerWorker {
     /// - Parameters:
     ///   - name: name of the task
     ///   - size: size in minutes. Default is 30 minutes
+    ///   - progress: an optional progress of this task in Minutes.
     ///   - prio: the priority of the task
     ///   - commitmentDate: the commitment date or nil
     ///   - goal: the goal, for which the task is created for
     /// - Returns: the task
     @discardableResult
-    func createTask(name: String, withSize size: Float = 30.0, andPrio prio:Int? = nil, commitmentDate:Date? = nil, beginTime: Date? = nil, state: ActionableState? = nil, forGoal goal: Goal) -> Task {
+    func createTask(name: String, withSize size: Float = 30.0, andProgress progress: Float?=nil, andPrio prio:Int? = nil, commitmentDate:Date? = nil, beginTime: Date? = nil, state: ActionableState? = nil, forGoal goal: Goal) -> Task {
         let composer = GoalComposer(manager: self.manager)
         let task = try! composer.create(actionableInfo: ActionableInfo(type: .task, name: name, commitDate: commitmentDate, beginTime: beginTime, size: size), toGoal: goal) as! Task
+        
         if let prio = prio {
             task.prio = Int16(prio)
         }
+        
         if state == .done {
+            XCTAssertNotNil(beginTime, "if you set a progress you must also set a begin time")
+            XCTAssertNotNil(commitmentDate, "if you set a progress you must also set a commitment date ")
             setDoneState(forTask: task, size: size, commitmentDate: commitmentDate!, beginTime: beginTime!)
+        }
+        
+        if let progress = progress {
+            XCTAssertNotNil(beginTime, "if you set a progress you must also set a begin time")
+            XCTAssertNotNil(commitmentDate, "if you set a progress you must also set a commitment date ")
+            setProgress(forTask: task, progress: progress, commitmentDate: commitmentDate!, beginTime: beginTime!)
         }
         
         try! self.manager.saveContext()
@@ -89,7 +118,7 @@ class TestDataCreator:StorageManagerWorker {
     ///   - infos: infos for the tasks
     func createTasks(forGoal goal: Goal, infos: [TaskInfoTuple] ) {
         for info in infos {
-            createTask(name: info.name, withSize: info.size, andPrio: info.prio, commitmentDate: info.commitmentDate,
+            createTask(name: info.name, withSize: info.size, andProgress: info.progress, andPrio: info.prio, commitmentDate: info.commitmentDate,
                        beginTime: info.beginTime, state: info.state, forGoal: goal)
         }
     }

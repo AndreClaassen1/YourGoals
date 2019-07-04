@@ -110,8 +110,8 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
             }
             var startingTimeInfo:ActionableTimeInfo!
             if actionable.isProgressing(atDate: time) {
-                let remainingTime = actionable.calcRemainingTimeInterval(atDate: time)
-                let progressingStartingTime = calculateProgressStartingTime(forTime: time, actionable: actionable)
+                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
+                let progressingStartingTime = calculateProgressStartingTime(forTime: startingTimeOfTask, actionable: actionable)
                 startingTimeInfo = ActionableTimeInfo(start: progressingStartingTime, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false, actionable: actionable)
                 startingTimeOfTask = time.addingTimeInterval(remainingTime)
             } else {
