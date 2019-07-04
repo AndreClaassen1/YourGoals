@@ -11,7 +11,7 @@ import XCTest
 @testable import YourGoals
 
 fileprivate typealias TestTaskEntry = (task:String, size:String, taskState:String, beginTime:String?)
-fileprivate typealias TestResultTuple = (begin: String, task:String, remaining:String, taskState: String)
+fileprivate typealias TestResultTuple = (begin: String, timeState:String, task:String, remaining:String, taskState: String)
 
 func == <TestResultTuple:Equatable>(lhs: TestResultTuple, rhs: TestResultTuple) -> Bool {
     return lhs == rhs
@@ -20,10 +20,6 @@ func == <TestResultTuple:Equatable>(lhs: TestResultTuple, rhs: TestResultTuple) 
 class ActiveLifeDataSourceTests: StorageTestCase {
     
     let testDate = Date.dateWithYear(2019, month: 06, day: 23)
-    
-    
-    
-    
     
     // typealias TaskInfoTuple = (name: String, prio:Int, size:Float, commitmentDate: Date?, beginTime: Date?)
     
@@ -79,8 +75,8 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let task = actionable.name ?? "no task name available"
         let remaining = "\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false))"
         let state = actionable.checkedState(forDate: timeInfo.endingTime).asString()
-        
-        return (begin, task, remaining, state)
+        let timeState = timeInfo.conflicting ? "Conflicting" : ""
+        return (begin, timeState, task, remaining, state)
     }
     
     /// generates a string with the information about the tuple
@@ -155,9 +151,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "This is the first Task", "30 m", "Active"),
-            ("08:30", "This is the second Task", "15 m", "Active"),
-            ("08:45", "This is the third Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "30 m", "Active"),
+            ("08:30", "", "This is the second Task", "15 m", "Active"),
+            ("08:45", "", "This is the third Task", "30 m", "Active")
         ]
         
         checkResult(expected: expectedResult, actual: timeInfos)
@@ -201,11 +197,58 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "This is the first Task", "0 m", "Done"),
-            ("08:30", "This is the second Task", "15 m", "Active"),
-            ("08:45", "This is the third Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "0 m", "Done"),
+            ("08:30", "", "This is the second Task", "15 m", "Active"),
+            ("08:45", "", "This is the third Task", "30 m", "Active")
+        ]
+        
+        checkResult(expected: expectedResult, actual: timeInfos)
+    }
+
+    /// given a day with following tasks
+    ///
+    /// Example:
+    ///
+    ///     # | Task                     | Size  | State  | Begin  |
+    ///     --+--------------------------+-------+--------+--------+
+    ///     1 | This is the first Task   | 30 m  | Active |        |
+    ///     2 | This is the second Task  | 15 m  | Active | 08:15  |
+    ///     3 | This is the third Task   | 30 m  | Active |        |
+    ///
+    /// when
+    ///     I calc this like active life from 08:00 the day
+    ///
+    /// then I expect
+    ///     the following time table (C stands for conflicting
+    ///
+    ///     Begin  | C | Task                     | Remaining  | State  |
+    ///     -------+------------------------------+------------+--------+
+    ///      08:00 |   | This is the first Task   |      30 m  | Done   |
+    ///      08:15 | X | This is the second Task  |      15 m  | Active |
+    ///      08:30 |   | This is the third Task   |      30 m  | Active |
+    func testGivenOneConflictingTask() {
+        
+        // setup
+        let testData:[TestTaskEntry] = [
+            ("This is the first Task", "30 m", "Active", nil),
+            ("This is the second Task", "15 m", "Active", "08:15"),
+            ("This is the third Task", "30 m", "Active", nil)
+        ]
+        self.createTestData(testData: testData)
+        
+        // act
+        let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
+        let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
+        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
+        
+        // test
+        let expectedResult = [
+            ("08:00", "", "This is the first Task", "30 m", "Active"),
+            ("08:15", "Conflicting", "This is the second Task", "15 m", "Active"),
+            ("08:30", "", "This is the third Task", "30 m", "Active")
         ]
         
         checkResult(expected: expectedResult, actual: timeInfos)
     }
 }
+
