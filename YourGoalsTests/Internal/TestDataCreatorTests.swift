@@ -27,7 +27,7 @@ class TestDataCreatorTests: StorageTestCase {
         XCTAssertEqual(ActionableState.done, task.getTaskState())
         let progress = task.progress?.allObjects.first as! TaskProgress
         XCTAssertEqual(Date.dateTimeWithYear(2019, month: 06, day: 25, hour: 16, minute: 30, second: 00, timezoneIdentifier: nil), progress.start)
-        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 06, day: 25, hour: 17, minute: 15, second: 00, timezoneIdentifier: nil), progress.end)
+        XCTAssertEqual(Date.dateTimeWithYear(2019, month: 06, day: 25, hour: 17, minute: 14, second: 59, timezoneIdentifier: nil), progress.end)
     }
-
 }
+

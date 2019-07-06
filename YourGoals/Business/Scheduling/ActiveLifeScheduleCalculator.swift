@@ -53,34 +53,22 @@ extension Actionable {
 /// class for calculating starting times for the active life view
 class ActiveLifeScheduleCalculator:StorageManagerWorker {
     
-    /// calculate the correct starting time for a progressing item
+    /// calculate the correct starting time for an actionable
     ///
     /// - Parameters:
     ///   - time: actual system time
     ///   - actionable: the actionable
-    /// - Returns: the progressing time
-    func calculateProgressStartingTime(forTime time:Date, actionable: Actionable) -> Date {
-        if let task = actionable as? Task, let progress = task.progressFor(date: time), let start = progress.start {
-            return start
-        } else {
-            return time
-        }
-    }
-    
-    /// calculate the conflicting state
-    ///
-    /// - Parameters:
-    ///   - startTime: time to check if it conflicts against a fixed begin time for an item
-    ///   - actionable: the actionable
-    /// - Returns: a tuple with a conflicting state and a new start time
-    func calculateConflicting(forTime startTime: Date, actionable: Actionable) -> (conflicting: Bool, fixed: Bool, startTime: Date) {
-        guard let beginTime = actionable.beginTime else {
-            return (false, false, startTime)
+    /// - Returns: the starting time
+    func calculateStartingTime(forTime time:Date, actionable: Actionable) -> Date {
+        if let task = actionable as? Task, let progress = task.progressFor(date: time), let progressStart = progress.start {
+            return progressStart
         }
         
-        return (startTime.compare(beginTime) == .orderedDescending,
-                true,
-                beginTime)
+        if let beginTime = actionable.beginTime {
+            return beginTime
+        }
+        
+        return time
     }
     
     /// calculate the starting times relative to the given time for the actionables in a way similar to active life
@@ -101,31 +89,27 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
             
             // calculate next starting time of done items
             startingTimeOfTask = timeInfos.reduce(startingTimeOfTask) {
-                $0.compare($1.endingTime) == .orderedAscending ? $1.endingTime: $0
+                let nextStartingTime = $1.endingTime + 1.0 // start is one second later than ending
+                return $0.compare(nextStartingTime) == .orderedAscending ? nextStartingTime: $0
             }
             
             // if this actionable is done, leave the loop
-            if actionable.checkedState(forDate: time) == .done {
-                continue
-            }
-            var startingTimeInfo:ActionableTimeInfo!
-            if actionable.isProgressing(atDate: time) {
-                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
-                let progressingStartingTime = calculateProgressStartingTime(forTime: startingTimeOfTask, actionable: actionable)
-                startingTimeInfo = ActionableTimeInfo(start: progressingStartingTime, end: time.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: false, fixed: false, actionable: actionable)
-                startingTimeOfTask = time.addingTimeInterval(remainingTime)
-            } else {
-                let tuple = calculateConflicting(forTime: startingTimeOfTask, actionable: actionable)
-                startingTimeOfTask = tuple.startTime
-                let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
-                startingTimeInfo = ActionableTimeInfo(start: startingTimeOfTask, end: startingTimeOfTask.addingTimeInterval(remainingTime), remainingTimeInterval: remainingTime, conflicting: tuple.conflicting, fixed: tuple.fixed, actionable: actionable)
-                startingTimeOfTask.addTimeInterval(remainingTime)
-            }
-            timeInfos.append(startingTimeInfo)
+            if actionable.checkedState(forDate: time) == .done { continue }
+            
+            let startingTimeForActionable = calculateStartingTime(forTime: startingTimeOfTask, actionable: actionable)
+            let conflicting = startingTimeForActionable.compare(startingTimeOfTask) == .orderedAscending
+            let fixed = actionable.beginTime != nil
+            let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
+            let endingTimeForTask = startingTimeForActionable.addingTimeInterval(remainingTime) - 1.0
+            
+            let timeInfo = ActionableTimeInfo(start: startingTimeForActionable, end: endingTimeForTask, remainingTimeInterval: remainingTime,
+                                                  conflicting: conflicting, fixed: fixed, actionable: actionable)
+            timeInfos.append(timeInfo)
+            startingTimeOfTask = endingTimeForTask + 1.0
         }
         return timeInfos
     }
-    
+
     /// calculate the start time for the longest active task
     ///
     /// - Parameter time: new starting times

@@ -33,12 +33,17 @@ protocol ActionableLifeDataSource {
 }
 
 /// a data source, which simulates the active life view
+///
+/// This data source generates only actionable time infos out of done progress and active task items
 class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProtocol {
     
     let manager:GoalsStorageManager
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
     
+    /// intialize with a core data storage manager
+    ///
+    /// - Parameter manager: the storage manager
     init(manager: GoalsStorageManager) {
         self.manager = manager
         self.taskManager  = TaskCommitmentManager(manager: manager)
@@ -52,6 +57,7 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     /// - Parameters:
     ///   - date: date/time to calculate the items
     ///   - backburnedGoals: true, if backburned tasks should be considered
+    ///
     /// - Returns: time infos which represent the active life data view
     /// - Throws: core data exceptions
     func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo] {
