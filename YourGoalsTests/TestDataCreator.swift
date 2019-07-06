@@ -104,6 +104,8 @@ class TestDataCreator:StorageManagerWorker {
             XCTAssertNotNil(beginTime, "if you set a progress you must also set a begin time")
             XCTAssertNotNil(commitmentDate, "if you set a progress you must also set a commitment date ")
             setProgress(forTask: task, progress: progress, commitmentDate: commitmentDate!, beginTime: beginTime!)
+            // begin time is for progress, not for task. :hack:
+            task.beginTime = nil
         }
         
         try! self.manager.saveContext()

@@ -287,7 +287,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // setup
         let testData:[TestTaskEntry] = [
             ("This is the first Task", "30 m", "15 m", "Active", "08:00"),
-            ("This is the second Task", "15 m", "", "Active", "08:15"),
+            ("This is the second Task", "30 m", "", "Active", nil),
         ]
         self.createTestData(testData: testData)
         

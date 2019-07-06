@@ -99,7 +99,7 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
             let startingTimeForActionable = calculateStartingTime(forTime: startingTimeOfTask, actionable: actionable)
             let conflicting = startingTimeForActionable.compare(startingTimeOfTask) == .orderedAscending
             let fixed = actionable.beginTime != nil
-            let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeOfTask)
+            let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeForActionable)
             let endingTimeForTask = startingTimeForActionable.addingTimeInterval(remainingTime) - 1.0
             
             let timeInfo = ActionableTimeInfo(start: startingTimeForActionable, end: endingTimeForTask, remainingTimeInterval: remainingTime,
