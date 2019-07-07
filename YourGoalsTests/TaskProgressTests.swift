@@ -73,7 +73,7 @@ class TaskProgressTests: StorageTestCase {
         let progress = taskProgress.timeInterval(til: testDate)
         
         // test
-        XCTAssertEqual(60 * 60, progress, "progress should be excat 1 jour")
+        XCTAssertEqual(60 * 60.0, progress, "progress should be excat 1 hour")
     }
     
     func testTimeIntervalWithOpenEndTime() {

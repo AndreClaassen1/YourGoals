@@ -89,7 +89,7 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
             
             // calculate next starting time of done items
             startingTimeOfTask = timeInfos.reduce(startingTimeOfTask) {
-                let nextStartingTime = $1.endingTime + 1.0 // start is one second later than ending
+                let nextStartingTime = $1.endingTime // start is one second later than ending
                 return $0.compare(nextStartingTime) == .orderedAscending ? nextStartingTime: $0
             }
             
@@ -100,12 +100,12 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
             let conflicting = startingTimeForActionable.compare(startingTimeOfTask) == .orderedAscending
             let fixed = actionable.beginTime != nil
             let remainingTime = actionable.calcRemainingTimeInterval(atDate: startingTimeForActionable)
-            let endingTimeForTask = startingTimeForActionable.addingTimeInterval(remainingTime) - 1.0
+            let endingTimeForTask = startingTimeForActionable.addingTimeInterval(remainingTime)
             
             let timeInfo = ActionableTimeInfo(start: startingTimeForActionable, end: endingTimeForTask, remainingTimeInterval: remainingTime,
                                                   conflicting: conflicting, fixed: fixed, actionable: actionable)
             timeInfos.append(timeInfo)
-            startingTimeOfTask = endingTimeForTask + 1.0
+            startingTimeOfTask = endingTimeForTask
         }
         return timeInfos
     }

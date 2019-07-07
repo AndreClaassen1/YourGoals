@@ -57,7 +57,7 @@ class TestDataCreator:StorageManagerWorker {
     func setProgress(forTask task: Task, progress:Float, commitmentDate: Date, beginTime: Date) {
         let progressManager = TaskProgressManager(manager: self.manager)
         let startTime = commitmentDate.addingTimeInterval(beginTime.timeAsInterval())
-        let endTime = startTime.addingTimeInterval(TimeInterval(progress * 60.0 - 1.0))
+        let endTime = startTime.addingTimeInterval(TimeInterval(progress * 60.0))
         progressManager.createProgressRecord(task: task, start: startTime, end: endTime)
     }
     

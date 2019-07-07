@@ -28,15 +28,16 @@ extension TaskProgress {
 
     /// true, if the date lies between start and end of the current progress
     ///
+    /// start >= date < end
+    ///
     /// - Parameter date: check this date
     /// - Returns: true, if the date intersects the current progress
     func intersects(withDate date: Date) -> Bool {
         
         let startDate = self.start ?? Date.minimalDate
         let endDate = self.end ?? Date.maximalDate
-        
         return (startDate.compare(date) == ComparisonResult.orderedSame || startDate.compare(date) == ComparisonResult.orderedAscending) &&
-            (endDate.compare(date) == ComparisonResult.orderedSame || endDate.compare(date) == ComparisonResult.orderedDescending)
+               ( endDate.compare(date) == ComparisonResult.orderedDescending)
     }
     
     /// calculate the time interval for a progression til date
