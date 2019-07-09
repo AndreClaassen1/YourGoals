@@ -28,12 +28,12 @@ class WatchTasksContextProvider:StorageManagerWorker {
     /// - Throws: core data exception
     func todayTasks(referenceDate date: Date, withBackburned backburnedGoals: Bool) throws -> [WatchTaskInfo] {
         
-        let activeTasks = try activeTasksDataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
-        let todayTasks = try committedTasksDataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        let activeTasks = try activeTasksDataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        let todayTasks = try committedTasksDataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: nil)
         let allTasks = activeTasks + todayTasks
         
-        let watchTasks = allTasks.map { actionable -> WatchTaskInfo in
-            let task = actionable as! Task
+        let watchTasks = allTasks.map { item -> WatchTaskInfo in
+            let task = item.actionable as! Task
             let watchTaskInfo = WatchTaskInfo(task: task, date: Date())
             return watchTaskInfo
         }

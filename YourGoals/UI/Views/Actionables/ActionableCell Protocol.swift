@@ -11,11 +11,11 @@ import Foundation
 
 /// the user
 protocol ActionableTableCellDelegate {
-    func actionableStateChangeDesired(actionable:Actionable)
+    func actionableStateChangeDesired(item: ActionableItem)
 }
 
 /// protocol for the configuration of the actionable for the table view
 protocol ActionableCell {
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date, estimatedStartingTime time: ActionableTimeInfo?,  delegate: ActionableTableCellDelegate)
-    var actionable:Actionable! { get }
+    func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date, estimatedStartingTime time: ActionableTimeInfo?,  delegate: ActionableTableCellDelegate)
+    var item:ActionableItem! { get }
 }

@@ -11,6 +11,7 @@ import MGSwipeTableCell
 
 /// a table cell for displaying habits or tasks. experimental
 class ActionableTableCell: MGSwipeTableCell, ActionableCell {
+    
     @IBOutlet weak var totalWorkingTimeLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
@@ -25,7 +26,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var attachedImageView: UIImageView!
     
-    var actionable:Actionable!
+    var item:ActionableItem!
     var delegateTaskCell: ActionableTableCellDelegate!
     let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
     var taskProgressManager:TaskProgressManager!
@@ -46,6 +47,11 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         // Configure the view for the selected state
     }
     
+    /// easier access to the actionable
+    fileprivate var actionable:Actionable {
+        return item.actionable
+    }
+    
     // MARK: - Factory Method
     
     internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableTableCell {
@@ -57,7 +63,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     }
     
     @IBAction func checkBoxAction(_ sender: Any) {
-        delegateTaskCell.actionableStateChangeDesired(actionable: self.actionable)
+        delegateTaskCell.actionableStateChangeDesired(item: self.item)
     }
     
     @IBAction func clickOnURL(_ sender: Any) {
@@ -230,11 +236,11 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///   - date: for this date
     ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date,
+    func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date,
                    estimatedStartingTime time: ActionableTimeInfo?,
                    delegate: ActionableTableCellDelegate) {
         self.taskProgressManager = TaskProgressManager(manager: manager)
-        self.actionable = actionable
+        self.item = item
         self.delegateTaskCell = delegate
         self.taskDescriptionLabel.sizeToFit()
         adaptUI(forActionableType: actionable.type)

@@ -22,7 +22,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
-    var actionables = [[Actionable]]()
+    var items = [[ActionableItem]]()
     var startingTimes:[[ActionableTimeInfo]]?
     var timer = Timer()
     var timerPaused = false
@@ -85,16 +85,16 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 return
             }
        
-            // load sections and actionables
+            // load sections and items
             let backburnedGoals = SettingsUserDefault.standard.backburnedGoals
             let date = Date()
             self.sections = try dataSource.fetchSections(forDate: date, withBackburned: backburnedGoals)
-            self.actionables.removeAll()
+            self.items.removeAll()
             if self.sections.count == 0 {
-                self.actionables.append(try dataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil))
+                self.items.append(try dataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: nil))
             } else {
                 for section in sections {
-                    self.actionables.append(try dataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: section))
+                    self.items.append(try dataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: section))
                 }
             }
             
@@ -104,11 +104,11 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
                 self.startingTimes = [[ActionableTimeInfo]]()
                 if self.sections.count == 0 {
-                    let actionables = self.actionables[0]
+                    let actionables = self.items[0].map { $0.actionable }
                     self.startingTimes = [try scheduleCalculator.calculateTimeInfo(forTime: date, actionables: actionables)]
                 } else {
                     for tuple in self.sections.enumerated()  {
-                        let actionables = self.actionables[tuple.offset]
+                        let actionables = self.items[tuple.offset].map { $0.actionable }
                         if let startingTimeForSection = tuple.element.calculateStartingTime(forDate: date) {
                             self.startingTimes?.append(try scheduleCalculator.calculateTimeInfo(forTime: startingTimeForSection, actionables: actionables))
                         }
@@ -151,15 +151,15 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     // MARK: - Data Source Helper Methods
     
     func numberOfActionables(_ section:Int) -> Int {
-        return self.actionables[section].count
+        return self.items[section].count
     }
     
     /// get the actionable for the section and the row in the section
     ///
     /// - Parameter path: the path with section and row
     /// - Returns: index actionable
-    func actionableForIndexPath(path: IndexPath) -> Actionable {
-        return self.actionables[path.section][path.row]
+    func itemForIndexPath(path: IndexPath) -> ActionableItem {
+        return self.items[path.section][path.row]
     }
     
     /// retrieve the estimated starting time for a path
@@ -181,10 +181,10 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         var indexPaths = [IndexPath]()
         let date = Date()
         
-        for sectionTuple in self.actionables.enumerated() {
+        for sectionTuple in self.items.enumerated() {
             for actionableTuple in sectionTuple.element.enumerated() {
-                let actionable = actionableTuple.element
-                if actionable.isProgressing(atDate: date) {
+                let item = actionableTuple.element
+                if item.actionable.isProgressing(atDate: date) {
                     indexPaths.append(IndexPath(row: actionableTuple.offset, section: sectionTuple.offset))
                 }
             }
@@ -196,9 +196,9 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     
     // MARK: - ActionableTableCellDelegate
     
-    func actionableStateChangeDesired(actionable: Actionable) {
+    func actionableStateChangeDesired(item: ActionableItem) {
         do {
-            try switchBehavior(actionable: actionable, date: Date(), behavior: .state)
+            try switchBehavior(item: item, date: Date(), behavior: .state)
         }
         catch let error {
             delegate.showNotification(forError: error)
@@ -206,7 +206,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.requestForEdit(actionable: self.actionableForIndexPath(path: indexPath))
+        delegate.requestForEdit(actionable: self.itemForIndexPath(path: indexPath).actionable)
     }
     
  

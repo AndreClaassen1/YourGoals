@@ -63,20 +63,19 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     ///   - section: a section which has the date for fetching actionables
     /// - Returns: committed tasks for the section
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [ActionableItem] {
         guard let plannableSection = section as? PlannableActionableSection else {
             NSLog("illegal section type: \(String(describing: section))")
             return []
         }
         
-        var tasks = [Actionable]()
-        
         if date.day().compare(plannableSection.date.day()) == .orderedSame {
-            tasks = try committedDataSource.fetchActionables(forDate: plannableSection.date, withBackburned: backburnedGoals, andSection: nil)
-        } else {
-            tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburnedGoals: backburnedGoals)
+            return try committedDataSource.fetchItems(forDate: plannableSection.date, withBackburned: backburnedGoals, andSection: nil)
         }
-        return tasks
+        
+        let tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburnedGoals: backburnedGoals)
+        let items = tasks.map { ActionableResult(actionable: $0) }
+        return items
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -89,11 +88,14 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
+        let actionables = items.map { $0.actionable }
         try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
+        let actionable = item.actionable
+        
         guard let task = actionable as? Task else {
             assertionFailure("function needs a task as actionable: \(actionable )")
             return

@@ -41,9 +41,18 @@ class GoalProgressCalculator:StorageManagerWorker {
         return (progressTasks, progressIndicator)
     }
 
+    /// get the actionables for this goal for the day
+    ///
+    /// - Parameters:
+    ///   - goal: the goal
+    ///   - date: the day
+    ///   - backburnedGoals: include backburned goals
+    /// - Returns: an array of actionables
+    /// - Throws: core data exceptio
     func getActionables(goal: Goal, date: Date, backburnedGoals: Bool) throws -> [Actionable] {
         let dataSource = ActionableDataSourceProvider(manager: self.manager).dataSource(forGoal: goal, andType: goal.goalType() == .todayGoal ? nil : .task)
-        let actionables = try dataSource.fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        let items = try dataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: nil)
+        let actionables = items.map{ $0.actionable }
         return actionables
     }
     

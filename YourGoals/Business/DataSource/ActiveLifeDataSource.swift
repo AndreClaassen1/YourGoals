@@ -77,11 +77,12 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
-        try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
+        assertionFailure("this method needs to be coded!")
+        // try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
 }

@@ -20,22 +20,30 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
     
     // MARK: - swipe button handling
     
-    func switchBehavior(actionable: Actionable, date: Date, behavior: ActionableBehavior) throws {
+    /// handle the swipe button with the needed swipe button behavior
+    ///
+    /// - Parameters:
+    ///   - item: the actionable item
+    ///   - date: the date
+    ///   - behavior: the swipe button behavior
+    /// - Throws: a core data expeciton
+    func switchBehavior(item: ActionableItem, date: Date, behavior: ActionableBehavior) throws {
         guard let switchProtocol = self.dataSource?.switchProtocol(forBehavior: behavior) else {
             assertionFailure("no progress protocol for behavior \(behavior) available")
             return
         }
         
+        // :hack:
         if behavior == .tomorrow {
             let tomorrow = date.addDaysToDate(1)
-            try switchProtocol.switchBehavior(forActionable: actionable, atDate: tomorrow)
+            try switchProtocol.switchBehavior(forItem: item, atDate: tomorrow)
         } else {
-            try switchProtocol.switchBehavior(forActionable: actionable, atDate: date)
+            try switchProtocol.switchBehavior(forItem: item, atDate: date)
         }
         
         self.tasksTableView.reloadData()
-        guard let goal = actionable.goal else {
-            NSLog("the actionable has no goal: \(actionable)")
+        guard let goal = item.actionable.goal else {
+            NSLog("the actionable has no goal: \(item.actionable)")
             return
         }
         
@@ -69,8 +77,8 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
             return nil
         }
         
-        guard let actionable = taskCell.actionable else {
-            NSLog("could not extract an actionable out of cell: \(taskCell)")
+        guard let item = taskCell.item else {
+            NSLog("could not extract an item out of cell: \(taskCell)")
             return nil
         }
         
@@ -81,10 +89,10 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
         if direction == MGSwipeDirection.leftToRight {
             //            expansionSettings.fillOnTrigger = false
             //            expansionSettings.threshold = 2
-            return  swipeButtonCreator.createSwipeButtons(forDate: Date(), forActionable: actionable, forBehaviors: [.progress], dataSource: self.dataSource)
+            return  swipeButtonCreator.createSwipeButtons(forDate: Date(), item: item, forBehaviors: [.progress], dataSource: self.dataSource)
         }
         else {
-            return swipeButtonCreator.createSwipeButtons(forDate: Date(), forActionable: actionable, forBehaviors: [.commitment, .tomorrow], dataSource: self.dataSource)
+            return swipeButtonCreator.createSwipeButtons(forDate: Date(), item: item, forBehaviors: [.commitment, .tomorrow], dataSource: self.dataSource)
         }
     }
     
@@ -110,6 +118,8 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
                 assertionFailure("not processable index for swipe cell: \(index)")
                 return .state
             }
+        @unknown default:
+            fatalError("this is an unknown case")
         }
     }
     
@@ -129,13 +139,13 @@ extension ActionableTableView: MGSwipeTableCellDelegate {
                 return true
             }
             
-            guard let actionable = taskCell.actionable else {
+            guard let item = taskCell.item else {
                 NSLog("the task cell has no actionable")
                 return true
             }
             
             let behavior = swipeBehavior(index: index, direction: direction)
-            try switchBehavior(actionable: actionable, date: Date(), behavior: behavior)
+            try switchBehavior(item: item, date: Date(), behavior: behavior)
         }
         catch let error {
             self.delegate?.showNotification(forError: error)

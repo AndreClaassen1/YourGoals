@@ -27,8 +27,10 @@ class GoalTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        return try taskManager.tasksByOrder(forGoal: goal)
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
+        let actionables = try taskManager.tasksByOrder(forGoal: goal)
+        let items = actionables.map { ActionableResult(actionable: $0) }
+        return items
     }
     
     
@@ -42,11 +44,11 @@ class GoalTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
-        try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
+        try self.taskManager.updateTaskPosition(tasks: items.map { $0.actionable as! Task }, fromPosition: fromPosition, toPosition: toPosition)
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
 }

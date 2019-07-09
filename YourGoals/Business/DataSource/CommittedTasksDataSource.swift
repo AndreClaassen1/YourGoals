@@ -34,16 +34,20 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
         let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburnedGoals: backburnedGoals)
+        var tasks:[Task]!
         switch mode {
         case .activeTasksIncluded:
-            return committedTasks
+            tasks = committedTasks
         case .activeTasksNotIncluded:
-            return committedTasks.filter { !$0.isProgressing(atDate: date) }
+            tasks = committedTasks.filter { !$0.isProgressing(atDate: date) }
         case .doneTasksNotIncluced:
-            return committedTasks.filter { $0.getTaskState() != .done  }
+            tasks = committedTasks.filter { $0.getTaskState() != .done  }
         }
+        
+        let items = tasks.map{ ActionableResult(actionable: $0) }
+        return items
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -56,11 +60,13 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
-        try self.taskManager.updateTaskPosition(tasks: actionables.map { $0 as! Task }, fromPosition: fromPosition, toPosition: toPosition)
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
+        let tasks = items.map { ($0.actionable as! Task) }
+        
+        try self.taskManager.updateTaskPosition(tasks: tasks, fromPosition: fromPosition, toPosition: toPosition)
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
     

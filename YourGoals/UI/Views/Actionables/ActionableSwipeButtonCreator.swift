@@ -30,12 +30,12 @@ class ActionableSwipeButtonCreator {
     ///   - behavior: a behaviour, like commitment, active or progressing
     ///   - dataSource: a actionable data source ( list of ordered tasks or habits)
     /// - Returns: a swipe button or nil, if the data source is not providing an behaviour
-    func create(date: Date, actionable: Actionable, behavior:ActionableBehavior, dataSource: ActionableDataSource) -> MGSwipeButton? {
+    func create(date: Date, item: ActionableItem, behavior:ActionableBehavior, dataSource: ActionableDataSource) -> MGSwipeButton? {
         guard let switchProtocol = dataSource.switchProtocol(forBehavior: behavior) else {
             return nil
         }
         
-        let properties = buttonProperties(behaviorIsActive: switchProtocol.isBehaviorActive(forActionable: actionable, atDate: date), behavior: behavior)
+        let properties = buttonProperties(behaviorIsActive: switchProtocol.isBehaviorActive(forItem: item, atDate: date), behavior: behavior)
         let button = MGSwipeButton(properties: properties)
         return button
     }
@@ -48,7 +48,7 @@ class ActionableSwipeButtonCreator {
     ///   - behaviors: an array of behaviors
     ///   - dataSource: a actionable data source ( list of ordered tasks or habits)
     /// - Returns: an arra of swipe buttons
-    func createSwipeButtons(forDate date: Date, forActionable actionable:Actionable, forBehaviors behaviors:[ActionableBehavior], dataSource: ActionableDataSource?) -> [MGSwipeButton] {
+    func createSwipeButtons(forDate date: Date, item: ActionableItem, forBehaviors behaviors:[ActionableBehavior], dataSource: ActionableDataSource?) -> [MGSwipeButton] {
         guard let dataSource = dataSource else {
             NSLog("no datasource configured")
             return []
@@ -57,7 +57,7 @@ class ActionableSwipeButtonCreator {
         var buttons = [MGSwipeButton]()
         
         for behavior in behaviors {
-            if let button = create(date: date, actionable: actionable, behavior: behavior, dataSource: dataSource ) {
+            if let button = create(date: date, item: item, behavior: behavior, dataSource: dataSource ) {
                 buttons.append(button)
             }
         }

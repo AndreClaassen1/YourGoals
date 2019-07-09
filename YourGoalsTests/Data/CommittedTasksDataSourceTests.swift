@@ -25,10 +25,10 @@ class CommittedTasksDataSourceTests: StorageTestCase {
         
         // act
         let ds = CommittedTasksDataSource(manager: self.manager)
-        let actionables = try! ds.fetchActionables(forDate: testDate, withBackburned: backburnedGoals, andSection: nil)
+        let items = try! ds.fetchItems(forDate: testDate, withBackburned: backburnedGoals, andSection: nil)
         
         // test
-        XCTAssertEqual(expectedNumberOfTasks, actionables.count)
+        XCTAssertEqual(expectedNumberOfTasks, items.count)
     }
     
     func testBackCommittedTasksInclBackburnedGoals() {

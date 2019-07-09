@@ -44,7 +44,7 @@ class PlannableTasksDataSourceTests: StorageTestCase {
         var numberOfSectionsWithTasks = 0
         
         for section in sections {
-            let n = try! dataSource.fetchActionables(forDate: referenceDate, withBackburned: true, andSection: section)
+            let n = try! dataSource.fetchItems(forDate: referenceDate, withBackburned: true, andSection: section)
             NSLog("[\(n.count)] = \(section)")
             if n.count > 0 {
                 numberOfSectionsWithTasks += 1

@@ -159,8 +159,8 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
     ///   - actionable: the task
     ///   - date: the date
     /// - Throws: throws an excpeiont
-    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
-        guard let task = actionable as? Task else {
+    func switchBehavior(forItem item: ActionableItem, atDate date: Date) throws {
+        guard let task = item.actionable as? Task else {
             assertionFailure("switchState failed. Actionable isn't a task")
             return
         }
@@ -172,8 +172,8 @@ class TaskProgressManager:StorageManagerWorker, ActionableSwitchProtocol {
         }
     }
     
-    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
-        return actionable.isProgressing(atDate: date)
+    func isBehaviorActive(forItem item: ActionableItem, atDate date: Date) -> Bool {
+        return item.actionable.isProgressing(atDate: date)
     }
     
     /// the user needs more time.

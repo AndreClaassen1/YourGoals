@@ -14,10 +14,10 @@ class TodayAllActionablesDataSource : StorageManagerWorker, ActionableDataSource
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [Actionable] {
-        var actionables = try CommittedTasksDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: section)
-        actionables.append(contentsOf: try HabitsDataSource(manager: self.manager).fetchActionables(forDate: date, withBackburned: backburnedGoals, andSection: section))
-        return actionables
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection section: ActionableSection?) throws -> [ActionableItem] {
+        var items = try CommittedTasksDataSource(manager: self.manager).fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: section)
+        items.append(contentsOf: try HabitsDataSource(manager: self.manager).fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: section))
+        return items
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

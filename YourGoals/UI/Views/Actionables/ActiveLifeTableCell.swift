@@ -25,11 +25,16 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var attachedImageView: UIImageView!
     
-    var actionable:Actionable!
+    
+    var item: ActionableItem!
     var delegateTaskCell: ActionableTableCellDelegate!
     let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
     var taskProgressManager:TaskProgressManager!
     var defaultProgressViewHeight:CGFloat = 0.0
+    
+    var actionable:Actionable {
+        return item.actionable
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,9 +62,9 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     }
     
     @IBAction func checkBoxAction(_ sender: Any) {
-        delegateTaskCell.actionableStateChangeDesired(actionable: self.actionable)
+        delegateTaskCell.actionableStateChangeDesired(item: self.item)
     }
-    
+     
     @IBAction func clickOnURL(_ sender: Any) {
         guard let urlString = actionable.urlString else {
             NSLog("clickOnURL failed. no URL is set")
@@ -230,11 +235,11 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     ///   - date: for this date
     ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
-    func configure(manager: GoalsStorageManager, actionable: Actionable, forDate date: Date,
+    func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date,
                    estimatedStartingTime time: ActionableTimeInfo?,
                    delegate: ActionableTableCellDelegate) {
         self.taskProgressManager = TaskProgressManager(manager: manager)
-        self.actionable = actionable
+        self.item = item
         self.delegateTaskCell = delegate
         self.taskDescriptionLabel.sizeToFit()
         adaptUI(forActionableType: actionable.type)

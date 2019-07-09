@@ -20,6 +20,7 @@ enum ActionableBehavior {
     case tomorrow
 }
 
+/// the actionable section with a section title
 protocol ActionableSection {
     var sectionTitle:String {
         get
@@ -30,6 +31,16 @@ protocol ActionableSection {
     /// - Parameter date: the actual system date
     /// - Returns: a calculates starting time
     func calculateStartingTime(forDate date: Date) -> Date?
+}
+
+/// abstraction of an actionble item
+protocol ActionableItem {
+    var actionable:Actionable { get }
+}
+
+/// an actionable as a result of a "normal" actionable data source
+struct ActionableResult:ActionableItem {
+    let actionable:Actionable
 }
 
 /// protocol for fetching actionables (tasks or habits) in various controllers
@@ -51,7 +62,7 @@ protocol ActionableDataSource {
     ///
     /// - Returns: an ordered array of actionables
     /// - Throws: core data exception
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable]
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem]
     
     /// retrieve the reordering protocol, if the datasource allows task reordering
     ///
@@ -72,7 +83,7 @@ protocol ActionablePositioningProtocol {
     ///   - fromPosition: old position of the task in the array
     ///   - toPosition: new position for the task in the array
     /// - Returns: updated task order
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws
     
     /// move an actionable into a new section
     ///
@@ -80,14 +91,14 @@ protocol ActionablePositioningProtocol {
     ///   - section: the section
     ///   - toPosition: the position in the section
     /// - Throws: an exception
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws
 }
 
 /// switch the behavior of an actionable-
 /// the behaviour could be a state, a commitment or a progress
 protocol ActionableSwitchProtocol {
-    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws
-    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool
+    func switchBehavior(forItem item: ActionableItem, atDate date: Date) throws
+    func isBehaviorActive(forItem item: ActionableItem, atDate date: Date) -> Bool
 }
 
 

@@ -24,8 +24,9 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        return try taskManager.activeTasks(forDate: date)
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
+        let tasks = try taskManager.activeTasks(forDate: date)
+        return tasks.map{ ActionableResult(actionable: $0) }
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -38,11 +39,11 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
 }

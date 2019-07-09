@@ -29,8 +29,9 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
         return []
     }
     
-    func fetchActionables(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [Actionable] {
-        return try habitOrderManager.habitsByOrder(forGoal: self.goal, backburnedGoals: backburnedGoals)
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
+        let actionables = try habitOrderManager.habitsByOrder(forGoal: self.goal, backburnedGoals: backburnedGoals)
+        return actionables.map { ActionableResult(actionable: $0) }
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
@@ -53,20 +54,21 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
     
     // MARK: ActionablePositioningProtocol
     
-    func updatePosition(actionables: [Actionable], fromPosition: Int, toPosition: Int) throws {
-        try self.habitOrderManager.updatePosition(habits: actionables.map { $0 as! Habit }, fromPosition: fromPosition, toPosition: toPosition)
+    func updatePosition(items: [ActionableItem], fromPosition: Int, toPosition: Int) throws {
+        let habits = items.map { $0.actionable as! Habit }
+        try self.habitOrderManager.updatePosition(habits: habits, fromPosition: fromPosition, toPosition: toPosition)
     }
     
-    func moveIntoSection(actionable: Actionable, section: ActionableSection, toPosition: Int) throws {
+    func moveIntoSection(item: ActionableItem, section: ActionableSection, toPosition: Int) throws {
         assertionFailure("this method shouldn't be called")
     }
 
     
     // MARK: ActionableSwitchProtocol
     
-    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
-        guard let habit = actionable as? Habit else {
-            NSLog("couldn't get habit from actionable: \(actionable)")
+    func switchBehavior(forItem item: ActionableItem, atDate date: Date) throws {
+        guard let habit = item.actionable as? Habit else {
+            NSLog("couldn't get habit from actionable: \(item.actionable)")
             return
         }
         
@@ -78,9 +80,9 @@ class HabitsDataSource: ActionableDataSource, ActionablePositioningProtocol, Act
         }
     }
     
-    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
-        guard let habit = actionable as? Habit else {
-            NSLog("couldn't get habit from actionable: \(actionable)")
+    func isBehaviorActive(forItem item: ActionableItem, atDate date: Date) -> Bool {
+        guard let habit = item.actionable as? Habit else {
+            NSLog("couldn't get habit from actionable: \(item.actionable)")
             return false
         }
         

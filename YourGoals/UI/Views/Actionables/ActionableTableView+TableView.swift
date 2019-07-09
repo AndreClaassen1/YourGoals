@@ -61,6 +61,12 @@ extension ActionableTableView {
         return sections[section].sectionTitle
     }
     
+    /// show the actionable item in a table view cell
+    ///
+    /// - Parameters:
+    ///   - tableView: the table view
+    ///   - indexPath: the index path
+    /// - Returns: a fully functionable table view cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // logic for empty cell in sections eg. No Items for this section
@@ -76,21 +82,13 @@ extension ActionableTableView {
         }
         
         
-        
-        let date = Date()
-        var actionableCell:ActionableCell!
-        let actionable = self.actionableForIndexPath(path: indexPath)
-        if actionable.isProgressing(atDate: date) {
-            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        } else {
-            actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        }
-        
+        let item = self.itemForIndexPath(path: indexPath)
+        let actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let startingTime = self.estimatedStartingTime(forPath: indexPath)
         
-        actionableCell.configure(manager: self.manager, actionable: actionable, forDate: Date(), estimatedStartingTime: startingTime, delegate: self)
+        actionableCell.configure(manager: self.manager, item: item, forDate: Date(), estimatedStartingTime: startingTime, delegate: self)
         
-        configure(swipeableCell: actionableCell as! MGSwipeTableCell)
-        return actionableCell as! UITableViewCell
+        configure(swipeableCell: actionableCell as MGSwipeTableCell)
+        return actionableCell as UITableViewCell
     }
 }

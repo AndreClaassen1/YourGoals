@@ -57,17 +57,17 @@ extension ActionableTableView: LongPressReorder {
         
         
         if initialIndex.section == finalIndex.section {
-            let actionables = self.actionables[initialIndex.section]
-            try positioning.updatePosition(actionables: actionables, fromPosition: initialIndex.row, toPosition: finalIndex.row)
+            let items = self.items[initialIndex.section]
+            try positioning.updatePosition(items: items, fromPosition: initialIndex.row, toPosition: finalIndex.row)
         } else {
             // handling for empty cells
             
             var toPosition = finalIndex.row
-            if actionables[finalIndex.section].count < toPosition {
-                toPosition = actionables[finalIndex.section].count
+            if items[finalIndex.section].count < toPosition {
+                toPosition = items[finalIndex.section].count
             }
             
-            try positioning.moveIntoSection(actionable: actionableForIndexPath(path: initialIndex), section: self.sections[finalIndex.section], toPosition: toPosition)
+            try positioning.moveIntoSection(item: itemForIndexPath(path: initialIndex), section: self.sections[finalIndex.section], toPosition: toPosition)
         }
         
         reload()
@@ -77,7 +77,7 @@ extension ActionableTableView: LongPressReorder {
     
     func startReorderingRow(atIndex indexPath: IndexPath) -> Bool {
         self.timerPaused = true
-        guard self.actionables[indexPath.section].count > 0 else {
+        guard self.items[indexPath.section].count > 0 else {
             return false
         }
         

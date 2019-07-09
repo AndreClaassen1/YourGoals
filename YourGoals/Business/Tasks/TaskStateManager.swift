@@ -53,8 +53,8 @@ class TaskStateManager:ActionableSwitchProtocol {
     
     // MARK: - ActionableSwitchProtocol
     
-    func switchBehavior(forActionable actionable: Actionable, atDate date: Date) throws {
-        guard let task = actionable as? Task else {
+    func switchBehavior(forItem item: ActionableItem, atDate date: Date) throws {
+        guard let task = item.actionable as? Task else {
             assertionFailure("switchState failed. Actionable isn't a task")
             return
         }
@@ -66,7 +66,7 @@ class TaskStateManager:ActionableSwitchProtocol {
         }
     }
     
-    func isBehaviorActive(forActionable actionable: Actionable, atDate date: Date) -> Bool {
-        return actionable.checkedState(forDate: date) == .active
+    func isBehaviorActive(forItem item: ActionableItem, atDate date: Date) -> Bool {
+        return item.actionable.checkedState(forDate: date) == .active
     }
 }
