@@ -48,7 +48,7 @@ class TodayScheduleCalculator:StorageManagerWorker {
     ///   - actionables: the actinalbes
     /// - Returns: array with associated starting ties
     /// - Throws: core data exception
-    func calculateTimeInfo(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
+    func calculateTimeInfos(forTime time: Date, actionables:[Actionable]) throws -> [ActionableTimeInfo] {
         assert(actionables.first(where: { $0.type == .habit}) == nil, "there only tasks allowed")
 
         var startingTimes = [ActionableTimeInfo]()

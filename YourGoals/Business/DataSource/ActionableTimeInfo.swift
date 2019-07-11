@@ -9,7 +9,7 @@
 import Foundation
 
 /// a calculated time info with starting, end time and an indicator if this time is in a conflicting state
-struct ActionableTimeInfo:Equatable {
+struct ActionableTimeInfo:Equatable, ActionableItem {
     /// state of this item
     ///
     /// - active: active state

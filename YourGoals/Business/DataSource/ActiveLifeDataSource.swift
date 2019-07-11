@@ -35,7 +35,7 @@ protocol ActionableLifeDataSource {
 /// a data source, which simulates the active life view
 ///
 /// This data source generates only actionable time infos out of done progress and active task items
-class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProtocol {
+class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     let manager:GoalsStorageManager
     let taskManager:TaskCommitmentManager
@@ -52,6 +52,10 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     
     // MARK: ActionableLifeDataSource
     
+    func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
+        return []
+    }
+    
     /// fetch the time infos needed for the active life data source
     ///
     /// - Parameters:
@@ -60,7 +64,8 @@ class ActiveLifeDataSource: ActionableLifeDataSource, ActionablePositioningProto
     ///
     /// - Returns: time infos which represent the active life data view
     /// - Throws: core data exceptions
-    func fetchTimeInfos(forDate date: Date, withBackburned backburnedGoals: Bool?) throws -> [ActionableTimeInfo] {
+    
+    func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
         let committedTasks = try taskManager.allCommittedTasks(forDate: date)
         let calculator = ActiveLifeScheduleCalculator(manager: self.manager)
         let timeInfos = try! calculator.calculateTimeInfoForActiveLife(forTime: date, actionables: committedTasks)

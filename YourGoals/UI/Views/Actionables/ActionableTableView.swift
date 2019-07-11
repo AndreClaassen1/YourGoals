@@ -105,12 +105,12 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                 self.startingTimes = [[ActionableTimeInfo]]()
                 if self.sections.count == 0 {
                     let actionables = self.items[0].map { $0.actionable }
-                    self.startingTimes = [try scheduleCalculator.calculateTimeInfo(forTime: date, actionables: actionables)]
+                    self.startingTimes = [try scheduleCalculator.calculateTimeInfos(forTime: date, actionables: actionables)]
                 } else {
                     for tuple in self.sections.enumerated()  {
                         let actionables = self.items[tuple.offset].map { $0.actionable }
                         if let startingTimeForSection = tuple.element.calculateStartingTime(forDate: date) {
-                            self.startingTimes?.append(try scheduleCalculator.calculateTimeInfo(forTime: startingTimeForSection, actionables: actionables))
+                            self.startingTimes?.append(try scheduleCalculator.calculateTimeInfos(forTime: startingTimeForSection, actionables: actionables))
                         }
                         else {
                             self.startingTimes?.append([])

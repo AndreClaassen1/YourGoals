@@ -79,7 +79,8 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     /// - Parameter tuple: a actionable and a calculated starting time info for the actionable
     /// - Returns: a test result tuple
-    fileprivate func testResultTuple(from timeInfo: ActionableTimeInfo) -> TestResultTuple {
+    fileprivate func testResultTuple(from timeInfo: ActionableItem) -> TestResultTuple {
+        let timeInfo = timeInfo as! ActionableTimeInfo
         let actionable = timeInfo.actionable
         let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
@@ -115,7 +116,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    fileprivate func checkResult(expected: [TestResultTuple], actual:[ActionableTimeInfo]) {
+    fileprivate func checkResult(expected: [TestResultTuple], actual:[ActionableItem]) {
         let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0) }
         XCTAssertEqual(actualResults.count, expected.count)
         for i in 0..<actualResults.count {
@@ -157,7 +158,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: false)
+        let timeInfos = try! activeLifeDataSource.fetchItems(forDate: testTime, withBackburned: false, andSection: nil)
         
         // test
         let expectedResult = [
@@ -203,7 +204,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
+        let timeInfos = try! activeLifeDataSource.fetchItems(forDate: testTime, withBackburned: false, andSection: nil)
         
         // test
         let expectedResult = [
@@ -249,7 +250,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
+        let timeInfos = try! activeLifeDataSource.fetchItems(forDate: testTime, withBackburned: false, andSection: nil)
         
         // test
         let expectedResult = [
@@ -294,7 +295,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         // act
         let activeLifeDataSource = ActiveLifeDataSource(manager: self.manager)
         let testTime = self.testDate.add(hours: 08, minutes: 00) // 08:00 am
-        let timeInfos = try! activeLifeDataSource.fetchTimeInfos(forDate: testTime, withBackburned: true)
+        let timeInfos = try! activeLifeDataSource.fetchItems(forDate: testTime, withBackburned: false, andSection: nil)
         
         // test
         let expectedResult = [

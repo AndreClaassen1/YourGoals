@@ -21,8 +21,15 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     let taskManager:TaskCommitmentManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
     let mode: Mode
+    let manager: GoalsStorageManager
     
+    /// initialize the data source with the core data storage managenr
+    ///
+    /// - Parameters:
+    ///   - manager: core data storage manager
+    ///   - mode: active tasks or done tasks included or not
     init(manager: GoalsStorageManager, mode: Mode = .activeTasksIncluded) {
+        self.manager = manager
         self.mode = mode
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
@@ -30,10 +37,19 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
     
     // MARK: ActionableTableViewDataSource
     
+    /// this data source doesn't provide sections
     func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         return []
     }
     
+    /// fetch the actionables for the date/time as Actionable time infos with start/end time and progress
+    ///
+    /// - Parameters:
+    ///   - date: date/time
+    ///   - backburnedGoals: include backburned goals or not
+    ///   - andSection: this is ignored
+    /// - Returns: actionable time infos
+    /// - Throws: core data exception
     func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
         let committedTasks = try taskManager.committedTasksTodayAndFromThePast(forDate: date, backburnedGoals: backburnedGoals)
         var tasks:[Task]!
@@ -46,8 +62,9 @@ class CommittedTasksDataSource: ActionableDataSource, ActionablePositioningProto
             tasks = committedTasks.filter { $0.getTaskState() != .done  }
         }
         
-        let items = tasks.map{ ActionableResult(actionable: $0) }
-        return items
+        let calculator = TodayScheduleCalculator(manager: self.manager)
+        let timeInfos = try calculator.calculateTimeInfos(forTime: date, actionables: tasks)
+        return timeInfos
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {
