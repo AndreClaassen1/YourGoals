@@ -23,7 +23,6 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var reorderTableView: LongPressReorderTableView!
     var sections = [ActionableSection]()
     var items = [[ActionableItem]]()
-    var startingTimes:[[ActionableTimeInfo]]?
     var timer = Timer()
     var timerPaused = false
     var editTask:Task? = nil
@@ -35,7 +34,6 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var manager: GoalsStorageManager!
     var calculatestartingTimes = false
     var reorderInfo:ReorderInfo?
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,10 +63,9 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     ///   - dataSource: a actionable data source
     ///   - delegate: a delegate for actions like editing or so.
     ///   - varyingHeightConstraint: an optional constraint, if the actionable table view should modify the constriaitn
-    func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, calculatestartingTimes:Bool = false, varyingHeightConstraint: NSLayoutConstraint? = nil) {
+    func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
         self.manager = manager
         self.dataSource = dataSource
-        self.calculatestartingTimes = calculatestartingTimes
         self.delegate = delegate
         if let constraint = varyingHeightConstraint {
             self.configure(constraint: constraint)
@@ -97,27 +94,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
                     self.items.append(try dataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: section))
                 }
             }
-            
-            // calculate starting times
-            self.startingTimes = nil
-            if calculatestartingTimes {
-                let scheduleCalculator = TodayScheduleCalculator(manager: self.manager)
-                self.startingTimes = [[ActionableTimeInfo]]()
-                if self.sections.count == 0 {
-                    let actionables = self.items[0].map { $0.actionable }
-                    self.startingTimes = [try scheduleCalculator.calculateTimeInfos(forTime: date, actionables: actionables)]
-                } else {
-                    for tuple in self.sections.enumerated()  {
-                        let actionables = self.items[tuple.offset].map { $0.actionable }
-                        if let startingTimeForSection = tuple.element.calculateStartingTime(forDate: date) {
-                            self.startingTimes?.append(try scheduleCalculator.calculateTimeInfos(forTime: startingTimeForSection, actionables: actionables))
-                        }
-                        else {
-                            self.startingTimes?.append([])
-                        }
-                    }
-                }
-            }
+        
             self.tasksTableView.reloadData()
         }
         catch let error {
@@ -160,18 +137,6 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     /// - Returns: index actionable
     func itemForIndexPath(path: IndexPath) -> ActionableItem {
         return self.items[path.section][path.row]
-    }
-    
-    /// retrieve the estimated starting time for a path
-    ///
-    /// - Parameter path: the path
-    /// - Returns: the starting time for the cell
-    func estimatedStartingTime(forPath path: IndexPath) -> ActionableTimeInfo? {
-        guard let startingTimes = self.startingTimes else {
-            return nil
-        }
-        
-        return startingTimes[path.section][path.row]
     }
     
     /// retrieve the index path of all task cells, which are in progess

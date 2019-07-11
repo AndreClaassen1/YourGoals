@@ -234,11 +234,9 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///   - manager: the storage manager
     ///   - actionable: show the actionable in the cell
     ///   - date: for this date
-    ///   - time: with this optional estimated starting time
     ///   - delegate: a delegate for call back actions
-    func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date,
-                   estimatedStartingTime time: ActionableTimeInfo?,
-                   delegate: ActionableTableCellDelegate) {
+    func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date, delegate: ActionableTableCellDelegate) {
+        let timeInfo = item as? ActionableTimeInfo
         self.taskProgressManager = TaskProgressManager(manager: manager)
         self.item = item
         self.delegateTaskCell = delegate
@@ -247,7 +245,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         show(state: actionable.checkedState(forDate: date))
         showTaskProgress(forDate: date)
         showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
-        showWorkingTime(actionable: actionable, forDate: date, estimatedStartingTime: time)
+        showWorkingTime(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo)
         showAttachedURL(url: actionable.urlString)
         showAttachedImage(imageData: actionable.imageData)
         taskDescriptionLabel.text = actionable.name

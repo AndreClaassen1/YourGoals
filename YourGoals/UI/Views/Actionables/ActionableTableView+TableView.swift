@@ -84,9 +84,8 @@ extension ActionableTableView {
         
         let item = self.itemForIndexPath(path: indexPath)
         let actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        let startingTime = self.estimatedStartingTime(forPath: indexPath)
         
-        actionableCell.configure(manager: self.manager, item: item, forDate: Date(), estimatedStartingTime: startingTime, delegate: self)
+        actionableCell.configure(manager: self.manager, item: item, forDate: Date(), delegate: self)
         
         configure(swipeableCell: actionableCell as MGSwipeTableCell)
         return actionableCell as UITableViewCell
