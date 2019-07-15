@@ -334,7 +334,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-2V-Y7p" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-2V-Y7p" userLabel="activeLifeTableView" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -345,7 +345,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Active Life" image="tabbar_active_life_icon" id="EQW-jm-LNG"/>
                     <connections>
-                        <outlet property="todayTableView" destination="iWr-2V-Y7p" id="YhH-AS-duq"/>
+                        <outlet property="activeLifeTableView" destination="iWr-2V-Y7p" id="xpX-0g-8QN"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="YCn-b9-L93"/>
                     </connections>
                 </viewController>

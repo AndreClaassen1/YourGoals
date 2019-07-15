@@ -10,11 +10,33 @@ import Foundation
 import UIKit
 import MGSwipeTableCell
 
+extension ActionableTableViewDelegate {
+    
+    
+    /// register default table view cell
+    ///
+    /// - Parameter tableView: <#tableView description#>
+    func registerCells(inTableView tableView: UITableView) {
+        tableView.registerReusableCell(ActionableTableCell.self)
+    }
+    
+    /// default implementation retrieves the actionable cell
+    ///
+    /// - Parameters:
+    ///   - fromTableView: table view
+    ///   - atIndexPath: index patch
+    /// - Returns: a table view cell which implements the actionable cell protocoll
+    func dequeueActionableCell(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableCell {
+        let actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        return actionableCell
+    }
+}
+
+
 extension ActionableTableView {
     
     func configureTaskTableView(_ tableView: UITableView) {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "emptyCell")
-        tableView.registerReusableCell(ActionableTableCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 48.0
         tableView.delegate = self
@@ -83,11 +105,10 @@ extension ActionableTableView {
         
         
         let item = self.itemForIndexPath(path: indexPath)
-        let actionableCell = ActionableTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-        
+        let actionableCell = self.delegate.dequeueActionableCell(fromTableView: tableView, atIndexPath: indexPath)
         actionableCell.configure(manager: self.manager, item: item, forDate: Date(), delegate: self)
         
-        configure(swipeableCell: actionableCell as MGSwipeTableCell)
-        return actionableCell as UITableViewCell
+        configure(swipeableCell: actionableCell.swipeTableCell)
+        return actionableCell.swipeTableCell
     }
 }

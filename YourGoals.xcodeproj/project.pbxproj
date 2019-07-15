@@ -155,7 +155,6 @@
 		7B97202E2066550B007D142E /* Array+ExtensionMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */; };
 		7B97203120665C40007D142E /* ActionableInfoCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B97203020665C40007D142E /* ActionableInfoCreator.swift */; };
 		7B9759C71FB37B88009DED89 /* UIColor+YourGoalColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */; };
-		7B984CAE22D30E9F00A9E0A2 /* ActiveLifeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B984CAD22D30E9E00A9E0A2 /* ActiveLifeTableView.swift */; };
 		7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */; };
 		7B994DF91FA1C21D00B704E1 /* ActionableTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */; };
 		7B994DFB1FA1ECE200B704E1 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */; };
@@ -575,7 +574,6 @@
 		7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ExtensionMethods.swift"; sourceTree = "<group>"; };
 		7B97203020665C40007D142E /* ActionableInfoCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableInfoCreator.swift; sourceTree = "<group>"; };
 		7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+YourGoalColors.swift"; sourceTree = "<group>"; };
-		7B984CAD22D30E9E00A9E0A2 /* ActiveLifeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeTableView.swift; sourceTree = "<group>"; };
 		7B994DF61FA1C21D00B704E1 /* ActionableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTableCell.swift; sourceTree = "<group>"; };
 		7B994DF71FA1C21D00B704E1 /* ActionableTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionableTableCell.xib; sourceTree = "<group>"; };
 		7B994DFA1FA1ECE200B704E1 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
@@ -1592,7 +1590,6 @@
 				7B7F0A781FAA19C7001BBB17 /* ActionableTableView+SwipeableCell.swift */,
 				7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */,
 				7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */,
-				7B984CAD22D30E9E00A9E0A2 /* ActiveLifeTableView.swift */,
 			);
 			path = Actionables;
 			sourceTree = "<group>";
@@ -2177,7 +2174,6 @@
 				7B4EA60222B7C68500F3DFFE /* ActiveLifeViewController.swift in Sources */,
 				7B1D60C11FB75BDA00E617ED /* Goal+Actionable.swift in Sources */,
 				7B994DF81FA1C21D00B704E1 /* ActionableTableCell.swift in Sources */,
-				7B984CAE22D30E9F00A9E0A2 /* ActiveLifeTableView.swift in Sources */,
 				7B4B57A11FA6FE330099FF62 /* NibLoadingView.swift in Sources */,
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
 				7B9145A2207D3EDA00B2C5F8 /* watchMessageTypes.swift in Sources */,

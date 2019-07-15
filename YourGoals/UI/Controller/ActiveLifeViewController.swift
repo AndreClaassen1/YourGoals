@@ -10,7 +10,7 @@ import UIKit
 
 class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, EditActionableViewControllerDelegate {
     
-    @IBOutlet weak var todayTableView: ActionableTableView!
+    @IBOutlet weak var activeLifeTableView: ActionableTableView!
     var manager = GoalsStorageManager.defaultStorageManager
     var editActionable:Actionable? = nil
     var editActionableType:ActionableType? = nil
@@ -20,7 +20,7 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Active Life"
-        self.todayTableView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self)
+        self.activeLifeTableView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self)
     }
     
     // MARK: - Navigation
@@ -52,7 +52,7 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
     // MARK: - ActionableTableViewDelegate
     
     func reloadAll() {
-        self.todayTableView.reload()
+        self.activeLifeTableView.reload()
     }
     
     func requestForEdit(actionable: Actionable) {
@@ -78,6 +78,14 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
         self.reloadAll()
     }
     
+    func registerCells(inTableView tableView: UITableView) {
+        tableView.registerReusableCell(ActiveLifeTableCell.self)
+    }
+    
+    func dequeueActionableCell(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableCell {
+        let cell = ActiveLifeTableCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        return cell
+    }
     
     // MARK: - GoalDetailViewControllerDelegate
     

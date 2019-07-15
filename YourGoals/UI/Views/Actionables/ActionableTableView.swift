@@ -15,6 +15,8 @@ protocol ActionableTableViewDelegate {
     func goalChanged(goal: Goal)
     func progressChanged(actionable: Actionable)
     func commitmentChanged()
+    func registerCells(inTableView: UITableView)
+    func dequeueActionableCell(fromTableView: UITableView, atIndexPath: IndexPath) -> ActionableCell
 }
 
 /// a specialized UITableView for displaying tasks
@@ -70,6 +72,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
         if let constraint = varyingHeightConstraint {
             self.configure(constraint: constraint)
         }
+        self.delegate.registerCells(inTableView: self.tasksTableView)
         
         reload()
     }
@@ -173,6 +176,4 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate.requestForEdit(actionable: self.itemForIndexPath(path: indexPath).actionable)
     }
-    
- 
 }

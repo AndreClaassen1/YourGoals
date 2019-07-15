@@ -27,13 +27,16 @@ struct PlannableActionableSection:ActionableSection {
     }
 }
 
+/// a data source for a plannable and draggable action items 7 days in advance
 class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProtocol {
     
     let taskManager:TaskCommitmentManager
+    let calculator:TodayScheduleCalculator
     let committedDataSource:CommittedTasksDataSource
     let switchProtocolProvider:TaskSwitchProtocolProvider
     
     init(manager: GoalsStorageManager) {
+        self.calculator = TodayScheduleCalculator(manager: manager)
         self.taskManager  = TaskCommitmentManager(manager: manager)
         self.committedDataSource = CommittedTasksDataSource(manager: manager, mode: .doneTasksNotIncluced)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
@@ -69,13 +72,20 @@ class PlannableTasksDataSource: ActionableDataSource, ActionablePositioningProto
             return []
         }
         
+        guard let section = section else {
+            assertionFailure("We need a section here")
+            return []
+        }
+        
         if date.day().compare(plannableSection.date.day()) == .orderedSame {
-            return try committedDataSource.fetchItems(forDate: plannableSection.date, withBackburned: backburnedGoals, andSection: nil)
+            return try committedDataSource.fetchItems(forDate: date, withBackburned: backburnedGoals, andSection: nil)
         }
         
         let tasks = try taskManager.committedTasks(forDate: plannableSection.date, backburnedGoals: backburnedGoals)
-        let items = tasks.map { ActionableResult(actionable: $0) }
-        return items
+        let startingTimeForSection = section.calculateStartingTime(forDate: date)!
+        
+        let timeInfos = try self.calculator.calculateTimeInfos(forTime: startingTimeForSection, actionables: tasks)
+        return timeInfos
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

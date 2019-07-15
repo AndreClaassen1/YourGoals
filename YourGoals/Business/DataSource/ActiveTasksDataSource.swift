@@ -12,8 +12,10 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     
     let taskManager:TaskProgressManager
     let switchProtocolProvider:TaskSwitchProtocolProvider
+    let calculator:TodayScheduleCalculator
 
     init(manager: GoalsStorageManager) {
+        self.calculator = TodayScheduleCalculator(manager: manager)
         self.taskManager  = TaskProgressManager(manager: manager)
         self.switchProtocolProvider = TaskSwitchProtocolProvider(manager: manager)
     }
@@ -26,7 +28,8 @@ class ActiveTasksDataSource: ActionableDataSource, ActionablePositioningProtocol
     
     func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
         let tasks = try taskManager.activeTasks(forDate: date)
-        return tasks.map{ ActionableResult(actionable: $0) }
+        let timeInfos = try calculator.calculateTimeInfos(forTime: date, actionables: tasks)
+        return timeInfos
     }
     
     func positioningProtocol() -> ActionablePositioningProtocol? {

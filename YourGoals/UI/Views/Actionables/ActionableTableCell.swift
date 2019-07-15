@@ -52,6 +52,10 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
         return item.actionable
     }
     
+    var swipeTableCell: MGSwipeTableCell {
+        return self
+    }
+    
     // MARK: - Factory Method
     
     internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableTableCell {

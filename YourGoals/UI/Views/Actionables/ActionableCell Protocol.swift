@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MGSwipeTableCell
 
 
 /// the user
@@ -18,4 +19,5 @@ protocol ActionableTableCellDelegate {
 protocol ActionableCell {
     func configure(manager: GoalsStorageManager, item: ActionableItem, forDate date: Date, delegate: ActionableTableCellDelegate)
     var item:ActionableItem! { get }
+    var swipeTableCell:MGSwipeTableCell { get }
 }

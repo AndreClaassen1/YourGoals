@@ -11,12 +11,12 @@ import MGSwipeTableCell
 
 /// a table cell for displaying habits or tasks. experimental
 class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
-    @IBOutlet weak var totalWorkingTimeLabel: UILabel!
+    // @IBOutlet weak var totalWorkingTimeLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var workingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
-    @IBOutlet weak var commmittingDateLabel: UILabel!
+    // @IBOutlet weak var commmittingDateLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var pieProgressView: PieProgressView!
@@ -36,6 +36,10 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         return item.actionable
     }
     
+    var swipeTableCell: MGSwipeTableCell {
+        return self
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,9 +57,9 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     
     // MARK: - Factory Method
     
-    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActionableTableCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActionableTableCell", for: indexPath) as? ActionableTableCell else {
-            fatalError("*** Failed to dequeue ActionableTableCell ***")
+    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> ActiveLifeTableCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveLifeTableCell", for: indexPath) as? ActiveLifeTableCell else {
+            fatalError("*** Failed to dequeue ActiveLifeTableCell ***")
         }
         
         return cell
@@ -128,30 +132,30 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     ///   - date: date of the commitment
     func showTaskCommittingState(state: CommittingState, forDate date: Date?) {
         
-        guard let date = date else {
-            self.commmittingDateLabel.isHidden = true
-            return
-        }
-        
-        switch state {
-        case .committedForDate:
-            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-            self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.textColor  = UIColor.darkGreen
-        
-        case .committedForPast:
-            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-            self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.textColor  = UIColor.darkGreen
-            
-        case .committedForFuture:
-            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-            self.commmittingDateLabel.isHidden = false
-            self.commmittingDateLabel.textColor = UIColor.blue
-            
-        case .notCommitted:
-            self.commmittingDateLabel.isHidden = true
-        }
+//        guard let date = date else {
+//            self.commmittingDateLabel.isHidden = true
+//            return
+//        }
+//
+//        switch state {
+//        case .committedForDate:
+//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+//            self.commmittingDateLabel.isHidden = false
+//            self.commmittingDateLabel.textColor  = UIColor.darkGreen
+//
+//        case .committedForPast:
+//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+//            self.commmittingDateLabel.isHidden = false
+//            self.commmittingDateLabel.textColor  = UIColor.darkGreen
+//
+//        case .committedForFuture:
+//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
+//            self.commmittingDateLabel.isHidden = false
+//            self.commmittingDateLabel.textColor = UIColor.blue
+//
+//        case .notCommitted:
+//            self.commmittingDateLabel.isHidden = true
+//        }
     }
     
     /// quick :hack: to change the progress of a task.
@@ -176,7 +180,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         
         self.workingTimeLabel.textColor = workingTimeTextColor
         self.remainingTimeLabel.text = tuple.remainingTime
-        self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
+        // self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
     }
     
     /// adapt cell ui for a habit or a task
