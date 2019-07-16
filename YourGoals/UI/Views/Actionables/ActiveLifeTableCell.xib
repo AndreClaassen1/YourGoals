@@ -40,7 +40,7 @@
                             <constraint firstAttribute="height" constant="32" id="VGZ-5L-1YM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(999m)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-uC-qxm" userLabel="Remaining">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(999m)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-uC-qxm" userLabel="remainingTimeLabel">
                         <rect key="frame" x="304" y="0.0" width="57" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="8tr-bx-bPM"/>
@@ -162,7 +162,8 @@
                 <outlet property="pieProgressView" destination="lrB-uA-dVq" id="9sN-0Z-txO"/>
                 <outlet property="progressView" destination="LSh-YD-Kzj" id="idm-78-Oai"/>
                 <outlet property="progressViewHeightConstraint" destination="eUp-Fm-1MG" id="tYA-45-PjB"/>
-                <outlet property="remainingTimeLabel" destination="Qqi-08-FI4" id="zcj-gr-VmS"/>
+                <outlet property="remainingTimeLabel" destination="OT0-uC-qxm" id="5pd-Dq-inv"/>
+                <outlet property="remainingTimeProgressLabel" destination="Qqi-08-FI4" id="zcj-gr-VmS"/>
                 <outlet property="startingTimeLabel" destination="nNt-78-XXy" id="hog-Ab-POB"/>
                 <outlet property="taskDescriptionLabel" destination="mSh-BQ-mXO" id="2Jd-GZ-vjH"/>
                 <outlet property="urlButton" destination="Tte-RK-sFm" id="VnZ-YQ-fvy"/>

@@ -17,6 +17,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var goalDescriptionLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var remainingTimeProgressLabel: UILabel!
     @IBOutlet weak var pieProgressView: PieProgressView!
     @IBOutlet weak var progressViewHeightConstraint: NSLayoutConstraint!
     
@@ -112,7 +113,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
                 self.attachedImageView.image = nil
                 self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
             }
-            self.remainingTimeLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+            self.remainingTimeProgressLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
             self.pieProgressView.progress = 1.0 - remainingPercentage
             self.pieProgressView.progressTintColor = progressColor.darker()
             self.pieProgressView.fillColor = UIColor.clear
@@ -175,10 +176,11 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         if let timeInfo = timeInfo {
             workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
         }
+
+        self.remainingTimeLabel.text = tuple.remainingTimeInMinutes
         
         self.startingTimeLabel.textColor = workingTimeTextColor
-        self.remainingTimeLabel.text = tuple.remainingTime
-        // self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
+        self.remainingTimeProgressLabel.text = tuple.remainingTime
     }
     
     /// adapt cell ui for a habit or a task

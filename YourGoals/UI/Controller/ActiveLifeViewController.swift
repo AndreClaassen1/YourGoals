@@ -8,23 +8,35 @@
 
 import UIKit
 
+/// this is a view controller for displaying the active life table view. maybe, this will be one day the new today task controller
 class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, EditActionableViewControllerDelegate {
     
+    /// the actionable table view for displaying the task sheet
     @IBOutlet weak var activeLifeTableView: ActionableTableView!
+    
+    /// a core data storeage mangaegr
     var manager = GoalsStorageManager.defaultStorageManager
+    
+    /// editable variables. I have no clue, to code this better yet
     var editActionable:Actionable? = nil
     var editActionableType:ActionableType? = nil
     
+    /// initialitze the table view and the navigation bar
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Active Life"
-        self.activeLifeTableView.configure(manager: self.manager, dataSource: CommittedTasksDataSource(manager: self.manager), delegate: self)
+        self.activeLifeTableView.configure(manager: self.manager, dataSource: ActiveLifeDataSource(manager: self.manager), delegate: self)
     }
     
     // MARK: - Navigation
     
+    /// prepare for editing the selected actionable
+    ///
+    /// - Parameters:
+    ///   - segue: the segue
+    ///   - sender: the sener
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             fatalError("couldn't process segue with no identifier")
