@@ -11,12 +11,10 @@ import MGSwipeTableCell
 
 /// a table cell for displaying habits or tasks. experimental
 class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
-    // @IBOutlet weak var totalWorkingTimeLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
-    @IBOutlet weak var workingTimeLabel: UILabel!
+    @IBOutlet weak var startingTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
     @IBOutlet weak var goalDescriptionLabel: UILabel!
-    // @IBOutlet weak var commmittingDateLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     @IBOutlet weak var pieProgressView: PieProgressView!
@@ -172,13 +170,13 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     /// - Parameter task: task
     func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) {
         let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo )
-        self.workingTimeLabel.text = tuple.workingTime
+        self.startingTimeLabel.text = tuple.startingTimeText
         var workingTimeTextColor = UIColor.black
         if let timeInfo = timeInfo {
             workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
         }
         
-        self.workingTimeLabel.textColor = workingTimeTextColor
+        self.startingTimeLabel.textColor = workingTimeTextColor
         self.remainingTimeLabel.text = tuple.remainingTime
         // self.totalWorkingTimeLabel.text = tuple.totalWorkingTime
     }

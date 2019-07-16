@@ -20,25 +20,25 @@ struct TaskWorkingTimeTextCreator {
     ///   - estimatedStartingTime: estimated starting time of the task
     /// - Returns: a tuple consisting of formatted strings of
     ///            workingTimeRange, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) -> (workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
+    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) -> (startingTimeText: String?, workingTime:String?, remainingTime: String?, totalWorkingTime: String?) {
         guard actionable.type == .task else {
-            return (nil, nil, nil)
+            return (nil, nil, nil, nil)
         }
         
         let totalWorkingTime = actionable.calcProgressDuration(atDate: date)?.formattedAsString()
         
         guard actionable.checkedState(forDate: date) == .active else {
-            return (nil, nil, totalWorkingTime)
+            return (nil, nil, nil, totalWorkingTime)
         }
         
         if let timeInfo = timeInfo {
             let fixedIndicator = timeInfo.fixedStartingTime ? "*" : ""
-            
-            let workingTimeText = "\(fixedIndicator)\(timeInfo.startingTime.formattedTime()) - \(timeInfo.endingTime.formattedTime()) (\(timeInfo.remainingTimeInterval.formattedInMinutesAsString()))"
-            return (workingTimeText, timeInfo.remainingTimeInterval.formattedAsString(), totalWorkingTime)
+            let startingTimeText = "\(fixedIndicator)\(timeInfo.startingTime.formattedTime())"
+            let workingTimeText = startingTimeText + " - \(timeInfo.endingTime.formattedTime()) (\(timeInfo.remainingTimeInterval.formattedInMinutesAsString()))"
+            return (startingTimeText, workingTimeText, timeInfo.remainingTimeInterval.formattedAsString(), totalWorkingTime)
         } else {
             let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
-            return (nil, remainingTime.formattedAsString(), totalWorkingTime)
+            return (nil, nil, remainingTime.formattedAsString(), totalWorkingTime)
         }
     }
 }
