@@ -20,7 +20,7 @@ extension ActionableTimeInfo {
         self.endingTime = progress.endOfDay(day: day)
         self.remainingTimeInterval = TimeInterval(0)
         self.conflicting = false
-        self.fixedStartingTime = true
+        self.fixedStartingTime = false
         self.actionable = actionable
         self.progress = progress
     }
@@ -85,7 +85,23 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
         var startingTimeOfTask = time
         
         for actionable in actionables {
+            let task = actionable as! Task
             timeInfos.append(contentsOf: actionable.timeInfosFromDoneProgress(forDay: time))
+            
+            // if this actionable is done, leave the loop
+            if actionable.checkedState(forDate: time) == .done {
+                // let timeInfo = ActionableTimeInfo(start: actionable.)
+                
+                if let doneDate = task.doneDate {
+                    let timeInfo = ActionableTimeInfo(start: doneDate, end: doneDate, remainingTimeInterval: 0, conflicting: false, fixed: false, actionable: task)
+                    
+                    timeInfos.append(timeInfo)
+                } else {
+                    NSLog("warning: no done date set in done task: \(task)")
+                }
+            
+                continue
+            }
             
             // calculate next starting time of done items
             startingTimeOfTask = timeInfos.reduce(startingTimeOfTask) {
@@ -93,8 +109,6 @@ class ActiveLifeScheduleCalculator:StorageManagerWorker {
                 return $0.compare(nextStartingTime) == .orderedAscending ? nextStartingTime: $0
             }
             
-            // if this actionable is done, leave the loop
-            if actionable.checkedState(forDate: time) == .done { continue }
             
             let startingTimeForActionable = calculateStartingTime(forTime: startingTimeOfTask, actionable: actionable)
             let conflicting = startingTimeForActionable.compare(startingTimeOfTask) == .orderedAscending
