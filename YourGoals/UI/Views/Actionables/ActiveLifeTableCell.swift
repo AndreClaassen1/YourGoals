@@ -31,10 +31,6 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     var taskProgressManager:TaskProgressManager!
     var defaultProgressViewHeight:CGFloat = 0.0
     
-    var actionable:Actionable {
-        return item.actionable
-    }
-    
     var swipeTableCell: MGSwipeTableCell {
         return self
     }
@@ -69,7 +65,8 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     }
      
     @IBAction func clickOnURL(_ sender: Any) {
-        guard let urlString = actionable.urlString else {
+        
+        guard let urlString = self.item.actionable.urlString else {
             NSLog("clickOnURL failed. no URL is set")
             return
         }
@@ -99,21 +96,21 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     /// show the task progress state and resize the control for the needed height
     ///
     /// - Parameter date: show progress for date
-    func showTaskProgress(forDate date: Date) {
-        let isProgressing = self.actionable.isProgressing(atDate: date)
+    func showTaskProgress(timeInfo: ActionableTimeInfo, forDate date: Date) {
+        let isProgressing = timeInfo.state(forDate: date) == .progressing
         self.progressView.isHidden = !isProgressing
         self.progressViewHeightConstraint.constant = isProgressing ? defaultProgressViewHeight : 0.0
         if isProgressing {
-            let remainingPercentage = CGFloat(actionable.calcRemainingPercentage(atDate: date))
+            let remainingPercentage = CGFloat(timeInfo.actionable.calcRemainingPercentage(atDate: date))
             let progressColor = self.colorCalculator.calculateColor(percent: remainingPercentage)
-            if let imageData = self.actionable.imageData {
+            if let imageData = timeInfo.actionable.imageData {
                 self.contentView.backgroundColor = UIColor.white
                 self.attachedImageView.image = UIImage(data: imageData)
             } else {
                 self.attachedImageView.image = nil
                 self.contentView.backgroundColor = progressColor.lighter(by: 75.0)
             }
-            self.remainingTimeProgressLabel.text =  self.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
+            self.remainingTimeProgressLabel.text =  timeInfo.actionable.calcRemainingTimeInterval(atDate: date).formattedAsString()
             self.pieProgressView.progress = 1.0 - remainingPercentage
             self.pieProgressView.progressTintColor = progressColor.darker()
             self.pieProgressView.fillColor = UIColor.clear
@@ -162,21 +159,19 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     /// - Parameter sender: self
     @IBAction func timerPlusTouched(_ sender: Any) {
         let progressingDate = Date()
-        try? self.taskProgressManager.changeTaskSize(forTask: self.actionable, delta: 15.0, forDate: progressingDate)
-        showTaskProgress(forDate: progressingDate)
+        let timeInfo = self.item as! ActionableTimeInfo
+        try? self.taskProgressManager.changeTaskSize(forTask: timeInfo.actionable, delta: 15.0, forDate: progressingDate)
+        showTaskProgress(timeInfo: timeInfo, forDate: progressingDate)
     }
     
     /// show the working time on this task.
     ///
     /// - Parameter task: task
-    func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) {
-        let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo )
+    func showWorkingTime(timeInfo: ActionableTimeInfo, forDate date: Date) {
+        let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: timeInfo.actionable, forDate: date, estimatedStartingTime: timeInfo )
         self.startingTimeLabel.text = tuple.startingTimeText
-        var workingTimeTextColor = UIColor.black
-        if let timeInfo = timeInfo {
-            workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
-        }
-
+        let workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
+    
         self.remainingTimeLabel.text = tuple.remainingTimeInMinutes
         
         self.startingTimeLabel.textColor = workingTimeTextColor
@@ -231,6 +226,15 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         self.attachedImageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
     
+    fileprivate func showGoalInfo(timeInfo: ActionableTimeInfo) {
+        if let goalName = timeInfo.actionable.goal?.name {
+            goalDescriptionLabel.text = "Goal: \(goalName)"
+            goalDescriptionLabel.isHidden = false
+        } else {
+            goalDescriptionLabel.isHidden = true
+        }
+    }
+    
     /// show the content of the task in this cell
     ///
     /// - Parameters:
@@ -241,25 +245,19 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     func configure(manager: GoalsStorageManager, item: ActionableItem,
                    forDate date: Date,
                    delegate: ActionableTableCellDelegate) {
-        let timeInfo = item as? ActionableTimeInfo
+        let timeInfo = item as! ActionableTimeInfo
         self.taskProgressManager = TaskProgressManager(manager: manager)
-        self.item = item
+        self.item = timeInfo
         self.delegateTaskCell = delegate
         self.taskDescriptionLabel.sizeToFit()
-        adaptUI(forActionableType: actionable.type)
-        show(state: actionable.checkedState(forDate: date))
-        showTaskProgress(forDate: date)
-        showTaskCommittingState(state: actionable.committingState(forDate: date), forDate: actionable.commitmentDate)
-        showWorkingTime(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo)
-        showAttachedURL(url: actionable.urlString)
-        showAttachedImage(imageData: actionable.imageData)
-        taskDescriptionLabel.text = actionable.name
-        
-        if let goalName = actionable.goal?.name {
-            goalDescriptionLabel.text = "Goal: \(goalName)"
-            goalDescriptionLabel.isHidden = false
-        } else {
-            goalDescriptionLabel.isHidden = true
-        }
+        adaptUI(forActionableType: timeInfo.actionable.type)
+        show(state: timeInfo.actionable.checkedState(forDate: date))
+        showTaskProgress(timeInfo: timeInfo, forDate: date)
+        showTaskCommittingState(state: timeInfo.actionable.committingState(forDate: date), forDate: timeInfo.actionable.commitmentDate)
+        showWorkingTime(timeInfo: timeInfo, forDate: date)
+        showAttachedURL(url: timeInfo.actionable.urlString)
+        showAttachedImage(imageData: timeInfo.actionable.imageData)
+        taskDescriptionLabel.text = timeInfo.actionable.name
+        showGoalInfo(timeInfo: timeInfo)
     }
 }

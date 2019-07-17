@@ -79,13 +79,13 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     /// - Parameter tuple: a actionable and a calculated starting time info for the actionable
     /// - Returns: a test result tuple
-    fileprivate func testResultTuple(from timeInfo: ActionableItem) -> TestResultTuple {
+    fileprivate func testResultTuple(from timeInfo: ActionableItem, atDate date: Date) -> TestResultTuple {
         let timeInfo = timeInfo as! ActionableTimeInfo
         let actionable = timeInfo.actionable
         let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
         let remaining = "\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false))"
-        let state = timeInfo.state.asString()
+        let state = timeInfo.state(forDate: date).asString()
         let timeState = timeInfo.conflicting ? "Conflicting" : ""
         return (begin, timeState, task, remaining, state)
     }
@@ -116,8 +116,8 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// - Parameters:
     ///   - expected: expected test results
     ///   - actual: actual native results from the actionable data source
-    fileprivate func checkResult(expected: [TestResultTuple], actual:[ActionableItem]) {
-        let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0) }
+    fileprivate func checkResult(expected: [TestResultTuple], actual:[ActionableItem], atDate date: Date) {
+        let actualResults:[TestResultTuple] = actual.map { testResultTuple(from: $0, atDate: date) }
         XCTAssertEqual(actualResults.count, expected.count)
         for i in 0..<actualResults.count {
             XCTAssert(expected[i] == actualResults[i], dumpResult(index: i, expected: expected[i], actual: actualResults[i]))
@@ -162,12 +162,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "30 m", "Active"),
-            ("08:30", "", "This is the second Task", "15 m", "Active"),
-            ("08:45", "", "This is the third Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "30 m", "Open"),
+            ("08:30", "", "This is the second Task", "15 m", "Open"),
+            ("08:45", "", "This is the third Task", "30 m", "Open")
         ]
         
-        checkResult(expected: expectedResult, actual: timeInfos)
+        checkResult(expected: expectedResult, actual: timeInfos, atDate: testTime)
     }
     
     /// given a day with following tasks
@@ -208,12 +208,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "0 m", "Done"),
-            ("08:30", "", "This is the second Task", "15 m", "Active"),
-            ("08:45", "", "This is the third Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "0 m", "Progress"),
+            ("08:30", "", "This is the second Task", "15 m", "Open"),
+            ("08:45", "", "This is the third Task", "30 m", "Open")
         ]
         
-        checkResult(expected: expectedResult, actual: timeInfos)
+        checkResult(expected: expectedResult, actual: timeInfos, atDate: testTime)
     }
 
     /// given a day with following tasks
@@ -254,12 +254,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "30 m", "Active"),
-            ("08:15", "Conflicting", "This is the second Task", "15 m", "Active"),
-            ("08:30", "", "This is the third Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "30 m", "Open"),
+            ("08:15", "Conflicting", "This is the second Task", "15 m", "Open"),
+            ("08:30", "", "This is the third Task", "30 m", "Open")
         ]
         
-        checkResult(expected: expectedResult, actual: timeInfos)
+        checkResult(expected: expectedResult, actual: timeInfos, atDate: testTime)
     }
     
     /// given a day with following tasks
@@ -299,12 +299,12 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "0 m", "Done"),
-            ("08:15", "", "This is the first Task", "15 m", "Active"),
-            ("08:30", "", "This is the second Task", "30 m", "Active")
+            ("08:00", "", "This is the first Task", "0 m", "Progress"),
+            ("08:15", "", "This is the first Task", "15 m", "Progressing"),
+            ("08:30", "", "This is the second Task", "30 m", "Open")
         ]
         
-        checkResult(expected: expectedResult, actual: timeInfos)
+        checkResult(expected: expectedResult, actual: timeInfos, atDate: testTime)
     }
 }
 

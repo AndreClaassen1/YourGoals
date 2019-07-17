@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "TaskProgress.png",
+      "filename" : "progress.png",
       "scale" : "1x"
     },
     {

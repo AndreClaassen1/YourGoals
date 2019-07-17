@@ -12,16 +12,21 @@ import Foundation
 struct ActionableTimeInfo:Equatable, ActionableItem {
     /// state of this item
     ///
-    /// - active: active state
-    /// - done: done state
-    /// - progress: progress state
+    /// - open: the task is open but not progressing
+    /// - progressing: the task is currently progressing
+    /// - done: the task is done
+    /// - progress: this is a done task progress entry
     enum State {
-        case active
+        case open
+        case progressing
+        case progress
         case done
         
         func asString() -> String {
             switch self {
-            case .active: return "Active"
+            case .progress: return "Progress"
+            case .progressing: return "Progressing"
+            case .open: return "Open"
             case .done: return "Done"
             }
         }
@@ -48,18 +53,25 @@ struct ActionableTimeInfo:Equatable, ActionableItem {
     /// an optional progress, if this time info is corresponding with a done task progress
     let progress:TaskProgress?
     
-    /// state for the time info
-    var state:State {
+    /// calculate the state for the time info
+    ///
+    /// - Parameter forDate: the date/time for the calculating
+    /// - Returns: a state
+    func state(forDate date: Date) -> State {
         if progress != nil {
-            return .done
+            return .progress
         }
         
-        let actionableState = actionable.checkedState(forDate: endingTime)
+        if actionable.isProgressing(atDate: date) {
+            return .progressing
+        }
+        
+        let actionableState = actionable.checkedState(forDate: date)
         switch actionableState {
         case .active:
-            return State.active
+            return .open
         case .done:
-            return State.done
+            return .done
         }
     }
     
