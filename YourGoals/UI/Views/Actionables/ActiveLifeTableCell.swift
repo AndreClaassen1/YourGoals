@@ -24,7 +24,6 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var attachedImageView: UIImageView!
     
-    
     var item: ActionableItem!
     var delegateTaskCell: ActionableTableCellDelegate!
     let colorCalculator = ColorCalculator(colors: [UIColor.red, UIColor.yellow, UIColor.green])
@@ -40,8 +39,6 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         // Initialization code
         
         defaultProgressViewHeight = progressViewHeightConstraint.constant
-        checkBoxButton.setImage(Asset.taskCircle.image, for: .normal)
-        checkBoxButton.setImage(Asset.taskChecked.image, for: .selected)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -81,16 +78,21 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     
     // MARK: - Content
     
-    /// show the action state as a marked checkbox
+    /// show the time info state in the checkbox button
     ///
     /// - Parameter state: .active or .done
-    func show(state: ActionableState) {
+    func showButtonState(_ state: ActionableTimeInfo.State) {
+        var imageAsset:ImageAsset!
         switch state {
-        case .active:
-            self.checkBoxButton.isSelected = false
+        case .progressing, .open:
+            imageAsset = Asset.taskCircle
         case .done:
-            self.checkBoxButton.isSelected = true
+            imageAsset = Asset.taskChecked
+        case .progress:
+            imageAsset = Asset.taskProgress
         }
+        
+        self.checkBoxButton.setImage(imageAsset.image, for: .normal)
     }
     
     /// show the task progress state and resize the control for the needed height
@@ -251,7 +253,7 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         self.delegateTaskCell = delegate
         self.taskDescriptionLabel.sizeToFit()
         adaptUI(forActionableType: timeInfo.actionable.type)
-        show(state: timeInfo.actionable.checkedState(forDate: date))
+        showButtonState(timeInfo.state(forDate: date))
         showTaskProgress(timeInfo: timeInfo, forDate: date)
         showTaskCommittingState(state: timeInfo.actionable.committingState(forDate: date), forDate: timeInfo.actionable.commitmentDate)
         showWorkingTime(timeInfo: timeInfo, forDate: date)
