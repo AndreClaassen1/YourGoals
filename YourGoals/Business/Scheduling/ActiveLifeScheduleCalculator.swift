@@ -18,7 +18,7 @@ extension ActionableTimeInfo {
     init(day: Date, actionable: Actionable, progress: TaskProgress ) {
         self.startingTime = progress.startOfDay(day: day)
         self.endingTime = progress.endOfDay(day: day)
-        self.remainingTimeInterval = TimeInterval(0)
+        self.estimatedLength = TimeInterval(0)
         self.conflicting = false
         self.fixedStartingTime = false
         self.actionable = actionable

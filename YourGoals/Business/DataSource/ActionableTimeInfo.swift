@@ -38,8 +38,8 @@ struct ActionableTimeInfo:Equatable, ActionableItem {
     /// the estimated ending time
     let endingTime:Date
     
-    /// the remaining time left for the task as a timeinterval
-    let remainingTimeInterval:TimeInterval
+    /// the estimated time left for the task as a timeinterval
+    let estimatedLength:TimeInterval
     
     /// the start of this time is in danger cause of the previous task is being late
     let conflicting: Bool
@@ -79,7 +79,7 @@ struct ActionableTimeInfo:Equatable, ActionableItem {
         return
             lhs.startingTime == rhs.startingTime &&
             lhs.endingTime == rhs.endingTime &&
-            lhs.remainingTimeInterval == rhs.remainingTimeInterval &&
+            lhs.estimatedLength == rhs.estimatedLength &&
             lhs.actionable.name == rhs.actionable.name
     }
 
@@ -87,13 +87,13 @@ struct ActionableTimeInfo:Equatable, ActionableItem {
     ///
     /// - Parameters:
     ///   - start: starting time
-    ///   - remainingTimeInterval: remaining time
+    ///   - estimatedLength: remaining time
     ///   - conflicting: actionable is conflicting with another actionable
     ///   - fixed: indicator if starting time is fixed
     init(start:Date, end:Date, remainingTimeInterval:TimeInterval, conflicting: Bool, fixed: Bool, actionable: Actionable, progress: TaskProgress? = nil) {
         self.startingTime = start.extractTime()
         self.endingTime = end.extractTime()
-        self.remainingTimeInterval = remainingTimeInterval
+        self.estimatedLength = remainingTimeInterval
         self.conflicting = conflicting
         self.fixedStartingTime = fixed
         self.actionable = actionable

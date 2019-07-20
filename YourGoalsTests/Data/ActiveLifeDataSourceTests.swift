@@ -84,7 +84,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let actionable = timeInfo.actionable
         let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
-        let remaining = "\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false))"
+        let remaining = "\(timeInfo.estimatedLength.formattedInMinutesAsString(supressNullValue: false))"
         let state = timeInfo.state(forDate: date).asString()
         let timeState = timeInfo.conflicting ? "Conflicting" : ""
         return (begin, timeState, task, remaining, state)

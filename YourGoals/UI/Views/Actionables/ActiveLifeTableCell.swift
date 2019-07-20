@@ -123,39 +123,6 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         }
     }
     
-    /// show the date for committing and its state in the date label
-    ///
-    /// - Parameters:
-    ///   - state: the state of the task
-    ///   - date: date of the commitment
-    func showTaskCommittingState(state: CommittingState, forDate date: Date?) {
-        
-//        guard let date = date else {
-//            self.commmittingDateLabel.isHidden = true
-//            return
-//        }
-//
-//        switch state {
-//        case .committedForDate:
-//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-//            self.commmittingDateLabel.isHidden = false
-//            self.commmittingDateLabel.textColor  = UIColor.darkGreen
-//
-//        case .committedForPast:
-//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-//            self.commmittingDateLabel.isHidden = false
-//            self.commmittingDateLabel.textColor  = UIColor.darkGreen
-//
-//        case .committedForFuture:
-//            self.commmittingDateLabel.text = date.formattedWithTodayTommorrowYesterday()
-//            self.commmittingDateLabel.isHidden = false
-//            self.commmittingDateLabel.textColor = UIColor.blue
-//
-//        case .notCommitted:
-//            self.commmittingDateLabel.isHidden = true
-//        }
-    }
-    
     /// quick :hack: to change the progress of a task.
     ///
     /// - Parameter sender: self
@@ -170,12 +137,10 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
     ///
     /// - Parameter task: task
     func showWorkingTime(timeInfo: ActionableTimeInfo, forDate date: Date) {
-        let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: timeInfo.actionable, forDate: date, estimatedStartingTime: timeInfo )
+        let tuple = TaskWorkingTimeTextCreator().timeLabelsForActiveLife(timeInfo: timeInfo, forDate: date)
         self.startingTimeLabel.text = tuple.startingTimeText
         let workingTimeTextColor = timeInfo.conflicting ? UIColor.red : timeInfo.fixedStartingTime ? UIColor.blue : UIColor.black
-    
         self.remainingTimeLabel.text = tuple.remainingTimeInMinutes
-        
         self.startingTimeLabel.textColor = workingTimeTextColor
         self.remainingTimeProgressLabel.text = tuple.remainingTime
     }
@@ -255,7 +220,6 @@ class ActiveLifeTableCell: MGSwipeTableCell, ActionableCell {
         adaptUI(forActionableType: timeInfo.actionable.type)
         showButtonState(timeInfo.state(forDate: date))
         showTaskProgress(timeInfo: timeInfo, forDate: date)
-        showTaskCommittingState(state: timeInfo.actionable.committingState(forDate: date), forDate: timeInfo.actionable.commitmentDate)
         showWorkingTime(timeInfo: timeInfo, forDate: date)
         showAttachedURL(url: timeInfo.actionable.urlString)
         showAttachedImage(imageData: timeInfo.actionable.imageData)

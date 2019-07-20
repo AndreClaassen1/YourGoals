@@ -17,11 +17,11 @@ struct TaskWorkingTimeTextCreator {
     /// - Parameters:
     ///   - actionable: the task or habit
     ///   - date: calculate values for this date
-    ///   - estimatedStartingTime: estimated starting time of the task
+    ///   - estimatedStartingTsime: estimated starting time of the task
     ///
     /// - Returns: a tuple consisting of several formatted strings of
     ///            starting time, working time range, remaining time and the total working time
-    func getTimeLabelTexts(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) -> (startingTimeText: String?, workingTime:String?, remainingTime: String?, remainingTimeInMinutes: String?, totalWorkingTime: String?) {
+    func timeLabelsForTasks(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) -> (startingTimeText: String?, workingTime:String?, remainingTime: String?, remainingTimeInMinutes: String?, totalWorkingTime: String?) {
         guard actionable.type == .task else {
             return (nil, nil, nil, nil, nil)
         }
@@ -36,13 +36,21 @@ struct TaskWorkingTimeTextCreator {
             let fixedIndicator = timeInfo.fixedStartingTime ? "*" : ""
             let startingTimeText = "\(fixedIndicator)\(timeInfo.startingTime.formattedTime())"
             let endTimeText = "\(timeInfo.endingTime.formattedTime())"
-            let remainingTimeInMinutesText = "(\(timeInfo.remainingTimeInterval.formattedInMinutesAsString(supressNullValue: false)))"
+            let remainingTimeInMinutesText = "(\(timeInfo.estimatedLength.formattedInMinutesAsString(supressNullValue: false)))"
             let workingTimeText = startingTimeText + " - " + endTimeText + " " + remainingTimeInMinutesText
-            return (startingTimeText, workingTimeText, timeInfo.remainingTimeInterval.formattedAsString(), remainingTimeInMinutesText, totalWorkingTime)
+            return (startingTimeText, workingTimeText, timeInfo.estimatedLength.formattedAsString(), remainingTimeInMinutesText, totalWorkingTime)
         } else {
             let remainingTime = actionable.calcRemainingTimeInterval(atDate: date)
             let remainingTimeInMinutesText = "(\(remainingTime.formattedInMinutesAsString()))"
             return (nil, nil, remainingTime.formattedAsString(), remainingTimeInMinutesText, totalWorkingTime)
         }
+    }
+    
+    func timeLabelsForActiveLife(timeInfo: ActionableTimeInfo, forDate date: Date) -> (startingTimeText: String, remainingTime: String, remainingTimeInMinutes: String) {
+        let fixedIndicator = timeInfo.fixedStartingTime ? "*" : ""
+        let startingTimeText = "\(fixedIndicator)\(timeInfo.startingTime.formattedTime())"
+        let remainingTimeInMinutesText = "(\(timeInfo.estimatedLength.formattedInMinutesAsString(supressNullValue: false)))"
+        let remainingTime = timeInfo.estimatedLength.formattedAsString()
+        return (startingTimeText, remainingTime, remainingTimeInMinutesText)
     }
 }

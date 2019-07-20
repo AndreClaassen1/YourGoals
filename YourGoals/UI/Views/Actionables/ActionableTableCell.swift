@@ -172,7 +172,7 @@ class ActionableTableCell: MGSwipeTableCell, ActionableCell {
     ///
     /// - Parameter task: task
     func showWorkingTime(actionable: Actionable, forDate date: Date, estimatedStartingTime timeInfo: ActionableTimeInfo?) {
-        let tuple = TaskWorkingTimeTextCreator().getTimeLabelTexts(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo )
+        let tuple = TaskWorkingTimeTextCreator().timeLabelsForTasks(actionable: actionable, forDate: date, estimatedStartingTime: timeInfo )
         self.workingTimeLabel.text = tuple.workingTime
         var workingTimeTextColor = UIColor.black
         if let timeInfo = timeInfo {
