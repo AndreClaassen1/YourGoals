@@ -52,6 +52,7 @@ class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol 
     
     // MARK: ActionableLifeDataSource
     
+    /// there are no sections in this data source
     func fetchSections(forDate date: Date, withBackburned backburnedGoals: Bool) throws -> [ActionableSection] {
         return []
     }
@@ -64,18 +65,19 @@ class ActiveLifeDataSource: ActionableDataSource, ActionablePositioningProtocol 
     ///
     /// - Returns: time infos which represent the active life data view
     /// - Throws: core data exceptions
-    
     func fetchItems(forDate date: Date, withBackburned backburnedGoals: Bool, andSection: ActionableSection?) throws -> [ActionableItem] {
-        let committedTasks = try taskManager.allCommittedTasks(forDate: date)
+        let committedTasks = try taskManager.committedTasks(forDate: date, backburnedGoals: backburnedGoals)
         let calculator = ActiveLifeScheduleCalculator(manager: self.manager)
         let timeInfos = try! calculator.calculateTimeInfoForActiveLife(forTime: date, actionables: committedTasks)
         return timeInfos
     }
     
+    /// retrieve the positioning protocoll for redordering the ites
     func positioningProtocol() -> ActionablePositioningProtocol? {
         return self
     }
     
+    /// retrieve the switch protocol for starting stopping items
     func switchProtocol(forBehavior behavior: ActionableBehavior) -> ActionableSwitchProtocol? {
         return self.switchProtocolProvider.switchProtocol(forBehavior: behavior)
     }

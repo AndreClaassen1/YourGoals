@@ -43,7 +43,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
             request.predicate = backburnedGoals ?
                 NSPredicate(format: "commitmentDate == %@", date.day() as NSDate) :
-                  NSPredicate(format: "commitmentDate == %@ AND goal.backburnedGoals == NO", date.day() as NSDate)
+                NSPredicate(format: "commitmentDate == %@ AND goal.backburnedGoals == NO", date.day() as NSDate)
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)
@@ -68,7 +68,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
             request.predicate = backburnedGoals ?
                 NSPredicate(format: "commitmentDate < %@ AND state == 0", date.day() as NSDate) :
                 NSPredicate(format: "commitmentDate < %@ AND state == 0 AND goal.backburnedGoals == NO", date.day() as NSDate)
-                
+            
             request.sortDescriptors = [
                 NSSortDescriptor(key: "commitmentDate", ascending: false),
                 NSSortDescriptor(key: "commitmentPrio", ascending: true)
@@ -125,7 +125,7 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
     /// - Throws: core data exception
     func committedTasksTodayAndFromThePast(forDate date:Date, backburnedGoals: Bool) throws -> [Task] {
         var tasks = [Task]()
-    
+        
         tasks.append(contentsOf: try committedTasks(forDate: date, backburnedGoals: backburnedGoals))
         tasks.append(contentsOf: try committedTasksPast(forDate: date, backburnedGoals: backburnedGoals))
         tasks.append(contentsOf: try uncommittedTasksForTodayGoal(backburnedGoals: backburnedGoals))
@@ -139,25 +139,6 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         }
         
         return sorted
-    }
-    
-    /// fetch all tasks which have a commitmentdate
-    ///
-    /// - Parameter date: date
-    /// - Returns: a collection of all committed tasks
-    /// - Throws: core data exception
-    func allCommittedTasks(forDate date:Date) throws -> [Task] {
-        let tasks = try self.manager.tasksStore.fetchItems(qualifyRequest: { request in
-            request.predicate = NSPredicate(format:
-                "commitmentDate != nil",
-                                            date.day() as NSDate)
-            request.sortDescriptors = [
-                NSSortDescriptor(key: "commitmentDate", ascending: false),
-                NSSortDescriptor(key: "commitmentPrio", ascending: true)
-            ]
-        })
-        
-        return tasks
     }
     
     // MARK: - TaskPositioningProtocol
@@ -179,14 +160,14 @@ class TaskCommitmentManager : StorageManagerWorker, ActionableSwitchProtocol {
         updateTasksOrder(tasks: tasksReorderd)
         try self.manager.saveContext()
     }
-
+    
     func insertTaskAtPosition(task: Task, tasks: [Task], toPosition: Int) throws   {
         var tasksReorderd = tasks
         tasksReorderd.insert(task, at: toPosition)
         updateTasksOrder(tasks: tasksReorderd)
         try self.manager.saveContext()
     }
-
+    
     // MARK: - ActionableSwitchProtocol
     
     func switchBehavior(forItem item: ActionableItem, atDate date: Date) throws {
