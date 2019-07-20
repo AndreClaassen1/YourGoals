@@ -22,12 +22,19 @@ class ActiveLifeDataSourceCalculatorTests: StorageTestCase {
         return task
     }
     
-    func checkTimeInfos(_ timeInfos:[ActionableTimeInfo], _ expected: [(start:String, end:String)]) {
+    /// check a time info against a tuple with values in a human readable string format
+    ///
+    /// - Parameters:
+    ///   - timeInfos: the time info
+    ///   - expected: the expected values
+    func checkTimeInfos(_ timeInfos:[ActionableTimeInfo], _ expected: [(start:String, end:String, length:String)]) {
         for tuple in timeInfos.enumerated() {
             let timeInfo = tuple.element
             let expectedValues = expected[tuple.offset]
+            let expectedLength = Double(expectedValues.length)! * 60.0
             XCTAssertEqual(timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE")), expectedValues.start)
             XCTAssertEqual(timeInfo.endingTime.formattedTime(locale: Locale(identifier: "de-DE")), expectedValues.end)
+            XCTAssertEqual(timeInfo.estimatedLength, expectedLength)
         }
     }
     
@@ -42,8 +49,8 @@ class ActiveLifeDataSourceCalculatorTests: StorageTestCase {
         
         // test
         checkTimeInfos(timeInfos, [
-            ("08:00", "09:00"),
-            ("11:00", "13:00")])
+            ("08:00", "09:00", "60"),
+            ("11:00", "13:00", "120")])
     }
 
     func testProgressFromActionableSorted() {
@@ -58,7 +65,7 @@ class ActiveLifeDataSourceCalculatorTests: StorageTestCase {
         
         // test
         checkTimeInfos(timeInfos, [
-            ("08:00", "09:00"),
-            ("11:00", "13:00")])
+            ("08:00", "09:00", "60"),
+            ("11:00", "13:00", "120")])
     }
 }
