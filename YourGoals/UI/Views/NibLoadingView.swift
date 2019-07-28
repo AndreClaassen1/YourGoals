@@ -12,6 +12,17 @@ import UIKit
 // Usage: Subclass your UIView from NibLoadView to automatically load a xib with the same name as your class
 
 @IBDesignable
+
+
+/// this base class makes Custom Controlls based on XIB files work.
+/// to make you happy, do the following things
+///
+/// 1. Create a XIB-File
+/// 2. Create a swift UIView class file with the same name as the xib
+/// 3. The class file should be dependend of NibLoadingFiew
+/// 4. in the xib the files owner placeholder (only) should set
+///    to the swift class
+/// 5. Now you can make other outlets for your controls
 class NibLoadingView: UIView {
     
     @IBOutlet weak var view: UIView!

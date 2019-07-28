@@ -10,6 +10,7 @@
 		262C7DD718E1DCF833988CC4 /* Pods_YourGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */; };
 		572591EC54BE9BF7E7E4C02C /* Pods_YourGoalsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224734CE990837BF99170EE8 /* Pods_YourGoalsTests.framework */; };
 		7B000494207DED1900C3BDAB /* ActionableTableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */; };
+		7B00211C22EB09FE0028D2F0 /* CalendarBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B00211B22EB09FE0028D2F0 /* CalendarBarCell.swift */; };
 		7B055CF8210E17B100321AC8 /* RepetitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B055CF7210E17B100321AC8 /* RepetitionTests.swift */; };
 		7B055CFA210E1BFE00321AC8 /* RepetitionValueEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B055CF9210E1BFE00321AC8 /* RepetitionValueEncoding.swift */; };
 		7B0A72611FB043410000586D /* Task+Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A72601FB043410000586D /* Task+Actionable.swift */; };
@@ -224,6 +225,8 @@
 		7BBB30F6207BA83100F637E0 /* PlannableTasksDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */; };
 		7BBD49961FF26F81006F7A6F /* EditActionableFormController+Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */; };
 		7BC33A0620B80A4C00DDC25A /* WatchProgressingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */; };
+		7BC94AC822E97B0100B57B0A /* CalendarBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC94AC722E97B0100B57B0A /* CalendarBarView.swift */; };
+		7BC94ACA22E97D6D00B57B0A /* CalendarBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC94AC922E97D6D00B57B0A /* CalendarBarView.xib */; };
 		7BC9AD1B1FB2EAC7002EF00A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */; };
 		7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */; };
 		7BCC3D791FA524AA00FE2468 /* GoalUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */; };
@@ -423,6 +426,7 @@
 		78A77C01219EC8C9FEE5F9EB /* Pods-YourGoalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourGoalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourGoalsTests/Pods-YourGoalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		79FE22FF8CBBE2FD16F8505B /* Pods_YourGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B000493207DED1900C3BDAB /* ActionableTableView+Reorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Reorder.swift"; sourceTree = "<group>"; };
+		7B00211B22EB09FE0028D2F0 /* CalendarBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBarCell.swift; sourceTree = "<group>"; };
 		7B055CF7210E17B100321AC8 /* RepetitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionTests.swift; sourceTree = "<group>"; };
 		7B055CF9210E1BFE00321AC8 /* RepetitionValueEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionValueEncoding.swift; sourceTree = "<group>"; };
 		7B0A72601FB043410000586D /* Task+Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Actionable.swift"; sourceTree = "<group>"; };
@@ -651,6 +655,8 @@
 		7BBB30F5207BA83100F637E0 /* PlannableTasksDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannableTasksDataSourceTests.swift; sourceTree = "<group>"; };
 		7BBD49951FF26F81006F7A6F /* EditActionableFormController+Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditActionableFormController+Eureka.swift"; sourceTree = "<group>"; };
 		7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressingInfo.swift; sourceTree = "<group>"; };
+		7BC94AC722E97B0100B57B0A /* CalendarBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBarView.swift; sourceTree = "<group>"; };
+		7BC94AC922E97D6D00B57B0A /* CalendarBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarBarView.xib; sourceTree = "<group>"; };
 		7BC9AD1A1FB2EAC7002EF00A /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		7BC9AD1C1FB2EB87002EF00A /* DateFormatter+convinience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+convinience.swift"; sourceTree = "<group>"; };
 		7BCC3D781FA524AA00FE2468 /* GoalUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalUpdater.swift; sourceTree = "<group>"; };
@@ -905,6 +911,7 @@
 		7B17DD851F9E88D2008E90A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7BC94AC622E97AC500B57B0A /* CalendarBar  */,
 				7BEA4ECB20D2D64600DEE71A /* Protocol */,
 				7BFD35C220076A9E00602FC8 /* Progress */,
 				7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */,
@@ -1355,6 +1362,16 @@
 				7BC33A0520B80A4C00DDC25A /* WatchProgressingInfo.swift */,
 			);
 			name = Business;
+			sourceTree = "<group>";
+		};
+		7BC94AC622E97AC500B57B0A /* CalendarBar  */ = {
+			isa = PBXGroup;
+			children = (
+				7BC94AC722E97B0100B57B0A /* CalendarBarView.swift */,
+				7BC94AC922E97D6D00B57B0A /* CalendarBarView.xib */,
+				7B00211B22EB09FE0028D2F0 /* CalendarBarCell.swift */,
+			);
+			path = "CalendarBar ";
 			sourceTree = "<group>";
 		};
 		7BCE811222C9DF6A00ABB8F8 /* Scheduling */ = {
@@ -1972,6 +1989,7 @@
 				7B4B579F1FA6F4D90099FF62 /* GoalContentView.xib in Resources */,
 				7BAA7A7F1FA0C1C6005B16EE /* GoalCell2.xib in Resources */,
 				7B4E0BE71FAF0CE500602FD1 /* HabitTableViewCell.xib in Resources */,
+				7BC94ACA22E97D6D00B57B0A /* CalendarBarView.xib in Resources */,
 				7B17DD891F9E88F3008E90A2 /* GoalsSectionHeader.xib in Resources */,
 				7BEA4ED320D2D6AE00DEE71A /* ProtocolSectionView.xib in Resources */,
 				7B994DFF1FA2176B00B704E1 /* NewGoalCell.xib in Resources */,
@@ -2178,6 +2196,7 @@
 				7B5FA3D31FA33BC5004556C1 /* TimeCapsule.swift in Sources */,
 				7B9145A2207D3EDA00B2C5F8 /* watchMessageTypes.swift in Sources */,
 				7BE4BB591FC80D3100E1BEF9 /* AppBadgeActualizer.swift in Sources */,
+				7B00211C22EB09FE0028D2F0 /* CalendarBarCell.swift in Sources */,
 				7B5FA3D91FA34443004556C1 /* TaskStateManager.swift in Sources */,
 				7B2B48711FCE101100FC095F /* TransitionAnimationTypes.swift in Sources */,
 				7BFF8AE02073C6D2007C108D /* TaskNotificationObserver.swift in Sources */,
@@ -2197,6 +2216,7 @@
 				7B74BC561FFD6C1F00D06D48 /* ColorCalculator.swift in Sources */,
 				7B17DD771F9E6E33008E90A2 /* GoalsViewController+CollectionView.swift in Sources */,
 				7BF957DC22BC9DD70033F3CB /* ActionableCell Protocol.swift in Sources */,
+				7BC94AC822E97B0100B57B0A /* CalendarBarView.swift in Sources */,
 				7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */,
 				7BE4BB5D1FC818FA00E1BEF9 /* AppBadgeCalculator.swift in Sources */,
 				7BEBBAC81F9F3CA5003D16AE /* GoalsStorageManager.swift in Sources */,

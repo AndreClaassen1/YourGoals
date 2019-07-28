@@ -334,13 +334,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-2V-Y7p" userLabel="activeLifeTableView" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFW-mg-2Vj" customClass="CalendarBarView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="xYm-Px-QTe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-2V-Y7p" userLabel="activeLifeTableView" customClass="ActionableTableView" customModule="YourGoals" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S6g-ga-9U8" firstAttribute="bottom" secondItem="iWr-2V-Y7p" secondAttribute="bottom" id="Erk-TV-dns"/>
+                            <constraint firstItem="iWr-2V-Y7p" firstAttribute="leading" secondItem="S6g-ga-9U8" secondAttribute="leading" id="SLF-VP-fgy"/>
+                            <constraint firstItem="aFW-mg-2Vj" firstAttribute="top" secondItem="S6g-ga-9U8" secondAttribute="top" id="UEb-K4-TFx"/>
+                            <constraint firstItem="aFW-mg-2Vj" firstAttribute="leading" secondItem="S6g-ga-9U8" secondAttribute="leading" id="dmS-42-uep"/>
+                            <constraint firstItem="S6g-ga-9U8" firstAttribute="trailing" secondItem="iWr-2V-Y7p" secondAttribute="trailing" id="kD6-rx-6D5"/>
+                            <constraint firstItem="S6g-ga-9U8" firstAttribute="trailing" secondItem="aFW-mg-2Vj" secondAttribute="trailing" id="vh5-lx-HnI"/>
+                            <constraint firstItem="iWr-2V-Y7p" firstAttribute="top" secondItem="aFW-mg-2Vj" secondAttribute="bottom" id="xv9-i7-9Hz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S6g-ga-9U8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Active Life" image="tabbar_active_life_icon" id="EQW-jm-LNG"/>
@@ -351,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHq-kw-Cym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1770" y="344"/>
+            <point key="canvasLocation" x="-1770.4000000000001" y="343.17841079460271"/>
         </scene>
         <!--Planning-->
         <scene sceneID="5TO-uZ-LQ9">
