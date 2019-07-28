@@ -9,11 +9,17 @@
 import UIKit
 import Foundation
 
+struct CalendarBarCellItem {
+    let date:Date
+    let progress:Double
+    
+}
+
 class CalendarBarCell: UICollectionViewCell {
 
     let dayNumberLabel = UILabel()
     let dayNameLabel = UILabel()
-    let dayProgressRing = UIProgressView()
+    let dayProgressRing = PieProgressView(frame: CGRect.zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +30,6 @@ class CalendarBarCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setupControls()
     }
-    
     
     fileprivate func setupControls() {
     
@@ -54,6 +59,13 @@ class CalendarBarCell: UICollectionViewCell {
         constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNameLabel(24@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
     
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    /// configure the view with a date
+    ///
+    /// - Parameter date: the date
+    func configure(date: Date) {
+        
     }
     
     // MARK: - Factory Method
