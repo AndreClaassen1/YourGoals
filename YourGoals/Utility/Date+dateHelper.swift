@@ -109,6 +109,12 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    public var dayNumberOfMonth:Int {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.day], from: self)
+        return components.day!
+    }
+    
     /// time as a time interval
     public func timeAsInterval() -> TimeInterval {
         return self.timeIntervalSince(Date.timeWith(hour: 0, minute: 0, second: 0))

@@ -9,18 +9,24 @@
 import UIKit
 import Foundation
 
-struct CalendarBarCellItem {
+struct CalendarBarCellValue {
     let date:Date
-    let progress:Double
+    let progress:CGFloat
     
+    init(date: Date, progress: Double) {
+        self.date = date
+        assert(progress >= 0.0 && progress <= 1.0)
+        self.progress = CGFloat(progress)
+    }
 }
 
+/// a cell representing a day in week for a date
 class CalendarBarCell: UICollectionViewCell {
 
     let dayNumberLabel = UILabel()
     let dayNameLabel = UILabel()
-    let dayProgressRing = PieProgressView(frame: CGRect.zero)
-    
+    let dayProgressRing = CircleProgressView(frame: CGRect.zero)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupControls()
@@ -34,8 +40,14 @@ class CalendarBarCell: UICollectionViewCell {
     fileprivate func setupControls() {
     
         self.addSubview(dayProgressRing)
-        self.addSubview(dayNumberLabel)
+        self.dayProgressRing.addSubview(dayNumberLabel)
         self.addSubview(dayNameLabel)
+        
+        dayNameLabel.textAlignment = .center
+        dayNameLabel.font = dayNumberLabel.font.withSize(12.0)
+        
+        dayNumberLabel.textAlignment = .center
+        dayNumberLabel.font = dayNumberLabel.font.withSize(14.0)
         
         let views: [String: Any] = [
             "dayNumberLabel": dayNumberLabel,
@@ -48,24 +60,36 @@ class CalendarBarCell: UICollectionViewCell {
         
         var constraints = [NSLayoutConstraint]()
         
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[dayNumberLabel(24)]-[dayNameLabel(14)]-8@250-|", options: [], metrics: nil, views: views)
         
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[dayProgressRing(==dayNumberLabel)]", options: [], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-2-[dayProgressRing]-2-[dayNameLabel(10)]-2-|", options: [], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-2-[dayProgressRing]-2-|", options: [ .alignAllCenterX ], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[dayNumberLabel]-0-|", options: [ .alignAllCenterY ], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[dayNumberLabel]-0-|", options: [], metrics: nil, views: views)
         
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNumberLabel(24@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
         
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayProgressRing(==dayNumberLabel@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
+//        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[dayNumberLabel(==dayProgressRing)]", options: [.alignAllCenterY ], metrics: nil, views: views)
+//        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNumberLabel]-|", options: [.alignAllCenterX ], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-4-[dayNameLabel]-4-|", options: [.alignAllCenterX], metrics: nil, views: views)
+
         
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNameLabel(24@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
-    
+        //        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[dayNumberLabel(24)]-[dayNameLabel(14)]-8@250-|", options: [], metrics: nil, views: views)
+//
+//        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNumberLabel(24@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
+//
+//        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayProgressRing(==dayNumberLabel@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
+//
+//        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayNameLabel(24@250)]-|", options: [.alignAllCenterX], metrics: nil, views: views)
+//
         NSLayoutConstraint.activate(constraints)
     }
     
     /// configure the view with a date
     ///
     /// - Parameter date: the date
-    func configure(date: Date) {
-        
+    func configure(value: CalendarBarCellValue) {
+        dayNumberLabel.text = String(value.date.dayNumberOfMonth)
+        dayNameLabel.text = value.date.weekdayChar
+        dayProgressRing.progress = value.progress
     }
     
     // MARK: - Factory Method

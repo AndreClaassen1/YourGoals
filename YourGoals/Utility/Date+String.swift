@@ -18,6 +18,13 @@ extension Date {
         return formattedDate
     }
     
+    /// get a weekday as a single capital char
+    var weekdayChar: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return String(dateFormatter.string(from: self).capitalized.prefix(1))
+    }
+
     /// get the current day in locale format except if it is today, yesterday or tomorrow
     /// in those cases a nice string will this text will be returned
     ///
