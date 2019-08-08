@@ -11,7 +11,7 @@ import XCTest
 @testable import YourGoals
 
 fileprivate typealias TestTaskEntry = (task:String, size:String, progress:String, taskState:String, beginTime:String?)
-fileprivate typealias TestResultTuple = (begin: String, timeState:String, task:String, remaining:String, taskState: String)
+fileprivate typealias TestResultTuple = (begin: String, timeState:String, task:String, estimated:String, taskState: String)
 
 func == <TestResultTuple:Equatable>(lhs: TestResultTuple, rhs: TestResultTuple) -> Bool {
     return lhs == rhs
@@ -84,10 +84,10 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         let actionable = timeInfo.actionable
         let begin = timeInfo.startingTime.formattedTime(locale: Locale(identifier: "de-DE"))
         let task = actionable.name ?? "no task name available"
-        let remaining = "\(timeInfo.estimatedLength.formattedInMinutesAsString(supressNullValue: false))"
+        let estimated = "\(timeInfo.estimatedLength.formattedInMinutesAsString(supressNullValue: false))"
         let state = timeInfo.state(forDate: date).asString()
         let timeState = timeInfo.conflicting ? "Conflicting" : ""
-        return (begin, timeState, task, remaining, state)
+        return (begin, timeState, task, estimated, state)
     }
     
     /// generates a string with the information about the tuple
@@ -140,9 +140,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// then I expect
     ///     the following time table
     ///
-    ///     Begin  | Task                     | Remaining  | State  |
+    ///     Begin  | Task                     | Estimated  | State  |
     ///     -------+--------------------------+------------+--------+
-    ///      08:00 | This is the first Task   |       0 m  | Active |
+    ///      08:00 | This is the first Task   |      30 m  | Active |
     ///      08:30 | This is the second Task  |      15 m  | Active |
     ///      08:45 | This is the third Task   |      30 m  | Active |
     func testGiven3SimpleActiveTasks() {
@@ -186,9 +186,9 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     /// then I expect
     ///     the following time table
     ///
-    ///     Begin  | Task                     | Remaining  | State  |
+    ///     Begin  | Task                     | Esimated  | State  |
     ///     -------+--------------------------+------------+--------+
-    ///      08:00 | This is the first Task   |       0 m  | Done   |
+    ///      08:00 | This is the first Task   |      30 m  | Progres  |
     ///      08:30 | This is the second Task  |      15 m  | Active |
     ///      08:45 | This is the third Task   |      30 m  | Active |
     func testGiven2ActiveAnd1DoneTasks() {
@@ -208,7 +208,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "0 m", "Progress"),
+            ("08:00", "", "This is the first Task", "30 m", "Progress"),
             ("08:30", "", "This is the second Task", "15 m", "Open"),
             ("08:45", "", "This is the third Task", "30 m", "Open")
         ]
@@ -278,11 +278,11 @@ class ActiveLifeDataSourceTests: StorageTestCase {
     ///
     ///     the following time table
     ///
-    ///     Begin  | C | Task                     | Remaining  | State  |
-    ///     -------+------------------------------+------------+--------+
-    ///      08:00 |   | This is the first Task   |       0 m  | Done   |
-    ///      08:15 |   | This is the first Task   |      15 m  | Active |
-    ///      08:30 |   | This is the second Task  |      30 m  | Active |
+    ///     Begin  | C | Task                     | Remaining  | State    |
+    ///     -------+------------------------------+------------+----------+
+    ///      08:00 |   | This is the first Task   |      15 m  | Progress |
+    ///      08:15 |   | This is the first Task   |      15 m  | Active   |
+    ///      08:30 |   | This is the second Task  |      30 m  | Active   |
     func testGivenPartialDoneTask() {
         
         // setup
@@ -299,7 +299,7 @@ class ActiveLifeDataSourceTests: StorageTestCase {
         
         // test
         let expectedResult = [
-            ("08:00", "", "This is the first Task", "0 m", "Progress"),
+            ("08:00", "", "This is the first Task", "15 m", "Progress"),
             ("08:15", "", "This is the first Task", "15 m", "Progressing"),
             ("08:30", "", "This is the second Task", "30 m", "Open")
         ]

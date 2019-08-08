@@ -30,7 +30,13 @@ extension Date {
         components.timeZone = timezoneIdentifier == nil ? TimeZone.current : TimeZone(identifier: timezoneIdentifier!)
         return calendar.date(from: components)!
     }
-    
+
+    /// get the start of a week (monday)
+    public var startOfWeek:Date {
+        let gregorian = Calendar(identifier: .gregorian)
+        let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)!
+    }
     
     public static func timeFromMinutes(_ minutes:Double) -> Date {
         return timeWith(hour: 0, minute: Int(minutes), second: 0)

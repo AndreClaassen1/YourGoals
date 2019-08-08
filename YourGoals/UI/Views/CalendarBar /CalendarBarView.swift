@@ -45,7 +45,8 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
     
     /// calc a date from a reference and the row in the index path
     func calcDateForPath(referenceDate: Date, path: IndexPath) -> Date {
-        let date = referenceDate.addDaysToDate(path.row)
+        let startOfWeek = referenceDate.startOfWeek
+        let date = startOfWeek.addDaysToDate(path.row)
         return date
     }
     

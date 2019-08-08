@@ -33,4 +33,15 @@ class Date_HelperTests: XCTestCase {
         XCTAssertEqual("T", weekDayChar, "It should be a a T for Tuesday")
     }
     
+    func testStartOfWeek() {
+        // setup
+        let testDate = Date.dateWithYear(2019, month: 08, day: 07) // its a wednesday
+        
+        // act
+        let startOfWeek = testDate.startOfWeek
+        
+        // test
+        XCTAssertEqual(Date.dateWithYear(2019, month: 08, day: 05), startOfWeek)
+    }
+    
 }
