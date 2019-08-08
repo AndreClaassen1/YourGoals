@@ -44,7 +44,6 @@ class NibLoadingView: UIView {
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.translatesAutoresizingMaskIntoConstraints = true
-        view.isUserInteractionEnabled = false
         addSubview(view)
         awakeFromNib()
     }

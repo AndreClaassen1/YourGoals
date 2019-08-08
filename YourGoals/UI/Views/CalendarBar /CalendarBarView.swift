@@ -11,9 +11,7 @@ import UIKit
 /// calendar bar view 
 class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-
     @IBOutlet weak var dayOfWeekTextView: UILabel!
-
     @IBOutlet weak var weekDaysView: UICollectionView!
     
     let spacingBetweenViewCells:CGFloat = 0.0
@@ -29,9 +27,13 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
     }
     
     func setupControl() {
+        weekDaysView.register(CalendarBarCell.self, forCellWithReuseIdentifier: CalendarBarCell.reuseIdentifier)
         weekDaysView.delegate = self
         weekDaysView.dataSource = self
-        weekDaysView.register(CalendarBarCell.self, forCellWithReuseIdentifier: CalendarBarCell.reuseIdentifier)
+        weekDaysView.allowsSelection = true
+        weekDaysView.isPagingEnabled = true
+        weekDaysView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        weekDaysView.reloadData()
     }
     
     

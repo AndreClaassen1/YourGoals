@@ -103,4 +103,11 @@ class CalendarBarCell: UICollectionViewCell {
         }
         return cell
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.dayNumberLabel.textColor = self.isSelected ? UIColor.blue : UIColor.black
+        }
+    }
+    
 }
