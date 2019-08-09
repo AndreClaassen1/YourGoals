@@ -104,10 +104,11 @@ class CalendarBarCell: UICollectionViewCell {
         return cell
     }
     
+    /// color the cell, so that it is visible, that it is selected
     override var isSelected: Bool {
         didSet {
-            self.dayNumberLabel.textColor = self.isSelected ? UIColor.blue : UIColor.black
+            self.dayNumberLabel.textColor = self.isSelected ? UIColor.white : UIColor.black
+            self.dayProgressRing.backgroundCircleColor = self.isSelected ? self.dayProgressRing.backgroundStrokeShadowColor : UIColor.clear
         }
     }
-    
 }

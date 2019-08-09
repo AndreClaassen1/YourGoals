@@ -183,6 +183,7 @@
 		7B9A275D216FE6A000A755FF /* StorageManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275B216FE50C00A755FF /* StorageManagerBase.swift */; };
 		7B9A275F216FF24700A755FF /* ExtensionItemExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */; };
 		7B9A2761216FFA5900A755FF /* ShareTasksConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A2760216FFA5900A755FF /* ShareTasksConsumer.swift */; };
+		7B9AD65122FD2F3F00F36859 /* DegreesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9AD65022FD2F3F00F36859 /* DegreesHelper.swift */; };
 		7B9AEF9922BE20F6002FC5B4 /* ActiveLifeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9AEF9822BE20F6002FC5B4 /* ActiveLifeDataSource.swift */; };
 		7B9AEF9B22BE2234002FC5B4 /* ActiveLifeDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9AEF9A22BE2234002FC5B4 /* ActiveLifeDataSourceTests.swift */; };
 		7B9AEF9D22BE27D4002FC5B4 /* ActionableTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9AEF9C22BE27D4002FC5B4 /* ActionableTimeInfo.swift */; };
@@ -608,6 +609,7 @@
 		7B9A275E216FF24700A755FF /* ExtensionItemExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionItemExtractor.swift; sourceTree = "<group>"; };
 		7B9A2760216FFA5900A755FF /* ShareTasksConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTasksConsumer.swift; sourceTree = "<group>"; };
 		7B9A27632171FA2400A755FF /* CSNotificationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CSNotificationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9AD65022FD2F3F00F36859 /* DegreesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesHelper.swift; sourceTree = "<group>"; };
 		7B9AEF9822BE20F6002FC5B4 /* ActiveLifeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeDataSource.swift; sourceTree = "<group>"; };
 		7B9AEF9A22BE2234002FC5B4 /* ActiveLifeDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLifeDataSourceTests.swift; sourceTree = "<group>"; };
 		7B9AEF9C22BE27D4002FC5B4 /* ActionableTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableTimeInfo.swift; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 				7B97202D2066550B007D142E /* Array+ExtensionMethods.swift */,
 				7B9D513B20A2F74E009B608D /* UIImage+Grayscale.swift */,
 				7B1F94F72160C996001A0717 /* Array+uniqued.swift */,
+				7B9AD65022FD2F3F00F36859 /* DegreesHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2303,6 +2306,7 @@
 				7B36F234200381BE00095389 /* WorkloadView.swift in Sources */,
 				7B3DA175206D771000C0ED0F /* UNCalendarNotificationTrigger+Date.swift in Sources */,
 				7B4E0BE61FAF0CE500602FD1 /* HabitTableViewCell.swift in Sources */,
+				7B9AD65122FD2F3F00F36859 /* DegreesHelper.swift in Sources */,
 				7B5FA3D71FA33D4D004556C1 /* TaskProgress+Date.swift in Sources */,
 				7BC9AD1D1FB2EB87002EF00A /* DateFormatter+convinience.swift in Sources */,
 				7B9145A5207D416700B2C5F8 /* ActiveTaskResponder.swift in Sources */,

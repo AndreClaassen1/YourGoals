@@ -36,9 +36,15 @@ import UIKit
         }
     }
     
-    @IBInspectable var backgroundShadowColor = UIColor.lightGray {
+    @IBInspectable var backgroundStrokeShadowColor = UIColor.lightGray {
         didSet {
             self.circleBackground.strokeColor = self.strokeColor.cgColor
+        }
+    }
+
+    @IBInspectable var backgroundCircleColor = UIColor.clear {
+        didSet {
+            self.circleBackground.fillColor = self.backgroundCircleColor.cgColor
         }
     }
     
@@ -54,10 +60,6 @@ import UIKit
         super.init(coder: aDecoder)
         setupDefaults()
 
-    }
-    
-    func degreesToRadians(angle:CGFloat) -> CGFloat {
-        return (angle / 180.0) * .pi
     }
     
     func createCirclePath() -> CGPath {
@@ -77,7 +79,7 @@ import UIKit
         circle.lineCap = .round
         circle.fillColor = UIColor.clear.cgColor
         circle.lineWidth = lineWidth
-        circle.strokeColor = strokeColor.cgColor
+        circle.strokeColor = self.strokeColor.cgColor
         circle.zPosition = 1
         circle.strokeEnd = self.progress
         self.layer.addSublayer(circle)
@@ -85,13 +87,12 @@ import UIKit
         circleBackground = CAShapeLayer()
         circleBackground.path = circlePath
         circleBackground.lineCap = .round
-        circleBackground.fillColor = UIColor.clear.cgColor
+        circleBackground.fillColor = self.backgroundCircleColor.cgColor
         circleBackground.lineWidth = lineWidth
-        circleBackground.strokeColor = backgroundShadowColor.cgColor
+        circleBackground.strokeColor = self.backgroundStrokeShadowColor.cgColor
         circleBackground.strokeEnd = 1.0
         circleBackground.zPosition = -1
         self.layer.addSublayer(circleBackground)
-
     }
     
 
