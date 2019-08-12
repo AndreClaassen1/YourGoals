@@ -78,6 +78,15 @@ extension Date {
         return addedDate!
     }
     
+    /// calculate the number of days since the reference date as a day
+    ///
+    /// - Parameter since: reference date
+    /// - Returns: number of days
+    public func numberOfDays(since referenceDate: Date) -> Int {
+        let days = Int(self.day().timeIntervalSince(referenceDate) / (60.0 * 60.0 * 24.0))
+        return days
+    }
+    
     /// add some minutes to a date
     ///
     /// - Parameter numberOfMinutes: number of minutes

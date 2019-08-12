@@ -9,10 +9,11 @@
 import UIKit
 
 /// this is a view controller for displaying the active life table view. maybe, this will be one day the new today task controller
-class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, EditActionableViewControllerDelegate {
+class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, EditActionableViewControllerDelegate, CalendarBarViewDelegate {
     
     /// the actionable table view for displaying the task sheet
     @IBOutlet weak var activeLifeTableView: ActionableTableView!
+    @IBOutlet weak var calendarBarView: CalendarBarView!
     
     /// a core data storeage mangaegr
     var manager = GoalsStorageManager.defaultStorageManager
@@ -20,6 +21,7 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
     /// editable variables. I have no clue, to code this better yet
     var editActionable:Actionable? = nil
     var editActionableType:ActionableType? = nil
+    var activeLifeDate = Date()
     
     /// initialitze the table view and the navigation bar
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Active Life"
         self.activeLifeTableView.configure(manager: self.manager, dataSource: ActiveLifeDataSource(manager: self.manager), delegate: self)
+        self.calendarBarView.configure(delegate: self, activeDate: self.activeLifeDate)
     }
     
     // MARK: - Navigation
@@ -117,4 +120,10 @@ class ActiveLifeViewController: UIViewController, ActionableTableViewDelegate, E
         self.reloadAll()
     }
     
+    // MARK: - CalendarBarViewDelegate
+
+    func activeDayChanged(newDate: Date) {
+        self.activeLifeDate = newDate
+    }
+
 }

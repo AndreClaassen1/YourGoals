@@ -44,4 +44,17 @@ class Date_HelperTests: XCTestCase {
         XCTAssertEqual(Date.dateWithYear(2019, month: 08, day: 05), startOfWeek)
     }
     
+    func testNumberOfDaysSince() {
+        // setup
+        let testDate = Date.dateTimeWithYear(2019, month: 08, day: 12, hour: 14, minute: 00, second: 00)
+        let testDateSince = Date.dateWithYear(2019, month: 08, day: 01)
+        
+        // act
+        let numberOfDays = testDate.numberOfDays(since: testDateSince)
+        
+        // test
+        XCTAssertEqual(11, numberOfDays)
+    }
+    
+    
 }

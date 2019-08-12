@@ -8,13 +8,20 @@
 
 import UIKit
 
-/// calendar bar view 
+protocol CalendarBarViewDelegate {
+    func activeDayChanged(newDate: Date)
+}
+
+/// calendar bar view
 class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var dayOfWeekTextView: UILabel!
     @IBOutlet weak var weekDaysView: UICollectionView!
     
     let spacingBetweenViewCells:CGFloat = 0.0
+    var delegate:CalendarBarViewDelegate!
+    var referenceDate = Date().day()
+    var numberOfDays = 360
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,13 +43,22 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
         weekDaysView.reloadData()
     }
     
+    /// configure this view from the containing view controller
+    ///
+    /// - Parameters:
+    ///   - delegate: a delegate for events of this view
+    ///   - activeDate: the initial date
+    func configure(delegate: CalendarBarViewDelegate, activeDate: Date) {
+        self.delegate = delegate
+        selectCalendarCell(forDate: activeDate)
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 360
+        return numberOfDays
     }
     
     /// calc a date from a reference and the row in the index path
@@ -54,7 +70,7 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let calendarBarCell = CalendarBarCell.dequeue(fromCollectionView: self.weekDaysView, atIndexPath: indexPath)
-        let date = calcDateForPath(referenceDate: Date(), path: indexPath)
+        let date = calcDateForPath(referenceDate: self.referenceDate, path: indexPath)
         let progress = 0.75
         
         let value = CalendarBarCellValue(date: date, progress: progress)
@@ -62,6 +78,21 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
         calendarBarCell.configure(value: value)
         return calendarBarCell
     }
+    
+    /// calculate the indexpath in the range between 0 and self.number of days
+    ///
+    /// - Parameter date: the date
+    /// - Returns: a indexpath for the date
+    func calcIndexPath(forDate date:Date) -> IndexPath? {
+        let days = min(0, max(date.numberOfDays(since: self.referenceDate), numberOfDays))
+        return IndexPath(row: days, section: 0)
+    }
+    
+    func selectCalendarCell(forDate date:Date) {
+        let indexPath = calcIndexPath(forDate: date)
+        weekDaysView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+    }
+    
     
     // Mark: UICollectionViewDelegateFlowLayout
     

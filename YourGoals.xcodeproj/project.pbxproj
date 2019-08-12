@@ -140,7 +140,7 @@
 		7B83346E1FA3C2CC002FB5BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B83346D1FA3C2CC002FB5BC /* .gitignore */; };
 		7B8334701FA3CD3D002FB5BC /* GoalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */; };
 		7B85A4D81FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */; };
-		7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85B5652000D74B00096BC4 /* Date+HelperTests.swift */; };
+		7B85B5662000D74B00096BC4 /* Date+dateHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85B5652000D74B00096BC4 /* Date+dateHelperTests.swift */; };
 		7B85F31920B6DB390034B437 /* WatchTaskRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85F31820B6DB390034B437 /* WatchTaskRowController.swift */; };
 		7B88478E1FD6A4DB009C01F9 /* StrategyOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */; };
 		7B8847901FD6A5F0009C01F9 /* StorageOrderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */; };
@@ -567,7 +567,7 @@
 		7B83346D1FA3C2CC002FB5BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B83346F1FA3CD3D002FB5BC /* GoalComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComposer.swift; sourceTree = "<group>"; };
 		7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionableTableView+Constraint.swift"; sourceTree = "<group>"; };
-		7B85B5652000D74B00096BC4 /* Date+HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+HelperTests.swift"; sourceTree = "<group>"; };
+		7B85B5652000D74B00096BC4 /* Date+dateHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+dateHelperTests.swift"; sourceTree = "<group>"; };
 		7B85F31820B6DB390034B437 /* WatchTaskRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTaskRowController.swift; sourceTree = "<group>"; };
 		7B88478D1FD6A4DB009C01F9 /* StrategyOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrderManager.swift; sourceTree = "<group>"; };
 		7B88478F1FD6A5F0009C01F9 /* StorageOrderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOrderManagerTests.swift; sourceTree = "<group>"; };
@@ -1303,7 +1303,7 @@
 				7BFD35C520077F2E00602FC8 /* TodayScheduleCalculatorTests.swift */,
 				7B1BBC381FFD601C003934B1 /* CalcProgressTests.swift */,
 				7B74BC591FFE1DC700D06D48 /* CalculateColorsTests.swift */,
-				7B85B5652000D74B00096BC4 /* Date+HelperTests.swift */,
+				7B85B5652000D74B00096BC4 /* Date+dateHelperTests.swift */,
 				7B36F23A2003933C00095389 /* TodayWorkloadInfoTests.swift */,
 			);
 			path = YourGoalsTests;
@@ -2411,7 +2411,7 @@
 				7B36F23B2003933C00095389 /* TodayWorkloadInfoTests.swift in Sources */,
 				7BB77A332168B5E50056FF60 /* TaskWorktimeCalculatorTests.swift in Sources */,
 				7BF0B02E1FDE5BCF008165FA /* EditActionableFormControllerTests.swift in Sources */,
-				7B85B5662000D74B00096BC4 /* Date+HelperTests.swift in Sources */,
+				7B85B5662000D74B00096BC4 /* Date+dateHelperTests.swift in Sources */,
 				7B26EB8820B6CDDA00155158 /* WatchTasksContextProviderTests.swift in Sources */,
 				7B6AE97E1FACA4F200E15A9D /* GoalComposerTests.swift in Sources */,
 				7B7AECDA1FF6268D0096EE5D /* EditGoalControllerTests.swift in Sources */,

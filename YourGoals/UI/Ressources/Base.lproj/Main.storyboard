@@ -360,6 +360,7 @@
                     <tabBarItem key="tabBarItem" title="Active Life" image="tabbar_active_life_icon" id="EQW-jm-LNG"/>
                     <connections>
                         <outlet property="activeLifeTableView" destination="iWr-2V-Y7p" id="xpX-0g-8QN"/>
+                        <outlet property="calendarBarView" destination="aFW-mg-2Vj" id="2nL-MD-ava"/>
                         <segue destination="Ga9-RV-KRV" kind="show" identifier="presentEditActionable" id="YCn-b9-L93"/>
                     </connections>
                 </viewController>
