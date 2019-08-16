@@ -26,6 +26,8 @@ class CalendarBarCell: UICollectionViewCell {
     let dayNumberLabel = UILabel()
     let dayNameLabel = UILabel()
     let dayProgressRing = CircleProgressView(frame: CGRect.zero)
+    let dayNumberLabelColor = UIColor.lightGray
+    var dayNumberLabelSelectedColor = UIColor.blue
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,9 +45,10 @@ class CalendarBarCell: UICollectionViewCell {
         self.addSubview(dayNameLabel)
     }
     
-    fileprivate func formatLabel(label: UILabel, textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    fileprivate func formatLabel(label: UILabel, textAlignment: NSTextAlignment, fontSize: CGFloat, color: UIColor? = nil) {
         label.textAlignment = textAlignment
         label.font = label.font.withSize(fontSize)
+        label.textColor = color
     }
     
     fileprivate func createConstraints() {
@@ -73,7 +76,7 @@ class CalendarBarCell: UICollectionViewCell {
     fileprivate func setupControls() {
         createControls()
         formatLabel(label: dayNameLabel, textAlignment: .center, fontSize: 12.0)
-        formatLabel(label: dayNumberLabel, textAlignment: .center, fontSize: 14.0)
+        formatLabel(label: dayNumberLabel, textAlignment: .center, fontSize: 14.0, color: dayNumberLabelColor)
         createConstraints()
     }
     
@@ -107,8 +110,7 @@ class CalendarBarCell: UICollectionViewCell {
     /// color the cell, so that it is visible, that it is selected
     override var isSelected: Bool {
         didSet {
-            self.dayNumberLabel.textColor = self.isSelected ? UIColor.white : UIColor.black
-            self.dayProgressRing.backgroundCircleColor = self.isSelected ? self.dayProgressRing.backgroundStrokeShadowColor : UIColor.clear
+            self.dayNumberLabel.textColor = self.isSelected ? self.dayNumberLabelSelectedColor : self.dayNumberLabelColor
         }
     }
 }

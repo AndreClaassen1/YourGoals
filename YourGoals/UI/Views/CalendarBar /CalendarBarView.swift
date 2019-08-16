@@ -22,6 +22,7 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
     var delegate:CalendarBarViewDelegate!
     var referenceDate = Date().day()
     var numberOfDays = 360
+    let dayOfWeekTextViewColor = UIColor(red: 0.0, green: 0.478, blue: 1.00, alpha: 1.0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +35,7 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
     }
     
     func setupControl() {
+        self.dayOfWeekTextView.textColor = dayOfWeekTextViewColor
         weekDaysView.register(CalendarBarCell.self, forCellWithReuseIdentifier: CalendarBarCell.reuseIdentifier)
         weekDaysView.delegate = self
         weekDaysView.dataSource = self
@@ -74,7 +76,7 @@ class CalendarBarView: NibLoadingView, UICollectionViewDelegate, UICollectionVie
         let progress = 0.75
         
         let value = CalendarBarCellValue(date: date, progress: progress)
-            
+        calendarBarCell.dayNumberLabelSelectedColor = self.dayOfWeekTextViewColor
         calendarBarCell.configure(value: value)
         return calendarBarCell
     }
