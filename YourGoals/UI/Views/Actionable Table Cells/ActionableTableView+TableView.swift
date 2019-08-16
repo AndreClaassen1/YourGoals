@@ -106,7 +106,7 @@ extension ActionableTableView {
         
         let item = self.itemForIndexPath(path: indexPath)
         let actionableCell = self.delegate.dequeueActionableCell(fromTableView: tableView, atIndexPath: indexPath)
-        actionableCell.configure(manager: self.manager, item: item, forDate: Date(), delegate: self)
+        actionableCell.configure(manager: self.manager, theme: self.theme, item: item, forDate: Date(), delegate: self)
         
         configure(swipeableCell: actionableCell.swipeTableCell)
         return actionableCell.swipeTableCell

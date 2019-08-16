@@ -9,6 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 
+/// todo: this protocol should be split in two different protocols
 protocol ActionableTableViewDelegate {
     func requestForEdit(actionable: Actionable)
     func showNotification(forError error: Error)
@@ -19,7 +20,7 @@ protocol ActionableTableViewDelegate {
     func dequeueActionableCell(fromTableView: UITableView, atIndexPath: IndexPath) -> ActionableCell
 }
 
-/// a specialized UITableView for displaying tasks
+/// a specialized UITableView for displaying tasks, habits and actionables in general
 class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, ActionableTableCellDelegate {
     var tasksTableView:UITableView!
     var reorderTableView: LongPressReorderTableView!
@@ -33,6 +34,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     var constraint:NSLayoutConstraint? = nil
     var constraintOffset:CGFloat = 0
     var panGestureRecognizer:UIPanGestureRecognizer!
+    var theme: Theme!
     var manager: GoalsStorageManager!
     var calculatestartingTimes = false
     var reorderInfo:ReorderInfo?
@@ -66,6 +68,7 @@ class ActionableTableView: UIView, UITableViewDataSource, UITableViewDelegate, A
     ///   - delegate: a delegate for actions like editing or so.
     ///   - varyingHeightConstraint: an optional constraint, if the actionable table view should modify the constriaitn
     func configure(manager: GoalsStorageManager, dataSource: ActionableDataSource, delegate: ActionableTableViewDelegate, varyingHeightConstraint: NSLayoutConstraint? = nil) {
+        self.theme = Theme.defaultTheme
         self.manager = manager
         self.dataSource = dataSource
         self.delegate = delegate

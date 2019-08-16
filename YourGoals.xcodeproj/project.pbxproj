@@ -31,6 +31,7 @@
 		7B17DD841F9E82CA008E90A2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD811F9E73A2008E90A2 /* Reusable.swift */; };
 		7B17DD881F9E88EA008E90A2 /* GoalsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17DD871F9E88E7008E90A2 /* GoalsSectionHeader.swift */; };
 		7B17DD891F9E88F3008E90A2 /* GoalsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B17DD861F9E88E6008E90A2 /* GoalsSectionHeader.xib */; };
+		7B17FE3123068AA300E3F423 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17FE3023068AA300E3F423 /* Theme.swift */; };
 		7B1BBC311FF8E481003934B1 /* WeekdayRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BBC301FF8E481003934B1 /* WeekdayRow.swift */; };
 		7B1BBC331FF8E51A003934B1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1BBC321FF8E51A003934B1 /* WeekDaysCell.xib */; };
 		7B1BBC391FFD601C003934B1 /* CalcProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BBC381FFD601C003934B1 /* CalcProgressTests.swift */; };
@@ -451,6 +452,7 @@
 		7B17DD821F9E73A2008E90A2 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		7B17DD861F9E88E6008E90A2 /* GoalsSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalsSectionHeader.xib; sourceTree = "<group>"; };
 		7B17DD871F9E88E7008E90A2 /* GoalsSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSectionHeader.swift; sourceTree = "<group>"; };
+		7B17FE3023068AA300E3F423 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7B1A4B3E1F9F9E5000703885 /* PresentStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7B1A4B3F1F9F9E5000703885 /* DismissStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		7B1BBC301FF8E481003934B1 /* WeekdayRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayRow.swift; sourceTree = "<group>"; };
@@ -920,12 +922,12 @@
 		7B17DD851F9E88D2008E90A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7BC94AC622E97AC500B57B0A /* CalendarBar  */,
+				7BC94AC622E97AC500B57B0A /* CalendarBarView */,
 				7BEA4ECB20D2D64600DEE71A /* Protocol */,
-				7BFD35C220076A9E00602FC8 /* Progress */,
+				7BFD35C220076A9E00602FC8 /* Progress Indicators */,
 				7B17DD7E1F9E72C8008E90A2 /* BaseRoundedCardCell.swift */,
 				7B4B57A01FA6FE330099FF62 /* NibLoadingView.swift */,
-				7BFD35C120076A3600602FC8 /* Actionables */,
+				7BFD35C120076A3600602FC8 /* Actionable Table Cells */,
 				7BFD35C020076A1300602FC8 /* Goals */,
 			);
 			path = Views;
@@ -1158,10 +1160,18 @@
 			path = Actionable;
 			sourceTree = "<group>";
 		};
+		7B973E9923068A53003BE700 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		7B9759C51FB37B74009DED89 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
 				7B9759C61FB37B88009DED89 /* UIColor+YourGoalColors.swift */,
+				7B17FE3023068AA300E3F423 /* Theme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -1375,14 +1385,14 @@
 			name = Business;
 			sourceTree = "<group>";
 		};
-		7BC94AC622E97AC500B57B0A /* CalendarBar  */ = {
+		7BC94AC622E97AC500B57B0A /* CalendarBarView */ = {
 			isa = PBXGroup;
 			children = (
 				7BC94AC722E97B0100B57B0A /* CalendarBarView.swift */,
 				7BC94AC922E97D6D00B57B0A /* CalendarBarView.xib */,
 				7B00211B22EB09FE0028D2F0 /* CalendarBarCell.swift */,
 			);
-			path = "CalendarBar ";
+			path = CalendarBarView;
 			sourceTree = "<group>";
 		};
 		7BCC339B22FAD45500FEC763 /* Views */ = {
@@ -1456,6 +1466,7 @@
 		7BE4BB501FC80A3200E1BEF9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7B973E9923068A53003BE700 /* New Group */,
 				7BF1CC3322981B5F00073CBD /* LongPressOrder */,
 				7B1A4B351F9F9D1700703885 /* Transition Animation */,
 				7B7AECD41FF5989E0096EE5D /* Eureka */,
@@ -1617,7 +1628,7 @@
 			path = Goals;
 			sourceTree = "<group>";
 		};
-		7BFD35C120076A3600602FC8 /* Actionables */ = {
+		7BFD35C120076A3600602FC8 /* Actionable Table Cells */ = {
 			isa = PBXGroup;
 			children = (
 				7BF957DB22BC9DD70033F3CB /* ActionableCell Protocol.swift */,
@@ -1635,17 +1646,17 @@
 				7B85A4D71FBB4E2000F3DE1E /* ActionableTableView+Constraint.swift */,
 				7B130B611FB5C67C0072F6C8 /* ActionableSwipeButtonCreator.swift */,
 			);
-			path = Actionables;
+			path = "Actionable Table Cells";
 			sourceTree = "<group>";
 		};
-		7BFD35C220076A9E00602FC8 /* Progress */ = {
+		7BFD35C220076A9E00602FC8 /* Progress Indicators */ = {
 			isa = PBXGroup;
 			children = (
 				7B50F8741FA39CEB00A6EF61 /* ProgressIndicatorView.swift */,
 				7BB9B8201FC573DD00786A86 /* PieProgressView.swift */,
 				7B3601A522F2BC5F008B283A /* CircleProgressView.swift */,
 			);
-			path = Progress;
+			path = "Progress Indicators";
 			sourceTree = "<group>";
 		};
 		7BFD419322BFE92C00367BFA /* Utilities */ = {
@@ -2290,6 +2301,7 @@
 				7B9E28F31FA6794700BB6003 /* GoalInfoManager.swift in Sources */,
 				7B8168B621E491A300C5624C /* strings.swift in Sources */,
 				7BAB77521FCEA7D1001E07A7 /* TodayViewController+TransitionDelegate.swift in Sources */,
+				7B17FE3123068AA300E3F423 /* Theme.swift in Sources */,
 				7B74BC581FFE191900D06D48 /* UIColor+rgb.swift in Sources */,
 				7B6E11222078A9C8004605B1 /* PlanningViewController.swift in Sources */,
 				7B994E0F1FA22A1B00B704E1 /* FieldCheckError.swift in Sources */,
